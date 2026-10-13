@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rainbowbowlranges",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Look at the complement: color i leaves a gap arc of length n-c_i, and the rainbow ranges are exactly the gaps between clusters of merged gap arcs, so maximise the number of disjoint clusters.",
+ "sketch": "Drop colors with c_i=n (no gap); if none remain the answer is 1 (the whole circle). To form j clusters separated by at least one rainbow bowl each we need (total union length)+j <= n. A cluster's length is at least its largest gap, the overall largest gap must head some cluster, and everything else can be hidden inside it, so the cheapest j clusters are the largest gap plus the j-1 smallest gaps. Sort and greedily extend j while max + (sum of j-1 smallest) + j <= n; j=1 always fits because every gap is <= n-1. O(m log m), 64-bit sums. Verified against exhaustive placement for small n,m.",
+ "code_path": "solutions/kattis_rainbowbowlranges.cpp",
+ "samples_passed": true
+}

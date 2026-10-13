@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tipofyourtongue",
+ "rating": 1700,
+ "topics": [
+  "hashing",
+  "strings",
+  "sorting"
+ ],
+ "key_idea": "Total letters are at most 1e6, so every (prefix, same-length suffix) pair of every word can be enumerated; count prefixes, suffixes and pairs by hash, then AND/OR/XOR follow by inclusion-exclusion.",
+ "sketch": "For each word compute prefix polynomial hashes (mod 2^61-1) and, for every length L, the hash of its length-L prefix and length-L suffix. Store three multisets: prefix hashes A, suffix hashes B, and combined (prefix,suffix) hashes C, as sorted vectors queried with equal_range. A query hashes p and s the same way: AND = C, OR = A+B-C, XOR = A+B-2C. Complexity O(S log S) with S = 1e6. Pitfalls: mix the length into the key so different lengths never collide, use a 61-bit modulus (not a single 32-bit one) because of ~1e6 keys, and note |p|=|s| is exactly what makes the pair table linear in size. Stress-tested against a Python brute force.",
+ "code_path": "solutions/kattis_tipofyourtongue.cpp",
+ "samples_passed": true
+}

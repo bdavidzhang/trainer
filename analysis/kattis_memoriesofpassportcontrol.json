@@ -1,0 +1,12 @@
+{
+ "id": "kattis:memoriesofpassportcontrol",
+ "rating": 800,
+ "topics": [
+  "math",
+  "greedy"
+ ],
+ "key_idea": "Use as many k-page stamps as possible: answer is s/k + s%k.",
+ "sketch": "Each k-stamp replaces k single stamps, so maximising their count minimises trips. Print floor(s/k) + s mod k. O(1), no pitfalls.",
+ "code_path": "solutions/kattis_memoriesofpassportcontrol.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ebonyandivory",
+ "rating": 1600,
+ "topics": [
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "The cost of an interval depends only on the fingers on the two consecutive notes, so a DP over (note index, finger used) with 5 states suffices.",
+ "sketch": "Parse the four tables into T[colour pair][lower finger][upper finger][half steps], marking finger pairs that are not listed as unavailable. dp[i][f] = min difficulty of the first i notes ending on finger f; for a transition determine the lower/upper key, colour pair (key mod 12 in {2,5,7,10,0} is black) and distance, and map the previous/next finger to (lower, upper) depending on direction. A repeated note forces the same finger at cost 0. Answer is the min over the last finger; O(25 L). Pitfalls: descending intervals swap the finger roles, only listed finger pairs may be used, and 0 entries are treated as legal zero cost (in the sample they only occur at impossible colour/distance combinations).",
+ "code_path": "solutions/kattis_ebonyandivory.cpp",
+ "samples_passed": true
+}

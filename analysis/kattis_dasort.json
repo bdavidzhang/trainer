@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dasort",
+ "rating": 1200,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Elements never moved keep their relative order and must be exactly a prefix of the sorted array, so the answer is N minus the longest prefix of the sorted array that appears as a subsequence.",
+ "sketch": "Sort a copy of the array. Scan the original once with a pointer j into the sorted copy and advance j whenever a[i]==sorted[j]; the kept elements are sorted[0..j-1] and every other element is appended once, in increasing order. Answer is N-j, O(N log N) per set. Duplicates need no special care because equal values are interchangeable and greedy matching is optimal. Input is wrapped 10 values per line, so just read tokens.",
+ "code_path": "solutions/kattis_dasort.cpp",
+ "samples_passed": true
+}

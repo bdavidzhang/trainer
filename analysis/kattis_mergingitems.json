@@ -1,0 +1,12 @@
+{
+ "id": "kattis:mergingitems",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Merging is binary addition: the board is a binary number, each request adds 3, and the final items are the set bits.",
+ "sketch": "Keep a map value->count, add 3n items of value 0, then sweep from the smallest value carrying count/2 upward and printing values with odd count. Trivial complexity. Corner cases: k=0, n=0 (empty line), carries past value 10.",
+ "code_path": "solutions/kattis_mergingitems.cpp",
+ "samples_passed": true
+}

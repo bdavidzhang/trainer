@@ -1,0 +1,12 @@
+{
+ "id": "kattis:imperfectgps",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "geometry"
+ ],
+ "key_idea": "Walk the GPS sample times t, 2t, ... below the end time, linearly interpolating the position inside the current path segment, and sum the sampled polyline.",
+ "sketch": "Compute the true length as the sum of segment lengths. Then for each multiple c of t strictly less than the final time, advance a pointer to the segment containing c, interpolate the position by (c - t_j)/(t_{j+1} - t_j), and add the distance from the previous sample; finally add the distance to the last point. Answer is (real - gps)/real * 100. At most 1e6 samples with an amortised pointer, so O(T/t + n). Pitfalls: the end point is always recorded even when T is not a multiple of t, and must not be double counted when it is; use doubles for coordinates up to 1e6.",
+ "code_path": "solutions/kattis_imperfectgps.cpp",
+ "samples_passed": true
+}

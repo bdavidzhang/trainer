@@ -1,0 +1,13 @@
+{
+ "id": "kattis:interference",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "Only n <= 4000 lines, so each query can simply loop over all earlier waves; coordinates up to 1e9 never need to be materialised.",
+ "sketch": "Store every wave (p, l, a). For a query at position x, sum over waves with p <= x < p+l the value a if (x-p) mod 4 == 0, -a if it is 2, and 0 otherwise. O(n^2) = 16e6 operations worst case. Use 64-bit sums (up to 4000 * 1e9). The 'obvious' heavy solution (four difference arrays with coordinate compression) is unnecessary.",
+ "code_path": "solutions/kattis_interference.cpp",
+ "samples_passed": true
+}

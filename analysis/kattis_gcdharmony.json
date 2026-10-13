@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gcdharmony",
+ "rating": 2000,
+ "topics": [
+  "dp-tree",
+  "number-theory",
+  "dp"
+ ],
+ "key_idea": "Setting every node to 2 costs 2n, so no new value exceeds 2n, and only squarefree new values matter; the tree DP only needs, per node, the best subtree cost given that the node's value is divisible by a given prime.",
+ "sketch": "best[v][p] = minimum cost of v's subtree when v's final value is divisible by prime p. For a node, try every candidate value: each squarefree number in [2, 2n] at cost equal to itself, plus the original value at cost 0 (if it is > 1); the candidate's total is cost + sum over children of min over primes q dividing the candidate of best[child][q], and it updates best[v][q] for those q. The answer is the minimum total at the root. There are about 6100 squarefree candidates with about 2.3 prime factors on average and each tree edge is scanned once per candidate, so the work is about 7e7 basic steps (0.35 s). Pitfalls: an original value of 1 can never stay; non-squarefree originals (4, 12) must be kept as zero-cost options through their prime sets; process iteratively in post-order and free child tables to keep memory small.",
+ "code_path": "solutions/kattis_gcdharmony.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:repetitivestringinvention",
+ "rating": 2200,
+ "topics": [
+  "strings",
+  "dp",
+  "prefix-sums",
+  "brute-force"
+ ],
+ "key_idea": "If |A|=|B| then A=B; if |A|>|B| then A=XBX with the second piece equal to B occurring later (and symmetrically by reversal), so count occurrences of XBX followed by a later copy of B using an LCP table.",
+ "sketch": "Build the O(n^2) LCP table of all suffix pairs. Equal lengths: sum over i<k of min(lcp(i,k), k-i). Longer first piece: fix the inner B=s[p..e); for x=1..min(p,n-e) mark x valid when lcp(p-x,e)>=x and prefix-sum it; then for each later start k with lcp(p,k)>=|B| add the number of valid x <= k-e (A must end before k). The longer-second-piece case is the same count on the reversed string. Total O(n^3/6) simple operations, ~0.1s for n=800; answer needs 64-bit (about 8.5e9 for a^800). Stress-tested against an O(n^5) brute force.",
+ "code_path": "solutions/kattis_repetitivestringinvention.cpp",
+ "samples_passed": true
+}

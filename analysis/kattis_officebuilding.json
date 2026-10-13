@@ -1,0 +1,12 @@
+{
+ "id": "kattis:officebuilding",
+ "rating": 1000,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Try all four 90-degree rotations of the plan at every placement and minimise the covered sum.",
+ "sketch": "Rotate the s x t pattern four times (no flips), and for each orientation slide it over every top-left position where it fits, summing ages under '#' cells. Answer is total minus the minimum covered sum. Complexity 4*(rc)*(st) <= 4*400*400 operations. Pitfalls: a rotated plan has swapped dimensions and may fit even when another orientation does not; flipping is not allowed, so only generate true rotations.",
+ "code_path": "solutions/kattis_officebuilding.cpp",
+ "samples_passed": true
+}

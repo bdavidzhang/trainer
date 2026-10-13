@@ -1,0 +1,11 @@
+{
+ "id": "kattis:regarde",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Print 's' followed by n+1 copies of 'h'.",
+ "sketch": "Read t cases and output 's' plus n+1 'h' characters for each. O(n) per case, no pitfalls beyond the off-by-one (n+1 h's, not n).",
+ "code_path": "solutions/kattis_regarde.cpp",
+ "samples_passed": true
+}

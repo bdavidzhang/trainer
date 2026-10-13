@@ -1,0 +1,13 @@
+{
+ "id": "kattis:borders",
+ "rating": 1900,
+ "topics": [
+  "matching",
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "Every boundary segment between two adjacent regions must be drawn by one of them, and regions touching the image edge are forced: this is minimum vertex cover on the region adjacency graph, which is bipartite (0-regions vs 1-regions), so Konig gives forced count plus a maximum matching.",
+ "sketch": "Flood-fill to label regions and mark those touching the image boundary as forced (they have boundary no neighbour can supply). Build edges between adjacent regions where neither endpoint is forced; adjacent regions always have different colours so the graph is bipartite. Answer = number of forced regions + maximum bipartite matching on the remaining graph (Kuhn's algorithm, at most 1e4 vertices and 2e4 edges). Drawing a region draws its hole boundaries too, as the second sample shows. Verified against an exhaustive vertex-cover brute force on random grids up to 6x6. Pitfall: deduplicate adjacency lists and remember a 1x1 or single-region image answers 1.",
+ "code_path": "solutions/kattis_borders.cpp",
+ "samples_passed": true
+}

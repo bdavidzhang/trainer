@@ -1,0 +1,13 @@
+{
+ "id": "kattis:extendedbraille",
+ "rating": 1100,
+ "topics": [
+  "sorting",
+  "implementation",
+  "hashing"
+ ],
+ "key_idea": "Canonicalise each shape by sorting its dots and translating so the lexicographically smallest dot is the origin; equal shapes then give identical sequences.",
+ "sketch": "For every character sort the dots, subtract the first dot from all, and encode each offset as a single integer (dx*4001 + dy+2000, offsets are within +-2000). Collect the encoded vectors, sort them lexicographically and count distinct ones (a hash set works as well). Total O(M log M) for M <= 1e6 dots, the vector-of-vectors sort being cheap because comparisons stop at the first difference or are bounded by total size. Duplicated dots inside one character are removed defensively. Use fast input, there are up to 2e6 integers.",
+ "code_path": "solutions/kattis_extendedbraille.cpp",
+ "samples_passed": true
+}

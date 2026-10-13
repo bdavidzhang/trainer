@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mischievousmath",
+ "rating": 1300,
+ "topics": [
+  "brute-force",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "The search space is tiny: just brute-force triples and test all expressions on at most three numbers with exact rational arithmetic until one triple cannot reach d.",
+ "sketch": "Iterate triples a>b>c in 1..100 distinct from d; for each, enumerate every expression: single numbers (excluded by distinctness), all x op y for pairs in both orders, and (x op y) op z in both orders, which covers every parenthesisation of three operands. Use reduced fractions since intermediate division results need not be integers, and skip division by zero. The first unsolvable triple is found almost immediately (large numbers like 100 99 98 rarely combine to a small d). Multiple answers are valid so the sample checker reports mismatch; verified instead with an independent Python Fraction brute force for every d in 1..100 (distinctness, range and unreachability all confirmed). Pitfalls: integer-only division is wrong, and numbers may be left unused.",
+ "code_path": "solutions/kattis_mischievousmath.cpp",
+ "samples_passed": true
+}

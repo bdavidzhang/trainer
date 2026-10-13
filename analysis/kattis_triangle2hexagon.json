@@ -1,0 +1,12 @@
+{
+ "id": "kattis:triangle2hexagon",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Just carry out the construction: incenter by side-weighted average, circumcenter by formula, second circle intersections of lines through I, then six line-line intersections.",
+ "sketch": "Incenter I = (aA + bB + cC)/(a+b+c). Compute circumcenter O. For a vertex X on the circle with direction d = I - X, the second intersection is X + t*d with t = -2 (X-O).d / d.d, giving M, N, P. Intersect line NP with AB, AC to get E, F; MN with AC, BC to get G, H; MP with BC, AB to get J, K; print |EF| |FG| |GH| |HJ| |JK| |KE|. O(1) with doubles. Pitfalls: getting the hexagon vertex order right from a statement without its figure, and C may lie below the x-axis (orientation-independent formulas handle that).",
+ "code_path": "solutions/kattis_triangle2hexagon.cpp",
+ "samples_passed": true
+}

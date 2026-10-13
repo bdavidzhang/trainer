@@ -1,0 +1,12 @@
+{
+ "id": "kattis:generalizedfizzbuzz",
+ "rating": 800,
+ "topics": [
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "FizzBuzz count is floor(n / lcm(a,b)); Fizz and Buzz are floor(n/a) and floor(n/b) minus that.",
+ "sketch": "Compute l = a / gcd(a,b) * b in 64-bit (up to 1e12), fb = n / l, and print n/a - fb, n/b - fb, fb. O(log). Pitfall: a == b makes Fizz and Buzz both zero, and the lcm overflows 32-bit.",
+ "code_path": "solutions/kattis_generalizedfizzbuzz.cpp",
+ "samples_passed": true
+}

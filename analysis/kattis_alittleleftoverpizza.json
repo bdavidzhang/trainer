@@ -1,0 +1,12 @@
+{
+ "id": "kattis:alittleleftoverpizza",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Slices are freely repackable within a size, so each size needs ceil(total/capacity) boxes.",
+ "sketch": "Sum leftover slices per size (S=6, M=8, L=12) and add up ceil(sum/cap) over the three sizes. O(n). Sizes with zero leftovers need zero boxes, which the ceiling formula gives automatically.",
+ "code_path": "solutions/kattis_alittleleftoverpizza.cpp",
+ "samples_passed": true
+}

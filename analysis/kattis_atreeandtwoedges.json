@@ -1,0 +1,14 @@
+{
+ "id": "kattis:atreeandtwoedges",
+ "rating": 2100,
+ "topics": [
+  "trees",
+  "lca",
+  "case-analysis",
+  "graphs"
+ ],
+ "key_idea": "Fix a spanning tree; a simple path is determined by which extra edges it uses, in which order and direction (13 candidates), and a candidate is valid iff its tree-path segments are pairwise vertex-disjoint.",
+ "sketch": "BFS spanning tree, find the two non-tree edges, binary-lifting LCA. For a query enumerate: pure tree path (always 1), one extra edge in either direction (4 candidates, two segments), both extra edges in either order and directions (8 candidates, three segments). Each candidate counts iff all its tree segments are pairwise disjoint; two tree paths intersect iff the LCA of one lies on the other, tested via distances. Distinct valid candidates are distinct paths because tree paths are unique. O((n+q) * 13 * const * log n). Pitfalls: non-adjacent segments must be checked too, and zero-length segments (query node equals an edge endpoint) are fine. Stress-tested against DFS path counting.",
+ "code_path": "solutions/kattis_atreeandtwoedges.cpp",
+ "samples_passed": true
+}

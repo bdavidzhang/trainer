@@ -1,0 +1,13 @@
+{
+ "id": "kattis:advertisingicpc",
+ "rating": 1800,
+ "topics": [
+  "dp",
+  "dp-bitmask",
+  "combinatorics"
+ ],
+ "key_idea": "Count the complement: fillings with no IC/PC square, using a broken-profile DP that remembers the last m+1 cells so the up-left, up and left neighbours of the current cell are known.",
+ "sketch": "Scan cells in row-major order with a base-3 profile of the last m+1 cells (3^9 = 19683 states). When placing a letter at (i,j) with i,j >= 1, forbid 'C' if up-left is I, up is C and left is P; respect pre-filled cells. The answer is 3^(number of ?) minus the number of pattern-free fillings, modulo 998244353. Complexity 64 * 19683 * 3. Pitfalls: m cells are not enough because the diagonal neighbour falls out of the window, the pattern test must be skipped in the first row/column, and the subtraction needs a non-negative mod. Verified against brute force on small grids.",
+ "code_path": "solutions/kattis_advertisingicpc.cpp",
+ "samples_passed": true
+}

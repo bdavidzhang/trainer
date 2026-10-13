@@ -1,0 +1,12 @@
+{
+ "id": "kattis:eyeofsauron",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Count the bars before '(' and after ')' and compare.",
+ "sketch": "Find the index p of '('; the left side has p bars and the right side has n-p-2. Print correct if equal, otherwise fix. O(n), no pitfalls.",
+ "code_path": "solutions/kattis_eyeofsauron.cpp",
+ "samples_passed": true
+}

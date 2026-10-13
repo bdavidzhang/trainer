@@ -1,0 +1,14 @@
+{
+ "id": "kattis:comparator",
+ "rating": 2000,
+ "topics": [
+  "bitset",
+  "implementation",
+  "brute-force",
+  "strings"
+ ],
+ "key_idea": "Each statement is just (a,b,4-entry truth table,r) and only the first statement that fires for a given (a,b,x-bit,y-bit) matters, so at most 4*k*k=400 effective rules; fill the 1024x1024 result matrix with bitsets and count violations directly.",
+ "sketch": "Parse every expression to a 4-bit truth table with an explicit-stack shunting-yard parser (precedence ! > = > & > | > ^, left associative; nesting depth can be 1e6 so no recursion). For each not-yet-seen (a,b,x,y) in program order, assign r to all still-undecided pairs (u,v) with u_a=x, v_b=y using row bitsets; leftovers take the default. Reflexive count = diagonal ones; symmetric count = ordered pairs (including x=y) with f(x,y)=f(y,x)=1; transitive count = sum over f(x,y)=1 of popcount(row[y] & ~row[x]), about 1.6e7 word ops. Pitfalls: '=' binds tighter than '&', pairs/triples are ordered and may repeat elements, n can be 0. Stress-tested against a direct evaluator with an independent recursive parser.",
+ "code_path": "solutions/kattis_comparator.cpp",
+ "samples_passed": true
+}

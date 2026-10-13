@@ -1,0 +1,13 @@
+{
+ "id": "kattis:greatfireball",
+ "rating": 2100,
+ "topics": [
+  "geometry",
+  "binary-search",
+  "sweep-line"
+ ],
+ "key_idea": "A circle of radius r through the origin with centre direction theta covers point p iff cos(theta-phi_p) >= |p|/(2r), i.e. theta lies in an arc of half-width acos(|p|/2r) around the point's polar angle; binary search r and ask whether some theta is in K arcs.",
+ "sketch": "For fixed r each orc with |p|<=2r yields a closed angular interval centred at atan2(y,x) with half-width acos(|p|/(2r)) < pi/2; feasibility is max overlap >= K, found by sorting starts and ends (each interval duplicated shifted by 2*pi to handle wrap-around) and sweeping with starts processed before equal ends. Feasibility is monotone in r, so bisect geometrically on [0.4, 1e10] (70 iterations), about O(70 N log N), 1 s for N=1e5. The answer is -1 iff no open half-plane through the origin holds K orcs; since distinct integer directions differ by at least ~5e-7 rad, r=1e10 is large enough to act as 'infinity', so a failed check at the upper bound means -1. Pitfalls: K=1 gives degenerate zero-width intervals (answer min|p|/2), relative tolerance needs geometric bisection, and wrap-around counting. Stress-tested against an O(n^3) candidate-circle brute force.",
+ "code_path": "solutions/kattis_greatfireball.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:arrangingadapters",
+ "rating": 2000,
+ "topics": [
+  "greedy",
+  "binary-search",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Binary search k and use the k shortest chargers: the two largest hang off the ends costing one socket each, the others cost ceil(w/3) sockets, minus one for every back-to-back pair whose combined waste fits in a socket (remainders 1+1 or 1+2).",
+ "sketch": "Two chargers facing each other with widths w1,w2 need ceil((w1+w2)/3) sockets, which saves one socket over separate placement exactly when the remainders mod 3 are (1,1) or (1,2). With c1,c2 chargers of remainder 1,2 in the middle the maximum number of saving pairs is min(c1, floor((c1+c2)/2)). Sort, keep prefix sums of ceil(w/3) and of the residue counts, and for a candidate k check 2 + sum - pairs <= s; to be safe against residue effects the two end chargers are tried over all pairs of the 6 largest of the prefix. O(n log n). Pitfalls: k<=2 only needs k<=s, s up to 1e9 with 64-bit sums. Stress-tested against a geometric brute force (all subsets, orders, orientations) on 1200 random small cases.",
+ "code_path": "solutions/kattis_arrangingadapters.cpp",
+ "samples_passed": true
+}

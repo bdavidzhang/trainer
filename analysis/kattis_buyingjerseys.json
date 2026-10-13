@@ -1,0 +1,12 @@
+{
+ "id": "kattis:buyingjerseys",
+ "rating": 2200,
+ "topics": [
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "Because the graph is bipartite, order the three labels as no-jersey < removed < jersey on one side and reversed on the other; every rivalry then becomes the constraint |x_u - x_v| <= 1, which is a multi-label minimum cut.",
+ "sketch": "Each player gets a chain s -> v1 -> v2 -> t whose three edges are cut for labels 0,1,2 with capacities equal to the label costs (middle edge = 2 for removal, the ends 0 and 1 oriented by the given side), plus an infinite v2 -> v1 edge to keep the chain consistent. For each rivalry add infinite edges u2 -> v1 and v2 -> u1, forbidding labels (2,0) and (0,2), i.e. both in the jersey team or both in the no-jersey team. Answer = max flow, at most 2N, on 2N+2 nodes and about 4N+2M edges; Dinic is instant. Pitfall: the greedy 'smaller side of each component wears jerseys' is wrong, since removing a cut vertex for 2 can let the pieces flip independently (sample 3). Verified against 3^n brute force on random bipartite graphs.",
+ "code_path": "solutions/kattis_buyingjerseys.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:icpcrecordmatching",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "strings",
+  "sorting"
+ ],
+ "key_idea": "A record is matched if any record in the other list shares its lower-cased e-mail or its lower-cased (last, first) name pair; this is an existence check via hash sets, not a one-to-one matching.",
+ "sketch": "Read both lists split by the blank line, tokenising on whitespace. For each list build sets of lower-cased e-mails and lower-cased name pairs of the other list, keep records hit by neither, sort them by lower-cased e-mail and print 'I'/'O', e-mail, last name, first name in original spelling. Print 'No mismatches.' if nothing is unmatched. O(n log n). Pitfalls: case-insensitive comparison for both matching and sorting, output order is e-mail then last then first, and the case-insensitive order is taken on lower-cased strings (matters for '_' versus letters).",
+ "code_path": "solutions/kattis_icpcrecordmatching.cpp",
+ "samples_passed": true
+}

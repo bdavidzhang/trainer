@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ninepacks",
+ "rating": 1400,
+ "topics": [
+  "dp-knapsack",
+  "dp"
+ ],
+ "key_idea": "Two independent 0/1 knapsacks giving the minimum number of packs for every achievable total; combine over equal totals.",
+ "sketch": "For hotdogs and buns separately compute d[s] = min packs summing to exactly s with a 0/1 knapsack (iterate sums downward), s up to 100*1000. Answer is min over s>=1 of dh[s]+db[s], or impossible. Complexity 2*100*1e5 = 2e7. Pitfalls: s=0 must be excluded, and H or B can be 0.",
+ "code_path": "solutions/kattis_ninepacks.cpp",
+ "samples_passed": true
+}

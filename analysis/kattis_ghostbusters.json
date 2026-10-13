@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ghostbusters",
+ "rating": 1900,
+ "topics": [
+  "scc-2sat",
+  "binary-search",
+  "graphs"
+ ],
+ "key_idea": "For a fixed power P, two busters in the same row within 2P cannot both fire horizontally and two in the same column within 2P cannot both fire vertically, which is a 2-SAT instance; feasibility is monotone in P.",
+ "sketch": "Binary search P in [0, 500000]; P=0 is always feasible and feasibility at 500000 (2P covers the whole coordinate range) means UNLIMITED. For each P build the implication graph H_i -> V_j for same-row pairs with distance <= 2P and V_i -> H_j for same-column pairs, and check with Tarjan SCC that no buster has both literals in one component. Edges are enumerated implicitly by walking outward in the row/column sorted orders, so memory is O(N) and each check is at most about 1.6e7 edge visits; worst case measured 0.3 s. Pitfalls: all pairs within 2P conflict, not only adjacent ones, and touching counts as a conflict (<=, not <). Verified against an exponential brute force on small random inputs.",
+ "code_path": "solutions/kattis_ghostbusters.cpp",
+ "samples_passed": true
+}

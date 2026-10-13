@@ -1,0 +1,14 @@
+{
+ "id": "kattis:adolescentarchitecture2",
+ "rating": 2200,
+ "topics": [
+  "games",
+  "geometry",
+  "binary-search",
+  "math"
+ ],
+ "key_idea": "Because 'fits strictly inside' is transitive, the Grundy value of a shape is the length of the longest chain below it, and for all but the tiniest shapes that is simply the largest triangle that fits inside it; each stack then has at most one winning move per shape type.",
+ "sketch": "Options of X include the options of every option, so g(X)=1+max g(Y) = longest containment chain. Triangles of side a have g=a-1, and for circles/squares g = largest triangle side strictly fitting (floor(r*sqrt3), floor(b*(sqrt6-sqrt2))); only circle 1 deviates, so the code memoises the true recursion for sizes<=400 and uses the closed form above (verified equal up to 4000). All six containment predicates (triangle in square uses side < b*sec15, square in triangle uses side < a*(2sqrt3-3)) are evaluated exactly in unsigned 128-bit integers by squaring, no floats. With total xor S, stack i needs a shape of Grundy S^g_i < g_i; g is strictly increasing in size per type so binary search the unique candidate per type and test that it fits. O(n * 3 * log^2). Pitfalls: strictness, the 48*b^4 term needs u128 and bounded search ranges, small-case exceptions to the closed form.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_adolescentarchitecture2.cpp"
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:histogram",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Bin index is (x-1)/s; the picture height is the maximum bin count.",
+ "sketch": "Count items per bin with integer division (x-1)/s, take h = max count, then print rows from h down to 1 with '#' where count >= row and '.' otherwise, followed by a row of n hyphens. O(n*h + k). Pitfall: off-by-one in the bin index since values are 1-based and bin i covers (i*s, (i+1)*s].",
+ "code_path": "solutions/kattis_histogram.cpp",
+ "samples_passed": true
+}

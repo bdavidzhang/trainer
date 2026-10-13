@@ -1,0 +1,13 @@
+{
+ "id": "kattis:eta",
+ "rating": 1500,
+ "topics": [
+  "constructive",
+  "math",
+  "trees"
+ ],
+ "key_idea": "With n = k*b vertices the distance sum must be k*a, and a tree can realise every sum from n-1 (star) to n(n-1)/2 (path); so just find the smallest k with k*b-1 <= k*a <= kb(kb-1)/2.",
+ "sketch": "If a < b the lower bound forces k=1 and a=b-1 (a star), otherwise it is impossible; if a >= b the upper bound holds for k around 2a/b^2, giving n <= ~2001. Build the tree by assigning depths greedily: vertex i gets depth min(maxdepth+1, remaining - (vertices left after i)), attached to the last vertex of depth d-1; this keeps depths contiguous and hits the sum exactly. O(n). Pitfalls: 1/1 needs n=3 (path), parsing the 'a/b' format, and that extra edges never help so a tree is enough. Multiple answers are accepted, so the sample checker shows mismatches; samples_passed is based on my own validator, which BFS-checked connectivity and the exact average for all coprime a,b < 40 plus extremes, and confirmed 'impossible' exactly when no k satisfies the bounds.",
+ "code_path": "solutions/kattis_eta.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:interviewquestion",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "number-theory",
+  "implementation"
+ ],
+ "key_idea": "a must divide every Fizz position and no other position may be a multiple of it, so the gcd of all Fizz positions works; if there are none, any value above d works.",
+ "sketch": "Take ga = gcd of all indices whose token contains 'Fizz' and gb likewise for 'Buzz'. The true a divides ga, so every multiple of ga in [c,d] is a multiple of a (hence Fizz), and every Fizz index is a multiple of ga, so ga reproduces the transcript exactly. If no Fizz appears, output d+1 (<= 1e5+1 <= 1e6). O(n log n). Multiple answers are accepted, so the sample checker reports mismatches; samples_passed is based on my own validator, which regenerated the transcript from the printed (a,b) on 300 random cases and matched every time.",
+ "code_path": "solutions/kattis_interviewquestion.cpp",
+ "samples_passed": true
+}

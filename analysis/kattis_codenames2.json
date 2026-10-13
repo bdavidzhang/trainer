@@ -1,0 +1,13 @@
+{
+ "id": "kattis:codenames2",
+ "rating": 2200,
+ "topics": [
+  "dp-bitmask",
+  "probability",
+  "games"
+ ],
+ "key_idea": "The revealed-card mask only grows, so do a minimax-expectation DP over masks in decreasing order with an inner state (hint, hits still allowed) for the turn in progress.",
+ "sketch": "Let W[t][mask] be the win probability of team t to move, and g[t][h][mask][k] the win probability mid-turn with hint h and k hits remaining. g averages over the unrevealed words of the hint: assassin gives 0, own agent gives 1 if it completes the team, else g at (mask|w, k-1) or 1-W[other] when k hits 0; enemy agent gives 0 if it completes the enemy else 1-W[other]; bystander gives 1-W[other]. W is the max of g over hints with an unrevealed word and k from 1 to the number of unrevealed words. The contribution of non-own words is independent of k, so compute it once per (mask, hint). Roughly 2*50*2^15*15*15 basic steps worst case and about 400 MB of doubles (limit is 1 GB); floats would halve it. Pitfalls: K may exceed the number of own agents in the hint (forcing a miss), guessing the enemy's last agent loses immediately, and terminal masks must be skipped.",
+ "code_path": "solutions/kattis_codenames2.cpp",
+ "samples_passed": true
+}

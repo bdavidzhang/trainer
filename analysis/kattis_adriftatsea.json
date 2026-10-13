@@ -1,0 +1,11 @@
+{
+ "id": "kattis:adriftatsea",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Index the 8 compass directions and take the clockwise difference mod 8.",
+ "sketch": "Map each heading to 0..7, compute k=(to-from) mod 8. k=0 is straight, k=4 is a U-turn, k<4 is a starboard turn of 45k degrees, otherwise a port turn of 45(8-k). O(1); only pitfall is mixing up port (counterclockwise) and starboard.",
+ "code_path": "solutions/kattis_adriftatsea.cpp",
+ "samples_passed": true
+}

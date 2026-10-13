@@ -1,0 +1,13 @@
+{
+ "id": "kattis:investigatingfrogbehaviouronlilypadpatterns",
+ "rating": 1200,
+ "topics": [
+  "data-structures",
+  "balanced-bst",
+  "implementation"
+ ],
+ "key_idea": "Keep the set of empty pads in an ordered set; a jump is upper_bound(current position), then swap the frog's old pad into the set.",
+ "sketch": "Positions never exceed 1e6+q, so initialise an ordered set with all empty pads up to 1.3e6. For each jump of frog i find the smallest empty pad greater than x_i, erase it, insert x_i, update x_i and print. O((M+q) log M). A DSU 'next free' does not work directly because pads become free again; the set handles that. Build the set with hinted inserts to keep it fast.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_investigatingfrogbehaviouronlilypadpatterns.cpp"
+}

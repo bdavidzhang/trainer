@@ -1,0 +1,12 @@
+{
+ "id": "kattis:blueberrywaffle",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Reduce f modulo a full turn 2r; the waffle ends blueberry-up iff the angle is within 90 degrees of 0, i.e. x<r/2 or x>3r/2.",
+ "sketch": "Let x = f mod 2r, which is the position within one full 360-degree rotation. The pan snaps to the nearest horizontal, so blueberries are up iff the angle is in [0,90) or (270,360), i.e. 2x<r or 2x>3r in integers; otherwise down. O(1). Use integer comparisons (doubling) to avoid floating point; the exact vertical case is excluded by the statement.",
+ "code_path": "solutions/kattis_blueberrywaffle.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:overthehill1",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Direct simulation of a Hill cipher: pad with spaces to a multiple of n and multiply each block by the matrix mod 37.",
+ "sketch": "Map A-Z to 0-25, digits to 26-35 and space to 36, pad the plaintext with spaces to a multiple of n, multiply each length-n block by the matrix modulo 37 and map back. O(len * n). Pitfalls: the plaintext line contains spaces (and may start or end with them) so read it with getline and do not trim, and the output may contain spaces too.",
+ "code_path": "solutions/kattis_overthehill1.cpp",
+ "samples_passed": true
+}

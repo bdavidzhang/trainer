@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kinkingcables",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "geometry",
+  "binary-search"
+ ],
+ "key_idea": "Follow a unit-spaced boustrophedon snake for arc length s and then cut straight to (n,m): the total length is continuous and monotone in s, ranging from the diagonal to more than n*m, so binary search s.",
+ "sketch": "Build the snake through rows y=0,1,..,R (R=m if m is even, else m-1 followed by the step to (n,m)), alternating direction so it ends at (n,m); its length is at least n*m+m. Let X(s) be the point at arc length s; f(s)=s+|X(s)-(n,m)| is continuous and non-decreasing by the triangle inequality, with f(0)=sqrt(n^2+m^2), so binary search f(s)=l. Output the snake corners before X, then X, then (n,m): the final segment only moves upward from the current row so it cannot cross earlier rows, and all non-consecutive marked points are at distance >=1 because rows are one unit apart and X only has its predecessor corner nearby. At most 2(m+1)+2 <= 204 points. Pitfalls: drop X when it coincides with a corner or with (n,m) to avoid zero-length segments, and print ~10 decimals. Multiple answers are valid so the sample checker mismatches; verified with my own validator (length, bounds, pairwise point distance, segment intersection, endpoints) on 1500 random cases including l at both extremes.",
+ "code_path": "solutions/kattis_kinkingcables.cpp",
+ "samples_passed": true
+}

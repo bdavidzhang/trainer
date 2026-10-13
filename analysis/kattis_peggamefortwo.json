@@ -1,0 +1,13 @@
+{
+ "id": "kattis:peggamefortwo",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "games",
+  "brute-force"
+ ],
+ "key_idea": "The board is tiny (15 holes, at most 13 jumps), so a plain negamax over all jump sequences is fast enough.",
+ "sketch": "Precompute the jumps (from, over, to) along the six triangular directions (0,+-1), (+-1,0), (+1,+1), (-1,-1) in row/column indexing. Negamax: value(state) = max over legal jumps of v[from]*v[over] - value(next), and 0 if no jump exists (game ends). Peg values travel with the pegs so the state is the full value array; plain backtracking without memoisation runs instantly. Pitfall: getting the diagonal directions of the triangular grid right, and the score is the product of jumping and jumped peg.",
+ "code_path": "solutions/kattis_peggamefortwo.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:shadowline",
+ "rating": 2400,
+ "topics": [
+  "geometry",
+  "sweep-line",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "The shadows form one interval iff exactly one upper endpoint is not covered by another segment's shadow. For a fixed upper endpoint and another segment, the set of light positions d where it is covered is given by two linear inequalities in d, i.e. an interval.",
+ "sketch": "With the light at (-d,0) an endpoint (x,y) projects to slope y/(x+d). Endpoint (x,y) lies inside the shadow of segment (xb,yl,yh) iff d(y-yl) >= yl*x - y*xb and d(yh-y) >= y*xb - yh*x, an interval of d clipped to [0,inf). For each of the n upper endpoints, sort and merge its n-1 intervals and emit the uncovered gaps; then sweep all gap starts/ends (two sorted arrays of up to n^2 doubles) and add up the length where exactly one endpoint is uncovered. If exactly one endpoint has an unbounded uncovered tail the answer is -1. O(n^2 log n). Pitfalls: numerators up to ~2e12 are exact in doubles so equal events tie exactly; ties only create zero-length pieces; unique y's guarantee nonzero coefficients. Stress-tested against an exact rational brute force.",
+ "code_path": "solutions/kattis_shadowline.cpp",
+ "samples_passed": true
+}

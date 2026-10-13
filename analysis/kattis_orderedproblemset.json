@@ -1,0 +1,12 @@
+{
+ "id": "kattis:orderedproblemset",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Since difficulties are a permutation, k works iff every position i holds a value from the same block: (d_i-1)/(n/k) == i/(n/k).",
+ "sketch": "For each divisor k>1 of n, with block size s=n/k, check that all 0-indexed positions i satisfy (d_i-1)/s == i/s; print valid k in increasing order or -1. O(n * divisors). Pitfall: k=n (fully sorted) is allowed, k=1 is not.",
+ "code_path": "solutions/kattis_orderedproblemset.cpp",
+ "samples_passed": true
+}

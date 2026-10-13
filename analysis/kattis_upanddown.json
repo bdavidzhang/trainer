@@ -1,0 +1,12 @@
+{
+ "id": "kattis:upanddown",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "binary-search"
+ ],
+ "key_idea": "Bitonic subsequence: for every peak position combine strict LIS ending there with strict LDS starting there, requiring both sides to have length at least 2.",
+ "sketch": "Compute L[i] = length of the longest strictly increasing subsequence ending at i via patience sorting with lower_bound, and R[i] the same on the reversed array (strictly decreasing subsequence starting at i). The answer is max of L[i]+R[i]-1 over i with L[i]>=2 and R[i]>=2, or 0 if no such i exists. O(N log N) per test, total 5e5 elements. Pitfalls: strictness (use lower_bound, not upper_bound), the both-sides>=2 condition (a purely monotone array gives 0), and values spanning the full int32 range.",
+ "code_path": "solutions/kattis_upanddown.cpp",
+ "samples_passed": true
+}

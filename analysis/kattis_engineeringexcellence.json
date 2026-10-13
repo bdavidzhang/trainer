@@ -1,0 +1,13 @@
+{
+ "id": "kattis:engineeringexcellence",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "math",
+  "case-analysis"
+ ],
+ "key_idea": "For vertex P with neighbours A,B the feasible positions form a convex region (disk with diameter AB cut by half-planes from the neighbouring edges), and |PA|+|PB| is convex, so the maximum is at a vertex of the region or, on the circular arc where the sum is concave in the angle, at the arc midpoint.",
+ "sketch": "Constraints for the new P: left of line A'A and angle at A >=90 (two perpendicular half-planes through A), symmetric two through B, outer side of AB, and inside the Thales disk on AB (angle at P >=90). Candidates per vertex: A, B, the outer arc midpoint, intersections of the 5 lines with the circle, and pairwise line intersections; keep those satisfying all constraints with a 1e-9 tolerance on normalised distances and maximise |PA|+|PB| minus the original. Answer is the best over all vertices, at least 0. O(n) with about 25 candidates each, long double. Pitfalls: n=4 where A'=B', collinear input points (the vertex can only slide along the edge, gain 0), near-parallel lines. Compared against a dense grid search on random small polygons.",
+ "code_path": "solutions/kattis_engineeringexcellence.cpp",
+ "samples_passed": true
+}

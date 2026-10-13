@@ -1,0 +1,12 @@
+{
+ "id": "kattis:sunandmoon",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "Simulate years t=1,2,... until both (ds+t) mod ys and (dm+t) mod ym are zero.",
+ "sketch": "The answer is guaranteed to be at most 5000, so loop t from 1 upward and print the first t with (ds+t)%ys==0 and (dm+t)%ym==0. O(5000). Start from t=1, not 0, since no eclipse is happening now. CRT is overkill.",
+ "code_path": "solutions/kattis_sunandmoon.cpp",
+ "samples_passed": true
+}

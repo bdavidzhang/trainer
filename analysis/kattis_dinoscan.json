@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dinoscan",
+ "rating": 1300,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Only horizontal sliding matters: try every combined width and check that every cell inside the width is covered by exactly one 1 and nothing sticks out.",
+ "sketch": "Fix combined width w from 1 to c1+c2; the left scan sits at columns [0,c1) and the right scan at [w-c2,w). For every row and every column in the union, the number of 1s must be exactly 1 inside [0,w) and 0 outside. O(r*(c1+c2)^2). Pitfall shown by sample 1: w may be smaller than c1 or c2, because all-zero columns of one scan may hang past the other scan's solid edge; only bone (1s) may not extend beyond, so do not restrict w to >= max(c1,c2).",
+ "code_path": "solutions/kattis_dinoscan.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:callforproblems",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Count the odd numbers.",
+ "sketch": "Read n integers and count those with d % 2 == 1. O(n), no pitfalls.",
+ "code_path": "solutions/kattis_callforproblems.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:branchmanager",
+ "rating": 1500,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "greedy"
+ ],
+ "key_idea": "Routing someone to d forces closing every edge to a smaller-labelled sibling along the root-d path, i.e. everything strictly to the left of d in the label-ordered preorder dies; so a destination is still reachable iff its subtree is not entirely left of the furthest-right destination served so far.",
+ "sketch": "Sort each node's children by label and run an iterative DFS to get tin/tout. Keep M = max tin of served destinations; the next destination d is reachable iff tout[d] >= M (ancestors and descendants of earlier targets stay fine, anything fully to the left is cut off). Count people until the first failure, because the queue leaves after the first miss. O(n log n + m). Pitfalls: the forced closures are not a choice, so no optimisation is needed; use an explicit stack since depth can be 2e5; stop at the first failure rather than skipping it.",
+ "code_path": "solutions/kattis_branchmanager.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:playingtheslots",
+ "rating": 1400,
+ "topics": [
+  "geometry",
+  "brute-force"
+ ],
+ "key_idea": "The smallest slot is the minimum width of the convex polygon, and the minimum width is always attained with a supporting line flush with one edge.",
+ "sketch": "For each edge, compute the maximum perpendicular distance of any vertex to the line through that edge (cross product divided by edge length); the answer is the minimum over edges. O(N^2) with N<=20. Pitfalls: reading real coordinates, do not assume the answer is a vertex-to-vertex distance; tolerance is 0.01 so doubles are ample.",
+ "code_path": "solutions/kattis_playingtheslots.cpp",
+ "samples_passed": true
+}

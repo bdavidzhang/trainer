@@ -1,0 +1,14 @@
+{
+ "id": "kattis:traininground3",
+ "rating": 1700,
+ "topics": [
+  "combinatorics",
+  "probability",
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "P(all k sets pairwise disjoint) = [n!/((p!)^k (n-kp)!)] / C(n,p)^k = n! * ((n-p)!)^k / ((n-kp)! * (n!)^k); answer is one minus that, and it is 1 when kp > n.",
+ "sketch": "Count ordered k-tuples of disjoint p-subsets as the multinomial n!/((p!)^k (n-kp)!) and divide by C(n,p)^k; the (p!)^k cancels. Compute n!, (n-p)!, (n-kp)! in one O(n) loop without storing an array, then use fast exponentiation and a Fermat inverse modulo 998244353. Since n <= 1e7 < mod, no factorial is zero mod p. Pitfalls: k*p reaches 1e14 so compare in 64-bit; (n-kp) or (n-p) may be 0 (factorial 1); normalize 1-q to be non-negative. Verified against exhaustive enumeration with exact fractions for n <= 7, k <= 4.",
+ "code_path": "solutions/kattis_traininground3.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:biotrip",
+ "rating": 1900,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "geometry",
+  "implementation"
+ ],
+ "key_idea": "Turn restrictions depend on the road you arrived by, so run Dijkstra on directed road-ends as states; the round trip is min over arrival states at d of (forward distance to that state) + (reverse-graph distance from that state to junction 1).",
+ "sketch": "State (u,k) means the tractor just drove the k-th road of u and is arriving at v = to[u][k]. Its heading at v is the angle of the matching reverse road in v's list plus 180; leaving on a road with angle a is allowed if the counter-clockwise turn is <= alpha1 or the clockwise turn is <= alpha2 (junction 1 allows anything). Dijkstra forward from all roads leaving 1, and Dijkstra on the reversed state graph from all states arriving at 1; combine at states arriving at d, so the continuation after the box still respects the turn made there. At most 5000 states and 25000 transitions. Pitfalls: roads may be curved so use the angle listed at the junction being entered, times are asymmetric, a 180 degree U-turn is legal only if an alpha is 180, and the path may pass through junction 1 or d several times. The figure defining alpha1/alpha2 is missing from the scraped statement, so alpha1 = max left turn and alpha2 = max right turn is an assumption (the samples are symmetric 90/90 and cannot confirm it); also assumes at most one road between a pair of junctions. Samples pass.",
+ "code_path": "solutions/kattis_biotrip.cpp",
+ "samples_passed": true
+}

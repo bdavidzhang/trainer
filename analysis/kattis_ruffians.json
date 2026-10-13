@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ruffians",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Look for indices i != j with top[i] == bottom[j].",
+ "sketch": "Two cards in different rows and different columns are exactly a top card at column i and a bottom card at column j with i != j, so try all 20 such pairs per test case. Pitfall: equal cards in the same column or the same row do not count.",
+ "code_path": "solutions/kattis_ruffians.cpp",
+ "samples_passed": true
+}

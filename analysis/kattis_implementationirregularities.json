@@ -1,0 +1,13 @@
+{
+ "id": "kattis:implementationirregularities",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "sorting",
+  "prefix-sums"
+ ],
+ "key_idea": "Computers are interchangeable and work is divisible, so the only constraint is that for every solve time s the total work of problems solved by time s fits into k*s computer-time; earliest-deadline-first achieves this.",
+ "sketch": "Drop unsolved problems, sort the rest by solve time, keep a running sum of required time, and take the maximum over prefixes of ceil(prefix_sum / s). O(n log n). Pitfalls: ignore s=-1 entries, use ceiling division, and with equal solve times evaluate after including all of them (taking the max over every prefix handles this since later prefixes with the same s dominate).",
+ "code_path": "solutions/kattis_implementationirregularities.cpp",
+ "samples_passed": true
+}

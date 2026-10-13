@@ -1,0 +1,13 @@
+{
+ "id": "kattis:treegenerator",
+ "rating": 1900,
+ "topics": [
+  "lca",
+  "trees",
+  "math"
+ ],
+ "key_idea": "m need not be coprime to 10, so prefix values cannot be subtracted/divided; instead store for every binary-lifting jump the value of the digit string read upwards and read downwards, and concatenate chunks with powers of 10.",
+ "sketch": "Root the tree (BFS, no recursion), build up[k][v], uv[k][v] = digits of v and its next 2^k-1 ancestors read bottom-up mod m, dv[k][v] = same nodes read top-down. For a query find the LCA, then assemble the a->lca part (inclusive) by appending upward chunks (A = A*10^(2^k) + uv), and the lca->b part (exclusive of lca) by prepending downward chunks while climbing from b (B = dv*10^len + B); answer is A*10^len(B) + B. O((n+q) log n) time, O(n log n) memory. Pitfalls: m=1 (use 1%m), leading zeros are harmless, a==b, products need 64-bit. Stress-tested against brute force with assorted moduli including powers of 10.",
+ "code_path": "solutions/kattis_treegenerator.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dimensionalanalysis",
+ "rating": 2000,
+ "topics": [
+  "linear-algebra",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Take logarithms: each equation is a homogeneous linear equation on exponents, and a quantity is provably dimensionless iff its unit vector lies in the row space, i.e. the reduced row echelon form has a row whose only nonzero entry is that variable.",
+ "sketch": "Parse each equation into an integer exponent vector (left side minus right side, '/' negates the following atom, the atom 1 contributes nothing). Run Gauss-Jordan elimination to full RREF on the at most 100x100 matrix and answer invalid iff some pivot row has exactly one nonzero entry (then x_i = 0 is forced; otherwise a free variable can be chosen to make x_i nonzero, and a generic solution makes all such quantities nonzero simultaneously). Exact rational elimination overflows, so the elimination is done modulo the prime 2^61-1 with __int128 products; the zero pattern of the RREF matches the rational one unless the prime divides a specific minor, which is negligible. Pitfalls: left-to-right associativity of / (only the next atom is inverted), repeated atoms, equations that cancel to 0 = 0, and using floating point which mis-detects zeros. O(N * V^2).",
+ "code_path": "solutions/kattis_dimensionalanalysis.cpp",
+ "samples_passed": true
+}

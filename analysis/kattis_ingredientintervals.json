@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ingredientintervals",
+ "rating": 1900,
+ "topics": [
+  "math",
+  "greedy",
+  "case-analysis"
+ ],
+ "key_idea": "Maximal runs of unspecified items are boxes [L,U] bounded by neighbouring fixed values; the j-th item's extreme is monotone in its run's total, and run totals trade off only through the global sum of 100.",
+ "sketch": "Split the unknowns into runs of length k with upper bound U (previous fixed value, or 100) and lower bound L (next fixed value, or 0); R is 100 minus the fixed sum. A run's total S ranges over [max(kL, R - other runs' max totals), min(kU, R - other runs' min totals)]. Given S, the j-th item is maximised by equalising the first j and putting the rest at L: min(U, (S-(k-j)L)/j), and minimised by putting the first j-1 at U and equalising the rest: max(L, (S-(j-1)U)/(k-j+1)). Both increase with S, so use the largest S for the max and the smallest for the min. O(n). Pitfalls: unspecified amounts may be 0, parse the optional number per line. Cross-checked against integer-grid enumeration for n<=5.",
+ "code_path": "solutions/kattis_ingredientintervals.cpp",
+ "samples_passed": true
+}

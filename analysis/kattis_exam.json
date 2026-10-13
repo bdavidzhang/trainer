@@ -1,0 +1,12 @@
+{
+ "id": "kattis:exam",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "math"
+ ],
+ "key_idea": "Split questions into those where you agree with the friend and those where you differ; the friend's correct answers should be placed on agreeing questions as much as possible.",
+ "sketch": "Let s be the number of positions where the answers match and n-s where they differ. If the friend has k correct, you gain on a matching question when the friend is right and on a differing question when the friend is wrong. Maximum is min(k, s) + min(n-k, n-s). O(n). Pitfall: forgetting the second term, i.e. that the friend's wrong answers must also be distributed.",
+ "code_path": "solutions/kattis_exam.cpp",
+ "samples_passed": true
+}

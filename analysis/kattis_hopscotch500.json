@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hopscotch500",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Because the cost is min(dx^2, dy^2), a transition only needs the best dp value per row and per column of the previous number's tiles, so each tile of the next number costs O(n) instead of O(tiles).",
+ "sketch": "Group tiles by number; for layer v build bestRow[r] and bestCol[c] as the minimum dp over its tiles, keep only the non-empty rows/columns, then for each tile of layer v+1 take min over rows of bestRow[x]+(x-r)^2 and over columns of bestCol[y]+(y-c)^2. Total work is sum over layers of |layer v+1| * min(2n, 2|layer v|) <= 2.5e8 simple ops, well under 0.2 s locally. Output -1 if any number 1..k has no tile, 0 when k = 1. Use 64-bit for totals.",
+ "code_path": "solutions/kattis_hopscotch500.cpp",
+ "samples_passed": true
+}

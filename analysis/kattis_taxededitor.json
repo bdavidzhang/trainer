@@ -1,0 +1,14 @@
+{
+ "id": "kattis:taxededitor",
+ "rating": 1900,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "heap",
+  "sorting"
+ ],
+ "key_idea": "Binary search the speed; for a fixed speed the minimum number of late jobs on one machine is given by Moore-Hodgson: process by deadline and whenever the running total overshoots, drop the longest book taken so far.",
+ "sketch": "Feasibility is monotone in the speed v. For fixed v, sort books by deadline, keep a max-heap of accepted lengths and their page sum; after adding a book, if sum > d*v (all in integers, no division) pop the largest and count it late; feasible iff late <= m. Search v in [1, 2e14] since the total length is up to 1e14 and d >= 1; d*v stays below 2e18 so it fits in signed 64-bit. Total O(n log n log 1e14), about 47 passes over 1e5 books. Pitfalls: reading is continuous so compare pages against d*v rather than rounding days, late books are simply read after everything else, and the answer can far exceed 32 bits. Verified against a subset-enumeration brute force on 300 random small cases.",
+ "code_path": "solutions/kattis_taxededitor.cpp",
+ "samples_passed": true
+}

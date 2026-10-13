@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bogglesort",
+ "rating": 1300,
+ "topics": [
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "DP over the 16 dice with the last shown letter as state; each face costs 0/1/2 turns (top/side/bottom) and the Qu face behaves as entering with Q and leaving with U.",
+ "sketch": "dp[l] = minimum turns so far with the letter sequence ending in l. For each die try its 6 faces: a face c is allowed if c >= some reachable last letter l, cost 0 for the top, 1 for the four side faces, 2 for the bottom; the new last letter is c, except for Q where it becomes U (so the next die must show >= U while the previous must be <= Q). Take the minimum over the final states or print impossible. 16*6*26 operations. Pitfall: the order is on the concatenated string, so QuT is not sorted even though T > Q.",
+ "code_path": "solutions/kattis_bogglesort.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kinkywordsearch",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "A word of length L has L-1 moves and at most L-2 direction changes, so k is effectively bounded by 98 and a DP over (cell, last direction, kinks used) per letter is tiny.",
+ "sketch": "If k>L-2 answer No (and for L=1 answer Yes iff k=0 and the letter exists). Initialize states for every first move from a cell matching w[0] to a neighbour matching w[1] with 0 kinks. For each next letter extend each reachable (cell, dir, q) in all 8 directions, adding one kink when the direction differs (a reversal counts too), keeping q<=k. Answer Yes iff any state with exactly k kinks survives after the last letter. About 100*100*8*100*8 = 6.4e7 boolean steps. Pitfalls: exactly k, not at most k; letters are space-separated in the input.",
+ "code_path": "solutions/kattis_kinkywordsearch.cpp",
+ "samples_passed": true
+}

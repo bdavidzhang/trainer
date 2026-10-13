@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sixseven3",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "binary-search",
+  "implementation"
+ ],
+ "key_idea": "There are only 45 liked numbers (start digit 1-9, run of consecutive increasing digits), so precompute them and take the smallest >= n.",
+ "sketch": "Generate every number formed by digits d, d+1, ..., e for 1 <= d <= e <= 9 (45 values, including single digits), sort, and answer each query with lower_bound. O(45 + t log 45). The largest liked number is 123456789 > 1e8, so the -1 case never actually occurs within the limits, but it is still handled. Pitfall: single digits count as liked, and numbers cannot start with 0.",
+ "code_path": "solutions/kattis_sixseven3.cpp",
+ "samples_passed": true
+}

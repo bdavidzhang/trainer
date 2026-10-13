@@ -1,0 +1,13 @@
+{
+ "id": "kattis:champernownecount",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "number-theory",
+  "implementation"
+ ],
+ "key_idea": "Maintain the Champernowne word modulo k incrementally: w_i = w_{i-1} * 10^{digits(i)} + i (mod k).",
+ "sketch": "Iterate i from 1 to n, keeping cur = (cur * (10^len(i) mod k) + i) mod k and counting how often cur is 0. Track the power of ten by multiplying by 10 whenever i reaches the next power. O(n). Overflow: cur<k<=1e9 and 10^len<=1e6, so the product fits in 64-bit but not in 32-bit. k=1 counts every word.",
+ "code_path": "solutions/kattis_champernownecount.cpp",
+ "samples_passed": true
+}

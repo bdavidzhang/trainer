@@ -1,0 +1,11 @@
+{
+ "id": "kattis:triplesevens",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Check that each of the three lines contains a 7.",
+ "sketch": "Read the three wheels and print 777 if every wheel contains digit 7, else 0. O(n). No pitfalls beyond reading all input.",
+ "code_path": "solutions/kattis_triplesevens.cpp",
+ "samples_passed": true
+}

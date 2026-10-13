@@ -1,0 +1,13 @@
+{
+ "id": "kattis:galaxygovernance",
+ "rating": 1600,
+ "topics": [
+  "graphs",
+  "greedy",
+  "constructive"
+ ],
+ "key_idea": "An acyclic orientation with in-degree <= k means every induced subgraph has a vertex of degree <= k (its last vertex in topological order), i.e. the graph is k-degenerate, and k-degenerate graphs are greedily (k+1)-colourable along a degeneracy order.",
+ "sketch": "Peel the undirected graph: keep a queue of vertices whose current degree is <= k, remove them one by one and decrement neighbours' degrees; the guarantee ensures everything gets removed. Then colour vertices in reverse removal order, giving each the smallest colour not used by already-coloured neighbours; at that moment it has at most k coloured neighbours, so a colour in 1..k+1 is free. Use a timestamped mark array so finding the free colour costs O(deg). Total O(n+m). The original directions are never needed. Output is not unique so the sample comparison fails on tokens; samples_passed is set from my own validator (proper colouring, colours within 1..k+1) on the samples and on random DAG-derived graphs.",
+ "code_path": "solutions/kattis_galaxygovernance.cpp",
+ "samples_passed": true
+}

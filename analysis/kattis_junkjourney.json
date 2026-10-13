@@ -1,0 +1,13 @@
+{
+ "id": "kattis:junkjourney",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "implementation",
+  "bfs-dfs"
+ ],
+ "key_idea": "The move limit is very loose, so simulate honestly and remove scooters one at a time: push it into the depot column, then along the column into the depot, walking around obstacles with BFS.",
+ "sketch": "Keep the full state (robot, scooters on an offset grid) and a move() that performs the real chain push, deleting a scooter that enters the depot. To remove scooter S: choose the push direction (horizontal until its x equals the depot x, then vertical toward the depot), walk back from S over any scooters lined up behind it to find the free cell behind the chain, BFS the robot there avoiding scooters (inside the bounding box plus a margin), and push until S is aligned or gone; scooters ahead of S on the final push simply enter the depot first. Finish S completely before choosing another scooter, otherwise two scooters in one row can undo each other forever. If no scooter has a reachable push cell (robot or cell walled in) make a random move and retry. About 50 moves per scooter phase, max 2591 moves over 1500 random tests versus the 1e5 limit. Any valid sequence is accepted, so the sample checker cannot judge it; samples_passed is true because an independent Python simulator confirmed all scooters removed on 1500 random cases.",
+ "code_path": "solutions/kattis_junkjourney.cpp",
+ "samples_passed": true
+}

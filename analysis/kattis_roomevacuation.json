@@ -1,0 +1,13 @@
+{
+ "id": "kattis:roomevacuation",
+ "rating": 2000,
+ "topics": [
+  "flows",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Max flow on a time-expanded grid: one node per (cell, second) split into in/out with capacity 1 so that no two people share a cell at the same time.",
+ "sketch": "Nodes are (cell, t) for t = 0..T, each split by a unit edge. Source feeds every person cell at t=0; out(c,t) connects to in(c',t+1) for the cell itself (waiting) and the four neighbours; an exit cell at any time connects to the sink with capacity 1 and has no onward edges (the person leaves, so one person per exit per second). Swaps through an edge need no constraint because people are interchangeable. About 160k nodes and 1M edges, flow at most 400, Dinic runs in ~2.5s locally on full 20x20, T=200 grids against a 7s limit. Reaching an exit exactly at time T counts.",
+ "code_path": "solutions/kattis_roomevacuation.cpp",
+ "samples_passed": true
+}

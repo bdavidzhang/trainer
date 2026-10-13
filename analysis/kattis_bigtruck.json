@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bigtruck",
+ "rating": 1300,
+ "topics": [
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Dijkstra on a lexicographic key (distance, -items): among equal-distance relaxations keep the one with more items.",
+ "sketch": "Run O(n^2) Dijkstra with n<=100, storing for each node the shortest distance and the max items collectable over shortest paths to it. Relax when the distance is strictly smaller or equal with more items; when extracting, break distance ties by larger item count (not strictly needed since edge weights are positive, so all equal-distance predecessors are finalized first). Start with items[1]=t1. Print impossible if n is unreachable (m may be 0).",
+ "code_path": "solutions/kattis_bigtruck.cpp",
+ "samples_passed": true
+}

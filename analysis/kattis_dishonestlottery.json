@@ -1,0 +1,11 @@
+{
+ "id": "kattis:dishonestlottery",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Count occurrences of each number 1..50 and print those with count > 2n.",
+ "sketch": "Read 50n integers, tally into an array of 51, output in increasing order values with count strictly greater than 2n, or -1 if none. O(n).",
+ "code_path": "solutions/kattis_dishonestlottery.cpp",
+ "samples_passed": true
+}

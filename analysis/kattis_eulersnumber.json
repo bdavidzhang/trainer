@@ -1,0 +1,12 @@
+{
+ "id": "kattis:eulersnumber",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Sum the series with a running term t /= (i+1); terms vanish after ~25 iterations.",
+ "sketch": "Accumulate 1/i! incrementally in long double, never computing factorials explicitly (they overflow), and stop early once the term is below 1e-30 so n=10000 is no issue. Print with 15 decimals to satisfy the 1e-12 tolerance. O(min(n,30)).",
+ "code_path": "solutions/kattis_eulersnumber.cpp",
+ "samples_passed": true
+}

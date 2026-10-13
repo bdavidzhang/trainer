@@ -1,0 +1,14 @@
+{
+ "id": "kattis:killjoys",
+ "rating": 1400,
+ "topics": [
+  "dsu",
+  "graphs",
+  "bfs-dfs",
+  "math"
+ ],
+ "key_idea": "Each connected component of a bipartite graph has exactly 2 colourings, and swapping rooms globally is not a new assignment, so there are 2^(c-1) assignments and the answer is 2^(c-1)+1.",
+ "sketch": "Check bipartiteness with a parity DSU (or BFS colouring) over n, m <= 1e6 and count components c, including isolated vertices. If an odd cycle exists print impossible; otherwise print (2^(c-1) + 1) mod p by pigeonhole. Near-linear time. Pitfalls: use an iterative find to avoid deep recursion on 1e6-long paths, p can be as small as 3 so reduce every step, and c-1 = 0 gives 2.",
+ "code_path": "solutions/kattis_killjoys.cpp",
+ "samples_passed": true
+}

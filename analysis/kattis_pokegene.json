@@ -1,0 +1,14 @@
+{
+ "id": "kattis:pokegene",
+ "rating": 2000,
+ "topics": [
+  "strings",
+  "sorting",
+  "sparse-table",
+  "trie-aho-corasick"
+ ],
+ "key_idea": "Sort the queried strings lexicographically; a prefix is an ancestor of exactly L of them iff it covers a window of L consecutive strings, so each window contributes max(0, lcp(window ends) - max(lcp with left neighbour, lcp with right neighbour)).",
+ "sketch": "Sort all N strings once, compute the LCP of lexicographically adjacent strings directly (total cost bounded by total length), and build a sparse table so lcp(rank a, rank b) is a range minimum in O(1); lcp of a string with itself is its length. For each query map the K ids to ranks, sort them, and slide a window of size L: prefixes of length in (max(lcp(v[i-1],v[i]), lcp(v[i+L-1],v[i+L])), lcp(v[i],v[i+L-1])] are exactly those covering precisely that window. Total O((sum len + N) log N + sum K log K). Pitfalls: L = 1 (window lcp is the string length), boundaries of the window at the ends of the list, and 64-bit answers. Verified against a brute force on small random inputs.",
+ "code_path": "solutions/kattis_pokegene.cpp",
+ "samples_passed": true
+}

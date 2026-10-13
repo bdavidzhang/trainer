@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bracketpairing",
+ "rating": 1500,
+ "topics": [
+  "dp-interval",
+  "combinatorics"
+ ],
+ "key_idea": "Interval DP on what the first bracket of a segment matches: f(l,r) = sum over k of ways(s[l],s[k]) * f(l+1,k) * f(k+1,r), which counts each sequence exactly once.",
+ "sketch": "ways(a,b) is 4 if both are '?', 1 if one is '?' and the other is a bracket of the correct orientation, 1 if they are a matching open/close pair, else 0. Only k with even inner length matter. O(n^3) with n<=20; the answer is at most Catalan(10)*4^10 ~ 1.7e10, so 64-bit is needed. Pitfall: a fixed close bracket at position l or a fixed open bracket at position k must give 0.",
+ "code_path": "solutions/kattis_bracketpairing.cpp",
+ "samples_passed": true
+}

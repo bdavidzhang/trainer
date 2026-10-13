@@ -1,0 +1,13 @@
+{
+ "id": "kattis:foreignfootball",
+ "rating": 1900,
+ "topics": [
+  "strings",
+  "kmp-z",
+  "math"
+ ],
+ "key_idea": "For n>=3 the lengths are forced by |s1| = (|s1s2| + |s1s3| - |s2s3|)/2, so there is at most one candidate to verify; for n=2 count the rotations of s1+s2 that give s2+s1.",
+ "sketch": "n>=3: compute |s1| from the three lengths (must be a positive integer), take s1 as that prefix of T[1][2] and each s_j as the matching suffix of T[1][j] (must be non-empty), then verify every table entry by length and direct comparison in O(total) = 1e6; print UNIQUE or NONE. n=2: with A=s1+s2 and B=s2+s1 of equal length L, a split k in [1,L-1] is valid iff B equals A rotated by k, i.e. B occurs in A+A at offset k; count them with a Z-function on B#AA and print NONE/UNIQUE/MANY. Pitfalls: names must be non-empty, names need not be distinct, MANY can only occur for n=2, and 250k strings need fast input. Stress-tested against brute force over all splits.",
+ "code_path": "solutions/kattis_foreignfootball.cpp",
+ "samples_passed": true
+}

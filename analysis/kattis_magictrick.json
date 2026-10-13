@@ -1,0 +1,12 @@
+{
+ "id": "kattis:magictrick",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Swapping two equal letters is indistinguishable from doing nothing, so the trick works iff all letters are distinct.",
+ "sketch": "Check whether the string has a repeated character with a set; print 1 if all distinct, else 0. Any swap of two different letters changes exactly two positions and is uniquely identifiable, so distinctness is also sufficient. O(|s|). A single-card string is trivially 1.",
+ "code_path": "solutions/kattis_magictrick.cpp",
+ "samples_passed": true
+}

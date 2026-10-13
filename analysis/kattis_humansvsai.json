@@ -1,0 +1,13 @@
+{
+ "id": "kattis:humansvsai",
+ "rating": 2000,
+ "topics": [
+  "divide-and-conquer",
+  "fenwick",
+  "data-structures"
+ ],
+ "key_idea": "The AI's best swap flips the largest positive difference p, so a segment is safe iff sum(w) >= (k+1)*max(0, max d), where w=d for d>=0 and k*d for d<0: a sum-versus-max subarray count.",
+ "sketch": "Let d=h-a. Swapping a positive d=p turns H-kA into H-kA-(k+1)p, swapping a negative only helps humans, so the condition is S >= (k+1)*M with S the sum of weights and M the max of max(d,0). Count subarrays by midpoint divide and conquer: for each left start whose max dominates, the admissible right ends form a prefix (two pointers on the prefix max), and we count those with right-sum >= (k+1)*maxL - leftSum using a Fenwick tree over compressed right sums; symmetric pass with strict inequality for max on the right to avoid double counting. O(n log^2 n), about 0.1s for n=2e5. Sums reach ~2e13 so use 64-bit; single-element segments count only when d==0. Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_humansvsai.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:smootharray",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "dp-knapsack"
+ ],
+ "key_idea": "A smooth array is periodic with period K, so each residue class mod K takes one value and the K values must sum to S; only values already present in a class are worth choosing specifically, any other value keeps zero elements.",
+ "sketch": "For each residue class count occurrences of each value. dp[s] = max number of unchanged elements with the classes processed so far summing to s. For a new class, the 'keep nothing' option is a prefix maximum of dp (any value v >= 0 with zero kept), and for each distinct value v present with count w, nd[s] = max(nd[s], dp[s-v] + w). Since the number of distinct values over all classes is at most N, total work is O(N*S) = 25M. Answer is N - dp[S]. Pitfalls: the naive O(K*S^2) transition is too slow, hence the prefix-max trick; unreachable states must stay -inf. Stress-tested against brute force on small cases.",
+ "code_path": "solutions/kattis_smootharray.cpp",
+ "samples_passed": true
+}

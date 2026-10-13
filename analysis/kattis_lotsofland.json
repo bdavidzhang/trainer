@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lotsofland",
+ "rating": 1400,
+ "topics": [
+  "constructive",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "A solution exists iff n divides l*w, and then a simple grid works: a = gcd(n, l) rows and b = n/a columns of equal cells, because n/a is coprime to l/a and hence divides w.",
+ "sketch": "If l*w is not divisible by n print impossible (equal integer areas are needed). Otherwise let a = gcd(n, l), b = n/a; n | l*w gives b | (l/a)*w and gcd(b, l/a) = 1, so b | w. Cut the field into a x b identical cells of size (l/a) x (w/b) and letter them row-major. O(l*w). Many answers are valid so the token checker rejects sample outputs that differ; I validated with my own checker (each letter forms exactly one rectangle of area l*w/n, all n letters used, impossible iff not divisible) on all l,w <= 12 with many n plus 400 random cases up to the limits.",
+ "code_path": "solutions/kattis_lotsofland.cpp",
+ "samples_passed": true
+}

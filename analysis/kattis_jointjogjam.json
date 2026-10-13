@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jointjogjam",
+ "rating": 900,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Both move linearly in time, so the difference vector is linear and its length is a convex function of t; the maximum is at an endpoint.",
+ "sketch": "Compute the distance between the two starting points and between the two ending points and print the larger. O(1). The only trap is trying to simulate or ternary search for something that is convex (max at an endpoint), and reading the points in the order start K, start O, end K, end O.",
+ "code_path": "solutions/kattis_jointjogjam.cpp",
+ "samples_passed": true
+}

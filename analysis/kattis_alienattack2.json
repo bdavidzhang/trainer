@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alienattack2",
+ "rating": 800,
+ "topics": [
+  "dsu",
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "Each friendship component must be taken in one trip and trips are unlimited, so the answer is the size of the largest connected component.",
+ "sketch": "Union-find with sizes over the m edges, tracking the maximum component size (1 when there are no edges). O((n+m) alpha(n)). No real pitfalls beyond isolated vertices.",
+ "code_path": "solutions/kattis_alienattack2.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:happytrails",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Elevation change of a section is d*sin(angle), sum them.",
+ "sketch": "Sum d*sin(a*pi/180) over the sections and print with two decimals. O(n). Only pitfall is converting degrees to radians.",
+ "code_path": "solutions/kattis_happytrails.cpp",
+ "samples_passed": true
+}

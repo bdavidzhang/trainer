@@ -1,0 +1,13 @@
+{
+ "id": "kattis:chesssolitaire",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "implementation",
+  "hashing"
+ ],
+ "key_idea": "With at most 10 pieces a DFS over captures tried in lexicographic (from, to) order returns the required answer as its first solution; memoise failed boards.",
+ "sketch": "Keep the board as an n*n string. At each node iterate source squares in order A1.. and target squares in the same order, try every legal capture (knight/king by offsets, rook/bishop/queen by sliding with a blocker check), recurse with one fewer piece, and stop at the first success, which is lexicographically smallest by construction. Dead boards go into a hash set so no position is expanded twice; the number of reachable positions is small because pieces only ever stand on originally occupied squares. Worst random 10-piece tests ran in under 0.3 s. Pitfalls: there are no colours so any piece captures any piece, sliding pieces are blocked by intermediate pieces, and the output format is 'Q: C1 -> A3' as in the sample (with a colon).",
+ "code_path": "solutions/kattis_chesssolitaire.cpp",
+ "samples_passed": true
+}

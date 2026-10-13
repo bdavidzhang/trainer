@@ -1,0 +1,12 @@
+{
+ "id": "kattis:hopscotch50",
+ "rating": 1200,
+ "topics": [
+  "dp",
+  "brute-force"
+ ],
+ "key_idea": "Layered shortest path: dp over tiles of value v from all tiles of value v-1 with Manhattan cost.",
+ "sketch": "Group tile coordinates by number, set dp=0 on all 1-tiles and relax level by level trying every pair of tiles in consecutive levels. The sum of products of consecutive level sizes is at most (n^2)^2/4 ~ 1.6M, so the plain double loop is fast. Print -1 if some number in 1..k is missing (the level's dp stays infinite). k=1 gives 0 when a 1-tile exists.",
+ "code_path": "solutions/kattis_hopscotch50.cpp",
+ "samples_passed": true
+}

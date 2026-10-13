@@ -1,0 +1,13 @@
+{
+ "id": "kattis:journalpublication",
+ "rating": 1100,
+ "topics": [
+  "greedy",
+  "strings",
+  "sorting"
+ ],
+ "key_idea": "Scan authors in order and always pick the lexicographically smallest part that is >= the previously chosen part; a smaller choice never hurts later authors.",
+ "sketch": "Exchange argument: keeping the last chosen key as small as possible leaves the most options for the rest. For each author take the minimum name part not less than the previous pick; if none exists print impossible. O(total characters). Plain std::string comparison is correct since every part is Capital+lowercase. Any valid answer is accepted, so sample 2 printed a different but valid selection (Douglas Levi Potter Sam), which I verified by hand as non-descending; samples 1 and 3 matched exactly.",
+ "code_path": "solutions/kattis_journalpublication.cpp",
+ "samples_passed": true
+}

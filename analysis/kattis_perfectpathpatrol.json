@@ -1,0 +1,13 @@
+{
+ "id": "kattis:perfectpathpatrol",
+ "rating": 1900,
+ "topics": [
+  "greedy",
+  "trees",
+  "math"
+ ],
+ "key_idea": "Count path endpoints per vertex: at a vertex with incident demands summing to S and maximum M, paths through it can be paired up locally leaving max(2M-S, S mod 2) forced endpoints, and these local optima are simultaneously achievable.",
+ "sketch": "For each vertex accumulate S and M over incident edges, sum max(2M-S, S mod 2) over all vertices and divide by 2 (each path has two endpoints). O(N). Use 64-bit integers since sums reach about 5e14. Both samples verified; the formula is the standard pairing argument (pair path stubs from different edges at each vertex).",
+ "code_path": "solutions/kattis_perfectpathpatrol.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:drmmessages",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Direct simulation of the three described steps with arithmetic mod 26.",
+ "sketch": "Split the string in halves, compute each half's letter-sum and shift every letter of that half by it mod 26, then add the second half's letter values to the first half's letters mod 26. O(n) with n <= 15000; no pitfalls beyond reducing mod 26.",
+ "code_path": "solutions/kattis_drmmessages.cpp",
+ "samples_passed": true
+}

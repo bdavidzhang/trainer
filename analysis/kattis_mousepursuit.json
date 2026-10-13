@@ -1,0 +1,11 @@
+{
+ "id": "kattis:mousepursuit",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Sum the signed cheese/glory of events whose age s is less than k.",
+ "sketch": "Read each event, sign +1 for CAUGHT and -1 for MISS, and add c and g to the totals when s < k (no event is exactly k seconds ago). O(n). Totals reach 1e11 in magnitude and can be negative, so use 64-bit.",
+ "code_path": "solutions/kattis_mousepursuit.cpp",
+ "samples_passed": true
+}

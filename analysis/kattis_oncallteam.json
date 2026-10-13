@@ -1,0 +1,14 @@
+{
+ "id": "kattis:oncallteam",
+ "rating": 1900,
+ "topics": [
+  "bitmasks",
+  "dp-bitmask",
+  "matching",
+  "graphs"
+ ],
+ "key_idea": "By Hall's theorem every k-subset of services is matchable iff every service set T with |T|<=k has at least |T| engineers knowing something in T; so the answer is (smallest violating |T|) - 1.",
+ "sketch": "Count engineers by skill mask, then a sum-over-subsets DP gives sub[X] = number of engineers whose skills are a subset of X. For a service set T, the neighbourhood size is n - sub[complement(T)]. Scan all 2^m sets T, find the minimum popcount with neighbourhood < popcount; answer is that minus 1, or m if none violates. O(m*2^m) time and 2^m memory. Pitfall: it must hold for all sets of size up to k, which is why the minimum violating size is what matters. Verified against brute-force bipartite matching over all subsets for small n,m.",
+ "code_path": "solutions/kattis_oncallteam.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jacobinumbers",
+ "rating": 800,
+ "topics": [
+  "constructive",
+  "math"
+ ],
+ "key_idea": "n <= 9241 < 10000 terms allowed, so n copies of 1^3 already works.",
+ "sketch": "Print n followed by n ones: the sum of cubes is n and the term limit of 10000 is never exceeded because n <= 9241. O(n). The checker cannot judge multiple answers (it reports a mismatch on the samples); samples_passed is based on my own validator, which confirmed the count, range and cube sum for n = 1, 2, 45, 5000, 9241.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_jacobinumbers.cpp"
+}

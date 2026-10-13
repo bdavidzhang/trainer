@@ -1,0 +1,12 @@
+{
+ "id": "kattis:nodup",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Insert each word into a set and report whether any insertion finds a duplicate.",
+ "sketch": "Read whitespace-separated tokens until EOF, insert into a std::set, and print no if any token was already present, else yes. O(n log n) on at most 40 words. No pitfalls beyond reading the whole line.",
+ "code_path": "solutions/kattis_nodup.cpp",
+ "samples_passed": true
+}

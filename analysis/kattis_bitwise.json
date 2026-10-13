@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bitwise",
+ "rating": 2200,
+ "topics": [
+  "bitmasks",
+  "greedy",
+  "two-pointers"
+ ],
+ "key_idea": "Build the answer bit by bit, asking whether the circle can be cut into at least K sections whose ORs all contain the mask; only about 30 cut positions need to be tried because the prefix OR from index 0 changes at most 30 times.",
+ "sketch": "Greedy from high bit to low: tentatively add a bit and test feasibility (more than K valid sections can be merged, so 'at least K' suffices). For a fixed cut position the linear greedy closes a section as soon as its OR covers the mask. For the circle, look at the section containing index 0 in an optimal split, ending at r: if a[r] adds no new masked bit to OR(a[0..r]) and r>0, r can be handed to the next section, so r is 0 or one of the at most 30 change points of the masked prefix OR; try the greedy starting after each. Complexity O(30 * 30 * N) worst case, well under the limit in practice (about 4.5e8 trivial operations). Pitfalls: K=1 gives the OR of everything, duplicate the array to walk the circle. Stress-tested against exhaustive cut enumeration.",
+ "code_path": "solutions/kattis_bitwise.cpp",
+ "samples_passed": true
+}

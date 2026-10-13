@@ -1,0 +1,13 @@
+{
+ "id": "kattis:loopinvariant",
+ "rating": 1500,
+ "topics": [
+  "strings",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "A rotation is balanced exactly when it starts at a prefix-sum-zero position, so rotate by the first primitive block; if that leaves the string unchanged then the string is that block repeated and every balanced rotation is identical.",
+ "sketch": "Find the first position p where the bracket balance returns to 0 and form t = s[p:] + s[:p], which is balanced. If t != s print it. If t == s, s has period gcd(p, n); the prefix of that length has balance 0, and since the first block is primitive the period must be p itself, so s is one block repeated and all balanced rotations (which start at block boundaries) equal s, hence print no. O(n) time with one string comparison. Verified against a brute force over all rotations on 1500 random balanced strings. Pitfall: use fast I/O for 1e6 characters, and do not confuse different cut positions with different resulting sequences.",
+ "code_path": "solutions/kattis_loopinvariant.cpp",
+ "samples_passed": true
+}

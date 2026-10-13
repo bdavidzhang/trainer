@@ -1,0 +1,12 @@
+{
+ "id": "kattis:arresteddevelopment",
+ "rating": 1500,
+ "topics": [
+  "dp-knapsack",
+  "dp"
+ ],
+ "key_idea": "Knapsack on the first intern's total time: dp[s] = minimum total time of the second intern when the first intern's tasks sum to exactly s; answer is min over s of max(s, dp[s]).",
+ "sketch": "Process tasks one at a time; for each reachable s (iterated downward, in place) either give the task to intern one (s+a, same dp) or to intern two (same s, dp+b). The sum of a is at most 50*1e5 = 5e6, so the table has 5e6 ints and the work is about 2.5e8 simple operations, well inside 3 s (0.06 s locally on the max case). Iterating s downward while overwriting dp[s] with the 'second intern' option keeps it a single array. Stress-tested against a 2^n brute force.",
+ "code_path": "solutions/kattis_arresteddevelopment.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mengersponge",
+ "rating": 1700,
+ "topics": [
+  "math",
+  "implementation",
+  "ad-hoc"
+ ],
+ "key_idea": "Read the three coordinates digit by digit in base 3; a level kills the point iff at least two coordinates lie strictly inside the middle third. A coordinate that lands exactly on a grid plane can be assigned to a non-middle slab forever after.",
+ "sketch": "Simulate long division: num*=3, digit=num/den, num%=den for each coordinate, up to L levels. If the remainder becomes 0 the coordinate sits on a cell boundary: it can be viewed as belonging to either neighbouring slab, at least one of which is not the middle one, and from then on it is on a face (digits all 0 or all 2), so mark it permanently safe. Otherwise digit 1 means strictly in the middle third; if two or more coordinates are in the middle at any level the point is in a removed open region, answer 0. O(L) with 64-bit ints (num*3 < 3e6). Pitfalls: the closed-boundary rule (sample 1, 1/3 at level 1000), and removed cubes are adjacent so only the union's boundary survives, which the 'two strictly-middle coordinates' test handles correctly.",
+ "code_path": "solutions/kattis_mengersponge.cpp",
+ "samples_passed": true
+}

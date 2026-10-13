@@ -1,0 +1,13 @@
+{
+ "id": "kattis:linguisticlabyrinth",
+ "rating": 2000,
+ "topics": [
+  "geometry-3d",
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "Fix the middle segment A->P: the valid B lie in the plane through A perpendicular to AP and the valid C in the parallel plane through P, so the count is a product of two plane counts that depend only on the primitive direction and the dot-product offset.",
+ "sketch": "Enumerate every primitive direction g (components in [-(n-1), n-1], gcd 1, one of each +-pair): about 33k directions for n = 22. For a direction build histograms hB[t], hC[t] of g.X over all B and all C points (lazily, only if some A-P pair uses the direction). Then for each A walk along the line A + k*g for k = +-1, +-2, ... and for every P found add hB[g.A] * hC[g.P]. The walks touch each ordered pair of cells once in total (about 1.1e8 steps) and the histograms cost 33k * 10648, around 1 s. Pitfalls: the answer needs 64 bits (up to ~1e13), angles need not be axis aligned, and offsets of the dot product can be negative so shift the histogram index.",
+ "code_path": "solutions/kattis_linguisticlabyrinth.cpp",
+ "samples_passed": true
+}

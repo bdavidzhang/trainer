@@ -1,0 +1,12 @@
+{
+ "id": "kattis:icouldhavewon",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "The string has only 2000 characters, so simulate the match for every k from 1 to n.",
+ "sketch": "For each k in 1..n scan the string keeping both players' current scores; when one reaches k, credit a game win and reset both to zero. Record k when Alice's wins strictly exceed Bob's. O(n^2) = 4M steps. Pitfalls: the unfinished final game counts for nobody, k larger than n yields zero games so never qualifies, and when the count is zero print only the single line 0.",
+ "code_path": "solutions/kattis_icouldhavewon.cpp",
+ "samples_passed": true
+}

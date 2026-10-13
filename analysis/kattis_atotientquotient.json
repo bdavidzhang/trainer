@@ -1,0 +1,13 @@
+{
+ "id": "kattis:atotientquotient",
+ "rating": 1700,
+ "topics": [
+  "number-theory",
+  "greedy",
+  "math"
+ ],
+ "key_idea": "phi(m^2) = prod p^(2k-1)(p-1), and the (p-1) factor only involves smaller primes, so the exponents of m and n are forced when primes of a/b are processed from the largest down.",
+ "sketch": "Keep the exponent vector of the current ratio a/b over primes up to 10^4. For the largest prime p with non-zero exponent e (say e>0): if e is odd put p^((e+1)/2) in m and nothing in n, then divide the ratio by (p-1); if e is even put p^(e/2+1) in m and p in n (the (p-1) factors cancel, gcd stays square-free and the valuations differ). Negative e is symmetric. Continue downwards; each step only changes exponents of smaller primes. Trivial complexity. Pitfalls: even exponents need the 'one extra p on both sides' trick, and exponents created by (p-1) factors must be folded in before smaller primes are handled. Verified with sympy on ~600 pairs.",
+ "code_path": "solutions/kattis_atotientquotient.cpp",
+ "samples_passed": true
+}

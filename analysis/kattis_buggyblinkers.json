@@ -1,0 +1,14 @@
+{
+ "id": "kattis:buggyblinkers",
+ "rating": 1800,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "BFS on the state (intersection, port you arrived through, blinker state off/left/right, activations used): a turn in the direction the blinker already shows is free, any other turn costs one activation, going straight switches it off for free.",
+ "sketch": "Precompute for every road out of i via port d the port of the neighbour through which you arrive; the heading is the opposite of the arrival port, left/right exits are heading-1 and heading+1 mod 4, and leaving through the arrival port is the forbidden U-turn. All moves have length 1, so a plain BFS over n*4*3*(k+1) ~ 1.26M states with 3 transitions each suffices; start by pushing every road out of intersection 1 with blinker off and 0 activations, and stop at the first state at intersection n. Print 0 when n=1 and 'impossible' if n is never reached. Pitfalls: the geometry is abstract (a north exit may enter the neighbour from any side), turning at a bend still needs the blinker, and after going straight the blinker is off so a later turn costs a new activation.",
+ "code_path": "solutions/kattis_buggyblinkers.cpp",
+ "samples_passed": true
+}

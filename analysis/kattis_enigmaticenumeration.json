@@ -1,0 +1,13 @@
+{
+ "id": "kattis:enigmaticenumeration",
+ "rating": 2000,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "combinatorics"
+ ],
+ "key_idea": "BFS from every vertex: with girth g, any two distinct shortest paths of length <= g/2 from the source are internally disjoint, so shortest cycles through the source are counted by path counts at the antipodal vertex (even g) or antipodal edge (odd g).",
+ "sketch": "First pass: BFS from each s and take the minimum of d[u]+d[v]+1 over non-tree edges, which gives the exact girth g. Second pass: BFS from each s to depth k=g/2 with shortest-path counts cnt. If g is even add C(cnt[v],2) for every v with d[v]=k; if g is odd add cnt[u]*cnt[v] for every edge (u,v) with d[u]=d[v]=k. Each shortest cycle is counted once per vertex on it, so divide the total by g. O(n*m) = 1.8e7 per pass. Pitfalls: the graph may be disconnected, and the disjointness argument only holds because overlapping paths would create a cycle shorter than the girth. Stress-tested against exhaustive cycle enumeration on small graphs.",
+ "code_path": "solutions/kattis_enigmaticenumeration.cpp",
+ "samples_passed": true
+}

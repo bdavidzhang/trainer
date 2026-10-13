@@ -1,0 +1,14 @@
+{
+ "id": "kattis:keyboardqueries",
+ "rating": 2400,
+ "topics": [
+  "hashing",
+  "dsu",
+  "fenwick",
+  "strings"
+ ],
+ "key_idea": "A palindrome fact merges position classes; at most n-1 merges ever happen, so find each still-violated pair by binary searching the first mismatch between the substring and its reverse with hashes of class labels, and merge small-to-large.",
+ "sketch": "Give each class a random label and keep two Fenwick trees over label[i]*p^i and label[i]*p^(n-1-i) modulo 2^61-1, so forward and reversed substring hashes are comparable after multiplying by suitable powers. For a type 1 query, while the hash of [l,r] differs from that of its reverse, binary search the longest matching prefix, union the two mismatching positions' classes, relabelling the smaller class with point updates in both trees. Type 2: different lengths means Not equal (the alphabet is unknown, so nothing else can force inequality), equal hashes means Equal, otherwise Unknown. Total O((n+q) log^2 n) for searches plus O(n log^2 n) for relabelling. Pitfalls: Not equal is purely a length test, use 61-bit modular hashing with 128-bit multiply, and compare hashes at different offsets by cross-multiplying powers rather than dividing. Stress-tested against a naive DSU.",
+ "code_path": "solutions/kattis_keyboardqueries.cpp",
+ "samples_passed": true
+}

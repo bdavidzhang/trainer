@@ -1,0 +1,14 @@
+{
+ "id": "kattis:crammingforfinals",
+ "rating": 1800,
+ "topics": [
+  "sweep-line",
+  "sorting",
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Only rows within d of some student matter (at most 1000*5001 of them, any other row gives 0), and in such a row each nearby student covers a column interval of half-width floor(sqrt(d^2-dy^2)); sweep those intervals per row.",
+ "sketch": "Sort students by row, merge the row ranges [i-d,i+d] clipped to [1,r]; if they do not cover all r rows the answer is 0. Otherwise iterate over every covered row with a sliding window of active students, create +1/-1 events for each clipped column interval, add a huge +INF/-INF event pair on the cell of any student sitting in this very row (occupied tables are not allowed), sort and sweep taking the minimum over non-empty pieces inside [1,c] (a sentinel event at column 1 covers the uncovered prefix). Total (row, student) pairs <= 5*10^6, so about 10^7 events with sorting, ~0.2 s. Pitfalls: integer sqrt precomputed per dy with exact correction, clipping to the grid, r and c up to 1e9 need 64-bit, and excluding occupied cells. Verified against a brute force on small grids.",
+ "code_path": "solutions/kattis_crammingforfinals.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:brentering",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Cut the string after its last vowel and append 'ntry'.",
+ "sketch": "Find the last position of any of a, e, i, o, u, keep the prefix up to and including it, and append ntry. O(|s|). Only lowercase vowels matter; the statement guarantees at least one lowercase vowel, so an uppercase first letter never needs to be treated as the cut point.",
+ "code_path": "solutions/kattis_brentering.cpp",
+ "samples_passed": true
+}

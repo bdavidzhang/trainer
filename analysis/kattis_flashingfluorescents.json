@@ -1,0 +1,13 @@
+{
+ "id": "kattis:flashingfluorescents",
+ "rating": 1900,
+ "topics": [
+  "dp-bitmask",
+  "bitmasks",
+  "bfs-dfs"
+ ],
+ "key_idea": "Looking at a fixed final time t, a press made at step k of button i simply XORs the interval [i, i+t-k] (clipped at n), so the question is whether the set of off lights is an XOR of intervals with pairwise distinct lengths from 1..t (suffixes allowed for long lengths).",
+ "sketch": "Cancellation is just XOR, so order and propagation disappear once you fix the observation time. Keep the set of reachable masks using lengths 1..t; going from t to t+1 adds one optional interval of length t+1 at any start: reach' = reach ∪ {mask ^ interval(i, t+1)}. The answer is the first t at which the target mask (the initially off lights) is reachable; it is at most n. Complexity O(n * n * 2^n) = about 1.7e7. Pitfalls: answer 0 when all lights are already on, intervals are clipped at the right end, at most one press per step means each length is used at most once. Stress-tested against a direct time-step simulation BFS.",
+ "code_path": "solutions/kattis_flashingfluorescents.cpp",
+ "samples_passed": true
+}

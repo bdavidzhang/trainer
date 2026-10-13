@@ -1,0 +1,12 @@
+{
+ "id": "kattis:urbandesign",
+ "rating": 1300,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Crossing one street flips the designation, so the two points differ iff the number of lines strictly separating them is odd.",
+ "sketch": "The 2-colouring of a line arrangement is the parity of the number of lines having the point on their positive side, so for each query count lines for which the two points have opposite orientation signs via cross products. O(S*T) = 1e7 cross products. Points never lie on a street so signs are never zero; coordinates up to 1e4 give products up to 2e8, but use 64-bit to be safe. Pitfall: streets are infinite lines, not segments, so do not test segment intersection.",
+ "code_path": "solutions/kattis_urbandesign.cpp",
+ "samples_passed": true
+}

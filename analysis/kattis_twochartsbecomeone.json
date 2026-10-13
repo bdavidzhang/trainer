@@ -1,0 +1,14 @@
+{
+ "id": "kattis:twochartsbecomeone",
+ "rating": 1500,
+ "topics": [
+  "trees",
+  "hashing",
+  "strings",
+  "sorting"
+ ],
+ "key_idea": "Rooted labelled tree isomorphism with unordered children: canonicalize each subtree bottom-up as (label, sorted multiset of child class ids).",
+ "sketch": "Parse each line with an explicit stack: a number opens a new node, ')' closes the top node and appends its canonical id to its parent, '(' and spaces are skipped. A node's canonical id is obtained from a global map keyed by the vector [label, sorted child ids], shared between both charts, so two subtrees get the same id iff they are similar. Compare the two root ids. Total work is O(N log N) since the vectors sum to O(N). Pitfalls: arbitrary spacing around parentheses, multi-digit labels, possibly repeated labels (hence multiset not set), and using an explicit stack rather than relying on token formatting; exact ids avoid hash collisions.",
+ "code_path": "solutions/kattis_twochartsbecomeone.cpp",
+ "samples_passed": true
+}

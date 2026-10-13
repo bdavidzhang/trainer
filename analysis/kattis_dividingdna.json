@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dividingdna",
+ "rating": 1600,
+ "topics": [
+  "interactive",
+  "greedy",
+  "two-pointers"
+ ],
+ "key_idea": "Absence is monotone under extension, so greedy earliest-end works: from the current start s, the first e with [s,e) absent ends the earliest possible piece, and each e is queried exactly once.",
+ "sketch": "If [i,j) is absent then every superstring is absent, so the earliest position e at which any absent substring starting at or after s can end is the smallest e with [s,e) absent. Standard interval-scheduling exchange shows taking that piece and restarting at s = e is optimal. Implementation: for e = 1..n query (s, e); on 'absent' increment the count and set s = e. Exactly n queries, half the 2n budget. Pitfall: half-open indices (0 <= i < j <= n) and flushing. The token checker cannot judge interaction; validated with my own interactor against an independent DP on 400 random monotone instances.",
+ "code_path": "solutions/kattis_dividingdna.cpp",
+ "samples_passed": true
+}

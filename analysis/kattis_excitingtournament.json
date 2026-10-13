@@ -1,0 +1,13 @@
+{
+ "id": "kattis:excitingtournament",
+ "rating": 2100,
+ "topics": [
+  "flows",
+  "matching",
+  "graphs"
+ ],
+ "key_idea": "A tournament is exactly a rooted tree where every non-champion picks one stronger player to lose to, and a player's game count is its number of children plus one for its own loss, so it is a min/max cost assignment with capacities.",
+ "sketch": "Sort by skill. Each player except the strongest must be assigned a parent with higher skill at cost s_i xor s_j; parent j can take at most g_j - 1 children (g_j for the overall strongest, who never loses). Any such tree is schedulable by playing subtrees bottom-up, and g>=2 guarantees feasibility (a chain). Run min-cost max-flow on source -> loser (cap 1) -> winner (cost xor) -> sink (cap), once with costs and once negated for the maximum; the graph is a DAG so SPFA handles negative costs. About 5000 edges and 99 augmentations. Costs reach 100*2^30 so use 64-bit. Verified against exhaustive parent assignment for n<=6.",
+ "code_path": "solutions/kattis_excitingtournament.cpp",
+ "samples_passed": true
+}

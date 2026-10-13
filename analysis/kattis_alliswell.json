@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alliswell",
+ "rating": 1700,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Dijkstra on the layered state (cell, number of people already notified), with a zero-cost transition to the next layer whenever the current cell is within Euclidean range of the next person.",
+ "sketch": "States: r*c*(p+1) <= 270k. Moves to a free neighbouring cell cost that cell's entry time; the start cell's entry time is also paid. From (cell,k), if dr^2+dc^2 <= h_k^2 for person k, move to (cell,k+1) for free (several people can be notified from the same cell). Answer is the first popped state with k=p, else -1; also -1 if the upper-left cell is a person. Person cells are impassable. Pitfalls: parsing mixed integer/letter tokens, comparing squared distances in integers, and remembering the cost of the start cell.",
+ "code_path": "solutions/kattis_alliswell.cpp",
+ "samples_passed": true
+}

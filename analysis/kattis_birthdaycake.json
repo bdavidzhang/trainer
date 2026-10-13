@@ -1,0 +1,13 @@
+{
+ "id": "kattis:birthdaycake",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "With lines in general position inside a disk, the number of pieces is 1 + m + (number of pairwise intersection points strictly inside the circle); then it suffices that this equals n and all candles have distinct side-of-line signatures.",
+ "sketch": "Each new chord adds one piece plus one per interior crossing with earlier chords, so pieces = 1 + m + I. The robustness guarantee (piece count unchanged under 1e-4 shifts) rules out concurrent triples and crossings on the boundary, so the formula is exact. Count I exactly in integers: for lines i,j with D = a_i b_j - a_j b_i != 0 the crossing is (X/D, Y/D) and it is inside iff X^2+Y^2 < r^2 D^2 (use 64-bit/__int128, no floating point). Two candles lie in the same piece iff they are on the same side of every line, so collect the m-bit sign vectors and require n distinct ones. Answer yes iff pieces == n and signatures are all distinct (pigeonhole then gives exactly one candle per piece). O(m^2 + n m).",
+ "code_path": "solutions/kattis_birthdaycake.cpp",
+ "samples_passed": true
+}

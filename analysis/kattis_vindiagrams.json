@@ -1,0 +1,13 @@
+{
+ "id": "kattis:vindiagrams",
+ "rating": 1600,
+ "topics": [
+  "implementation",
+  "bfs-dfs",
+  "geometry"
+ ],
+ "key_idea": "Trace each loop from its label cell, going straight through cells with four loop neighbours (the intersections), then classify every '.' by even-odd ray casting against each loop separately.",
+ "sketch": "Start at 'A' (resp. 'B'), step to a loop neighbour and follow: at a cell with 4 non-dot neighbours keep the direction, otherwise take the unique non-dot neighbour that is not the previous cell. While tracing, record vertical edges (between (r,c) and (r+1,c)) of that loop. For each row sweep left to right keeping the parity of vertical edges seen for A and for B; a '.' with odd parity is inside that loop. Count A-only, B-only, both. O(rc). Ray casting avoids relying on flood-fill connectivity assumptions; only '.' cells count, loop cells do not.",
+ "code_path": "solutions/kattis_vindiagrams.cpp",
+ "samples_passed": true
+}

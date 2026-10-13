@@ -1,0 +1,14 @@
+{
+ "id": "kattis:solarenergy",
+ "rating": 1900,
+ "topics": [
+  "sweep-line",
+  "geometry",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "The total is a continuous piecewise-linear function of the angle, so the maximum is at a breakpoint: sweep the circle maintaining the sum as A + B*theta and update A,B at each star's tent start, peak and end.",
+ "sketch": "Each star is a tent of half-width w = min(T/s, pi) centred at a (s=0 gives a constant). Unroll the circle: emit each tent at shifts -2pi, 0, +2pi as three events (enter rising piece, switch to falling piece, leave), each changing the linear coefficients (A,B) of the current sum. Sort the 9N events, apply all events with an equal coordinate, then evaluate A+B*x for coordinates within [0,2pi] and take the max. O(N log N). Pitfall: a clipped tent (w=pi) does not reach zero at its ends, so the end of one copy must coincide exactly with the start of the next; compute both as a + j*pi with the same integer j so the floats are bit-identical, otherwise a sliver double-counts a star. Use long double since A accumulates ~1e8-scale sums and cancels. Stress-tested against a brute force over breakpoints.",
+ "code_path": "solutions/kattis_solarenergy.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:nucleotides",
+ "rating": 1000,
+ "topics": [
+  "prefix-sums",
+  "sorting"
+ ],
+ "key_idea": "Per-letter prefix counts answer each range in O(1); then stable-sort the four letters by count descending.",
+ "sketch": "Build prefix count arrays for A,T,G,C over the strand. For a query [s,e] take the four differences and stable-sort the indices in ATGC order by decreasing count, which gives the required tie-break for free. O(n + m). Only pitfall is the tie order (ATGC, not alphabetical) and 1-based inclusive ranges.",
+ "code_path": "solutions/kattis_nucleotides.cpp",
+ "samples_passed": true
+}

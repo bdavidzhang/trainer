@@ -1,0 +1,14 @@
+{
+ "id": "kattis:wordgame2",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "brute-force",
+  "strings",
+  "hashing"
+ ],
+ "key_idea": "With n<=5 and length<=5 the whole merge process can be simulated: DFS over multisets of current words with memoisation.",
+ "sketch": "State = sorted list of current words. From a state try every ordered pair (s,t) and every overlap k in 1..min(|s|,|t|) where the k-suffix of s equals the k-prefix of t, replace them by s+t[k:], and recurse; a std::set of visited states prunes repeats. Among single-word states keep the shortest, then lexicographically smallest; print -1 if none is reached. Pitfalls: overlaps must be re-evaluated on combined words (a merged word can overlap by more than an original word's length, and k=|t| swallows t entirely), so a simple permutation-with-max-overlap chain is not obviously enough; the full simulation avoids arguing about it. Worst observed runtime on adversarial 1-3 letter alphabets is ~20 ms.",
+ "code_path": "solutions/kattis_wordgame2.cpp",
+ "samples_passed": true
+}

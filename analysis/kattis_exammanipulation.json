@@ -1,0 +1,12 @@
+{
+ "id": "kattis:exammanipulation",
+ "rating": 1000,
+ "topics": [
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "With k <= 10 there are only 1024 answer keys, so try every key and take the worst student score for each.",
+ "sketch": "Encode each student's answers as a k-bit mask. For every key mask m the score of student x is k - popcount(x xor m); take the minimum over students and maximise over m. O(2^k * n) ~ 1e6 operations. No real pitfalls beyond reading T/F into bits.",
+ "code_path": "solutions/kattis_exammanipulation.cpp",
+ "samples_passed": true
+}

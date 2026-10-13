@@ -1,0 +1,13 @@
+{
+ "id": "kattis:teampractice",
+ "rating": 2100,
+ "topics": [
+  "matrix-exponentiation",
+  "dp",
+  "combinatorics"
+ ],
+ "key_idea": "The state is (solvers in B, coders in B) and one break moves each count by -1/0/+1 independently, so the transition is a Kronecker product of two tridiagonal 36x36 matrices; power each factor separately for the gap between consecutive challenge times.",
+ "sketch": "Per-type transition T[i][i]=1, T[i][i+1]=S-i (pick who goes to B), T[i][i-1]=i (pick who returns). Start with dp[(0,0)]=1 at session 1. For each challenge in time order, advance by d = t_k - cur: compute T_S^d and T_C^d by fast exponentiation and apply them along the two axes of the (S+1)x(C+1) dp table, then zero the states that violate the challenge (team B has i,j; team A has S-i,C-j; need solvers>=s, coders>=c, sum>=b). Finally advance to session N and read dp[(0,0)]. Cost is about 6 * 60 * 36^3 multiplications. Pitfalls: several challenges share a session (d=0, just filter again), exponents up to 1e18 need 64-bit, and the 1296-state product matrix must not be exponentiated directly. Verified against a step-by-step brute force on 400 random small cases.",
+ "code_path": "solutions/kattis_teampractice.cpp",
+ "samples_passed": true
+}

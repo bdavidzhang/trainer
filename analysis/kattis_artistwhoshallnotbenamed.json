@@ -1,0 +1,13 @@
+{
+ "id": "kattis:artistwhoshallnotbenamed",
+ "rating": 1500,
+ "topics": [
+  "implementation",
+  "strings",
+  "case-analysis"
+ ],
+ "key_idea": "It is a strict UTF-8 validator: decode each sequence and reject everything the standard rejects, not just the cases listed.",
+ "sketch": "Odd nibble count or a non-hex character is artistic. Otherwise decode bytes: <0x80 is ASCII; 110xxxxx/1110xxxx/11110xxx start 2/3/4-byte sequences whose remaining bytes must all be 10xxxxxx; any other lead byte (stray continuation, 0xF8+) is artistic. After decoding reject overlong encodings (code point below the minimum for that length, e.g. c0 80), values above 0x10FFFF, surrogates D800-DFFF, and non-characters FDD0-FDEF plus xxFFFE/xxFFFF in every plane. A valid name is cool if it had any multi-byte character, else boring. O(total length). Pitfalls are all in the corner cases: overlongs, the per-plane non-characters, truncated sequences at the end, and upper-case hex digits. Only one sample exists, so hidden corner-case interpretation is the risk.",
+ "code_path": "solutions/kattis_artistwhoshallnotbenamed.cpp",
+ "samples_passed": true
+}

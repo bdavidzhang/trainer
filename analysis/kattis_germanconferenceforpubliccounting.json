@@ -1,0 +1,13 @@
+{
+ "id": "kattis:germanconferenceforpubliccounting",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "case-analysis",
+  "implementation"
+ ],
+ "key_idea": "For each digit the number of signs needed is the largest count of that digit in any number up to n, which is achieved by a repdigit: L copies if ddd..d (L digits) <= n, else L-1.",
+ "sketch": "Let L be the digit count of n. For digit d in 1..9 the answer is L if the L-digit repdigit of d is <= n, otherwise L-1 (the (L-1)-digit repdigit always fits). For digit 0 it is max(1, L-1): the number 0 itself needs one sign and 10^(L-1) has L-1 zeros. Sum the ten values. O(1). Pitfall: digit 0 handled separately (no leading zeros, but 0 itself is displayed), and for single-digit n digits above n need zero signs.",
+ "code_path": "solutions/kattis_germanconferenceforpubliccounting.cpp",
+ "samples_passed": true
+}

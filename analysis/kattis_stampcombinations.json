@@ -1,0 +1,12 @@
+{
+ "id": "kattis:stampcombinations",
+ "rating": 1500,
+ "topics": [
+  "two-pointers",
+  "prefix-sums"
+ ],
+ "key_idea": "Taking a prefix plus a suffix with sum q is the same as leaving behind a contiguous block with sum S - q, and since all values are positive a sliding window finds that in O(m).",
+ "sketch": "Compute the total S. For a query q > S answer No; otherwise look for a contiguous subarray (possibly empty) with sum T = S - q using two pointers, shrinking from the left while the window exceeds T. Each query costs O(m), and m*n <= 1e7 keeps the total small; repeated targets are memoised. Pitfalls: q = 0 and q = S are both Yes (empty prefix/suffix or the whole roll), prefix and suffix may not overlap (automatic in the complement view), and the input has up to 1e6 lines so fast I/O is needed. Verified against an O(m^2) brute force.",
+ "code_path": "solutions/kattis_stampcombinations.cpp",
+ "samples_passed": true
+}

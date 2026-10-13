@@ -1,0 +1,12 @@
+{
+ "id": "kattis:repeatedsubstrings",
+ "rating": 1700,
+ "topics": [
+  "strings",
+  "suffix-structures"
+ ],
+ "key_idea": "The longest repeated substring is the maximum entry of the LCP array of the suffix array, and the first position in suffix-array order attaining that maximum gives the lexicographically smallest one.",
+ "sketch": "Build the suffix array by prefix doubling with std::sort (O(n log^2 n)), then the LCP array with Kasai in O(n). Scan ranks in increasing order and keep the first strictly larger LCP; print that prefix of the suffix. Overlapping occurrences are allowed so no extra constraint is needed. Hashing plus binary search on length also works but needs care for the lexicographic tie-break. Stress-tested against a brute force on small binary strings and timed on 1e5 equal letters.",
+ "code_path": "solutions/kattis_repeatedsubstrings.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:formulaflatland",
+ "rating": 1900,
+ "topics": [
+  "graphs",
+  "math",
+  "brute-force"
+ ],
+ "key_idea": "A planar graph with minimum degree 3 always has a cycle of length at most 5 (Euler's formula), so the answer is 3, 4 or 5 and only triangle and 4-cycle detection are needed; coordinates are irrelevant.",
+ "sketch": "If all faces had length >= 6 then 2m >= 6f and 2m >= 3n give n - m + f <= 0, contradicting Euler, so girth <= 5. Rank vertices by (degree, id). Triangles: orient edges from low to high rank, mark out-neighbours of u and scan out-neighbours of each out-neighbour. 4-cycles: for each vertex a as the highest-ranked vertex, count 2-paths a-b-c with b and c ranked below a; a counter reaching 2 means a 4-cycle. Both are O(m sqrt m) in general and near-linear on planar graphs. Otherwise print 5. Pitfall: reset counters by re-walking instead of clearing the whole array. Detection of 3/4-cycles stress-tested against brute force on random small graphs.",
+ "code_path": "solutions/kattis_formulaflatland.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:streamlag",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Packet i starts playing at start_i = max(start_{i-1}+1, t_i); total lag is start_n - n.",
+ "sketch": "Store the arrival time per packet index (input is ordered by time, not by index). Sweep i=1..n with cur = max(cur+1, t_i) starting from cur=0; each second not spent playing before the last packet starts is lag, so the answer is cur - n. O(n). Pitfalls: packet 1 arriving late also counts as lag, and times go up to 1e9 so use 64-bit to be safe.",
+ "code_path": "solutions/kattis_streamlag.cpp",
+ "samples_passed": true
+}

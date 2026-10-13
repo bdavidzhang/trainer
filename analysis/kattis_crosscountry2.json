@@ -1,0 +1,14 @@
+{
+ "id": "kattis:crosscountry2",
+ "rating": 2700,
+ "topics": [
+  "geometry",
+  "dp",
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "The length is convex in the touch points, so at an optimum each touch point is either pinned (a segment endpoint or the crossing point of two consecutive segments) or interior, where the path passes straight through or reflects. DP over pinned points, and between two pinned points enumerate the 2^g reflect/pass patterns by mirror unfolding.",
+ "sketch": "Candidate pinned points for checkpoint i are its two endpoints and its intersection with checkpoints i-1 and i+1; plus start and finish. best[i][c] = min over earlier pinned (j,c') of best[j][c'] + tour(P, checkpoints j+1..i-1, Q). tour runs a DFS over reflect/pass choices keeping the composed isometry; at a leaf the straight line from P to the image of Q is intersected with each image line, the parameter is clamped to the segment, and the length of the real polyline is measured. Every evaluated candidate is therefore a genuine feasible path (never below the optimum), while the true optimum is reproduced exactly by its own pattern; the unfolded straight length also gives a prune. Cost is about sum (17-g)*16*2^g*g, a few times 1e7, running in 0.07 s. Pitfalls: corner optima where consecutive touch points coincide (handled by the intersection candidates), collinear overlapping checkpoints and lines through P (handled by a parallel fallback using projection), and near-parallel denominators. Compared with a zooming grid DP over the convex objective on 1400 random small cases, max relative difference 2.5e-7.",
+ "code_path": "solutions/kattis_crosscountry2.cpp",
+ "samples_passed": true
+}

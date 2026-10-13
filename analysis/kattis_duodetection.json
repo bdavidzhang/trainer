@@ -1,0 +1,13 @@
+{
+ "id": "kattis:duodetection",
+ "rating": 1900,
+ "topics": [
+  "sqrt-decomposition",
+  "data-structures",
+  "brute-force"
+ ],
+ "key_idea": "Finding two sets sharing two elements (a 4-cycle in the bipartite incidence graph) by sqrt decomposition: large sets are compared against everything with a marker array, small sets have few internal pairs so duplicates of a pair can be detected directly.",
+ "sketch": "Compress values; let N <= 1e5 be the total size and B ~ 300. For each set with >= B elements (at most N/B of them) mark its elements and scan every other set counting marked elements; two hits give the answer, O(N * N/B). For the small sets, for every value x iterate over the small sets containing x and over their elements y > x, keeping mark[y] = x and owner[y] = set index: if y is already marked by x the pair (x,y) lies in two sets. That costs sum |S|^2 <= N*B. Total about 3e7 steps, well within the limit. Output the original values and 1-based set indices; any valid answer is accepted, so the checker's token compare fails on sample 1 - validated instead with my own validator (pair really contained in both reported distinct sets, and impossible exactly when a brute force finds no pair) on 4500 random tests covering both the small-set and large-set paths.",
+ "code_path": "solutions/kattis_duodetection.cpp",
+ "samples_passed": true
+}

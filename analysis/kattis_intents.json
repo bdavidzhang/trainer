@@ -1,0 +1,14 @@
+{
+ "id": "kattis:intents",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "The volume of a prism under a triangle is area*(h0+h1+h2)/3, so the total is linear in the heights: each outer hole has weight (sum of its two adjacent triangle areas)/3 and the centre has weight (total area)/3; by the rearrangement inequality pair sorted heights with sorted weights.",
+ "sketch": "Sort the n-1 holes by angle, compute the area of each triangle (origin, hole i, hole i+1) by the cross product, accumulate the area into both endpoints' weights and into the centre's weight. Sort the n weights and the n heights and sum the products, divide by 3. O(n log n). Pitfalls: recognizing that no search is needed despite n<=30 suggesting it; the centre pole is not automatically the tallest (an outer hole may have a larger weight only if its two triangles exceed half the area, which cannot happen, but sorting handles it anyway); print with enough decimals.",
+ "code_path": "solutions/kattis_intents.cpp",
+ "samples_passed": true
+}

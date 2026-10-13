@@ -1,0 +1,12 @@
+{
+ "id": "kattis:phonebook",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Count strings that start with +39 and have 9 or 10 characters after the prefix.",
+ "sketch": "Read each number, check the prefix '+39' and that the remaining length is 9 or 10 (total length 12 or 13). O(total length). The only pitfall is counting the digits excluding the country code.",
+ "code_path": "solutions/kattis_phonebook.cpp",
+ "samples_passed": true
+}

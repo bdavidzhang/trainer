@@ -1,0 +1,11 @@
+{
+ "id": "kattis:punctiliouscruciverbalist",
+ "rating": 1400,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation: number the clues, then repeatedly recompute every unsolved clue's rank and fill the best one.",
+ "sketch": "Scan the grid row-major; a non-black cell starts an across clue if its left neighbour is black/off-grid and a down clue if the one above is, and gets the next number if either holds (length-1 words count). Each round, for every clue that still has an empty cell compute the sum of weights (n-k for the k-th cell) of filled cells over n(n+1)/2, compare fractions by cross-multiplication, and iterate across clues before down clues in number order replacing only on strictly greater so ties resolve correctly. Fill the chosen clue's cells and print it; stop when no clue has an empty cell. At most ~5000 clues with ~5000 cells in total, so O(cells^2) = 25M. Pitfalls: clues already fully filled are never printed, and avoid floating point for the rank comparison.",
+ "code_path": "solutions/kattis_punctiliouscruciverbalist.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tower",
+ "rating": 1900,
+ "topics": [
+  "graphs",
+  "dsu",
+  "greedy"
+ ],
+ "key_idea": "Treat side lengths as vertices and rectangles as edges: choosing the horizontal side of each rectangle with all widths distinct is orienting each edge to a private vertex, so every component is a tree or has exactly one cycle.",
+ "sketch": "Height = sum of all sides minus the sum of chosen widths. In a unicyclic component (edges = vertices) every vertex is used as a width exactly once, so the widths are forced. In a tree component exactly one vertex stays unused and any vertex can be the one, so leave out the maximum. Answer = sum(s+t) - sum of distinct values + sum over tree components of their max value. Compress values, DSU, count edges and vertices per component, O(n log n). Use 64-bit (up to 5e14); a square s = t is a self-loop and is handled by the same counting. Stress-tested against all 2^n orientations.",
+ "code_path": "solutions/kattis_tower.cpp",
+ "samples_passed": true
+}

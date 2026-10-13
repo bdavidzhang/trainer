@@ -1,0 +1,13 @@
+{
+ "id": "kattis:toursdesalesforce",
+ "rating": 1900,
+ "topics": [
+  "dp-bitmask",
+  "matching",
+  "geometry"
+ ],
+ "key_idea": "Compute a Held-Karp TSP for every (fired, kept) district pair (at most 16 points), then solve the 25x25 assignment problem with the Hungarian algorithm.",
+ "sketch": "The 'before' value is the sum of exact TSP tours of all d districts. For each of the (d/2)^2 <= 625 pairs merge the two point sets and run bitmask TSP with one point fixed as the start, so the state space is 2^15 x 15 and transitions only go to unset bits; about 1.8M relaxations per pair, ~1e9 total, 5 s locally against a 20 s limit. Feed the pair costs to the Hungarian algorithm (O(n^3), n = 25) to get the minimum total 'after' length. Pitfalls: a greedy pairing is wrong, it has to be a min-cost perfect matching; fix the start vertex to halve the DP table; use doubles and print enough digits for the 1e-2 tolerance.",
+ "code_path": "solutions/kattis_toursdesalesforce.cpp",
+ "samples_passed": true
+}

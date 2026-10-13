@@ -1,0 +1,14 @@
+{
+ "id": "kattis:ilovestrings",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "combinatorics",
+  "strings",
+  "prefix-sums"
+ ],
+ "key_idea": "Fix the middle vowel and split into left (vowel, consonant) pair counts P[a][x] and right (consonant, vowel) pair counts Q[c][y]; the distinct-consonant condition is handled by subtracting the dot product over equal consonants, and the vowel conditions by iterating over the 9*8 ordered pairs of other vowels.",
+ "sketch": "Sweep the string maintaining P[a][x] = number of pairs (vowel a, later consonant x) fully to the left and Q[c][x] = pairs (consonant x, later vowel c) fully to the right, each updated in 10 operations per consonant using prefix/suffix vowel counts. At a vowel b, add sum over a != c, both != b, of PA[a]*QC[c] - sum_x P[a][x]*Q[c][x], where PA/QC are row sums. Cost is 72*42 multiplications per vowel position, about 3e8 simple operations worst case (0.1 s in practice). Pair counts stay below n^2/4 = 2.5e9 so they are kept exact in 64 bits and the inner dot product is accumulated in unsigned __int128, reducing mod 1e9+7 only once per position. Pitfalls: y/Y are consonants, upper and lower case are different characters (10 vowels, 42 consonants), and the subtraction must be done on exact values or carefully mod p. Verified against a brute force on random short strings.",
+ "code_path": "solutions/kattis_ilovestrings.cpp",
+ "samples_passed": true
+}

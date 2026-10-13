@@ -1,0 +1,11 @@
+{
+ "id": "kattis:improvingit",
+ "rating": 1300,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "dp[i] = minimum net cost such that a new CPU is bought in month i; a CPU bought in month i and kept j months transitions to dp[i+j] with cost c_i - resale_{i,j}.",
+ "sketch": "Forward DP over months with dp[1] = 0 and dp[i+j] = min(dp[i] + c_i - r_{i,j}) for j = 1..min(m, n-i+1); the answer is dp[n+1] (selling the last CPU in month n+1). The input size n*m <= 5e5 is exactly the number of transitions, so O(nm) while reading. Use 64-bit integers (answer up to ~5e14 in magnitude and may be negative), and note rows are truncated to n-i+1 entries.",
+ "code_path": "solutions/kattis_improvingit.cpp",
+ "samples_passed": true
+}

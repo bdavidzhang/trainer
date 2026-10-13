@@ -1,0 +1,14 @@
+{
+ "id": "kattis:lunchtimenamerecall",
+ "rating": 2400,
+ "topics": [
+  "dp",
+  "search-backtracking",
+  "hashing",
+  "bitmasks"
+ ],
+ "key_idea": "The knowledge state is just the multiset of sizes of indistinguishable groups, i.e. an integer partition of n (at most 5604 for n=30); each day refines it by splitting every group, subject to the burgers summing to a.",
+ "sketch": "Keep the set of reachable partitions day by day (hashed as a count-per-size string). For one partition and one day, run an inner DP over its non-singleton groups: map from partial resulting partition to a bitmask of achievable burger totals, splitting a group of size s into (b, s-b) for b <= s/2 and updating mask -> (mask<<b)|(mask<<(s-b)); existing singletons absorb any number of burgers from 0 to c1, so a result is accepted if some total lies in [a-c1, a]. The answer is the maximum number of size-1 groups in the final layer. The bitmask dedup keeps every inner map bounded by the number of refinements, and the worst case n=30, m=10 runs under 1s locally. Pitfalls: enumerating burger assignments without dedup explodes, and singleton groups must be treated as slack rather than split. Verified against brute force over all subset choices for n <= 7, m <= 3.",
+ "code_path": "solutions/kattis_lunchtimenamerecall.cpp",
+ "samples_passed": true
+}

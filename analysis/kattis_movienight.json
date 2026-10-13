@@ -1,0 +1,14 @@
+{
+ "id": "kattis:movienight",
+ "rating": 1600,
+ "topics": [
+  "graphs",
+  "dp-tree",
+  "combinatorics",
+  "topological-sort"
+ ],
+ "key_idea": "A valid set is closed under the map x -> y(x); in each functional-graph component the cycle acts as a single root node, and the number of closed sets containing a node is the product over its tree children of (1 + ways(child)).",
+ "sketch": "Peel leaves by in-degree (topological order), keeping w[v] = number of closed subsets of v's subtree that contain v: when v is removed, w[f(v)] *= 1 + w[v]. The remaining nodes are cycles; a cycle must be taken entirely, giving prod of w over the cycle. The answer is prod over components (1 + cycleWays) - 1 modulo 1e9+7 (subtract the empty set). O(n). Pitfall: do the final subtraction modulo p.",
+ "code_path": "solutions/kattis_movienight.cpp",
+ "samples_passed": true
+}

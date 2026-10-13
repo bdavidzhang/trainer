@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bikesandbarricades",
+ "rating": 1000,
+ "topics": [
+  "geometry",
+  "implementation"
+ ],
+ "key_idea": "A segment blocks the ride iff its endpoints have opposite x signs and its intersection with x=0 has positive y; take the minimum such y.",
+ "sketch": "Since x1,x2 are nonzero, a barricade crosses the Y axis iff sign(x1)!=sign(x2). Interpolate y = y1 + (y2-y1)*(-x1)/(x2-x1) and keep it if y>0 (it cannot be 0 as no barricade passes through the origin). Output the minimum, or -1.0 if none. O(n). Pitfall: crossings on the negative Y axis must be ignored.",
+ "code_path": "solutions/kattis_bikesandbarricades.cpp",
+ "samples_passed": true
+}

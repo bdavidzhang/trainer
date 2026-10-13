@@ -1,0 +1,13 @@
+{
+ "id": "kattis:intersectingrectangles",
+ "rating": 1700,
+ "topics": [
+  "sweep-line",
+  "fenwick",
+  "sorting"
+ ],
+ "key_idea": "With all coordinates distinct, boundaries meet iff a vertical edge properly crosses a horizontal edge of another rectangle, which a sweep over x with a Fenwick tree of active y-edges detects.",
+ "sketch": "Sort the 2n vertical edges by x. Keep a Fenwick tree over compressed y marking the y1 and y2 of every rectangle whose x-range contains the sweep line. At a left edge, query the number of active marks strictly inside (y1,y2): any hit is a crossing; then insert y1,y2. At a right edge, remove the rectangle's own marks first, then do the same query. Nested and disjoint rectangles never produce a hit because both horizontal edges of the other rectangle lie outside the y-range or are not active. O(n log n). Pitfall: do not count the rectangle's own edges, and the open interval query relies on distinct coordinates. Stress-tested against O(n^2) brute.",
+ "code_path": "solutions/kattis_intersectingrectangles.cpp",
+ "samples_passed": true
+}

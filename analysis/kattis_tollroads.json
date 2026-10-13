@@ -1,0 +1,14 @@
+{
+ "id": "kattis:tollroads",
+ "rating": 1900,
+ "topics": [
+  "dsu",
+  "mst",
+  "lca",
+  "trees"
+ ],
+ "key_idea": "Kruskal reconstruction tree: the minimax toll between a and b is the value of their LCA in the tree, and the reachable-city count is the subtree leaf count of the highest ancestor with that same value.",
+ "sketch": "Sort edges, run Kruskal, and for each merge create a new internal node with value = toll and size = sum of the two components. Since parents have larger indices, depths and binary-lifting tables are filled by a reverse index scan. For a query take the LCA, then jump to top[lca], the topmost ancestor having the same toll (precomputed by top[v] = top[parent] if values are equal) - this handles ties, where the component at threshold w is larger than the LCA's subtree. O((n+m+q) log n). Stress-tested against a brute-force DSU per query.",
+ "code_path": "solutions/kattis_tollroads.cpp",
+ "samples_passed": true
+}

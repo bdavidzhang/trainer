@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pieceofcake",
+ "rating": 1900,
+ "topics": [
+  "probability",
+  "geometry",
+  "combinatorics"
+ ],
+ "key_idea": "Linearity of expectation over directed edges of the shoelace formula: edge i->j appears iff both ends are chosen and none of the vertices strictly between them is.",
+ "sketch": "Probability for a gap of g skipped vertices is C(n-2-g, k-2)/C(n,k), computed with lgamma to avoid overflow. Expected area = 1/2 |sum_i cross(p_i, sum_g pr[g]*p_{i+1+g})|, O(n^2) = 6M operations. Take the absolute value since the input is clockwise. Stop the inner loop once the probability becomes zero (fewer than k-2 vertices left). Verified against enumeration of all subsets for small n.",
+ "code_path": "solutions/kattis_pieceofcake.cpp",
+ "samples_passed": true
+}

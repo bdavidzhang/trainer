@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jewelsbuilding",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "ad-hoc",
+  "greedy"
+ ],
+ "key_idea": "A block of L original crystals can be turned into any single value in 1..L (cut it into k parts, reduce each part to a 1, fuse the k ones) and nothing larger, except that an untouched single crystal keeps its value. So b_j needs either a block of length >= b_j or one crystal equal to b_j.",
+ "sketch": "Reachability DP: cur[i] = first i crystals of a can produce the first j targets. Transition: nx[i] = (cur[i-1] and a_i == b_j) or (minReach + b_j <= i), where minReach is the smallest reachable index for j-1, because a block may always be made longer. O(n*m) <= 16M with the sum-n bound. The fused value cannot exceed the number of fused crystals, which gives the upper bound L. Verified against a BFS over all operation sequences on 1800 small cases.",
+ "code_path": "solutions/kattis_jewelsbuilding.cpp",
+ "samples_passed": true
+}

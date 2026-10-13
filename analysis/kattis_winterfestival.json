@@ -1,0 +1,14 @@
+{
+ "id": "kattis:winterfestival",
+ "rating": 2400,
+ "topics": [
+  "graphs",
+  "dp-tree",
+  "bridges-bcc",
+  "case-analysis"
+ ],
+ "key_idea": "Adjacent-pair rule means every vertex is 'type 0' or 'type 1' (all its edges have that cost) plus at most one cost-2 edge; the odd-cycle rule forces the graph to be a cactus (a theta subgraph gives three cycles whose parities cannot all be odd). Then do a DP over the cactus.",
+ "sketch": "Build a DFS tree; for every back edge walk up the tree marking tree edges, and if any tree edge is covered twice the graph is not a cactus, answer -1. State f[v][type][used2] = min cost of the blocks hanging below v given v's type and whether one of them spends v's single cost-2 slot. A bridge child contributes cost t with both ends type t, or 2 using the slot on both ends. A cycle hanging at v is solved by a linear DP around it with state (label of previous edge, parity of number of 1-edges), trying the 3 labels of the first edge; an inner vertex between labels a,b has its type forced and uses its slot if either is 2 (2,2 and 0,1 are illegal), and the cycle must end with odd parity. Combine blocks at v by summing the no-slot costs and letting at most one block take the slot (track blocks whose no-slot cost is infinite separately). O(n+m), iterative DFS to avoid deep recursion. Stress-tested against a 3^m brute force with explicit simple-cycle enumeration.",
+ "code_path": "solutions/kattis_winterfestival.cpp",
+ "samples_passed": true
+}

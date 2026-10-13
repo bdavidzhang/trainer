@@ -1,0 +1,12 @@
+{
+ "id": "kattis:equalisingaudio",
+ "rating": 900,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Scaling all amplitudes by f scales the mean square by f^2, so f = sqrt(x*n / sum a_i^2).",
+ "sketch": "Compute S = sum a_i^2 (up to 1e17, use long double or 64-bit), then multiply every amplitude by sqrt(x*n/S). If all amplitudes are zero output zeros (silence preserved, avoids division by zero). O(n). Pitfalls: print enough digits for 1e-6 relative error; overflow of a_i^2 in 32-bit.",
+ "code_path": "solutions/kattis_equalisingaudio.cpp",
+ "samples_passed": true
+}

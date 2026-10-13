@@ -1,0 +1,13 @@
+{
+ "id": "kattis:joggingtour",
+ "rating": 2000,
+ "topics": [
+  "dp-bitmask",
+  "geometry",
+  "math"
+ ],
+ "key_idea": "For a fixed visiting order the rotated-L1 length is piecewise concave in the grid angle, with breakpoints only where some pair of points becomes axis-aligned, so only the O(n^2) pair directions need testing.",
+ "sketch": "Rotated Manhattan distance of a pair is d(|cos(t-phi)|+|sin(t-phi)|), concave between consecutive multiples of 90 degrees around the pair direction. A sum of such terms is concave on every interval free of breakpoints, so each path, and hence the minimum over paths, attains its minimum at an angle where some pair is aligned with the grid. Try the 66 directions atan2(pj-pi); for each rotate, build the L1 distance matrix and run Held-Karp shortest Hamiltonian path with free start and end, O(2^n n^2). Total 66 * 4096 * 144 about 4e7 operations. Pitfall: it is a path not a cycle, and angles need only be taken mod 90 degrees.",
+ "code_path": "solutions/kattis_joggingtour.cpp",
+ "samples_passed": true
+}

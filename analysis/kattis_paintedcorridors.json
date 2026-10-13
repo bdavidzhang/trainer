@@ -1,0 +1,12 @@
+{
+ "id": "kattis:paintedcorridors",
+ "rating": 2000,
+ "topics": [
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "Every robot move is reversible, so the reachable set of position triples is one connected component and any corridor that can be painted in some reachable transition can be painted in a single combined schedule.",
+ "sketch": "BFS over the n^3 <= 1e6 states (red, yellow, blue positions). A move is a non-empty subset of robots standing at the same junction walking along an edge whose colour is X or exactly the mix of that subset; mark specified edges when traversed with the exact colour. Output 1 iff every non-X edge got marked. Complexity O(n^3 * 7 * deg), about 0.7s on a complete graph. Pitfalls: input order of start junctions is r, b, y; robots can wait so moves are asynchronous; a lone robot may not walk through a secondary-colour corridor.",
+ "code_path": "solutions/kattis_paintedcorridors.cpp",
+ "samples_passed": true
+}

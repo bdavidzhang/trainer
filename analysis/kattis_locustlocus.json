@@ -1,0 +1,12 @@
+{
+ "id": "kattis:locustlocus",
+ "rating": 800,
+ "topics": [
+  "number-theory",
+  "implementation"
+ ],
+ "key_idea": "Each pair reappears together after lcm(c1,c2) years; take the minimum of y + lcm over all pairs.",
+ "sketch": "For each line compute y + c1/gcd(c1,c2)*c2 and output the minimum. O(k log c). The statement guarantees no result is earlier than 2022, so no multiples need to be skipped.",
+ "code_path": "solutions/kattis_locustlocus.cpp",
+ "samples_passed": true
+}

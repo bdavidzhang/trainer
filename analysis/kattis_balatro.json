@@ -1,0 +1,14 @@
+{
+ "id": "kattis:balatro",
+ "rating": 2400,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "divide-and-conquer",
+  "sorting"
+ ],
+ "key_idea": "Product <= 1e9 means at most 30 multiply cards, and a larger prefix score is always better, so dp[j][c] = best score using j multipliers and c add cards works left to right; a block of add cards is a (max,+) convolution of an arbitrary array with the concave prefix sums of the block sorted descending, which has monotone optima.",
+ "sketch": "Split the row into at most 31 blocks of add cards separated by multiply cards. For a block, sort descending and take prefix sums H (concave); for every j compute new[c] = max_t dp[j][c-t] + H[t] by divide-and-conquer optimisation, valid because arbitrary (+) concave gives an inverse-Monge band matrix so the argmax is monotone (restrict the candidate range to the band [c-L, c]). For a multiply card m, dp[j+1][c] = max(dp[j+1][c], dp[j][c]*m), iterating j downward and capping j at k. The answer for size s is the prefix maximum over c+j <= s. dp[j] is not concave in c, so a plain Minkowski merge is wrong. Complexity about 31 * 30 * n log n in the worst case, around 1 s locally against a 12 s limit; scores reach ~2e17 so use 64-bit. Stress-tested against a 2^n brute force for n <= 11.",
+ "code_path": "solutions/kattis_balatro.cpp",
+ "samples_passed": true
+}

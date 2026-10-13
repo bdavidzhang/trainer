@@ -1,0 +1,12 @@
+{
+ "id": "kattis:earlyorders",
+ "rating": 1600,
+ "topics": [
+  "monotonic-stack-queue",
+  "greedy"
+ ],
+ "key_idea": "Classic 'smallest subsequence of distinct characters': keep a stack, and pop a larger top element whenever it still occurs later.",
+ "sketch": "Precompute the last occurrence of every value. Scan left to right; skip values already on the stack; otherwise pop while top > current and last[top] > i, then push. Each element is pushed/popped at most once, O(n). Pitfall: forgetting the in-stack check or popping an element with no later occurrence. Stress-tested against brute force over all subsequences.",
+ "code_path": "solutions/kattis_earlyorders.cpp",
+ "samples_passed": true
+}

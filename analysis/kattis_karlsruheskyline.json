@@ -1,0 +1,12 @@
+{
+ "id": "kattis:karlsruheskyline",
+ "rating": 1200,
+ "topics": [
+  "constructive",
+  "greedy"
+ ],
+ "key_idea": "The tallest building is seen from both sides, so a-1 other buildings form an increasing run left of it and b-1 a decreasing run right of it; feasible iff a+b<=n+1 and not a=b=1.",
+ "sketch": "Answer 'no' if a+b>n+1 or a=b=1 (n>=2 means the max cannot be at both ends). Otherwise put values n-a+1..n-1 increasing, then n, then the b-1 next largest values decreasing; the leftover small values 1..n-a-b+1 are hidden right after n when b>=2 (shadowed by n from the left and by the taller decreasing run from the right), or right before n when b=1 (then a>=2 so the increasing run shadows them). O(n). Multiple answers are accepted so the token checker reports mismatches on the yes-samples; I validated with my own checker instead: exhaustive comparison against brute force over all permutations for every (n,a,b) with n<=7, plus visibility checks on n=1000 extremes.",
+ "code_path": "solutions/kattis_karlsruheskyline.cpp",
+ "samples_passed": true
+}

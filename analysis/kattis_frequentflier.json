@@ -1,0 +1,13 @@
+{
+ "id": "kattis:frequentflier",
+ "rating": 1800,
+ "topics": [
+  "greedy",
+  "data-structures",
+  "two-pointers"
+ ],
+ "key_idea": "Sweep windows by right endpoint; whenever the current window has paid less than min(k, flights in window), pay the deficit in the latest months of the window that still have unpaid flights, since later months help the most future windows.",
+ "sketch": "Slide a window of m months over r = 1..n+m-1 (windows hanging off either end count too, so the suffix windows must be processed). Maintain the window's flight sum and paid sum, and a stack of months that still have unpaid flights; the deficit min(k,sumf)-paid is taken from the top of the stack, popping saturated months. Everything on the stack that is needed lies inside the window because the deficit never exceeds the unpaid amount in the window. Amortised O(n+m), 64-bit totals (up to 2e14). Pitfall: forgetting the windows that end after month n gives too small an answer (6 instead of 8 on the sample). Stress-tested against exhaustive search.",
+ "code_path": "solutions/kattis_frequentflier.cpp",
+ "samples_passed": true
+}

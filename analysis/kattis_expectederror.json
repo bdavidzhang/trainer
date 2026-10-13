@@ -1,0 +1,13 @@
+{
+ "id": "kattis:expectederror",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "probability",
+  "implementation"
+ ],
+ "key_idea": "Write the expected time of each of the three strategies as a linear function of p and compare; a failed submit costs 0.3 plus a full retype n+1 keystrokes.",
+ "sketch": "Continue costs (n-k+1)*0.1 and fails with probability p; backspace costs (n-k+2)*0.1 and fails with probability 1-p (it deleted a correct character); a failure adds 0.3+(n+1)*0.1. Restart costs 0.3+(n+1)*0.1 deterministically. Scale everything by 1000 and compare in integers to avoid floating error: 100(n-k+1)+p(n+4), 100(n-k+2)+(100-p)(n+4), 100(n+4). O(1). Pitfall is only the modelling of what backspace does when no slip happened; the samples pin it down.",
+ "code_path": "solutions/kattis_expectederror.cpp",
+ "samples_passed": true
+}

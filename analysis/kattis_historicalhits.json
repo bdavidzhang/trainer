@@ -1,0 +1,14 @@
+{
+ "id": "kattis:historicalhits",
+ "rating": 2300,
+ "topics": [
+  "dp",
+  "probability",
+  "dp-interval",
+  "prefix-sums"
+ ],
+ "key_idea": "The first card drawn among the still-alive ones is always placed and splits the timeline; inside a gap (L,R) between two placed cards a card is alive iff its blocking range stays inside the gap, which depends only on (L,R), so E[L][R] = 1 + average over alive c of E[L][c]+E[c][R].",
+ "sketch": "Sort by true year; each card blocks on a contiguous range to its right (up to r_c) or left (down to l_c). In gap (L,R) right-type cards are alive iff r_c<R (independent of L) and left-type iff l_c>L (independent of R), and dead cards never matter again, so the relative order of the alive ones is uniform. To get O(n^2) maintain TL[L][R]=sum of E[L][c] over alive c incrementally in R (add c=R-1 if left-type alive, plus all right-type c with r_c=R-1) and TR[L][R]=sum of E[c][R] incrementally in L (symmetric), together with the alive count; iterate L downward, R upward. Answer E[0][n+1] with modular inverses of counts. Memory ~130 MB for three int tables plus counts. Pitfalls: b==a or empty range means always alive; strict betweenness when computing r_c/l_c. Stress-tested against all-permutation brute force for n<=6.",
+ "code_path": "solutions/kattis_historicalhits.cpp",
+ "samples_passed": true
+}

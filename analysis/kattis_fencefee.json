@@ -1,0 +1,14 @@
+{
+ "id": "kattis:fencefee",
+ "rating": 2000,
+ "topics": [
+  "geometry",
+  "graphs",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "Enumerate the faces of the planar straight-line graph by sorting half-edges by angle around each vertex and always turning to the neighbouring half-edge; the shoelace formula gives each face's area and the outer face is the one with the largest absolute area.",
+ "sketch": "Map endpoints to vertex ids, create two half-edges per fence, and sort the outgoing half-edges of every vertex by exact polar angle (half-plane plus cross product, no atan2). From half-edge u->v continue with the half-edge that precedes v->u in the cyclic order at v; this traces each face exactly once, accumulating twice the signed area with integer cross products. Since the graph is connected and bridgeless there is exactly one outer face and its |area| equals the sum of the others, so the answer is the sum of all squared doubled areas minus the maximum, divided by 4. Everything stays in 64-bit integers ((2A)^2 <= 4e12) and the result is printed exactly as a multiple of 0.25. O(F log F). Pitfalls: faces that touch themselves at a cut vertex still get the right area from the walk; do not assume simple polygons.",
+ "code_path": "solutions/kattis_fencefee.cpp",
+ "samples_passed": true
+}

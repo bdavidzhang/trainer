@@ -1,0 +1,13 @@
+{
+ "id": "kattis:figureskatingjudging",
+ "rating": 1400,
+ "topics": [
+  "sorting",
+  "prefix-sums",
+  "math"
+ ],
+ "key_idea": "The minimum-variance subset of size k is a contiguous window of the sorted array; evaluate each window with prefix sums.",
+ "sketch": "Sort, build prefix sums of x and x^2, and for every window compute sum of squared deviations = Q - S^2/k. To avoid cancellation (Q up to 5e17, S^2 up to 2.5e23) compute k*Q - S^2 exactly in __int128, take the minimum, and divide by k at the end. O(n log n). Pitfall is doing the subtraction in doubles, which loses the required precision.",
+ "code_path": "solutions/kattis_figureskatingjudging.cpp",
+ "samples_passed": true
+}

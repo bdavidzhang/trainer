@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ummcode",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Split on spaces, keep the u/m characters of words that contain no other letter or digit, then decode 7 bits per character with u=1, m=0.",
+ "sketch": "Scan the line word by word; a word is valid if every alphanumeric character in it is a lowercase u or m (punctuation is allowed and skipped). Concatenate the u/m of valid words and convert each group of 7 into an ASCII character. O(S). Pitfalls: read the whole line with getline, words such as 'um?' count while 'umm1' or 'Um' do not, and build the output in a buffer for 500k input.",
+ "code_path": "solutions/kattis_ummcode.cpp",
+ "samples_passed": true
+}

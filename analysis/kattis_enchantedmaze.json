@@ -1,0 +1,13 @@
+{
+ "id": "kattis:enchantedmaze",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "implementation",
+  "bitmasks"
+ ],
+ "key_idea": "State = (position of twin 1, position of twin 2, 4-bit switch mask): at most 100*100*16 states, so a plain BFS over the four shared directions works; all the difficulty is in simulating the move rules exactly.",
+ "sketch": "BFS from the two S cells with mask 0. For a direction, each twin's target is computed against the obstacle state before the move: out of bounds or a pit makes the move illegal, a fixed or currently raised obstacle keeps that twin in place. Moves that put both twins in one cell are rejected. A twin that actually moved onto switch k toggles bit k after the move, and the move is rejected if the other twin ends on an obstacle cell of label k (it would be raised under them). Uppercase is raised iff its bit is 0, lowercase iff its bit is 1. Finish when both stand on E. O(R^2 C^2 * 16 * 4). Pitfalls: a stationary twin on a switch does not re-trigger it; toggles take effect only at the end of the move. Samples pass; the 'same cell' and 'lowered obstacle' cases are read as illegal moves rather than blocked ones, which the samples do not distinguish.",
+ "code_path": "solutions/kattis_enchantedmaze.cpp",
+ "samples_passed": true
+}

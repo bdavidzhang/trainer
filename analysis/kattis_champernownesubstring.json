@@ -1,0 +1,14 @@
+{
+ "id": "kattis:champernownesubstring",
+ "rating": 2600,
+ "topics": [
+  "case-analysis",
+  "brute-force",
+  "math",
+  "strings"
+ ],
+ "key_idea": "Enumerate the digit length L of the number containing the first character, the offset inside it, its last digit d and (if the covered numbers cross a multiple of 10) the number t of trailing 9s above the last digit; then every pattern character constrains a single independent digit, so the minimum number is built digit by digit.",
+ "sketch": "The minimal index is the minimal (starting number x, offset). Small x (<= 20000) and the length-changing cases x in [10^L-10, 10^L) are checked directly by generating the text. For L from 3 to 27 the pattern touches at most 9 numbers x..x+8, so the units digit overflows at most once: before the carry the high part is H, after it H+1, which differs only in a run of t 9s -> 0s and one pivot digit q -> q+1 (q != 9). For fixed (L, offset, d, t) each pattern char maps to a units digit (checked), a run digit (must be 9 or 0), the pivot (forces q) or an ordinary digit (forces it); free digits take 0 (1 for the leading digit, 9 inside the run). The best candidate index is kept in __int128 and printed mod 998244353. About 27*27*10*27*25 operations per test. Pitfalls: leading digit non-zero, pivot may be the leading digit, index formula 1 + sum 9*10^(l-1)*l + (x-10^(L-1))*L + offset. Stress-tested against a direct scan of the first ~2e7 characters on random patterns.",
+ "code_path": "solutions/kattis_champernownesubstring.cpp",
+ "samples_passed": true
+}

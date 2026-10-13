@@ -1,0 +1,12 @@
+{
+ "id": "kattis:tightlypacked",
+ "rating": 1500,
+ "topics": [
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "With W <= H <= 2W the short side is at most ceil(sqrt(N)), about 1e8, so simply try every W and take H = max(W, ceil(N/W)).",
+ "sketch": "Iterate W from 1 upward; H = ceil(N/W), and once H <= W use the square W x W and stop, since larger W only wastes more. A candidate is valid when H <= 2W, and the answer is the minimum W*H - N. About 1e8 64-bit divisions, about 0.15 s locally against a 4 s limit. Pitfalls: N up to 1e16 needs 64-bit, an exact factorisation of N is not required and usually not possible within the aspect ratio, and the W >= sqrt(N) boundary case (for example N=1 or N=3) must be handled.",
+ "code_path": "solutions/kattis_tightlypacked.cpp",
+ "samples_passed": true
+}

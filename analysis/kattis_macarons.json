@@ -1,0 +1,13 @@
+{
+ "id": "kattis:macarons",
+ "rating": 1900,
+ "topics": [
+  "matrix-exponentiation",
+  "dp-bitmask",
+  "combinatorics"
+ ],
+ "key_idea": "Column-profile DP: the state is the set of cells of the next column already covered by horizontal dominoes (2^N <= 256 states), and the column transition is a fixed matrix raised to the M-th power.",
+ "sketch": "T[a][b] for b a subset of the free cells of a: the cells in b get horizontal dominoes poking into the next column, and the remaining free cells split into maximal vertical runs, each tiled by 1x1 and vertical dominoes in Fibonacci(run) ways, so T[a][b] is a product of Fibonacci numbers. The answer is (T^M)[0][0]. To stay inside the limit, keep a row vector and multiply it by the current power only on set bits, so there are just 60 matrix squarings of 256^3 (about 1e9 multiply-adds, 0.5 s) plus cheap vector products. The modulus is 1e9 (not prime, so Berlekamp-Massey style shortcuts needing inverses are out); products are below 1e18 so accumulate in unsigned 64-bit and reduce every 16 terms. M up to 1e18 needs 64-bit input.",
+ "code_path": "solutions/kattis_macarons.cpp",
+ "samples_passed": true
+}

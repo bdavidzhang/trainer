@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cookiecutter2",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "sweep-line",
+  "sorting"
+ ],
+ "key_idea": "For a fixed set of chips on your side the area is minimised by a line through a chip; rotating about that chip, the area's only interior local minima are corner triangles whose chord has the chip as midpoint, so candidates are lines through two chips plus those O(4m) midpoint triangles.",
+ "sketch": "Candidates of type 1: for every pivot chip, sort the other chips by direction modulo pi (exact integer cross products), sweep once keeping the count strictly left of the directed line, and for each distinct direction evaluate both sides, counting every chip on the line as yours; the area is obtained by clipping the square with the half-plane in O(1). Candidates of type 2: for each chip and each corner, if 2dx<=n and 2dy<=n take the triangle with legs 2dx,2dy (area 2*dx*dy, derivative of area under rotation is (r1^2-r2^2)/2, zero at the midpoint) and count chips inside with an integer test in O(m). Trapezoid cuts (opposite sides) have monotone or constant area in the angle so add no interior candidates. Answer is the max of count/m - area/n^2, at least 0. Complexity O(m^2 log m), about 0.6 s for m=3000. Pitfalls: collinear chips must be grouped, both orientations of each line tried, m=1 handled by the triangle candidates. Verified against dense angular sampling on 400 small random cases.",
+ "code_path": "solutions/kattis_cookiecutter2.cpp",
+ "samples_passed": true
+}

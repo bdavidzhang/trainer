@@ -1,0 +1,14 @@
+{
+ "id": "kattis:bossrush",
+ "rating": 3000,
+ "topics": [
+  "math",
+  "greedy",
+  "dsu",
+  "binary-search"
+ ],
+ "key_idea": "Write w=q*d+r; a parry order is a path on jobs with in-value A=f and out-value B=(f+r) mod d, and the finish time is B_last - r + d*(H + D) + (N-1)*q*d where H counts f+r>=d and D counts 'descents' A_next < B_cur. Minimising descents on a Hamiltonian path is a Gilmore-Gomory style patching problem with a closed form.",
+ "sketch": "Close the path into a cycle with a dummy node (B=0, A=beta): the closing link is free iff B_last <= beta. For a cycle, let e(x) = #{A>=x} - #{B>=x} and delta = max(0, max_x -e(x)); any permutation needs at least delta descents. Thresholds with e(x) = -delta are tight (no free link may cross them), splitting the value line into zones; each node joins zone(A) with zone(B), and when delta>=1 the descents join the top and bottom zones. Inside a zone links overlap and cycles can always be merged by swapping successors for free, so the minimum number of descents is delta if this zone graph is connected and delta+1 otherwise (DSU over zones). Compute D with beta=infinity, then binary search the smallest beta among the B values that keeps the same D; that beta is B_last. O(N log^2 N), about 1.3 s for N=3e5. Pitfalls: r=0, duplicate phases, the 'high' jobs with f+r>=d, and 64-bit totals (~3e14). The zone-connectivity claim was derived by an exchange argument and then verified against a bitmask-DP brute force on about 14k random small instances (N<=10, including evenly spaced gcd-obstructed cases) with zero mismatches; plain earliest-first, latest-first and EDF greedies are all wrong.",
+ "code_path": "solutions/kattis_bossrush.cpp",
+ "samples_passed": true
+}

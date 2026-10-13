@@ -1,0 +1,13 @@
+{
+ "id": "kattis:subsequencesinsubstrings",
+ "rating": 1400,
+ "topics": [
+  "strings",
+  "two-pointers",
+  "dp"
+ ],
+ "key_idea": "For a fixed start i, the substring s[i..j] contains t iff j is at least the end of the greedy earliest match of t from i; so the answer is the sum over i of (n - earliest_end(i)).",
+ "sketch": "Precompute nxt[i][c] = first position >= i holding character c (n x 26 table, filled right to left). For each start i jump through t with |t| lookups to get the earliest end e, add n - e, and stop at the first i where the match fails (it fails for all later starts too). O(26n + n|t|) = about 1e7 operations. Pitfalls: 64-bit answer (up to ~5e9) and off-by-one between the end index and the one-past-end pointer.",
+ "code_path": "solutions/kattis_subsequencesinsubstrings.cpp",
+ "samples_passed": true
+}

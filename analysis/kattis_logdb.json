@@ -1,0 +1,12 @@
+{
+ "id": "kattis:logdb",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Tokenise each line into name(arg,...) records ignoring whitespace, then match every query against facts of the same name and arity with per-query variable bindings.",
+ "sketch": "Parse facts by scanning for a name, then '(' and collecting names until ')'; several facts may sit on one line with or without separating whitespace. Store facts in a map keyed by (name, arity). For a query, iterate over that bucket: a literal must equal the fact argument, '_' matches anything, and a named variable binds on first use and must equal the bound value on later uses (different variables may bind to the same name). Count every occurrence, including duplicates. At most ~10^4 facts and 200 queries, so brute force is trivial. Pitfalls: the fact section ends at a blank (possibly whitespace-only) line, names can be all digits, whitespace may appear between the name and '('.",
+ "code_path": "solutions/kattis_logdb.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fencesmakegoodneighbors",
+ "rating": 2400,
+ "topics": [
+  "dp-interval",
+  "geometry",
+  "dp"
+ ],
+ "key_idea": "The two brothers' triangles hang off two sides ab and bc of a middle triangle abc, so with interval DP g over cyclic arcs and h_k[a][b] = best split of arc a..b whose apex triangle strictly contains brother k, the answer is min over a,b,c of h1[a][b]+|ab|+h2[b][c]+|bc|+g[c][a] (and with brothers swapped).",
+ "sketch": "g[i][j] is the min-weight triangulation of the sub-polygon on the cyclic arc i..j including chord (i,j) when it is a diagonal, and infinite if that chord passes through a brother (exact integer cross product equal to zero). While computing min over k of g[i][k]+g[k][j] also record h_k[i][j] restricted to apexes where the brother lies strictly inside triangle (i,k,j), tested with precomputed side signs. Then enumerate ordered cyclic triples a,b,c with both arcs a..b and b..c of length at least 2. Total O(n^3), about 0.3 s for n=500. Pitfalls: arcs wrap around so use cyclic indices, polygon edges cost nothing, the triangles must be at dual distance exactly 2 (not adjacent, not the same), and print IMPOSSIBLE when no finite value exists. Verified against an enumeration of all triangulations on random small polygons.",
+ "code_path": "solutions/kattis_fencesmakegoodneighbors.cpp",
+ "samples_passed": true
+}

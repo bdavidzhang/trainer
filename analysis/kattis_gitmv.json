@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gitmv",
+ "rating": 1500,
+ "topics": [
+  "strings",
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Work on path components: take the longest common component prefix as A and the longest common component suffix as D, subject to them not overlapping in the shorter path.",
+ "sketch": "Split both paths on '/', compute L = longest common prefix in components and R = longest common suffix. Every component moved out of B and C into A or D shortens the output, so use as many as possible with i + j <= min(p,q); I loop i over 0..L with j = min(R, min(p,q)-i) and pick the shortest using prefix sums of component lengths (the no-repeated-name guarantee means the overlap case essentially never binds, but the loop handles it). Output A with trailing slashes, '{B => C}', and D with leading slashes; B or C may be empty. O(total length). Verified by brute force over all (i,j) splits on random small paths. Pitfalls: comparison must be per component not per character (e.g. 'ab/c' vs 'ax/c' share no prefix), empty B or C, and 1e6-character lines need fast I/O and no quadratic string building.",
+ "code_path": "solutions/kattis_gitmv.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:permanent",
+ "rating": 1400,
+ "topics": [
+  "dp-bitmask",
+  "combinatorics"
+ ],
+ "key_idea": "The permanent is a sum over permutations, so process rows in order and DP over the set of columns already used.",
+ "sketch": "dp[mask] = sum of products over ways to assign the first popcount(mask) rows to the columns in mask; transition adds an unused column j with weight a[row][j]. O(2^n * n) with n<=10, although even plain n! = 3.6M enumeration would pass. Entries may be negative; the magnitude is bounded by 10! * 10^10 = 3.6e16, so 64-bit integers are required but sufficient.",
+ "code_path": "solutions/kattis_permanent.cpp",
+ "samples_passed": true
+}

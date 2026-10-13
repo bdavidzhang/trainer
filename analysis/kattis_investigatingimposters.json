@@ -1,0 +1,13 @@
+{
+ "id": "kattis:investigatingimposters",
+ "rating": 1500,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "bitset"
+ ],
+ "key_idea": "If j is an imposter then everyone who lists j must be an imposter, transitively; so j can be an imposter iff the number of villagers that reach j in the 'lists' graph (including j) is at most k.",
+ "sketch": "Build the directed graph i->j when i lists j. Making j an imposter forces exactly its ancestor set to be imposters, and that minimal set is consistent (everyone else is honest and lists only honest people, since anyone listing an ancestor is itself an ancestor). Compute the transitive closure with a bitset Warshall in O(n^3/64) for n=500 and output 0 when |ancestors(j)| <= k, else 1. Pitfalls: count j itself, self-loops are harmless, and the output convention is inverted (1 means definitely not an imposter).",
+ "code_path": "solutions/kattis_investigatingimposters.cpp",
+ "samples_passed": true
+}

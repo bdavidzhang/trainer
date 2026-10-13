@@ -1,0 +1,12 @@
+{
+ "id": "kattis:mingle",
+ "rating": 1300,
+ "topics": [
+  "probability",
+  "math"
+ ],
+ "key_idea": "Linearity of expectation: every room is in the window of exactly 2k+1 players (2k+1<=n so no wrap overlap), so each player wins with probability (2k/(2k+1))^(2k).",
+ "sketch": "Player i picks one of 2k+1 rooms uniformly; for any such room exactly 2k other players have it in their window, each avoiding it with probability 2k/(2k+1). So P(win)= (2k/(2k+1))^(2k) regardless of room and the answer is n*(2k/(2k+1))^(2k) mod 998244353 using a modular inverse and fast power. O(log) time. Only pitfall is noticing the constraint k<=(n-1)/2 makes windows non-self-overlapping.",
+ "code_path": "solutions/kattis_mingle.cpp",
+ "samples_passed": true
+}

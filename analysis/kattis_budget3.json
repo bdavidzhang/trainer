@@ -1,0 +1,13 @@
+{
+ "id": "kattis:budget3",
+ "rating": 1700,
+ "topics": [
+  "math",
+  "prefix-sums",
+  "linear-algebra"
+ ],
+ "key_idea": "Ridge regression with two parameters is a 2x2 normal system whose entries are window sums of x, y, x^2, xy, so each query is prefix sums plus Cramer's rule; the determinant cancels catastrophically in floating point, so keep the sums exact in integers.",
+ "sketch": "Parse every real as an integer number of 1e-6 units. Keep prefix sums of x and y in int64 and of x^2 and xy in __int128. For a query solve (Sxx+l)K + Sx B = Sxy, Sx K + (n+l)B = Sy: determinant and both numerators are computed exactly in __int128 on a common 1e-18 scale (values up to about 1e33), then converted to floating point only for the final (Kn*X+Bn)/det. If the determinant is exactly zero (lambda=0 and all x equal) the minimum-norm solution is used. O(n+m) with a hand-written fread parser, about 0.5s at the maximum size. Pitfall: double prefix sums lose the determinant when the x values in a short window are nearly equal deep into the array. Checked against exact rational arithmetic on random small cases.",
+ "code_path": "solutions/kattis_budget3.cpp",
+ "samples_passed": true
+}

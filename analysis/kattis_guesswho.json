@@ -1,0 +1,12 @@
+{
+ "id": "kattis:guesswho",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Filter the characters by each answered attribute and count the survivors.",
+ "sketch": "Keep a boolean per character; for each query (attribute A, answer c) drop every character whose A-th letter differs from c. If exactly one remains print 'unique' and its 1-based index, otherwise 'ambiguous' and the count. O(N*Q). No pitfalls beyond 1-based attribute indices.",
+ "code_path": "solutions/kattis_guesswho.cpp",
+ "samples_passed": true
+}

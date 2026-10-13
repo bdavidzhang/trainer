@@ -1,0 +1,14 @@
+{
+ "id": "kattis:bomas",
+ "rating": 2400,
+ "topics": [
+  "sweep-line",
+  "trees",
+  "dp-tree",
+  "geometry"
+ ],
+ "key_idea": "All n+q circles are mutually non-crossing, so build one containment tree for all of them with a sweep line, then do the tree independent-set DP bottom-up where query circles are 'transparent' nodes that just forward the sums of their existing descendants.",
+ "sketch": "Sweep by x with a set of upper/lower arcs ordered by y; when a circle is inserted, the arc directly above its leftmost point gives the parent (upper arc of D -> D, lower arc of D -> parent of D). Comparisons only ever involve the newly inserted integer point versus an existing arc, so they are done exactly in 64-bit integers (compare dy^2 with r^2-dx^2), and removals use stored iterators. Then process circles by increasing radius: an existing circle has f0 = sum max(f0,f1) of children, f1 = 1 + sum f0, and passes (max, f0) to its parent; a query circle answers max(S_max, 1 + S_0) and passes its accumulated sums up unchanged so it does not affect other queries. O((n+q) log(n+q)). Pitfalls: floating-point arc comparison at 1e7 coordinates, processing inserts before removals at equal x, and queries nested in other queries. Stress-tested against an O(N^2) containment brute force.",
+ "code_path": "solutions/kattis_bomas.cpp",
+ "samples_passed": true
+}

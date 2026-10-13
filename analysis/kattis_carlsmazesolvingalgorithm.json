@@ -1,0 +1,12 @@
+{
+ "id": "kattis:carlsmazesolvingalgorithm",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "bfs-dfs"
+ ],
+ "key_idea": "Simulate the left-hand rule literally and stop when a (cell, direction) state repeats.",
+ "sketch": "State is (row, col, facing) with at most 50*50*4 values. Each step: if the cell to the left is in bounds and empty turn left and move, else if the cell ahead is empty move, else turn right. Reaching the target prints 1; revisiting a state means a cycle, print 0. Pitfalls: out-of-bounds counts as blocked, start faces right, and rows grow downward so 'left' of right is up.",
+ "code_path": "solutions/kattis_carlsmazesolvingalgorithm.cpp",
+ "samples_passed": true
+}

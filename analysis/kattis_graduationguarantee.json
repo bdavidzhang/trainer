@@ -1,0 +1,14 @@
+{
+ "id": "kattis:graduationguarantee",
+ "rating": 1600,
+ "topics": [
+  "probability",
+  "dp",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "If you answer m questions it is optimal to answer the m with the highest p, so sort descending and try every prefix length with a running Poisson-binomial DP.",
+ "sketch": "Sort p descending. Maintain dp[j] = probability of exactly j correct among the first m answered questions, updating in place when adding question m (O(m)). The score is 2j-m, so the pass probability for prefix m is the sum of dp[j] for j >= ceil((m+k)/2); take the max over m>=k. Total O(n^2) = 2.5e7 double operations, O(n) memory. Pitfalls: answering more questions is not monotonically better (parity and p=0.5 questions), so every m must be tried; no feedback means the set is fixed in advance.",
+ "code_path": "solutions/kattis_graduationguarantee.cpp",
+ "samples_passed": true
+}

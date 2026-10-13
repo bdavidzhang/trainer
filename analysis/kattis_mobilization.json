@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mobilization",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "math"
+ ],
+ "key_idea": "Each troop is a point (h/c, p/c) of health and potency per unit of money; a fractional army is a convex combination, so we maximise x*y over the convex hull and the optimum lies on a hull edge (i.e. uses at most two troop types).",
+ "sketch": "Map each troop to (h/c, p/c), build the upper hull by monotone chain, and for every hull vertex and every hull edge maximise the product: along an edge it is a quadratic in t, so check the endpoints and the critical point t = -(ax*dy+ay*dx)/(2*dx*dy) when it lies in (0,1). Multiply by b^2. O(n log n). xy is quasi-concave on the positive quadrant so the maximum over a convex set is on the upper-right boundary. Pitfalls: inputs have up to 20 decimals (read as long double), h or p may be 0, duplicate points, n=1. Stress-tested against a pairwise sampling brute force.",
+ "code_path": "solutions/kattis_mobilization.cpp",
+ "samples_passed": true
+}

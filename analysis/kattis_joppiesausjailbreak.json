@@ -1,0 +1,14 @@
+{
+ "id": "kattis:joppiesausjailbreak",
+ "rating": 2000,
+ "topics": [
+  "math",
+  "sorting",
+  "sweep-line",
+  "brute-force"
+ ],
+ "key_idea": "For frame time t the total is t*sum ceil(a_i/t), which increases with t while the ceilings are fixed, so the optimum is t=1/f or a breakpoint t=l_i/(1000k); there are only sum(l_i)*f/1000 <= 1e6 breakpoints, and they can be swept in sorted order with O(1) updates.",
+ "sketch": "Group equal lengths. Start at t=1/f with S = sum ceil(l*f/1000) computed in integers. Generate every event t=l/(1000k) with t strictly greater than 1/f (k <= (l*f-1)/1000), sort by t, and at each event decrement S by the multiplicity of that length, then evaluate t*S after all events sharing that t. O(E log E) with E <= 1e6. Pitfalls: the frame rate may only be lowered, the ceiling at a breakpoint is exactly k (evaluate after the decrement), and float ties in the sort are harmless because a partially updated S only overestimates. Verified against an exact Fraction brute force.",
+ "code_path": "solutions/kattis_joppiesausjailbreak.cpp",
+ "samples_passed": true
+}

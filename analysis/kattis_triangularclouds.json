@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triangularclouds",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "sorting",
+  "hashing"
+ ],
+ "key_idea": "Two unions of interior-disjoint triangles are equal iff their oriented boundaries are equal as chains: orient every triangle counter-clockwise, add Garry's edges with +1 and Jerry's with -1, and everything must cancel on every supporting line.",
+ "sketch": "Shared internal edges of a triangulation cancel because they are traversed in opposite directions, so the signed sum of edges is the boundary of the covered region regardless of how it is cut up. For every directed edge normalise the direction (divide by gcd, make it lexicographically positive, flipping the sign if reversed), identify its line by (dx, dy, dx*y-dy*x) and turn the edge into two events +w at its lower endpoint and -w at its upper endpoint along that line. Sort all 6(n+m) events by (line, position) and require that the events at every identical (line, position) sum to zero. O((n+m) log(n+m)). Pitfalls: coordinates up to 1e9 make the orientation cross product reach 8e18 (I used __int128) and the line constant up to 4e18 (fits in int64 only because the direction is gcd-reduced and bounded by 2e9); partial overlaps of collinear edges are what the event sweep handles and a plain edge multiset would miss; n or m may be 0. Besides the samples I verified against a quarter-cell coverage brute force on grids of half-square triangles.",
+ "code_path": "solutions/kattis_triangularclouds.cpp",
+ "samples_passed": true
+}

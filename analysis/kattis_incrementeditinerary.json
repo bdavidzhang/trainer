@@ -1,0 +1,13 @@
+{
+ "id": "kattis:incrementeditinerary",
+ "rating": 1600,
+ "topics": [
+  "shortest-paths",
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "Along a walk of length d+1 the BFS level changes by -1/0/+1 per step and must total d, so exactly one step stays on the same level and all others go up; such a walk is automatically simple.",
+ "sketch": "BFS from 1 and from n. A route of length d+1 exists iff there is an edge (u,v) with dist1[u]==dist1[v] such that one endpoint lies on a shortest 1-n path (dist1+distn==d): go down the BFS tree to the other endpoint, cross the level edge, then follow a shortest path to n. All vertices have distinct levels except u and v, so no vertex repeats. O(n+m). Pitfalls: check both orientations of the edge; vertices unreachable from 1 must be skipped. Verified against exhaustive simple-path enumeration on random small graphs.",
+ "code_path": "solutions/kattis_incrementeditinerary.cpp",
+ "samples_passed": true
+}

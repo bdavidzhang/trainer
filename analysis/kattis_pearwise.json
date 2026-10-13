@@ -1,0 +1,12 @@
+{
+ "id": "kattis:pearwise",
+ "rating": 1600,
+ "topics": [
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "In the 'beats' tournament graph a candidate can win under some agenda iff every other candidate is reachable from it along beats-edges.",
+ "sketch": "Count pairwise preferences from the ballots (O(m n^2)) to get the tournament: i -> j if i beats j head to head. If x reaches everyone, order the agenda by decreasing BFS distance from x so each candidate is eventually knocked out by its BFS parent and x enters last; conversely any candidate that eliminated someone on the chain to the winner is reachable. Compute the transitive closure with Floyd-Warshall on at most 26 nodes and print 'can win' iff the row is all ones. Pitfalls: n = 1, and the output apostrophe is plain ASCII. Verified against trying all agendas for n <= 6.",
+ "code_path": "solutions/kattis_pearwise.cpp",
+ "samples_passed": true
+}

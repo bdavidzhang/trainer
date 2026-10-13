@@ -1,0 +1,13 @@
+{
+ "id": "kattis:purplerain",
+ "rating": 1300,
+ "topics": [
+  "prefix-sums",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Map R to +1 and B to -1; the answer is the subarray with maximum absolute sum, i.e. a max difference of two prefix sums, with a lexicographic tie-break.",
+ "sketch": "Build prefix sums P and suffix max/min of P. The best value V is the max over i of max(sufmax[i+1]-P[i], P[i]-sufmin[i+1]). Take the smallest i attaining V, then scan for the smallest j>i with |P[j]-P[i]|=V. O(n). Pitfall is only the tie-break (leftmost start, then leftmost end) and handling both signs (more R or more B). Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_purplerain.cpp",
+ "samples_passed": true
+}

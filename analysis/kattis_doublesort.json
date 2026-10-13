@@ -1,0 +1,14 @@
+{
+ "id": "kattis:doublesort",
+ "rating": 2300,
+ "topics": [
+  "probability",
+  "combinatorics",
+  "big-integer",
+  "math"
+ ],
+ "key_idea": "E[k-th smallest gap] = sum over t of P(at least n-k+1 gaps are >= t), and the number of selections where a fixed set of j gaps are all >= t is C(m-j(t-1), n); inclusion-exclusion for 'at least r' then needs only T_j = sum_t C(m-j(t-1), n).",
+ "sketch": "Gaps d_1..d_n >= 1 with sum <= m are in bijection with the chosen sets, and forcing j specific gaps to be >= t just shrinks m by j(t-1). P(at least r of the events) = sum_{j>=r} (-1)^(j-r) C(j-1,r-1) C(n,j) * C(m-j(t-1),n)/C(m,n); summing over t first gives E = sum_j coef(r,j) T_j / C(m,n) with only n values T_j. The alternating sum cancels catastrophically (terms ~1e27 times the answer) so doubles and long doubles fail: compute C(x,n) for all x by Pascal's rule and the whole sum in exact 1024-bit integers (add, negate, multiply by a 64-bit word), converting to double only for the final division. Output prefix sums of the expected sorted gaps. Cost O(n*m) big additions, about 10 ms. Verified against full enumeration for small n,m and the identity that the last value is n(m+1)/(n+1).",
+ "code_path": "solutions/kattis_doublesort.cpp",
+ "samples_passed": true
+}

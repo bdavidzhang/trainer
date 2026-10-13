@@ -1,0 +1,14 @@
+{
+ "id": "kattis:dontfencemein",
+ "rating": 1700,
+ "topics": [
+  "dsu",
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Each wall removal merges exactly two faces, so the answer is the number of enclosed faces; count them by splitting every cell into four triangles and running DSU/flood fill.",
+ "sketch": "Split every cell into top/right/bottom/left triangles. A '/' joins top with left and right with bottom, a backslash joins top with right and bottom with left, a '.' joins all four. Neighbouring cells share the facing triangles, and triangles on the border of the grid are joined to a virtual outside node. The number of DSU components minus one (the outside) is the number of enclosed regions, and since the face-adjacency graph is connected and each removed wall merges two faces, that is the minimum number of removals. O(RC alpha) on 4e6 nodes, well within 6 s. Pitfalls: diagonal walls do not block in a plain cell grid so a naive flood fill fails; reading backslashes correctly; memory for 4*R*C nodes.",
+ "code_path": "solutions/kattis_dontfencemein.cpp",
+ "samples_passed": true
+}

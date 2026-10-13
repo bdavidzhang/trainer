@@ -1,0 +1,13 @@
+{
+ "id": "kattis:browniecutting",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "math"
+ ],
+ "key_idea": "Each cut adds twice its chord length, and the longest chord is the polygon diameter D, attained only by vertex pairs; extra cuts can get arbitrarily close to D but equal it only once per diametral pair.",
+ "sketch": "Total perimeter gain is 2*sum of chord lengths regardless of how cuts intersect. Find D^2 and the number c of vertex pairs at distance D with rotating calipers (for each edge take the farthest vertex and check its neighbours too, collecting pairs in a set to handle parallel edges and ties). With m cuts the gain can equal 2mD only if m<=c, otherwise it is strictly below but arbitrarily close. So let m1 be the least m with 4m^2D^2 >= k^2; answer m1 if m1<=c, else the least m with strict inequality (m1 or m1+1). All comparisons are exact in __int128 (D^2 up to 2e18, m up to 5e8); k=0 gives 0. O(n log n). Stress-tested against an O(n^2) brute force including exact-equality cases.",
+ "code_path": "solutions/kattis_browniecutting.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:beastbullies",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "sorting",
+  "games",
+  "prefix-sums"
+ ],
+ "key_idea": "Process animals from strongest to weakest: the current stable group attacks, and everyone below it (who would be eliminated in turn if the weakest falls) defends; a new stable group forms as soon as the pending animals' strength sum reaches the stable group's sum.",
+ "sketch": "Sort descending. Keep att = strength sum of the current stable top group and def = sum of the animals examined since. An animal in the pending block knows that if the weakest goes, the chain continues down to the stable group, so it defends; stable members attack since they are safe. When def >= att (attack must be strictly greater to succeed) the whole prefix becomes stable: att += def, def = 0, record its size. The answer is the last recorded size. O(n log n), sums need 64-bit (up to 5e14).",
+ "code_path": "solutions/kattis_beastbullies.cpp",
+ "samples_passed": true
+}

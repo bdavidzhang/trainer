@@ -1,0 +1,12 @@
+{
+ "id": "kattis:riseandfall",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "strings"
+ ],
+ "key_idea": "Keep the longest valid prefix of n; at the first digit that rises after a fall, copy the previous digit there and in all later positions.",
+ "sketch": "Scan the digits, marking when a strict decrease has occurred. The first position i where s[i]>s[i-1] after a fall is the first violation; the prefix before it must be kept (it is the largest possible) and position i can be at most s[i-1], which is strictly smaller than s[i], so the number is now free and the maximal completion in the falling phase is s[i-1] repeated to the end. If no violation exists the number itself is the answer. O(total length); the number has up to 1e5 digits so treat it as a string. No leading-zero issue since the first digit is never changed. Verified against brute force for n up to 2e5.",
+ "code_path": "solutions/kattis_riseandfall.cpp",
+ "samples_passed": true
+}

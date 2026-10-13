@@ -1,0 +1,12 @@
+{
+ "id": "kattis:runningroutes",
+ "rating": 1700,
+ "topics": [
+  "dp-interval",
+  "dp"
+ ],
+ "key_idea": "Chords of a convex polygon that share no point form a non-crossing matching, so do interval DP over vertex ranges: vertex i is either unused or matched to some k, splitting the range into two independent parts.",
+ "sketch": "dp[i][j] = best for vertices in the half-open range [i,j). Transition: dp[i+1][j] (i unused), or for each k in (i,j) with M[i][k]=1: 1 + dp[i+1][k] + dp[k+1][j]. Because the polygon is convex, linearising the circle at vertex 0 loses nothing. O(n^3/6) ~ 2*10^7 operations for n=500, trivial in the 12 s limit. Pitfall: paths sharing an endpoint also conflict, so it is a matching, not just a non-crossing chord set.",
+ "code_path": "solutions/kattis_runningroutes.cpp",
+ "samples_passed": true
+}

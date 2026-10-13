@@ -1,0 +1,12 @@
+{
+ "id": "kattis:democraticnaming",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Count letter frequencies per column and take the most frequent, breaking ties toward the smallest letter.",
+ "sketch": "For each of the m positions keep a 26-entry counter over the n names. Output for each position the letter with the highest count, scanning a..z and replacing only on strictly greater so ties go to the earliest letter. O(n*m) time. No pitfalls beyond the tie rule.",
+ "code_path": "solutions/kattis_democraticnaming.cpp",
+ "samples_passed": true
+}

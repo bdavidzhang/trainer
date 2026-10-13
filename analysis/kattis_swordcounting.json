@@ -1,0 +1,13 @@
+{
+ "id": "kattis:swordcounting",
+ "rating": 2000,
+ "topics": [
+  "graphs",
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "Count per directed edge (D,B): (deg B - 1) * C(deg D - 1, 3) choices of A and {C,E,F}, minus the cases where A coincides with one of C,E,F, which is (triangles through edge DB) * C(deg D - 2, 2).",
+ "sketch": "A sword is determined by its hub D, the neighbour B, the tip A in N(B)\\{D} and an unordered triple from N(D)\\{B}; the only invalid configurations are those where A is itself in the triple, which requires A to be a common neighbour of B and D. So compute the number of triangles through every edge with the standard degree-ordered orientation (each vertex keeps only edges to higher (degree,id) vertices, mark out-neighbours and scan) in O(m sqrt m), then sum the formula over both directions of every edge. Totals can approach 2e18, so I accumulate in unsigned __int128 and print manually. Pitfalls: C,E,F are unordered (edge sets define distinctness), and degree-1 offsets in the binomials. Verified against an O(sum deg^2) brute force on random small graphs.",
+ "code_path": "solutions/kattis_swordcounting.cpp",
+ "samples_passed": true
+}

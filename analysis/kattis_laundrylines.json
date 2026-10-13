@@ -1,0 +1,13 @@
+{
+ "id": "kattis:laundrylines",
+ "rating": 1900,
+ "topics": [
+  "dp-bitmask",
+  "bitset",
+  "binary-search"
+ ],
+ "key_idea": "Always hanging on the lighter line keeps the imbalance <= max w <= 1000, so binary search the answer D and do a subset DP whose state is the set of reachable signed differences within [-D, D], stored as a bitset.",
+ "sketch": "For a fixed D, reach[mask] is a 2048-bit bitset of differences (offset 1000) attainable after hanging exactly the pieces in mask with every intermediate |diff| <= D. Transition: for each i not in mask, reach[mask|i] |= ((reach[mask] << w_i) | (reach[mask] >> w_i)) & allowed. D is feasible iff reach[full] is nonempty; binary search D in [0,1000]. Cost 2^16 * 16 * 32 words * 10 iterations, about 0.15 s. Pitfalls: the order of hanging matters (so a plain partition/knapsack is wrong), and the answer is not simply the final imbalance. Verified against a permutation x assignment brute force for n <= 6.",
+ "code_path": "solutions/kattis_laundrylines.cpp",
+ "samples_passed": true
+}

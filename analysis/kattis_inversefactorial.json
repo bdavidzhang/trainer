@@ -1,0 +1,12 @@
+{
+ "id": "kattis:inversefactorial",
+ "rating": 1300,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The number of digits of n! equals floor(sum log10 i)+1 and is strictly increasing once n>=10, so the length of the input identifies n; tiny inputs are compared by value.",
+ "sketch": "If the input has at most 10 digits, parse it and multiply up until the factorial matches (needed because 0!/1! and 5!/6! etc. share digit counts). Otherwise accumulate log10 in long double and return the first n whose digit count reaches the input length. n is at most about 205022 for 10^6 digits, so it is O(n). Pitfall: floating error near integer logs, hence long double and no reliance on exact equality; reading a 10^6 character token needs a large buffer.",
+ "code_path": "solutions/kattis_inversefactorial.cpp",
+ "samples_passed": true
+}

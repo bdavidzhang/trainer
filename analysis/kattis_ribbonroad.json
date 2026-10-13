@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ribbonroad",
+ "rating": 1500,
+ "topics": [
+  "geometry",
+  "case-analysis"
+ ],
+ "key_idea": "Christie's ray lies on her side of the edge she stands on, so compare the sign of cross(edge direction, ray direction) with the polygon orientation; a zero cross product or disagreeing answers from the two edges at a vertex give '?'.",
+ "sketch": "Compute the signed area to get the orientation. Scan all edges and pick those containing Christie's point (exact collinearity plus bounding-box test in 64-bit integers); a point strictly inside an edge matches one edge, a vertex matches two. For each such edge the ray points to the interior iff the cross product sign equals the orientation sign. Output '?' if any matching edge is parallel to the ray or if the two edges at a vertex disagree, otherwise inside/outside. Note the test is against each edge's supporting half-plane, not the true interior wedge at the vertex (sample 6 is '?' although the ray geometrically leaves the polygon). O(N), cross products up to ~1.6e13 fit in long long.",
+ "code_path": "solutions/kattis_ribbonroad.cpp",
+ "samples_passed": true
+}

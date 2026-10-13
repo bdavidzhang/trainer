@@ -1,0 +1,13 @@
+{
+ "id": "kattis:avoidingtheabyss",
+ "rating": 1400,
+ "topics": [
+  "constructive",
+  "geometry",
+  "interactive"
+ ],
+ "key_idea": "From a point outside the pool, walking vertically away from the rock is always safe (either an x-coordinate separates you from the pool forever, or the y-gap only grows), and outside the 1e4 box you can walk freely.",
+ "sketch": "From s go straight to (xs, +-B) with B=1e6, choosing the sign so that y moves away from yp (either sign if ys==yp, since then x separates). Do the same backwards from t to (xt, +-B). If both escape points are on the same side connect them directly; otherwise detour through (B, +B) and (B, -B). At most 4 intermediate points, all within 1e9. Any valid path is accepted so the sample compare fails; I validated with an exact segment-rectangle intersection checker on 1500 random pools/starts/targets. Flush the output since the task is nominally interactive.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_avoidingtheabyss.cpp"
+}

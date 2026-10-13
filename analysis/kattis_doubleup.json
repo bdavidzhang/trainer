@@ -1,0 +1,13 @@
+{
+ "id": "kattis:doubleup",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "implementation",
+  "big-integer"
+ ],
+ "key_idea": "Process exponents from smallest up: a maximal run of L adjacent copies of the current minimum is worth exactly floor(L/2) copies of the next power (a lone one is deleted), since smaller elements never help larger ones except through merging.",
+ "sketch": "Convert each value to its exponent (parse up to 2^100 with unsigned __int128). For e=0,1,2,...: scan the array, replace each maximal run of L elements equal to e by floor(L/2) elements e+1, keep everything else; track the largest exponent ever present. Answer is 2^best, at most about 2^110, printed via __int128. About 110 passes over <=1000 elements. Pitfalls: values exceed 64 bits, runs become adjacent only after smaller separators are deleted (handled by processing levels in increasing order). Stress-tested against exhaustive search for n<=9.",
+ "code_path": "solutions/kattis_doubleup.cpp",
+ "samples_passed": true
+}

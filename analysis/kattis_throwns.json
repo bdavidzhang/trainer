@@ -1,0 +1,11 @@
+{
+ "id": "kattis:throwns",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Keep a stack of throw values; undo m pops m entries, and the answer is the stack sum mod n.",
+ "sketch": "Read tokens; a number is pushed onto a stack, 'undo m' pops m entries (undos never undo undos, so a plain stack suffices). At the end sum the stack and reduce modulo n. O(k) time. Pitfall: throws can be negative, so normalise with ((s % n) + n) % n; parse 'undo' followed by a separate integer token.",
+ "code_path": "solutions/kattis_throwns.cpp",
+ "samples_passed": true
+}

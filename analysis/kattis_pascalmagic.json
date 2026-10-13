@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pascalmagic",
+ "rating": 1600,
+ "topics": [
+  "number-theory",
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "By Lucas' theorem C(n,k) is not divisible by p exactly when every base-p digit of k is at most the matching digit of n, so the non-divisible count is the product of (digit+1).",
+ "sketch": "Write n in base p with digits d_i; the number of k in [0,n] with p not dividing C(n,k) is prod(d_i+1). The answer is (n+1) minus that product. O(log_p n). The product never exceeds n+1 <= 1e18+1, so unsigned 64-bit is safe; n=0 gives 0. The n/p <= 1e6 bound in the statement is a red herring suggesting a slower intended solution. Verified against brute force for all n<80 and several primes.",
+ "code_path": "solutions/kattis_pascalmagic.cpp",
+ "samples_passed": true
+}

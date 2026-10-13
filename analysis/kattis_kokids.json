@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kokids",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "ad-hoc"
+ ],
+ "key_idea": "A kid falls exactly at step 1 if it is R, and at any later step whose real plate equals the previous step's real plate, since the next player always switches from the last known correct plate.",
+ "sketch": "Count falls = [s[0]=='R'] + number of i>0 with s[i]==s[i-1]; each fall eliminates one kid and reveals one step, so the answer is max(0, k - falls). O(n). Pitfall: clamp at zero when the kids run out before the bridge is fully revealed.",
+ "code_path": "solutions/kattis_kokids.cpp",
+ "samples_passed": true
+}

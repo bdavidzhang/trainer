@@ -1,0 +1,13 @@
+{
+ "id": "kattis:youbethejudge",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "strings",
+  "number-theory"
+ ],
+ "key_idea": "Tokenise the whole input on whitespace and validate strictly: exactly three tokens, digits only, no leading zeros, bounded length, then check even/range/sum/primality by trial division.",
+ "sketch": "Read all of stdin, split on space/tab/newline/CR. Reject unless there are exactly 3 tokens, each consisting only of digits, with no leading zero and at most 10 characters (guards overflow from 100-digit tokens). Then require the first to be even, >3 and <=1e9, the other two to sum to it and both be prime (trial division up to sqrt, <=31623 steps). Pitfalls: signs like +7, empty input, huge digit strings, token '0', and the value 1 not being prime.",
+ "code_path": "solutions/kattis_youbethejudge.cpp",
+ "samples_passed": true
+}

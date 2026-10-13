@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gcdpairs",
+ "rating": 2000,
+ "topics": [
+  "number-theory",
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "mu^2(g) = sum over d with d^2 | g of mu(d), so the answer is sum_d mu(d) * C(cnt[d],2) where cnt[d] counts a_i divisible by d^2; only the primes whose square divides a_i matter and they are found with trial division up to 1e4 plus one perfect-square test.",
+ "sketch": "For each distinct a (sort and group duplicates) trial-divide by the 1229 primes below 1e4, recording primes with exponent >=2. The leftover cofactor has all prime factors above 1e4, so it has at most two of them and contributes a squared prime iff it is a perfect square (integer sqrt with correction). At most 7 primes can have their square dividing a number <=1e12, so enumerate the <=128 squarefree products d<=1e6 and add the multiplicity to cnt[d] with sign (-1)^popcount. Finally sum sign*cnt*(cnt-1)/2 in 64-bit. About 1.2e8 modulo operations worst case (0.12 s locally). Pitfalls: floating sqrt rounding, d up to 1e6 from a large prime squared, answers up to 5e9. Verified against an O(n^2) brute force.",
+ "code_path": "solutions/kattis_gcdpairs.cpp",
+ "samples_passed": true
+}

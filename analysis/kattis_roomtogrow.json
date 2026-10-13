@@ -1,0 +1,12 @@
+{
+ "id": "kattis:roomtogrow",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "sorting"
+ ],
+ "key_idea": "A kept set is valid iff every pair of consecutive kept trees is compatible, because distances only grow for non-adjacent pairs; so it is a longest-chain DP.",
+ "sketch": "Trees are sorted by position. Trees i<j are compatible when d_j-d_i > r_i and d_j-d_i > r_j. If consecutive kept trees are pairwise compatible then any farther pair is too, since the gap only increases while each radius condition is one-sided. So dp[j] = 1 + max dp[i] over compatible i<j, O(n^2) with n=5000, and the answer is n - max dp. Pitfall: the inequality is strict (a tree exactly at distance r kills).",
+ "code_path": "solutions/kattis_roomtogrow.cpp",
+ "samples_passed": true
+}

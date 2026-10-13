@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ponylessexpress",
+ "rating": 2100,
+ "topics": [
+  "dp-tree",
+  "matching",
+  "dp"
+ ],
+ "key_idea": "A node that receives news on day t delivers to its m children on days t+1..t+m in some order, so f[v][t] is an assignment problem between children and slots with costs f[child][t+k].",
+ "sketch": "Root the tree at Capital City (the r values are parent pointers). f[v][t] = C_v (D_v - t)^2 plus the min-cost perfect matching of children to slots 1..m using cost f[c][t+k], solved with the Hungarian algorithm in O(m^3). Only compute t in the reachable range [depth(v), sum of child counts of ancestors], which also bounds every arrival day by n. Worst case is about (n-m) m^3, roughly 2e8 basic steps, and runs in tens of milliseconds in practice. Costs fit easily in 64-bit. Verified against a permutation brute force on random small trees.",
+ "code_path": "solutions/kattis_ponylessexpress.cpp",
+ "samples_passed": true
+}

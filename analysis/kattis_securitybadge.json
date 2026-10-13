@@ -1,0 +1,13 @@
+{
+ "id": "kattis:securitybadge",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "sorting",
+  "graphs"
+ ],
+ "key_idea": "Reachability only changes at lock endpoints, so cut the badge range at every x and y+1 and run one BFS per elementary interval.",
+ "sketch": "Collect all x and y+1, sort and deduplicate to get at most 2L breakpoints. For each consecutive pair [p_k, p_{k+1}) every badge behaves identically, so BFS from S using only locks with x <= p_k <= y, and add the interval length if D is reached. Badges below the smallest x or above the largest y open nothing and are skipped. About 10^4 BFS runs of O(N+L) each, around 6e7 steps. Pitfalls: use y+1 (half-open intervals) and 64-bit for the count. Stress-tested against per-badge BFS with small B.",
+ "code_path": "solutions/kattis_securitybadge.cpp",
+ "samples_passed": true
+}

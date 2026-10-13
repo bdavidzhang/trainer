@@ -1,0 +1,13 @@
+{
+ "id": "kattis:longestcommonsubstring",
+ "rating": 1300,
+ "topics": [
+  "strings",
+  "dp",
+  "brute-force"
+ ],
+ "key_idea": "Fix the first string; for each start position in it keep the minimum over all other strings of the longest match starting there.",
+ "sketch": "For every other string t compute the classic lcp[i][j] table (longest common prefix of a[i..] and t[j..]) in O(|a||t|), and take mx_i = max_j lcp[i][j], the longest substring of a starting at i that occurs in t. best[i] = min over all t of mx_i (initialised to |a|-i so n=1 works), and the answer is max_i best[i]. Total 1000*100*100 = 1e7 operations. Correct because occurrence of a[i..i+L) in t is monotone in L. Pitfall: n=1 should output the full length.",
+ "code_path": "solutions/kattis_longestcommonsubstring.cpp",
+ "samples_passed": true
+}

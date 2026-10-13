@@ -1,0 +1,12 @@
+{
+ "id": "kattis:leapfrogencryption",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Simulate the passes on position indices instead of letters to get a permutation; encryption applies it, decryption applies its inverse.",
+ "sketch": "Strip the text to lowercase letters, length N. For each key letter (d = letter index + 2), then a final pass with d = 1, walk the still-empty positions left-to-right or right-to-left alternately and give every d-th empty position the next plaintext index. This yields perm[pos] = plaintext index; encrypt with out[pos] = s[perm[pos]], decrypt with out[perm[pos]] = s[pos]. O((|key|+1) * N). Pitfalls: read the whole second line with spaces, a pass with fewer than d empty cells places nothing but still flips direction, stop once all letters are placed. Verified by encrypt/decrypt round trips on random inputs in addition to the samples.",
+ "code_path": "solutions/kattis_leapfrogencryption.cpp",
+ "samples_passed": true
+}

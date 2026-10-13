@@ -1,0 +1,14 @@
+{
+ "id": "kattis:tourismbalance",
+ "rating": 1800,
+ "topics": [
+  "graphs",
+  "trees",
+  "sorting",
+  "bfs-dfs"
+ ],
+ "key_idea": "Profit telescopes to v_start - v_end, and in a unicyclic graph two vertices have 2 simple paths between them if they hang off different cycle vertices, else exactly 1.",
+ "sketch": "The graph is connected with n edges, so it has exactly one cycle with trees hanging off it. Path profit is v_i - v_j regardless of the route, so the answer is the sum over ordered pairs (i,j) with v_i - v_j = k of the number of simple i-j paths. Let A be the number of such ordered pairs i != j overall and S the number among pairs in the same hanging tree (same cycle attachment vertex); the answer is 2A - S, plus n single-city paths when k = 0. Find the cycle by peeling degree-1 vertices, BFS from each cycle vertex through peeled vertices to collect each tree's values, and count pairs by sorting plus a two-pointer window (c*(c-1) per value class when k = 0). O(n log n). Pitfalls: k = 0 needs i != j handled separately and the n trivial paths added; the answer needs 64-bit (up to ~2e10). Stress-tested against a DFS path enumerator.",
+ "code_path": "solutions/kattis_tourismbalance.cpp",
+ "samples_passed": true
+}

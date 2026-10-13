@@ -1,0 +1,14 @@
+{
+ "id": "kattis:failfast",
+ "rating": 2500,
+ "topics": [
+  "greedy",
+  "dsu",
+  "heap",
+  "trees"
+ ],
+ "key_idea": "Minimise sum c_i * prod of earlier p_j; without precedence sort by c/(1-p), and with a forest precedence repeatedly glue the block with the smallest ratio directly behind its parent's block (Horn-style tree scheduling).",
+ "sketch": "Expected cost equals sum c_i * P(all earlier pass) minus a constant, and block A before B is better iff cA/(1-pA) < cB/(1-pB), where a merged block has c = cA + pA*cB and p = pA*pB. Keep all blocks in an ordered set keyed by ratio; pop the minimum, find the block containing its prerequisite with DSU (virtual root 0 for none), append its linked list there and update that block's key. O(n log n). Pitfalls: use long double and the ratio form since products of p underflow harmlessly to 0; erase the parent block's key before modifying it. Multiple answers are accepted, so the judge sample comparison is not authoritative: besides the sample matching, I validated with my own checker comparing the expected cost of the output against brute force over all valid orders on 500 random forests (n<=7).",
+ "code_path": "solutions/kattis_failfast.cpp",
+ "samples_passed": true
+}

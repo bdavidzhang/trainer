@@ -1,0 +1,11 @@
+{
+ "id": "kattis:kmh",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The national limit is the smallest multiple of ten strictly greater than every numbered sign seen so far.",
+ "sketch": "Keep the running maximum of numbered signs. For a number print it; for '/' print (max/10+1)*10. O(N). Pitfall: strictly greater, so a max of 90 gives 100, not 90.",
+ "code_path": "solutions/kattis_kmh.cpp",
+ "samples_passed": true
+}

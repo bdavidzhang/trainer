@@ -1,0 +1,13 @@
+{
+ "id": "kattis:onlyoneorder",
+ "rating": 1200,
+ "topics": [
+  "graphs",
+  "topological-sort",
+  "ad-hoc"
+ ],
+ "key_idea": "A DAG has a unique topological order iff every consecutive pair in that order is joined by an edge, so exactly the edges (i,i+1) are needed and nothing else helps.",
+ "sketch": "If any given constraint has a > b the identity order is infeasible: print -1. Otherwise the identity order is valid, and it is the only one iff for every i the edge (i,i+1) is present (otherwise i and i+1 could be swapped, since no other constraint relates two adjacent elements). So the answer is (n-1) minus the number of given constraints with b = a+1; constraints are distinct so no dedup is required. O(n+m) total. Pitfall: tempting to overthink with transitive reachability, but an implied relation i<i+1 can only come from the direct edge.",
+ "code_path": "solutions/kattis_onlyoneorder.cpp",
+ "samples_passed": true
+}

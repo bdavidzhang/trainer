@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fruitslicer",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "brute-force"
+ ],
+ "key_idea": "An optimal line can be slid and rotated until it is tangent to two of the unit circles, so it suffices to test the at most four common tangents of every pair of circles and count circles within distance 1.",
+ "sketch": "For every ordered pair of distinct centres generate the two outer tangents (parallel to the centre line, shifted by 1) and, when the distance is at least 2, the two inner tangents (unit normal u with u.d = 2), and count centres at distance <= 1 from each line: O(n^3) = 4e6 operations. Coordinates have exactly two decimals, so scale by 100 to integers; the outer-tangent test becomes the exact integer condition s*cross >= 0 and cross^2 <= 40000*|d|^2 in __int128, while inner tangents use long double with a small epsilon. Initialise the answer with the largest group of coincident centres so n=1 and all-equal inputs work. Pitfalls: boundary touching counts as sliced, so exact tangencies such as sample 2 (one line tangent to three circles) must not be lost to rounding; coincident circles give no tangent pair. Cross-checked against a dense angular sweep brute force.",
+ "code_path": "solutions/kattis_fruitslicer.cpp",
+ "samples_passed": true
+}

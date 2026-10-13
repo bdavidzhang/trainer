@@ -1,0 +1,14 @@
+{
+ "id": "kattis:seesaw",
+ "rating": 2500,
+ "topics": [
+  "dp-optimization",
+  "binary-search",
+  "convex-hull",
+  "math"
+ ],
+ "key_idea": "With positive torque people only move left, and the best torque removed for a movement budget C is a concave piecewise-linear function; Lagrangian relaxation makes each vertex a partition into blocks that collapse onto their leftmost member, found by a convex-hull-trick DP.",
+ "sketch": "Mirror so torque T>0. With shifts y_i>=0 and y_i-y_{i-1}<=p_i-p_{i-1}, maximising sum (w_i-lam)*y_i has vertex optima where each person either stays or sits on the previous person, i.e. blocks [l..r] all at p_l with value sum c_i(p_i-p_l); dp[r]=CP[r]+max_l(dp[l-1]-CP[l-1]+p_l*Cs[l-1]-p_l*Cs[r]) is a CHT with monotone slopes and binary-searched queries. Binary search lam (bounded below by the max prefix average of w, where the LP becomes unbounded) for the smallest lam whose reconstructed solution removes torque F<=T, then answer = C + (T-F)/lam since the next segment of the concave curve has slope lam. O(n log n log(range)), 0.65s at n=1e5. Precision is the main pitfall: lam is kept as an exact rational N/2^32 and the DP runs in __int128 (values up to ~1e38 need care), with C and F recomputed exactly from back-pointers. Stress-tested against a brute force enumerating all clump/anchor structures (allowing moves in both directions) for n<=6.",
+ "code_path": "solutions/kattis_seesaw.cpp",
+ "samples_passed": true
+}

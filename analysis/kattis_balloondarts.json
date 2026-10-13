@@ -1,0 +1,13 @@
+{
+ "id": "kattis:balloondarts",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "search-backtracking",
+  "brute-force"
+ ],
+ "key_idea": "Pigeonhole: with k lines left and more than 2k points, among any k+1 points two must lie on a common line, so branch only over pairs from the first k+1 points.",
+ "sketch": "Recursive cover(points, k): if at most 2k points remain answer yes; if k=0 answer no; otherwise try each pair among the first k+1 points as a line, delete all collinear points in O(n) and recurse with k-1. The branching is 6*3*1 = 18 leaves, each linear, so O(18n) overall. Collinearity uses the cross product: coordinate differences reach 2e9 and the cross product about 8e18, so compute it in __int128 (or be very careful with long long). Stress-tested against an all-pairs brute force on 1500 small grids. Pitfalls: small n base cases and overflow.",
+ "code_path": "solutions/kattis_balloondarts.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rockymountain",
+ "rating": 1600,
+ "topics": [
+  "geometry",
+  "implementation",
+  "math"
+ ],
+ "key_idea": "A site is visible from the peak iff its slope to the peak is no larger than that of every site between them, so sweep outward from the peak keeping the minimum slope seen.",
+ "sketch": "Find the peak p, then walk left (and separately right) maintaining the index with the smallest value of (y_p - y_i)/|x_p - x_i| so far; site i is visible iff its slope is <= that minimum, with equality allowed because the cable may lie along a slope. Among visible sites keep the lowest y, breaking ties toward the far side (use <= while moving away from the peak). Compare slopes by cross multiplication: products are at most 1e9*1e9 = 1e18, which fits in signed 64-bit. O(N). Pitfalls: the non-strict visibility test, the tie rule, and avoiding floating point. Stress-tested against an exact rational brute force.",
+ "code_path": "solutions/kattis_rockymountain.cpp",
+ "samples_passed": true
+}

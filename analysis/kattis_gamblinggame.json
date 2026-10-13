@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gamblinggame",
+ "rating": 1500,
+ "topics": [
+  "combinatorics",
+  "probability",
+  "math"
+ ],
+ "key_idea": "Condition on the last ball: it must be one of the 2n card numbers and its partner must be undrawn, while the first p-1 balls (as a set from the other m-2 numbers) must cover the remaining n-1 squares.",
+ "sketch": "Count sets of p-1 numbers out of the m-2 others that hit each of the n-1 other squares: sum over j squares with both numbers drawn of C(n-1,j)*2^(n-1-j)*C(m-2n, p-n-j). The probability is 2n*count / (m*C(m-1,p-1)); reduce with gcd. Everything fits in 64 bits for m<=33 (count <= C(31,k)). Pitfalls: n=0 wins only when p=0 (answer 1/1), p<n gives 0/1, print 0/1 for zero. Verified against a permutation brute force for all m<=7.",
+ "code_path": "solutions/kattis_gamblinggame.cpp",
+ "samples_passed": true
+}

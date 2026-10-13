@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jabbingjets",
+ "rating": 1300,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Circles are at least e apart so they are independent; on a circle of radius r, k equally spaced holes have chord 2r*sin(pi/k), so k = floor(pi / asin(e/(2r))).",
+ "sketch": "For each radius: if 2r < e only one hole fits; otherwise the answer is floor(pi/asin(e/(2r))), which is at least 2. Sum over circles, O(n). Pitfall is precision at exact boundaries (e.g. e = r gives exactly 6): the statement guarantees that increasing r by 1e-6 does not change the answer, so add 5e-7 to r before computing, and clamp the asin argument to 1.",
+ "code_path": "solutions/kattis_jabbingjets.cpp",
+ "samples_passed": true
+}

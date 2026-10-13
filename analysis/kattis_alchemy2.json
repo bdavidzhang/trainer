@@ -1,0 +1,14 @@
+{
+ "id": "kattis:alchemy2",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "greedy",
+  "case-analysis",
+  "strings"
+ ],
+ "key_idea": "Work on mirror pairs: a pair touched by zero operations must already match, a pair touched exactly once must be mismatched (one change fixes it, but one change always breaks a matching pair), and a pair touched at least twice can always be made to match; so it is a minimum multiset of path edges with these degree constraints.",
+ "sketch": "Let h = n/2 pairs form a path, where an operation on adjacent positions touches pairs j and j+1 once each. Special moves at the centre: for odd n an operation with the free middle letter touches the innermost pair once; for even n an operation on the two middle letters touches the innermost pair twice. DP along the path over the multiplicity (0,1,2) of each edge, checking each node's total touch count against its matched/mismatched status; minimise the number of operations. O(n). Pitfalls: repeating the same operation twice fixes an isolated mismatch for 2 (as in 'fool'), chains may pass through already-matching pairs, and three or more copies of an edge are never needed. Verified against a backward BFS from all palindromes for lengths 2..6 over a 5-letter alphabet.",
+ "code_path": "solutions/kattis_alchemy2.cpp",
+ "samples_passed": true
+}

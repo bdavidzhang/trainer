@@ -1,0 +1,13 @@
+{
+ "id": "kattis:downsizing",
+ "rating": 2000,
+ "topics": [
+  "geometry",
+  "calculus-numerical",
+  "math"
+ ],
+ "key_idea": "In polar coordinates around O the image of the region between rho1(theta) and rho2(theta) lies between r^2/rho2 and r^2/rho1, so the area is (r^4/2) times a boundary integral of 1/rho^2 d(theta), which has a closed form per edge.",
+ "sketch": "Area' = (r^4/2) * |sum over directed edges of sign * integral of d(theta)/rho^2|. For an edge on a line at distance D from O, rho = D/cos(u) so the integrand is cos^2(u)/D^2 with antiderivative (u/2 + sin(2u)/4)/D^2, where u = atan(t/D) and t is the signed coordinate of the endpoint along the edge direction; the sign is that of cross(A-O, B-O). Edges whose line passes through O contribute zero (skip to avoid division by zero). O(n) with long double. Pitfalls: do not just invert the vertices (edges map to circular arcs), handle O collinear with an edge, r may be given as 0.",
+ "code_path": "solutions/kattis_downsizing.cpp",
+ "samples_passed": true
+}

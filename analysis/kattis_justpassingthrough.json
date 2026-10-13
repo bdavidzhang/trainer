@@ -1,0 +1,12 @@
+{
+ "id": "kattis:justpassingthrough",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "Precompute which cells are passes, then do a column-by-column DP with state (row, number of passes used so far), n <= 10.",
+ "sketch": "A cell is a pass if it is not on the border, it and its four neighbours are drivable, E and W are strictly lower and N and S strictly higher. dp[row][k] for the current column = min elevation sum reaching that cell having crossed exactly k passes; transition from rows r-1, r, r+1 of the previous column, adding 1 to k when the cell is a pass and skipping undrivable cells. Answer is min over rows of dp[row][n] in the last column, or impossible. O(r*c*n*3) = 8M operations. Pitfalls: exactly n (not at most n), -1 cells both as blocked path cells and as disqualifying neighbours, border cells never being passes.",
+ "code_path": "solutions/kattis_justpassingthrough.cpp",
+ "samples_passed": true
+}

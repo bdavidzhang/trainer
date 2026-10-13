@@ -1,0 +1,13 @@
+{
+ "id": "kattis:turningtrominos",
+ "rating": 1900,
+ "topics": [
+  "divide-and-conquer",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The level-k L (side 2^(k+1) minus its top-right quadrant) is four level-(k-1) L's: one at the origin, one shifted by (h/2,h/2) in the centre, one rotated clockwise in the top-left block and one rotated counter-clockwise in the bottom-right block; descend from a huge level, undoing the rotation and accumulating it.",
+ "sketch": "Start with h=2^61 so the point is inside the L of side 2h. At each step let q=h/2: if the point lies in [q,3q)^2 and not in [h,2h)^2 it is in the centre copy, subtract (q,q); else if x,y<h it is in the origin copy; else if y>=h it is in the top-left copy, map local (u,v) back to (h-1-v,u) and add 1 to the rotation; otherwise it is in the bottom-right copy, map local (u,v) to (v,h-1-u) and add 3. Halve h until h=1, where the shape is a single orientation-0 tromino, and print the accumulated rotation mod 4. O(61) per query. Pitfalls: the centre test must come before the origin test because the origin copy's missing quadrant is filled by the centre copy; orientation numbering had to be inferred from the samples (0 = missing top-right, each +1 is a clockwise quarter turn); coordinates up to 2^60 need 64-bit and h=2^61 keeps 3q within range. Verified on a 64x64 grid that the reported orientations form consistent L-shapes.",
+ "code_path": "solutions/kattis_turningtrominos.cpp",
+ "samples_passed": true
+}

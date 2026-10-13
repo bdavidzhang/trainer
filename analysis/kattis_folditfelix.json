@@ -1,0 +1,14 @@
+{
+ "id": "kattis:folditfelix",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "monotonic-stack-queue",
+  "greedy",
+  "prefix-sums"
+ ],
+ "key_idea": "After a fold at prefix position p everything lies to the right of p, so a valid folding is a sequence of fold positions whose consecutive gaps are non-decreasing; the result length is max(last gap, S - last position). Minimal last gap per position is obtained from the latest feasible predecessor.",
+ "sketch": "Let P be prefix sums and f[i] the minimal possible last gap if the last fold is at line i (f[0]=0 for the virtual start). A fold at i after j is allowed iff P[i]-P[j] >= f[j] (the flipped blob of length f[j] must not span line i; exactly reaching it is allowed), and a smaller last gap dominates, so f[i]=P[i]-P[j] for the largest j<i with P[j]+f[j] <= P[i]. Since P[i] is increasing, keep a deque of candidates with increasing key P[j]+f[j] and pop from the front while the next one is also feasible: O(N). Answer is min over i in 0..N-1 of max(f[i], S-P[i]), where i=0 gives the unfolded length S. Verified against an exhaustive subset-of-folds brute force of this model on random small inputs; the model itself (touching a fold line is not blocking) is inferred from the text because the figure is missing. Use 64-bit sums (up to 2e10).",
+ "code_path": "solutions/kattis_folditfelix.cpp",
+ "samples_passed": true
+}

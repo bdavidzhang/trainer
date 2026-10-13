@@ -1,0 +1,14 @@
+{
+ "id": "kattis:isaacqueries",
+ "rating": 2300,
+ "topics": [
+  "interactive",
+  "randomized",
+  "bitmasks",
+  "data-structures"
+ ],
+ "key_idea": "On prefix xors the answer is the highest differing bit of two values, an ultrametric: if hb(x,r)=b then hb(x,y)=max(b,hb(r,y)) for every y with hb(r,y)!=b. So inserting a point needs only about log n comparisons, and you can always pick the comparison partner farthest away in index to make it cheap.",
+ "sketch": "Work with p[0..n]; query (i,j) costs 1/(j-i). Insert points one at a time; keep candidate set C of already inserted points whose relation to x is unknown, query x against the farthest-index r in C, resolve all y with H[r][y]!=b, and keep only those with H[r][y]==b (the subtree x shares with them). Insert in coarse-to-fine order (indices that are multiples of 128,64,...,1) so that early sets are spread out and far partners exist. Handle b=-1 (equal values) by copying r's row. Simulated over 20000 random n=100 arrays: mean cost 10.3, max 18.3 against the budget of 35. Interactive, so the sample checker cannot judge it: verified with a local interactor (correct tables, balance never negative) on the sample, 30 random n=100 cases and 300 small adversarial cases with repeated values.",
+ "code_path": "solutions/kattis_isaacqueries.cpp",
+ "samples_passed": true
+}

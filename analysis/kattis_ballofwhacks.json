@@ -1,0 +1,14 @@
+{
+ "id": "kattis:ballofwhacks",
+ "rating": 2100,
+ "topics": [
+  "implementation",
+  "geometry-3d",
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "Faces of the rhombic triacontahedron correspond to the 30 edges of an icosahedron, so the 60 rotations can be generated as vertex permutations of an icosahedron and applied to 30-bit masks.",
+ "sketch": "Model: vertices B, L0..L4, U0..U4, T; from the statement figures piece i<=5 is B-L(i-1), 6+j is Lj-L(j+1), 11+2j is L(j+1)-Uj, 12+2j is L(j+1)-U(j+1), 21+j is Uj-U(j+1), 26+j is T-Uj (checked that every face gets 4 neighbours matching the picture and that the sample sections are connected). Build icosahedron coordinates, and for each ordered adjacent vertex pair construct the rotation taking (B,L0) to it, giving 60 vertex permutations and hence edge permutations; reflections are excluded since the pieces are physical. If the sizes do not sum to 30 answer No; otherwise fix section 1 and try all 60*60 rotations of the other two, checking that the union of the masks is full. The difficulty is entirely in deriving the numbering/adjacency from the figures; the scraped text alone is not enough, so the figure images had to be consulted.",
+ "code_path": "solutions/kattis_ballofwhacks.cpp",
+ "samples_passed": true
+}

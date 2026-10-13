@@ -1,0 +1,12 @@
+{
+ "id": "kattis:numberpyramid",
+ "rating": 1400,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Just run the constraint propagation the statement describes to a fixpoint: any triple (cell, two cells below) with two known values determines the third.",
+ "sketch": "Repeat passes over all triples v[i][j] = v[i+1][j] + v[i+1][j+1]; when exactly two are known fill the third, and when all three are known check consistency. A derived value outside [-99,99] or an inconsistent triple gives 'no solution'; unknown cells left at the fixpoint give 'ambiguous'; otherwise print the pyramid. At most 5050 cells so repeated passes are cheap (each pass fills at least one cell). Order of checks matters: a contradiction or out-of-range value wins over unfilled cells. Caveat: 'ambiguous' is taken in the statement's sense (propagation cannot finish), not full linear algebra; a card like top and two bottom corners known for n=3 is linearly determined but reported ambiguous here.",
+ "code_path": "solutions/kattis_numberpyramid.cpp",
+ "samples_passed": true
+}

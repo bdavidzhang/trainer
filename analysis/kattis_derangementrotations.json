@@ -1,0 +1,13 @@
+{
+ "id": "kattis:derangementrotations",
+ "rating": 2200,
+ "topics": [
+  "combinatorics",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Rotation by t has a fixed point iff some j has (j - a_j) mod n = t, so f(D) = n - (number of distinct values of j - a_j); we need exactly two distinct nonzero offsets, and a permutation using offsets x,y is a union of whole cycles of the shift by y-x.",
+ "sketch": "Let c_j = (j - a_j) mod n. All n rotations of a permutation are distinct, and the rotation with shift t is a derangement iff t is not among the c_j, so f(D)=n-2 means the c_j take exactly two values x,y, both nonzero. If positions in S use offset y and the rest use x, injectivity forces S to be closed under shifting by d=y-x, i.e. a union of the gcd(d,n) cosets, non-empty and proper: 2^gcd(d,n) - 2 choices. For each d in 1..n-1 there are n-2 ordered pairs (x,y) of nonzero residues with y-x=d, so the answer is (n-2)/2 * sum_{d=1}^{n-1} (2^gcd(d,n) - 2) mod p, using the inverse of 2 = (p+1)/2. O(n log n) with a precomputed power table. Checked against brute force over all permutations for n<=8 (0,2,0,20,0,54).",
+ "code_path": "solutions/kattis_derangementrotations.cpp",
+ "samples_passed": true
+}

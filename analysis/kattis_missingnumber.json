@@ -1,0 +1,12 @@
+{
+ "id": "kattis:missingnumber",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Walk i from 1 to n matching the decimal form of i at the current position; the first i that does not match is the erased one.",
+ "sketch": "Keep a pointer into the digit string; for each i compare to_string(i) against the string at the pointer and advance on a match. The first mismatch (including running off the end, which handles the erased number being n) is the answer. This is unambiguous because the next number actually present is i+1, whose decimal form never starts with that of i (9 to 10 and 99 to 100 included). O(length).",
+ "code_path": "solutions/kattis_missingnumber.cpp",
+ "samples_passed": true
+}

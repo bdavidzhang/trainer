@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rationalsequence3",
+ "rating": 1100,
+ "topics": [
+  "math",
+  "bitmasks",
+  "implementation"
+ ],
+ "key_idea": "With heap numbering, the binary digits of N after the leading 1 spell the root-to-node path: 0 means go left (q += p), 1 means go right (p += q).",
+ "sketch": "Start at p/q = 1/1 and scan the bits of N from the second most significant down to the least significant, applying p/(p+q) for a 0 bit and (p+q)/q for a 1 bit. O(log N) per query. Use unsigned 64-bit for p and q since values can reach the 32-bit unsigned range (the alternating-bit sample gives Fibonacci numbers).",
+ "code_path": "solutions/kattis_rationalsequence3.cpp",
+ "samples_passed": true
+}

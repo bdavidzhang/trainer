@@ -1,0 +1,11 @@
+{
+ "id": "kattis:thisaintyourgrandpascheckerboard",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Direct simulation: check the black count of each row and column equals n/2 and that no three consecutive equal cells exist in any row or column.",
+ "sketch": "Read the grid. For each row and column count the B cells and compare 2*count to n. For each row and column scan windows of length 3 and reject if all three are equal. Print 1 if all checks pass, else 0. O(n^2). Only pitfall is forgetting the column checks or the bounds on the length-3 window.",
+ "code_path": "solutions/kattis_thisaintyourgrandpascheckerboard.cpp",
+ "samples_passed": true
+}

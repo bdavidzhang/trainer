@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fightingfraud",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "hashing"
+ ],
+ "key_idea": "Track a three-state machine per item (unseen, picked up, delivered) in a hash map; every transition must be the next legal one and every item must end delivered.",
+ "sketch": "Keep a map from item name to state 0/1/2. A pickup is legal only from state 0, a dropoff only from state 1; anything else marks the schedule invalid. At the end every item seen must be in state 2 (catches pickup without delivery). O(total length) expected. Pitfalls: a second pickup after delivery (sample 4) and dropoff-before-pickup must both fail, so a simple counter of pickups minus dropoffs is not enough.",
+ "code_path": "solutions/kattis_fightingfraud.cpp",
+ "samples_passed": true
+}

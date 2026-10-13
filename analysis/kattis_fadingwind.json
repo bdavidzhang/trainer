@@ -1,0 +1,11 @@
+{
+ "id": "kattis:fadingwind",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation of the stated loop.",
+ "sketch": "Follow the steps literally with 64-bit integers: add s to v, subtract max(1, v/10), adjust h by comparing v with k, zero v when h hits zero or v<=0, add v to the distance, then decrement s if positive. Once the wind fades v shrinks by at least 1 per step so the loop ends quickly (a few thousand iterations at most). Pitfall: apply the conditions in the given order using the updated v, and the v<k branch only when v>0.",
+ "code_path": "solutions/kattis_fadingwind.cpp",
+ "samples_passed": true
+}

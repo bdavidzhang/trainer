@@ -1,0 +1,13 @@
+{
+ "id": "kattis:breakmaze",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "dp"
+ ],
+ "key_idea": "Do BFS by step count but keep, per cell, the lowest cost seen so far: an arrival is only worth expanding if it is strictly cheaper than every earlier arrival at that cell.",
+ "sketch": "States are (cell, accumulated cost) and we want the fewest steps with cost <= S. Layered BFS: the frontier holds cells whose best cost improved in the previous layer; each layer relaxes neighbours, discarding arrivals with cost > S or cost >= best[cell] (dominated: an earlier arrival was at least as cheap). The first layer in which the target gets any value is the answer. Each cell improves at most S+1 times, so the bound is O(NM*S*4) = 4e8 worst case but far less in practice (max-size tests ran in milliseconds). Pitfalls: the start cell's cost counts (if it exceeds S print -1), the path may revisit nothing but may be longer than the Manhattan distance, the answer counts moves not cells, and the 1x1 grid gives 0. Stress-tested against a full (cell,cost) BFS.",
+ "code_path": "solutions/kattis_breakmaze.cpp",
+ "samples_passed": true
+}

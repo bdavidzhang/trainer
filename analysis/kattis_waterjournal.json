@@ -1,0 +1,12 @@
+{
+ "id": "kattis:waterjournal",
+ "rating": 800,
+ "topics": [
+  "case-analysis",
+  "implementation"
+ ],
+ "key_idea": "Only whether the minimum a and maximum b already appear in the log matters.",
+ "sketch": "Scan the n-1 entries and note whether a and b occur. If both occur the missing entry can be any value in [a,b]; if only one is missing the entry must be that one; if both are missing the answer is a when a==b and otherwise -1. O(n). The a==b corner is the only trap (in practice both are then present since n>=2 and all entries lie in [a,b]).",
+ "code_path": "solutions/kattis_waterjournal.cpp",
+ "samples_passed": true
+}

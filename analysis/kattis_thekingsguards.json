@@ -1,0 +1,14 @@
+{
+ "id": "kattis:thekingsguards",
+ "rating": 2400,
+ "topics": [
+  "mst",
+  "matching",
+  "greedy",
+  "dsu"
+ ],
+ "key_idea": "Run Kruskal, but accept a merging edge only if the guards can still be matched to distinct components afterwards; the feasible forests form a matroid so the greedy is optimal, and the answer exists iff it ends with exactly g components.",
+ "sketch": "Keep a bipartite matching guard -> component (a guard is adjacent to a component if any of its villages lies in it). Start with singleton components and a perfect matching of all guards (else -1). Process edges by cost: if at most one of the two components holds a guard, merge freely; if both do, tentatively merge, free one of the two guards and search for an augmenting path, rejecting the edge if none exists. Stop at g components; if the edges run out with more than g components, print -1. The augmenting BFS uses 300-bit masks of unvisited villages and a per-component village mask so one check is about O((n+g)*n/64), which keeps all r=45000 attempts cheap. Stress-tested against exhaustive forest enumeration with n<=6. Pitfalls: guard sets overlap, the graph may be disconnected, and leftover unguarded components must make the answer -1.",
+ "code_path": "solutions/kattis_thekingsguards.cpp",
+ "samples_passed": true
+}

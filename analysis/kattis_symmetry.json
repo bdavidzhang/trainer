@@ -1,0 +1,14 @@
+{
+ "id": "kattis:symmetry",
+ "rating": 2100,
+ "topics": [
+  "geometry",
+  "sorting",
+  "hashing",
+  "brute-force"
+ ],
+ "key_idea": "The best centre is a midpoint of some pair and the best axis is either a perpendicular bisector of a pair or a line through two points; count how many pairs share each candidate by sorting normalised keys.",
+ "sketch": "Point symmetry: sort all sums p_i+p_j (i<=j); a centre with c ordered pairs keeps c points, answer n-c. Line symmetry: for each pair generate its perpendicular bisector (type 0) and the line through it (type 1), normalised as integer (a,b,c) by gcd and sign, and sort the ~1e6 records. For a line with B bisector pairs and C(m,2) through pairs the kept count is 2B+m; if no through pair exists at most one point lies on it, found by a linear scan done only when 2B+1 would beat the current best. O(n^2 log n). Pitfalls: line constants reach 1.6e9 so use int64, and a packed sum key needs a multiplier larger than 160001. Stress-tested against exact rational reflection brute force.",
+ "code_path": "solutions/kattis_symmetry.cpp",
+ "samples_passed": true
+}

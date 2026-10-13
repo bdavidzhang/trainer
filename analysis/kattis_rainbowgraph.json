@@ -1,0 +1,14 @@
+{
+ "id": "kattis:rainbowgraph",
+ "rating": 2800,
+ "topics": [
+  "graphs",
+  "dsu",
+  "greedy",
+  "shortest-paths"
+ ],
+ "key_idea": "Think of the deleted edges: a deleted set must be independent in the cographic matroid of the Red+Green graph and in the cographic matroid of the Blue+Green graph, so the task is weighted matroid intersection, whose successive shortest augmenting paths give the optimum for every cardinality at once.",
+ "sketch": "If the full graph is not connected for both viewers every answer is -1. Otherwise grow a deleted set S by weighted matroid intersection maximising deleted weight: build the exchange graph (y outside S is a source if S+y keeps R+G connected and a sink if it keeps B+G connected; x->y if S-x+y is independent in matroid 1, y->x if in matroid 2), give nodes weight -w for entering and +w for leaving S, and run Bellman-Ford for the path minimising (cost, hop count), which is required for correctness. After j augmentations the answer for k = m-j is total - deletedWeight; smaller k than the last reachable size is -1. Independence is a DSU connectivity check, and edges not belonging to a matroid's colours are free elements. About m augmentations * m^2 oracle calls * O(m) = 1e8 worst case, far less with the shortcut that an addable y is exchangeable with every x. Pitfalls: self-loops and multi-edges, n = 1, answers are not monotone in k. Stress-tested against subset brute force for m <= 9.",
+ "code_path": "solutions/kattis_rainbowgraph.cpp",
+ "samples_passed": true
+}

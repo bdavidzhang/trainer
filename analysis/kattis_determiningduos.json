@@ -1,0 +1,13 @@
+{
+ "id": "kattis:determiningduos",
+ "rating": 1700,
+ "topics": [
+  "math",
+  "hashing",
+  "ad-hoc"
+ ],
+ "key_idea": "The target n(3n+1)/2 per topic is exactly the sum of the top n scores, i.e. the absolute maximum, so in every topic every duo must pair one top-half student with one bottom-half student.",
+ "sketch": "Give each student an r-bit vector (bit i set iff score in topic i is > n). A valid pairing exists iff partners have exactly complementary vectors, i.e. for every vector v the number of students with v equals the number with ~v. Store vectors as two 64-bit words in a map and compare counts. O(n*r + n log n). Pitfalls: recognising that the threshold is the maximum (so it is not an optimisation/matching problem at all), r up to 100 needs more than one machine word.",
+ "code_path": "solutions/kattis_determiningduos.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hedge",
+ "rating": 3000,
+ "topics": [
+  "geometry",
+  "sweep-line",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Containment is not monotone in the scale. sA fits in B iff no boundary point of B scaled by t=1/s lies in the open interior of A; cutting the plane into angular slabs at all vertex directions, each (interior stripe of A, edge of B) pair in a slab forbids one open interval of t whose ends are attained at the slab's boundary rays. The answer is the smallest t not covered by any forbidden interval.",
+ "sketch": "Sort all vertex directions of A and B exactly; in each slab collect the edges of A crossing it, sorted by radius, giving interior stripes (0,e1),(e2,e3),... For an edge f of B crossing the slab, the scale at which f meets edge e along direction theta is r_e/rho_f, a Mobius (monotone) function of theta, so the forbidden interval for a stripe is (min over both rays of lower ratio, max over both rays of upper ratio). Edges of B lying on a ray through the origin are handled separately against the exact set of interior intervals of A on that ray. All endpoints are rationals with numerator and denominator below 8e16, compared exactly with __int128, which matters because touching is allowed and feasible scales can be isolated points. Up to about 1e8 intervals are never materialised: each (slab, edge) list is sorted in both ends, so a heap of list heads sweeps upward from t=0, repeatedly jumping to the largest right end among intervals covering the current t until none covers it. Output 1/t. Runs in 0.15 s on a 500x500 zigzag case. Verified against an exact Fraction brute force (candidate scales from all ray events, exact containment test) on 3300 random small polygons including degenerate collinear cases, plus a hand-built isolated-fit case.",
+ "code_path": "solutions/kattis_hedge.cpp",
+ "samples_passed": true
+}

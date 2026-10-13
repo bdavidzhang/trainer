@@ -1,0 +1,12 @@
+{
+ "id": "kattis:spatial",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "N and Q are only 2000, so every query can test every observation; the work is parsing 64-bit decimal/hex values and pairing Start/End events.",
+ "sketch": "Parse events with strtoull (ids and timestamps need unsigned 64-bit, addresses are hex), map id to its observation and fill in the end time on the End event. An observation occupies times [t1,t2] and addresses [x, x+L-1], all inclusive. Sort observations by id, then for each query count the rectangles that intersect the closed viewport and print the first 20 ids. O(NQ). Pitfalls: the address interval ends at x+L-1 (sample 5 shows x+L is excluded), ids must be compared as unsigned, and the count printed is the full count even when only 20 ids follow.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_spatial.cpp"
+}

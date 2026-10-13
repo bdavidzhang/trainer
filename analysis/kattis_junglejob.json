@@ -1,0 +1,13 @@
+{
+ "id": "kattis:junglejob",
+ "rating": 1700,
+ "topics": [
+  "dp-tree",
+  "dp-knapsack",
+  "combinatorics"
+ ],
+ "key_idea": "Count connected subsets by their topmost vertex: dp[v][k] = number of connected sets of size k whose highest node is v, merged child by child as a knapsack.",
+ "sketch": "Process vertices in decreasing index (p_i < i so children come first), start with dp[v]=[size 1 -> 1] and merge each child as either skipped or contributing j nodes: c[i+j] += a[i]*b[j]. Sum dp[v][k] over all v for the answer per k. The size-bounded merge makes it O(n^2) total for n=1000. Pitfalls: bound loops by actual subtree sizes or it becomes O(n^3), reduce modulo 1e9+7, and free child tables to keep memory low.",
+ "code_path": "solutions/kattis_junglejob.cpp",
+ "samples_passed": true
+}

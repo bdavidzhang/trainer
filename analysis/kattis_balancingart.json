@@ -1,0 +1,13 @@
+{
+ "id": "kattis:balancingart",
+ "rating": 1700,
+ "topics": [
+  "flows",
+  "binary-search",
+  "graphs"
+ ],
+ "key_idea": "For a target balance B, feasibility is a max-flow: source -> wire (capacity d) -> its two spheres -> sink (capacity B), feasible iff the flow is n*B; feasibility is monotone in B, so binary search.",
+ "sketch": "Binary search B in [0, total/n]; for each B build the bipartite wire/sphere network and run Dinic, accepting if max flow equals n*B. Monotone because a feasible assignment for B can drop one disk per sphere. Answer is total - n*B_max. About 23 Dinic runs on 700 nodes and 1500 edges. Pitfall: a sphere of small total incident disks caps B for everyone (sample 2), and capacities should be 64-bit.",
+ "code_path": "solutions/kattis_balancingart.cpp",
+ "samples_passed": true
+}

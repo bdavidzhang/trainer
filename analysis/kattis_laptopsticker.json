@@ -1,0 +1,11 @@
+{
+ "id": "kattis:laptopsticker",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The sticker fits iff it is at least 2 cm smaller than the laptop in each dimension.",
+ "sketch": "Read the four integers and print 1 iff ws+2<=wc and hs+2<=hc. O(1). No rotation is allowed, so do not compare swapped dimensions; the margin is on both sides, hence +2 not +1.",
+ "code_path": "solutions/kattis_laptopsticker.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:gerrymandering",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Direct simulation: aggregate votes per district, the loser wastes everything and the winner wastes votes beyond floor(V/2)+1.",
+ "sketch": "Sum A and B votes per district, decide the winner, compute wasted votes for both parties and accumulate. Print |wA-wB|/V with enough decimals. O(P+D); totals up to 2e9 so use 64-bit.",
+ "code_path": "solutions/kattis_gerrymandering.cpp",
+ "samples_passed": true
+}

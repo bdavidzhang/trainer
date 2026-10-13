@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kingofthehill",
+ "rating": 2100,
+ "topics": [
+  "interactive",
+  "divide-and-conquer"
+ ],
+ "key_idea": "Classic 2D peak finding: query the middle line of the longer side, look at the two cells next to its maximum, and recurse into the half containing the best cell seen so far, since hill-climbing from it can never cross a line whose every cell is lower.",
+ "sketch": "Maintain a rectangle and the best queried cell B, which always lies inside the rectangle and exceeds every queried cell on its border lines. Query the whole middle row (or column, whichever dimension is longer), take its maximum M, and query M's two neighbours across the line. Let the best of B, M and those neighbours be the new B; if it is M itself it beats all four neighbours, hence is a local maximum and, by the guarantee, the global one. Otherwise shrink to the half containing B: an ascending path from B never crosses the line, and the unique-local-max guarantee means that path ends at the global maximum. Alternating splits cost n + n/2 + n/2 + n/4 + ... about 3n queries plus 2 per level, well under 10n+100 (measured about 3.0n at n=150..200). Cache queries; handle n=1. The sample checker cannot run interactive problems: validated with my own interactor on 1200+ random single-peak grids (three generators, n up to 200), checking the answer and the query limit, so samples_passed reflects that validator.",
+ "code_path": "solutions/kattis_kingofthehill.cpp",
+ "samples_passed": true
+}

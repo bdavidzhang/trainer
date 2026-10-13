@@ -1,0 +1,13 @@
+{
+ "id": "kattis:modifiedgraycode",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "bitmasks",
+  "ad-hoc"
+ ],
+ "key_idea": "Flipping an even number of bits preserves popcount parity, and any two values of the same parity differ in an even number of bits, so the sequence is simply the even-popcount numbers in increasing order.",
+ "sketch": "Starting from 0, every reachable value has even popcount, and from any even-popcount value every other unused even-popcount value is a legal next step, so the greedy smallest-unused rule lists the evil numbers 0,3,5,6,9,10,... in order. Precompute the 512 even-popcount values below 1024 and print the K-th (0-indexed) as 10 binary digits with leading zeros. O(1024 + N). Pitfall: K <= 500 < 512 so the index is always in range; print exactly 10 digits.",
+ "code_path": "solutions/kattis_modifiedgraycode.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:componentsgame",
+ "rating": 2000,
+ "topics": [
+  "dsu",
+  "graphs",
+  "prefix-sums",
+  "implementation"
+ ],
+ "key_idea": "Painting column c black separates white regions into a left and a right part, and fuses exactly those black components that touch column c-1 or c+1 into a single one, so prefix and suffix DSU sweeps answer every column in O(N).",
+ "sketch": "Sweep columns left to right inserting cells into a DSU, recording for every prefix the number of white components W, black components B, and T = number of distinct black components having a cell in the last column of the prefix (count distinct roots with a timestamp array). Do the same right to left for suffixes. For column c: white = WL[c-1] + WR[c+1], black = 1 + (BL[c-1]-TL[c-1]) + (BR[c+1]-TR[c+1]). Pick the column maximizing white+black, ties broken by more white, and print white then black. Total O(N M alpha), 0.13 s on 1000x1000. Pitfalls: edge columns have only one side, and the painted column itself always contributes one black region. Verified against a flood-fill brute force on 1500 random small grids.",
+ "code_path": "solutions/kattis_componentsgame.cpp",
+ "samples_passed": true
+}

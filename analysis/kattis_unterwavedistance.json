@@ -1,0 +1,14 @@
+{
+ "id": "kattis:unterwavedistance",
+ "rating": 1900,
+ "topics": [
+  "math",
+  "sorting",
+  "binary-search",
+  "graphs"
+ ],
+ "key_idea": "The per-edge term (b-a)((a+b)^2-ab) equals b^3-a^3, so the sum telescopes to |g_end^3-g_start^3| independent of the path; the graph only matters through which <=21 gravities the device changes.",
+ "sketch": "Without the device the answer is the minimum |gh^3-ga^3| over human/alien pairs, and since cubing is monotone on non-negative values this is attained by neighbours in sorted order. For each device position x, only x (-1) and its <=20 neighbours (+1) change; pairs of two unchanged systems are already covered by the base answer, so only pairs involving a changed system need checking. For each changed system binary-search its new value in the sorted list of the opposite type and walk left/right skipping systems marked as changed for this x (at most 21 skips), and brute-force changed-changed pairs (<=21^2). Total about O((n+e)*21 + n log n). Pitfalls: cubes reach 1e18 so use 64-bit, values may collide after the device giving 0 (sample 2), and a gravity of 1 can drop to 0. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_unterwavedistance.cpp",
+ "samples_passed": true
+}

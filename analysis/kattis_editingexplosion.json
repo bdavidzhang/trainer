@@ -1,0 +1,13 @@
+{
+ "id": "kattis:editingexplosion",
+ "rating": 2100,
+ "topics": [
+  "dp",
+  "strings",
+  "hashing"
+ ],
+ "key_idea": "Count strings by running the Levenshtein DP as an automaton: the state is the whole DP row against s (values capped at d+1), and distinct target strings map to distinct paths, so no double counting.",
+ "sketch": "Start from the row (0,1,...,|s|), and for each appended letter compute the next row with the standard recurrence; all letters not in s behave identically, so there are at most 11 transition classes with multiplicities. Keep a hash map row -> number of strings (mod 998244353), encode a row in 4 bits per cell, add the count to the answer whenever row[|s|]==d, and drop rows whose minimum exceeds d since they can never come back. The first cell grows by one per letter, so the process stops after at most |s|+d+1 lengths. The reachable state count is small (worst case runs in ~40 ms). Pitfalls: cap at d+1 not d, count the empty string, and count at every length rather than only at the end.",
+ "code_path": "solutions/kattis_editingexplosion.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:karlcoder",
+ "rating": 1300,
+ "topics": [
+  "interactive",
+  "binary-search"
+ ],
+ "key_idea": "Exponential search is safe because a non-zero byte at index 2^k proves 2^k < N, hence 2^(k+1) < 2N is inside the buffer; then binary search the first zero in (2^(k-1), 2^k].",
+ "sketch": "Index 1 is known non-zero since N >= 2, so probe 2,4,8,... until a zero appears at 2^k (k reads); then N lies in (2^(k-1), 2^k] and k-1 further reads binary search the first zero index. Total 2k-1 <= 2*ceil(log2 N) reads and never a segfault. Use 64-bit indices (up to 2^60) and flush after every line. The checker cannot judge an interactive problem: samples_passed reflects my own simulated interactor, which enforced the read limit and bounds for N=2..69, powers of two +-1, 1e18 and 50 random values.",
+ "code_path": "solutions/kattis_karlcoder.cpp",
+ "samples_passed": true
+}

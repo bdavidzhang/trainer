@@ -1,0 +1,14 @@
+{
+ "id": "kattis:birthdaygift",
+ "rating": 2000,
+ "topics": [
+  "matrix-exponentiation",
+  "dp",
+  "number-theory",
+  "combinatorics"
+ ],
+ "key_idea": "225 = 9*25: the residue mod 9 depends only on the digit sum and the residue mod 25 only on the last two digits, so a 90-state automaton (digit sum mod 9, last digit) suffices instead of 2250 states.",
+ "sketch": "Build the 90x90 transition matrix on states (sum mod 9, last digit) forbidding equal adjacent digits, start with a vector for a non-zero first digit, and apply M^(a-3) by repeated squaring (vector times matrix for set bits) to get counts of valid prefixes of length a-2. Then enumerate the last two digits d1 != d2 with (10*d1+d2) mod 25 == b mod 25 and add prefixes whose last digit != d1 and whose digit sum makes the total congruent to b mod 9. a = 1 and a = 2 are brute-forced. About 60 * 90^3 modmults. Pitfall: for a = 1 the solution does not count the number 0 (first digit taken from 1..9), which the statement leaves ambiguous. Stress-tested against a direct DP on (value mod 225, last digit) for a <= 12.",
+ "code_path": "solutions/kattis_birthdaygift.cpp",
+ "samples_passed": true
+}

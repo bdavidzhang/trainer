@@ -1,0 +1,13 @@
+{
+ "id": "kattis:judiciousjourney",
+ "rating": 2000,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "math"
+ ],
+ "key_idea": "Paying all but the k cheapest legs equals min over thresholds T of sum(max(w,T)) - k*T, so for every candidate T run Dijkstra with edge weights max(w,T).",
+ "sketch": "For a path with at least k legs, g(T) = sum max(w_e,T) - kT is convex piecewise linear and minimised at T = k-th smallest weight, where it equals the true cost; so the answer is min over T in {0} union {edge weights} of dist_T(0,n-1) - k*T. For paths with fewer than k legs g goes negative while the true cost is 0, so clamp the final result at 0. Because the relaxed objective never underestimates a path with >= k legs and walks are never better than simple paths (positive weights), minimising over all paths and T jointly is exact. Complexity: up to 3001 Dijkstras on m=3000 edges, about 20 ms. Pitfalls: k may exceed any path length (answer 0), k=0 needs T=0, use 64-bit. Verified against DFS path enumeration on random small digraphs.",
+ "code_path": "solutions/kattis_judiciousjourney.cpp",
+ "samples_passed": true
+}

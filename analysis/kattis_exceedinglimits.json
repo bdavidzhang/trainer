@@ -1,0 +1,12 @@
+{
+ "id": "kattis:exceedinglimits",
+ "rating": 1500,
+ "topics": [
+  "binary-search",
+  "shortest-paths"
+ ],
+ "key_idea": "Travel time on every edge l/(v+x) is decreasing in x, so the shortest travel time is monotone in x: binary search x with Dijkstra on real weights.",
+ "sketch": "First run Dijkstra with x=0 and print 0 if the destination is reachable within t. Otherwise binary search x in [0, 2e9] (x=1e9 always suffices since a simple path is at most 1e9 km and t>=1) for ~70 iterations, each a Dijkstra with weights l/(v+x) and early exit once the popped distance exceeds t. O(70 * m log n). Pitfalls: output exactly 0 when no speeding is needed, upper bound of the search, multi-edges, double precision.",
+ "code_path": "solutions/kattis_exceedinglimits.cpp",
+ "samples_passed": true
+}

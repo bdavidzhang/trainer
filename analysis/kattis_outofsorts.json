@@ -1,0 +1,12 @@
+{
+ "id": "kattis:outofsorts",
+ "rating": 1300,
+ "topics": [
+  "binary-search",
+  "implementation"
+ ],
+ "key_idea": "A value at a binary-search midpoint is found iff it lies strictly between the largest pivot where the search went right and the smallest pivot where it went left along its path.",
+ "sketch": "Generate the sequence with 64-bit arithmetic (a and x up to 2^31). Traverse the implicit binary search tree of index ranges (lo,hi) carrying the open interval (mn,mx) of values that would be routed here; the midpoint counts if mn < x[mid] < mx, then recurse left with mx=min(mx,x[mid]) and right with mn=max(mn,x[mid]). This is O(n) with an explicit stack; simulating a search for each value in O(n log n) also passes. Pitfall: overflow in a*x and using exactly mid=(lo+hi)/2.",
+ "code_path": "solutions/kattis_outofsorts.cpp",
+ "samples_passed": true
+}

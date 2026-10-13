@@ -1,0 +1,13 @@
+{
+ "id": "kattis:duelofcards",
+ "rating": 1100,
+ "topics": [
+  "greedy",
+  "sorting",
+  "two-pointers"
+ ],
+ "key_idea": "Bob's hand is the complement; the maximum wins of one sorted hand over another is a greedy two-pointer matching, and Alice's minimum is n minus Bob's maximum.",
+ "sketch": "Build Bob's cards as the numbers in 1..2n not held by Alice and sort both hands. Maximum wins of X over Y: scan X ascending with a pointer into Y ascending, each X card beating the smallest unbeaten Y card if it can. Alice's maximum is wins(A,B); since there are no ties, her minimum is n - wins(B,A). O(n log n). Verified against a permutation brute force for n<=5.",
+ "code_path": "solutions/kattis_duelofcards.cpp",
+ "samples_passed": true
+}

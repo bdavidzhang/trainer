@@ -1,0 +1,13 @@
+{
+ "id": "kattis:freedesserts",
+ "rating": 2300,
+ "topics": [
+  "dp-digit",
+  "bitmasks",
+  "search-backtracking"
+ ],
+ "key_idea": "Digit DP over the positions of P (MSB first) with the required outgoing carry and a ternary mask saying, for each digit 0-9, whether it is used by a, by b or by nobody; ordered pairs are counted and halved, and the first 5000 are listed by a DFS over a's digits pruned with the DP counts.",
+ "sketch": "State: (position, carry this position must emit, a started, b started, ternary code of digit ownership), at most 19*8*3^10 entries in a flat memo; transition picks da and the incoming carry, which fixes db = p+10c-cin-da; digits of P are forbidden, leading zeros do not count as used digits, both numbers must be positive. Since a and b have disjoint digits a!=b, so the answer is ordered count / 2 and the bills with a<b are exactly the first half in ascending a. To list them, DFS over a's digits in ascending order (a zero-padded, so lexicographic = numeric), carrying the set of at most two live (carry, b-mask) states and descending only if the DP count is positive; b is P-a at the leaf. Runs in about 0.01 s locally on 18-digit inputs. Pitfalls: for a fixed digit of a the two carry branches interleave in a-order, so they must be explored jointly, not sequentially; the count can reach ~5e11 so use 64-bit. Stress-tested against brute force for P up to 60000.",
+ "code_path": "solutions/kattis_freedesserts.cpp",
+ "samples_passed": true
+}

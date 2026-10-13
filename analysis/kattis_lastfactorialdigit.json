@@ -1,0 +1,12 @@
+{
+ "id": "kattis:lastfactorialdigit",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "N is at most 10, so just multiply 1..N modulo 10.",
+ "sketch": "Loop i=1..N keeping the product mod 10 and print it. O(N) per test. The only thing to notice is that the answer is 0 for N>=5; no overflow is possible when reducing mod 10 at each step.",
+ "code_path": "solutions/kattis_lastfactorialdigit.cpp",
+ "samples_passed": true
+}

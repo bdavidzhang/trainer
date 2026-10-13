@@ -1,0 +1,13 @@
+{
+ "id": "kattis:utopiarelationships",
+ "rating": 2100,
+ "topics": [
+  "matching",
+  "graphs",
+  "flows"
+ ],
+ "key_idea": "A fractional perfect matching exists iff the bipartite double cover (left copy i to right copy j for each edge, both directions) has a perfect matching; averaging the two directions gives half-integral weights.",
+ "sketch": "Build the bipartite graph L_i - R_j for every edge {i,j} in both directions and run Hopcroft-Karp. If the matching is not perfect print -1 (Hall violation in the cover is exactly the obstruction to a fractional perfect matching). Otherwise set x[i][j] += 5000 and x[j][i] += 5000 for each matched pair (i -> j): the matrix is symmetric, every row sums to 10000, and only real edges are used (values are 0/5000/10000). O(m sqrt n) plus n^2 output. Many answers are valid so the sample checker cannot judge sample 1; validated with my own checker (symmetry, row sums, edge support) and feasibility compared against a brute-force Hall condition on 400 random small graphs.",
+ "code_path": "solutions/kattis_utopiarelationships.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:curvespeed",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Evaluate the given formula and round to nearest integer for each line until EOF.",
+ "sketch": "Read R and S until EOF, compute sqrt(R*(S+0.16)/0.067) and print llround. The statement guarantees the value is not near a half-integer, so plain double arithmetic is safe. O(1) per line.",
+ "code_path": "solutions/kattis_curvespeed.cpp",
+ "samples_passed": true
+}

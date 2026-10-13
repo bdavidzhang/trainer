@@ -1,0 +1,14 @@
+{
+ "id": "kattis:spideydistance",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "brute-force",
+  "implementation",
+  "geometry"
+ ],
+ "key_idea": "The spidey distance of (dx,dy) is max + min/2, so the spidey ball is the convex octagon 2*max+min <= 2s; count lattice points column by column and intersect with the diamond |x|+|y| <= t.",
+ "sketch": "For each x in 0..s the allowed |y| form a prefix 0..Y(x) where Y = max(min(x, 2s-2x), floor((2s-x)/2) if that exceeds x). Column x contributes 2Y+1 points (doubled for x>0) to the denominator, and with Y clipped to t-x (if non-negative) to the numerator. Reduce by gcd and print only the numerator when the denominator is 1. O(s), counts up to ~3e12 so use 64-bit. Checked against an O(s^2) enumeration for all small t,s.",
+ "code_path": "solutions/kattis_spideydistance.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:relocation",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Positions live on a line, so keep an array of coordinates; a move is a point assignment and a query is an absolute difference.",
+ "sketch": "Store X[i] in an array. Type 1 overwrites X[C]; type 2 prints |X[A]-X[B]|. O(N+Q). No data structure is needed; coordinates up to 1e9 fit in int but 64-bit was used for safety. A may equal B (answer 0).",
+ "code_path": "solutions/kattis_relocation.cpp",
+ "samples_passed": true
+}

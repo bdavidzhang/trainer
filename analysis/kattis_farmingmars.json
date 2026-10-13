@@ -1,0 +1,12 @@
+{
+ "id": "kattis:farmingmars",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "n and m are only 1e4, so each query can be answered in O(length) with Boyer-Moore majority vote plus a verification count.",
+ "sketch": "Parse each pH as an exact integer (whole*1e6 + six decimals) to avoid float comparison. For each query run the majority-vote scan over [l,r] to get a candidate, then count its occurrences and compare with floor(len/2)+1. Total O(n*m) = 1e8 trivial operations. Pitfall: comparing doubles, or forgetting the verification pass.",
+ "code_path": "solutions/kattis_farmingmars.cpp",
+ "samples_passed": true
+}

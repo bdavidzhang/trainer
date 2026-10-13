@@ -1,0 +1,13 @@
+{
+ "id": "kattis:brackets",
+ "rating": 1700,
+ "topics": [
+  "brute-force",
+  "prefix-sums",
+  "strings"
+ ],
+ "key_idea": "Fix the left end l (prefix before it must stay non-negative), extend r while the running balance of the flipped segment stays non-negative, and test the untouched suffix in O(1) with precomputed suffix sum and suffix minimum-prefix.",
+ "sketch": "Precompute for every suffix its total T[i] and its minimum prefix balance M[i]. Odd length is impossible; an already valid string is possible. For each l with a non-negative prefix balance, walk r from l accumulating the inverted brackets; break as soon as the balance goes negative (larger r cannot help); the suffix after r is fine iff b+T[r+1]==0 and b+M[r+1]>=0. O(n^2) = 25M simple steps for n=5000. Pitfalls: 'at most one' includes zero operations; stop the outer loop when the unflipped prefix goes negative. Stress-tested against an exhaustive brute force.",
+ "code_path": "solutions/kattis_brackets.cpp",
+ "samples_passed": true
+}

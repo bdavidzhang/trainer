@@ -1,0 +1,13 @@
+{
+ "id": "kattis:stretchingstreamers",
+ "rating": 2100,
+ "topics": [
+  "dp-interval",
+  "combinatorics",
+  "number-theory"
+ ],
+ "key_idea": "Count non-crossing spanning trees of points on a circle with an allowed-edge matrix using interval DP with two tables: trees on [i..j], and trees on [i..j] that contain the edge i-j.",
+ "sketch": "ok[i][j] = gcd(x_i,x_j)>1. Let g[i][j] be the number of non-crossing spanning trees on vertices i..j and f[i][j] the number of those that use edge (i,j). Removing edge (i,j) splits the tree into a tree on i..k and a tree on k+1..j, so f[i][j] = ok * sum_k g[i][k]*g[k+1][j]. For g, take k as the farthest neighbour of i: g[i][j] = sum_{k>i} f[i][k]*g[k][j], which is unambiguous so nothing is double counted. Answer g[0][n-1] mod 1e9+7; O(n^3) = 2.7e7. The circle needs no special treatment because edge (0,n-1) is just another chord. Verified against subset enumeration for n<=7.",
+ "code_path": "solutions/kattis_stretchingstreamers.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bellevue",
+ "rating": 1300,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "math"
+ ],
+ "key_idea": "The best viewpoint looking east is the upper-hull vertex adjacent to the right endpoint, so the answer is simply the steepest line from either sea-level endpoint to any vertex.",
+ "sketch": "From any point the lowest unobstructed sight line is tangent to the upper convex hull, and hull edge slopes are monotone, so the largest depression angle is along the last (or first) hull edge. Hence answer = atan(max over i of max(y_i/(x_i-x_1), y_i/(x_n-x_i))) in degrees. O(n), no hull construction needed. Pitfalls: convert to degrees, consider both directions separately.",
+ "code_path": "solutions/kattis_bellevue.cpp",
+ "samples_passed": true
+}

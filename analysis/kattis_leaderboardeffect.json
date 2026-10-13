@@ -1,0 +1,13 @@
+{
+ "id": "kattis:leaderboardeffect",
+ "rating": 2100,
+ "topics": [
+  "dp-bitmask",
+  "probability",
+  "dp"
+ ],
+ "key_idea": "With infinitely many teams the leaderboard is deterministic: the solved fraction of each problem at each minute is a fixed number, so a single team's Markov chain over (time, set of problems read) can be pushed forward in time order.",
+ "sketch": "State P[time][mask] = fraction of teams making a new choice at that minute having read exactly mask. Process minutes in increasing order: first add all solves landing at this minute to the cumulative fractions s_i (leaderboard updates before teams look), then for every mask distribute its mass to unread problems with weight s_i / sum (uniform if the sum over unread is 0). A pick moves mass (1-p) to (time+r, mask|i) and mass p to (time+r+c, mask|i), counting a solve only if time+r+c <= t. Since r,c >= 1 every solve at a minute comes from strictly earlier choices, so the order is consistent. O(t * 2^n * n) = 2.2e8 simple operations, about 0.3 s; rows of the table are freed as they are consumed. Pitfalls: finishing exactly at t counts, the uniform fallback is over unread problems only, and compare the weight sum to exactly 0.",
+ "code_path": "solutions/kattis_leaderboardeffect.cpp",
+ "samples_passed": true
+}

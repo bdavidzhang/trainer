@@ -1,0 +1,13 @@
+{
+ "id": "kattis:staggeringtothefinish",
+ "rating": 1500,
+ "topics": [
+  "geometry",
+  "implementation",
+  "math"
+ ],
+ "key_idea": "For each lane walk backwards D metres from the finish along that lane's line of running (radius R+(i-1)W+L), then project the resulting straight position or arc angle onto the lane's inner marker.",
+ "sketch": "Lane i has inner radius rin=R+(i-1)W and running radius r=rin+L1 (lane 1) or rin+L2. Going clockwise from the finish the pieces are: bottom straight of length F+S/2, left semicircle pi*r, top straight S, right semicircle pi*r, bottom straight S; reduce D modulo the lap 2S+2*pi*r first since D can slightly exceed a lap. On a straight the answer is (x, +-rin); on a curve the angle is 3pi/2-d/r (left) or pi/2-d/r (right) around (-+S/2,0) and the point uses radius rin, not r. O(N) per query. Pitfalls: orientation (counterclockwise running means +x on the lower straight), using the running radius for arc length but the inner radius for the output, and the 400 m case that wraps just past the finish.",
+ "code_path": "solutions/kattis_staggeringtothefinish.cpp",
+ "samples_passed": true
+}

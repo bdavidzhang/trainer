@@ -1,0 +1,13 @@
+{
+ "id": "kattis:junglegame",
+ "rating": 2100,
+ "topics": [
+  "constructive",
+  "greedy",
+  "graphs"
+ ],
+ "key_idea": "It is an independent set problem on the N^2 grid points where each chosen point a forbids only the at most N points c-a; a greedy that takes points in increasing order of conflict degree always finds N of them, and the only NO instance is N=1 with card (2,2).",
+ "sketch": "Mark cards in a (2N)x(2N) grid; a point a is unusable if 2a is a card and a,b conflict if a+b is a card. Compute for each point its degree (number of cards c with c-a inside the grid) with a 2D prefix sum, counting-sort the N^2 points by degree, and scan: take an unblocked usable point and mark c-a blocked for every card, O(N) per pick, O(N^2) overall. Corner points have far smaller degree than N so the Caro-Wei style count comfortably exceeds N; exhaustive enumeration of all card multisets for N<=4 and sampling for N<=7 found no NO instance other than N=1. The code keeps random-order restarts and an exhaustive DFS for N<=6 as safety nets before printing NO. Any valid answer is accepted, so the sample checker reports a mismatch on sample 1: output was verified with my own validator (distinctness, range, no pairwise sum equal to a card) on adversarial families up to N=2000. Pitfall: sorting 4M points with a comparator is too slow for 1s, use counting sort.",
+ "code_path": "solutions/kattis_junglegame.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:labourlaws",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Try every break length b from 0 upward and test whether working t-b minutes with a b-minute break is legal.",
+ "sketch": "Work time is w=t-b. It is legal iff w<=600 and (w<=360, or w<=540 and b>=30, or b>=45). Loop b from 0 to t and print the first legal value; O(t). Pitfall: the thresholds apply to time worked, not time at work, so e.g. t=540 needs only 30 (510 worked), and for large t the 10-hour cap forces b=t-600. Samples pass with the checker.",
+ "code_path": "solutions/kattis_labourlaws.cpp",
+ "samples_passed": true
+}

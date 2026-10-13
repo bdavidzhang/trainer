@@ -1,0 +1,13 @@
+{
+ "id": "kattis:vrplayspace",
+ "rating": 2000,
+ "topics": [
+  "monotonic-stack-queue",
+  "prefix-sums",
+  "implementation"
+ ],
+ "key_idea": "Enumerate every maximal empty rectangle exactly once with the histogram technique: for each bottom row, each distinct (height, left, right) span from the monotonic stack is maximal up/left/right, and is maximal downward iff the row below has an obstacle inside its column span.",
+ "sketch": "For each row keep column heights of consecutive empty cells. With a monotonic stack compute for each column the nearest strictly lower column on the left and right; a column is canonical if there is no equal-height column between it and its left boundary, which deduplicates rectangles. A canonical column with h>0 gives rectangle of height h and width R-L-1 that cannot grow up, left or right; it cannot grow down iff it is the last row or a prefix-sum over the next row shows an obstacle in (L,R). Count it if (h>=s and w>=t) or (h>=t and w>=s). Complexity O(rc), 9e6 cells. Pitfalls: the size requirement is orientation-free, double counting of equal heights, and the bottom-maximality check. Stress-tested against an exhaustive brute force.",
+ "code_path": "solutions/kattis_vrplayspace.cpp",
+ "samples_passed": true
+}

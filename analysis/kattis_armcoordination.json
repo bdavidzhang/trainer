@@ -1,0 +1,12 @@
+{
+ "id": "kattis:armcoordination",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "geometry"
+ ],
+ "key_idea": "The smallest square enclosing a circle has side 2r, and the axis-aligned one centred at (x,y) already has integer corners.",
+ "sketch": "Print (x-r,y-r), (x+r,y-r), (x+r,y+r), (x-r,y+r) in order. Use 64-bit integers since coordinates reach 2e9. Any orientation is accepted, so the sample checker shows a mismatch against the rotated sample squares; samples_passed is based on my own validator, which checked on the samples and 200 random cases that the four points form a square of side exactly 2r centred on the circle centre.",
+ "code_path": "solutions/kattis_armcoordination.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:japaneselottery",
+ "rating": 2100,
+ "topics": [
+  "segment-tree",
+  "combinatorics",
+  "data-structures",
+  "math"
+ ],
+ "key_idea": "Removing one bar multiplies the resulting permutation by a transposition, so the minimum number of removals is w minus the number of cycles of the current permutation; maintain that permutation with a segment tree over heights.",
+ "sketch": "Lower bound: deleting a bar swaps the two endpoints of the paths that crossed there, changing the cycle count by exactly one, so at least w - cycles removals are needed. Achievable: in any non-trivial cycle some two of its paths must swap relative order, which can only happen at a bar they both use, and deleting that bar splits the cycle. Build a segment tree over the h heights where each leaf holds identity or an adjacent transposition and each node the composition of its children (top first, T[i] = R[L[i]]). Each toggle recomputes log h nodes at O(w) each, then count cycles of the root in O(w): O(q w log h) total, about 7e7 basic operations. Verified against an exponential subset brute force on 300 random small cases. Pitfalls: composition order is not commutative, store permutations as bytes (2^19 nodes * 20 bytes) to keep memory small.",
+ "code_path": "solutions/kattis_japaneselottery.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:genies",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "bitset"
+ ],
+ "key_idea": "A chain of genies with ranks k1 > k2 > ... (each dropping by at least C) yields sum(k_i) - (number of conjurings) real wishes; do reachability DP over rank and wish count.",
+ "sketch": "f[k] is the set of real-wish totals obtainable starting from a genie of rank k: either k (no conjuring) or (k-1) + w for w in f[k'] with 1 <= k' <= k-C. Keep a prefix union pre[k] = f[1] | ... | f[k] as bitsets so each rank costs O(W). Answer yes iff W is in f[K]. Complexity O(K*W). Pitfalls: all K wishes must be used so the total is exact, each genie conjures at most one other, and totals above W can be dropped.",
+ "code_path": "solutions/kattis_genies.cpp",
+ "samples_passed": true
+}

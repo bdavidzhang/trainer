@@ -1,0 +1,14 @@
+{
+ "id": "kattis:alternativearchitecture",
+ "rating": 1700,
+ "topics": [
+  "number-theory",
+  "math",
+  "geometry",
+  "brute-force"
+ ],
+ "key_idea": "The corner studs are (a-1) and (b-1) apart; a side vector (x,y) of length A works iff (-y,x)*B/A is integral, which forces (x,y) to be A/g times a lattice point on the circle of radius g = gcd(A,B). So count lattice points on that circle.",
+ "sketch": "Let A = a-1, B = b-1, g = gcd(A,B). The A-side is an integer vector (x,y) with x^2+y^2 = A^2, and the perpendicular B-side (-y,x)*B/A must be integral, i.e. (A/g) divides x and y; dividing out gives lattice points on the circle of radius g. Count points with x > 0, y >= 0 (a quarter turn) by looping x = 1..g and testing whether g^2 - x^2 is a perfect square: O(g) <= 1e6. A square (A == B) has 90-degree symmetry so the answer is that count; otherwise orientations are distinct mod 180 degrees and the answer is twice it. Pitfalls: the off-by-one (plate size vs stud distance), 64-bit squares, exact integer sqrt, and the square special case.",
+ "code_path": "solutions/kattis_alternativearchitecture.cpp",
+ "samples_passed": true
+}

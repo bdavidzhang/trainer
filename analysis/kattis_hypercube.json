@@ -1,0 +1,12 @@
+{
+ "id": "kattis:hypercube",
+ "rating": 1200,
+ "topics": [
+  "bitmasks",
+  "math"
+ ],
+ "key_idea": "The position of a word in the reflected Gray code is its Gray-to-binary decoding: bit i of the index is the XOR of the first i bits of the code word.",
+ "sketch": "Decode both strings with a running prefix XOR into 64-bit integers and print pos(b) - pos(a) - 1. O(n). n is up to 60 so use 64-bit integers.",
+ "code_path": "solutions/kattis_hypercube.cpp",
+ "samples_passed": true
+}

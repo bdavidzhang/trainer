@@ -1,0 +1,12 @@
+{
+ "id": "kattis:candyfactory",
+ "rating": 1600,
+ "topics": [
+  "math",
+  "greedy"
+ ],
+ "key_idea": "With P packs the multiset is packable iff the total is k*P and no type exceeds P; so choose the smallest P >= max(a_max, ceil(S/k)) and the answer is k*P - S.",
+ "sketch": "Necessity is clear (each pack uses a type at most once). Sufficiency: repeatedly take the k largest remaining types; at most k types can equal P since the sum is kP, and at least k are non-zero, so the invariant holds. Any deficit k*P-S can always be distributed because total spare capacity n*P-S >= k*P-S as n>=k. So P = max(max a_i, ceil(S/k)) and answer = k*P-S, O(n). Use 64-bit: k*P reaches 5e12. Verified against exhaustive search over additions and real packings for small cases.",
+ "code_path": "solutions/kattis_candyfactory.cpp",
+ "samples_passed": true
+}

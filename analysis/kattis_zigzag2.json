@@ -1,0 +1,4 @@
+{"id":"kattis:zigzag2","rating":1200,"topics":["greedy","dp"],
+"key_idea":"The longest zigzag subsequence has length 1 plus the number of times the sign of consecutive differences changes, ignoring zero differences (pick the local extrema).",
+"sketch":"Scan the array once keeping the direction of the last non-zero step; every time a non-zero difference has a direction different from the stored one (including the first non-zero difference), increment the answer and update the direction. Answer starts at 1, so an all-equal array gives 1. O(n) time, O(1) memory; the equivalent up/down DP also works. Pitfalls: equal adjacent values must be skipped rather than counted as a turn, and with n = 1e6 lines fast input matters.",
+"code_path":"solutions/kattis_zigzag2.cpp","samples_passed":true}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:suspensionbridges",
+ "rating": 1300,
+ "topics": [
+  "binary-search",
+  "math"
+ ],
+ "key_idea": "g(a) = a*(cosh(d/(2a)) - 1) is monotone decreasing in a, so binary search a to match the sag s and plug into the length formula.",
+ "sketch": "Binary search a with a*(cosh(d/2a)-1) > s meaning a is too small; then output 2a*sinh(d/2a). O(iterations). Pitfalls: for small a the argument d/(2a) overflows cosh, so the lower bound is d/1400 (argument 700, value already astronomically above any s); for large a, cosh(x)-1 suffers cancellation, so it is evaluated as 2*sinh(x/2)^2. Upper bound 1e9 is ample since a is about d^2/(8s) <= 125000. Checked the extremes d=1,s=1000 and d=1000,s=1 for sane values.",
+ "code_path": "solutions/kattis_suspensionbridges.cpp",
+ "samples_passed": true
+}

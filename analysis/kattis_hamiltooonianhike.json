@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hamiltooonianhike",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "trees",
+  "bfs-dfs"
+ ],
+ "key_idea": "The cube of any tree has a Hamiltonian path: on a DFS spanning tree print even-depth vertices on entry and odd-depth vertices on exit.",
+ "sketch": "Take any DFS spanning tree rooted at 1. Emit a vertex when entering it if its depth is even and when leaving it if its depth is odd. Any two consecutively emitted vertices are then at tree distance at most 3 (parent/child/sibling/grandchild patterns), so every day uses at most three trails and each cabin is visited once. O(n+m). Pitfall: recursion depth up to 2e5, so the DFS is iterative. Any valid order is accepted, so the sample checker reports a mismatch; output was verified with my own validator (permutation check plus BFS distance <=3 between consecutive cabins on random graphs, and a 2e5 path for speed).",
+ "code_path": "solutions/kattis_hamiltooonianhike.cpp",
+ "samples_passed": true
+}

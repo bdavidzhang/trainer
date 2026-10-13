@@ -1,0 +1,13 @@
+{
+ "id": "kattis:thepaladin",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "strings",
+  "palindromes"
+ ],
+ "key_idea": "A palindrome is fixed by its first half, and each adjacent pair (a,b) in the half costs c(ab)+c(ba) because the mirrored pair appears reversed.",
+ "sketch": "Let h = ceil(k/2). dp over the first half with 26 states (last letter): moving a->b requires both pairs ab and ba to exist and costs their sum. For even k the two middle letters are equal, so the pair (m,m) must exist and its cost is added; for odd k nothing extra. O(k*26^2). Pitfalls: missing pairs are forbidden (not zero cost), k=2 needs a double-letter pair, output -1 if no state is reachable.",
+ "code_path": "solutions/kattis_thepaladin.cpp",
+ "samples_passed": true
+}

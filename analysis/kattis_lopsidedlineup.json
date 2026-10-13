@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lopsidedlineup",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Let d_i be the row sum of player i. Summing d_i over a team counts its internal pairs twice plus the cross pairs once, so the cross terms cancel in the difference: S(A)-S(B) = (sum_{A} d_i - sum_{B} d_i)/2.",
+ "sketch": "Compute row sums, sort them, and output (sum of the larger half minus sum of the smaller half)/2. O(n^2) to read the input, O(n log n) otherwise. Pitfalls: use 64-bit sums (row sums up to 1e9, totals up to 1e12) and fast input for 10^6 numbers; the result is always an even difference so the division is exact.",
+ "code_path": "solutions/kattis_lopsidedlineup.cpp",
+ "samples_passed": true
+}

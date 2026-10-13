@@ -1,0 +1,14 @@
+{
+ "id": "kattis:laundry",
+ "rating": 2000,
+ "topics": [
+  "math",
+  "flows",
+  "greedy",
+  "case-analysis"
+ ],
+ "key_idea": "With load counts a,b,c fixed, feasibility is a bipartite transport problem, and by Hall's condition it reduces to seven inequalities: every subset S of programmes must have capacity k*loads(S) at least the number of items restricted to S.",
+ "sketch": "Let la,lb,lc = ceil of the single piles over k, pab = ceil((cA+cB+cAB)/k) and similarly pbc, pac, and T = ceil(total/k). We need integers a>=la, b>=lb, c>=lc, a+b>=pab, b+c>=pbc, a+c>=pac, a+b+c>=T with minimum sum S. Rewriting a pair constraint as an upper bound on the third variable (c <= S - pab) gives box constraints, which are satisfiable with sum exactly S iff S >= each of la+lb+lc, pab+lc, pbc+la, pac+lb, ceil((pab+pbc+pac)/2), T; the answer is the maximum of those six values. O(1) per test, sums up to 7e9 so use 64-bit. Pitfall: the ceil of the half-sum of the pair bounds is easy to forget. Verified against an exhaustive brute force on 400 small random cases.",
+ "code_path": "solutions/kattis_laundry.cpp",
+ "samples_passed": true
+}

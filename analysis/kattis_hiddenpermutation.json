@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hiddenpermutation",
+ "rating": 2300,
+ "topics": [
+  "combinatorics",
+  "number-theory",
+  "math",
+  "constructive"
+ ],
+ "key_idea": "Strings with period dividing d are those fixed by f^d, and there are 2^{sum over cycles gcd(c,d)} of them; so prefix sums of the input over divisors give G(d)=sum_c n_c*gcd(c,d), which Moebius-inverts (gcd = sum of phi over common divisors) to the cycle-length counts n_c.",
+ "sketch": "For d=1..N compute F(d)=sum of m_i with p_i|d using 128-bit integers; it must be a power of two, G(d)=log2 F(d). Since gcd(c,d)=sum_{e|c,e|d} phi(e), G(d)=sum_{e|d} phi(e)S(e) with S(e)=number of cycles whose length is divisible by e; invert once to get S, a second time to get n_c, rejecting negative or non-integral values and sum c*n_c != N. The input may be inconsistent, so verify the candidate fully: for each given p_i, the exact count is sum over squarefree q|p_i of mu(q)*2^{G(p_i/q)}, compared with m_i, and sum m_i must equal 2^N (this also proves no period is missing). Output cycles as consecutive rotations. Pitfalls: m_i up to 2^100 (use __int128), p_i up to 1e9 with up to 9 distinct primes. Output is not unique: samples matched and a Python brute force over all cycle types with perturbed inputs (500 cases) validated answers and impossibles.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_hiddenpermutation.cpp"
+}

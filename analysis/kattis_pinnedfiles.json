@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pinnedfiles",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "ad-hoc",
+  "constructive"
+ ],
+ "key_idea": "Untouched pinned files must form a prefix of the final pinned list and untouched unpinned files a suffix of the final unpinned list, each in their original relative order; every other file costs 1 toggle if its state changes and 2 otherwise.",
+ "sketch": "Pinning appends to the end of the pinned block and unpinning pushes to the front of the unpinned block, so files never toggled stay ahead of (resp. behind) all toggled ones and keep their relative order. Take the longest prefix of the target pinned list consisting of initially pinned files with increasing initial positions, and the longest suffix of the target unpinned list of initially unpinned files with increasing positions; these are untouched. All remaining files are toggled once (state differs) or twice (same state), and that lower bound is achievable by doing the throwaway first toggles first and then ordering the final pins / unpins as required. O(n). Verified against BFS over all states for n<=6 on 1500 random cases.",
+ "code_path": "solutions/kattis_pinnedfiles.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:xorisland",
+ "rating": 2100,
+ "topics": [
+  "bitmasks",
+  "dp-bitmask",
+  "brute-force",
+  "games"
+ ],
+ "key_idea": "Blue-eyed-islanders induction: an islander can rule out 'my hat is irrelevant' one day after the world without him would have produced a raised hand, so the answer is the minimum number of islanders to delete so that no XOR triple remains (minimum hitting set of triples).",
+ "sketch": "f(S) = 1 + min over i of f(S minus i), with f = 0 for triple-free sets, hence answer = n - (largest triple-free subset). Enumerate all 2^25 subsets with a bit array ok[S]: S with highest bit h is triple-free iff S without h is and no a in the rest has a partner (precomputed mask of islanders whose value is v_h xor v_a) inside the rest. Cost about 2^25 * n/2 word ops worst case, 0.25 s locally, 4 MB. Pitfalls: duplicate hat values are distinct islanders, and a triple always has three distinct indices since values are positive. The epistemic reduction itself was only checked on the samples (sample 2 gives 3), not by an independent logic simulator.",
+ "code_path": "solutions/kattis_xorisland.cpp",
+ "samples_passed": true
+}

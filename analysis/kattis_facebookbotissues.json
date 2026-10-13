@@ -1,0 +1,13 @@
+{
+ "id": "kattis:facebookbotissues",
+ "rating": 1500,
+ "topics": [
+  "bitset",
+  "graphs",
+  "brute-force"
+ ],
+ "key_idea": "The shape is just two vertices with at least K common neighbours (a K_{2,K}); with N=2000, AND the adjacency bitsets of every pair and popcount.",
+ "sketch": "Store each adjacency row as a bitset<2000>. For every pair (a,b) compute popcount(adj[a] & adj[b]) and answer YES if it reaches K; common neighbours automatically exclude a and b since there are no self-loops. Cost is N^2/2 * N/64 ~ 6e7 word operations. Skip vertices of degree < K as a cheap prune. Pitfall: an adjacency matrix of ints or per-pair set intersection is too slow in the dense case; K<=10 is a red herring for this approach.",
+ "code_path": "solutions/kattis_facebookbotissues.cpp",
+ "samples_passed": true
+}

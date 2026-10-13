@@ -1,0 +1,14 @@
+{
+ "id": "kattis:freesolo",
+ "rating": 2500,
+ "topics": [
+  "geometry",
+  "shortest-paths",
+  "graphs",
+  "sweep-line"
+ ],
+ "key_idea": "The climber may stand exactly at points covered by at least 3 unit disks around holds; that region is bounded only by arcs that are convex from the inside, so a shortest path is a polyline bending only at circle-circle intersection points, i.e. a visibility-graph Dijkstra.",
+ "sketch": "Since a free fourth limb can always regrip, safety reduces to: at least 3 non-target holds within distance 1 at every point (the target cannot help before it is reached). Nodes are the origin plus every intersection point of two unit circles (target circle included) with depth >=3; an edge exists when the whole segment has depth >=3, tested by computing each disk's parameter interval on the segment and sweeping the sorted endpoints. The path ends either at a node on/inside the target circle or by walking from a node straight toward the target centre until distance 1 (cost |VT|-1) when that segment is feasible; answer 0 if the origin is already within reach, -1 if nothing is reachable. O(N^2 * n log n) with N <= ~1000 nodes, a few ms. Robustness: test coverage with radius 1+1e-7 (allowed by the stability guarantee) and accept interval ends that coincide with a start, so segments grazing a vertex are not rejected. Samples pass, and it agreed with a 0.01-step grid Dijkstra on 150 random instances.",
+ "code_path": "solutions/kattis_freesolo.cpp",
+ "samples_passed": true
+}

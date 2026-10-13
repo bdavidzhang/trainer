@@ -1,0 +1,14 @@
+{
+ "id": "kattis:impartialstrings",
+ "rating": 2500,
+ "topics": [
+  "trie-aho-corasick",
+  "strings",
+  "graphs",
+  "shortest-paths"
+ ],
+ "key_idea": "In the Aho-Corasick automaton of S and T give each transition weight (+1 if S ends there) - (1 if T ends there); the language of zero-weight words is regular iff the automaton does NOT contain both a positive-weight cycle and a negative-weight cycle.",
+ "sketch": "If only one sign of cycle exists, the running balance of any accepted word stays in a bounded window, so a finite automaton can track it; if both exist, the prefixes U^n of a positive cycle are pairwise distinguishable by prefixes of a negative cycle (weights change by at most 1 per step so 0 is hit exactly), hence non-regular by Myhill-Nerode. Build the AC automaton over alphabet A (at most 1001 states), weight of a transition = w(target) using suffix-link propagation of the end flags. Detect a positive cycle with Bellman-Ford from an all-zero start (changes still happening after V rounds), then again with negated weights. To keep it fast, deduplicate targets per state and collapse all transitions into the root (weight 0) into one max: the number of non-root transitions is O(V), so each round is linear and a test costs about V^2. Pitfalls: the alphabet A may be larger than the letters of S and T (extra letters reset to the root and create new cycles), S may equal T or be a substring of T, and weight must count overlapping occurrences via suffix links. Verified against a brute force over all short cyclic words.",
+ "code_path": "solutions/kattis_impartialstrings.cpp",
+ "samples_passed": true
+}

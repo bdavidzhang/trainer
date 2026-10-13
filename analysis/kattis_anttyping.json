@@ -1,0 +1,12 @@
+{
+ "id": "kattis:anttyping",
+ "rating": 1700,
+ "topics": [
+  "dp-bitmask",
+  "bitmasks"
+ ],
+ "key_idea": "Total walking distance is a sum over the 8 gaps between adjacent keys of how many consecutive-character transitions cross that gap, which gives a subset DP over which digits occupy the left prefix.",
+ "sketch": "Count c[a][b] = number of adjacent pairs {a,b} in s. Build the layout left to right: dp[mask] = min cost with the digits in mask occupying the first |mask| keys; adding a digit pays cut(newmask) = sum of c[a][b] for a in mask, b outside, plus 1 if s[0] is not in the mask (the ant starts on the leftmost key and must first walk to s[0]). Answer is dp[full] + |s| for the typing seconds. 2^9*81 work after an O(|s|) count. Brute-forcing all 9! layouts also fits. Verified against a 9! brute force on random short strings.",
+ "code_path": "solutions/kattis_anttyping.cpp",
+ "samples_passed": true
+}

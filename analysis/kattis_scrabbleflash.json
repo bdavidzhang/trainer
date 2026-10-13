@@ -1,0 +1,13 @@
+{
+ "id": "kattis:scrabbleflash",
+ "rating": 1400,
+ "topics": [
+  "dp-bitmask",
+  "strings",
+  "brute-force"
+ ],
+ "key_idea": "With only 10 words, precompute the pairwise cost from longest common substring and run a Hamiltonian-path style bitmask DP from word 0.",
+ "sketch": "cost[i][j] = w(w+1)/2 - s(s+1)/2 where w = |word j| and s = longest common substring of i and j (brute force over start pairs, words have length <= 5). dp[mask][last] = minimum time to have found exactly the words in mask ending at last, starting with dp[{0}][0] = 0. Answer is the largest popcount over states with dp <= U. Complexity O(2^N N^2). Pitfalls: cost is asymmetric (depends on the length of the word being found), it is substring not subsequence, and the start word counts as found so the answer is at least 1. Revisiting an already found word never shortens a route, so plain subset DP is enough.",
+ "code_path": "solutions/kattis_scrabbleflash.cpp",
+ "samples_passed": true
+}

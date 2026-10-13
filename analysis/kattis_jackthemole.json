@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jackthemole",
+ "rating": 1900,
+ "topics": [
+  "dp-knapsack",
+  "dp",
+  "hashing"
+ ],
+ "key_idea": "Count subset sums modulo a prime so that a single item can be removed from the knapsack in O(S) by inverting the transition: c'[s] = c[s] - c'[s-w].",
+ "sketch": "Build the number of subsets for every sum over all n items modulo two primes (O(n*S), S <= 3e5). For each candidate i with S-w_i even, undo item i with the forward recurrence c'[s] = c[s] - c'[s-w_i] up to the target (S-w_i)/2 and check that the count is nonzero under either modulus. Total about 2*n*S/2 = 9e7 simple operations. Pitfall: the true count can be 0 modulo one prime, hence two moduli (a zero under both is a real zero with overwhelming probability); a boolean bitset knapsack cannot be undone. Stress-tested against brute force.",
+ "code_path": "solutions/kattis_jackthemole.cpp",
+ "samples_passed": true
+}

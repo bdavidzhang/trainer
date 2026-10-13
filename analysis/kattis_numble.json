@@ -1,0 +1,13 @@
+{
+ "id": "kattis:numble",
+ "rating": 2000,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "The main line must be monotone, so a chosen multiset of tiles has only two possible orders (ascending or descending); enumerating start cell, orientation, tile count and subset is therefore tiny.",
+ "sketch": "For each orientation and each empty start cell, take the next j empty cells along the line (skipping over existing tiles, so no gaps) for j=1..t, require that some placed cell is orthogonally adjacent to an existing tile, and try every subset of j tiles in sorted and reverse-sorted order (deduplicating equal tiles). Evaluate the main run and the perpendicular run through each new tile: runs of length 1 are ignored, each run must be monotone and its total (letter bonuses on new tiles only, then sequence multipliers from new tiles only) divisible by 3; sum the scores. About 800 * 2^10 * 2 placements times O(200) work, 0.3 s worst case. Pitfalls: bonuses under existing tiles never count, T makes any run divisible, a single placed tile is evaluated in both directions without double counting, answer 0 if no legal move. Interpretation used: Scrabble-style connectivity (the move as a whole must touch an existing tile); both samples pass.",
+ "code_path": "solutions/kattis_numble.cpp",
+ "samples_passed": true
+}

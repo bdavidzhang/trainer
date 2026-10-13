@@ -1,0 +1,14 @@
+{
+ "id": "kattis:gridguardian",
+ "rating": 3000,
+ "topics": [
+  "dp-bitmask",
+  "combinatorics",
+  "case-analysis",
+  "math"
+ ],
+ "key_idea": "The minimum is floor(n/2)*floor(m/2), forcing exactly one obstacle per aligned 2x2 block. In the even-even case the horizontal windows force each row band to be 'right...right left...left' (one threshold x_i) and each column band 'bottom...bottom top...top' (threshold y_j); the corner windows then reduce to a simple forbidden pattern between adjacent columns, giving a DP over (set of row bands still 'right', y_j).",
+ "sketch": "Both odd: the answer is 1 (obstacles on all even-even cells). Exactly one dimension even (2a by 2b+1): obstacles only in even columns and each such column needs a obstacles with no two adjacent free cells, giving (a+1)^b. Both even (a = n/2 <= 12, b = m/2 <= 500): state is (mask S_j of bands with x_i > j, y_j) with S_{j+1} a subset of S_j; the corner constraint fails only if y_j < y_{j+1} and some i in [y_j, y_{j+1}-2] has i in S_{j+1}, i+1 not in S_j, or symmetrically if y_j > y_{j+1} and some i in [y_{j+1}, y_j-2] has i not in S_j, i+1 in S_{j+1}. The transition is a subset-sum (SOS) sweep bit by bit where bits inside the restricted interval may only be kept if the neighbouring old bit is set; merging all sources that are in the restricted phase makes one column cost about O(a^2 * 2^a), total O(b * a^2 * 2^a), about 3s locally for 24x1000. Arbitrary prime modulus, so only additions are used. Verified against full subset brute force up to 25 cells and a block-type brute force up to 8x8 / 6x10.",
+ "code_path": "solutions/kattis_gridguardian.cpp",
+ "samples_passed": true
+}

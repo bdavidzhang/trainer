@@ -1,0 +1,13 @@
+{
+ "id": "kattis:greetingcard",
+ "rating": 1500,
+ "topics": [
+  "hashing",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "2018^2 = dx^2 + dy^2 has only 12 integer solutions ((+-2018,0),(0,+-2018),(+-1118,+-1680),(+-1680,+-1118)), so for each point just look up the 12 candidate neighbours.",
+ "sketch": "Enumerate all integer offsets on the circle of radius 2018 by looping dx and testing whether 2018^2 - dx^2 is a perfect square. Pack each point as x<<32|y in a sorted array, and for every point and offset binary-search the shifted point; each pair is found twice, so halve the count. O(12 n log n). Pitfalls: coordinates go up to 2^31-1, so use 64-bit and reject shifted coordinates outside [0,2^31) before packing to avoid key collisions; do not forget the non-axis-aligned offsets (2018 = 2*1009 with 1009 = 15^2 + 28^2).",
+ "code_path": "solutions/kattis_greetingcard.cpp",
+ "samples_passed": true
+}

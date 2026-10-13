@@ -1,0 +1,14 @@
+{
+ "id": "kattis:thisissparta",
+ "rating": 2700,
+ "topics": [
+  "math",
+  "number-theory",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "A round on the sorted line is b_i = a_i - b_{i-1}, so prefix sums satisfy P_k(b) = (P_k(a)+b_k)/2 <= P_k(a) - P_{k-1}(a)/2. Keeping d+1 gladiators non-zero for T rounds therefore needs a total of at least T^d/(2^d d!), which forces the number of non-zero values down to about 57 after ~120 rounds and to 3 after a few million; the 3- and 2-element endgames are Euclid-like and can be fast-forwarded in closed form.",
+ "sketch": "Zeros stay at the front forever, so keep only non-zero values. While at least 4 are non-zero simulate a round and re-sort (radix sort for big arrays, insertion sort for tiny ones); the bound above caps this at ~120 expensive rounds plus a few million rounds on <=5 elements. With 3 values (x,y,z), s rounds without an order change give (x, y-sx, z-sy+s(s+1)/2 x); the order survives until s = floor(y/x) or until z_s < y_s, and z_s - y_s is non-increasing on that range, so binary search the first violation, jump, re-sort. With 2 values jump floor(y/x) rounds (Euclid). Do K-1 rounds with re-sorting and print the K-th round in line order (not sorted, leading zeros first). Pitfalls: __int128 for the quadratic term, K up to 1e18, output is the post-attack line order. Verified against direct simulation on several thousand random cases including huge values with K up to 20000; worst observed time 0.18 s.",
+ "code_path": "solutions/kattis_thisissparta.cpp",
+ "samples_passed": true
+}

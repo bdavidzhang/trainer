@@ -1,0 +1,12 @@
+{
+ "id": "kattis:allkill",
+ "rating": 2500,
+ "topics": [
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "Processing problems in priority order turns the process into parking cars of different lengths: problem i arrives at its idea time, drives to the first free minute and needs x_i consecutive free minutes there. The count is the Ehrenborg-Happ parking-sequence formula, obtained with a circular (t+1 cells) rotation argument.",
+ "sketch": "Problem i's schedule depends only on problems 1..i, so insert them in order: its idea time is a preferred spot, it starts at the first free minute at or after it, and no preemption means the next x_i minutes must be free. That is exactly a parking sequence with car lengths x_i on a street of length t. With z = t+1-sum(x), the number of valid idea-time vectors is z * prod_{i=1}^{n-1} (z + x_1+...+x_i + n - i), which already equals p*t^n. Computed in O(n) mod 998244353. Verified against a minute-by-minute simulation over all idea vectors for small n,t. Pitfalls: the answer depends on the order of the x_i (prefix sums), and naive insertion counting is not a simple product because it depends on gap structure.",
+ "code_path": "solutions/kattis_allkill.cpp",
+ "samples_passed": true
+}

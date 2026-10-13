@@ -1,0 +1,13 @@
+{
+ "id": "kattis:splitdecisions",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "strings"
+ ],
+ "key_idea": "Enumerate all O(n^2) same-length word pairs; a pair forms a clue iff it differs in exactly two adjacent positions, and the clue is identified by (length, position, unordered pair of letter-pairs). Count clues hit by exactly one word pair.",
+ "sketch": "Deduplicate the words, then for every pair of equal length scan for mismatches (at most 1500^2/2 * 20 char compares). If there are exactly two mismatches and they are adjacent, build the key (len, pos, min(code1,code2), max(code1,code2)) where code = 26*c1+c2, and increment a map counter. The answer is the number of keys with count exactly 1. Pitfalls: the clue includes the word length and the position of the split (the grid shows the blanks), the two letter pairs are unordered, and both of the two adjacent positions must actually differ.",
+ "code_path": "solutions/kattis_splitdecisions.cpp",
+ "samples_passed": true
+}

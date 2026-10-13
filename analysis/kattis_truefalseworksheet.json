@@ -1,0 +1,14 @@
+{
+ "id": "kattis:truefalseworksheet",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "prefix-sums",
+  "two-pointers",
+  "combinatorics"
+ ],
+ "key_idea": "Think of the n-1 gaps between adjacent answers: 'same' on [l,r] forbids a change in gaps l..r-1 and 'different' demands at least one change there, so count subsets of gaps with a DP over the position of the last change and double the result.",
+ "sketch": "Mark forbidden gaps with a difference array, and for each gap g store need[g] = the largest l among 'different' hints with r-1 = g. Let dp[j] be the number of valid prefixes whose last change is at gap j (dp[0] = no change yet) and S their sum; at gap g, if it is not forbidden set dp[g] = S and S += dp[g], then delete all dp[j] with j < need[g] using a monotone pointer. The answer is 2*S mod 1e9+7. O(n + m) after reading the hints. Pitfalls: a 'different' hint with l = r makes the answer 0, m is up to 1e6 so use fast input, and keep the subtraction non-negative modulo p. Verified against an exhaustive brute force on 400 random small cases.",
+ "code_path": "solutions/kattis_truefalseworksheet.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:reapportionment",
+ "rating": 1900,
+ "topics": [
+  "search-backtracking",
+  "bitmasks",
+  "bfs-dfs",
+  "dp-bitmask"
+ ],
+ "key_idea": "Always build the ward containing the lowest uncovered cell by enumerating connected subsets with population exactly S/W, memoise failed uncovered-masks, and prune when any leftover component's population is not a positive multiple of the target.",
+ "sketch": "If the total S is not divisible by W answer No; if the target T = S/W is 0 (all blocks empty) answer Yes, since a snake path can be cut into W pieces. Otherwise recurse on the bitmask of free cells (at most 25 bits): take the lowest free cell and enumerate every connected subset of the free cells containing it exactly once (frontier expansion with an include/forbid order), cutting when the sum exceeds T. Whenever the sum equals T, check by flood fill that every connected component of the remainder has a positive sum divisible by T, then recurse; masks that fail are stored in a 2^25-bit table so no state is expanded twice. With T > 0 the number of wards is forced to be W, so it need not be tracked. In practice this runs in milliseconds on 5x5 grids; verified against an exhaustive labelling brute force on 1500 small random grids. Pitfalls: zero-population blocks (a ward may keep growing after reaching T, and a zero-sum leftover component is fatal), and the all-zero town.",
+ "code_path": "solutions/kattis_reapportionment.cpp",
+ "samples_passed": true
+}

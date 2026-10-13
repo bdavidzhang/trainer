@@ -1,0 +1,13 @@
+{
+ "id": "kattis:wiknow",
+ "rating": 1900,
+ "topics": [
+  "data-structures",
+  "sparse-table",
+  "greedy"
+ ],
+ "key_idea": "For a fixed A with occurrences p1<..<pk, a partner B exists iff some position d in a gap (p_i,p_{i+1}) holds a value whose last occurrence is after p_{i+1}; that is a range-max query over last[S_d].",
+ "sketch": "Store occurrence lists and last[v], build a sparse table over the array last[S_i]. Iterate A in increasing order and, for each consecutive pair of occurrences, query the max of last[S_d] over the open gap; if it exceeds p_{i+1} then A is the answer's first component (total gaps are at most N, so this is O(N log N) for the table and O(N) for queries). For that single A, scan all gap positions and take the minimum S_d satisfying last[S_d] > p_{i+1}, O(N). Correctness: taking c as the first A and e as the next A after d is always optimal, and f as the last B. Pitfalls: empty gaps, values in a gap are never A itself so A != B is automatic. Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_wiknow.cpp",
+ "samples_passed": true
+}

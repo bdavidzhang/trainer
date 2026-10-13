@@ -1,0 +1,13 @@
+{
+ "id": "kattis:intergalacticteam",
+ "rating": 1400,
+ "topics": [
+  "dsu",
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "The 'both or neither' rule forces a team to be an entire weakly connected component, so just count components of size k that are complete mutual cliques.",
+ "sketch": "Union endpoints of every directed entry with DSU. For each component count vertices and directed edges; it is a valid team iff size == k and edge count == k(k-1) (entries are unique, so that many edges means every ordered pair is present). The answer is the number of such components; with k = 1 it is the number of isolated vertices. Complexity O((n+m) alpha). Pitfalls: k(k-1) needs 64 bits, and no binomial counting is needed since a team cannot be a strict subset of a component.",
+ "code_path": "solutions/kattis_intergalacticteam.cpp",
+ "samples_passed": true
+}

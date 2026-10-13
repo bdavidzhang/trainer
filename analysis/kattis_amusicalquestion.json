@@ -1,0 +1,13 @@
+{
+ "id": "kattis:amusicalquestion",
+ "rating": 1500,
+ "topics": [
+  "dp-knapsack",
+  "bitset",
+  "dp"
+ ],
+ "key_idea": "Two-knapsack reachability: dp[a][b] = can CD1 hold exactly a and CD2 exactly b; each song goes to CD1, CD2 or neither, and a bitset over b makes it n*c*c/64.",
+ "sketch": "Keep dp[a] as a bitset over b (size c+1). For each song w, iterate a downward and set dp[a] |= (dp[a]<<w masked to <=c) | dp[a-w]; descending a keeps dp[a-w] from the previous song. Complexity about n*c*c/64 = 1.6e7 word operations. At the end scan all reachable (a,b) with a>=b, maximising a+b and breaking ties by smaller a-b. Pitfalls: mask the shifted bitset to capacity c, skip songs longer than c, and print the larger CD first.",
+ "code_path": "solutions/kattis_amusicalquestion.cpp",
+ "samples_passed": true
+}

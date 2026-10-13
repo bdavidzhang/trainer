@@ -1,0 +1,11 @@
+{
+ "id": "kattis:rankproblem",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate the list: if the winner is ranked below the loser, remove the loser and reinsert it directly below the winner.",
+ "sketch": "Keep the ranking as a vector. For each game find positions px (winner) and py (loser); if px > py erase the loser and insert it at index px, which after the shift is immediately after the winner. O(n*m) with n, m <= 100. Pitfall: off-by-one on the insertion index after the erase shifts everything up.",
+ "code_path": "solutions/kattis_rankproblem.cpp",
+ "samples_passed": true
+}

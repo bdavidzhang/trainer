@@ -1,0 +1,14 @@
+{
+ "id": "kattis:adjustedaverage",
+ "rating": 1900,
+ "topics": [
+  "meet-in-the-middle",
+  "two-pointers",
+  "sorting",
+  "data-structures"
+ ],
+ "key_idea": "For each removal count j the target sum of the removed set is fixed (total - xbar*(n-j)), so it becomes a closest j-sum problem with j <= 4, solved in O(n^2 log n) by pairing sums while keeping indices distinct.",
+ "sketch": "Sort the values. For j = 0..k compute T_j = total - xbar*(n-j) and find the j-subset whose sum is closest to T_j; candidate answer is |sum - T_j| / (n-j). j=1 scan, j=2 two pointers, j=3 fix the smallest index and two-pointer the suffix (O(n^2)). For j=4 enforce i<j<c<l by sweeping c: insert all pair sums (i, c-1) into an ordered set, then for every l>c query the predecessor/successor of T - a_c - a_l; about 1.1M inserts and queries. All arithmetic in 64-bit integers (sums up to ~4e12), divide only at the end. Pitfall: a plain sort-all-pairs meet in the middle can reuse an index; an O(n^3) loop for j=4 is ~5.6e8 steps and risky. Stress-tested against brute force; 0.45 s on n=1500.",
+ "code_path": "solutions/kattis_adjustedaverage.cpp",
+ "samples_passed": true
+}

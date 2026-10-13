@@ -1,0 +1,13 @@
+{
+ "id": "kattis:treehouses",
+ "rating": 1300,
+ "topics": [
+  "mst",
+  "dsu",
+  "graphs"
+ ],
+ "key_idea": "Pre-merge the first e houses and the existing cable endpoints in a DSU, then run Kruskal on the complete Euclidean graph.",
+ "sketch": "Union houses 1..e together (free walking) and union each existing cable. Build all n(n-1)/2 edges with squared distances, sort, and run Kruskal adding sqrt of the length whenever an edge joins two components. O(n^2 log n) with n=1000, about 5e5 edges. Sort by squared distance and take sqrt only when adding to keep comparisons exact; coordinates have one decimal so doubles are fine. Corner case e=n or already connected gives 0.",
+ "code_path": "solutions/kattis_treehouses.cpp",
+ "samples_passed": true
+}

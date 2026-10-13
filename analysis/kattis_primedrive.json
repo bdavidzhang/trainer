@@ -1,0 +1,12 @@
+{
+ "id": "kattis:primedrive",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "number-theory"
+ ],
+ "key_idea": "Scan upward for a prime in the 4-digit number; if none up to 9999 (i.e. above 9973), increment the letter block in base 26 and use 0002.",
+ "sketch": "Trial-divide to find the next prime >= the number within 0..9999; if there is none, add one to the three-letter string with carry and output 0002. Print the number zero-padded to four digits. ZZZ is excluded so the carry never overflows. Stop at END 0000 only (END with other digits would be a real case).",
+ "code_path": "solutions/kattis_primedrive.cpp",
+ "samples_passed": true
+}

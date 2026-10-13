@@ -1,0 +1,14 @@
+{
+ "id": "kattis:keyexchange",
+ "rating": 1600,
+ "topics": [
+  "hashing",
+  "strings",
+  "brute-force",
+  "two-pointers"
+ ],
+ "key_idea": "Two windows are permutations of each other iff their byte multisets match, which a rolling sum of random 64-bit values per byte detects; only 193 lengths and about 1e4 positions exist, so try every length from long to short.",
+ "sketch": "Parse all integers from the input ignoring commas and whitespace. For L from min(256, n/2) down to 64, compute the multiset hash of every window in O(n) by sliding, sort (hash, index) pairs, and for each start i in increasing order binary search for the smallest j >= i+L with the same hash; the first hit gives the required tie-breaking (longest, smallest S, smallest T). O(193 * n log n). Pitfalls: windows must be disjoint (j >= i+L), output 'no key' when nothing is found or the data is shorter than 128 bytes. I treat identical windows as valid permutations (the statement's 'different order' is not enforced), which is the one interpretive risk.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_keyexchange.cpp"
+}

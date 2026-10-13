@@ -1,0 +1,13 @@
+{
+ "id": "kattis:isolatedisland",
+ "rating": 2000,
+ "topics": [
+  "graphs",
+  "geometry",
+  "ad-hoc"
+ ],
+ "key_idea": "No two neighbours are equidistant from the ocean iff the dual graph is bipartite iff every vertex of the planar arrangement has even degree; interior crossings add 2, so only the parity of fence endpoints at each point matters.",
+ "sketch": "Adjacent faces differ by at most 1 in BFS distance from the outer face, so 'no friendly neighbours' means distance parity 2-colours the dual graph, and conversely a bipartite dual forces adjacent distances to differ. A connected bridgeless plane graph has a bipartite dual exactly when it is Eulerian (all vertex degrees even). A segment passing through a point contributes 2 to its degree and a segment ending there contributes 1, so no intersection computation is needed: count for every coordinate how many fences end there and answer 'yes' iff some count is odd. O(n log n) with a map, no geometry or precision issues. Pitfall: a T-junction (endpoint on another fence interior) is odd and is handled automatically.",
+ "code_path": "solutions/kattis_isolatedisland.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:callforproblemsround2",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The answer is min(k, number of distinct difficulties).",
+ "sketch": "Insert the n difficulties into a set and print min(k, set size): pick one problem per distinct difficulty first, then pad with anything. O(n log n), no pitfalls.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_callforproblemsround2.cpp"
+}

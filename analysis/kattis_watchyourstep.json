@@ -1,0 +1,13 @@
+{
+ "id": "kattis:watchyourstep",
+ "rating": 1700,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "math"
+ ],
+ "key_idea": "Because the zones (SCCs) form a chain in the condensation, the final graph may contain every edge inside an SCC and every edge from an earlier SCC to a later one; subtract the existing edges.",
+ "sketch": "Run Tarjan's SCC directly on the adjacency matrix in O(n^2) for n = 2500 and collect component sizes s_i. The statement guarantees all zones can be visited in one walk, so the condensation is totally ordered and the maximum edge count is sum s_i(s_i-1) + sum_{i<j} s_i s_j = (n^2 - sum s_i^2)/2 + sum s_i^2 - n. The answer is that minus the number of ones in the input. Pitfalls: reading 6.25M integers needs fast input (getchar), recursion depth is up to 2500 which is fine, and the count needs 64-bit only marginally (about 6M).",
+ "code_path": "solutions/kattis_watchyourstep.cpp",
+ "samples_passed": true
+}

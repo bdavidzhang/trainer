@@ -1,0 +1,13 @@
+{
+ "id": "kattis:birthdayparadox",
+ "rating": 1500,
+ "topics": [
+  "combinatorics",
+  "probability",
+  "math"
+ ],
+ "key_idea": "Count assignments directly: choose ordered distinct days for the groups, divide by permutations of equal-sized groups, multiply by the multinomial for assigning people, divide by 365^P - all in log space.",
+ "sketch": "b = [365!/(365-n)!] / prod(m_k!) * P!/prod(c_i!) / 365^P, where m_k is the number of groups having size k and P = sum c_i. Evaluate with lgamma and convert to log10; O(n). Pitfalls: forgetting the division by m_k! for groups of equal size (sample 1 catches it), and trying to compute the probability itself instead of its logarithm (underflows; P can be 36500). Checked on both samples.",
+ "code_path": "solutions/kattis_birthdayparadox.cpp",
+ "samples_passed": true
+}

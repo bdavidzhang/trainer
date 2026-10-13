@@ -1,0 +1,13 @@
+{
+ "id": "kattis:starsinacan",
+ "rating": 2400,
+ "topics": [
+  "geometry-3d",
+  "convex-hull",
+  "geometry"
+ ],
+ "key_idea": "A base holding three stars with all stars inside means the base plane is a facet of the 3D convex hull; for each facet the best cylinder has height = farthest point distance and radius = minimum enclosing circle of the points projected onto the plane.",
+ "sketch": "Build the 3D convex hull incrementally in O(n^2) with exact 64-bit integer orientation tests (no four points are coplanar, so all facets are triangles and there are no degeneracies). For each of the at most 2n-4 facets compute the unit normal, the maximum |n.(p-a)|/|n| as the height, project all points onto an orthonormal basis of the plane and run Welzl's randomized minimum enclosing circle (expected linear after a shuffle). Answer is min of pi*r^2*h; total about 2000*1000 operations. Pitfalls: keep facet orientation consistent when adding horizon faces, and use a relative epsilon in the circle test. Verified against an O(n^3) facet enumeration with brute-force enclosing circle for n<=9.",
+ "code_path": "solutions/kattis_starsinacan.cpp",
+ "samples_passed": true
+}

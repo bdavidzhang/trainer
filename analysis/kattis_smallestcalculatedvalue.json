@@ -1,0 +1,12 @@
+{
+ "id": "kattis:smallestcalculatedvalue",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Only 16 operator pairs exist, so evaluate each left to right and keep the smallest non-negative result.",
+ "sketch": "Try all 4x4 operator choices, computing (a op1 b) op2 c with no precedence. A division is allowed only if the divisor is non-zero and the remainder is zero; the intermediate value may be negative or zero (for example 5-7+3, or 9-9 then /9), so the divisibility test must work for negatives and the zero-divisor case must be rejected. Values stay below 1e9 so 64-bit is ample. a+b+c is always valid, so an answer exists.",
+ "code_path": "solutions/kattis_smallestcalculatedvalue.cpp",
+ "samples_passed": true
+}

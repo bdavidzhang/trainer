@@ -1,0 +1,13 @@
+{
+ "id": "kattis:autocoinomatic",
+ "rating": 1700,
+ "topics": [
+  "dp-knapsack",
+  "offline-queries",
+  "dp"
+ ],
+ "key_idea": "Deleting a coin from an unbounded min-coin knapsack is hard but adding one is a single O(V) pass, so process the events in reverse.",
+ "sketch": "Read all events, mark the denominations that are ever removed, and build dp[v] = min coins for v using only the never-removed coins (O(n*V)). Walk the events backwards: a Q reads dp[v] (or -1 if infinite), an X re-inserts the coin via dp[i]=min(dp[i],dp[i-d]+1) for i ascending. Each coin is relaxed exactly once overall, so total work is n*V = 2e8 trivial operations, well inside 1 s. Output the collected answers in reverse. Stress-tested against a per-query brute force.",
+ "code_path": "solutions/kattis_autocoinomatic.cpp",
+ "samples_passed": true
+}

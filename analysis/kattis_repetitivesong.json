@@ -1,0 +1,13 @@
+{
+ "id": "kattis:repetitivesong",
+ "rating": 1400,
+ "topics": [
+  "greedy",
+  "ad-hoc",
+  "data-structures"
+ ],
+ "key_idea": "The answer is n minus the smallest distance between two equal words: keep everything outside the pair and one copy of the repeated word, which can be matched to either occurrence.",
+ "sketch": "If positions i<j hold the same word, the subsequence consisting of all words before i, one copy of that word, and all words after j has two embeddings and length n-(j-i); conversely two different embeddings first differ at some index where s_i<t_i hold equal words, and everything strictly between cannot be fully used, bounding the length by n minus that gap. So scan once with a hash map of last occurrence, tracking the minimum gap between consecutive equal words; output n-gap, or 0 if all words are distinct. O(n) expected. Words are case-sensitive. Verified against an exhaustive brute force on random small inputs.",
+ "code_path": "solutions/kattis_repetitivesong.cpp",
+ "samples_passed": true
+}

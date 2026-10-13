@@ -1,0 +1,12 @@
+{
+ "id": "kattis:keytocrypto",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Decrypt left to right; each recovered plaintext letter is appended to the key, so the needed shift is always already known.",
+ "sketch": "For position i, shift = key[i]-'A', plain = (cipher - shift) mod 26, then append plain to the key. The secret word may be longer than the ciphertext, which needs no special handling. O(n).",
+ "code_path": "solutions/kattis_keytocrypto.cpp",
+ "samples_passed": true
+}

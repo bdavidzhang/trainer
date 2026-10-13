@@ -1,0 +1,14 @@
+{
+ "id": "kattis:pearls",
+ "rating": 2200,
+ "topics": [
+  "search-backtracking",
+  "dp",
+  "bitset",
+  "implementation"
+ ],
+ "key_idea": "Backtrack over the k moves in alphabetical order (E,N,S,W) so the first closed loop found is the answer, and prune hard: the Masyu rules fix a 'must go straight / must turn' type for most cells, and a precomputed set of displacements reachable by the remaining moves under those types kills branches that cannot return to the start.",
+ "sketch": "Cell i is a corner iff move i-1 != move i. Statically: B must turn, W must go straight, and both path-neighbours of a B must go straight (adjacent B's or odd k give impossible at once); the white rule 'at least one neighbour is a corner' is checked as soon as the four moves around it are known, and the cells 0, 1, k-1 that wrap around are checked when the loop closes. For pruning, reach[d0][i][prev] is a 123x123 bitset of displacements achievable by moves i..k-1 given the previous direction and the first direction d0 (needed for the closing condition at cell 0), built backwards with bitset shifts in about 60*16*3 operations; the DFS only steps to a cell whose vector back to the start is in that set, besides the usual in-grid, unvisited and Manhattan checks. The density rules (at least half pearls, blacks >= 2*whites, gaps <= 5) are what keep the search small: rule-conforming k=60 inputs ran in at most ~0.15 s locally, while sparse inputs outside the constraints can blow up. Pitfalls: directions must be tried in alphabetical order with N meaning row-1, the path may revisit the start only on the very last move, and constraints are cyclic. Verified against an unpruned brute force for k <= 14 (identical strings, so the unique lexicographically smallest answer is judged correctly by the token checker).",
+ "code_path": "solutions/kattis_pearls.cpp",
+ "samples_passed": true
+}

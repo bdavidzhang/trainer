@@ -1,0 +1,13 @@
+{
+ "id": "kattis:icegrowth",
+ "rating": 1200,
+ "topics": [
+  "sorting",
+  "binary-search",
+  "implementation"
+ ],
+ "key_idea": "Simulate thickness in fifths of a cm as T = max(0, T - a_i), then answer each person by counting days with T >= 5*b via sort plus binary search.",
+ "sketch": "Keep the thickness scaled by 5 to stay in integers: each day T = max(0, T - a_i), clamped at zero immediately (not just at the end). Store the n daily values, sort them, and for each person count values >= 5*b_j with lower_bound. O((n+k) log n). Pitfalls: values reach 1e11 so use 64-bit, the clamp must be applied every day, and avoid floating point division by 5.",
+ "code_path": "solutions/kattis_icegrowth.cpp",
+ "samples_passed": true
+}

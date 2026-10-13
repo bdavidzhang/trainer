@@ -1,0 +1,12 @@
+{
+ "id": "kattis:acearbiter",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "The total X+Y fixes which round comes next and therefore who is serving, so every log line decodes to an absolute (Alice,Bob) score that only has to be monotone and respect the game ending at 11.",
+ "sketch": "For a line with s=X+Y the next round is s+1 and Alice serves iff ((s+1)/2) is even; map (X,Y) to (alice,bob). The log is valid up to line i if neither score decreases relative to the previous line, the score is not 11-11, and once somebody had 11 the score never changes again (the game ended immediately). Report the first violating line, starting from 0-0. O(n). Pitfalls: 11-11 is impossible by itself, a repeated final score such as 11-0 twice is fine, and the swap rule must be applied before comparing.",
+ "code_path": "solutions/kattis_acearbiter.cpp",
+ "samples_passed": true
+}

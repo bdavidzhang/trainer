@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tightfitsudoku",
+ "rating": 1700,
+ "topics": [
+  "search-backtracking",
+  "bitmasks",
+  "implementation"
+ ],
+ "key_idea": "It is an ordinary exact-cover style sudoku with 9 digits per row, column and 2x3 box, where a split cell holds an ordered pair a<b; backtracking with most-constrained-cell selection solves it instantly.",
+ "sketch": "Parse each token as either one slot or two slots separated by a slash, with '-' meaning unknown. Keep used-digit bitmasks for the 6 rows, 6 columns and 6 boxes (boxes are 2 rows by 3 columns, as the sample shows). Repeatedly pick the unfinished cell with the fewest candidates: digits for a plain cell, pairs a<b respecting any pre-filled half for a split cell; fail at once if some cell has zero candidates. Recursion with undo finds the unique solution in negligible time. Pitfalls are the half-filled split cells (7/- or -/3), the smaller-on-top rule, and getting the box shape right.",
+ "code_path": "solutions/kattis_tightfitsudoku.cpp",
+ "samples_passed": true
+}

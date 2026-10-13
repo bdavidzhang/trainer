@@ -1,0 +1,14 @@
+{
+ "id": "kattis:geneticreconstruction",
+ "rating": 2200,
+ "topics": [
+  "bitmasks",
+  "brute-force",
+  "greedy",
+  "dp"
+ ],
+ "key_idea": "Brute-force, for every creature with parents, which parent supplies its visible (minimum) allele: 2^19 choices. With that fixed, every creature's hidden allele faces only 'must equal v' or 'must be >= B' demands, so feasibility and the lexicographically smallest assignment follow from one bottom-up and one top-down pass.",
+ "sketch": "Each creature is (c_i, o_i) with o_i >= c_i unknown. For a fixed dominance mask, process creatures from n down to 1 (children before parents): the dominant parent must be able to give exactly c_i (free if its own colour equals c_i, otherwise an exact demand on its hidden allele, impossible if c_i < c_parent); the other parent must give o_i, which is an exact demand if i's children forced o_i to a value, else a lower bound max(B_i, c_i) that is free when the parent's colour already meets it. Conflicting exact demands or exact < bound kill the mask. Then top-down choose minimal values: exact value, or the bound for roots, or the smaller usable allele of the non-dominant parent for others; this is the lexicographic minimum for that mask because each creature's feasible set does not depend on later creatures. Take the lexicographically smallest result over all masks, O(2^19 * n). Pitfalls: hidden alleles may be restricted to letters that appear as eye colours (monotone remapping argument), output the colour first then the hidden allele, print -1 if no mask works. Stress-tested against exhaustive search for n <= 7 on 3000 random cases.",
+ "code_path": "solutions/kattis_geneticreconstruction.cpp",
+ "samples_passed": true
+}

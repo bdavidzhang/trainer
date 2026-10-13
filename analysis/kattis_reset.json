@@ -1,0 +1,13 @@
+{
+ "id": "kattis:reset",
+ "rating": 2400,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Each task can be researched for one second per attempt, so with R resets a task gets at most R free research units and R*c units exist in total; the gains per unit of a task are non-increasing (d, d, ..., t mod d), so feasibility of R is a greedy over sorted unit gains, and R is found by binary search.",
+ "sketch": "For a fixed R, list for every task its first min(R, units) research units as (gain, count) groups; the free units of the R failed attempts should take the R*c largest gains. In the last attempt a unit may still be bought for 1 second, and it can be either a leftover unit that did not fit into the R*c budget or the (R+1)-th unit of a task; an exchange argument shows that with F paid units the best total is the top R*c + F of the pool including the F best (R+1)-th units, and the marginal gain is non-increasing, so one simply buys every remaining unit of gain at least 2. R is feasible iff sum(t) - free gain - sum(gain-1 over bought units) <= c. Binary search R in [0, total number of units], sorting 2n groups each time: O(n log n log(2e14)), about 1.1 s at the limits. Pitfalls: R*c overflows 64 bits (use __int128), a naive greedy that fills free units first and then adds one paid unit per task on top is wrong when c is small, and the answer can be about 2e14. Stress-tested against an exhaustive BFS over attempts for small inputs.",
+ "code_path": "solutions/kattis_reset.cpp",
+ "samples_passed": true
+}

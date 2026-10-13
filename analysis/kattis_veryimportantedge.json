@@ -1,0 +1,14 @@
+{
+ "id": "kattis:veryimportantedge",
+ "rating": 1900,
+ "topics": [
+  "mst",
+  "dsu",
+  "trees",
+  "graphs"
+ ],
+ "key_idea": "Removing a non-tree edge leaves the MST unchanged; removing a tree edge costs (cheapest non-tree edge covering it) - (its weight), so compute the best replacement for every MST edge.",
+ "sketch": "Run Kruskal (counting sort by weight since w<=1e6 and m=1e6), root the MST, then scan non-tree edges in increasing weight and walk both endpoints up toward their LCA, assigning this weight to every not-yet-covered tree edge; a second DSU contracts covered edges so each tree edge is touched once. Answer = MST + max over tree edges of (replacement - weight). Complexity O(m alpha + W). Pitfalls: 64-bit sum, fast input for 1e6 edges, iterative DFS for depth 1e5, and always climb from the deeper DSU representative. The graph is guaranteed bridgeless so every tree edge gets a replacement. Stress-tested against delete-each-edge brute force.",
+ "code_path": "solutions/kattis_veryimportantedge.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:koehandel",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "Three cases: if you can outbid, bid c+1 (cheapest win); if you can only tie, bid c to keep your cow; otherwise bid 0.",
+ "sketch": "Compare n with c. n>c: output c+1, the minimal winning bid. n==c: output c, since a tie loses no cow and cows outrank coins. n<c: the cow is lost regardless, so bet 0 to keep all coins. O(1); the only trap is the tie case where betting 0 would gain coins but lose a cow.",
+ "code_path": "solutions/kattis_koehandel.cpp",
+ "samples_passed": true
+}

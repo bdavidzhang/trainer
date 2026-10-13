@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ellipseeclipse",
+ "rating": 1500,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "For an ellipse with semi-axes A,b rotated by theta, the bounding box half-extents are sqrt(A^2 cos^2 + b^2 sin^2) and sqrt(A^2 sin^2 + b^2 cos^2) around the centre.",
+ "sketch": "A = a/2, c = half the focal distance, b^2 = A^2 - c^2, centre is the midpoint of the foci, (cos,sin) is the unit vector between the foci. The extent of the parametrised ellipse along x is the amplitude of A cos t cos(theta) - b sin t sin(theta), i.e. sqrt(A^2 cos^2 + b^2 sin^2), similarly for y. O(1). Pitfalls: coincident foci (circle, direction undefined, pick any), a equal to focal distance (b=0, degenerate segment, clamp b^2 at 0), and a is the full major axis not the semi-axis.",
+ "code_path": "solutions/kattis_ellipseeclipse.cpp",
+ "samples_passed": true
+}

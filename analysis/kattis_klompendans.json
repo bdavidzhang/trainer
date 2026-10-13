@@ -1,0 +1,13 @@
+{
+ "id": "kattis:klompendans",
+ "rating": 1300,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "BFS over states (cell, which move type comes next); a tile counts if it is reached in either state.",
+ "sketch": "State = (type of next move, x, y), 2*n^2 = 500k states with 8 transitions each. Seed both (0,0,type0) and (0,0,type1) since the first move may be of either kind, then alternate type on every step. Answer is the number of cells visited in at least one of the two layers (the start tile counts). O(16 n^2). Pitfalls: (a,b) moves have 8 variants (swap axes, signs); when a==b or the two moves are identical duplicates are harmless.",
+ "code_path": "solutions/kattis_klompendans.cpp",
+ "samples_passed": true
+}

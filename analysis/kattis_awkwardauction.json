@@ -1,0 +1,13 @@
+{
+ "id": "kattis:awkwardauction",
+ "rating": 1700,
+ "topics": [
+  "dp-interval",
+  "dp",
+  "games"
+ ],
+ "key_idea": "The remaining candidates always form an interval [l,r] and the cost of a bid depends on its absolute value, so do minimax interval DP over the bid x.",
+ "sketch": "d[l][r] = min over x in [l,r] of max(x + d[l][x-1], b + d[x+1][r]), where the first term (overbid or exact hit, you pay x and continue below) is at least x and the second exists only if x<r. Bidding outside the interval never helps. O(n^3) = 6.4e7/6 operations for n=400, trivially fast; answers fit in int. Pitfall: unlike classic guess-the-number, cost is asymmetric (pay the bid when too high, pay b when too low) so no binary-search shortcut.",
+ "code_path": "solutions/kattis_awkwardauction.cpp",
+ "samples_passed": true
+}

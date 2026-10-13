@@ -1,0 +1,13 @@
+{
+ "id": "kattis:erraticlights",
+ "rating": 1900,
+ "topics": [
+  "probability",
+  "dp",
+  "greedy"
+ ],
+ "key_idea": "Touching a bulb is a self-loop with prob 1/3, so E = 3/2 + (E1+E2)/2; the optimal policy always touches a bulb of the rarest non-zero colour, which makes the recurrence (almost) acyclic.",
+ "sketch": "State is the sorted colour counts (a>=b>=c). If c>0: E(a,b,c)=1.5+0.5*(E(a+1,b,c-1)+E(a,b+1,c-1)). If c=0 the states (a,b,0) and (a,b-1,1) form a 2-cycle that solves to E(a,b,0)=3b. Memoised recursion over O(n^2) states. The greedy policy is not obvious (fixing a target colour up front gives 3*(n-max), which is worse: sample 3 is 7.5 not 9), so I verified offline that these values satisfy the Bellman optimality equation over all three actions for every state with n<=100. Pitfall: forgetting the self-loop factor or assuming a fixed target colour.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_erraticlights.cpp"
+}

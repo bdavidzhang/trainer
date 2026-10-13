@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hiddenart",
+ "rating": 1900,
+ "topics": [
+  "number-theory",
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "A square with offset d uses row offset d mod h and column offset d mod w; by CRT a pair (a,b) is realisable iff a = b (mod gcd(h,w)). With w<=50 enumerate column pairs and summarise rows by their residue mod g as 16-bit masks of colour pairs.",
+ "sketch": "Corners are (r,c),(r,c+d),(r+d,c),(r+d,c+d) on the torus h x w. The pair (d mod h, d mod w) ranges exactly over pairs (a,b) with a=b mod g, g=gcd(h,w)<=50, so the two rows only need r2-r1 = c2-c1 (mod g). For each ordered column pair (c,c2) (2500 of them) scan the h rows and OR the colour-pair type (x,y)=(col c, col c2) into mask[r mod g] (16 possible types). Then for each residue p check whether some type in mask[p] has a complementary type (the other two colours in either order) in mask[(p+(c2-c)) mod g], using a precomputed complement table. Total about 2500*4000 = 1e7 operations plus 2500*50*16. Pitfalls: the offset d must be positive but adding lcm(h,w) fixes that; a=0 or b=0 offsets are harmless because they cannot give four distinct colours. Stress-tested against a brute force over all d up to lcm on 3000 small random grids.",
+ "code_path": "solutions/kattis_hiddenart.cpp",
+ "samples_passed": true
+}

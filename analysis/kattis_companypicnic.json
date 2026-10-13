@@ -1,0 +1,13 @@
+{
+ "id": "kattis:companypicnic",
+ "rating": 1700,
+ "topics": [
+  "dp-tree",
+  "trees",
+  "matching"
+ ],
+ "key_idea": "Maximum matching on a tree with a lexicographic objective (count, then total of min speeds): tree DP with states 'v free' and 'v matched to a child', comparing (count, sum) pairs.",
+ "sketch": "Let d0[v] be the best (teams, speed sum) in v's subtree with v unmatched, and d1[v] with v matched to one child. d0[v] = sum over children of max(d0[c], d1[c]); d1[v] = max over children c of d0[v] - max(d0[c],d1[c]) + d0[c] + (1, min(speed_v, speed_c)). Pairs are compared lexicographically and added componentwise, which is valid because the objective is additive over disjoint subtrees. Answer is max(d0[root], d1[root]), printed as count and sum/count. O(n) after mapping names with a map. Pitfalls: supervisors may be listed after their reports so build the tree after reading everything; speeds are stored as integer thousandths so that pair comparison is exact. Stress-tested against a brute force over edge subsets for n<=9.",
+ "code_path": "solutions/kattis_companypicnic.cpp",
+ "samples_passed": true
+}

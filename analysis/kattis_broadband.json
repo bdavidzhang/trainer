@@ -1,0 +1,14 @@
+{
+ "id": "kattis:broadband",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "prefix-sums",
+  "math"
+ ],
+ "key_idea": "Since every customer is s/2 from the middle road, squared distance is (x-p)^2+s^2/4, so merge both streets into one sorted line and solve 1D k-means: partition into k contiguous groups, each served at its mean.",
+ "sketch": "Sort all m+n coordinates; cost of a contiguous group is sum x^2 - (sum x)^2/cnt via prefix sums (optimal point is the mean). dp[t][i] = min over j of dp[t-1][j]+cost(j,i); the cost satisfies the quadrangle inequality so divide and conquer optimisation gives O(k N log N) with N<=2000 (plain O(kN^2)=4e8 would also fit in 4 s). Add N*s^2/4 at the end. Take the min over using up to k groups (never worse to use more, but safe). Doubles are precise enough (values up to ~2e9). Stress-tested against a direct O(kN^3) DP.",
+ "code_path": "solutions/kattis_broadband.cpp",
+ "samples_passed": true
+}

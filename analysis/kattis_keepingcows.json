@@ -1,0 +1,13 @@
+{
+ "id": "kattis:keepingcows",
+ "rating": 1700,
+ "topics": [
+  "constructive",
+  "search-backtracking",
+  "implementation"
+ ],
+ "key_idea": "The fence may stick out arbitrarily and diagonal corners need no fence, so pick any easy region of area a (full rows of width ceil(sqrt a) plus a partial row) and cover its 4-neighbour cells with L-trominoes that grow outward.",
+ "sketch": "Place the region with a margin of 2 inside a (rows+4)x(w+4) box, w=ceil(sqrt(a)) <= 71, so everything fits in 100x100. List the non-region cells adjacent to the region in row-major order and cover them one at a time with an L piece (12 placements each) that avoids the region and earlier pieces, using DFS with backtracking; pieces are free to use the outer margin. Print O for the piece centre and # for its arms. Pitfalls: region cells must not touch the grid border, pieces must not overlap, the partial row creates a concave notch whose fence cell touches two region cells. Multiple answers are accepted so the token checker cannot judge; samples_passed is true because my own validator (re-derives an L-piece decomposition of the printed grid, then flood-fills for a border-free empty component of size exactly a) accepted the output for every a from 1 to 5000, each in a few ms.",
+ "code_path": "solutions/kattis_keepingcows.cpp",
+ "samples_passed": true
+}

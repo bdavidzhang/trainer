@@ -1,0 +1,12 @@
+{
+ "id": "kattis:sauna",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Intersect the intervals: lo = max a_i, hi = min b_i.",
+ "sketch": "Track the maximum left end and the minimum right end. If lo > hi print 'bad news', otherwise print hi-lo+1 and lo. O(n). Pitfall: the range is inclusive so the count is hi-lo+1.",
+ "code_path": "solutions/kattis_sauna.cpp",
+ "samples_passed": true
+}

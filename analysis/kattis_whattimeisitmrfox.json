@@ -1,0 +1,12 @@
+{
+ "id": "kattis:whattimeisitmrfox",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "prefix-sums"
+ ],
+ "key_idea": "There are at most 20 lunch calls, so instead of simulating every call per sheep, count how many times each hour X was called between lunches and compute each surviving sheep's position as a capped dot product of 11 terms.",
+ "sketch": "Keep the list of sheep still on the left. Between lunches accumulate cnt[X]; at a lunch, position = min(L, sum cnt[X]*X*s[i][X]) for each active sheep (all restart from 0). A sheep runs right iff 2p >= L, with D = L-p, else left with D = p; it is catchable iff L < 4D. The fox takes the smallest-index catchable right-runner, otherwise the smallest catchable left-runner. Print the uncaught right-runners, then the caught one; survivors are the uncaught left-runners. O(20*N*11). Pitfalls: sums reach ~2e5*11*1e8 so use 64-bit and cap at L; a sheep sitting at L or at 0 has D=0 and is never caught; the caught sheep must be excluded from the safe list.",
+ "code_path": "solutions/kattis_whattimeisitmrfox.cpp",
+ "samples_passed": true
+}

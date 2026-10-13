@@ -1,0 +1,14 @@
+{
+ "id": "kattis:platformplacing",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "dp",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "After sorting, the best prefix total as a function of the current platform length l is always of the form min(l+a, b) on an interval [s,hi], so the DP over lengths collapses to three numbers.",
+ "sketch": "Sort the points; adjacent platforms satisfy l_i + l_{i+1} <= 2*gap, and the constraint matrix is a path so an integer optimum exists. If any 2*gap < 2s print -1. Let f_i(l) be the best sum of the first i platforms with the i-th of length l; f_1(l)=l, and f_{i+1}(l) = l + max_{y<=min(hi,2d-l)} f_i(y) = min(l + min(hi+a,b), 2d+a) on [s, min(k,2d-s)]. Update (a,b,hi) in O(1) per point and answer min(hi+a,b); O(n log n) overall. Use 64-bit. Stress-tested against a brute-force DP over all integer lengths.",
+ "code_path": "solutions/kattis_platformplacing.cpp",
+ "samples_passed": true
+}

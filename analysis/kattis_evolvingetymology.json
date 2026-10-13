@@ -1,0 +1,13 @@
+{
+ "id": "kattis:evolvingetymology",
+ "rating": 1300,
+ "topics": [
+  "math",
+  "number-theory",
+  "strings"
+ ],
+ "key_idea": "One step maps position i to s[2i mod n], so k steps give t[i] = s[(2^k * i) mod n]; just compute 2^k mod n by fast exponentiation.",
+ "sketch": "Taking every second letter of s+s gives new[i] = s[2i mod n] for both parities of n, and composing k times multiplies the index by 2^k modulo n. Compute r = 2^k mod n with binary exponentiation (k up to 1e18) and output s[(i*r) mod n] for each i. O(n + log k). Pitfalls: n = 1 makes everything 0 mod 1, read k as 64-bit, and i*r stays below 1e10 so 64-bit arithmetic is enough.",
+ "code_path": "solutions/kattis_evolvingetymology.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:probedroids",
+ "rating": 2500,
+ "topics": [
+  "math",
+  "number-theory",
+  "binary-search"
+ ],
+ "key_idea": "The i-th droid lies on the ray with the smallest slope p/q whose 'points with slope <= p/q' count reaches i; that count is a floor-sum, and the slope is found by a Stern-Brocot search with galloping.",
+ "sketch": "Shift the turret to the origin: points 0<=x<=M, 0<=y<=N. Handle the bottom row (first M shots) and the left column (last N shots) directly. For a slope p/q, count = sum over x of min(N, floor(px/q))+1, computed with the Euclid-like floor_sum in O(log) after clipping x at the point where the row cap N kicks in. Walk the Stern-Brocot tree keeping lo (count<i) and hi (count>=i); each turn jumps a whole run with doubling + binary search so the total is O(log^2) evaluations instead of up to 1e6 steps, stopping when the mediant has p>N or q>M. The answer is the t-th lattice point (t*q, t*p) on that ray where t = i - (count - number of points on the ray), and points on the ray = min(M/q, N/p). All arithmetic fits in 64 bits (p*x <= 1e12). Pitfalls: row/column order in the output, the degenerate n=1 or m=1 grids, and naive mediant stepping being linear.",
+ "code_path": "solutions/kattis_probedroids.cpp",
+ "samples_passed": true
+}

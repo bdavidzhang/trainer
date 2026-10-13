@@ -1,0 +1,13 @@
+{
+ "id": "kattis:foodprocessor",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "At piece size x the best choice is the usable blade (m >= x) with the smallest halving time, and the set of usable blades only grows as the size shrinks, so sweep blades by m descending.",
+ "sketch": "Time to go from size a to b with halving time h is h * log2(a/b). Sort blades by m descending; the initial best is the min h among blades with m >= s (none means -1). Then for each further blade with t < m < s, pay best * log2(cur/m), set cur = m and best = min(best, h); finally pay best * log2(cur/t). O(n log n). Pitfalls: output needs relative precision, so print with significant digits (%.12g) rather than fixed decimals since answers can be around 1e-4; blades with m <= t never matter.",
+ "code_path": "solutions/kattis_foodprocessor.cpp",
+ "samples_passed": true
+}

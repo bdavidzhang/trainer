@@ -1,0 +1,12 @@
+{
+ "id": "kattis:accidentalarithmetic",
+ "rating": 1500,
+ "topics": [
+  "probability",
+  "math"
+ ],
+ "key_idea": "By linearity of expectation every term after the first has an equally likely + or - in front of it, so its expected contribution is 0: the answer is just the expected value of the first term.",
+ "sketch": "The first term is the prefix of length L with probability 0.9*0.1^(L-1) for L < len, and the whole number with probability 0.1^(len-1). Avoid big numbers by tracking a_L = prefix_L / 10^(L-1) = a_{L-1} + d_L / 10^(L-1) in long double, which stays below 10; the answer is 0.9*sum_{L<len} a_L + a_len. O(len) time. Pitfalls: the number has up to 1000 digits so the prefix itself cannot be stored in a double, a trailing operator is ignored (hence the different weight for the full prefix), and n = 0 gives 0.",
+ "code_path": "solutions/kattis_accidentalarithmetic.cpp",
+ "samples_passed": true
+}

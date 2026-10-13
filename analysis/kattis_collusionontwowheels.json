@@ -1,0 +1,13 @@
+{
+ "id": "kattis:collusionontwowheels",
+ "rating": 1800,
+ "topics": [
+  "binary-search",
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "For a fixed bound D, two customers farther than D apart must be in different companies, so D is feasible iff the conflict graph is bipartite; feasibility is monotone in D.",
+ "sketch": "Binary search D in [0,2000]; for each D, 2-colour the implicit graph whose edges are pairs with Manhattan distance greater than D by DFS scanning all N vertices per popped vertex, failing on an odd cycle. O(N^2 log C) which is about 1.1e7 operations. Pitfalls: the graph is dense so do not materialise edges per iteration, a singleton company has diameter 0 which the formulation already covers, and duplicate points are harmless.",
+ "code_path": "solutions/kattis_collusionontwowheels.cpp",
+ "samples_passed": true
+}

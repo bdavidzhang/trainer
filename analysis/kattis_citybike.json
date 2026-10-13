@@ -1,0 +1,12 @@
+{
+ "id": "kattis:citybike",
+ "rating": 2100,
+ "topics": [
+  "binary-search",
+  "greedy"
+ ],
+ "key_idea": "For a fixed target window [L, L+D] the set of feasible truck loads is always an integer interval, so feasibility is an O(n) sweep; the failure type (truck overflows vs runs empty) tells whether L is too low or too high, allowing a nested binary search.",
+ "sketch": "Binary search the answer D (feasibility is monotone since a wider window is a superset). For fixed D and L in [0, d-D], track the interval [lo,hi] of possible truck loads: at station i add [a_i-(L+D), a_i-L], fail if hi<0 (L too high) or lo>c (L too low), then clamp to [0,c]. Both interval ends are monotone non-increasing in L, so the first failure type is a valid direction signal and L can be binary searched. Complexity O(n log^2 d), about 8e7 simple steps. Pitfalls: the initial load is free in [0,c], the final load is unconstrained, and D = d is always feasible. Stress-tested against an exhaustive set-DP brute force.",
+ "code_path": "solutions/kattis_citybike.cpp",
+ "samples_passed": true
+}

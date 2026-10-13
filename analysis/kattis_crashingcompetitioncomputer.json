@@ -1,0 +1,13 @@
+{
+ "id": "kattis:crashingcompetitioncomputer",
+ "rating": 1800,
+ "topics": [
+  "dp",
+  "probability",
+  "math"
+ ],
+ "key_idea": "Expected time to type k characters without a crash from a save point obeys A_k = (A_{k-1} + 1 + p*r) / (1-p); then choose save points with an O(c^2) partition DP.",
+ "sketch": "Let A_k be the expected time to get k consecutive crash-free characters when each crash costs r and restarts the block: A_k = A_{k-1} + 1 + p*(r + A_k), giving the recurrence above. Since after a crash the only state is the last saved position, an optimal policy is a fixed set of save points: dp[i] = min_j dp[j] + A_{i-j} + t, with a mandatory save after the last character. O(c^2) = 4e6. Pitfalls: the crash can happen after the last character of a block before the save; A_k grows like (1/(1-p))^k and overflows to infinity for p near 0.999, which is harmless inside a min but use long double for the 1e-6 relative precision with r, t up to 1e9.",
+ "code_path": "solutions/kattis_crashingcompetitioncomputer.cpp",
+ "samples_passed": true
+}

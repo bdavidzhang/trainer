@@ -1,0 +1,13 @@
+{
+ "id": "kattis:monorail",
+ "rating": 2300,
+ "topics": [
+  "dp",
+  "greedy",
+  "prefix-sums"
+ ],
+ "key_idea": "Trains run in alternating-direction batches; a batch starting when the tunnel clears at T takes every already-arrived train of its direction for free, so it is either 'saturated' (tunnel clears at T+d) or extended to a later train q (clears at t_q+d). Clear times are therefore t_k + m*d and the state space collapses to O(n^2).",
+ "sketch": "State = (N-trains done i, S-trains done j, tunnel-clear time T, next direction). Transitions: take all trains of that direction arrived by T, paying sum(T - t) via prefix sums, then either stop (T+d, only if the batch is non-empty) or extend to end with any later train q (new time t_q+d, a 'reset' state fully determined by (i,j,dir) and memoised in an array). After one saturated step from a reset the counts are determined by the reset train and the number of steps, so chain states number O(n^2) and are memoised in a hash map keyed by (i,j,dir,T). Each state has O(n) transitions: O(n^3) total, runs in ~50 ms for n=500. Pitfalls: a train may enter exactly when the opposite one exits, start with either direction, costs up to ~1e14 need 64-bit, a naive (i,j,time) DP has too many states. Stress-tested against an exhaustive batch-partition brute force on 1500 random small cases.",
+ "code_path": "solutions/kattis_monorail.cpp",
+ "samples_passed": true
+}

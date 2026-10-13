@@ -1,0 +1,13 @@
+{
+ "id": "kattis:autocorrect",
+ "rating": 1700,
+ "topics": [
+  "trie-aho-corasick",
+  "bfs-dfs",
+  "strings"
+ ],
+ "key_idea": "Every useful intermediate string is a dictionary prefix, so run a BFS over trie nodes with edges child (type), parent (backspace) and tab (jump to the end of the first dictionary word through that node); a query is min over its matched prefixes of dist + remaining letters.",
+ "sketch": "Insert dictionary words in frequency order; while inserting word i, every node on its path whose tab target is unset gets the word's end node, which gives the most common completion per prefix. BFS from the root with unit edges to children, parent and tab target (tab not allowed at the root). For each word to type walk down the trie while it matches and take min(len, dist[node_k] + len - k); once you leave the trie only typing is possible. O(total length * 26) time, about 1e6 trie nodes of 26 ints (100 MB, limit is 1 GB). Pitfall: backspace edges matter, e.g. tab then delete and continue. Stress-tested against a BFS over raw strings.",
+ "code_path": "solutions/kattis_autocorrect.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:segmentdrawing",
+ "rating": 2500,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "divide-and-conquer",
+  "binary-search"
+ ],
+ "key_idea": "For i<j the drawn segments cross iff the lower point lies strictly on the wrong side of the higher point's segment, which is just a one-sided bound on the higher point's foot t: so all constraints decouple into an independent interval per t_i, whose ends are tangents from P_i to the lower points on each index side.",
+ "sketch": "If y_j<y_i and j>i then t_i <= hit(i,j), the x where ray P_i->P_j meets the axis; if j<i then t_i >= hit(i,j); equal heights require x non-decreasing in index order (else -1). The tightest upper bound is the leftmost ray from P_i to points {j>i, y_j<y_i}: CDQ on the index, merge-sort by y, insert right-half points in increasing y into a monotone left hull chain (stack) and binary search the tangent from each left-half point (strictly above everything inserted); the lower bounds come from the mirrored instance (negate x, reverse indices). O(n log^2 n). Intersect with [l_i,r_i] using exact fractions (num up to ~2e12, den up to 1e6, compare in __int128) so touching cases are not misjudged, output -1 if empty, else clamp x_i into the interval and sum hypot in long double. Pitfalls: touching at an endpoint is allowed (closed bounds), coincident points, strict y comparison when inserting. Verified against an O(n^2) exact-fraction version and a fine-grid brute force with a real proper-intersection test.",
+ "code_path": "solutions/kattis_segmentdrawing.cpp",
+ "samples_passed": true
+}

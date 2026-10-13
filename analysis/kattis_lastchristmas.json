@@ -1,0 +1,12 @@
+{
+ "id": "kattis:lastchristmas",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "sorting"
+ ],
+ "key_idea": "Give each artist the vector (total appearances, #1 count, ..., #10 count) and compare lexicographically.",
+ "sketch": "Accumulate an 11-entry array per name in a map, find the lexicographic maximum and count how many artists attain it; print the name if unique, otherwise tie. Note that an artist can appear several times in one list. O(10n log).",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_lastchristmas.cpp"
+}

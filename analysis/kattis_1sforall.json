@@ -1,0 +1,13 @@
+{
+ "id": "kattis:1sforall",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "Straight DP over values: dp[v] is the min over all splits by addition, factor pairs, and decimal prefix/suffix splits where the suffix has no leading zero.",
+ "sketch": "Compute dp[1..n] in increasing order. Addition: min over a<=v/2 of dp[a]+dp[v-a], which is O(n^2/2) = 2.5e9 trivial operations total and runs in about 0.4 s (15 s limit). Multiplication: divisors up to sqrt(v). Concatenation: for each power of ten p, hi=v/p and lo=v%p are valid only if lo>=p/10 (no leading zero, lo>0), since leading zeros of the second operand are dropped. Pitfall: forgetting the leading-zero rule (101 is not 1 concatenated with 01).",
+ "code_path": "solutions/kattis_1sforall.cpp",
+ "samples_passed": true
+}

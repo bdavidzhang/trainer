@@ -1,0 +1,12 @@
+{
+ "id": "kattis:busassignment",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "prefix-sums"
+ ],
+ "key_idea": "The needed capacity is the maximum number of passengers on board after any stop.",
+ "sketch": "Simulate: subtract a_i, add b_i, track the running maximum. O(n). Use 64-bit to be safe, although the total boarding is bounded by 1e9.",
+ "code_path": "solutions/kattis_busassignment.cpp",
+ "samples_passed": true
+}

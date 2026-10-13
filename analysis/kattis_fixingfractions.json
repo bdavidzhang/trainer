@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fixingfractions",
+ "rating": 1600,
+ "topics": [
+  "brute-force",
+  "bitmasks",
+  "math"
+ ],
+ "key_idea": "Enumerate all 2^18 subsets of digits kept in a; then b' = a'*d/c is forced, and it only remains to check that b' is a subsequence of b whose removed digit multiset equals the one removed from a.",
+ "sketch": "Reduce c/d by the gcd. For each non-empty mask of kept digits of a (first kept digit non-zero) form a' and require c | a', b' = a'/c*d < 10^18 (use __int128). b' must have length |b| minus the number of removed digits, be a subsequence of b (greedy match), and digitcount(b) - digitcount(b') must equal the multiset removed from a; any embedding of a subsequence removes the same multiset so greedy suffices. O(2^18 * 18). Pitfalls: leading zeros in a' or b' are forbidden (b' built as a number has none, the length check rejects mismatches), overflow of a'*d, and cancelling nothing is allowed. Any valid answer is accepted; the outputs matched the samples exactly.",
+ "code_path": "solutions/kattis_fixingfractions.cpp",
+ "samples_passed": true
+}

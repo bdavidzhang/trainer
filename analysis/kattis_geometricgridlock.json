@@ -1,0 +1,13 @@
+{
+ "id": "kattis:geometricgridlock",
+ "rating": 2100,
+ "topics": [
+  "constructive",
+  "search-backtracking",
+  "brute-force"
+ ],
+ "key_idea": "One side must be a multiple of 5; tile a single H x 5 slab by backtracking with the extra requirement that its left and right borders are compatible with each other, then repeat that slab across the grid.",
+ "sketch": "If h*w is not divisible by 5 answer no. Orient so the width is 5m. For H >= 3 a first-empty-cell DFS over the 63 oriented pentominoes finds an H x 5 tiling with the cyclic constraint (the shape in column 0 differs from the shape in column 4 of the same row, in addition to the normal neighbour rule) in well under 1e5 nodes for every H up to 100, and m copies side by side are then valid. H = 1 works only for 1 x 5. H = 2: 2 x 5 is impossible (exhaustive search), otherwise use cyclic 2 x 10 blocks plus one 2 x 15 block constrained against the previous block when m is odd. If the first orientation fails and the other side is also a multiple of 5, try the transpose. Pitfalls: a horizontal I spanning the slab is self-adjacent under repetition and must be rejected, and the only impossible divisible cases are 1 x 5k (k >= 2) and 2 x 5. Multiple answers, so the sample checker reports mismatches: validated with my own independent checker (component size 5, shape matches letter up to symmetry) on all 3600 divisible (h,w) pairs up to 100, worst run 0.3 s.",
+ "code_path": "solutions/kattis_geometricgridlock.cpp",
+ "samples_passed": true
+}

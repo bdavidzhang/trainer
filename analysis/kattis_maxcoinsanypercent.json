@@ -1,0 +1,14 @@
+{
+ "id": "kattis:maxcoinsanypercent",
+ "rating": 1700,
+ "topics": [
+  "scc-2sat",
+  "dp",
+  "graphs",
+  "topological-sort"
+ ],
+ "key_idea": "Inside a strongly connected component you can collect everything, so condense to a DAG with summed weights and take the heaviest path from comp(0) to comp(N-1).",
+ "sketch": "Run (iterative) Tarjan to get SCCs; component ids come out in reverse topological order. Sum coins per component and do a DP dp[c] = w[c] + max dp over successors, with dp defined only for components that can reach the component of N-1 (base dp[target]=w[target], others -inf). Process components in increasing Tarjan id so successors are done first; answer dp[comp(0)]. O(N+M). Pitfalls: the path must END at N-1, so a heavier branch that cannot reach it (as in the sample) must be excluded; sums reach 1e14 so use 64-bit; recursion depth 1e5 so use an iterative DFS.",
+ "code_path": "solutions/kattis_maxcoinsanypercent.cpp",
+ "samples_passed": true
+}

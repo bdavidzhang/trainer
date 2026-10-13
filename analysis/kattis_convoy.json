@@ -1,0 +1,13 @@
+{
+ "id": "kattis:convoy",
+ "rating": 1500,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Binary search the time T; the min(n,k) fastest people are the drivers and each just shuttles back and forth alone, so driver i delivers 1 + 4*(1 + floor((T - t_i)/(2 t_i))) people if T >= t_i.",
+ "sketch": "Sort times and take the fastest min(n,k) as drivers (an exchange argument shows a slower driver never helps and nobody else should drive back). For a candidate T sum the people each driver can deliver: every one-way trip carries 4 passengers, a round trip costs 2 t_i, and the driver himself arrives on the last trip. Check sum >= n and binary search T up to about t_min*(2n) which is ~4e10, so use 64-bit. O(n log n + min(n,k) log(answer)). Pitfalls: drivers with t_i > T contribute nothing, and not all cars need to be used when n < k.",
+ "code_path": "solutions/kattis_convoy.cpp",
+ "samples_passed": true
+}

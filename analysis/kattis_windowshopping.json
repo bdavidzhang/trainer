@@ -1,0 +1,13 @@
+{
+ "id": "kattis:windowshopping",
+ "rating": 2500,
+ "topics": [
+  "dp",
+  "dp-bitmask",
+  "bfs-dfs"
+ ],
+ "key_idea": "Hallways are exactly a connected set H containing both escalators, and every other empty cell should be a shop; since r*c<=99 one side is <=9, so run a connectivity-profile (broken profile with component labels) DP maximising '.'-in-H / '.'-outside-H adjacent pairs.",
+ "sketch": "Transpose so width <= 9. Process cells in row-major order with state = canonical component labels of the last w cells (0 = not in H) plus a 'closed' flag meaning H is finished. Leaving a cell out of H is forbidden for U/D, and if it drops the last frontier cell of a component it is only legal when no other component is on the frontier (then set closed); putting a cell in H merges the up/left labels and is forbidden when closed or for pillars. A window is counted when both cells are '.', exactly one of them is in H (escalators and pillars never count). Accept states that are closed or have a single label; the number of states is a few thousand so it runs instantly. Pitfalls: escalators are walkable but give no windows, unreachable walkable cells are never better than shops, answer 0 cases. Stress-tested against a subset-enumeration brute force on grids up to 4x4.",
+ "code_path": "solutions/kattis_windowshopping.cpp",
+ "samples_passed": true
+}

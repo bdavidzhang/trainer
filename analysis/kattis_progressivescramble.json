@@ -1,0 +1,12 @@
+{
+ "id": "kattis:progressivescramble",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Encryption is a prefix sum mod 27; decryption is the difference of consecutive ciphertext values mod 27.",
+ "sketch": "Map space to 0 and a-z to 1..26. Encrypt: running sum mod 27 mapped back to symbols. Decrypt: v_i = (c_i - c_{i-1}) mod 27 with c_0 = 0, normalised to be non-negative. O(total length). Pitfalls: messages contain spaces (including leading, trailing and doubled), so read whole lines with getline and take everything after the 'e '/'d ' prefix verbatim; strip only a trailing carriage return, never spaces.",
+ "code_path": "solutions/kattis_progressivescramble.cpp",
+ "samples_passed": true
+}

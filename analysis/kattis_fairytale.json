@@ -1,0 +1,11 @@
+{
+ "id": "kattis:fairytale",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "String index of pitch p is (p-1)/10; count distinct strings.",
+ "sketch": "For each test case OR together a 4-bit mask of (p-1)/10 over all notes and print its popcount. O(n) per test. Only pitfall is the off-by-one at multiples of 10 (10 belongs to string 1, not 2).",
+ "code_path": "solutions/kattis_fairytale.cpp",
+ "samples_passed": true
+}

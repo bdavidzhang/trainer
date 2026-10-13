@@ -1,0 +1,13 @@
+{
+ "id": "kattis:diallingdigits",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "hashing",
+  "strings"
+ ],
+ "key_idea": "Convert every word to its digit string and bucket words in a hash map keyed by that string.",
+ "sketch": "Map letters to keys with the table abc2 def3 ghi4 jkl5 mno6 pqrs7 tuv8 wxyz9, store word indices per digit string in input (already alphabetical) order, and answer each number with one lookup. O(total length). Pitfall: lengths must match exactly (whole word, not a prefix), which the map key handles; pqrs and wxyz have four letters.",
+ "code_path": "solutions/kattis_diallingdigits.cpp",
+ "samples_passed": true
+}

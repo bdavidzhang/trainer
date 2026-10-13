@@ -1,0 +1,12 @@
+{
+ "id": "kattis:overdraft",
+ "rating": 800,
+ "topics": [
+  "prefix-sums",
+  "implementation"
+ ],
+ "key_idea": "The answer is the negation of the minimum prefix sum, clamped at zero.",
+ "sketch": "Track the running balance and its minimum (starting at 0); output -min. O(n), sums up to 1e9 so use 64-bit for safety.",
+ "code_path": "solutions/kattis_overdraft.cpp",
+ "samples_passed": true
+}

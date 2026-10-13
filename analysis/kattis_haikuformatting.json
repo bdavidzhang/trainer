@@ -1,0 +1,13 @@
+{
+ "id": "kattis:haikuformatting",
+ "rating": 1700,
+ "topics": [
+  "implementation",
+  "strings",
+  "case-analysis"
+ ],
+ "key_idea": "Pure rule simulation: classify each letter as vowel or consonant with the QU and Y exceptions, drop the silent final E / ES, count maximal vowel groups (minimum 1), then greedily fill lines of 5, 7, 5 syllables.",
+ "sketch": "For each blank-separated word take the leading alphabetic part in lower case. Y is a consonant when followed by a,e,i,o,u; U is a consonant after Q. A final E is ignored unless preceded by L with a consonant before that; the E of a final ES is ignored unless the two letters before it are both consonants. Syllables = number of maximal runs of counted vowels, at least 1 (also for words with no letters). Then take words greedily until exactly 5, 7, 5 are hit with all words consumed; otherwise echo the line. Pitfalls: the consonant tests for the L and ES exceptions use the Y/QU-adjusted classification, and a word that overshoots a line total makes the whole thing fail. The interpretation of a silent E after Y (Y still treated as consonant) is my literal reading of the statement and is the main hidden-test risk.",
+ "code_path": "solutions/kattis_haikuformatting.cpp",
+ "samples_passed": true
+}

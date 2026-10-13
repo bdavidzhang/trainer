@@ -1,0 +1,12 @@
+{
+ "id": "kattis:streetsahead",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "data-structures"
+ ],
+ "key_idea": "Map each street name to its index; the number of intersections strictly between two streets is |i-j|-1.",
+ "sketch": "Read the n names into a hash map from name to position. For each query output abs(pos[a]-pos[b])-1. O(n+q) expected with fast IO. Queries are always between distinct streets so the answer is never negative.",
+ "code_path": "solutions/kattis_streetsahead.cpp",
+ "samples_passed": true
+}

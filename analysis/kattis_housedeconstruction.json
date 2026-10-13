@@ -1,0 +1,14 @@
+{
+ "id": "kattis:housedeconstruction",
+ "rating": 2700,
+ "topics": [
+  "greedy",
+  "math",
+  "sorting",
+  "combinatorics"
+ ],
+ "key_idea": "Walk around the circle with P=+1, H=-1; the walk drops K=m-n per lap. For every 'level edge' (l,l+1) of the unrolled walk the houses and people crossing it alternate H P H ... H and exactly one of those houses is destroyed; the levels are independent, so the answer is the sum of per-level minima and the product of the numbers of minimisers.",
+ "sketch": "In an optimal solution nobody walks past a destroyed house, so destroyed houses cut the circle into balanced arcs, which forces exactly one destroyed house per level class (level mod K), with people before it on that level matched to the house on their left and people after it to the house on their right. Conversely any choice of one house per level class is a valid matching, so the ordering constraint between levels never binds at the optimum and levels decouple. Implementation: for each point compute its edge e (s for a house after the step, s-1 for a person), z=floor(e/K), bucket e-zK, unrolled position pos+z*x; sort each bucket and sweep the destroyed index with prefix differences to get the min cost and how many indices attain it. O((n+m) log). Pitfalls: floor division for negative levels, unrolled positions up to ~4e14 so 64-bit, count modulo 998244353. Verified against a subset+permutation brute force on 1500 random small circles.",
+ "code_path": "solutions/kattis_housedeconstruction.cpp",
+ "samples_passed": true
+}

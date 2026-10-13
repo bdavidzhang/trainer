@@ -1,0 +1,12 @@
+{
+ "id": "kattis:circuitmath",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "data-structures"
+ ],
+ "key_idea": "Postfix evaluation with a stack: push variable values, pop one for NOT, two for AND/OR.",
+ "sketch": "Read the truth values, then read whitespace-separated tokens of the expression. Letters push their value, '-' negates the top, '*' and '+' pop two and push the AND/OR. The single remaining stack element is the answer. O(length). No pitfalls beyond reading tokens until EOF.",
+ "code_path": "solutions/kattis_circuitmath.cpp",
+ "samples_passed": true
+}

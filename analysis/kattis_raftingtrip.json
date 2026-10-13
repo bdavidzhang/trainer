@@ -1,0 +1,13 @@
+{
+ "id": "kattis:raftingtrip",
+ "rating": 1900,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "trees"
+ ],
+ "key_idea": "The river is a functional graph; reverse it and DFS from every sink and every cycle while maintaining a multiset count of the sightseeing spots adjacent to the current root-to-node path.",
+ "sketch": "Each river cell points to the next river cell or to nothing (land or outside). In the reversed graph every component is a tree hanging from a sink or from a cycle. DFS down the reversed edges: on entering a cell increment a counter for each adjacent spot (tracking how many spots have a non-zero counter), on leaving decrement; the number of distinct spots when standing at a cell is exactly the answer for a trip starting there. For a cycle, first add the spots of all cycle cells (every start in or above the cycle traverses the whole cycle), then DFS into the non-cycle children of each cycle cell. O(r*c). Pitfalls: a spot adjacent to several path cells counts once, the DFS must be iterative (depth up to 250000), and the land cell where the raft stops contributes nothing. Stress-tested against direct simulation.",
+ "code_path": "solutions/kattis_raftingtrip.cpp",
+ "samples_passed": true
+}

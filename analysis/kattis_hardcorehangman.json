@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hardcorehangman",
+ "rating": 1200,
+ "topics": [
+  "interactive",
+  "bitmasks",
+  "constructive"
+ ],
+ "key_idea": "Give each letter a 5-bit code and ask one query per bit containing all letters with that bit set; the union of answers for a position spells its letter's code.",
+ "sketch": "Use codes 1..26 (not 0..25) so that every position appears in at least one answer; this also reveals the unknown length as the largest position reported. Five queries, then OR bit b into every reported position and decode. O(5 * |word|). Pitfalls: the length is not given, and with code 0 the letter 'a' would be invisible; remember to flush and to read the final verdict. Interactive, so validated with my own Python interactor on 60 random words (lengths 1 to 10000, including single-letter alphabets), not the sample checker.",
+ "code_path": "solutions/kattis_hardcorehangman.cpp",
+ "samples_passed": true
+}

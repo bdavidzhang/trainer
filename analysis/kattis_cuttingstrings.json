@@ -1,0 +1,14 @@
+{
+ "id": "kattis:cuttingstrings",
+ "rating": 2400,
+ "topics": [
+  "greedy",
+  "strings",
+  "hashing",
+  "sorting"
+ ],
+ "key_idea": "Greedy by letter: maximise the count of leading copies of the largest letter by keeping whole runs of it (each run not at the current start costs one cut); if all runs fit, recurse on the tail, otherwise take the k longest runs and break ties by the lexicographically largest suffix after the last kept run.",
+ "sketch": "The suffix is never removed, so the last kept piece runs to the end. Loop: with z the max letter of the remaining suffix, if (#runs minus a free run at the current position) <= k keep them all, subtract the cost and continue after the last run. Otherwise the answer is z^(sum of top-k run lengths plus the free run) followed by the full suffix after the last chosen run: runs longer than the k-th largest length L are forced, q of the tied length-L runs are chosen, so the last run can be the last forced run (if at least q tied runs precede it) or any tied run after it with at least q-1 tied runs before. Pick the best candidate suffix with polynomial hashing (mod 2^61-1) and binary-searched LCP, a longer suffix beating its own prefix. O(26n + n log n) per string. Stress-tested against exhaustive search.",
+ "code_path": "solutions/kattis_cuttingstrings.cpp",
+ "samples_passed": true
+}

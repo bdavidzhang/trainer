@@ -1,0 +1,13 @@
+{
+ "id": "kattis:magicalmysteryknight",
+ "rating": 2300,
+ "topics": [
+  "search-backtracking",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Known labels cut the tour into independent gaps; fill the gaps most-constrained-first (fewest candidate knight paths) instead of walking from 1, pruning with knight distance to the gap's far end, row/column sum bounds and a degree check on empty cells.",
+ "sketch": "Each gap between consecutive known labels is a knight path of fixed length through empty cells between two fixed cells (the last gap may be open-ended). Before starting a gap, count capped numbers of paths for every unfinished short gap, fail if any has none and take the smallest. Inside a gap, extend the path in Warnsdorff order, discarding cells whose knight distance to the gap end exceeds the remaining steps or has wrong parity. After each placement check all 16 lines: with e empty cells per colour, 260 minus the current sum must lie between the sums of the e smallest and e largest unassigned labels of that parity (colour fixes parity). Also require every empty cell to keep two usable neighbours (one for the possible final cell). Pitfall: label 64 as a bit index overflows a 64-bit shift, so index bits by label/2. Multiple answers are possible, so I validated with my own checker (tour, sums, given labels): sample plus 300 random 45-label removals from symmetric variants of the sample tour all valid, worst 0.06 s CPU. Weak spot: removing 45 consecutive labels (one huge gap) took over 1 s in 8 of 40 trials, worst 8.5 s, so adversarial data of that shape could exceed the 3 s limit.",
+ "code_path": "solutions/kattis_magicalmysteryknight.cpp",
+ "samples_passed": true
+}

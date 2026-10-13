@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dreamcatcher",
+ "rating": 1400,
+ "topics": [
+  "math",
+  "number-theory",
+  "geometry"
+ ],
+ "key_idea": "Yarn length is (n/gcd(n,k))*2r*sin(pi*k/n); any gcd>1 at least halves the chord count, so the optimum is the k coprime to n that is closest to n/2.",
+ "sketch": "For n odd take k=(n-1)/2; for n divisible by 4 take n/2-1; for n=2 mod 4 take n/2-2 (n/2-1 is even there, n/2-2 is odd and coprime to n). The proof that gcd 1 wins needs n*cos(2pi/n) >= n/2, true for n>=6, so n<=50 is simply brute-forced with long doubles. O(1). Pitfalls: the n=2 mod 4 case and tiny n (n=6 gives k=1 or 5, both length 3). Multiple answers are accepted, so the token checker flags sample 3 (it prints 1, the sample shows 5); verified with my own brute-force validator for all n<400 plus random n up to 5000 that the printed k attains the maximum.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_dreamcatcher.cpp"
+}

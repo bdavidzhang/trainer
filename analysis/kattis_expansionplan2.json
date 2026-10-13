@@ -1,0 +1,13 @@
+{
+ "id": "kattis:expansionplan2",
+ "rating": 1100,
+ "topics": [
+  "math",
+  "prefix-sums",
+  "geometry"
+ ],
+ "key_idea": "The unlocked set is the Minkowski sum of a diamond of radius a (#4s) and a square of radius b (#8s), so order does not matter: (x,y) is unlocked iff max(|x|,|y|) <= a+b and |x|+|y| <= a+2b.",
+ "sketch": "Prefix-count the 8s to get a and b for each substring in O(1). Then test the two octagon inequalities with 64-bit arithmetic. O(n+q). Only pitfall is deriving the second inequality (each 8 can contribute 2 to the Manhattan distance, each 4 only 1).",
+ "code_path": "solutions/kattis_expansionplan2.cpp",
+ "samples_passed": true
+}

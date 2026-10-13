@@ -1,0 +1,13 @@
+{
+ "id": "kattis:goingincircles",
+ "rating": 1800,
+ "topics": [
+  "interactive",
+  "randomized",
+  "constructive"
+ ],
+ "key_idea": "Write a random 40-bit signature onto consecutive carriages and keep walking until the last 40 bits read equal the signature: that happens after exactly n steps, with false-positive chance about n*2^-40.",
+ "sketch": "Small n would break the signature (it would overwrite itself), so first settle n <= 40 deterministically: zero 41 consecutive carriages while walking right, walk back, set the start to 1 and walk right up to 40 steps; seeing a 1 at step p means n=p. Otherwise n > 40: write 40 random bits while moving right (flip only when the current bit differs), then keep moving right recording bits and stop when the trailing 40 bits match the signature; the offset is n. Cost is about n + 5*40 + flips, far below 3n+500 for large n, and at most 3n+142 in my runs for small n. Pitfalls: the interactor is non-adaptive but adversarial (all-zero or periodic trains), so plain period detection without randomisation is wrong; flush after every query. Interactive, so the sample checker cannot judge it; samples_passed reflects my own simulated interactor, which checked the answer and the 3n+500 budget for every n in 3..89 plus 100, 123, 500, 4999, 5000 with all-0, all-1, random and periodic initial states.",
+ "code_path": "solutions/kattis_goingincircles.cpp",
+ "samples_passed": true
+}

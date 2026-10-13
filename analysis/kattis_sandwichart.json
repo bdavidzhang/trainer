@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sandwichart",
+ "rating": 1400,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "Adding ingredients never helps, so the only candidate is the dependency closure of the current sandwich: it must have at most M ingredients and be a subset of some genre.",
+ "sketch": "Build the directed dependency graph on ids below 1e6 and BFS/DFS from the starting ingredients to get the closure, which is the unique minimal finished sandwich containing them. If its size exceeds M the answer is disaster. Otherwise for each genre count how many of its (distinct) ingredients are marked; the closure is contained in the genre iff that count equals the closure size. Linear in the input size (up to 1e6 integers), so use fast input and adjacency arrays rather than vector-of-vectors per id. Pitfalls: cycles in dependencies, dependencies mentioning ingredients that appear in no genre, and the closure being checked rather than the initial set.",
+ "code_path": "solutions/kattis_sandwichart.cpp",
+ "samples_passed": true
+}

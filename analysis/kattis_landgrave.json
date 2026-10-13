@@ -1,0 +1,13 @@
+{
+ "id": "kattis:landgrave",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "greedy"
+ ],
+ "key_idea": "A convex hull vertex with an acute hull angle can never be a castle vertex, since any polygon through it lies inside that acute cone; delete such vertices repeatedly and the surviving hull is a valid (convex) castle iff one exists.",
+ "sketch": "Sort the points once, then loop: build the strict convex hull of the alive points by monotone chain in O(n), mark every hull vertex whose two hull edges have positive dot product (angle < 90) as dead, and repeat; if no vertex is acute print the hull, if fewer than 3 points remain or the hull degenerates print impossible. Correctness: vertices of any valid polygon are never deleted by induction, so if a solution exists the process stops on a non-degenerate hull with all angles >= 90. At most n rounds, O(n^2) total. Use __int128 (or careful 64-bit) for cross and dot of differences up to 2e9. Output differs from the samples because any castle is accepted: I validated with my own checker (simple polygon, all interior angles >= 90) and compared feasibility against an exhaustive search over all vertex cycles on 600 random small cases.",
+ "code_path": "solutions/kattis_landgrave.cpp",
+ "samples_passed": true
+}

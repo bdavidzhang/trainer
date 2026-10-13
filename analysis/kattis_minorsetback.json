@@ -1,0 +1,12 @@
+{
+ "id": "kattis:minorsetback",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Convert each frequency to a pitch class with round(12*log2(f/440)) mod 12, then test the set of used pitch classes against the five given keys; exactly one must contain it.",
+ "sketch": "For each frequency compute a = llround(12*log2(f/440)) and reduce to 0..11 with a non-negative modulo (frequencies below 440 give negative a). Mark the used classes and count how many of the five 7-note keys are supersets; if the count is not exactly 1 print 'cannot determine key'. Otherwise print the key name and each note with the spelling that key uses (Eb major and G minor use flats, G major and F# minor use sharps). O(N). Pitfalls: the semitone spacing at 20 Hz is about 1.2 Hz, far above the 1e-4 input error, so rounding is safe; the ambiguous case includes songs that fit several keys (sample 1 fits G major, C major and G minor); build the output in a buffer for N=1e5 lines.",
+ "code_path": "solutions/kattis_minorsetback.cpp",
+ "samples_passed": true
+}

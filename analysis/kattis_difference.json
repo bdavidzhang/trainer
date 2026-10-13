@@ -1,0 +1,13 @@
+{
+ "id": "kattis:difference",
+ "rating": 1500,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "bitset"
+ ],
+ "key_idea": "Just simulate: at most 10^4 terms means at most 5*10^7 pairwise differences, which fit in a bit array indexed by value.",
+ "sketch": "Keep a bitset of 'seen' numbers up to 2*10^8 and a monotone pointer d to the smallest unseen value. Each step sets A_n = A_{n-1} + d, marks A_n and all differences A_n - A_j, and stops as soon as m is marked. Since at most ~5*10^7 numbers are ever marked within 10^4 steps, d stays below the array bound even though the values A_n themselves grow to about 10^11, so use 64-bit for A and ignore anything above the bound (iterate j downward and break once the difference exceeds it). Total work about 5*10^7 bit writes plus a 25 MB bitset. Pitfalls: m equal to A_1 gives answer 1; a hash set is too slow/heavy, use vector<bool>.",
+ "code_path": "solutions/kattis_difference.cpp",
+ "samples_passed": true
+}

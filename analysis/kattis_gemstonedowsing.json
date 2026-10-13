@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gemstonedowsing",
+ "rating": 2600,
+ "topics": [
+  "geometry",
+  "math",
+  "data-structures"
+ ],
+ "key_idea": "Subtracting x^2 turns each gem's squared distance into a line, and a configuration is valid iff every gem's line touches the concave lower envelope at its own reading. Other unknown gems can simply coincide with whichever gem is nearest their reading, so each unknown is constrained only by the known gems, and by concavity only the nearest known reading on each side matters.",
+ "sketch": "For unknown u at x_u: R^2 = min squared distance from (x_u,0) to a known gem (Li Chao tree on lines -2gx*x+|g|^2), since the gem must be at least as close as every other gem. It must also stay outside the disks (x_k, d_k) of known readings; maximising depth on the circle of radius R is a 1D concave problem in gx, so clamp gx=x_u to the radical-axis bounds. Chord slopes on a concave chain are monotone, so only the nearest known reading to the left and to the right can bind: if p = d_k^2 - R^2 - D^2 > 0 the shift is p/(2D) and depth^2 = R^2 - (p/2D)^2. O(n log C). Pitfalls: evaluate depth^2 as an exact __int128 fraction before the square root to avoid cancellation; coinciding gems and ties are legal. Output order is free; I print sorted by frequency, which matches the samples. Stress-tested against an all-known-gems O(NK) clamp on generated consistent instances.",
+ "code_path": "solutions/kattis_gemstonedowsing.cpp",
+ "samples_passed": true
+}

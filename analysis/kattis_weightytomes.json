@@ -1,0 +1,13 @@
+{
+ "id": "kattis:weightytomes",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "math",
+  "binary-search"
+ ],
+ "key_idea": "Classic egg drop inverted: g(t,m)=g(t-1,m-1)+g(t-1,m)+1 is the largest n decidable with t tests and m pallets; first moves k are optimal iff both subproblems fit in t-1 tests.",
+ "sketch": "Compute g row by row until g(T,m)>=n; T is the answer (cap values to avoid overflow). Trying k boxes first leaves k-1 heights with m-1 pallets if it breaks and n-k heights with m pallets if it holds, so k is optimal iff k-1<=g(T-1,m-1) and n-k<=g(T-1,m). That is the contiguous range [max(1,n-g(T-1,m)), min(n,g(T-1,m-1)+1)], printed as a single number when the ends coincide. O(T*m) with T<=n. Verified against the O(n^2 m) DP brute force for n<=60, m<=6. Pitfall: the limit can be 0, so there are n+1 outcomes and g(t,1)=t.",
+ "code_path": "solutions/kattis_weightytomes.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:repetitiveroutes",
+ "rating": 1600,
+ "topics": [
+  "fenwick",
+  "offline-queries",
+  "data-structures"
+ ],
+ "key_idea": "A customer riding over event positions [a,b] files (b-a+1) minus (number of distinct locations in [a,b]) complaints, which is the classic offline distinct-in-range query.",
+ "sketch": "Process events left to right keeping a Fenwick tree with a 1 at the latest occurrence of every location (move the 1 when a location recurs). When a customer's drop-off at position k arrives, distinct = sum over [a,k] and add (k-a+1)-distinct to the answer. Every stop counts as a visit for everyone on board, including the customer's own pickup and drop-off and consecutive stops at the same place. O(n log n); the answer can reach about 4e10 so use 64-bit.",
+ "code_path": "solutions/kattis_repetitiveroutes.cpp",
+ "samples_passed": true
+}

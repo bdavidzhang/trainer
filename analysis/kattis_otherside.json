@@ -1,0 +1,13 @@
+{
+ "id": "kattis:otherside",
+ "rating": 1900,
+ "topics": [
+  "case-analysis",
+  "greedy",
+  "ad-hoc"
+ ],
+ "key_idea": "Only two groups matter: sheep (S) versus wolves+cabbages (W+C), since wolves and cabbages coexist. Feasible iff min < K, or min == K and max <= 2K.",
+ "sketch": "Let a = S and b = W+C, mn = min, mx = max. If mn < K, keep the smaller group permanently on the boat with spare room to ferry the other group across. If mn == K the boat is full with the small group, so the other group must be moved in two boatloads while shuttling the small group: possible only when mx <= 2K. Otherwise impossible (including K = 0). O(1). The pitfall is the boundary case mn == K; verified against a BFS over all states for all W,C <= 4, S <= 5, K <= 4.",
+ "code_path": "solutions/kattis_otherside.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:takingoutthetrash",
+ "rating": 1000,
+ "topics": [
+  "greedy",
+  "sorting",
+  "two-pointers"
+ ],
+ "key_idea": "Sort and pair the heaviest remaining bag with the lightest one if they fit together, otherwise send the heaviest alone.",
+ "sketch": "Sort weights; two pointers i (lightest) and j (heaviest). Each trip takes w[j]; if i<j and w[i]+w[j] <= m also take w[i]. Exchange argument: if the heaviest cannot pair with the lightest it pairs with nothing, and if it can, pairing with the lightest never hurts. O(n log n) with n = 5e5. Sum of two weights reaches 2e9, so use 64-bit.",
+ "code_path": "solutions/kattis_takingoutthetrash.cpp",
+ "samples_passed": true
+}

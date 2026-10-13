@@ -1,0 +1,12 @@
+{
+ "id": "kattis:clearing",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "geometry"
+ ],
+ "key_idea": "Area of an inscribed polygon is 1/2 * sum of sin(central angle gaps), so it decomposes over consecutive chosen points and a DP over (points used, last point) works after fixing the first point.",
+ "sketch": "Fix the smallest-index chosen point st; dp[k][j] = best sum of sines of gaps using k points ending at j, transition over the next point, close with sin(a_st - a_j). Answer is 0.5*1e6*best over all k in [3,p]. Complexity O(n^3 p) = 1e8 trivial operations, well inside 14 s. The sine formula stays correct when a gap exceeds 180 degrees (the term goes negative, matching signed area), so no special case for polygons that miss the centre. Convert degrees to radians and remember the radius is 1000 m (scale by 1e6).",
+ "code_path": "solutions/kattis_clearing.cpp",
+ "samples_passed": true
+}

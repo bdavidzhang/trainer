@@ -1,0 +1,14 @@
+{
+ "id": "kattis:orchardfence",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "probability",
+  "convex-hull",
+  "sorting"
+ ],
+ "key_idea": "The fence is the hull perimeter of the centres plus pi*d, and by linearity of expectation each directed pair (i,j) is a hull edge with probability C(n-2-m,k-2)/C(n,k), where m counts points strictly right of i->j or on the line outside the segment.",
+ "sketch": "For every i sort the other points by angle with an exact integer comparator (coordinates times 100), group equal directions, and use a rotating pointer to get the number of points strictly left, opposite, and right of each direction; within a direction group, farther points are also forbidden. Add dist(i,j)*prob[m], with prob[0]=k(k-1)/(n(n-1)) and prob[m+1]=prob[m]*(n-k-m)/(n-2-m), avoiding huge binomials. O(n^2 log n), about 0.3 s for n=2000. Pitfalls: collinear points (hull edges must be counted as maximal segments, and a fully collinear subset counts the segment twice, which the directed-edge sum does automatically), k=1 gives just pi*d, and the radius term is pi*d not 2*pi*d since d is the diameter. Verified against subset enumeration on small grids with many collinear points.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_orchardfence.cpp"
+}

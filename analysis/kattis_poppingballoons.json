@@ -1,0 +1,14 @@
+{
+ "id": "kattis:poppingballoons",
+ "rating": 2400,
+ "topics": [
+  "fft-ntt",
+  "probability",
+  "divide-and-conquer",
+  "combinatorics"
+ ],
+ "key_idea": "E[T] = sum over t of P(not sorted after t pops), and the survivors after t pops are a uniform (n-t)-subset, so it suffices to count sorted subsequences (by positions) of every size k. That is a product of n 3x3 upper-triangular polynomial matrices, done by divide and conquer with NTT.",
+ "sketch": "Answer = sum_{k=1..n} (1 - cnt[k]/C(n,k)) where cnt[k] is the number of k-subsets of positions reading B*Y*R*. Use an automaton whose state is the largest colour kept so far (this makes every subset counted exactly once); each balloon is a 3x3 upper-triangular matrix with entries 1, x or 1+x. Multiply all matrices with D&C: diagonal entries are (1+x)^count (binomials in closed form), only the three off-diagonal polynomials need NTT products, with naive multiplication for short factors. cnt = row 0 sum of the final matrix. O(n log^2 n), about 0.6 s for n=2e5. Pitfall: a naive 'three phase' automaton double counts subsets; the state must be canonical. Verified against exhaustive enumeration for n<=13 and NTT path against naive multiplication for n up to 4000.",
+ "code_path": "solutions/kattis_poppingballoons.cpp",
+ "samples_passed": true
+}

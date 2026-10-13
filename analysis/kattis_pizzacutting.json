@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pizzacutting",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Enumerate all grid cells (at most 2000 x 2000) and get each cell's area inside the circle from a closed-form 2D prefix function G(x, y) = area of the disk with X <= x and Y <= y.",
+ "sketch": "Cut lines are x0 + k*dx and y0 + k*dy strictly inside (-r, r), plus the bounding lines +-r. G(x, y) is evaluated with the antiderivative of sqrt(r^2 - t^2): for y >= 0 it is the half-plane cap minus the part above y on |t| <= sqrt(r^2 - y^2), for y < 0 it is the part below y on that interval; a cell's area is the 4-term inclusion-exclusion of G at its corners, with G cached on the (cols+1) x (rows+1) lattice. Whether a cell is a real piece is decided exactly in integers: the rectangle point closest to the origin must be strictly inside the circle. Count pieces with area/max <= p + 1e-6. Verified against numeric integration on 150 random small cases. Pitfalls: pieces of zero area (corner cells outside the disk) must not be counted, the largest piece is not always a full rectangle, and p may be written like '.999'.",
+ "code_path": "solutions/kattis_pizzacutting.cpp",
+ "samples_passed": true
+}

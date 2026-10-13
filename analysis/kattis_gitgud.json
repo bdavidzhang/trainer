@@ -1,0 +1,12 @@
+{
+ "id": "kattis:gitgud",
+ "rating": 2300,
+ "topics": [
+  "constructive",
+  "math"
+ ],
+ "key_idea": "An ascent costs 1000, so think in descending sweeps: in one sweep every candidate skill value can be moved once, paying its jump. Use base g=ceil(n^(1/3)): g-1 sweeps of +u steps make all candidates multiples of u*g for cost about n per level.",
+ "sketch": "Model: the unknown skill is a set of candidate values; one descending run can move each distinct candidate once at cost l, and each new run costs one 1000-coin ascent. For level u=1,g,g^2 and j=1..g-1, do a descending sweep over all y<n with y = j*u (mod u*g), each with l=u; residue j moves onto residue j+1, which is handled in the next sweep, so after g-1 sweeps every candidate below n is a multiple of u*g. With g=63 (g^3>=n) there are 186 sweeps (185 ascents) and total length about 3n*(g-1)/g, i.e. 923187 coins for n=250000. Binary merging (cost n/2 per level, 18 levels) and a single chain (n ascents) both blow the budget; the balance of three levels is the point. Multiple answers are valid, so the sample checker cannot judge it: verified with my own simulator (budget, k, and all start skills reaching >=n) for n=1..59 and a set of large n including 250000.",
+ "code_path": "solutions/kattis_gitgud.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:billionplayersgame",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "The payoff is linear in p: k*p - c with k = (#claims >=) - (#claims <=), so the minimum is at p=l when k>=0 and at p=r when k<=0. The best value is concave in k, so it is either the unconstrained optimum at an endpoint or the k=0 optimum.",
+ "sketch": "Claiming p>=a yields p-a, claiming p<=a yields a-p. For k>=0 the score is sum over 'ge' of (l-a) plus sum over 'le' of (a-l); unconstrained that is sum |a-l|, feasible iff #(a<=l) >= #(a>l). Symmetrically sum |a-r| is feasible iff #(a>=r) >= #(a<r). Otherwise the constraint is tight at k=0, where the score is independent of p: pair smallest with largest and sum the differences. Answer is the max of the feasible candidates; O(n log n), 64-bit sums. Verified against a 3^n brute force on 300 random cases.",
+ "code_path": "solutions/kattis_billionplayersgame.cpp",
+ "samples_passed": true
+}

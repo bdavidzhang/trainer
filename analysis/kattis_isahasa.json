@@ -1,0 +1,12 @@
+{
+ "id": "kattis:isahasa",
+ "rating": 1500,
+ "topics": [
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "Search a two-layer graph of states (class, has a has-a edge been used): is-a means reaching (B,0), has-a means reaching (B,1), because any chain containing at least one has-a link is a has-a relation.",
+ "sketch": "Map the at most 500 class names to ids and store directed edges labelled is-a (0) or has-a (1). From every class run a BFS over states (node, flag) where the flag ORs in the label of each edge taken; record reachability in a 500 x 1000 table. A query 'A is-a B' is true iff (B,0) is reachable from (A,0), which includes the trivial A is-a A; 'A has-a B' is true iff (B,1) is reachable. Cost is O(V*(V+E)), about 10^7. Pitfalls: A has-a A is true only via a cycle containing a has-a edge, and the output must be in the 'Query i: true/false' format.",
+ "code_path": "solutions/kattis_isahasa.cpp",
+ "samples_passed": true
+}

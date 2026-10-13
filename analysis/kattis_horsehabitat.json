@@ -1,0 +1,13 @@
+{
+ "id": "kattis:horsehabitat",
+ "rating": 2200,
+ "topics": [
+  "monotonic-stack-queue",
+  "prefix-sums",
+  "data-structures"
+ ],
+ "key_idea": "The answer table has only r*c entries, so compute all of them: per bottom row, each histogram stack node of height H, parent height P and span L contributes (L-w+1) placements for every h in (P,H] and w<=L, which is a difference in h plus a double suffix sum in w.",
+ "sketch": "Maintain up[j] heights row by row and run a monotonic stack; when a node (H, start) is popped at column j with L=j-start and P=max(current height, new top height), do D[P+1][L]++ and D[H+1][L]--. Afterwards prefix-sum D over h to get A[h][L] = number of maximal runs of length L at level h, then cnt[h][w] = sum_{L>=w} A[h][L]*(L-w+1) via two suffix sums over w. Answer queries by lookup. O(r*c + q) time, one (r+2)*(c+2) int array. Pitfalls: r or c can be 9e6 with the other 1 so index with size_t and a flat array; fast input is required for 9e6 characters; equal heights must merge (empty (P,H] range). Stress-tested against brute force on small grids.",
+ "code_path": "solutions/kattis_horsehabitat.cpp",
+ "samples_passed": true
+}

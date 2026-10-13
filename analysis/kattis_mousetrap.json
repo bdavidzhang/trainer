@@ -1,0 +1,14 @@
+{
+ "id": "kattis:mousetrap",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "math",
+  "probability",
+  "prefix-sums"
+ ],
+ "key_idea": "By linearity the expectation is (sum of areas of all C(n,3) vertex triangles) / polygon area. With vertices in ccw order each triangle area is a sum of three cross products, so the total collapses to sum over a<b of (n+2a-2b) * (p_a x p_b), computable with prefix sums.",
+ "sketch": "For i<j<k the doubled area is p_i x p_j + p_j x p_k - p_i x p_k; counting how often a pair (a,b) appears in each role gives coefficient (n-1-b)+a-(b-a-1) = n+2a-2b. Maintain S=sum p_a and T=sum a*p_a over a<b and add (n-2b)(S x p_b) + 2(T x p_b). Divide by the doubled polygon area. O(n). Pitfalls: heavy cancellation, so translate to the first vertex and do everything exactly in __int128 (values reach about 1e31), converting to long double only for the final division; boundary cases have measure zero so 'strictly inside' does not matter. Verified against an O(n^3) brute force on random convex polygons.",
+ "code_path": "solutions/kattis_mousetrap.cpp",
+ "samples_passed": true
+}

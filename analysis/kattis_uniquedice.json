@@ -1,0 +1,13 @@
+{
+ "id": "kattis:uniquedice",
+ "rating": 1400,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "hashing"
+ ],
+ "key_idea": "Canonicalise each die as the minimum encoding over its 24 rotations, then count equal canonical forms.",
+ "sketch": "Generate the 24 face permutations of the cube rotation group by closing two generators (a quarter turn about the vertical axis and a roll about the left-right axis) under composition with a BFS. For each die, apply all 24 permutations, encode the six faces as a base-6 number below 6^6=46656, take the minimum as the canonical key and increment a counter array; the answer is the largest counter. O(24*6*n), about 7e7 simple operations for n=5e5. Pitfalls: mirror images are NOT identical (sample 2), so only proper rotations may be used and the generators must be real rotations; verified that the closure has exactly 24 elements and that the 720 distinct labelings split into classes of size 24. Use fast input.",
+ "code_path": "solutions/kattis_uniquedice.cpp",
+ "samples_passed": true
+}

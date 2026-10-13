@@ -1,0 +1,14 @@
+{
+ "id": "kattis:circlebounce",
+ "rating": 1800,
+ "topics": [
+  "math",
+  "geometry",
+  "number-theory",
+  "matrix-exponentiation"
+ ],
+ "key_idea": "Every chord subtends the same arc, so the hit after n bounces is at angle pi+(n+1)(2*theta-pi), giving x=(-1)^n cos(2(n+1)theta), computed as the real part of a complex power mod p.",
+ "sketch": "With tan(theta)=a/b the first hit is at angle 2*theta, i.e. the unit complex number z=(b+ai)^2/(a^2+b^2). Each bounce advances the angle by the same 2*theta-pi, so x=(-1)^n * Re(z^(n+1)). Represent z as a pair (re,im) mod 1e9+7 using the modular inverse of a^2+b^2 and exponentiate by squaring over Z_p[i] in O(log n). a^2+b^2 is never 0 mod p because p=3 mod 4 and a,b<p. Pitfalls: n up to 1e12 needs 64-bit, the sign (-1)^n, and keeping intermediate products non-negative and within 64 bits.",
+ "code_path": "solutions/kattis_circlebounce.cpp",
+ "samples_passed": true
+}

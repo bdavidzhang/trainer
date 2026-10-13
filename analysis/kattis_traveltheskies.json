@@ -1,0 +1,12 @@
+{
+ "id": "kattis:traveltheskies",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "No flow is needed: simulate day by day, since people left at an airport simply accumulate and every flight must be full, the only question is whether each airport has enough people each day.",
+ "sketch": "Keep have[a] = people currently at airport a. On day d add that day's home arrivals, subtract the capacities of all flights departing a on day d, and fail if any count goes negative; passengers landing on day d are added only after the check, because a customer takes at most one flight per day. O(n*(m+k)). Pitfall: adding landed passengers before checking same-day departures lets them fly twice in a day.",
+ "code_path": "solutions/kattis_traveltheskies.cpp",
+ "samples_passed": true
+}

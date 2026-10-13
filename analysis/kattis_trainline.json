@@ -1,0 +1,14 @@
+{
+ "id": "kattis:trainline",
+ "rating": 2600,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "binary-search",
+  "math"
+ ],
+ "key_idea": "Utility is convex between consecutive areas so stations sit on areas; 2^-d is negligible beyond ~50 units and positions are distinct integers, so each station interacts with O(100) neighbours. Remove the k dimension with a Lagrangian (Aliens) penalty since the optimum is concave in k.",
+ "sketch": "If k>=n answer is the sum of p. Otherwise dp[j] = best penalised value with last station at area j: either from a station i closer than 2T=100 with exact cost c(i,j) (areas between use the nearer one), or from any farther station via a prefix max of dp[i]+Rtail[i] plus Ltail[j], tails truncated at T=50. c(i,j) for all near pairs is precomputed in O(1) each with local prefix sums of p*2^-(d-d_i) and p*2^(d-d_i) and a moving midpoint pointer (never form 2^-d for d up to 8e6 globally). Bisect lambda in [0,101] for 60 rounds using the station count as subgradient and report min over lambda of g(lambda)+lambda*k, which avoids tie-breaking issues. Complexity O(60 * n * 100), about 1 s for n=1e5 dense. Stress-tested against an O(n^2 k) exact DP on small inputs.",
+ "code_path": "solutions/kattis_trainline.cpp",
+ "samples_passed": true
+}

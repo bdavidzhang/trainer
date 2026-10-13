@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sumdoku",
+ "rating": 1700,
+ "topics": [
+  "search-backtracking",
+  "bitmasks",
+  "implementation"
+ ],
+ "key_idea": "Treat it as a Sudoku CSP with extra pairwise sum constraints inside each box; domain bitmasks plus arc-consistency on the </=/> pairs make backtracking almost branch-free.",
+ "sketch": "Parse the 15 lines into 54 adjacency constraints (6-char lines are horizontal pairs inside boxes, 9-char lines are vertical pairs between rows of a band). Keep a 9-bit domain per cell; propagate to a fixpoint: singleton elimination over row/column/box peers, support filtering on every sum constraint (v stays only if some w != v in the neighbour's domain satisfies the relation), and hidden singles per unit. Then branch on the cell with the smallest domain, copying the 81-int state. Any valid grid is accepted, so the checker cannot judge in general: I validated 1500 random puzzles with my own validator (rows, columns, boxes and regenerated symbol lines all match), worst about 30 ms; the sample output also happened to match exactly. Pitfall: plain MRV without propagation had a heavy tail (up to 0.7 s) on random inputs.",
+ "code_path": "solutions/kattis_sumdoku.cpp",
+ "samples_passed": true
+}

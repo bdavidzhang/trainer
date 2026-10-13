@@ -1,0 +1,14 @@
+{
+ "id": "kattis:tombhater",
+ "rating": 1800,
+ "topics": [
+  "bfs-dfs",
+  "trie-aho-corasick",
+  "graphs",
+  "strings"
+ ],
+ "key_idea": "Since moves are only S/W/E without revisits, a path never reverses direction inside a row, so the state (cell, last move direction, trie node of the word in progress) is enough and plain BFS gives the shortest path.",
+ "sketch": "Build a trie of the words (at most 2501 nodes). BFS over states (cell, dir in {came south, moving west, moving east}, trie node): from a west-moving state you may go west or south, from east-moving east or south, after a south step anything. On stepping to a letter go to the child of the current node, and if the current node ends a word also to the child of the root. Start from every top-row cell matching a root child with distance 1; stop at the first popped state in the bottom row whose node is terminal. At most 2500*3*2501 = 18.8M states with 16-bit distances; O(states * 6). Pitfalls: grid letters are space separated, m=1 is allowed, the path may walk along the bottom row before ending.",
+ "code_path": "solutions/kattis_tombhater.cpp",
+ "samples_passed": true
+}

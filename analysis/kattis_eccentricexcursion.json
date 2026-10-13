@@ -1,0 +1,14 @@
+{
+ "id": "kattis:eccentricexcursion",
+ "rating": 2500,
+ "topics": [
+  "trees",
+  "greedy",
+  "dp-tree",
+  "constructive"
+ ],
+ "key_idea": "Build the answer greedily vertex by vertex, using the fact that for a remaining forest F and a start vertex w the achievable numbers of road steps form a full interval [min,max]: max is a path-cover tree DP with w forced to be an endpoint, min is 0 except in star-like degenerate cases where it is 1.",
+ "sketch": "Flights = consecutive pairs that are non-adjacent in the tree, so we need exactly n-1-k adjacent consecutive pairs. Oracle for (forest F, start w): max = sum of unconstrained max path-cover edges of other components + best in w's component with w having degree <=1 (DP g0/g1 with top-two child gains); min = 1 if w is adjacent to all other remaining vertices or if F minus w is a star on >=2 vertices (some vertex adjacent to all the rest), else 0 (proved by induction on the removal recursion). Every value in between is achievable (verified exhaustively by brute force on thousands of random trees with n<=9). Greedy: at each step take the smallest alive w with need-[adj(cur,w)] inside w's interval; if none exists at the first step print -1. Per step each candidate costs an O(n) rooted DP, total O(n^3)=1.25e8 worst case, in practice far less. Pitfalls: a tree edge between consecutive cities always counts as a road (cannot fly along it), the n=1 and star cases, and recomputing component data after each deletion.",
+ "code_path": "solutions/kattis_eccentricexcursion.cpp",
+ "samples_passed": true
+}

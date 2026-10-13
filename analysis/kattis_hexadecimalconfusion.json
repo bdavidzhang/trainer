@@ -1,0 +1,12 @@
+{
+ "id": "kattis:hexadecimalconfusion",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Each ambiguous digit is independent: 8/B and 0/D pick the larger for the max and the smaller for the min, except a leading 0/D of a multi-digit number must be D.",
+ "sketch": "For each seen string build the max by turning every 8 into B and every 0 into D, and the min by turning every B into 8 and every D into 0. The one constraint is no leading zeros in the original: if the string has more than one character and its first character is 0 or D it must be D in both versions, while the single string 0 may really be 0 (min) or D (max). Sum the parsed values in 64-bit and print in uppercase hex. O(total length).",
+ "code_path": "solutions/kattis_hexadecimalconfusion.cpp",
+ "samples_passed": true
+}

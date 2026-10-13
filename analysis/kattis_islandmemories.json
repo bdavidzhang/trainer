@@ -1,0 +1,14 @@
+{
+ "id": "kattis:islandmemories",
+ "rating": 2200,
+ "topics": [
+  "trees",
+  "bitset",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Root the unknown tree at island n and replace each memory by the side not containing n: these must be subtrees, so the family must be laminar, and every set needs a root vertex of its own, i.e. it must not be exactly the union of the sets strictly inside it.",
+ "sketch": "Complement every zone that contains n, deduplicate, and sort by size using bitsets. For each set S check against every smaller set T that S and T are disjoint or T is a subset of S (laminarity), and accumulate the union of contained sets; if the union equals S there is no vertex left to be the subtree root, so answer 0. Otherwise a tree exists: pick a root in S minus its children, hang the leftover vertices as leaves and child roots beneath it, attach top-level sets to n. Complexity O(m^2 n / 64). Pitfall: pairwise compatibility of splits alone is not enough because every tree node is a labelled island (three singletons on n=3 are compatible but need a Steiner centre). Stress-tested against enumeration of all labelled trees via Prufer codes for n <= 6.",
+ "code_path": "solutions/kattis_islandmemories.cpp",
+ "samples_passed": true
+}

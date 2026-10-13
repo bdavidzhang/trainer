@@ -1,0 +1,13 @@
+{
+ "id": "kattis:exclusivedisplay",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "Entering a number XORs the segment masks of its digits, so just try all 100 values of s.",
+ "sketch": "Parse the 7x4 picture into a 7-bit mask (one probe character per segment). Hard-code the standard seven-segment masks for digits 0-9 (6 with top bar, 9 with bottom bar, 7 = three segments; the sample with 56/65/89/98 confirms 6 and 9). For s<10 the mask is the digit's; for s>=10 it is mask[tens] XOR mask[units]. Print all matching s in increasing order or 'impossible'. O(100). Pitfall: no leading zeros, so 0-9 are single-digit entries and e.g. 11 gives the empty display.",
+ "code_path": "solutions/kattis_exclusivedisplay.cpp",
+ "samples_passed": true
+}

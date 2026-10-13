@@ -1,0 +1,13 @@
+{
+ "id": "kattis:montyshall",
+ "rating": 1400,
+ "topics": [
+  "probability",
+  "greedy",
+  "math"
+ ],
+ "key_idea": "After Monty opens e empty doors, each of your doors still has probability 1/d while each other closed door has (d-s)/(d(d-s-e)) > 1/d, so switch to as many unselected doors as possible.",
+ "sketch": "The initial pick is irrelevant by symmetry. Your s doors keep total mass s/d; the remaining mass (d-s)/d is spread evenly over the o = d-s-e unopened unselected doors, each strictly better than one of yours. Take k = min(s, o) of those and keep s-k of your own: answer k(d-s)/(d*o) + (s-k)/d. O(1) with doubles; pitfall is the case s > o where you cannot switch everything.",
+ "code_path": "solutions/kattis_montyshall.cpp",
+ "samples_passed": true
+}

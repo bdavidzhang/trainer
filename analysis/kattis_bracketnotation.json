@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bracketnotation",
+ "rating": 1500,
+ "topics": [
+  "implementation",
+  "strings",
+  "ad-hoc"
+ ],
+ "key_idea": "Header lengths depend on the indices and vice versa; iterate from the smallest possible digit lengths to a fixed point, which is monotone and therefore the shortest representation.",
+ "sketch": "Number bracket pairs in preorder and compute subtree sizes with a stack. Header i starts at pos[i]; its 'start' is pos[i+1] and its 'end' is pos[i+size_i]. Begin with every header length 4 (two one-digit numbers), recompute positions and digit counts, and repeat until nothing changes; lengths only grow so it converges to the least fixed point in a handful of rounds. At most 2000 pairs, so each round is O(n). Pitfall: 'end' is the position after the last descendant header, not after the header itself.",
+ "code_path": "solutions/kattis_bracketnotation.cpp",
+ "samples_passed": true
+}

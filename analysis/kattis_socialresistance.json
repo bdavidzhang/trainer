@@ -1,0 +1,13 @@
+{
+ "id": "kattis:socialresistance",
+ "rating": 1700,
+ "topics": [
+  "linear-algebra",
+  "graphs",
+  "math"
+ ],
+ "key_idea": "Effective resistance is the potential at the source after grounding the sink and injecting one ampere: solve the reduced Laplacian system L' v = e_s.",
+ "sketch": "Build the adjacency matrix from the lines 'node count neighbours...' reading until E edges have been listed, then read Q queries. For each query delete the row and column of n2 from the graph Laplacian (ground it), put 1 on the right-hand side at n1 and solve by Gauss-Jordan with partial pivoting; the answer is v[n1]. N <= 20 so O(Q N^3) is trivial. Pitfalls are the odd input format (edge lines are counted by listed neighbours, not by line count), the query index prefix, and n1 == n2 giving 0. Tolerance is only 1e-3 so doubles are ample.",
+ "code_path": "solutions/kattis_socialresistance.cpp",
+ "samples_passed": true
+}

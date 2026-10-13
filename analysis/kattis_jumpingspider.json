@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jumpingspider",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "dsu",
+  "brute-force"
+ ],
+ "key_idea": "Mark prints with at least 7 other prints within Manhattan distance 3 as core, prints within 3 of a core as valid too, then count components of valid prints under the distance-3 relation.",
+ "sketch": "With at most 625 prints do everything in O(n^2): count neighbours within Manhattan distance 3 to find core prints, mark each print valid if it is core or within 3 of a core, union valid prints that are within 3 of each other. Jumps = components - 1, the third line is the number of invalid prints; with no valid print print No, 0 and the total print count. The statement is vague on what separates trails; I took any two valid prints within distance 3 to be on the same trail, which reproduces both samples. Only the samples back that interpretation.",
+ "code_path": "solutions/kattis_jumpingspider.cpp",
+ "samples_passed": true
+}

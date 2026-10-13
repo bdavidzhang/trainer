@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jestingjabberwocky",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "brute-force"
+ ],
+ "key_idea": "Minimum moves = n minus the longest subsequence that is already grouped; try all 4! suit orders and compute the longest non-decreasing subsequence over a 4-letter alphabet.",
+ "sketch": "Cards left untouched must form a subsequence that is already grouped by suit in the final order, and any such subsequence can be completed by inserting the others. For each of the 24 permutations of suits map each card to its rank and run a DP f[k] = longest valid subsequence ending in rank k, with f[k] = max(f[0..k]) + 1. Answer is n - max. Complexity O(24 * 4 * n). Pitfall: thinking only of contiguous blocks or of a single fixed suit order.",
+ "code_path": "solutions/kattis_jestingjabberwocky.cpp",
+ "samples_passed": true
+}

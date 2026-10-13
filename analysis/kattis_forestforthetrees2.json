@@ -1,0 +1,14 @@
+{
+ "id": "kattis:forestforthetrees2",
+ "rating": 1600,
+ "topics": [
+  "brute-force",
+  "hashing",
+  "geometry",
+  "implementation"
+ ],
+ "key_idea": "Fix one of 4 headings and anchor the first sensor reading to each map tree: that gives only 4*n_t candidate robot positions, each verified by hash lookups of the remaining readings plus a count of trees in range.",
+ "sketch": "For each of the 4 orientations rotate all readings (right,forward) into map offsets. For every tree t, the candidate robot is t minus the first rotated reading; reject if the robot sits on a tree, then check every other reading lands on a tree using a hash set (early exit makes this cheap). Survivors must also see nothing else: count the trees within Manhattan distance r_max of the candidate and require it to equal n_s, O(n_t) each. Count valid (position, orientation) combinations: 0 -> Impossible, 1 -> print, >=2 -> Ambiguous (same cell with a different heading also counts). Worst case about 4*5000*(1000 + 5000) operations. Pitfalls: the sensor sees every tree in range, so extra unseen trees in range invalidate a candidate; get the rotation convention right (heading east: offset = (forward, -right)).",
+ "code_path": "solutions/kattis_forestforthetrees2.cpp",
+ "samples_passed": true
+}

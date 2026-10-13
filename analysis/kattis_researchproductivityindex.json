@@ -1,0 +1,14 @@
+{
+ "id": "kattis:researchproductivityindex",
+ "rating": 1700,
+ "topics": [
+  "probability",
+  "dp",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "For a fixed number s of submitted papers the best set is the s papers with highest acceptance probability, so sort descending and try every prefix, computing the distribution of the accepted count by DP.",
+ "sketch": "Sort probabilities in decreasing order. Maintain f[a] = probability that exactly a of the first k papers are accepted, updating in place (a descending) when paper k is added: f[a] = f[a](1-p) + f[a-1]p. After each k compute E = sum_a f[a] * a^(a/k) and keep the maximum over k. O(n^2) for the DP plus O(n^2) pow calls, trivial for n=100. Doubles are precise enough; remember to convert percentages and that a=0 contributes 0. The prefix-is-optimal claim was confirmed by brute force over all subsets for n<=8.",
+ "code_path": "solutions/kattis_researchproductivityindex.cpp",
+ "samples_passed": true
+}

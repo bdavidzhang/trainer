@@ -1,0 +1,14 @@
+{
+ "id": "kattis:evensubstrings",
+ "rating": 2100,
+ "topics": [
+  "segment-tree",
+  "bitmasks",
+  "prefix-sums",
+  "data-structures"
+ ],
+ "key_idea": "A substring is even iff the 6-bit prefix parity masks at its two ends are equal, so a query counts equal pairs among P[l-1..r]; a point update XORs a constant into a suffix of P, which a segment tree storing 64 counters per node handles with a lazy XOR that permutes the counters.",
+ "sketch": "Build a segment tree over P[0..n] where each node holds cnt[64] of mask values in its range and a lazy XOR tag. An update at i with d = old^new letter bits applies XOR d to P[i..n]: fully covered nodes permute their counters (cnt'[v^d]=cnt[v]); I avoid push-down by recomputing parents as cnt[v^lazy] = L[v]+R[v] and carrying the ancestors' XOR down during queries. A query accumulates the 64 counts over [l-1,r] and outputs sum of C(c,2). O(64 log n) per operation, ~100 MB of counters in the simple 4n layout. Pitfalls: the range is l-1..r in prefix indices, answers reach ~2e10 (64-bit), and updates that do not change the letter should be skipped. Stress-tested against brute force.",
+ "code_path": "solutions/kattis_evensubstrings.cpp",
+ "samples_passed": true
+}

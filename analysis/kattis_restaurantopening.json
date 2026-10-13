@@ -1,0 +1,12 @@
+{
+ "id": "kattis:restaurantopening",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "The grid is at most 50x50, so just try every cell as the restaurant and sum weighted Manhattan distances.",
+ "sketch": "Brute force over all n*m candidate cells, computing sum g[i][j]*(|i-a|+|j-b|) for each: O((nm)^2) = 6.25M operations. A faster alternative is independent weighted medians of row and column sums, but it is unnecessary. Answer fits easily in 64-bit (max about 50*2500*100). Note the sample has n=1 despite the stated n>1, so do not assume n,m>=2.",
+ "code_path": "solutions/kattis_restaurantopening.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:notanotherconstructive",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "bitset",
+  "constructive"
+ ],
+ "key_idea": "Track (#N, #NA pairs) explicitly - at most 40 and 400 - and keep the set of achievable NAC counts as a bitset of 2501 bits; a C just shifts the bitset by the current NA count.",
+ "sketch": "dp[pos][cntN][cntNA] is a bitset over k. Transitions: N -> cntN+1; A -> cntNA += cntN; C -> bitset << cntNA; any other letter -> unchanged; fixed characters allow only their own transition, '?' allows all four. cntNA is at most 20*20=400 so there are 41*41*401 bitsets (~210 MB, fine under the 2 GB limit) and about 1e8 word operations. All layers are stored, then the string is rebuilt backwards by testing which predecessor has the needed bit. Pitfalls: counts over 2500 are dropped by the bitset width automatically; non-NAC fixed letters must be kept verbatim. Any valid string is accepted, so the sample-1 output differs from the judge's; verified with my own validator (pattern match + NAC count) and a brute force for feasibility on 1500 random small cases.",
+ "code_path": "solutions/kattis_notanotherconstructive.cpp",
+ "samples_passed": true
+}

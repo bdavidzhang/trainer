@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pianissimo",
+ "rating": 1300,
+ "topics": [
+  "sorting",
+  "two-pointers",
+  "implementation"
+ ],
+ "key_idea": "Only 8 dynamic levels exist, so for each of the 28 ordered level pairs count pairs where the softer note's power is >= the louder note's power.",
+ "sketch": "Expand the m change points into a level per note, bucket powers by level and sort each bucket. For every pair lo<hi of levels, sweep bucket lo in increasing order with a pointer into bucket hi counting elements <= x; sum these counts. Complexity O(n log n + 28n). Pitfalls: equality counts as a violation (louder must be strictly larger), same-level pairs never violate, and the answer needs 64 bits (up to ~2e10).",
+ "code_path": "solutions/kattis_pianissimo.cpp",
+ "samples_passed": true
+}

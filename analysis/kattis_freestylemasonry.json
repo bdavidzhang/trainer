@@ -1,0 +1,14 @@
+{
+ "id": "kattis:freestylemasonry",
+ "rating": 2400,
+ "topics": [
+  "greedy",
+  "data-structures",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Sweep columns: every odd-length free run of a column must send exactly one horizontal brick to the right, and pushing it to the top of its run is always best; these canonical bricks then drift down one row per column, so only relative parities and the lowest brick versus h_i matter.",
+ "sketch": "In column i the rows above h_i are cut into runs by bricks sticking in from column i-1; an even run is tiled vertically, an odd run emits one horizontal brick whose row parity is fixed, and choosing the highest row dominates since the only constraints are the lower bounds h_i. In canonical form an incoming brick at row q yields an outgoing brick at row q-1 iff the run below it is odd, i.e. iff it has the same parity as the brick below it (or q-1-h_i is odd for the lowest); a new brick appears at row h iff the top run is odd. Store bricks as row+column in a linked list ordered bottom to top, keep a list of bricks whose parity differs from their predecessor, delete those each column and re-evaluate only the successors of deleted bricks; the lowest brick is checked against h_i (impossible if q<=h_i). Answer is possible iff no brick remains after the last column and no h_i>h. Amortised O(w). Verified against a bitmask profile DP on 4000 random small cases.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_freestylemasonry.cpp"
+}

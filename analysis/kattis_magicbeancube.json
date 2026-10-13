@@ -1,0 +1,12 @@
+{
+ "id": "kattis:magicbeancube",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "implementation"
+ ],
+ "key_idea": "The conjugate c^a X c^-a, with X a single-step ring rotation, is a 10-cycle through seven beads of one ring and another ring's triple; it swaps exactly one bead between two rings in 3 moves and restores the centre.",
+ "sketch": "Model: positions 0..2 of each ring sit on the centre circle; c1 sends top->right->left->top index-preserving, and a ring rotation by k sends bead i to i+k (both fixed by the two samples). To exchange a bad bead of ring A with a good bead of ring B: rotate A so the bad bead is at A[9], rotate B so the good bead is at B[2], then centre move bringing B's triple into A's slot, rotate A by 1, undo the centre move. Stage 1 fills the top ring with orange this way (taking oranges from either other ring); stage 2 fixes gray versus red using c1 g1 c2, which never touches the top ring's beads. At most 5 moves per bead and at most 20 swaps, so 100 moves worst case (83 observed over 3000 random scrambles, limit 240). Many answers are valid, so the checker's token compare reports WRONG; samples_passed is set from my own simulator, which confirmed the sample answers solve the samples under this model and that every generated output solves its scramble within 240 moves. Residual risk: the centre-move index mapping is inferred from the samples without the figure.",
+ "code_path": "solutions/kattis_magicbeancube.cpp",
+ "samples_passed": true
+}

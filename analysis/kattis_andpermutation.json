@@ -1,0 +1,13 @@
+{
+ "id": "kattis:andpermutation",
+ "rating": 2300,
+ "topics": [
+  "constructive",
+  "bitmasks",
+  "divide-and-conquer"
+ ],
+ "key_idea": "Split the downward-closed set by its top bit into S0 and S1+bit with S1 a subset of S0, both downward closed; solve both recursively and glue: x+bit -> f1(x), and y in S0 -> f0(y), plus bit if f0(y) lies in S1.",
+ "sketch": "Sort the values and recurse on the highest bit of the maximum. The elements with the bit map via f1 onto S1 inside S0; the elements of S0 whose f0-image lies in S1 have that image lifted by the bit (still disjoint since y lacks the bit), which exactly covers S1+bit, and the others keep f0(y), covering S0 minus S1. Base case {0} -> 0. Each level partitions the set, so total work is O(60 n log n) with binary-search membership. Use unsigned 64-bit and 1ULL shifts. Multiple answers are valid, so the sample differs from the checker; samples_passed is true because my own validator (permutation of the input and a_i & b_i == 0) confirmed the sample and 300 random downward-closed sets.",
+ "code_path": "solutions/kattis_andpermutation.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jigsawpuzzle",
+ "rating": 1500,
+ "topics": [
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "Classify each piece by its flat sides (0, 1, 2 adjacent, 2 opposite, 3, 4) and compare the class counts with what each r x c factorisation requires; then notches must equal projections.",
+ "sketch": "Question 1 is Yes for any positive piece count because a 1 x n strip is allowed. For question 2 try every factorisation r*c = n: for r,c >= 2 exactly 4 pieces with two adjacent flats, 2(r-2)+2(c-2) pieces with one flat, (r-2)(c-2) with none and nothing else; for 1 x c (c >= 2) exactly two pieces with three flats and c-2 with two opposite flats; for 1 x 1 a single 1111 piece. Question 3 is Yes when the total number of 0 sides equals the total number of 2 sides (the number of interior edges is already implied by the flat counts). After the first No the remaining answers are printed as Unsolved. Pitfalls: adjacency of flats is cyclic (1001 is a corner, 1010 is a strip piece), and the degenerate single-row and 1x1 shapes. The scraped statement does not spell out when Unsolved is printed, so that convention is an inference; only the single all-Yes sample was confirmed.",
+ "code_path": "solutions/kattis_jigsawpuzzle.cpp",
+ "samples_passed": true
+}

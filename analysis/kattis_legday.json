@@ -1,0 +1,12 @@
+{
+ "id": "kattis:legday",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Classify each exercise by substring priority (rest, then leg, else arm) and print day i as exercise i mod n using one fixed emoji per class.",
+ "sketch": "Read n names; a name containing 'rest' is a rest day, otherwise 'leg' means leg day, otherwise arm. Print 5 lines 'week glyphs' covering 31 days with 7 per week (3 in the last). Glyphs are emitted as raw UTF-8 bytes: U+1F634 SLEEPING FACE, U+1F9B5 LEG, U+1F4AA FLEXED BICEPS. Pitfalls: the priority order (crestfallen is rest, pharmaceutic is arm) and writing 4-byte UTF-8 correctly. Any glyph with the right word in its Unicode name is accepted, so the token checker fails on samples 2 and 3 where the judge used other glyphs; I validated all three samples with a script checking unicodedata names, line structure and the 31-day count.",
+ "code_path": "solutions/kattis_legday.cpp",
+ "samples_passed": true
+}

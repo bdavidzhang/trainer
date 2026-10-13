@@ -1,0 +1,12 @@
+{
+ "id": "kattis:roadtosavings",
+ "rating": 1300,
+ "topics": [
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "An edge (u,v,l) lies on some shortest a-b path iff dist(a,u)+l+dist(v,b)=dist(a,b) in one of the two orientations.",
+ "sketch": "Compute all-pairs shortest paths with Floyd-Warshall (n<=100), or two Dijkstras from a and b. Let D=dist(a,b). Sum all edge lengths, then subtract every edge satisfying da[u]+l+db[v]==D or da[v]+l+db[u]==D. O(n^3 + m). Pitfall: the answer is the unpaved length, and several equally short paths must all be paved.",
+ "code_path": "solutions/kattis_roadtosavings.cpp",
+ "samples_passed": true
+}

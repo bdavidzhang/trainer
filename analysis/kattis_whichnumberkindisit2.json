@@ -1,0 +1,12 @@
+{
+ "id": "kattis:whichnumberkindisit2",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Check parity and whether the integer square root squared equals N.",
+ "sketch": "For each N compute r = floor(sqrt(N)) with an integer correction loop, then print OS / O / S / EMPTY depending on N odd and r*r==N. O(1) per test. Pitfall: 0 is a perfect square and even, so it prints S.",
+ "code_path": "solutions/kattis_whichnumberkindisit2.cpp",
+ "samples_passed": true
+}

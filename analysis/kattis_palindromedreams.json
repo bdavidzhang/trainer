@@ -1,0 +1,13 @@
+{
+ "id": "kattis:palindromedreams",
+ "rating": 1200,
+ "topics": [
+  "math",
+  "prefix-sums",
+  "palindromes"
+ ],
+ "key_idea": "Answer each query as P(B) - P(A-1), where P(x) is the number of palindromes up to x, obtained either from a precomputed prefix table up to 1e7 or by a closed-form count based on the first half of the digits.",
+ "sketch": "For x with L digits, all shorter lengths l contribute 9*10^(ceil(l/2)-1) palindromes; for length L, take the first ceil(L/2) digits h, add h - 10^(ceil(L/2)-1) for smaller halves, plus one if mirroring h gives a number <= x. This is O(digits) per query and works for any 64-bit bound. A sieve-style prefix array over 1e7 also works. Pitfalls: A-1 = 0, odd versus even lengths when mirroring, and fast output for 1e5 queries. Verified against a brute-force palindrome list on thousands of random ranges.",
+ "code_path": "solutions/kattis_palindromedreams.cpp",
+ "samples_passed": true
+}

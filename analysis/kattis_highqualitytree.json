@@ -1,0 +1,13 @@
+{
+ "id": "kattis:highqualitytree",
+ "rating": 1900,
+ "topics": [
+  "dp-tree",
+  "trees",
+  "dp"
+ ],
+ "key_idea": "A strongly balanced (AVL-shaped) tree of height h has at least Fib(h) nodes, so the final height is at most ~27; hence dp[v][h] over exact heights is only O(30 n).",
+ "sketch": "f[v][h] = min removals so that the kept part of v's subtree is strongly balanced with height exactly h (h=0 means remove the whole subtree, cost size(v)). For h>=1 combine children with heights (h-1,h-1), (h-1,h-2) or (h-2,h-1); a missing child is the constant 'height 0, cost 0'. Answer is min over h of f[root][h]. Removing leaves repeatedly is the same as keeping a root-containing connected subtree. Pitfalls: the tree can be a path of 2e5 vertices, so do the traversal iteratively; edges are undirected and unordered; cap the height table at ~32. O(32 n) time and memory. Stress-tested against subset enumeration for n <= 13.",
+ "code_path": "solutions/kattis_highqualitytree.cpp",
+ "samples_passed": true
+}

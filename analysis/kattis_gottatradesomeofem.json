@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gottatradesomeofem",
+ "rating": 1200,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "constructive"
+ ],
+ "key_idea": "Pokemon spread freely inside a connected component, so the answer exists iff every component has at least k kids, and then any assignment using all k variants in each component works.",
+ "sketch": "BFS each component and give the i-th visited kid variant i mod k + 1; if a component ends with fewer than k vertices print impossible. O(n+m). Isolated kids are components of size 1, so k>1 with any isolated vertex is impossible. Multiple answers are valid: samples matched exactly and a random validator (DSU components, all k variants present per component, impossibility agreement) confirmed the output.",
+ "code_path": "solutions/kattis_gottatradesomeofem.cpp",
+ "samples_passed": true
+}

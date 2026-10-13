@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mirrormagic",
+ "rating": 1800,
+ "topics": [
+  "geometry",
+  "math",
+  "sorting"
+ ],
+ "key_idea": "A reflection maps centroid to centroid, so the mirror must be the perpendicular bisector of the two centroids: only one candidate line to verify.",
+ "sketch": "If the centroids coincide the answer is impossible (the mirror would pass through the centroid, which lies inside the hull of a set that must be strictly on one side). Otherwise take d = primitive direction of SB-SA and the line through (SA+SB)/(2n) perpendicular to d; for each point of A check it is strictly on A's side, reflect it exactly in integer arithmetic (require divisibility) and binary-search it in sorted B. Injectivity makes n successful lookups a set equality. O(n log n). Pitfalls: stay in exact arithmetic (__int128, values reach ~1e30 after scaling by 2n), and do not forget the separation condition, since sets can be mirror images while interleaved across the line. Stress-tested against a brute force over all candidate bisectors with fractions.",
+ "code_path": "solutions/kattis_mirrormagic.cpp",
+ "samples_passed": true
+}

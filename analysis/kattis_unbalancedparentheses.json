@@ -1,0 +1,13 @@
+{
+ "id": "kattis:unbalancedparentheses",
+ "rating": 2500,
+ "topics": [
+  "greedy",
+  "math",
+  "data-structures"
+ ],
+ "key_idea": "Bruce's minimum fixes equal max over split points m of ceil(A/2)+ceil(B/2) with A = excess of ')' in the prefix and B = excess of '(' in the suffix, so Barry just picks a split and needs at most n/2-k-1+[m odd] characters that are 'wrong' for the shape )))...(((. Taking every negative-cost flip first, each remaining wrong position costs |c| to fix.",
+ "sketch": "If n is odd Bruce can never balance: answer is the sum of negative costs. If k >= n/2+1 print '?', since the worst string needs n/2+1 fixes. Otherwise start from the sum of all negative costs (apply every delightful flip); for split m a position is bad if its char after those flips is '(' in the prefix or ')' in the suffix, and making it good costs |c| (either paying a non-negative flip or forgoing a negative one). For each m we need bad count <= L_m = n/2-k-1+(m&1), so pay the D smallest |c| among bad positions. Moving m by one toggles exactly one position, so keep a count array over |c| in 0..1000 and scan it: O(1001 n). Pitfalls: the parity term (odd split gains one), L_m < 0 splits are infeasible, and negative costs must be taken even when not needed. Verified against exhaustive search for n <= 9.",
+ "code_path": "solutions/kattis_unbalancedparentheses.cpp",
+ "samples_passed": true
+}

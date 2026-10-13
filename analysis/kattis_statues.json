@@ -1,0 +1,13 @@
+{
+ "id": "kattis:statues",
+ "rating": 1300,
+ "topics": [
+  "sorting",
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "For a fixed corner the set of statues that goes on each anti-diagonal is forced (sorted heights split by the diagonals' capacities), and a statue need not move iff it already sits on its target diagonal; try all four corners.",
+ "sketch": "Sort the statue heights. For each of the 4 corners compute each cell's diagonal index (i or n-1-i plus j or m-1-j), count non-water cells per diagonal, and assign ranks to diagonals in order of those counts. A statue stays put exactly when its current diagonal equals its assigned one, because order within a diagonal is free; count the rest and take the minimum. O(4*n*m*log). Pitfall: water cells reduce the capacity of a diagonal and only the diagonal, not the exact cell, matters.",
+ "code_path": "solutions/kattis_statues.cpp",
+ "samples_passed": true
+}

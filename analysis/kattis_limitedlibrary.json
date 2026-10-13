@@ -1,0 +1,13 @@
+{
+ "id": "kattis:limitedlibrary",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "binary-search",
+  "sorting"
+ ],
+ "key_idea": "Art pieces should go on the shortest shelves, and feasibility for a fixed number k of art pieces is a greedy match of tallest books to tallest shelves; k is monotone so binary search it.",
+ "sketch": "Sort shelves ascending and books descending. For a given k the k shortest shelves have capacity y and the rest capacity x (exchange argument: capacity on a taller shelf is always at least as useful). Walk shelves from tallest to shortest, each taking the next cap largest remaining books; if the largest remaining book does not fit the current shelf it fits no later shelf, so fail. Feasible iff all books get placed. Binary search the largest feasible k, print impossible if k = 0 fails. O((n + m) log n). Pitfall: stop consuming once the books run out and remember that a shelf whose top remaining book does not fit is an immediate failure, not a skip.",
+ "code_path": "solutions/kattis_limitedlibrary.cpp",
+ "samples_passed": true
+}

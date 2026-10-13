@@ -1,0 +1,14 @@
+{
+ "id": "kattis:anothersubstringqueryproblem",
+ "rating": 1900,
+ "topics": [
+  "strings",
+  "hashing",
+  "sqrt-decomposition",
+  "offline-queries"
+ ],
+ "key_idea": "Sum of |t| <= 2e5 means at most ~630 distinct query lengths; for each distinct length slide a rolling hash over s once and count occurrences of the queried hashes offline.",
+ "sketch": "Group queries by length L. For each L build a small open-addressing table of the distinct query hashes, sort each pattern's queries by k, then scan all windows of s of length L with a 61-bit modular polynomial hash; on a hit increment that pattern's counter and answer queries whose k equals it. Total work is O(|s| * sqrt(sum|t|)) ~ 1.3e8 hash evaluations, well inside 6 s; stop a length early once all its queries are answered. Pitfalls: patterns longer than s, duplicate (t,k) queries, many queries sharing a pattern, and using a random base with a 2^61-1 modulus to avoid anti-hash tests. A suffix array plus k-th smallest in an SA range (persistent segment tree) is the heavier alternative.",
+ "code_path": "solutions/kattis_anothersubstringqueryproblem.cpp",
+ "samples_passed": true
+}

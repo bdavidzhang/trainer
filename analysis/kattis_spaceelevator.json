@@ -1,0 +1,14 @@
+{
+ "id": "kattis:spaceelevator",
+ "rating": 2300,
+ "topics": [
+  "greedy",
+  "sorting",
+  "sweep-line",
+  "case-analysis"
+ ],
+ "key_idea": "The path visits both extremes L and R; if L comes first, every upward request is free on the L->R sweep and each downward request [c,d] is served either by an initial climb to x1 >= d, by the final descent to E <= c, or by a zigzag costing twice its length. The zigzag measure separates into a term in x1 plus a term in E.",
+ "sketch": "Fix the 'up-main' shape H0 -> x1 -> L -> (sweep with zigzags) -> R -> E, cost (x1-H0)+(x1-L)+(R-L)+(R-E)+2*|union of down intervals with d>x1 and c<E|; the mirrored shape is handled by negating coordinates. If E <= x1 one can assume the leftover set is empty (raising x1 to its top never hurts), so E = min(x1, min c over intervals with d > x1) via a suffix minimum. If x1 < E the union equals D∩[x1,E] plus the lowest reach of intervals straddling x1 plus the highest reach of intervals straddling E, so cost = A(x1)+B(E) and a prefix minimum over sorted candidate coordinates finishes it. Candidates are all input coordinates and H0; straddle extents come from two heap sweeps; O(n log n). Coordinates up to 5e11 need 64-bit. My first per-segment crossing-count formula was wrong (it ignored ordering interactions between start and end); the final version matches a BFS brute force over (position, request states) on 6000 random small cases.",
+ "code_path": "solutions/kattis_spaceelevator.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:swapforpalindrome",
+ "rating": 1900,
+ "topics": [
+  "palindromes",
+  "strings",
+  "case-analysis",
+  "prefix-sums"
+ ],
+ "key_idea": "A window can become a palindrome with one swap iff it has 0 mismatched mirror pairs, 2 mismatched pairs with equal letter multisets, or 1 mismatched pair (a,b) fixable by an a/b taken from the centre or from outside the window.",
+ "sketch": "Expand around each of the 2n-1 centres while tracking mismatched mirror pairs, stopping at the third mismatch; O(n^2) total for n=5000. Zero mismatches is always fine (swap two mirror positions, so the 'exactly one swap' rule costs nothing). Two mismatches (a,b),(c,d) work iff {a,b}={c,d}. One mismatch (a,b) works iff the centre letter of an odd window is a or b, or some a or b exists outside the window, checked in O(1) with per-letter prefix counts; borrowing from another matched pair inside would break that pair. Feasibility is not monotone in the radius, so test every radius rather than binary searching. Stress-tested against a brute force over all swaps.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_swapforpalindrome.cpp"
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:missingnumber2",
+ "rating": 1700,
+ "topics": [
+  "brute-force",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "The whole parse is determined by the length (1..5) of the first number, so try each length and greedily match consecutive numbers allowing one skip.",
+ "sketch": "For each first-number length L, read the prefix as the start and repeatedly match cur+1 at the current position, or cur+2 if no skip has been used yet (the two can never both match since neither decimal string is a prefix of the other). If the string is consumed with a skip, the skipped value is a candidate; with no skip, the eaten number was an endpoint, so both first-1 (if >= 1) and last+1 (if <= 99999) are candidates. Collect candidates in a set over all L and print sorted. O(5*len) per case. Pitfalls: the eaten number may be a or b themselves, several parses can be valid at once (e.g. '12' gives 3, 11, 13), and bounds 1..99999 must be respected. Stress-tested against an exhaustive parser with a reduced value limit.",
+ "code_path": "solutions/kattis_missingnumber2.cpp",
+ "samples_passed": true
+}

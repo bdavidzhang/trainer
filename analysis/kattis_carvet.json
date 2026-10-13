@@ -1,0 +1,13 @@
+{
+ "id": "kattis:carvet",
+ "rating": 1700,
+ "topics": [
+  "ad-hoc",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "A move shifts the hole by exactly two cells, so the hole stays on one parity class and each car cell has exactly one cell the hole must be at to free it: follow that unique pointer chain from the target back to the hole.",
+ "sketch": "For a car cell t with its other half h, t becomes empty only if the car slides one step away from t, which needs the cell 2h - t to be empty; so t has a single 'parent' cell and the cells reachable by the hole form a tree rooted at the hole. Starting from the target, repeatedly record the car number and jump to the parent; if the jump leaves the grid, hits a blocked cell, or the walk exceeds m*n steps (a cycle), print impossible, and if it reaches the hole print the recorded cars in reverse. The path is unique, so the shortest/lexicographic tie-break rules never matter. O(mn) time. Pitfalls: the target on the wrong parity class is handled automatically (the chain can never hit the hole), and cars must be printed in order from the hole outward.",
+ "code_path": "solutions/kattis_carvet.cpp",
+ "samples_passed": true
+}

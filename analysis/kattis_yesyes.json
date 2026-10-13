@@ -1,0 +1,13 @@
+{
+ "id": "kattis:yesyes",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "implementation",
+  "bfs-dfs"
+ ],
+ "key_idea": "A single-line solver via prefix/suffix feasibility DP tells for every cell whether it can be white and whether it can be black given current knowledge; iterate it over rows and columns with a worklist until a fixpoint.",
+ "sketch": "For a line of length L with runs v_1..v_k and cell states unknown/black/white: F[i][j] = prefix of i cells can hold exactly the first j runs, G[i][j] = suffix from i can hold runs j..k. A cell can be white if it is not known black and some j has F[i-1][j] and G[i+1][j+1]; a run j can sit at [a,b] if no known white inside, the separator cells a-1 and b+1 can be white, and F[a-2][j-1], G[b+2][j+1] hold (with boundary cases a=1 requiring j=1, b=L requiring j=k); mark those ranges with a difference array to get can-be-black. Cells with only one possibility get fixed. Keep a queue of lines; when a cell changes, enqueue the crossing line. Each line solve is O(L*k) and there are at most about nm re-solves, so about 5e7 operations worst case; a dense random 100x100 runs in 0.03s. Pitfalls: lines with p=0 runs (all white), off-by-one at line ends, and output '?' for undetermined cells.",
+ "code_path": "solutions/kattis_yesyes.cpp",
+ "samples_passed": true
+}

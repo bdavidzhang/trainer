@@ -1,0 +1,12 @@
+{
+ "id": "kattis:blackandwhite",
+ "rating": 1700,
+ "topics": [
+  "dp-bitmask",
+  "probability"
+ ],
+ "key_idea": "Expected rounds from a subset S satisfy E[S] = (1 + sum_i q_i E[S minus i]) / sum_i q_i where q_i is the chance that i is the odd one out; rounds with no elimination are folded in by the division.",
+ "sketch": "Precompute for every mask the product of p and the product of (1-p) over its members. For a mask S with at least 3 children, q_i = p_i * prodQ[S^i] + (1-p_i) * prodP[S^i]; the probability that nothing happens is 1 - sum q_i, giving the self-loop equation solved by dividing by sum q_i. Masks of size 2 have E=0. Iterate masks in increasing order: O(2^n * n) = 2e7 operations and three double arrays of 2^20. Pitfalls: avoid dividing by p_i to get the product without i (use the submask instead), and note sum q_i is tiny but nonzero since p is in [0.1,0.9].",
+ "code_path": "solutions/kattis_blackandwhite.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:draftlottery",
+ "rating": 1500,
+ "topics": [
+  "probability",
+  "brute-force"
+ ],
+ "key_idea": "Drawing balls while ignoring already-picked teams is weighted sampling without replacement, so enumerate all ordered top-3 triples; a non-lottery team's pick is fixed by how many worse teams got lottery picks.",
+ "sketch": "For every ordered triple (i,j,l) the probability is b_i/S * b_j/(S-b_i) * b_l/(S-b_i-b_j). Accumulate pos[t][1..3], the chance team t gets exactly pick 1/2/3, and cnt[t][a], the chance t misses the top 3 while a of the lottery winners are ranked worse than t; in that case t's pick is 3 + (t-1-a) + 1 (1-indexed t). A query (t,k) sums pos for picks <= min(k,3) plus cnt[t][a] for those a whose resulting pick is <= k. Precomputation is O(N^4) = 6.25M, queries O(1). Pitfalls: N=3 means everyone is in the lottery, and the discarded-ball detail does not change the conditional distribution of the next new team.",
+ "code_path": "solutions/kattis_draftlottery.cpp",
+ "samples_passed": true
+}

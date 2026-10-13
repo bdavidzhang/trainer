@@ -1,0 +1,13 @@
+{
+ "id": "kattis:whichoneislarger",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "strings",
+  "case-analysis"
+ ],
+ "key_idea": "Compare the numbers twice: as (int, frac-as-integer) tuples and as true decimals with the fraction right-padded to 5 digits; print the larger only if both comparisons agree.",
+ "sketch": "Split each string at the dot. For the tuple comparison parse the fractional digits as an integer (leading zeros vanish). For the real comparison right-pad the fractional digits with zeros to length 5 and compare lexicographically as integers. If the two sign results differ (including the tuple comparison being a tie, e.g. 4.1 vs 4.01), output -1; otherwise output the larger number exactly as it was given. O(1). Pitfall: avoid floating point and print the original string, not a reformatted number.",
+ "code_path": "solutions/kattis_whichoneislarger.cpp",
+ "samples_passed": true
+}

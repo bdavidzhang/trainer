@@ -1,0 +1,12 @@
+{
+ "id": "kattis:airfaregrants",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Report the most expensive flight and buy the cheapest: answer is max(0, min - max/2).",
+ "sketch": "Read the prices, track min and max, print max(0, min - max/2). Prices are multiples of 10 so max/2 is an integer. O(n). The only pitfall is clamping at zero when the cheapest ticket is fully covered.",
+ "code_path": "solutions/kattis_airfaregrants.cpp",
+ "samples_passed": true
+}

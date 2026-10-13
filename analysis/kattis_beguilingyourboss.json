@@ -1,0 +1,13 @@
+{
+ "id": "kattis:beguilingyourboss",
+ "rating": 1700,
+ "topics": [
+  "hashing",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "A section l..r is redundant iff its product is the identity, i.e. the prefix permutations before l and after r are equal; count equal pairs among the n+1 prefix permutations by hashing them.",
+ "sketch": "Maintain the current arrangement arr[pos] and a hash H = sum A[pos]*B[arr[pos]] mod 2^64 with random tables A, B; a swap changes only two terms so each update is O(1). Collect the n+1 prefix hashes, sort, and add c*(c-1)/2 for every group of c equal values. O(n log n + k). Pitfalls: the answer reaches ~5e11 so use 64-bit; a purely additive hash that ignores position (e.g. sum of values) is useless, the hash must bind position to content; use fast input for 2e6 integers. Verified against an explicit-permutation brute force on small cases.",
+ "code_path": "solutions/kattis_beguilingyourboss.cpp",
+ "samples_passed": true
+}

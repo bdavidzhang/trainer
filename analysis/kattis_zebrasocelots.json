@@ -1,0 +1,12 @@
+{
+ "id": "kattis:zebrasocelots",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "bitmasks"
+ ],
+ "key_idea": "A bell toll is exactly a binary decrement when ocelots are 1-bits and the bottom animal is the least significant bit, so the answer is the pile read as a binary number.",
+ "sketch": "The lowest ocelot becoming a zebra while all zebras below become ocelots is 'subtract one' in binary (lowest 1 becomes 0, trailing 0s become 1s). Hence the number of tolls until no ocelots remain is the value of the N-bit number with the top animal as the most significant bit. O(N). Pitfall: N up to 60 needs a 64-bit integer; simulation is impossible.",
+ "code_path": "solutions/kattis_zebrasocelots.cpp",
+ "samples_passed": true
+}

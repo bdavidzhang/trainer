@@ -1,0 +1,13 @@
+{
+ "id": "kattis:creativeaccounting",
+ "rating": 1400,
+ "topics": [
+  "prefix-sums",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "For a segment size s there are s offsets and each needs about n/s segment sums, so one size costs O(n) with prefix sums; iterating over the at most 1001 sizes is fast enough.",
+ "sketch": "Compute prefix sums. For every size s in [l,h] and every first-segment length o in 1..s, walk the boundaries o, o+s, ... (clamped to n) and count segments with positive sum, tracking the global min and max. Total work is about n * (h-l+1) * (1 + small) = 3e7. Pitfalls: partial segments at both ends are counted, 'profitable' is strictly positive, and o = s (no partial head) must be included. Checked against a brute force on random small inputs.",
+ "code_path": "solutions/kattis_creativeaccounting.cpp",
+ "samples_passed": true
+}

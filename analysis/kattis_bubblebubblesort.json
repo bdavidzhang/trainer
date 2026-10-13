@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bubblebubblesort",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "heap",
+  "sorting"
+ ],
+ "key_idea": "One hour is a sliding sort: position i receives the minimum of the k-1 elements carried along plus the newly entering element, so a pass is O(n log k) with a min-heap; simply simulate passes until sorted.",
+ "sketch": "Keep a min-heap of the first k-1 elements; for each i from k-1 to n-1 push a[i], pop the minimum and write it to the next output slot; finally flush the heap in order. Repeat while the array is not sorted, counting passes (0 if already sorted). Each pass moves every element at most k-1 positions left and the small elements steadily settle, so there are at most about n/(k-1)+1 passes, giving O(n^2 log k / k), worst case k=2 with 2499 passes on 2500 elements (instant). Duplicates are harmless since only the value sequence matters. Stress-tested against the literal window-sorting simulation on 400 random small cases.",
+ "code_path": "solutions/kattis_bubblebubblesort.cpp",
+ "samples_passed": true
+}

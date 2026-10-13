@@ -1,0 +1,13 @@
+{
+ "id": "kattis:longestcommonsubsequence",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "bitmasks",
+  "graphs"
+ ],
+ "key_idea": "Because every string is a permutation, a common subsequence is a chain in the relation 'a precedes b in every string', a DAG on at most 26 letters; the answer is its longest path.",
+ "sketch": "For each string scan right to left keeping the mask of letters seen so far and AND it into after[c], giving for each letter the set of letters that follow it in all strings, in O(nk). The relation is a strict partial order consistent with the first string's order, so do the longest-path DP processing the first string from right to left: dp[c] = 1 + max dp[d] over d in after[c]. Total O(nk + k^2). Pitfall: an O(n k^2) pairwise update also fits but the usual two-string LCS DP is not the right tool here.",
+ "code_path": "solutions/kattis_longestcommonsubsequence.cpp",
+ "samples_passed": true
+}

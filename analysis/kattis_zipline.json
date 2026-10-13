@@ -1,0 +1,12 @@
+{
+ "id": "kattis:zipline",
+ "rating": 1000,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Shortest cable is the straight segment between the pole tops; the longest touches height r, and reflecting one pole across the line y=r turns the two segments into one straight line.",
+ "sketch": "Minimum length is sqrt(w^2+(g-h)^2). For the maximum, the rider's locus for a fixed cable length is an ellipse with foci at the tops; its lowest point touching y=r corresponds, by reflection of one focus across y=r, to the straight distance sqrt(w^2+((g-r)+(h-r))^2). O(1) per test. Use long double and print 8 decimals; squares reach about 5e12 so no overflow in floating point.",
+ "code_path": "solutions/kattis_zipline.cpp",
+ "samples_passed": true
+}

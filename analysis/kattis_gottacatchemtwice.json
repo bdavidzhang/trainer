@@ -1,0 +1,12 @@
+{
+ "id": "kattis:gottacatchemtwice",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Pigeonhole: in the worst case you take one of every distinct species first, so the answer is (number of distinct names) + 1.",
+ "sketch": "Insert all names in a set and print its size plus one. A duplicate is guaranteed to exist so the answer never exceeds N. O(N log N) string comparisons.",
+ "code_path": "solutions/kattis_gottacatchemtwice.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:funicularfrenzy",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Simulate the queue: arriving at minute i behind q leftover people and the a_i newcomers means waiting floor((q+a_i)/c) minutes.",
+ "sketch": "Keep the queue length q before each minute; at minute i the number ahead of you is q+a_i, your wait is w=(q+a_i)/c and you board at minute i+w, which must be <= n-1 or the option is invalid. Take the strictly smallest w to get the earliest minute; then q = max(0, q+a_i-c). O(n). Pitfalls: 64-bit queue (up to 1e14), the last carriage leaves at minute n-1, and print impossible when no minute is feasible.",
+ "code_path": "solutions/kattis_funicularfrenzy.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:musicalchairs",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Josephus with a changing step: keep the line in a vector and jump directly to index (p+k-1) mod size.",
+ "sketch": "Keep the current caller index p in a vector of remaining professors; the eliminated index is (p + k_p - 1) mod s, erase it, and the next caller is that same index modulo the new size. Vector erase is O(n), so the total is O(n^2) = 10^8 trivial memmove steps for n=10^4, which is fine; an order-statistic tree gives O(n log n). Pitfall: taking k modulo the current size rather than counting step by step, since k is up to 10^6.",
+ "code_path": "solutions/kattis_musicalchairs.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:xorsequences",
+ "rating": 1800,
+ "topics": [
+  "divide-and-conquer",
+  "bitmasks",
+  "combinatorics",
+  "trie-aho-corasick"
+ ],
+ "key_idea": "Think of the binary trie of x: at the top bit, y with bit 0 goes to the x's with bit 1 if any exist, so the two halves of p either use disjoint index sets (both bit values present: multiply) or are identical (all x share the bit: factor 2).",
+ "sketch": "Recurse on the p array: for a block of length 2^k split into halves L and R. If the sets of values in L and R are disjoint, the x's split by this bit and the count is f(L)*f(R). Otherwise all x in this block share the bit, which requires L == R elementwise, giving 2*f(L). If neither holds the answer is 0; a block of length 1 gives 1. Disjointness is checked with a timestamp array and equality by direct comparison, so the total work is O(m * 2^m). Pitfalls: m=0, and the two cases are mutually exclusive since blocks are non-empty. Stress-tested against full enumeration for m <= 3.",
+ "code_path": "solutions/kattis_xorsequences.cpp",
+ "samples_passed": true
+}

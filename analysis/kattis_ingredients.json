@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ingredients",
+ "rating": 1600,
+ "topics": [
+  "dp-knapsack",
+  "topological-sort",
+  "graphs"
+ ],
+ "key_idea": "The recipes form a DAG, so compute each dish's (min cost, then max prestige) by a topological relaxation, then it is a plain 0/1 knapsack over at most 10^4 dishes with budget 10^4.",
+ "sketch": "Map names to ids with a hash map (only derived and base names are dishes, the ingredient string is ignored). Kahn's algorithm on edges base->derived; relax each derived dish lexicographically by smaller cost, then larger prestige; sources get (0,0). Run a 0/1 knapsack dp[c] = max prestige with cost at most c, skipping dishes costing more than B; the second answer is the smallest c with dp[c]==dp[B]. Total O(N + D*B) = 1e8 simple operations. Pitfalls: N up to 1e6 lines needs fast reading and CSR adjacency, dish costs along a chain can reach 1e8 and prestige sums exceed 32 bits, and N=0 must print 0 0.",
+ "code_path": "solutions/kattis_ingredients.cpp",
+ "samples_passed": true
+}

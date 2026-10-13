@@ -1,0 +1,14 @@
+{
+ "id": "kattis:gyratingglyphs",
+ "rating": 2100,
+ "topics": [
+  "interactive",
+  "constructive",
+  "hashing",
+  "bitmasks"
+ ],
+ "key_idea": "Zeros before a block force the running value to 0 whatever the operators are, and already-known operators after the block can be neutralised (0 for +, 1 for x), so each query isolates 15 unknown operators whose 2^15 possible results are made distinct by random operands.",
+ "sketch": "Process the operators from the end in blocks of 15. For a block [l,r] send a_i=0 for i<l (value is 0 entering the block regardless of + or x), fixed random values inside the block, and for i>r the neutral element of the already recovered operator. The answer equals the block evaluated from 0, and a precomputed table value->operator mask (32768 entries) decodes it. The 15 block values are drawn with a fixed seed and redrawn until all 2^15 outcomes are distinct (birthday bound: about 50% per draw); distinctness of full strings implies distinctness of prefixes, so the shorter first block reuses a prefix of the same values. Uses ceil(20000/15)=1334 <= 1400 queries; output is ~27M numbers so build each line in a string. Interactive, so not judged by the sample checker: verified with my own interactor (random and all-+/all-x operator strings, n from 1 to 20000, query count checked).",
+ "code_path": "solutions/kattis_gyratingglyphs.cpp",
+ "samples_passed": true
+}

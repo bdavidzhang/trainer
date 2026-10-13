@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fortunefromfolly",
+ "rating": 1700,
+ "topics": [
+  "probability",
+  "linear-algebra",
+  "dp-bitmask"
+ ],
+ "key_idea": "The state is the bitmask of the last n outcomes (at most 64 states); expected stopping time satisfies a linear system that is solved by Gaussian elimination.",
+ "sketch": "For each mask m with popcount < k: E[m] = 1 + p*E[(2m+1) mod 2^n] + (1-p)*E[2m mod 2^n]; masks with popcount >= k are terminal with E = 0. The answer is E[0] (no boxes opened counts as all failures). The transition graph has cycles (e.g. all-zero mask loops to itself), so plain DP does not work; solve the 64x64 system with Gauss-Jordan and partial pivoting in long double, O(64^3). Answers reach 1e9 with tiny p, so I compared against exact rational elimination on 10 extreme parameter sets and matched to 1e-8 relative.",
+ "code_path": "solutions/kattis_fortunefromfolly.cpp",
+ "samples_passed": true
+}

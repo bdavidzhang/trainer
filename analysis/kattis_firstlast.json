@@ -1,0 +1,14 @@
+{
+ "id": "kattis:firstlast",
+ "rating": 2400,
+ "topics": [
+  "games",
+  "dp",
+  "graphs",
+  "ad-hoc"
+ ],
+ "key_idea": "Words are edges of a multigraph on at most 3 letters; two loops at a vertex cancel and an edge a->b cancels with an edge b->a (the opponent can always answer with the twin), after which the remaining graph is a DAG or a single directed 3-cycle with tiny reachable state space.",
+ "sketch": "Count words by (first,last) letter type, 9 types. For each type used as Alice's first word, remove one copy, reduce loops mod 2 and subtract min(c[a][b],c[b][a]) from both directions, then run a memoised win/lose search on (9 counts, current vertex). After reduction each vertex pair has edges in only one direction, so play either dies within two non-loop moves or runs deterministically around a 3-cycle with optional single loops: at most ~3000*8 states. Add the type's multiplicity when the player to move after it loses. Pitfall: the cancellation must be applied after removing the starting word, not before. Stress-tested against an exponential bitmask game search.",
+ "code_path": "solutions/kattis_firstlast.cpp",
+ "samples_passed": true
+}

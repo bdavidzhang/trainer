@@ -1,0 +1,14 @@
+{
+ "id": "kattis:brickwork",
+ "rating": 2600,
+ "topics": [
+  "constructive",
+  "number-theory",
+  "bitset",
+  "dp-knapsack"
+ ],
+ "key_idea": "Take a usable brick a that does not divide w and a representation of w with the MAXIMUM number p of a's: the rest X then has no sub-multiset summing to a multiple of a, so rows a^p X and X a^p have disjoint gaps. If every usable brick divides w, two different divisors a,b suffice (row b^(w/b) versus a^(B-1) b^((k-1)A) a), and with a single one it is impossible unless w itself is a brick.",
+ "sketch": "If w is a brick print it twice. Compute unbounded-knapsack reachability R[0..w] with a bitset (for each reachable i, R |= bricks << i; ~w^2/64 word operations, about 0.6 s). Case A: for a brick a with a not dividing w and R[w-a], increase p while R[w-(p+1)a]; every collision between rows a^p X and X a^p would require a contiguous block of X with sum in {a,...,pa}, contradicting maximality of p. X is reconstructed by repeatedly finding a brick b with R[t-b] via AND of the brick bitset with the shifted reversed reachability bitset. Case B (all usable bricks divide w): with two distinct divisors a<b, g=gcd, A=a/g, B=b/g>=2, k=w/lcm, use row1 = b repeated and row2 = a^(B-1), b^((k-1)A), a, whose prefix sums are never 0 mod b. Otherwise impossible (all rows would be identical). Pitfalls: O(n*w) knapsack is too slow, the two rows may need different multisets (e.g. bricks 1,2 with w=4), and using the same multiset reversed fails in general. Multiple answers are accepted, so the sample checker reports WRONG on sample 1; verified with my own validator plus an exhaustive feasibility brute force on 3000 random cases (w<=14 exhaustive, up to 200 validated) and on w=3e5 stress inputs.",
+ "code_path": "solutions/kattis_brickwork.cpp",
+ "samples_passed": true
+}

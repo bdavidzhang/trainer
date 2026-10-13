@@ -1,0 +1,12 @@
+{
+ "id": "kattis:warehouse",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "sorting"
+ ],
+ "key_idea": "Aggregate counts per toy name in a map, then sort by (count descending, name ascending).",
+ "sketch": "For each test case sum the shipment sizes per name in a std::map, copy to a vector of (-count, name) pairs and sort, which gives decreasing count with alphabetical tie-break (std::string comparison matches the footnote's definition, shorter prefix first). Print the number of distinct toys and then the list. O(N log N) per test.",
+ "code_path": "solutions/kattis_warehouse.cpp",
+ "samples_passed": true
+}

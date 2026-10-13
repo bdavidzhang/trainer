@@ -1,0 +1,13 @@
+{
+ "id": "kattis:longlongstrings",
+ "rating": 1900,
+ "topics": [
+  "implementation",
+  "data-structures",
+  "strings"
+ ],
+ "key_idea": "Run each program symbolically on an infinite string stored as a list of pieces (ranges of original positions and single inserted characters); two programs are identical iff their normalised piece lists are equal.",
+ "sketch": "Start with one piece [1, infinity). For an operation at position p, walk the list to find the piece containing p; an insert splits an original range (or goes in front of the piece) and a delete removes an inserted char or cuts one index out of a range. Each op is O(pieces) and there are at most about 4000 pieces, so the whole thing is a few million steps. Afterwards merge adjacent original ranges that are contiguous and compare the two lists for equality. Pitfalls: positions up to 1e10 need 64-bit, empty ranges must be dropped, and merging is required so that different split histories compare equal (e.g. insert then delete the same char). Stress-tested against direct simulation on a concrete string of distinct symbols.",
+ "code_path": "solutions/kattis_longlongstrings.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dormroomdivide",
+ "rating": 1400,
+ "topics": [
+  "geometry",
+  "prefix-sums",
+  "math"
+ ],
+ "key_idea": "Fan-triangulate the convex polygon from the door vertex; the prefix of triangle areas is monotone, so find the triangle where it crosses half and interpolate linearly along that edge.",
+ "sketch": "Compute doubled triangle areas cross(p_i-p_0, p_{i+1}-p_0) in 64-bit integers (total at most ~1.6e15, fits). Walk i until 2*(pre+tr_i) >= S, then the point is p_i + f*(p_{i+1}-p_i) with f = (S-2*pre)/(2*tr_i), because area of the sub-triangle is linear in f. O(n). Pitfalls: keep sums exact in integers and only divide at the end; print enough digits.",
+ "code_path": "solutions/kattis_dormroomdivide.cpp",
+ "samples_passed": true
+}

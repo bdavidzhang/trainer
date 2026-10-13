@@ -1,0 +1,12 @@
+{
+ "id": "kattis:enjoyableentree",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The recurrence a_n = (a_{n-1}+a_{n-2})/2 converges geometrically (ratio -1/2) to 1/3 potato, 2/3 tomato, so simulating min(n, ~200) days is exact to double precision.",
+ "sketch": "Iterate the potato share starting from 100, 0 for min(n,200) steps and print it with its complement to 100. O(1). Pitfall: n is up to 1e18 so read it as 64-bit and do not loop n times; a closed form with (-1/2)^n also works.",
+ "code_path": "solutions/kattis_enjoyableentree.cpp",
+ "samples_passed": true
+}

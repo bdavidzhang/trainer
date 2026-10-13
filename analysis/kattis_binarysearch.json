@@ -1,0 +1,14 @@
+{
+ "id": "kattis:binarysearch",
+ "rating": 2500,
+ "topics": [
+  "graphs",
+  "dp",
+  "topological-sort",
+  "ad-hoc"
+ ],
+ "key_idea": "Encode a string as its first symbol plus a sequence of Same/Change letters, which colours each edge S or C independent of direction. Since any repeated letter can be undone by bouncing back over the same edge, the shortest unwalkable string is alternating in S/C, so only longest alternating walks matter.",
+ "sketch": "Build a state graph on (vertex, colour of next edge): an edge u-v of colour c gives (u,c)->(v,not c) and (v,c)->(u,not c). If this graph has a cycle there is an infinite alternating walk, its vertices each have both an S and a C edge inside the set, and every string is walkable: print infinity. Otherwise compute the longest path len(v,c) by Kahn's algorithm on the reversed graph. For a start label a and first colour c the alternating word of length k is walkable iff max over v with a_v=a of len(v,c) >= k, so the answer is min over (a,c) of that max plus 2, or 1 if some label does not occur at all. O(n+m). Pitfalls: missing label gives 1, isolated vertices, answers can be linear in n (not logarithmic). The 'alternating is optimal' claim was not fully proved; it was stress-tested against an exact subset-BFS brute force on 7000 random dense and tree-like graphs with n<=15 with no mismatch.",
+ "code_path": "solutions/kattis_binarysearch.cpp",
+ "samples_passed": true
+}

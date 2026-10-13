@@ -1,0 +1,13 @@
+{
+ "id": "kattis:discdistrict",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "math",
+  "geometry"
+ ],
+ "key_idea": "For each x in 0..r the best y is the smallest integer with x^2+y^2 > r^2; take the minimum of x^2+y^2 over all x.",
+ "sketch": "Loop x from 0 to r, set y = floor(sqrt(r^2-x^2))+1 (fix the floating sqrt with integer adjustment), and keep the pair minimising x^2+y^2. O(r) with r<=1e6; squares reach ~2e12 so use 64-bit. Any optimal point is accepted, so the sample checker reports WRONG on samples 2 and 3 purely because a different optimal point is printed (e.g. 1 8 vs 4 7, both at squared distance 65); samples_passed is true based on my own validator, which checked strictness and optimal squared distance against brute force for r<300 and equality of squared distance with the sample answers (r^2+1) for 8 and 90210. Pitfall: the point must be strictly outside, and sqrt rounding.",
+ "code_path": "solutions/kattis_discdistrict.cpp",
+ "samples_passed": true
+}

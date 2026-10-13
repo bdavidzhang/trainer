@@ -1,0 +1,14 @@
+{
+ "id": "kattis:electroniccomponents",
+ "rating": 2500,
+ "topics": [
+  "dp",
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Sort by time descending and let k_i be the number of still unpaired larger components before type i: the cost becomes (sum f t + sum (t_{i-1}-t_i) k_i + t_n k_{n+1})/2 with the triangle constraint |k_i - f_i| <= k_{i+1} <= k_i + f_i, and k never needs to exceed max f + 1.",
+ "sketch": "Pairing saves the smaller time, and type i can close x_i = (k_i + f_i - k_{i+1})/2 of the open larger items, which turns the objective into a chain minimisation over k with non-negative coefficients. Clipping every k_i to max f (or max f + 1 for parity) keeps the constraints feasible and never raises the cost, so the state space is O(max f) per type. I keep g_i(k) as a convex piecewise-linear breakpoint list on the parity lattice: the window minimum is g(clamp(argmin, |k'-f|, k'+f)), giving shifted, reflected and flat pieces, then add the linear term. O(N * breakpoints log) with at most ~5000 breakpoints. Pitfalls: parity of k_i is fixed by prefix sums of f, without the cap the breakpoint count grows quadratically (23 s on an adversarial input), use __int128 for interpolation. Stress-tested against an exhaustive matching brute force.",
+ "code_path": "solutions/kattis_electroniccomponents.cpp",
+ "samples_passed": true
+}

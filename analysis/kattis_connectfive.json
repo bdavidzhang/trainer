@@ -1,0 +1,13 @@
+{
+ "id": "kattis:connectfive",
+ "rating": 2300,
+ "topics": [
+  "search-backtracking",
+  "brute-force",
+  "geometry"
+ ],
+ "key_idea": "This is the minimum Manhattan network of five points, and an optimum always exists on the Hanan grid (at most 5x5 lines, 40 weighted edges). With only 10 pairs and at most C(8,4)=70 staircase paths per pair, branch and bound over 'which path serves the next unserved pair' is tiny.",
+ "sketch": "Compress coordinates to the Hanan grid, number the edges into a 64-bit mask with lengths as weights, and precompute for each of the 10 pairs all monotone paths as masks. DFS: skip pairs that already have some path fully inside the current edge set (adding nothing is optimal), otherwise try every path of the first unserved pair, sorted by added cost, pruning when cost >= best. This is exhaustive because the current set always stays a subset of some optimal solution along one branch. Worst case measured about 0.05 s. Pitfalls: duplicate x or y coordinates shrink the grid; paths must be monotone in both axes, not just connected; cost counts each edge once. Validated the Hanan-grid restriction by comparing with the same search on the full integer grid for 400 random small instances.",
+ "code_path": "solutions/kattis_connectfive.cpp",
+ "samples_passed": true
+}

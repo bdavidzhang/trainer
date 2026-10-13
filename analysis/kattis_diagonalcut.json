@@ -1,0 +1,12 @@
+{
+ "id": "kattis:diagonalcut",
+ "rating": 1400,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Divide by g=gcd(M,N): the diagonal repeats g times through a reduced M'xN' bar, and it passes through the centre of a block (cutting it in half) only in the middle of each repeat, which exists iff M' and N' are both odd.",
+ "sketch": "A block is cut into equal halves exactly when the diagonal passes through its centre. In the reduced coprime rectangle the diagonal is centrally symmetric about the rectangle centre, and that centre is a block centre iff both M/g and N/g are odd; no other block centre lies on the line since M' and N' are coprime. So the answer is g if both reduced sides are odd, otherwise 0. O(log) via Euclid; inputs up to 1e18 need 64-bit and std::gcd.",
+ "code_path": "solutions/kattis_diagonalcut.cpp",
+ "samples_passed": true
+}

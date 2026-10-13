@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ontrack",
+ "rating": 1400,
+ "topics": [
+  "trees",
+  "dp-tree",
+  "greedy"
+ ],
+ "key_idea": "Removing a tree vertex leaves components given by subtree sizes; disconnected pairs = (S^2 - sum s_i^2)/2, and the best new edge joins the two largest components, saving s1*s2.",
+ "sketch": "There are n edges so n+1 junctions. Root the tree with an iterative BFS and compute subtree sizes; for vertex u the components after removal are the child subtree sizes plus N - size[u]. The number of disconnected pairs is ((N-1)^2 - sum s_i^2)/2; pick the vertex maximising it (guaranteed unique). Adding one edge merges two components, so subtract the product of the two largest component sizes at that vertex. Total work is O(N log N) because the component lists sum to 2(N-1). Pitfalls: N = n+1 vertices, use 64-bit for pair counts, avoid deep recursion on a path.",
+ "code_path": "solutions/kattis_ontrack.cpp",
+ "samples_passed": true
+}

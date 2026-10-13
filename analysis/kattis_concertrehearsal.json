@@ -1,0 +1,13 @@
+{
+ "id": "kattis:concertrehearsal",
+ "rating": 1700,
+ "topics": [
+  "binary-search",
+  "prefix-sums",
+  "graphs"
+ ],
+ "key_idea": "A day is fully determined by which student starts it, so precompute for each start the next day's start and the passes finished that day, then jump k days with binary lifting (or cycle detection).",
+ "sketch": "Let S be the sum of durations. A day starting at student i fits p/S whole cycles plus a remainder p%S < S, and the extra number of performances e<n is found by binary search on prefix sums of the doubled array; passes that day = p/S + (i+e)/n and the next start is (i+e)%n. Then compose the functional graph by repeated squaring over the bits of k, O(n log k) time and O(n) memory. Pitfalls: S may exceed p (zero whole cycles), the answer can reach about 1e18 so use 64-bit, and a pass counts when student n finishes, not when a day ends. Stress-tested against direct simulation.",
+ "code_path": "solutions/kattis_concertrehearsal.cpp",
+ "samples_passed": true
+}

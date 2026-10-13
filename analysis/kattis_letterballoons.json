@@ -1,0 +1,12 @@
+{
+ "id": "kattis:letterballoons",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "Turn each valid school (all letters distinct and among the first p) into a 26-bit mask; the answer is the largest set of pairwise disjoint masks, found by trying all subsets of at most 20 teams.",
+ "sketch": "Discard teams whose initials repeat a letter or use a letter beyond the p-th problem. Encode the rest as bitmasks and run an include/exclude DFS carrying the OR of chosen masks, with a trivial bound prune (count + remaining <= best). At most 2^20 states, O(2^t). Pitfalls: repeated letters make a team impossible, identical initials on two teams conflict with each other, and initials can be up to 80 characters long.",
+ "code_path": "solutions/kattis_letterballoons.cpp",
+ "samples_passed": true
+}

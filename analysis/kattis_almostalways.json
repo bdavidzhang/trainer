@@ -1,0 +1,14 @@
+{
+ "id": "kattis:almostalways",
+ "rating": 1500,
+ "topics": [
+  "probability",
+  "brute-force",
+  "sorting",
+  "randomized"
+ ],
+ "key_idea": "A value a has about n/a multiples in the list in expectation, so the few smallest elements (around 4000, 8000, ...) each have ~100 multiples; just try the smallest values as divisors.",
+ "sketch": "Sort indices by value and, for each candidate divisor in increasing order, scan the whole array for another element divisible by it, stopping at the first hit. With n = 5e5 uniform in [1, 2e9] the smallest element is about 4000 and has ~125 expected multiples, so the first scan almost always succeeds; the loop is O(n) expected and degrades gracefully to O(n^2) only on tiny inputs. Equal values count as dividing each other but the indices must differ. No samples are provided by the scraper and any valid pair is accepted, so samples_passed reflects my own validator: on three random n = 5e5 instances and small cases the printed pair was checked to be distinct with a_i | a_j (0.2 s each).",
+ "code_path": "solutions/kattis_almostalways.cpp",
+ "samples_passed": true
+}

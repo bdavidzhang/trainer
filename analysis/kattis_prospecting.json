@@ -1,0 +1,14 @@
+{
+ "id": "kattis:prospecting",
+ "rating": 2400,
+ "topics": [
+  "greedy",
+  "trees",
+  "dp-tree",
+  "heap"
+ ],
+ "key_idea": "Worst case is a tree DP maximising money sunk into a root-connected opened set plus y-1 feet in every frontier tunnel; best case is the classic precedence-tree scheduling greedy (merge the highest-priority block into its parent with a heap + DSU), with the motherlode given infinite profit.",
+ "sketch": "Worst case a: the adversary picks a connected opened subtree S containing the root but not the motherlode and digs every frontier tunnel to y-1 feet; a = 1 + max of sum over S of (y-x) plus sum over frontier of (y-1), computed by f(v) = y_v - x_v + sum over children max(y_c - 1, f(c)), with the motherlode forced to the y-1 option. Best case b: work with m' = money-1; opening node i needs m' >= y_i - [x_i>0] (motherlode: y-1) and changes m' by x_i - y_i; partial digging never helps. Each block is (need, delta); concatenation gives need = max(nA, nB - dA). Order blocks: non-negative delta first by ascending need, then negative delta by descending need+delta; repeatedly pop the best block and either execute it (parent block is the root) or merge it into its parent block, using lazy versioning in the heap. Setting the motherlode's delta to infinity makes everything after it free, so the answer is the max deficit + 1. O(n log n). Pitfalls: the exact 'money must stay positive after a round unless motherlode reached' rule (x=0 pockets need one more dollar), and 64-bit infinity handling. Stress-tested against an exhaustive state-space simulator on 800 random small trees.",
+ "code_path": "solutions/kattis_prospecting.cpp",
+ "samples_passed": true
+}

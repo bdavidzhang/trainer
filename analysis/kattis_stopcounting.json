@@ -1,0 +1,13 @@
+{
+ "id": "kattis:stopcounting",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "prefix-sums",
+  "math"
+ ],
+ "key_idea": "The counted cards are a prefix plus a suffix, and the average of the union is at most the larger of the two averages, so the answer is the best average of a single prefix or single suffix (or 0).",
+ "sketch": "Since avg(prefix+suffix) is a weighted mean of avg(prefix) and avg(suffix), it never beats the better one alone, and taking only that one is allowed. So scan all non-empty prefixes and all non-empty suffixes, tracking the max of sum/length, floored at 0 for the empty choice. O(n) with 64-bit sums (up to 1e15) and long double division; use fast input for n=1e6. Verified against an O(n^2) brute force on random small arrays.",
+ "code_path": "solutions/kattis_stopcounting.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:assessment",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Put a large antichain (mutually incomparable essays) first in index order and a chain that dominates all of it last: each round removes only one chain element while every antichain element scans the whole antichain before it meets its dominator.",
+ "sketch": "Antichain A of size a ~ 2N/3: deviation 1+t and quality t (worse deviation, better quality, so incomparable). Chain C of size N-a at the end: w = W, quality a+s, each dominating all of A and forming a total order. Every one of the N-a rounds costs about a^2/2 comparisons inside A before each A element is postponed by the first working chain element, total about (N-a)a^2/2 = 2N^3/27 > N^3/20. Deviations are realised as W+dev when W <= 5000 else W-dev so w stays in [0,1e4]; qualities go up to N-1 <= 999. Output is not unique, so the checker cannot judge it: I confirmed with my own simulator of the professor's algorithm that the comparison count is >= N^3/20 for every N in 2..120 and several large N up to 1000, for W in {0,2500,5000,5001,10000}.",
+ "code_path": "solutions/kattis_assessment.cpp",
+ "samples_passed": true
+}

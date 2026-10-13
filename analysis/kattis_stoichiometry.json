@@ -1,0 +1,13 @@
+{
+ "id": "kattis:stoichiometry",
+ "rating": 1700,
+ "topics": [
+  "linear-algebra",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Balancing is finding the one-dimensional null space of the element-by-molecule matrix (right-side molecules negated), then scaling it to the smallest positive integer vector.",
+ "sketch": "Build a matrix with one row per element (<=10) and one column per molecule (<=20), entry = signed atom count, summing repeated elements within a line. Run exact Gauss-Jordan elimination with rational numbers (int128 numerator/denominator, reduced by gcd), take the free column, set it to 1 and read the pivot variables as minus that column. Multiply by the lcm of denominators, divide by the gcd and fix the sign so the coefficients are positive. Complexity is trivial, O(E*M^2). Pitfalls: use exact fractions not doubles, parse the '+1' sign and the blank leading line, merge duplicate elements in a molecule; the solution assumes the null space has dimension exactly 1, as the uniqueness guarantee implies.",
+ "code_path": "solutions/kattis_stoichiometry.cpp",
+ "samples_passed": true
+}

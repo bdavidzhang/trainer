@@ -1,0 +1,14 @@
+{
+ "id": "kattis:substringswitcheroo",
+ "rating": 1700,
+ "topics": [
+  "hashing",
+  "strings",
+  "prefix-sums",
+  "sorting"
+ ],
+ "key_idea": "Two substrings are permutations of each other iff their letter multisets agree, and a multiset can be hashed as the sum of random 64-bit values per letter, which is available for every window from prefix sums.",
+ "sketch": "Assign a random 64-bit value to each letter and build prefix sums for A and B (wrapping mod 2^64). For each length L from n down to 1, collect the hashes of all windows of B, sort them, and scan the windows of A from left to right with binary search; the first hit at the largest L is the answer, otherwise print NONE. O(n^2 log n) per test, about 1e7 operations for n=1000, far inside the limit. Pitfalls: the tie-break is earliest in A (not in B), so scan A in order and stop at the first match; a deterministic alternative is comparing 26-count vectors, but the additive random hash keeps it simple with negligible collision probability. Stress-tested against a brute force on random small strings.",
+ "code_path": "solutions/kattis_substringswitcheroo.cpp",
+ "samples_passed": true
+}

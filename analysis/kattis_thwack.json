@@ -1,0 +1,13 @@
+{
+ "id": "kattis:thwack",
+ "rating": 2000,
+ "topics": [
+  "games",
+  "dp-interval",
+  "dp"
+ ],
+ "key_idea": "A capture always leaves an empty cell, splitting a block of stones into two independent blocks that are substrings of the original with at most the boundary stone recoloured, so Sprague-Grundy over (l, r, flipL, flipR) works.",
+ "sketch": "Maximal runs of stones are independent games. If stone i captures i+1 the block [l..r] becomes [l..i-1] and [i+1..r] with its first stone flipped in colour; if i+1 captures i it becomes [l..i] with last stone flipped and [i+2..r]. So the state is a substring plus two flip bits: 4*N^2 states with O(N) transitions each, mex over XORs, about 4e6 operations for N=100. For the answer, try each opening move and keep those making the total XOR zero, sorted by (A, D). Pitfalls: blocks of length <= 1 have Grundy 0 (ignore flip flags there), and flips apply only to the endpoints of the current block. Verified against exhaustive game search for N <= 11.",
+ "code_path": "solutions/kattis_thwack.cpp",
+ "samples_passed": true
+}

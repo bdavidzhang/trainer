@@ -1,0 +1,12 @@
+{
+ "id": "kattis:abbreviatedaliases",
+ "rating": 1100,
+ "topics": [
+  "strings",
+  "sorting"
+ ],
+ "key_idea": "After sorting, the longest common prefix of a string with any other string is attained at one of its two sorted neighbours, so the needed prefix length is 1 + max of the two adjacent LCPs.",
+ "sketch": "Sort the aliases, compute the LCP of each adjacent pair by direct comparison, and add max(lcp_left, lcp_right)+1 for every alias (aliases are distinct and of equal length, so this never exceeds l). O(n l log n) for sorting, with n*l = 1e7 characters. A trie counting pass-through counts is an equivalent alternative. Use a 64-bit total out of habit, although the sum is at most 1e7.",
+ "code_path": "solutions/kattis_abbreviatedaliases.cpp",
+ "samples_passed": true
+}

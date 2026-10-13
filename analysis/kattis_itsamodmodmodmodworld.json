@@ -1,0 +1,12 @@
+{
+ "id": "kattis:itsamodmodmodmodworld",
+ "rating": 1900,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "(p*i) mod q = p*i - q*floor(p*i/q), so the sum reduces to the classic floor sum sum floor((a*i+b)/c), computed by the Euclid-like recursion in O(log).",
+ "sketch": "Reduce p modulo q, then answer = r*n(n+1)/2 - q * floor_sum(r, 0, q, n). The floor sum recursion: if a>=c or b>=c peel off the quotient parts in closed form; otherwise with m = floor((a*n+b)/c) use f(a,b,c,n) = n*m - f(c, c-b-1, a, m-1), swapping the roles like the Euclidean algorithm. O(log q) per query, 1e5 queries. Pitfalls: everything fits in signed 64-bit only after reducing p mod q (terms are bounded by ~5e17), and the base case a=0. Stress-tested against a direct loop including n=1e6 cases.",
+ "code_path": "solutions/kattis_itsamodmodmodmodworld.cpp",
+ "samples_passed": true
+}

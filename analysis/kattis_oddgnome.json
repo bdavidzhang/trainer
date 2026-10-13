@@ -1,0 +1,11 @@
+{
+ "id": "kattis:oddgnome",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Because the king is never first, the first position whose value is not exactly one more than its predecessor is the king.",
+ "sketch": "Scan each group left to right and output the 1-based index of the first i with a[i] != a[i-1] + 1. The king can never accidentally equal predecessor+1, since then the following non-king would break the consecutive property of the remaining gnomes. O(g) per group.",
+ "code_path": "solutions/kattis_oddgnome.cpp",
+ "samples_passed": true
+}

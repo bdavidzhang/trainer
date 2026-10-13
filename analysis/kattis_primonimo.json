@@ -1,0 +1,13 @@
+{
+ "id": "kattis:primonimo",
+ "rating": 2000,
+ "topics": [
+  "linear-algebra",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Moves commute and only counts mod p matter, so it is an nm x nm linear system over GF(p): for each cell, sum of press counts in its row and column equals -value mod p.",
+ "sketch": "Unknown x_c in [0,p-1] for each of the nm<=400 cells; equation for cell (i,j): sum of x over row i and column j (cell itself once) = (p - a_ij) mod p. Gauss-Jordan mod p with precomputed inverses, O((nm)^3) = 6.4e7. If an all-zero row has nonzero right side print -1; otherwise set free variables to 0 and output each cell x_c times, which is at most (p-1)nm <= p*n*m moves. Multiple answers are accepted, so the sample checker reports mismatches; I validated with my own checker that simulates the moves on random boards (including 20x20, p=97) and compares solvability against brute force on tiny boards. Pitfall: value p represents 0, and output when k=0.",
+ "code_path": "solutions/kattis_primonimo.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:homeworkhelp",
+ "rating": 1600,
+ "topics": [
+  "interactive",
+  "constructive",
+  "dp",
+  "binary-search"
+ ],
+ "key_idea": "Prefix queries ? 1 r for r=2..n give, by differencing, how many earlier elements exceed p_r (the Lehmer code), which determines the whole permutation with n-1 queries.",
+ "sketch": "Ask inv(1,r) for r = 2..n (n-1 queries, inv(1,1)=0 is known). c_r = inv(1,r)-inv(1,r-1) is the count of j<r with p_j>p_r, so p_r has rank r-c_r among the first r elements. Decode from the back: keep the sorted list of unused values and take the (r-c_r)-th smallest for r=n..1; O(n^2) with vector erase is fine for n=1000. Then run patience-sort LIS in O(n log n). Pitfalls: n=1 must answer 1 with no queries, flush after every line, inversion counts up to ~5e5 fit in int but 64-bit is safer. The sample checker cannot judge an interactive problem; verified with my own local interactor on 60 random permutations (n from 1 to 1000) checking answer equals true LIS and query count <= n.",
+ "code_path": "solutions/kattis_homeworkhelp.cpp",
+ "samples_passed": true
+}

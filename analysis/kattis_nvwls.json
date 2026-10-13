@@ -1,0 +1,13 @@
+{
+ "id": "kattis:nvwls",
+ "rating": 2000,
+ "topics": [
+  "trie-aho-corasick",
+  "dp",
+  "strings"
+ ],
+ "key_idea": "Strip vowels from the dictionary words, build an Aho-Corasick automaton over the consonant strings (keeping the most vowel-rich word per stripped form), and run a DP over message prefixes following dictionary-suffix links.",
+ "sketch": "dp[i] = max total vowels to decompose the first i consonants; at position i walk the output links of the current automaton state and try dp[i-len]+vowels(word). Distinct match lengths at one position are bounded by O(sqrt(total dictionary length)) ~ 450, so the walk costs at most ~1.3*10^8 steps; measured 0.3 s on the all-B worst case. Reconstruct with parent pointers and write the up to 15 MB output with one fwrite. Pitfalls: several words can map to the same consonant string (keep the one with most vowels), dp must be initialised to unreachable, and plain per-position trie descent would be quadratic.",
+ "code_path": "solutions/kattis_nvwls.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:entrapment",
+ "rating": 2200,
+ "topics": [
+  "games",
+  "interactive",
+  "dp-bitmask",
+  "search-backtracking"
+ ],
+ "key_idea": "Because the Runner may cheat, the real game state is (available squares, set of squares still consistent for the Runner, rounds left): at most 3^9 x 9 states, so solve it exhaustively and replay the winning choices.",
+ "sketch": "TrapperWins(A,S,r): there is a split of S into T and S\\T such that for each non-empty side X some removal i leaves no available neighbour of X, or leads to a Trapper-winning state (A\\{i}, N(X) & A\\{i}, r-1); r=0 with S non-empty is a Runner win. Memoise over 512x512x10. As Trapper print the winning query and then the killing square; as Runner answer with a side for which no removal wins, track the committed sets, and at the end rebuild an actual path backwards (pick any final square, then a neighbour inside each earlier committed set). Pitfalls: the Runner may stand on the removed square, queries of size 0 have no second line, handle the judge's -1 and flush every line. Interactive, so the checker cannot judge it: validated with my own interactor over 1500 random games (random and greedy cheating runner, random trapper, path consistency check) plus both statement scenarios.",
+ "code_path": "solutions/kattis_entrapment.cpp",
+ "samples_passed": true
+}

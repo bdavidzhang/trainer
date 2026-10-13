@@ -1,0 +1,14 @@
+{
+ "id": "kattis:findingkeys",
+ "rating": 1900,
+ "topics": [
+  "strings",
+  "hashing",
+  "sorting",
+  "suffix-structures"
+ ],
+ "key_idea": "Turn the keychain into a cyclic binary string of comparisons; a key's answer is 1 + the longest common prefix between its rotation and any other rotation, which is attained by a neighbour in sorted rotation order.",
+ "sketch": "Build s[i] = (a[i] < a[i+1]) cyclically and double it. Sort the n rotations with a comparator that finds the LCP by binary search on polynomial hashes (mod 2^61-1, random base), then for each rotation take the max LCP with its two sorted neighbours. Answer is LCP+1, or -1 if LCP >= n (the string is periodic, two rotations are identical). Complexity O(n log^2 n); a fast path comparing the first 64 symbols packed in a word makes random inputs cheap. Pitfalls: do not use overflow hashing on a binary alphabet, cap LCP at n, and equal rotations must compare as equivalent to keep the comparator a strict weak order. Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_findingkeys.cpp",
+ "samples_passed": true
+}

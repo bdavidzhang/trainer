@@ -1,0 +1,12 @@
+{
+ "id": "kattis:froggie",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Cars in a lane are an infinite periodic pattern, so at time t a car sits at every lane-coordinate congruent to O+S*t mod I; Froggie at lane-coordinate d is hit iff (O+S*t-d) mod I < max(S,1), i.e. she lies in a cell swept during this step (the cell the car just left is safe).",
+ "sketch": "Simulate the moves one by one, starting at row L (below the road) and column P. After each move, if the row is above the top lane print safe; if she is in lane r, convert the column to that lane's own coordinate (even lanes from the top move right, odd lanes move left so d=W-1-c) and test the modular condition. A stationary lane (S=0) kills only on the car cell itself, a moving car kills the S cells (p_old, p_new]. If the moves run out without leaving through the top, the answer is squish. O(M). Pitfalls: offsets are measured in the direction of travel, new cars keep entering so positions must be taken mod I rather than from a finite list, and the hop and the car movement happen in the same time step.",
+ "code_path": "solutions/kattis_froggie.cpp",
+ "samples_passed": true
+}

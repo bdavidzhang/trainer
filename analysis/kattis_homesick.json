@@ -1,0 +1,13 @@
+{
+ "id": "kattis:homesick",
+ "rating": 1800,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "shortest-paths"
+ ],
+ "key_idea": "BFS over directed arcs (state = edge just used) gives the shortest non-backtracking closed walk; it stays linear because each vertex needs to be expanded at most twice - the first incoming arc reaches all outgoing arcs but one, a second incoming arc from a different neighbour reaches the remaining one.",
+ "sketch": "States are the 2m arcs; start with all arcs leaving vertex 1 at distance 1, and from arc u->v move to every v->w with w != u. The first popped arc that ends in vertex 1 gives the optimal trip (the first and last road may coincide, as in sample 2, since the rule only forbids immediate reversal). A naive arc BFS is O(sum deg^2), so keep an expansion counter per vertex and skip a vertex after two expansions, making it O(n+m). Reconstruct through parent arcs and print vertex count = length+1. Print impossible if no arc into 1 is reached. Multiple answers are valid so the checker's token compare fails on sample 1 (it prints 1 2 3 1 instead of 1 3 2 1); validated with my own validator plus a brute-force BFS for the optimal length on 1500 random small graphs.",
+ "code_path": "solutions/kattis_homesick.cpp",
+ "samples_passed": true
+}

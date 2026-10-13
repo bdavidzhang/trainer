@@ -1,0 +1,12 @@
+{
+ "id": "kattis:simplysudoku",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Just simulate: repeatedly apply the naked-single and hidden-single rules until neither fires.",
+ "sketch": "Keep the grid; can(r,c,d) checks the row, column and box. Loop until no change: for every empty cell with exactly one candidate fill it; for each of the 27 units and each digit, if exactly one cell of the unit can take the digit, fill it. The closure is order-independent so any application order works. Print Easy if full, otherwise Not easy with '.' for blanks. Complexity is trivial (81 cells, at most 81 rounds). Pitfall: candidates must be recomputed from the current grid after each placement.",
+ "code_path": "solutions/kattis_simplysudoku.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:slowleak",
+ "rating": 1600,
+ "topics": [
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Compute all-pairs shortest paths, then build a second graph on the 'refill' nodes (school, stations, home) with an edge only when the shortest distance is at most d, and run shortest paths again.",
+ "sketch": "Floyd-Warshall on the n<=500 intersections (1.25e8 simple operations) gives dist. Take the key nodes {1, stations, n}; connect two of them with weight dist if dist <= d, else infinity. A second Floyd-Warshall (or Dijkstra) on this graph gives the answer from school to home, or 'stuck' if unreachable. Use 64-bit distances since edge weights are up to 2^31 and sums overflow int; skip rows with infinite pivot distance to avoid overflow. Arriving exactly when the tire goes flat is allowed, so the comparison is <= d.",
+ "code_path": "solutions/kattis_slowleak.cpp",
+ "samples_passed": true
+}

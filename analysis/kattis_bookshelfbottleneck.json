@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bookshelfbottleneck",
+ "rating": 800,
+ "topics": [
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Books are independent: for each choice of vertical side that fits under H, the best width is the smaller of the other two sides.",
+ "sketch": "For each book try the three sides as the vertical one; if it is <= H the candidate width is the min of the remaining two; take the minimum candidate and sum. If any book has no side <= H print impossible. O(n). Pitfall: the sum reaches 1e14, so use 64-bit.",
+ "code_path": "solutions/kattis_bookshelfbottleneck.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:workers",
+ "rating": 2000,
+ "topics": [
+  "matching",
+  "brute-force",
+  "graphs"
+ ],
+ "key_idea": "The corridor rule forces gates 1..k to use A and k+1..n to use B for some k; for a fixed k workers->gates and stations->gates are two independent assignment problems.",
+ "sketch": "If gate g uses A then gate g-1 cannot use B, so the corridor pattern north to south is A...AB...B. Enumerate the split k in 0..n; with corridors fixed, the cost of worker i through gate g and of station j from gate g are known, and the two sides decouple, so run the Hungarian algorithm twice and add. Take the best k and join the two matchings through the gate to print worker, gate+corridor, station. Complexity O(n * n^3) = about 1.3e7 for n=50. Any optimal assignment is accepted; on the sample my output coincided with the reference token-for-token (cost 163), which is the only confirmation of the gate ordering assumption (gate 1 is northernmost).",
+ "code_path": "solutions/kattis_workers.cpp",
+ "samples_passed": true
+}

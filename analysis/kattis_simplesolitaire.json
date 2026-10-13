@@ -1,0 +1,11 @@
+{
+ "id": "kattis:simplesolitaire",
+ "rating": 1300,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation: after each dealt card, repeatedly apply the highest-priority match (rank match first, then suit match, each choosing the most recent position) until none remains.",
+ "sketch": "Keep the face-up cards in a vector. After pushing a card, loop: scan i from the end down to 3 for a rank match between i and i-3 and, if found, erase the four cards i-3..i; otherwise scan the same way for a suit match and erase just cards i and i-3; stop when neither exists. Matches must be searched over the whole hand, not just at the top, because removals shift positions and create cascades. 52 cards so complexity is irrelevant. Pitfalls: rank removal has priority over suit removal even if the suit match is more recent, and ties go to the match involving the most recently turned card.",
+ "code_path": "solutions/kattis_simplesolitaire.cpp",
+ "samples_passed": true
+}

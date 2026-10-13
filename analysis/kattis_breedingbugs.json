@@ -1,0 +1,13 @@
+{
+ "id": "kattis:breedingbugs",
+ "rating": 1900,
+ "topics": [
+  "matching",
+  "graphs",
+  "number-theory"
+ ],
+ "key_idea": "A prime sum above 2 needs one odd and one even number, so conflicts form a bipartite graph and the answer is a maximum independent set = vertices minus maximum matching; the only same-parity conflict is 1+1 = 2, so keep at most one 1.",
+ "sketch": "Drop all but one copy of the value 1 (two ones sum to the prime 2, and keeping one is never worse than keeping none). Sieve primes up to 2e7 (odd-only marking in a vector<bool>), build edges between odd and even values whose sum is prime, and run Kuhn's augmenting-path matching (at most ~375 x 375, 140k edges). By Konig the answer is remaining vertices minus matching size. Pitfalls: the 1+1 case, equal values otherwise never conflict (2a is composite for a > 1), and sieve memory/time for sums up to 2e7. Stress-tested against subset brute force on small inputs.",
+ "code_path": "solutions/kattis_breedingbugs.cpp",
+ "samples_passed": true
+}

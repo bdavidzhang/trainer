@@ -1,0 +1,14 @@
+{
+ "id": "kattis:skiresort",
+ "rating": 3000,
+ "topics": [
+  "graphs",
+  "dp-tree",
+  "trees",
+  "bitmasks"
+ ],
+ "key_idea": "The samples force the reading: each query area must have exactly one chosen stand among all its ancestors and that stand must dominate it. So the chosen set is an antichain cut of the query's virtual tree in the dominator tree, restricted to 'good' nodes (those reaching no query area they do not dominate), and goodness reduces to a 51-bit mask test because only the <=51 in-degree>=2 nodes can leak reachability.",
+ "sketch": "Build the DAG dominator tree (idom = LCA of predecessors in topological order). Nodes with in-degree>=2 are 'specials' (at most 51); every other node has a unique parent, so the graph is a forest rooted at node 1 and the specials. For each node compute H = mask of specials reachable and B = those reachable but not dominated; v is bad for a query iff B(v) intersects M = mask of specials whose forest tree holds a query area. B is constant along compressed forest chains, so the nonzero-B nodes split into a few hundred vertical classes of the dominator tree; per query recompute per-class bad prefix counts in O(classes) to get P(v) = number of good dominator-ancestors in O(1). Then build the virtual tree of the query in the dominator tree and run f(v) = [good]z + [v not in Q]*prod f(child), adding z times the number of good nodes on each compressed edge, with polynomials truncated at degree 4; answer is the z^k coefficient. Complexity O((n+m) log n + 51n + q*classes + sum a log n). Pitfalls: the statement's 'exactly one stand over all paths' is easy to misread as an exact cut (sample 1 query 2 refutes that); counts reach C(1e5,4) so use unsigned 64-bit. Verified against brute force on random DAGs with n<=9.",
+ "code_path": "solutions/kattis_skiresort.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:bombardment",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "two-pointers",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "The least optimal centre always has its right edge X+R on a remaining point, and the span <= 40R bound keeps the number of bombardments small, so each round can be a plain O(n) sliding window.",
+ "sketch": "Sort and compress to distinct coordinates with multiplicities. Each round, slide a window [p_j-2R, p_j] over the remaining points with two pointers, take the first j with strictly maximal count, output X=p_j-R and erase that contiguous block. Sliding any optimal window left until its right end touches a point never loses points, which gives the least X. Every round wipes a length-2R interval so the round count is O(span/R) (tens), total O(N log N + rounds*N); 5e5 random points run in 0.1 s. Pitfalls: ties must take the leftmost window, duplicates must be counted, coordinates can be negative. Stress-tested against a brute force over all integer centres.",
+ "code_path": "solutions/kattis_bombardment.cpp",
+ "samples_passed": true
+}

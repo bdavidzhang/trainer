@@ -1,0 +1,11 @@
+{
+ "id": "kattis:deceleratingjump",
+ "rating": 1500,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "State (square, max allowed jump length) gives an O(n^2) DP; iterating the jump bound d outermost lets a single 1D array hold it.",
+ "sketch": "Let g[i] be the best score from square i to square n using jumps of length at most d. Increasing d by one, update g[i]=max(g[i], p[i]+g[i+d]) for i descending from n-d, so that g[i+d] already allows length d (the following jump may also be d). Start with g[n]=p[n], everything else -inf; answer g[1] after d=n-1. O(n^2) time, O(n) memory. Pitfalls: scores are negative so use a proper -inf sentinel and 64-bit sums (up to 3e12); the last square must be landed on exactly. Stress-tested against a recursive brute force.",
+ "code_path": "solutions/kattis_deceleratingjump.cpp",
+ "samples_passed": true
+}

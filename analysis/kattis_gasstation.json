@@ -1,0 +1,11 @@
+{
+ "id": "kattis:gasstation",
+ "rating": 1500,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "L and R cars never interact (each pump serves both sides), so simulate each side separately as P lanes with two slots A/B and a FIFO queue per lane.",
+ "sketch": "For each side keep per lane the end times of pump A and pump B and a queue. Before each arrival at time t, process all departures with end time <= t in chronological order: free every pump finishing at that instant first, then for each lane, while A is free and the queue is non-empty, move the head car to B if B is free else to A. An arriving car takes the leftmost lane with A free (B if also free), otherwise joins the shortest, leftmost queue. A car in B blocked behind nothing can leave freely, but a free B with A occupied is unusable. Pitfalls: 'just under f minutes' means cars leaving at time t are gone before an arrival at t, and simultaneous A+B departures must be freed together so the next car goes to B. O(N*P) per event.",
+ "code_path": "solutions/kattis_gasstation.cpp",
+ "samples_passed": true
+}

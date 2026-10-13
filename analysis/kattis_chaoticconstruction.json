@@ -1,0 +1,13 @@
+{
+ "id": "kattis:chaoticconstruction",
+ "rating": 1300,
+ "topics": [
+  "data-structures",
+  "fenwick",
+  "implementation"
+ ],
+ "key_idea": "On a cycle a trip is possible iff both endpoints are open and at least one of the two arcs between them contains no closed segment; count closed segments on an arc with a Fenwick tree (or ordered set).",
+ "sketch": "Keep a Fenwick tree of closed flags and the total number closed. For a query with lo < hi (both open), in = closed count in (lo, hi]; the direct arc is free iff in == 0, the wrap-around arc is free iff total - in == 0. O((n+q) log n). Pitfalls: answer impossible when either endpoint itself is closed, and remember the wrap-around direction. Stress-tested against a brute-force walk on small cycles.",
+ "code_path": "solutions/kattis_chaoticconstruction.cpp",
+ "samples_passed": true
+}

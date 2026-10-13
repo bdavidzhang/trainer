@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mobgrinder",
+ "rating": 2100,
+ "topics": [
+  "constructive",
+  "case-analysis",
+  "implementation"
+ ],
+ "key_idea": "Feasible iff U >= N-1 and R >= M-1 (each row below the top needs a U, each column left of the last needs an R); single row/column grids are fully forced. A column-major block of D's followed by rows of the shape R..R U..U L..L realises every such count vector.",
+ "sketch": "Necessity is immediate; sufficiency was confirmed by exhaustive search on grids up to 3x4 and then built explicitly. Put the D's in full columns from the left (rows 0..N-2) with an R under each; the partial column q gets s D's and an R at row s. In the remaining columns row 0 is all R, and every other row is R^a U^b L^c with b>=1, starting at column q+1 for rows 1..s and at column q for rows below s. After the one mandatory U per row, the left-over R/U/L counts can be poured into the free cells in any order, and the cell count matches exactly. O(NM). Pitfalls: an all-L row next to the D column creates a cycle (hence b>=1 in rows 1..s), exact blank-line formatting between cases. The checker cannot judge this (many answers): my own validator checked counts and reachability for 20300 specs up to 12x12, including all impossible verdicts against the proven condition.",
+ "code_path": "solutions/kattis_mobgrinder.cpp",
+ "samples_passed": true
+}

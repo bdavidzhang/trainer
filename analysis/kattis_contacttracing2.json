@@ -1,0 +1,13 @@
+{
+ "id": "kattis:contacttracing2",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "A person infected on day d has no contacts from day d+2 on, so 'could v have caught it on day d' is a layered DP over days: v is feasible on day d iff v's last contact is at most d+1 and v met on day d someone feasible for day d-1.",
+ "sketch": "Compute last[v] = latest day v had any contact. Day 0 candidates (Patient Zero) are everyone with last[v] <= 1. For d = 1..k, scan the contacts of day d: endpoint v becomes feasible for day d if the other endpoint is feasible for day d-1 and last[v] <= d+1. Because transmission is optional, each chain is independently realisable, and a chain can never repeat a person (they quarantine two days after infection), so the union over chains is exact. Output everyone feasible on day k, sorted. Complexity O(k*c). Pitfall: only people infected exactly today need notification; earlier infectees are already symptomatic tomorrow.",
+ "code_path": "solutions/kattis_contacttracing2.cpp",
+ "samples_passed": true
+}

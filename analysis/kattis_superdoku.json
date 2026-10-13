@@ -1,0 +1,13 @@
+{
+ "id": "kattis:superdoku",
+ "rating": 1900,
+ "topics": [
+  "matching",
+  "graphs",
+  "constructive"
+ ],
+ "key_idea": "A valid k x n Latin rectangle can always be extended to a Latin square (Hall's theorem on a regular bipartite graph), so the answer is 'no' only if the given rows already conflict; each further row is a perfect matching between columns and the values still unused in that column.",
+ "sketch": "First validate the k given rows: every row must be a permutation of 1..n and no value may repeat in a column; otherwise print no. Then for each remaining row build the bipartite graph column -> values not yet used in that column (it is (n-r)-regular, so a perfect matching exists) and find it with Kuhn's augmenting paths, then mark the chosen values as used. Total cost is about n rows times O(n * n^2) = 1e8 simple operations in the worst case, far less in practice. Pitfalls: k=0 and k=n, rows that are not permutations even though columns are fine, and values need not be checked against blocks at all. The checker cannot judge this multi-answer problem: samples_passed is based on my own validator (given rows preserved, every row and column a permutation, 'no' exactly when the prefix is invalid) over 300 random cases up to n=100.",
+ "code_path": "solutions/kattis_superdoku.cpp",
+ "samples_passed": true
+}

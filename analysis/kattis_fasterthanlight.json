@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fasterthanlight",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "binary-search"
+ ],
+ "key_idea": "A line of non-negative slope hits an axis-aligned rectangle iff its top-left corner is weakly above and its bottom-right corner weakly below; conversely any line weakly separating all top-left corners from all bottom-right corners crosses every main diagonal. So the task is weak linear separability of two point sets, done twice (once mirrored in x for negative slopes).",
+ "sketch": "For line y=ax+b the condition is max over bottom-right corners of (y-ax) <= min over top-left corners of (y-ax); the gap f(a) is convex piecewise linear, so its minimum is at a breakpoint, i.e. a slope of an edge of the upper hull of the 'below' set or the lower hull of the 'above' set. Build both hulls, and for every hull edge slope dy/dx evaluate f*dx exactly in integers, finding each extreme vertex by binary search on the hull (the dot product is unimodal along a strictly convex chain). Handle the limits a->+-inf separately as a vertical-line test (max x of one set <= min x of the other). Repeat with x negated using top-right/bottom-left corners. O(n log n). Pitfalls: touching counts as hitting so all comparisons are non-strict; products reach ~4e18 so use __int128; remove collinear hull points so the binary search is valid; degenerate hulls (single point, all same x). Stress-tested against an O(n^3) brute force over lines through corner pairs.",
+ "code_path": "solutions/kattis_fasterthanlight.cpp",
+ "samples_passed": true
+}

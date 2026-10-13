@@ -1,0 +1,13 @@
+{
+ "id": "kattis:evenoddgame",
+ "rating": 1800,
+ "topics": [
+  "games",
+  "dp",
+  "interactive"
+ ],
+ "key_idea": "Only parities matter, so cards collapse into three types (no-op: +even or *odd, flip: +odd, zero: *even) and the game state is just the three counts plus the current parity, giving a tiny minimax DP.",
+ "sketch": "Compute R[a][f][z][parity][t] = final parity under optimal play when the mover wants odd (t=1, OR over moves) or even (t=0, AND over moves); the state space is at most 101^3 * 4 bytes. If the first player can force odd from the start, answer 'me', otherwise the second player can force even, so answer 'you'. Then on each of our turns play any card of a type whose successor state still evaluates to our goal, and update the counts from the judge's cards. O(n^3) states with O(1) transitions. Pitfalls: flush after every line, remove the judge's exact card from the pool, stop after all n cards. Interactive, so the sample checker cannot judge it: verified with my own interactor (600 small games against both a random and a minimax-optimal opponent, plus n=299/300 games), all won.",
+ "code_path": "solutions/kattis_evenoddgame.cpp",
+ "samples_passed": true
+}

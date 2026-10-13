@@ -1,0 +1,13 @@
+{
+ "id": "kattis:diehard",
+ "rating": 1100,
+ "topics": [
+  "probability",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "With re-rolls on ties, die A beats die B with probability wins/(wins+losses) over the 36 face pairs, so John needs wins>=losses and wins+losses>0 against both other dice.",
+ "sketch": "For each ordered pair of dice count face pairs where A is higher (w) and lower (l). John's die i is safe if for both other dice w>=l and w+l>0 (if all 36 pairs tie nobody ever wins, so his win probability is 0). Output the smallest safe index or 'No dice'. Pitfall: the all-ties case, and identical dice give exactly 1/2 which is acceptable.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_diehard.cpp"
+}

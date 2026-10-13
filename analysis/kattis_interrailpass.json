@@ -1,0 +1,12 @@
+{
+ "id": "kattis:interrailpass",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "two-pointers"
+ ],
+ "key_idea": "A pass started on travel day i covers a contiguous block of travel days i..min(i+d-1, last day within p), and since the prefix DP is monotone, the best pass of each type to end coverage at day e starts at the earliest index that still reaches e, which moves monotonically.",
+ "sketch": "dp[e] = min cost to cover the first e travel days = min(dp[e-1]+f_e, min over types j of dp[i_j(e)-1]+c_j), where i_j(e) is the smallest i <= e with i >= e-d_j+1 and t_i+p_j-1 >= t_e. Both conditions are monotone in e, so one pointer per pass type gives O(n*k) = 1e6. Starting a pass on a non-travel day is never better than starting on the next travel day, and overlapping passes are handled because dp is nondecreasing (covering more never costs less). Pitfall: travel days count against the d limit even when paid individually, so a pass cannot skip a cheap day inside its block (sample 5). Stress-tested against a bitmask brute force over all pass placements.",
+ "code_path": "solutions/kattis_interrailpass.cpp",
+ "samples_passed": true
+}

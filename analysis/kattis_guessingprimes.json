@@ -1,0 +1,14 @@
+{
+ "id": "kattis:guessingprimes",
+ "rating": 2100,
+ "topics": [
+  "interactive",
+  "brute-force",
+  "search-backtracking",
+  "implementation"
+ ],
+ "key_idea": "There are only 8363 five-digit primes, so precompute the full guess-vs-secret feedback table and follow a greedy decision tree that always picks the guess splitting the remaining candidates into the most feedback classes.",
+ "sketch": "Sieve the primes, fill an 8363x8363 byte table of base-3 feedback codes (70 MB, ~0.3 s), and build the tree lazily: at a node, scan all primes as guesses, count distinct feedback values over the candidate list, prefer more classes and break ties towards guesses that are themselves candidates; cache the chosen guess and children per node so 1000 rounds share the work. Total work is bounded by depth * 8363^2 table lookups (about 2 s for the entire tree). Feedback must follow Wordle multiset rules: greens first, then yellows left to right limited by remaining digit counts. An offline run over all 8363 secrets gives worst case 5 guesses (average 3.48). Interactive, so the sample checker does not apply: validated with my own independent Python interactor over 1000 rounds (max 5 guesses, all guesses prime).",
+ "code_path": "solutions/kattis_guessingprimes.cpp",
+ "samples_passed": true
+}

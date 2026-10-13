@@ -1,0 +1,14 @@
+{
+ "id": "kattis:heapsoffun",
+ "rating": 2400,
+ "topics": [
+  "dp-tree",
+  "probability",
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "Let F_v(x) = P(subtree of v is a heap and v's value > x); then F_v(x) = (1/b_v) * integral from x to b_v of prod_children F_c(t) dt, which is a piecewise polynomial with breakpoints at the sorted distinct b values.",
+ "sketch": "Sort distinct b values c_0=0<c_1<...; on each piece [c_{j-1},c_j] store F_v as a polynomial mod p of degree <= subtree size. F_v vanishes beyond the minimum b in v's subtree, so only pieces up to that minimum are kept (children always have at least as many pieces). For each node multiply the children's polynomials piece by piece, take the antiderivative H_j, and set F_v on piece j to (H_j(c_j) - H_j(x) + sum of full integrals of later pieces) / b_v, accumulating the suffix sum from the top piece down. Answer is F_root(0). Complexity is O(pieces * n^2) = about 3e7 by the tree-knapsack bound on polynomial products. Pitfalls: process children before parents (parent index may be larger), reduce c values mod p before evaluating, and free children's tables to bound memory. Verified against exact enumeration on small random trees and the 1/prod(size) formula for equal b.",
+ "code_path": "solutions/kattis_heapsoffun.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:monitoringskipaths",
+ "rating": 1900,
+ "topics": [
+  "greedy",
+  "trees",
+  "fenwick"
+ ],
+ "key_idea": "In-degree at most one makes the mountain a rooted forest and every plan a vertical ancestor-to-leaf path; process plans by deepest top endpoint first and, whenever a plan is not yet covered, monitor its top junction.",
+ "sketch": "Run an iterative DFS over the forest to get depths and Euler tour intervals. Sort plans by depth of s descending. A plan (s,t) is already covered iff the number of monitored nodes on root..t minus those on root..parent(s) is positive; keep that count in a Fenwick tree where monitoring v adds +1 to the Euler range of v's subtree and a query is a point query. If it is uncovered, monitor s: among nodes of this path, s is the one contained in the most other still-uncovered paths because all remaining paths start at or above s's depth, which is the exchange argument for optimality. O((n+m) log n). Pitfalls: recursion depth up to 250000 (use an explicit stack), several roots, and s itself must be counted so subtract the prefix of parent(s). Verified against exhaustive subset search on random small forests.",
+ "code_path": "solutions/kattis_monitoringskipaths.cpp",
+ "samples_passed": true
+}

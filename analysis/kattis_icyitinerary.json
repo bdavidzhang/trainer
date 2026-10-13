@@ -1,0 +1,12 @@
+{
+ "id": "kattis:icyitinerary",
+ "rating": 2200,
+ "topics": [
+  "constructive",
+  "graphs"
+ ],
+ "key_idea": "Build the path incrementally, keeping it as a colour-A prefix then colour-B suffix with a junction vertex J; a new vertex can always be inserted right next to J depending on the colour of its edge to J.",
+ "sketch": "Maintain a linked list starting at 1 and the junction J (edges before J have colour A, after J the other colour). For new v: if edge (J,v) has colour A insert v right after J, and the junction becomes v if (v,next) has colour B, else next; if it has colour B insert v right before J, and the junction becomes v if (prev,v) has colour A, else prev. Inserting before J needs J != 1, so when J is the head (no A edges) reinterpret the monochromatic path with colours swapped and J at the tail. Edge colour is a binary search in the sorted edge list, three lookups per vertex, O((n+m) log m). Pitfalls: vertex 1 must stay first, and the complement graph cannot be materialised. Any valid order is accepted so the sample checker reports a mismatch on sample 1; samples_passed is true because my own validator confirmed start=1, permutation and at most one switch on 3000 random graphs.",
+ "code_path": "solutions/kattis_icyitinerary.cpp",
+ "samples_passed": true
+}

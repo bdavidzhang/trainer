@@ -1,0 +1,12 @@
+{
+ "id": "kattis:examstudyplanning",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "greedy"
+ ],
+ "key_idea": "Study time is fungible, so only the banked unused free time matters: dp[j] = maximum spare study time after the exams so far with j passed.",
+ "sketch": "Process exams in order; free time before exam i is dp[j] plus the gap s_i - e_{i-1}. Not preparing keeps dp[j] = free; preparing needs free >= a_i and gives dp[j+1] = free - a_i + (e_i - p_i) because leaving early frees the rest of the slot. Answer is the largest j with a reachable state; O(n^2) for n=2000. Pitfalls: skipping an exam locks you in until e_i (no gain), use 64-bit, and track unreachable states with a sentinel.",
+ "code_path": "solutions/kattis_examstudyplanning.cpp",
+ "samples_passed": true
+}

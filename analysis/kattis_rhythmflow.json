@@ -1,0 +1,11 @@
+{
+ "id": "kattis:rhythmflow",
+ "rating": 1400,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "Order-preserving matching with pair weights is a weighted LCS-style DP over (expected prefix, actual prefix).",
+ "sketch": "dp[i][j] = max(dp[i-1][j], dp[i][j-1], dp[i-1][j-1] + score(|e_i - a_j|)) with the score table 7/6/4/2/0. O(nm) = 4e6 time and memory. Pitfalls: bucket boundaries are inclusive on the right (15, 23, 43, 102); greedy nearest matching fails (sample 3).",
+ "code_path": "solutions/kattis_rhythmflow.cpp",
+ "samples_passed": true
+}

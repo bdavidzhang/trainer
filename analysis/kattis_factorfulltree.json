@@ -1,0 +1,14 @@
+{
+ "id": "kattis:factorfulltree",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "trees",
+  "number-theory",
+  "heavy-light"
+ ],
+ "key_idea": "Decompose into long paths and give each path its own prime: x_v = x_parent * prime(path of v), root = 1. A vertex off the ancestor line always carries a higher exponent of some path prime, and long-path decomposition keeps the total exponent at most the height.",
+ "sketch": "Choose the heavy child as the deepest subtree, assign distinct primes to chains with longer chains getting smaller primes, and multiply down the tree; the root has label 1 so its chain only reaches 2^(len-1). Correctness: for non-ancestor v with lca w, either the path w->v starts a light chain whose prime is absent elsewhere, or it continues w's chain and has a strictly larger exponent of that prime. The worst label seen was 2^59 (a 60-vertex path), under 1e18; the code falls back to size-based heavy children if the bound is exceeded. O(N log N). Many answers are valid so the sample token compare fails: samples_passed reflects my own validator (divides iff ancestor, 1 <= x <= 1e18) on about 26000 random and adversarial 60-vertex trees.",
+ "code_path": "solutions/kattis_factorfulltree.cpp",
+ "samples_passed": true
+}

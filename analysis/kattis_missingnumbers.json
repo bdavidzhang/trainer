@@ -1,0 +1,11 @@
+{
+ "id": "kattis:missingnumbers",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Walk the list keeping the next expected number and print every skipped value.",
+ "sketch": "Keep a counter starting at 1; for each recited number print all values from the counter up to it minus one, then set the counter past it. If nothing was printed output 'good job'. O(max value).",
+ "code_path": "solutions/kattis_missingnumbers.cpp",
+ "samples_passed": true
+}

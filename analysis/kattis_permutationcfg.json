@@ -1,0 +1,14 @@
+{
+ "id": "kattis:permutationcfg",
+ "rating": 2500,
+ "topics": [
+  "persistent",
+  "segment-tree",
+  "combinatorics",
+  "data-structures"
+ ],
+ "key_idea": "After t steps value u expands to C(u+t-1,t) symbols and contains k exactly C(u-k+t-1,t-1) times, independent of the permutation; so a prefix query descends s levels, each needing 'sum over positions < i with value in [k,v]' of a polynomial in the value, which a persistent segment tree keyed by value answers.",
+ "sketch": "Build a persistent segment tree over positions, version v containing all values <= v; each node stores the count, the capped sums of expansion lengths C(p+d-1,d) for d=1..4, and the sums of C(p,1),C(p,2),C(p,3) modulo 2^64. For a query (k,a) at state (v,t): walk down version v using the level-(t-1) lengths to find the position where the prefix a ends, accumulating along the way the difference of versions v and k-1 for the binomial sums of everything fully to the left. The full blocks contribute sum C(p-k+d-1,d-1), expanded by Vandermonde as sum_j C(d-1-k,d-1-j)*sum C(p,j) with generalized (negative upper index) binomials, all in wrapping 64-bit arithmetic since the true answer is at most 1e9. Then recurse into the partial block with (u,t-1,rem); at t=0 add [v==k]. Complexity O((n+q*s) log n), about 2.2M nodes. Pitfalls: lengths overflow, so they must be saturated (cap 2e9 > a) and cannot be subtracted between versions; the power sums overflow too, hence the binomial basis instead of dividing by 6; level d=0 is a special case using the position of k. Stress-tested against direct expansion for n<=6, s<=5.",
+ "code_path": "solutions/kattis_permutationcfg.cpp",
+ "samples_passed": true
+}

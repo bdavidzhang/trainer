@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cangaroo",
+ "rating": 1800,
+ "topics": [
+  "dp-bitmask",
+  "dp",
+  "bitmasks"
+ ],
+ "key_idea": "Cans sit in n/2 fixed horizontal layers but at any horizontal offset; a layer is a set of disjoint dominoes on <=10 columns (only 89 placements), so do a layer-by-layer DP over placements.",
+ "sketch": "Since n is even and cans rest on the floor or on other cans, cans occupy row pairs (2k,2k+1); horizontally a layer is any set of non-overlapping width-2 intervals, of which there are Fibonacci-many (89 for m=10). A placement is valid for a layer if it covers every column that has a '#' in either of its two rows. Going from the bottom layer up, dp[layer][P] = cans(P) + min dp[below][Q] over Q such that every can of P has at least one of its two columns covered in Q. Answer is the min over placements of the top layer. Complexity (n/2)*89^2. Pitfall: reading the support rule correctly (one half resting is enough, so cans may be offset by one column from the can below) and remembering that support cans may be needed even where nothing must be hidden.",
+ "code_path": "solutions/kattis_cangaroo.cpp",
+ "samples_passed": true
+}

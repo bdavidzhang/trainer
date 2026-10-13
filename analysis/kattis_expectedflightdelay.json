@@ -1,0 +1,12 @@
+{
+ "id": "kattis:expectedflightdelay",
+ "rating": 1100,
+ "topics": [
+  "probability",
+  "implementation"
+ ],
+ "key_idea": "Chance of arriving when starting i days early is 1 minus the product of the failure probabilities of those i days; walk backwards until it reaches the target.",
+ "sketch": "Starting from the day before the meeting, walk back one day at a time, multiplying the running failure probability by (100-p)/100 with p chosen by weekday/weekend, and stop at the first i where (1-fail)*100 >= p_imp. Output the weekday name, i, and 'day' vs 'days'. The loop is short: worst case is about 460 effective days with 1% chance, i.e. under 2000 iterations. Pitfalls: day 1 is Sunday so weekend = indices 1 and 7; one of the probabilities may be 0 (those days contribute nothing); singular 'day' when N=1; the statement guarantees a 1e-6 gap so long double comparison is safe.",
+ "code_path": "solutions/kattis_expectedflightdelay.cpp",
+ "samples_passed": true
+}

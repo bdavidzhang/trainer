@@ -1,0 +1,13 @@
+{
+ "id": "kattis:manhattanwalk",
+ "rating": 1500,
+ "topics": [
+  "probability",
+  "dp",
+  "math"
+ ],
+ "key_idea": "Backward expectation DP: at a cell with smaller continuation A and larger B, with probability 1/2 the arrow points at B and you pay E[min(B - A, t)] extra for t uniform on [0, p].",
+ "sketch": "Let E[i][j] be the optimal expected wait from a cell, E at the goal 0. On the last row or column there is only one usable direction, so the cost is next + p/4 (wrong arrow half the time, mean wait p/2). Elsewhere let A <= B be the two neighbours' values and d = B - A: if the arrow points to A go at once; otherwise wait only if t < d, costing E[min(d, t)] = p/2 when d >= p, else (d^2/2 + d(p - d))/p. So E = A + that/2. O(rc) with doubles, printed to 9 decimals. Pitfall: the border cells are forced, not a min of two options.",
+ "code_path": "solutions/kattis_manhattanwalk.cpp",
+ "samples_passed": true
+}

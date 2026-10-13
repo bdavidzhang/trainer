@@ -1,0 +1,13 @@
+{
+ "id": "kattis:battleofnieuwpoort",
+ "rating": 800,
+ "topics": [
+  "math",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "The year ends in 00 in base b iff b*b divides y; try b = 2..16.",
+ "sketch": "Loop over bases, test y % (b*b) == 0, and print y in that base with lowercase letters for digits above 9; otherwise print impossible. y>=1 so there is no leading-zero issue. Any valid base is accepted, so the token checker reports WRONG on samples where I print a smaller base; samples_passed is from my own validator, which checked all y in 1..2024 (value round-trips, ends in 00, impossible only when no base works).",
+ "code_path": "solutions/kattis_battleofnieuwpoort.cpp",
+ "samples_passed": true
+}

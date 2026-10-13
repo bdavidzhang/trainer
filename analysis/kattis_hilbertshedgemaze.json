@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hilbertshedgemaze",
+ "rating": 2600,
+ "topics": [
+  "divide-and-conquer",
+  "trees",
+  "constructive",
+  "geometry"
+ ],
+ "key_idea": "The Hilbert curve is a Hamiltonian path on lattice points, so the cells inside its bounding box form a forest hanging off the outside; each cell has a unique escape route that can be built recursively as an O(n)-segment polyline.",
+ "sketch": "An order-k curve is four order-(k-1) copies (top two opening down, bottom-left opening left, bottom-right opening right) plus three connector edges, leaving a width-1 cross of corridor cells: the top arm exits upward, and left/right/centre/bottom arms exit downward. Recursively compute the escape polyline of a cell: recurse into its quadrant in that quadrant's canonical frame (transpose / rotate coordinates), map points back, and if the exit lands in the cross append the corridor route; O(n^2) per query. For two cells, if both polylines end at the same outside cell they lie in the same subtree, so distance = len1 + len2 - 2*(common suffix length), found by walking the two reversed polylines segment by segment. Otherwise distance = len1 + len2 + Manhattan distance between the exit cells outside the box, with a detour around the box when they are on opposite sides within its span (a path can never cut through the box because the inside is a forest). Pitfalls: cells are indexed 0..2^n-2 inside the box, coordinates go to 2^52 so 64-bit everywhere, and query cells may lie outside the box. Stress-tested against a BFS on the literally generated curve for n<=4 (800 random queries).",
+ "code_path": "solutions/kattis_hilbertshedgemaze.cpp",
+ "samples_passed": true
+}

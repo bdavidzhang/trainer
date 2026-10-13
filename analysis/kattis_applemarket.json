@@ -1,0 +1,13 @@
+{
+ "id": "kattis:applemarket",
+ "rating": 2300,
+ "topics": [
+  "flows",
+  "sparse-table",
+  "graphs"
+ ],
+ "key_idea": "It is a bipartite max flow customers -> stores, but each customer touches up to 2500 stores; route each rectangle through a 2D sparse table of infinite-capacity helper nodes so every customer needs only 4 edges.",
+ "sketch": "Build nodes (p,q,i,j) for the 2^p x 2^q block at (i,j); each links with infinite capacity to its two halves (halve rows first, then columns) and 1x1 blocks link to the sink with the store inventory. Each customer gets a source edge of capacity x and at most 4 infinite edges to the overlapping blocks covering its rectangle (overlap is harmless for flow). Customers with identical rectangles are merged. About 90k helper nodes and 600k edges; Dinic finishes in well under a second because all augmenting paths are short. Use 64-bit capacities (answer up to 1e14). Stress-tested against a direct-edge max flow on small grids.",
+ "code_path": "solutions/kattis_applemarket.cpp",
+ "samples_passed": true
+}

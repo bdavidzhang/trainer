@@ -1,0 +1,13 @@
+{
+ "id": "kattis:palindromicwordsearch",
+ "rating": 1800,
+ "topics": [
+  "strings",
+  "palindromes",
+  "brute-force"
+ ],
+ "key_idea": "The row palindrome and the column palindrome must cross at a cell, and given that cell the two choices are independent: answer is max over cells of (longest row palindrome covering it) * (longest column palindrome covering it).",
+ "sketch": "The rectangle is exactly the bounding box of a horizontal palindrome in row r spanning columns c1..c2 and a vertical one in column c spanning rows r1..r2 with c in [c1,c2] and r in [r1,r2], so fix the crossing cell (r,c). For every row and column string compute cover[i] = length of the longest palindromic substring containing position i: expand around all centres to get maxEnd[a] for each start a, then for each a paint max(len) over [a,maxEnd[a]]. That is O(L^2) per line, about 2*500*500^2/2 simple steps overall, well inside the limit (Manacher plus a sweep would make it linear). Take the max product. Pitfall: seeing the decoupling, since reasoning about all O(R^2 C^2) rectangles directly is hopeless. Stress-tested against a brute force over all rectangles.",
+ "code_path": "solutions/kattis_palindromicwordsearch.cpp",
+ "samples_passed": true
+}

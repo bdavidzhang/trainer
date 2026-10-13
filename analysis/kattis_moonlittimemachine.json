@@ -1,0 +1,12 @@
+{
+ "id": "kattis:moonlittimemachine",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Only 28 possible jump lengths: try each d from 1 and check that phase((d*i) mod 28) matches the i-th observation.",
+ "sketch": "Encode the phase table as a function of day mod 28. For d = 1..28 simulate the n jumps starting from day 0 (the first observation is after one jump, i.e. day d) and output the first d consistent with every observation. O(28 n). Pitfalls: the table is asymmetric (Quarter is 5-8 but 20-22, Crescent 1-4 but 23-27), and d=28 is a legal answer (all New).",
+ "code_path": "solutions/kattis_moonlittimemachine.cpp",
+ "samples_passed": true
+}

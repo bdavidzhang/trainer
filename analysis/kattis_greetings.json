@@ -1,0 +1,12 @@
+{
+ "id": "kattis:greetings",
+ "rating": 1700,
+ "topics": [
+  "dp-bitmask",
+  "bitmasks"
+ ],
+ "key_idea": "Each envelope serves a subset of card types with cost (max w * max h) * sum q - area used, so it is a partition of 15 items into at most k groups: submask-enumeration DP.",
+ "sketch": "Precompute cost[mask] for all 2^n subsets. dp_j[mask] = min over submasks s containing the lowest set bit of cost[s] + dp_{j-1}[mask ^ s], repeated k-1 times; forcing the lowest bit into the group cuts enumeration to 3^(n-1) per layer, about 72M steps total. Envelopes need not match an existing card, only the component-wise maximum. Values reach ~1.5e13, use int64. Stress-tested against set-partition brute force.",
+ "code_path": "solutions/kattis_greetings.cpp",
+ "samples_passed": true
+}

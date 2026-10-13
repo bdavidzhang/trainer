@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lcmtree",
+ "rating": 2600,
+ "topics": [
+  "dp",
+  "combinatorics",
+  "number-theory"
+ ],
+ "key_idea": "Build the forest bottom-up in increasing order of value, keeping only how many parentless subtree roots of each distinct value are waiting; a root count above remaining+1 can never collapse to one tree, which keeps the state space tiny. Equal values are handled in layers by their height within the chain of equal-valued ancestors.",
+ "sketch": "State: vector of counts of floating roots per distinct value. For value v with multiplicity m, layer 0 creates v-nodes that are leaves or take two floating roots x,y<v with lcm(x,y)=v; layer r>=1 creates v-nodes having at least one child among the v-nodes made in layer r-1, paired with another of that layer, an older v-node, or any floating divisor of v, so states inside a stage also carry (newest layer size, older v count, nodes used). Choosing t pairs of a type contributes C(cx,t)*C(cy,t)*t! (or c!/((c-2t)! t! 2^t) for equal types), and labels within the value class contribute m! with a 1/l! correction for the l indistinguishable leaf configurations. The answer is the total weight of states with exactly one floating root after the largest value. States are hashed strings in unordered maps; worst inputs I tried (25 divisors of highly composite numbers) run in under 0.05 s. Pitfalls: duplicates make a naive process-in-sorted-order DP undercount (7 7 7 has 3 trees), children are unordered so pairs must not be counted twice, lcm reaches 1e18, and a top-down DP over open child slots blows up (15 s) on divisor-rich inputs. Verified against a subset-DP brute force for n<=9.",
+ "code_path": "solutions/kattis_lcmtree.cpp",
+ "samples_passed": true
+}

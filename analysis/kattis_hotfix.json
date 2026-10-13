@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hotfix",
+ "rating": 2300,
+ "topics": [
+  "suffix-structures",
+  "strings",
+  "prefix-sums",
+  "monotonic-stack-queue"
+ ],
+ "key_idea": "With the suffix array and LCP array, suffix i contributes the new substrings s[i..j] for j >= i+lcp_i, so the letter totals become a range-add plus a counted weight (n-p) per position, and the digit totals come from a histogram of occurrence counts obtained from the LCP intervals (suffix tree nodes).",
+ "sketch": "Build the suffix array (radix-sort prefix doubling, O(n log n)) and Kasai LCP. Letters: for suffix i with l = lcp to its predecessor in sorted order, position p in [i,i+l) lies in n-i-l new substrings and position p >= i+l lies in n-p of them; accumulate with a difference array and a counter of how many suffixes have i+l <= p, then add each position's weight to its character. Digits: each LCP interval of width w with lcp value h and parent value h' represents h-h' distinct substrings occurring w times (monotonic stack over the LCP array), and each suffix adds n-sa[r]-max(lcp[r],lcp[r+1]) substrings occurring once; for every count k add H[k] to each decimal digit of k. Totals reach about n^3/6 = 1.7e17 so 64-bit is required. Runs in about 0.2 s for n = 1e6; stress-tested against a brute force on short strings.",
+ "code_path": "solutions/kattis_hotfix.cpp",
+ "samples_passed": true
+}

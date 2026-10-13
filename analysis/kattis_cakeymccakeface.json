@@ -1,0 +1,12 @@
+{
+ "id": "kattis:cakeymccakeface",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "sorting"
+ ],
+ "key_idea": "With N,M<=2000 there are only 4e6 entry/exit pairs, so enumerate every non-negative difference and take the most frequent one.",
+ "sketch": "Collect exit-entry for all pairs with exit>=entry into an array (up to 4e6 ints), sort it, and scan runs to find the longest; because the scan is in ascending order and only strictly longer runs replace the best, ties resolve to the smallest value. O(NM log(NM)), about 0.1 s. Pitfalls: negative differences must be discarded, and if no non-negative difference exists every candidate has zero correspondences so the answer is 0. Timestamps are distinct per detector, so each pair counts one correspondence per difference.",
+ "code_path": "solutions/kattis_cakeymccakeface.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:specialcycle",
+ "rating": 2800,
+ "topics": [
+  "matching",
+  "graphs",
+  "constructive"
+ ],
+ "key_idea": "Each connected component of special edges is all-on or all-off the cycle, so only path components are usable; contract every such path to a matched pair of endpoints and split each untouched vertex into a matched pair, and a valid cycle through a path becomes an alternating cycle through its matching edge, i.e. an augmenting path between its two ends found by Edmonds' blossom algorithm.",
+ "sketch": "Classify special components: a component that is itself a simple cycle is the answer; a path becomes an object with two ends (its internal vertices can only be entered along the path); anything else (degree >= 3, or a cycle with extras) bans all its vertices. If the vertices with no special edge contain a cycle among themselves, DFS finds it and that is an answer. Otherwise build the split graph (path ends = 1 node each, free vertex = 2 mutually matched copies, every ordinary edge joined to all copies), and for each path object unmatch its two ends and run one blossom search from one end; reaching the other end gives a simple alternating path, which maps back to a simple cycle after re-expanding the paths. A simple alternating path can never reuse an original edge, which is why the degenerate 2-cycle between two free vertices only has to be ruled out in the all-free case handled by the DFS. Complexity about O(#paths * (E + V^2)) with V <= 300, far below the limit. Multiple answers are accepted, so the sample checker cannot judge it: samples_passed is from my own validator (cycle simple, edges exist, special condition), plus 6000 random cases with n<=8 against exhaustive cycle enumeration for existence and 300 larger validity runs.",
+ "code_path": "solutions/kattis_specialcycle.cpp",
+ "samples_passed": true
+}

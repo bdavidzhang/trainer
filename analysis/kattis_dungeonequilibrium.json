@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dungeonequilibrium",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Each type is independent: keep exactly x copies of type x if at least x exist, otherwise delete all of them.",
+ "sketch": "Count occurrences c[x]. For x>=1 add c[x]-x if c[x]>=x, else add c[x]. Type 0 can never be balanced while present, so all zeros are removed. O(n). Only pitfall is the value 0.",
+ "code_path": "solutions/kattis_dungeonequilibrium.cpp",
+ "samples_passed": true
+}

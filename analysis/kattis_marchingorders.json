@@ -1,0 +1,13 @@
+{
+ "id": "kattis:marchingorders",
+ "rating": 1300,
+ "topics": [
+  "number-theory",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The marching order fixes m mod n, m mod (n-1), ..., m mod 1; merge the congruences one at a time with generalised CRT, and since lcm(1..20) = 232792560 < 1e9 the smallest solution is automatically in range.",
+ "sketch": "Recover each residue as the index of the next professor in the shrinking alphabetical list. Keep (m, l) meaning the solutions are m mod l; to add 'm = r mod k' step m by l at most k times until it fits, otherwise the system is inconsistent and the answer is NO; then l = lcm(l, k). The final m is the smallest non-negative solution. O(n^2). Pitfall: moduli are not coprime, so plain CRT formulas do not apply. Checked against brute force over m for n <= 8.",
+ "code_path": "solutions/kattis_marchingorders.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bogofeternalstench",
+ "rating": 2300,
+ "topics": [
+  "shortest-paths",
+  "binary-search",
+  "graphs"
+ ],
+ "key_idea": "With clamping at zero, the final stench of a walk equals max(0, largest suffix sum), so binary search the answer X and ask, walking backwards from n, whether node 1 is reachable while the running sum never exceeds X; negative cycles reachable under that budget make everything behind them reachable.",
+ "sketch": "Reverse all edges and run Bellman-Ford from n where a relaxation is allowed only if the new distance is <= X. If after n rounds some edge can still relax, its head lies behind a negative cycle that is feasible under the budget (removing a non-negative cycle never hurts feasibility), so mark those nodes as -infinity and propagate -infinity along reversed edges without any budget test. X is feasible iff node 1 is reached; binary search X in [0, 2e12]. Complexity O(n*m*log(2e12)) ~ 1.7e8. Pitfalls: plain Bellman-Ford on the clamped recurrence converges only pseudo-polynomially (sample 2 needs ~500 laps of the cycle), a negative cycle does not automatically give 0 at every node, and sums need 64 bits. Stress-tested against value iteration on small graphs.",
+ "code_path": "solutions/kattis_bogofeternalstench.cpp",
+ "samples_passed": true
+}

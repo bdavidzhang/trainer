@@ -1,0 +1,13 @@
+{
+ "id": "kattis:trafficlights",
+ "rating": 1300,
+ "topics": [
+  "brute-force",
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "Light i is green at integer time t iff t mod (r+g) >= r; simulate t, jumping straight to the next green start of any light that is red.",
+ "sketch": "All lights are synchronised at t=0, so the condition is t mod p_i >= r_i with p_i=r_i+g_i. Note t = lcm(p_i)-1 always satisfies it, so -1 never actually occurs and the answer is below lcm(2..20) ~ 2.3e8. Loop on t: find the first light that is red and advance t by r_i - (t mod p_i); if none is red, print t. Lights are ordered by smallest green fraction so reds are found quickly and jumps are long; adversarial g=1 cases ran in about 30 ms. Stress-tested against a naive per-second simulation. Pitfall: use 64-bit and do not step one second at a time across all ten lights without jumping.",
+ "code_path": "solutions/kattis_trafficlights.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:wherehaveyoubin",
+ "rating": 1800,
+ "topics": [
+  "dp",
+  "dp-bitmask",
+  "prefix-sums"
+ ],
+ "key_idea": "Only the final layout matters: a surviving bin costs its item count iff it does not lie inside its company's final contiguous block, so maximise the kept weight by a DP over (subset of companies already placed, prefix of bins).",
+ "sketch": "Apply deletions (weight becomes 0, bin becomes empty) and compute each company's final bin count = survivors + requests. dp[mask][p] = max total weight of surviving bins that stay put when the companies in mask occupy disjoint blocks inside the first p bins; either bin p is left as a gap (dp[mask][p-1]) or some company k in mask ends its block of length cnt_k at p, gaining the prefix-sum weight of k's own bins in that window. Answer = total surviving weight - dp[31][n]. Complexity 32*150*5. Pitfalls: after deletions a company's bins may be non-contiguous, companies with zero bins are zero-length blocks, the order of companies may change, and new/deleted bins cost nothing. Verified against an exhaustive brute force over all final layouts for n <= 7 (300 random cases).",
+ "code_path": "solutions/kattis_wherehaveyoubin.cpp",
+ "samples_passed": true
+}

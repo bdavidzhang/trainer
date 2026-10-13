@@ -1,0 +1,13 @@
+{
+ "id": "kattis:threedice",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "graphs",
+  "bitmasks"
+ ],
+ "key_idea": "Letters sharing a word must be on different dice, so it is a 3-colouring of at most 18 letters with each colour class of size at most 6; backtrack over the letters.",
+ "sketch": "Answer 0 if a word repeats a letter or more than 18 distinct letters occur. Build a 26-vertex conflict graph (two letters adjacent if they share a word) and backtrack assigning each used letter to one of 3 dice, rejecting a die that already holds an adjacent letter (bitmask test) or already has 6 letters; fix the first letter on die 0 for symmetry and order letters by degree. Worst case 3^17 light nodes, in practice far fewer. Finally pad the dice to 6 faces with unused letters, which is always possible since 26 >= 18. Multiple answers are accepted, so the checker's token compare reports WRONG on samples 1 and 3; I validated outputs with my own validator (18 distinct letters, every word formable) and compared feasibility against an exhaustive brute force on 400 random cases, all consistent.",
+ "code_path": "solutions/kattis_threedice.cpp",
+ "samples_passed": true
+}

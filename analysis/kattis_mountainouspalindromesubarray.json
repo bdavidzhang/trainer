@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mountainouspalindromesubarray",
+ "rating": 1100,
+ "topics": [
+  "two-pointers",
+  "palindromes",
+  "implementation"
+ ],
+ "key_idea": "The center must be a strict peak, and expanding from each peak while values mirror and strictly decrease outward costs O(n) in total because expansions stay inside the monotone runs around that peak.",
+ "sketch": "For every index i with a[i-1] < a[i] > a[i+1], extend k while a[i-k-1] == a[i+k+1] and a[i-k-1] < a[i-k]; the candidate length is 2k+1. Take the maximum, or -1 if no peak exists. Each element lies in at most one increasing run to the left of a peak and one decreasing run to its right, so total work is linear for n up to 1e6. Pitfalls: an even-length palindrome can never be strictly mountainous (two equal middle values), minimum length is 3, and use fast input for 1e6 lines.",
+ "code_path": "solutions/kattis_mountainouspalindromesubarray.cpp",
+ "samples_passed": true
+}

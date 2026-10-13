@@ -1,0 +1,14 @@
+{
+ "id": "kattis:keygen3",
+ "rating": 2600,
+ "topics": [
+  "search-backtracking",
+  "constructive",
+  "randomized",
+  "combinatorics"
+ ],
+ "key_idea": "Build the permutation by placing values 1..n at the leftmost or rightmost free position and track open paths, so cycles are counted incrementally and a DFS can prune. Leading fixed points give count(n,m) >= count(n-1,m-1), and the count is below 2000 only when n is small or n-m <= 9, exactly the cases where the pruned DFS is exhaustive and cheap.",
+ "sketch": "State: values 1..v placed, a on the left, r on the right; adding edge position->value merges two paths or closes a cycle (start/end arrays, O(1) undo). Upper bound on future cycles: n-v before the first right move, else min(n-v, ceil((n-v+r)/2)), since after a right move cycles only close once the free interval meets placed values. Case n<=23 or n-m<=9: exhaustive DFS stopping at 2000 (at most ~7e5 nodes). Case 10<=n-m<=22: take 2000 solutions of (23, 23-(n-m)) and prepend n-23 fixed points. Case n-m>=23: sample random bitonic permutations of size (n-m)+m' with m'=min(m,4) cycles (probability 1-20%) and prepend m-m' fixed points, deduplicating with a set. The threshold facts were checked by brute force (row n=23 has >=2000 for every n-m>=10). Many outputs are valid, so the sample checker cannot judge it: verified with my own validator (bitonic, cycle count, distinct, r) for every pair n<=100, with r compared to brute-force counts for n<=16.",
+ "code_path": "solutions/kattis_keygen3.cpp",
+ "samples_passed": true
+}

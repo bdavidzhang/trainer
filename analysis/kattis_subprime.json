@@ -1,0 +1,13 @@
+{
+ "id": "kattis:subprime",
+ "rating": 1000,
+ "topics": [
+  "number-theory",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "The 100000th prime is 1299709, so sieve to 1.3M, walk primes by index and test decimal substring containment.",
+ "sketch": "Sieve of Eratosthenes up to 1,300,000, counting primes as they appear; for indices in [l,h] convert the prime to a string and use find with p read as a string (so leading zeros are preserved). O(N log log N + h*7). Pitfall: p must be read as a string, not an integer, because '00' differs from '0'; each prime is counted once regardless of the number of occurrences.",
+ "code_path": "solutions/kattis_subprime.cpp",
+ "samples_passed": true
+}

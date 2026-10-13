@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dividetothebasics",
+ "rating": 1600,
+ "topics": [
+  "number-theory",
+  "dp",
+  "combinatorics"
+ ],
+ "key_idea": "The answer is the number of ordered factorizations H(N), with H(1)=1 and H(n) = sum of H(d) over proper divisors d of n; N <= 1e12 has at most 6720 divisors so a quadratic DP over the divisor list is enough.",
+ "sketch": "Factor N by trial division up to 1e6, generate and sort all divisors, then for each divisor x sum H(d) over smaller divisors d dividing x, modulo 1e9+7. This is about D^2/2 = 22M modulo operations in the worst case (0.05s for 963761198400). Pitfalls: N = 1 gives 1 (the empty sequence), 64-bit arithmetic for divisors, and taking the modulus after accumulating (the sum of 6720 values below 1e9+7 fits in 64 bits). Verified against a direct recursion for all N < 300 and both samples.",
+ "code_path": "solutions/kattis_dividetothebasics.cpp",
+ "samples_passed": true
+}

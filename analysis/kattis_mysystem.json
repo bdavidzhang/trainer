@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mysystem",
+ "rating": 1300,
+ "topics": [
+  "interactive",
+  "probability",
+  "randomized"
+ ],
+ "key_idea": "The second question of every pair is determined by the revealed answer to the first, so only 100 questions are real guesses; guess those uniformly at random.",
+ "sketch": "For odd questions output a truly random letter (seeded from random_device and the clock so the adaptive interactor cannot predict it); for even questions output the opposite of the answer just revealed, which is always right. That guarantees 100 correct plus Binomial(100, 1/2); a test case fails only if fewer than 20 of the coin flips hit, probability about 1e-10, negligible even over 10^4 cases. A deterministic strategy would be beaten by the adaptive interactor, so randomness is essential. Pitfalls: flush after every letter and exit cleanly on -1. The sample checker cannot judge interaction; I validated with my own local interactor (100 cases of random pair-respecting answers, worst score 138/200), so samples_passed reflects that validator.",
+ "code_path": "solutions/kattis_mysystem.cpp",
+ "samples_passed": true
+}

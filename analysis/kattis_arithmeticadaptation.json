@@ -1,0 +1,12 @@
+{
+ "id": "kattis:arithmeticadaptation",
+ "rating": 800,
+ "topics": [
+  "constructive",
+  "case-analysis"
+ ],
+ "key_idea": "Use a = sign(s)*1 and b = s-a, patching the cases where b would be zero.",
+ "sketch": "For s>0 output 1 and s-1 (2 and -1 if s=1); for s<0 output -1 and s+1 (-2 and 1 if s=-1); for s=0 output 1 and -1. Choosing a with the same sign as s keeps |b|<=998, so the three-digit bound holds at s=+-999. Multiple answers are accepted, so the token checker flags sample 4 (it prints -999 999); validated with my own checker over all s in [-999,999] (sum, nonzero, range), which is why samples_passed is true.",
+ "code_path": "solutions/kattis_arithmeticadaptation.cpp",
+ "samples_passed": true
+}

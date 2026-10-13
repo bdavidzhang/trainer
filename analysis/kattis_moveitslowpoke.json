@@ -1,0 +1,13 @@
+{
+ "id": "kattis:moveitslowpoke",
+ "rating": 1800,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Dijkstra on states (last directed road, length of the current continuous chain), since legality of the next road depends only on the previous road and the accumulated chain length.",
+ "sketch": "State is (a->b, run) with run capped at d+1. Moving to c != a (no u-turns): if (a,b,c) is a continuous pair the chain extends and needs run + len <= d, otherwise the chain restarts at len(b,c), which may itself exceed d because a lone road is always allowed. Start with every road out of s, stop at the first popped state whose head is t. About 9900 directed roads times 102 runs states with up to 99 transitions each; a dominance prune (skip a popped state if the same directed road was already popped with a run no larger) keeps it fast, 0.3 s on a complete 100-vertex graph. Pitfalls: continuity is ordered (a,b,c does not imply c,b,a), chains accumulate across several pairs, and the continuous table is indexed by three vertices (1e6 bools).",
+ "code_path": "solutions/kattis_moveitslowpoke.cpp",
+ "samples_passed": true
+}

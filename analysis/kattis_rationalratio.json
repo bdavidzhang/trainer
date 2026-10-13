@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rationalratio",
+ "rating": 1300,
+ "topics": [
+  "math",
+  "number-theory",
+  "implementation"
+ ],
+ "key_idea": "A decimal with n fractional digits whose last r repeat equals (allDigits - digitsWithoutRepeatingPart) / (10^(n-r) * (10^r - 1)).",
+ "sketch": "Parse the number as a digit string, drop the decimal point, and compute A = all digits as an integer and B = the digits with the last r removed. The value is (A-B) / (10^(n-r) * (10^r - 1)); reduce by gcd and print. A has at most 14 digits and the denominator is below 1e11, so 64-bit integers suffice. Pitfalls: leading zeros in either part (parse as strings), and r = n (no non-repeating fractional digits).",
+ "code_path": "solutions/kattis_rationalratio.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:digitsofunity",
+ "rating": 2000,
+ "topics": [
+  "combinatorics",
+  "bitmasks",
+  "dp-bitmask",
+  "math"
+ ],
+ "key_idea": "For each bit mask S count f(S) = numbers in [1,m] that are supersets of S (superset-sum SOS DP); P(f(S),n) counts tuples whose AND contains S, and inclusion-exclusion coefficients depend only on popcount(S).",
+ "sketch": "m < 2^23, so fill an array with 1 for 1..m and run a superset-sum zeta transform (23 * 2^23 additions). g(S) = f(S)!/(f(S)-n)! is the number of ordered n-tuples of distinct ids all containing S. The number of tuples whose AND has at least k bits is sum over S of w(|S|) * g(S), where w(s) = sum_{j=k..s} C(s,j) * (-1)^(s-j) comes from Mobius-inverting the superset relation and grouping by popcount, so no second transform is needed. If k exceeds the bit length of m the answer is 0. O(B * 2^B) time, 32 MB. Verified against a permutation brute force for small m; max input runs in 0.2 s.",
+ "code_path": "solutions/kattis_digitsofunity.cpp",
+ "samples_passed": true
+}

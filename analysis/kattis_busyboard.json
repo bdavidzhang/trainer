@@ -1,0 +1,13 @@
+{
+ "id": "kattis:busyboard",
+ "rating": 2100,
+ "topics": [
+  "ad-hoc",
+  "constructive",
+  "case-analysis"
+ ],
+ "key_idea": "Work backwards: the last hammer leaves an X alone in its row and column, and a row/column containing a non-isolated X of the target can never be hammered, so everything outside the clean rows/columns must already match.",
+ "sketch": "If start equals target answer 1. Otherwise mark each target X as isolated (only X in its row and column) or bad; rows/columns with a bad X are untouchable. Answer 1 iff at least one isolated X exists, every cell lying in an untouchable row AND an untouchable column equals the start, and the start has at least one up peg in a clean row and clean column (otherwise no useful hammer is possible). Sufficiency: one up peg in the clean region lets you raise all clean rows/columns, walk the single stray X like a rook to an isolated position, then hammer the remaining isolated positions. O(rc). Verified against BFS over all states on boards up to 3x4.",
+ "code_path": "solutions/kattis_busyboard.cpp",
+ "samples_passed": true
+}

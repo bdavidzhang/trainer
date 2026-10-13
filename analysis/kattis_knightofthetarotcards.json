@@ -1,0 +1,13 @@
+{
+ "id": "kattis:knightofthetarotcards",
+ "rating": 2300,
+ "topics": [
+  "number-theory",
+  "shortest-paths",
+  "math"
+ ],
+ "key_idea": "The moves of card (a,b) generate the Gaussian-integer ideal (z, conj z) = d*(1+i)^e with d=gcd(a,b) and e=1 iff a/d and b/d are both odd; owning several cards is the gcd of these ideals, so the state is just (d,e).",
+ "sketch": "Dijkstra over lattice states, starting from the empty lattice at the start square with cost 0; a card is buyable if its offset from the start lies in the current lattice (d divides both coordinates, plus even coordinate sum of the quotients when e=1). Combining states: gcd of the odd parts and min of the (1+i)-adic valuations 2*v2(d)+e. States are divisors of the first card's ideal so there are few; each expands over n cards. Any card located on the start square can be the first purchase, and if the start is (0,0) the answer is 0. Costs need 64-bit. Verified against a subset-Dijkstra with bounded-box BFS on small cases.",
+ "code_path": "solutions/kattis_knightofthetarotcards.cpp",
+ "samples_passed": true
+}

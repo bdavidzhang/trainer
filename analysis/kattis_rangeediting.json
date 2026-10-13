@@ -1,0 +1,12 @@
+{
+ "id": "kattis:rangeediting",
+ "rating": 2000,
+ "topics": [
+  "dp-interval",
+  "dp"
+ ],
+ "key_idea": "Treat empty as colour 0 and pad the array with a 0 on both sides: the task becomes the classic strange-printer interval DP, and since both ends are 0 an optimal plan starts with one stroke of 0 over everything, which the initially empty sheet gives for free, so the answer is dp-1.",
+ "sketch": "Compress equal adjacent values and add sentinels 0 at both ends (m<=802). dp[i][j] = dp[i][j-1] if a[i]==a[j], otherwise min over k of dp[i][k]+dp[k+1][j], with dp[i][i]=1; output dp[0][m-1]-1. Correctness: any real sequence of operations plus an initial full-range delete is a strange-printer plan, and conversely an optimal plan for a range with equal endpoints can be assumed to begin with a stroke of that colour over the whole range. O(n^3/6) ~ 9e7 operations. Pitfalls: a delete counts as an operation just like a paint, and values up to 1e9 need only equality comparisons. Verified against BFS over all sheet states for n<=6.",
+ "code_path": "solutions/kattis_rangeediting.cpp",
+ "samples_passed": true
+}

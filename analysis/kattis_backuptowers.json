@@ -1,0 +1,13 @@
+{
+ "id": "kattis:backuptowers",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Multi-source BFS where every cell stores its two best distinct towers ordered by (distance, id); the k-best of a cell always propagate through a neighbour's k-best.",
+ "sketch": "Run Dijkstra/BFS over states (dist, tower id, cell) in lexicographic order; a cell accepts a state if it has fewer than 2 towers and does not already hold that id, then pushes to its 4 neighbours. Correctness: if tower t is in the top-2 of x, it is in the top-2 of the neighbour y on a shortest path to t, since anything beating t at y also beats it at x. At most 2 accepted states per cell, so about 2*4*r*c pushes, O(rc log) and 0.2s. Pitfalls: tie-breaking by lowest id for both the first and the second tower, and fast output of 500k numbers.",
+ "code_path": "solutions/kattis_backuptowers.cpp",
+ "samples_passed": true
+}

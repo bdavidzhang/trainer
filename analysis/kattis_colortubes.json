@@ -1,0 +1,13 @@
+{
+ "id": "kattis:colortubes",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Keep the invariant 'one empty tube, the rest full'; depths (0 top,1,2) sum to 3 per tube so some unsolved colour has total depth <= 3, and unless it is the pattern middle/middle/middle its three balls can be dug out into the empty tube using only the holes created so far.",
+ "sketch": "First consolidate the 3 free slots into one empty tube (<= 2 moves). Then repeat: among unsolved tubes pick the colour with minimum depth sum, skipping any colour with all three balls in middle positions (another colour with sum <= 3 always exists, since only a third of colours could be all-middle). Process its balls in increasing depth: move the balls above it onto other involved tubes that have a hole (each extracted ball leaves exactly the hole needed for the next one), then move it to the empty tube; finally refill the involved tubes from the least-filled one so one becomes empty again (<= 2 moves). That is at most 8 moves per colour, well under 20n; O(n^2) from the colour scan. Multiple answers are valid so the sample checker cannot judge it: samples_passed is from my own validator, which simulated the moves on 3000 random cases (n up to 1000) plus both official samples and confirmed legality, final state and the 20n bound (worst seen about 5.2n). Pitfalls: balls of the colour sharing a tube, initially partially filled tubes, and already-solved tubes must be excluded from the depth statistics.",
+ "code_path": "solutions/kattis_colortubes.cpp",
+ "samples_passed": true
+}

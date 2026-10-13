@@ -1,0 +1,13 @@
+{
+ "id": "kattis:brownianbears",
+ "rating": 1400,
+ "topics": [
+  "dp",
+  "probability",
+  "math"
+ ],
+ "key_idea": "Count, out of 4^d equally likely move sequences, those where the bears never share a cell; a DP over the pair of positions does it exactly in 64-bit integers.",
+ "sketch": "State f[a][b] = number of move sequences after t days with bears at a,b and no meeting so far. Each day try the 4 direction combinations (a move off the end means staying), dropping transitions where the positions coincide. Only same-day equality counts, so swapping past each other is fine. Answer is (4^d - sum f)/4^d reduced by gcd. O(d n^2); 4^31 = 2^62 fits unsigned 64-bit, print 0/1 when the numerator is 0.",
+ "code_path": "solutions/kattis_brownianbears.cpp",
+ "samples_passed": true
+}

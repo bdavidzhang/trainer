@@ -1,0 +1,14 @@
+{
+ "id": "kattis:alternatingalgorithm",
+ "rating": 2500,
+ "topics": [
+  "segment-tree",
+  "sorting",
+  "ad-hoc",
+  "data-structures"
+ ],
+ "key_idea": "Apply the 0-1 principle: the round count is the maximum over thresholds of the time to sort the 0/1 array. In a 0/1 array, a zero with at least one 1 to its left forces the last zero to finish at (#ones to its left) + (#zeros to its right) + [its index is even]: it may wait one round before its pair is compared, then moves every round, and each zero behind it arrives one round later.",
+ "sketch": "Break ties stably so the array is a permutation (equal elements never swap), then sweep thresholds k=1..n+1, turning elements into zeros in sorted order. Keep a max segment tree over positions holding val[i] = ones_left(i) + zeros_right(i) + [i even], initialised to i + [i even] minus a large constant for inactive positions. Turning position p into a zero does: add +INF at p (activate), -1 on (p, n] (one fewer 1 to their left), +1 on [0, p) (one more zero to their right). Zeros in the already-sorted prefix must be excluded, so maintain the first position that is still a 1 and query the max only to its right; the answer is the maximum query over all k. O(n log n). Pitfalls: the parity term depends on 0-indexed position and round 1 comparing (0,1); ties must be stable; answer 0 for a sorted array. Verified against a direct simulation on thousands of random small arrays with heavy ties.",
+ "code_path": "solutions/kattis_alternatingalgorithm.cpp",
+ "samples_passed": true
+}

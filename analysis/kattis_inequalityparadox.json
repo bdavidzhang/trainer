@@ -1,0 +1,13 @@
+{
+ "id": "kattis:inequalityparadox",
+ "rating": 1000,
+ "topics": [
+  "graphs",
+  "topological-sort",
+  "bfs-dfs"
+ ],
+ "key_idea": "Each inequality is a directed edge between two of 26 letters; the list is paradoxical exactly when the directed graph has a cycle.",
+ "sketch": "Parse 'a x b', orient the edge from the smaller to the larger variable, and run Kahn's topological sort on the 26-node graph; if not all nodes are removed there is a cycle, print ':(' else ':)'. Complexity is O(26^2). Pitfalls: the '>' direction must be flipped, and tokens are whitespace separated.",
+ "code_path": "solutions/kattis_inequalityparadox.cpp",
+ "samples_passed": true
+}

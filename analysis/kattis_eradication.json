@@ -1,0 +1,13 @@
+{
+ "id": "kattis:eradication",
+ "rating": 2200,
+ "topics": [
+  "dp-optimization",
+  "divide-and-conquer",
+  "dp"
+ ],
+ "key_idea": "dp[i] = min over j<i with h[j]<=h[i] of dp[j]+(i-j-1)^2 is a convex-hull-trick recurrence under a 2D dominance constraint; a CDQ split on height rank leaves index order inside each cross step, where both line slopes and query points are monotone.",
+ "sketch": "Add sentinels at index 0 (height -1) and n+1 (infinite) so border gaps are charged; the answer is dp[n+1]. Rank elements by (height, index) and recurse on rank ranges: solve the low half, push its results into the high half, then solve the high half. Each node keeps its elements in index order by stable partition, so in the cross step lines y = -2j*x + dp[j]+j^2 arrive with decreasing slope and queries x=i-1 increase, giving a monotone deque that only uses lines with j<i. Total O(n log n), about 0.5s for n=1e6. dp reaches 1e12 and hull comparisons multiply up to about 4e18, so they are done in __int128. Ties in height must be ordered by index so equal heights can chain. Matches an O(n^2) brute force on 2000 random cases.",
+ "code_path": "solutions/kattis_eradication.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:kumquatorchard",
+ "rating": 2100,
+ "topics": [
+  "constructive",
+  "geometry",
+  "case-analysis",
+  "brute-force"
+ ],
+ "key_idea": "A rectangle avoiding the origin lies in one open half-plane, and a pinwheel of four such rectangles covers every lattice point except the origin, so the answer is at most 4; any 1-3 disjoint rectangles admit a guillotine cut, so 1, 2 and 3 can be tested with prefix/suffix bounding boxes over the 2001-wide coordinate range.",
+ "sketch": "Shrink every enclosure to the integer bounding box of its trees (output it expanded by 0.3): boxes are valid iff pairwise disjoint and none contains (0,0). k=1: the global box avoids the origin. k=2: some vertical or horizontal line splits the points into two good boxes (prefix/suffix boxes by coordinate). k=3: in each of 4 orientations, cut at x=c so the right side is one good box, then split the left side either by another vertical line (accumulate column boxes downward) or by a horizontal line (maintain per-row x-extent of points with x<=c incrementally and take prefix/suffix over rows): O(4 * 2001^2). Otherwise output the bounding boxes of the four pinwheel classes (x>=1,y>=0), (x<=0,y>=1), (x<=-1,y<=0), (x>=0,y<=-1). Pitfalls: fences may not touch each other, trees or the origin (hence the 0.3 margin and exactly one decimal), points on the axes, and the non-guillotine pinwheel is exactly why 4 is sometimes needed. Many valid outputs exist, so the sample checker reports a mismatch; samples_passed is based on my own validator (strict containment, disjointness, origin exclusion, format) plus a set-partition brute force for the optimal k on 4000 random small cases and three n=1e5 cases.",
+ "code_path": "solutions/kattis_kumquatorchard.cpp",
+ "samples_passed": true
+}

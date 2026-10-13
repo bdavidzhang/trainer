@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dogs",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "two-pointers",
+  "implementation"
+ ],
+ "key_idea": "Split time at every moment either dog reaches a vertex; within a piece both move linearly, so the relative position moves along a segment and the answer is the min distance from the origin to that segment.",
+ "sketch": "Two-pointer sweep over the two polylines, advancing by dt = min(remaining length on each current segment). In each piece the relative vector is p + t*(da-db) for t in [0,dt] with unit directions da, db; minimise by clamping t = -p.v/|v|^2 (guard v = 0 when the dogs move in parallel). Stop as soon as either dog reaches its last vertex, which is still included. O(n+m) with doubles; tolerance is only 1e-4. Pitfalls: handle simultaneous vertex arrival (advance both), and reset the offset along the segment instead of accumulating error. Stress-tested against dense time sampling.",
+ "code_path": "solutions/kattis_dogs.cpp",
+ "samples_passed": true
+}

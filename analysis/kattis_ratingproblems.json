@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ratingproblems",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "The remaining n-k judges all give -3 for the minimum and +3 for the maximum.",
+ "sketch": "Sum the k known ratings s and print (s-3(n-k))/n and (s+3(n-k))/n as floating point. O(n). Only pitfall is integer division and k=0.",
+ "code_path": "solutions/kattis_ratingproblems.cpp",
+ "samples_passed": true
+}

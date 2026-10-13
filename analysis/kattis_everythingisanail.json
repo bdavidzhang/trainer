@@ -1,0 +1,12 @@
+{
+ "id": "kattis:everythingisanail",
+ "rating": 1200,
+ "topics": [
+  "dp",
+  "brute-force"
+ ],
+ "key_idea": "Tools are dropped permanently, so the completed tasks form at most three blocks in some order of the three types; try all 6 orders with a 3-state DP.",
+ "sketch": "For each permutation (p0,p1,p2) of the tool types keep d[j] = max tasks done so far while currently holding the j-th tool in that order. A task of type p_j updates d[j] = max(d[0..j]) + 1 (update j from high to low so a task is not used twice). Answer is the max over permutations and states. O(6n). Skipping tasks is free, so it is just longest subsequence of the form a*b*c*.",
+ "code_path": "solutions/kattis_everythingisanail.cpp",
+ "samples_passed": true
+}

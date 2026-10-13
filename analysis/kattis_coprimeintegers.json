@@ -1,0 +1,12 @@
+{
+ "id": "kattis:coprimeintegers",
+ "rating": 1700,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Mobius inversion: the number of coprime pairs is the sum over k of mu(k) * (multiples of k in [a,b]) * (multiples of k in [c,d]).",
+ "sketch": "Linear-sieve mu up to min(b,d) <= 1e7, then sum mu(k) * (b/k - (a-1)/k) * (d/k - (c-1)/k). O(N) time; store mu as signed char and the composite flags as a bitset to keep memory small. The answer reaches about 6.08e13, so 64-bit is required, as are 64-bit products inside the sieve. Verified the full-range value against 6/pi^2 * 1e14.",
+ "code_path": "solutions/kattis_coprimeintegers.cpp",
+ "samples_passed": true
+}

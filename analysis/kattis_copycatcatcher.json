@@ -1,0 +1,13 @@
+{
+ "id": "kattis:copycatcatcher",
+ "rating": 2000,
+ "topics": [
+  "hashing",
+  "strings",
+  "brute-force"
+ ],
+ "key_idea": "Parameterized matching: replace each variable by the distance to its previous occurrence inside the window (0 if first), which makes consistent bijective renaming equal to plain equality; with n <= 2000 all O(n^2) reference windows can be hashed.",
+ "sketch": "For every start i of the reference, walk j = i..n-1 building a rolling hash of the encoded tokens, where a variable token is encoded as j - prev[j] if prev[j] >= i and 0 otherwise, and a non-variable token by a hash of its text (in a disjoint code space). Store the ~2e6 hashes in a sorted vector. Each query is encoded the same way in one pass and looked up by binary search, so the total is O(n^2 log n + total query length). Pitfalls: a token is a variable only if it is a single LETTER (a lone digit or bracket is a literal); the previous-occurrence code must be relative to the window start; input is up to ~4e6 tokens so use fread-style parsing (cin with std::string took 1.9 s locally, the buffered reader 0.1 s). Stress-tested against a brute-force bijection matcher.",
+ "code_path": "solutions/kattis_copycatcatcher.cpp",
+ "samples_passed": true
+}

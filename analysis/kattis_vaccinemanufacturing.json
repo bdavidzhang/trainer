@@ -1,0 +1,14 @@
+{
+ "id": "kattis:vaccinemanufacturing",
+ "rating": 2400,
+ "topics": [
+  "strings",
+  "hashing",
+  "palindromes",
+  "case-analysis"
+ ],
+ "key_idea": "Split by |A| vs |C|: if |A|>=|C| then A = rev(C)+X and X+B must be a palindrome, which again splits into B shorter (X = rev(B)+palindrome) or longer (B = palindrome+rev(X)). All conditions become hash-table lookups over prefixes/suffixes of the 1e6 total characters.",
+ "sketch": "Count ordered triples with repetition. Table T1 counts hash(rev(B)) over all strings; table T2 counts, for every string B and every nonempty palindromic prefix of B, the hash of the reversed remaining suffix. For each string A and split pos (1..|A|), weight w = T1[A[0:pos)] is the number of C with rev(C) equal to that prefix; if w>0, the number g of valid B is T2[A[pos:)] (B longer than X, includes X empty = palindromic B) plus the sum of T1[A[pos:e)] over e>pos such that A[e:] is a palindrome or empty (B no longer than X). Add w*g. The case |A|<|C| is handled by reversing all strings and rerunning with pos<|A| only (strict), so equal lengths are not double counted. Palindrome tests use forward/reverse polynomial hashes mod 2^61-1 with a random base; worst case about sum |A|^2/2 = 5e7 lookups into a tiny table, about 0.15 s locally. Stress-tested against an O(n^3) brute force. Pitfalls: ordered triples with repeated indices, duplicates count separately, and the equality case must be counted exactly once.",
+ "code_path": "solutions/kattis_vaccinemanufacturing.cpp",
+ "samples_passed": true
+}

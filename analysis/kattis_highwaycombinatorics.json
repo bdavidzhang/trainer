@@ -1,0 +1,14 @@
+{
+ "id": "kattis:highwaycombinatorics",
+ "rating": 2300,
+ "topics": [
+  "meet-in-the-middle",
+  "randomized",
+  "constructive",
+  "combinatorics"
+ ],
+ "key_idea": "Tiling counts of a 2-row strip with parked cars are just products of Fibonacci numbers (free 2xk blocks separated by a vertical car), so split the 200 columns into two halves and meet in the middle on random block partitions.",
+ "sketch": "A free 2xk block contributes F(k+1) and a single vertical car separates blocks, so a layout is a multiset of block widths with sum(k+1)<=200. Generate ~2M random partitions of a 100-column budget, store product mod p -> seed in a sorted table, then draw random right halves R and look up n*inv(prod(R)); expected about a thousand tries, ~0.6-1.2s total. n=0 is special: '##.' over '.##' leaves an isolated cell. Pitfall hit while solving: blocks must be drawn from a wide size range (3..40 columns) - with only small widths the set of reachable products is far smaller than 1e9+7 and the search never terminates. Multiple answers are valid so the sample checker cannot judge; outputs were validated for 130 values of n (including 0,1,10,27,p-1) with an independent profile-DP tiling counter that also checks the '#' cells form cars and length<=200.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_highwaycombinatorics.cpp"
+}

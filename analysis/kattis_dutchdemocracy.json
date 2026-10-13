@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dutchdemocracy",
+ "rating": 1700,
+ "topics": [
+  "dp-knapsack",
+  "sorting",
+  "combinatorics"
+ ],
+ "key_idea": "A majority coalition is minimal iff removing its smallest party breaks the majority, so process parties in decreasing size and count subsets of the larger ones whose sum lies in the window (T/2 - p, T/2].",
+ "sketch": "Sort seats descending and keep dp[s] = number of subsets of the already processed (larger) parties with sum s, only for s <= H = floor(T/2). For party i with p seats taken as the smallest member, add the sum of dp[s] for s in [H - p + 1, H]: these sets are not a majority alone but are with p. Then insert p into the knapsack. Ties are handled by the fixed order, since removing any party of equal size is equivalent. Complexity O(n * T) with T <= 6e5. Pitfalls: strict majority means 2*sum > T, so the threshold is floor(T/2) for odd and even T alike, and counts reach about 2^60 so use 64-bit unsigned.",
+ "code_path": "solutions/kattis_dutchdemocracy.cpp",
+ "samples_passed": true
+}

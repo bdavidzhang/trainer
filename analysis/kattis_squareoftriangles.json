@@ -1,0 +1,14 @@
+{
+ "id": "kattis:squareoftriangles",
+ "rating": 2800,
+ "topics": [
+  "geometry",
+  "search-backtracking",
+  "case-analysis",
+  "brute-force"
+ ],
+ "key_idea": "Avoid enumerating dissection topologies: the uncovered region always has a convex corner at a vertex of the square or of a placed triangle, and some triangle must put a corner there with a side along the boundary ray. Backtracking over (triangle, corner, which side lies on the ray) gives at most 24*18*12*6 placements.",
+ "sketch": "Scale so the square (side = sqrt of total area, from Heron in squared form) is the unit square. At each step, for every candidate vertex build the angular intervals covered around it (outside of the square, corners/edges of placed triangles) and find an uncovered wedge of angle < 180 degrees; it starts at a known ray. Try every remaining triangle, each corner whose angle fits the wedge and both choices of the side on the ray; accept if the triangle stays in the square and does not overlap placed triangles (separating-axis test with epsilon). Four successful placements imply a tiling because the areas add up. Pitfalls: compute angles with atan2(4*Area, p^2+q^2-r^2) rather than acos (thin triangles), eps 1e-10 in unit coordinates, T-junctions (vertex in the interior of another triangle's side cover 180 degrees). Besides the samples, checked on 2000 generated positive dissections of several topologies (star, diagonal+star, boundary-point triangulations, T-junctions) and ~1950 perturbed negatives.",
+ "code_path": "solutions/kattis_squareoftriangles.cpp",
+ "samples_passed": true
+}

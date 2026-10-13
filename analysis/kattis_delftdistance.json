@@ -1,0 +1,13 @@
+{
+ "id": "kattis:delftdistance",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "shortest-paths",
+  "geometry"
+ ],
+ "key_idea": "Only the midpoints of building sides matter: a shortest path only moves right/down, going midpoint to midpoint either straight (10 m) or around a corner of a cell, which costs 10 for a square and a quarter arc 5*pi/2 for a round tower.",
+ "sketch": "Nodes are side midpoints: H[i][j] (top side of cell (i,j), i in 0..h) and V[i][j] (left side, j in 0..w). Transitions: H[i][j]->H[i][j+1] and V[i][j]->V[i+1][j] cost 10; through cell (i,j), top->right (H[i][j]->V[i][j+1]) and left->bottom (V[i][j]->H[i+1][j]) cost 10 for X or 2.5*pi for O. Start with H[0][0]=V[0][0]=5 and finish with min(H[h][w-1],V[h-1][w])+5. The graph is a DAG in row-major order so a single DP pass in O(hw) suffices, no Dijkstra needed. Pitfall: forgetting that an arc can also be used on the left->bottom side of a tower (sample 2 needs both arcs of adjacent towers).",
+ "code_path": "solutions/kattis_delftdistance.cpp",
+ "samples_passed": true
+}

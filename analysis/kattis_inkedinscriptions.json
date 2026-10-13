@@ -1,0 +1,13 @@
+{
+ "id": "kattis:inkedinscriptions",
+ "rating": 1900,
+ "topics": [
+  "sqrt-decomposition",
+  "constructive",
+  "sorting"
+ ],
+ "key_idea": "This is Mo's algorithm ordering: bucket the points (i, p_i) into blocks of width sqrt(n) on one axis and sweep the other axis in alternating (snake) direction inside consecutive blocks.",
+ "sketch": "Within a block each step moves at most B on the blocked axis (n*B total) and the other axis is swept monotonically once per block (n per block, n/B blocks), giving about 2n*sqrt(n) for B = sqrt(n); the snake direction removes the return trips. Because the required bound is exactly ceil(2n*sqrt(n)) with no slack, the solution evaluates the true cost for every block size in [sqrt(n)/2, 2*sqrt(n)] plus B=1 and B=n, for both axes and both starting directions, and prints the cheapest order (about 600 sorts of 1e4 items). The checker cannot judge this (many valid answers); my own validator confirmed validity and the flip bound on both samples' inputs, all permutations for n<=6, and random/zigzag adversarial inputs up to n=10000. Pitfalls: the start position (1,1) counts, and rounding B naively can exceed the bound for small n.",
+ "code_path": "solutions/kattis_inkedinscriptions.cpp",
+ "samples_passed": true
+}

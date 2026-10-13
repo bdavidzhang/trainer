@@ -1,0 +1,12 @@
+{
+ "id": "kattis:weirdflecksbutok",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "randomized"
+ ],
+ "key_idea": "The drill is axis-parallel, so project the points onto the three coordinate planes and take the smallest of the three minimum enclosing circles.",
+ "sketch": "Run Welzl's randomized incremental minimum enclosing circle (expected O(n)) on the xy, yz and zx projections and print twice the smallest radius. Uses long double, a small containment epsilon, and a fallback to the widest pair for (near-)collinear triples. Pitfalls: shuffling is mandatory for the expected linear time (n=5000 makes the O(n^3) worst case too slow), and output is the diameter, not the radius.",
+ "code_path": "solutions/kattis_weirdflecksbutok.cpp",
+ "samples_passed": true
+}

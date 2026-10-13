@@ -1,0 +1,12 @@
+{
+ "id": "kattis:betterdice",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Count the pairs where the first die wins and the pairs where the second wins and compare.",
+ "sketch": "With n<=1000 simply enumerate all n^2 face pairs, counting first>second and second>first; ties are ignored. Compare the two counts and print first/second/tie. O(n^2)=1e6. Sorting plus two pointers would give O(n log n) but is unnecessary. Use 64-bit counters only out of habit (max 1e6).",
+ "code_path": "solutions/kattis_betterdice.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:roadtorome",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "two-pointers"
+ ],
+ "key_idea": "The minimum-width strip always has one boundary line flush with an edge of the convex hull, so the answer is the minimum over hull edges of the farthest hull vertex distance, found with rotating calipers.",
+ "sketch": "Build the strict convex hull with the monotone chain in O(N log N), then walk the edges while advancing an antipodal pointer as long as the cross product (distance from the edge line) increases; width for the edge is cross/|edge|, and the answer is the minimum. Calipers are O(h). Cross products reach about 8e14 so they fit in int64 and all comparisons are exact; only the final division uses long double. If the hull degenerates to fewer than 3 vertices (all points collinear) the answer is 0. With N=1e6 fast input (fread) matters: the max test ran in 0.13s. Stress-tested against an O(n^3) all-pairs-direction brute force including collinear inputs.",
+ "code_path": "solutions/kattis_roadtorome.cpp",
+ "samples_passed": true
+}

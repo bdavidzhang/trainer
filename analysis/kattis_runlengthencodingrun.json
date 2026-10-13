@@ -1,0 +1,12 @@
+{
+ "id": "kattis:runlengthencodingrun",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Straight simulation of run-length encoding and decoding.",
+ "sketch": "For E, group maximal runs of equal characters and emit the character followed by the run length (guaranteed at most 9). For D, read pairs (char, digit) and repeat the character that many times. O(n). The message has no spaces, so token reading works.",
+ "code_path": "solutions/kattis_runlengthencodingrun.cpp",
+ "samples_passed": true
+}

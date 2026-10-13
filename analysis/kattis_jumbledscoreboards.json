@@ -1,0 +1,11 @@
+{
+ "id": "kattis:jumbledscoreboards",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The order is chronological iff both teams' scores are non-decreasing from each picture to the next.",
+ "sketch": "Read the pairs and check a[i] >= a[i-1] and b[i] >= b[i-1] for all consecutive pictures; print yes or no. O(n). Since all pairs are distinct, no extra tie handling is needed.",
+ "code_path": "solutions/kattis_jumbledscoreboards.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:calculationobfuscation",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "case-analysis",
+  "strings",
+  "greedy"
+ ],
+ "key_idea": "Only counts matter: p paren pairs need at least p pluses (one top-level '+' per group) and ceil(p/2) stars (a product of f>=2 factors hosts at most f groups with f-1 stars), and the atom count is forced to be #plus+#star+1.",
+ "sketch": "A parenthesis pair is necessary iff it wraps a sum of >=2 terms and is a factor of a product with >=2 factors. Feasible iff '(' and ')' counts match, (p=0 or P>=p and M>=ceil(p/2)), and the letters/digits can be cut into exactly k=P+M+1 atoms: k<=#chars, and if k<#chars some atom must absorb the surplus, which needs a letter or a nonzero digit as its head (all-zero input needs k=#zeros). Build the skeleton ((a+a)*(a+a)+a)*(a+a)... nested p/2 times (plus one extra '*(a+a)' factor for odd p), then append the spare '*a' to the top product and spare '+a' at top level. Fill atoms with k-1 single characters and one big atom = reserved head (letter if any, else nonzero digit) followed by all leftovers. O(n). Pitfalls: leading zeros, '0' atoms cannot absorb anything, a lone parenthesized whole expression is unnecessary. Output is not unique so the token checker flags the possible-samples; verdicts match all samples and my validator (grammar + minimal-parentheses parser) agreed with a brute force over all permutations on 4000 random strings of length <=9, plus large constructed cases.",
+ "code_path": "solutions/kattis_calculationobfuscation.cpp",
+ "samples_passed": true
+}

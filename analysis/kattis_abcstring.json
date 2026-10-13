@@ -1,0 +1,13 @@
+{
+ "id": "kattis:abcstring",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "prefix-sums",
+  "strings"
+ ],
+ "key_idea": "The answer is the maximum over all prefixes of (largest letter count - smallest letter count).",
+ "sketch": "Lower bound: in any prefix each beautiful subsequence contributes counts of A,B,C that differ by at most 1, so at least max-min subsequences are needed. Upper bound: a greedy that always appends a letter to an open subsequence whose current triple lacks it (opening a new one only when forced) achieves it. So just scan once keeping three counters and the running max of max-min, O(n). Verified against an exhaustive DP over subsequence states for all random strings up to length 12.",
+ "code_path": "solutions/kattis_abcstring.cpp",
+ "samples_passed": true
+}

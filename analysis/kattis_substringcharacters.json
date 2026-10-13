@@ -1,0 +1,13 @@
+{
+ "id": "kattis:substringcharacters",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "With length at most 80, test every proper substring: it must contain all distinct characters while dropping its first or its last character loses one; collect them in a set for uniqueness.",
+ "sketch": "Compute the distinct character count of the whole string. For every (l,r) other than the full string, check that s[l..r] has all characters but s[l+1..r] and s[l..r-1] do not, and insert the substring into a set. Output the set size. About 80^2 substrings times O(80) per check, per test. Pitfalls: the whole string is excluded (so a string of all distinct characters gives 0, and 'bb' gives 1), and uniqueness is by content, not position.",
+ "code_path": "solutions/kattis_substringcharacters.cpp",
+ "samples_passed": true
+}

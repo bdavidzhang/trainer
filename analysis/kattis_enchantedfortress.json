@@ -1,0 +1,13 @@
+{
+ "id": "kattis:enchantedfortress",
+ "rating": 2000,
+ "topics": [
+  "meet-in-the-middle",
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "Maximising a general quadratic 0/1 form with n<=30: enumerate the high half; then the low half's objective is a precomputed quadratic table Q[mask] plus a linear term, and the linear term splits into two small tables so the 2^30 inner loop is a branch-free add+max.",
+ "sketch": "Split into L=15 low and H=n-15 high symbols. Precompute Q[m] = pair sum inside low mask m, HV[h] = full value of high mask h. For each h compute c_i = d_ii + sum of d_i,j over chosen high j, build linA/linB (subset sums of c over the two halves of the low bits), and take max over m of Q[m]+linA[m_lo]+linB[m_hi] with a vectorisable inner loop. About 1e9 trivial operations, ~0.15 s locally. Totals stay below 4.7e8 so 32-bit ints suffice in the hot loop. The empty spell (strength 0, print 0 and an empty line) is allowed. Any optimal spell is accepted, so sample 3 differs textually from the checker; optimality was confirmed by my own brute-force validator on 300 random cases plus n=16..18.",
+ "code_path": "solutions/kattis_enchantedfortress.cpp",
+ "samples_passed": true
+}

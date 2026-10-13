@@ -1,0 +1,13 @@
+{
+ "id": "kattis:powerofdivisors",
+ "rating": 1600,
+ "topics": [
+  "number-theory",
+  "math",
+  "brute-force"
+ ],
+ "key_idea": "f(n) is at most 60 because n^f(n) <= 1e18, so try every exponent k: take the exact integer k-th root n of x and check that n has exactly k divisors.",
+ "sketch": "Special-case x=1 (n=1, f=1). For k from 2 to 60 compute a floating k-th root, test the neighbouring integers with exact 128-bit powering, and if an exact root n exists (n <= 1e9) count its divisors by trial division up to sqrt(n) (at most ~31623 steps). Keep the smallest n with d(n)==k, else print -1. Pitfalls: floating roots must be corrected with integer checks, power computation overflows 64 bits, and x itself with k=1 only works for x=1.",
+ "code_path": "solutions/kattis_powerofdivisors.cpp",
+ "samples_passed": true
+}

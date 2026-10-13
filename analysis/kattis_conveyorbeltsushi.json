@@ -1,0 +1,11 @@
+{
+ "id": "kattis:conveyorbeltsushi",
+ "rating": 1000,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate the circular belt second by second, using a rotating index instead of physically shifting plates.",
+ "sketch": "Keep an array of N+1 belt slots; seat s at time t looks at slot (s-t) mod (N+1). For each t from 0 to 10000: if the chef's slot is empty, place the next menu plate (cyclic pointer that only advances on a successful placement), then process all take events of that time by adding the slot's price to the person's bill and clearing it. O(T + E). Pitfalls: the chef places at t=0 before any event, the chef and diners act simultaneously before the belt advances, and a returning plate blocks the chef without advancing the menu pointer.",
+ "code_path": "solutions/kattis_conveyorbeltsushi.cpp",
+ "samples_passed": true
+}

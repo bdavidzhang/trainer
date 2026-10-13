@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tournamentmatchmaking",
+ "rating": 1900,
+ "topics": [
+  "matching",
+  "dsu",
+  "graphs"
+ ],
+ "key_idea": "A merged 15-player team is valid iff, viewing players as edges on the 15 role-vertices, every connected component has exactly as many edges as vertices (each edge picks a distinct endpoint); sizes summing to 15 make the group-compatibility graph bipartite (size<=7 vs size>=8).",
+ "sketch": "For every pair of groups with sizes summing to 15, run a DSU over the 15 roles adding the 15 player-edges and reject as soon as some component gets more edges than vertices (Hall's condition for orienting a pseudoforest); with 15 edges on 15 vertices this is equivalent to a perfect assignment. That is at most 250*250 pairs times 15 edges. Then maximum bipartite matching (Kuhn, O(VE) ~ 250*62500) between small and large groups gives the answer. Pitfalls: multi-edges (two players with the same role pair) and realising the graph is bipartite so no general matching is needed. Stress-tested against a bitmask brute force with an explicit player-role matching.",
+ "code_path": "solutions/kattis_tournamentmatchmaking.cpp",
+ "samples_passed": true
+}

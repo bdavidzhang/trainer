@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sequentialyahtzee",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "The only state between rounds is how many dice of the stream have been consumed, so dp[category][position] with all 32x32 reroll choices enumerated per round.",
+ "sketch": "A round starting at position p takes dice p..p+4; choosing a subset to reroll replaces those dice with the next k dice of the stream, and this can be done twice, so a round has at most 1024 outcomes each consuming 5..15 dice. dp[c+1][p'] = max(dp[c][p] + score(c, final hand)) over all reachable outcomes that do not run past n; the answer is the max of dp[13][*]. Complexity 13 * 195 * 1024 hand evaluations. Pitfalls: scoring rules - a Yahtzee is not a Full House (sample 1 confirms 70), a long straight also counts as a small straight, 3/4-of-a-kind score the total of all five dice; unused trailing dice are allowed; a second reroll is only possible after a first one (though rerolling zero dice is equivalent to stopping).",
+ "code_path": "solutions/kattis_sequentialyahtzee.cpp",
+ "samples_passed": true
+}

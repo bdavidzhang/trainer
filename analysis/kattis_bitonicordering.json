@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bitonicordering",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "fenwick",
+  "sorting"
+ ],
+ "key_idea": "Place cards from smallest to largest: the current smallest must end at one of the two ends of the remaining row, costing the number of larger cards on its left or on its right, and the choices are independent.",
+ "sketch": "Answer = sum over cards of min(#larger cards to the left, #larger cards to the right) in the original order. Coordinate-compress, sweep left to right with a Fenwick tree to get the count of larger elements on the left; larger on the right is (number of larger overall) minus that. O(n log n). Answer needs 64-bit (up to ~n^2/4). Stress-tested against a brute force over all bitonic targets for n<=7.",
+ "code_path": "solutions/kattis_bitonicordering.cpp",
+ "samples_passed": true
+}

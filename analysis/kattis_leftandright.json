@@ -1,0 +1,12 @@
+{
+ "id": "kattis:leftandright",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "constructive"
+ ],
+ "key_idea": "Split the positions into blocks ended by each R; the lexicographically smallest answer fills blocks with consecutive increasing ranges and writes each block in decreasing order.",
+ "sketch": "Scan positions i; let k be the number of consecutive L's starting at direction i, then output i+k, i+k-1, ..., i and jump to i+k+1. Each position must be larger than the k elements that follow it in a descending run, so i+k is the smallest possible first value given that the previous blocks used exactly 1..i-1; taking the smallest prefix greedily is optimal. O(n). Use fast output for n = 2e5.",
+ "code_path": "solutions/kattis_leftandright.cpp",
+ "samples_passed": true
+}

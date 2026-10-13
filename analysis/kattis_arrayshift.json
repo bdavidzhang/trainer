@@ -1,0 +1,13 @@
+{
+ "id": "kattis:arrayshift",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "number-theory",
+  "greedy"
+ ],
+ "key_idea": "b_j is the product of the window a[j..j+k], so it is 0 or 2^c with c the number of twos, and c is recoverable since 2^c mod p is injective for c<=2e5; consecutive nonzero windows give t[i+w]-t[i]=c[i+1]-c[i], which splits positions into chains modulo w=k+1.",
+ "sketch": "The last k values must be 0 and every other value must be 0 or a power 2^c with c<=w (hash map of powers), else -1. Positions covered by any nonzero window must be nonzero; set every other position to 0 and check with prefix sums that each zero window contains such a position. Maximal runs of nonzero windows are independent: inside a run, walk each residue chain st, st+w, ...; the first nonzero difference forces the whole chain (and any difference outside {-1,0,1} or a value leaving {0,1} is a contradiction), chains with all-zero differences are free and constant. The number of free chains set to 2 must equal c of the first window minus the forced ones in it, which must lie in [0, #free]. O(n) overall. Pitfalls: k=0 degenerates to b=a with values restricted to 0,1,2; multiple answers are valid, so besides the samples it was verified by an exhaustive stress test (all n<=7, all k, every achievable b plus random unachievable ones) checking both validity and correct -1.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_arrayshift.cpp"
+}

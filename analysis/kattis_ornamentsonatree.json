@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ornamentsonatree",
+ "rating": 1800,
+ "topics": [
+  "greedy",
+  "trees",
+  "dp-tree"
+ ],
+ "key_idea": "Each node's weight appears in only two constraints (its own star and its parent's), so the constraints form a tree b-matching that a deepest-first greedy solves: give each free node min(residual of its star, residual of its parent's star).",
+ "sketch": "Set cap[v]=K for each star (v plus its children), subtract fixed weights from the node's own star and its parent's; any negative capacity means -1. Process free nodes in reverse BFS order: when v is processed all its children are done, so v is the only remaining variable in star v, and an exchange argument shows assigning min(res[v], res[parent]) is optimal (any weight on a sibling or the parent could be shifted to v without loss). The root only has its own star. O(N), 64-bit total (up to 2e14). Verified against exhaustive search on small trees.",
+ "code_path": "solutions/kattis_ornamentsonatree.cpp",
+ "samples_passed": true
+}

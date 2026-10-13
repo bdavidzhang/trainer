@@ -1,0 +1,11 @@
+{
+ "id": "kattis:pokerhand",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Count occurrences of each rank character and print the maximum.",
+ "sketch": "Read the five tokens, tally the first character of each in a map, and output the largest tally. O(1). Suits are irrelevant.",
+ "code_path": "solutions/kattis_pokerhand.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:champernownesubsequence",
+ "rating": 1100,
+ "topics": [
+  "greedy",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "Greedy subsequence matching is optimal, and every block of ten consecutive integers ends in every digit, so the answer is at most about 10n and can be simulated directly.",
+ "sketch": "Iterate k = 1, 2, ..., write k in decimal and advance a pointer into the target string whenever the current digit matches (standard leftmost-greedy subsequence matching). Stop when the pointer reaches n and print the current k. Since each run of 10 consecutive numbers supplies any wanted digit in the units place, k <= 10n = 1e6, so the simulation is about 7e6 digit steps. Worst case (1e5 zeros) gives k = 207754. Pitfall: the answer is the number being written when the last character is matched, even if matched by a non-final digit.",
+ "code_path": "solutions/kattis_champernownesubsequence.cpp",
+ "samples_passed": true
+}

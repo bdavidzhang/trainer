@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dickensiandictionary",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Map each letter to a hand and check that every adjacent pair of letters uses different hands.",
+ "sketch": "Build the left-hand letter set, then scan adjacent pairs; if any two consecutive letters are typed by the same hand answer no, else yes. O(length). No pitfalls beyond copying the two letter sets correctly.",
+ "code_path": "solutions/kattis_dickensiandictionary.cpp",
+ "samples_passed": true
+}

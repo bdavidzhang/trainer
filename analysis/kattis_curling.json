@@ -1,0 +1,12 @@
+{
+ "id": "kattis:curling",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "geometry"
+ ],
+ "key_idea": "For each frame a team scores one point per stone strictly closer to the button than the opponent's closest stone.",
+ "sketch": "For each of the 10 frames compute squared integer distances to (144,84) for both teams, take the opponent's minimum (infinity if they have no stones) and count own stones below it; only one team can score per frame automatically. Sum over frames. Use squared distances to stay in integers; handle zero stones on either side.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_curling.cpp"
+}

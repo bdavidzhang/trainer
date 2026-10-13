@@ -1,0 +1,13 @@
+{
+ "id": "kattis:failthemall",
+ "rating": 1800,
+ "topics": [
+  "scc-2sat",
+  "greedy",
+  "bfs-dfs"
+ ],
+ "key_idea": "For each student, every pair of answered questions gives a 2-SAT clause 'not both correct'; lexicographically smallest solution comes from the classic greedy: try F for the next free variable, propagate implications, fall back to T, never backtrack further.",
+ "sketch": "Setting key[q]=v makes every student who answered v on q correct there, which forces the key on all their other answered questions to be the opposite of their answer; propagate with a stack directly on the answer matrix (no explicit clause graph). Process questions left to right: copy the partial assignment, try F and propagate, on contradiction try T, and if both fail print -1. This is correct because a consistent implication-closed partial assignment of a 2-SAT instance never hurts satisfiability of the remainder. Each propagation is O(n*k^2) worst case, total around 2*k*n*k^2 = 2e8 simple steps upper bound, far less in practice. Pitfall: F < T so try F first; a student with two identical forced conflicts immediately yields a contradiction. Stress-tested against brute force over all keys for k<=7.",
+ "code_path": "solutions/kattis_failthemall.cpp",
+ "samples_passed": true
+}

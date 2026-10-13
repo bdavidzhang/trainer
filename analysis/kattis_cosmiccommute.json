@@ -1,0 +1,14 @@
+{
+ "id": "kattis:cosmiccommute",
+ "rating": 1500,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "probability",
+  "math"
+ ],
+ "key_idea": "BFS from both endpoints; entering wormhole w costs d1[w] plus the average of dn over the other k-1 wormholes, which is (S - dn[w])/(k-1) with S the total of dn over all wormholes.",
+ "sketch": "Run BFS from planet 1 and from planet n. Precompute S = sum of dn[u] over wormholes. For each wormhole w the expected total is (d1[w]*(k-1) + S - dn[w])/(k-1); also consider not teleporting at all, d1[n]. Take the minimum numerator over the common denominator k-1, then reduce by gcd and print a/b. O(n+m). Pitfalls: the target wormhole excludes the one entered, numerators need 64-bit, output must be reduced (e.g. 2/1), and fast input for 1e6 edges.",
+ "code_path": "solutions/kattis_cosmiccommute.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mostsceniccycle",
+ "rating": 2300,
+ "topics": [
+  "graphs",
+  "dp",
+  "data-structures"
+ ],
+ "key_idea": "The 'tree of cycles glued along paths' condition means the graph is 2-connected series-parallel, so it collapses by series/parallel reductions while each virtual edge stores the best path weight between its endpoints.",
+ "sketch": "Keep an adjacency hash map per vertex with one (virtual) edge per neighbour holding the maximum simple path weight through the reduced part. Parallel reduction: when an edge u-v with weight q meets an existing one with weight p, p+q is a cycle candidate and the edge keeps max(p,q). Series reduction: a vertex with exactly two distinct neighbours is removed and its two edges are replaced by one of weight p1+p2 (which may trigger a parallel reduction). Process with a stack until one edge is left; the best candidate is the answer. O((V+E)) expected. Pitfalls: answers can be negative, sums reach 4e14, parallel input edges (2-edge cycles count), and V=2. Verified against exhaustive cycle enumeration on 1500 random series-parallel multigraphs; 0.3 s at maximum size.",
+ "code_path": "solutions/kattis_mostsceniccycle.cpp",
+ "samples_passed": true
+}

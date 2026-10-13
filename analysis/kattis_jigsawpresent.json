@@ -1,0 +1,14 @@
+{
+ "id": "kattis:jigsawpresent",
+ "rating": 2400,
+ "topics": [
+  "meet-in-the-middle",
+  "math",
+  "two-pointers",
+  "combinatorics"
+ ],
+ "key_idea": "Two presents collide iff some nonzero eps in {-1,0,1}^n has sum eps_i*(x_i,y_i)=0. A variance/disc-packing argument shows 2^n distinct lattice sums are impossible for n>=31, so only the first min(n,31) puzzles matter and a 3^15 meet-in-the-middle over signed sums decides it.",
+ "sketch": "2^n distinct lattice points have mean squared distance from their centroid at least about 2^n/(2*pi), while the subset-sum variance is sum(x^2+y^2)/4 <= n*2^23; this fails for n=31, so 31 items always contain a collision. Pack (x,y) into one integer x*2^20+y. Split into halves of 15 and 16; for each half build the sorted list of all signed sums by repeated 3-way merges (L-v, L, L+v), keeping a base-3 code and deduplicating keys while preferring a nonzero code. The last item of the second half is applied as three shifts, each matched against the first half with a two-pointer for total 0, skipping only the all-zero combination. Decode eps into the +1 set and the -1 set (both nonempty because x>0). About 3*3^15 work, well under 0.5 s. Output is not unique; verified with my own validator against a 2^n brute force on 1500 small cases plus timing runs at n=31 and n=4096.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_jigsawpresent.cpp"
+}

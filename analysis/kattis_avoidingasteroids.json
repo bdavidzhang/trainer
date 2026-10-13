@@ -1,0 +1,13 @@
+{
+ "id": "kattis:avoidingasteroids",
+ "rating": 1900,
+ "topics": [
+  "geometry-3d",
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Unknown speeds mean any ship point on segment s-b can coincide in time with any centre position on the asteroid's ray, and free tumbling makes the asteroid sweep a full ball of radius max|vertex - centre|; so the answer is just a 3D segment-to-ray distance test.",
+ "sketch": "For each asteroid compute R = max distance from the centre of mass to a hull vertex (the centre lies inside the hull, so every radius up to R can be covered by some rotation). Surrender iff the minimum distance between segment ship-base and the ray p + t*d (t >= 0) is below R for some asteroid. The ray is clipped to a segment of length 3e7 (all coordinates are within 2e6, so the closest point is nearer than that) and the standard clamped closest-point segment-segment formula is used in long double, with endpoint-to-segment distances as a safety net for near-parallel cases. O(n*m). Pitfalls: the direction is only approximately unit so normalise it, parallel/degenerate denominators, and precision with 1e7-scale coordinates versus the 1e-6 guarantee (hence long double).",
+ "code_path": "solutions/kattis_avoidingasteroids.cpp",
+ "samples_passed": true
+}

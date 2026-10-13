@@ -1,0 +1,12 @@
+{
+ "id": "kattis:carefulascent",
+ "rating": 900,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Vertical speed is 1, so time spent in a layer equals its height; horizontal displacement is v times the sum of height*factor, a linear equation in v.",
+ "sketch": "Effective height = y + sum (u_i - l_i)(f_i - 1); answer = x / effective height. Shields are disjoint so no sorting is needed. O(n), doubles, print with enough digits. x may be negative or zero, which the formula handles.",
+ "code_path": "solutions/kattis_carefulascent.cpp",
+ "samples_passed": true
+}

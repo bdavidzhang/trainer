@@ -1,0 +1,13 @@
+{
+ "id": "kattis:profitabletrip",
+ "rating": 1900,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "dp"
+ ],
+ "key_idea": "Wallet update p -> min(p+t, w) is monotone in p, so the best achievable profit per node is a longest-path fixpoint; the cap w bounds positive cycles so label-correcting relaxation terminates.",
+ "sketch": "Run a queue-based Bellman-Ford (SPFA) maximising best[v] with relaxation best[v] = max(best[v], min(best[u]+t, w)). Because more money is never worse, only the max per node matters. Values are integers that only increase, start no lower than about -100*(n-1) on first reach (BFS order gives a simple path) and never exceed w, so each node improves at most ~2e5 times and total relaxations are bounded by about 2e5 * m = 4e8, well inside 8 s (an adversarial +1 cycle of length 1000 behind a -1e5 path ran in 0.7 s). Positive cycles are pumped up to the cap automatically, as in sample 3. Pitfalls: there is no lower bound on money, the cap applies at every step rather than only at the end, and the walk may pass through n and come back.",
+ "code_path": "solutions/kattis_profitabletrip.cpp",
+ "samples_passed": true
+}

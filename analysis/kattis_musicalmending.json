@@ -1,0 +1,13 @@
+{
+ "id": "kattis:musicalmending",
+ "rating": 1200,
+ "topics": [
+  "math",
+  "sorting",
+  "greedy"
+ ],
+ "key_idea": "Subtract i from t_i; the target becomes a constant sequence, and the best constant for a sum of absolute deviations is the median.",
+ "sketch": "Let a_i = t_i - i. The final tuning is c+i for some c, so the cost is sum |a_i - c|, minimised at the median of a (found with nth_element). O(n). The answer can reach about 1e5 * 5e5, so use 64-bit integers; the optimal c is always an integer because a median element works.",
+ "code_path": "solutions/kattis_musicalmending.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:geometryrush",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "All curve vertices have integer x, so inside each unit strip both curves are straight lines; a diagonal move is safe iff both endpoints are strictly between the curves, and the reachable y's at each x form a parity interval.",
+ "sketch": "For every integer x compute the largest integer strictly below the ceiling (min over all ceiling y at that x, including vertical segments) and the smallest integer strictly above the floor, walking each non-vertical segment with exact floor/ceil division. Since within a strip both the move and the curves are linear, strict separation at both endpoints implies separation throughout. Maintain the reachable interval [a,b] of y with parity x: expand by 1, clamp to the allowed range, fix parity; if empty print impossible. Crossing curves automatically give an empty range at some integer x. O(n+m+w). Pitfalls: strictness (touching loses), negative floor division, parity after clamping.",
+ "code_path": "solutions/kattis_geometryrush.cpp",
+ "samples_passed": true
+}

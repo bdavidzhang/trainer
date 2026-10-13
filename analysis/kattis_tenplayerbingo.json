@@ -1,0 +1,11 @@
+{
+ "id": "kattis:tenplayerbingo",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "A player finishes when their last number is called, so the last player to finish is the one owning the final number read.",
+ "sketch": "Read all 100 integers and take the last one modulo 10, mapping 0 to player 10. O(1) work; the only pitfall is the units digit 0 belonging to player 10.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_tenplayerbingo.cpp"
+}

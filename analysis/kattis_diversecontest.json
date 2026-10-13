@@ -1,0 +1,12 @@
+{
+ "id": "kattis:diversecontest",
+ "rating": 1300,
+ "topics": [
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "n<=20 so enumerate every k-subset as a bitmask and test each topic with popcount(subset & topicMask) <= k/2.",
+ "sketch": "Map each topic string to a bitmask of the problems carrying it; drop topics appearing in at most k/2 problems (they can never violate) and deduplicate masks. Iterate all 2^n masks, keep those with popcount k, and check 2*popcount(mask & t) <= k for every topic mask t with early exit. Worst case about C(20,10)*400 popcounts, far inside the 10 s limit. Pitfall: the limit is 'at most half', so for odd k the bound is floor(k/2); answer fits in 64 bits trivially.",
+ "code_path": "solutions/kattis_diversecontest.cpp",
+ "samples_passed": true
+}

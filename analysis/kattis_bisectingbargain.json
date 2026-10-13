@@ -1,0 +1,14 @@
+{
+ "id": "kattis:bisectingbargain",
+ "rating": 2100,
+ "topics": [
+  "brute-force",
+  "bitset",
+  "dp-knapsack",
+  "math"
+ ],
+ "key_idea": "Merging coins into one larger coin (1+1->2, 2+2+1->5, five 2s->10, ...) can only remove subset sums, so if any unsplittable multiset exists, a canonical one with tiny bounded counts of every denomination below 500 exists.",
+ "sketch": "Odd n: print any representation. Even n: enumerate counts c1<=1, c2<=4, c5<=1, c10<=1, c20<=4, c50<=1, c100<=1, c200<=4 (at most 8000 combinations), put the remainder in 500s if divisible, and test with a bitset subset-sum whether n/2 is reachable; print the first multiset where it is not, else 'splittable'. The bitset is built incrementally down the recursion so the whole search is a few million word operations. Pitfall: guessing a digit pattern instead of proving the reduction (the splittable values are sparse: 4, 40, 44, 400, ..., 80 of them up to 10000). Output is not unique so the token checker cannot judge samples 1; validated all n<=10000 with my own checker (sum, denominations, genuinely unsplittable) and compared the splittable verdict with a full enumeration of all multisets for n<=64.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_bisectingbargain.cpp"
+}

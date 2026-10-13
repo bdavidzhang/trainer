@@ -1,0 +1,12 @@
+{
+ "id": "kattis:averagecharacter",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Sum the ASCII codes and integer-divide by the length.",
+ "sketch": "Read the whole line with getline because it may contain or consist only of spaces, strip trailing CR/LF, sum the codes, print char(sum / len) (floor). O(n). The only pitfall is using a whitespace-skipping read.",
+ "code_path": "solutions/kattis_averagecharacter.cpp",
+ "samples_passed": true
+}

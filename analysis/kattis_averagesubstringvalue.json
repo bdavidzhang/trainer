@@ -1,0 +1,13 @@
+{
+ "id": "kattis:averagesubstringvalue",
+ "rating": 1400,
+ "topics": [
+  "combinatorics",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Sum of maxima = sum over v=1..9 of the number of substrings whose max is >= v, and substrings with all digits < v are counted by run lengths.",
+ "sketch": "For each threshold v scan the string, accumulating run*(run+1)/2 for maximal runs of digits below v, and subtract from n(n+1)/2. The total sum is at most 9*2e10, so 64-bit. Divide by n(n+1)/2 and print as integer, proper fraction or mixed number in lowest terms (the three output formats are the main pitfall, including the all-zero case printing 0). O(10 n).",
+ "code_path": "solutions/kattis_averagesubstringvalue.cpp",
+ "samples_passed": true
+}

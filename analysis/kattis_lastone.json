@@ -1,0 +1,12 @@
+{
+ "id": "kattis:lastone",
+ "rating": 1100,
+ "topics": [
+  "math",
+  "greedy"
+ ],
+ "key_idea": "Waiting never helps, so each unit fires as early as possible and the kill time is (ceil(h_opp/d)-1)*t (+0.5); compare the two times.",
+ "sketch": "Unit i needs ceil(h_other/d_i) missiles, fired at times 0, t, 2t, ..., so the opponent dies at (shots-1)*t_i + 0.5. The smaller kill time wins; equal times give a draw because both final missiles are already in the air. Since launch times are integers and flight time is 0.5, a strictly later final launch can never still be fired before the shooter dies, so no other interleaving matters. O(1) with integer arithmetic only.",
+ "code_path": "solutions/kattis_lastone.cpp",
+ "samples_passed": true
+}

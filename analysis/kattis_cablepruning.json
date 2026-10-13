@@ -1,0 +1,14 @@
+{
+ "id": "kattis:cablepruning",
+ "rating": 2100,
+ "topics": [
+  "graphs",
+  "hashing",
+  "trees",
+  "bfs-dfs"
+ ],
+ "key_idea": "In a unicyclic graph tree edges are forced iff some pair is split by them; on the cycle a set of removed edges is valid iff no pair separates two of them, i.e. the removed edges all have the same set of pairs covering them, detectable by XOR hashing.",
+ "sketch": "Give each pair a random 64-bit value XORed onto both endpoints. Peel leaves: a tree edge is kept iff the subtree XOR is nonzero, and the XOR is pushed to the parent. On the remaining cycle c0..c(m-1), the edge after c_i gets the prefix XOR of the accumulated values; edges with equal hash can all be deleted together, so the answer is forced tree edges + cycle total - max weight sum of one hash class. O(n + k) expected with a hash map. Pitfalls: more than one cycle edge may be removed (the class with hash 0 are edges no pair needs), pairs inside one hanging tree cancel out automatically, sums need 64-bit. Stress-tested against a subset brute force.",
+ "code_path": "solutions/kattis_cablepruning.cpp",
+ "samples_passed": true
+}

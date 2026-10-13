@@ -1,0 +1,14 @@
+{
+ "id": "kattis:gluedgrid",
+ "rating": 2500,
+ "topics": [
+  "graphs",
+  "bridges-bcc",
+  "math",
+  "bfs-dfs"
+ ],
+ "key_idea": "With one blank, a tile can never leave its biconnected block of the free-cell graph (a cut vertex belongs to the block on the blank's side), and inside a 2-connected bipartite block exactly the even permutations are reachable (Wilson's theorem). So check block membership and permutation parity per block.",
+ "sketch": "Run an iterative DFS low-link from the blank cell (bottom right) over free cells. Each non-root cell gets the block of its DFS parent edge: a new block if low[v] >= disc[parent], else the parent's block; this is precisely the block towards the blank. Every tile's target cell must be in the same group as its current cell, and the permutation restricted to each group (sum of cycle length minus 1) must be even; a bridge block holds one tile, which must already be in place, and a 2x2 block allows only rotations which are exactly the even permutations of 3 tiles. The no-enclosed-glue guarantee rules out long simple-cycle blocks, the only other exception to Wilson. O(hw). Pitfalls: recursion depth on 250k cells (use an explicit stack), cut vertices, excursions into child blocks do not change the parent's arrangement. Verified against a full state-space BFS on 1500 random grids with up to 9 free cells.",
+ "code_path": "solutions/kattis_gluedgrid.cpp",
+ "samples_passed": true
+}

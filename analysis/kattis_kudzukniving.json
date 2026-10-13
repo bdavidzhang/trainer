@@ -1,0 +1,14 @@
+{
+ "id": "kattis:kudzukniving",
+ "rating": 1700,
+ "topics": [
+  "trees",
+  "bitmasks",
+  "data-structures",
+  "math"
+ ],
+ "key_idea": "The parent of v is v with its highest bit cleared, so the subtree of v is every index whose low bits equal v: size 2^(a-1-hb(v)) (2^a for the root) and at most ~30 ancestors per vertex.",
+ "sketch": "Descendants of v are exactly the numbers w < 2^a with w mod 2^(hb(v)+1) = v, giving the closed-form subtree size. Each removal answers size(v) minus the number of vertices already removed inside the subtree. Since every removed vertex is counted in exactly one earlier answer, keep a hash map cnt[u] = total already removed below u; after answering v with value c, add c to every proper ancestor of v (the distinct values v & (2^k-1), at most 30). O(m log v) hash operations. Pitfalls: a up to 1e6 so precompute powers mod 1e9+7, the root is special, and deduplicate ancestors when low bits are zero. Stress-tested against a brute force on small trees.",
+ "code_path": "solutions/kattis_kudzukniving.cpp",
+ "samples_passed": true
+}

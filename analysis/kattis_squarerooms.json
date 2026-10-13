@@ -1,0 +1,13 @@
+{
+ "id": "kattis:squarerooms",
+ "rating": 1900,
+ "topics": [
+  "search-backtracking",
+  "hashing",
+  "implementation"
+ ],
+ "key_idea": "Scanning in row-major order, the first uncovered open cell must be the top-left corner of its room, so only the side length is a choice; backtrack over sizes whose square is free and contains exactly one treasure, memoising dead (position, skyline) states.",
+ "sketch": "Recursion: find the first non-rock uncovered cell, grow s while the new row/column strip is free of rock and covered cells, stop once the square holds more than one treasure (2D prefix sums), and recurse on every s holding exactly one. Depth is at most 52 because each room consumes a treasure, and placing rooms in this order automatically yields the required A..Z,a..z labelling. Plain backtracking took over 2 s on adversarial 100x100 grids (49 big rooms with treasures in far corners), so failed states are memoised: because rooms are placed in row-major order the covered set is a skyline per column, hashed together with the position into a 64-bit key. With that all my 100x100 tests run in under 0.3 s. Pitfalls: the leftover open cells with no treasure reachable must cause failure, and '#' cells are skipped rather than covered. Samples pass with the checker; the memoised version was compared against the plain backtracker on random small grids.",
+ "code_path": "solutions/kattis_squarerooms.cpp",
+ "samples_passed": true
+}

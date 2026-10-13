@@ -1,0 +1,14 @@
+{
+ "id": "kattis:icpccamp",
+ "rating": 1900,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "heap",
+  "sorting"
+ ],
+ "key_idea": "Binary search D; for fixed D each classical x accepts creative y in the interval [x-D, min(x+D, s-x)], so feasibility is a maximum matching of points to intervals, solved greedily by earliest right endpoint.",
+ "sketch": "Sort both lists. In check(D), sweep creative difficulties y in increasing order, push the right endpoint min(x+D, s-x) of every classical problem with x-D <= y (left endpoints are monotone in x, so a pointer suffices), discard endpoints below y, and match y with the smallest remaining endpoint; feasible iff at least n pairs form. Feasibility is monotone in D, so binary search on [0,1e9] and print -1 if even D=1e9 fails. O((p+q) log(p+q) log 1e9). Verified against Kuhn matching on small random cases. Pitfalls: the right endpoint is not monotone in x, which is why a heap is needed instead of two pointers; use 64-bit for x+D.",
+ "code_path": "solutions/kattis_icpccamp.cpp",
+ "samples_passed": true
+}

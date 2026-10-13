@@ -1,0 +1,13 @@
+{
+ "id": "kattis:drone",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "greedy",
+  "case-analysis"
+ ],
+ "key_idea": "Write e,w = a ± p/2 and n,s = b ± r/2 with a+b = y/2; the objective becomes max(|a|+|p|/2, |b|+|r|/2), a one-dimensional convex problem solved by balancing the two terms and clamping.",
+ "sketch": "By symmetry take y >= 0 (flip signs of a and b otherwise) and h = y/2. The optimum has a,b in [0,h]: set a = (h+|r|/2-|p|/2)/2 clamped to [0,h] and b = h-a; if the clamp bites, the larger of |p|/2, |r|/2 is already an unavoidable lower bound. Output n=b+r/2, e=a+p/2, s=b-r/2, w=a-p/2. O(1) per query. Any optimal assignment is accepted; sample 1 happens to match token-wise, and I also validated 300 random queries with a script checking the three equations and comparing the max flap against a ternary search of the 1-D objective.",
+ "code_path": "solutions/kattis_drone.cpp",
+ "samples_passed": true
+}

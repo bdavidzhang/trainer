@@ -1,0 +1,12 @@
+{
+ "id": "kattis:copsandrobbers",
+ "rating": 1900,
+ "topics": [
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "It is a minimum vertex cut between the bank and the outside, solved by splitting each cell into in/out nodes with capacity equal to the barricade cost.",
+ "sketch": "Each cell becomes in->out with capacity cost (infinite for 'B' and '.'); out connects with infinite capacity to the in-node of each 4-neighbour, and to the sink for every side that leaves the grid. Run Dinic from the bank's out-node; if the flow reaches the infinity sentinel, print -1. Graph has 1800 nodes and about 10k edges, trivial for Dinic. Pitfalls: the input gives width n first and then m rows of n characters; use an infinity (1e15) far above the largest real cut (900*1e5) and 64-bit flow; the bank on the border is the -1 case.",
+ "code_path": "solutions/kattis_copsandrobbers.cpp",
+ "samples_passed": true
+}

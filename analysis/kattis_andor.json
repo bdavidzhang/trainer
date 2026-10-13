@@ -1,0 +1,13 @@
+{
+ "id": "kattis:andor",
+ "rating": 1300,
+ "topics": [
+  "dp-tree",
+  "trees",
+  "implementation"
+ ],
+ "key_idea": "Compute for every node the minimum flips to make it true and to make it false: AND takes the sum of children's true-costs and the min of their false-costs, OR is the mirror.",
+ "sketch": "Read the tree level by level (each entry is T, F or a child count; children of a level are assigned left to right), then process levels bottom-up keeping two cost arrays for the level below. A leaf costs 0 for its own value and 1 for the other. Node type alternates by depth starting from the given root type. The answer is max(costTrue, costFalse) at the root, since the cost of its current value is 0. O(total nodes); costs fit easily in 64-bit. Pitfall: leaves can appear at any level, and the parity of the level decides AND vs OR.",
+ "code_path": "solutions/kattis_andor.cpp",
+ "samples_passed": true
+}

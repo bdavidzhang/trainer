@@ -1,0 +1,13 @@
+{
+ "id": "kattis:oreperationsresearch",
+ "rating": 2200,
+ "topics": [
+  "dp",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "The state between train cars is just (front of A mod r, front of B mod s); a car is filled by p full A-cycles, q full B-cycles plus partial prefixes u<r, v<s, and only u,v affect the next state, so one only needs to know whether c - partial sums is of the form p*SA+q*SB.",
+ "sketch": "Let SA, SB be the cycle sums (<=10000 each). For a car of capacity c, precompute ok[w] for w in [0,SA+SB]: whether V=c-w is representable as p*SA+q*SB with p,q>=0, done in O(1) each via gcd divisibility and the smallest p = (V/g)*inv(SA/g) mod (SB/g), checking p*SA<=V. Then for every reachable state (i,j) and every partial prefix (u,v) with sums PA[i][u], PB[j][v], if ok[PA+PB] mark state ((i+u)%r,(j+v)%s). Since the order of dumps within a car is irrelevant only the totals matter. Answer Yes iff some state survives all cars. Worst case 100 * 2500 * 2500 = 6.25e8 trivial operations, about 0.8 s locally. Stress-tested against a direct simulation brute force on small inputs. Pitfall: capacities up to 2e6 make enumerating cart counts directly far too slow.",
+ "code_path": "solutions/kattis_oreperationsresearch.cpp",
+ "samples_passed": true
+}

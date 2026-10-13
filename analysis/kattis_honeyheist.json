@@ -1,0 +1,13 @@
+{
+ "id": "kattis:honeyheist",
+ "rating": 1300,
+ "topics": [
+  "bfs-dfs",
+  "implementation",
+  "graphs"
+ ],
+ "key_idea": "Map the row-major cell ids of the hexagon to axial coordinates so that the six neighbours are fixed offsets, then run a plain BFS avoiding wax cells.",
+ "sketch": "Row r of the 2R-1 rows has R+r cells in the top half and shrinks symmetrically below; store each cell as (r, c + max(0, r-(R-1))), which makes the neighbours (0,+-1), (1,0), (1,1), (-1,0), (-1,-1) for every cell. BFS from A over non-wax cells and take the edge distance to B as K; print K if B is reachable and K <= N, else No. At most 1141 cells, so it is instantaneous. Pitfalls: the neighbour pattern differs between the upper and lower halves if you keep raw column indices, and K counts steps (cells chewed after the entry cell), which the first sample confirms.",
+ "code_path": "solutions/kattis_honeyheist.cpp",
+ "samples_passed": true
+}

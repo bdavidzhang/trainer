@@ -1,0 +1,13 @@
+{
+ "id": "kattis:evolutionaryexcerpt",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "strings",
+  "probability"
+ ],
+ "key_idea": "The LCS of two random 4-letter strings is about 0.65n, so no global alignment is needed: cut both strings into aligned blocks of a few hundred characters and concatenate exact block LCSs.",
+ "sketch": "Split A and B into aligned blocks of 250 characters, run the quadratic LCS DP with reconstruction on each pair of blocks, and concatenate the results; this is a common subsequence of the whole strings. 4000 blocks * 62500 cells = 2.5e8 simple operations (~0.25 s). Empirically the ratio is 0.6357 at n=1e6 with tiny variance (sum of 4000 independent block values), far above the required 0.5. Pitfalls: a naive greedy pointer walk only gets ~n/4..0.5n, and full O(n^2) LCS is impossible. No samples in the scrape and any valid answer is accepted: verified with my own validator (subsequence of both strings and length >= n/2 on four random n=1e6 instances).",
+ "code_path": "solutions/kattis_evolutionaryexcerpt.cpp",
+ "samples_passed": true
+}

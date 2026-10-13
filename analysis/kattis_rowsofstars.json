@@ -1,0 +1,14 @@
+{
+ "id": "kattis:rowsofstars",
+ "rating": 1800,
+ "topics": [
+  "prefix-sums",
+  "math",
+  "monotonic-stack-queue",
+  "number-theory"
+ ],
+ "key_idea": "The rectangle (spot i, day j) sums W[(i+k(j+l)) mod n] for l<d, where W is the cyclic s-window sum, so its value depends only on p=(i+kj) mod n; compute F[p] for every p via prefix sums along the cycles of the step-k permutation, then maximise over reachable p.",
+ "sketch": "Reduce k mod n. W[p] = cyclic sum of s values starting at p (prefix sums on the doubled array). F[p] = sum_{l<d} W[(p+kl) mod n]: decompose 0..n-1 into cycles of p -> p+k (each of length c=n/gcd(n,k)), and with d = q*c + r get F = q*cycleSum + a prefix-sum window of length r on the doubled cycle. For day j the allowed starts i in [0,n-s] map to the cyclic interval of length n-s+1 beginning at kj mod n, so precompute M[p] = max of F over each cyclic window of that length with a monotonic deque and answer max over j in [0,n-d] of M[kj mod n]. O(n) overall. Pitfalls: spots may not wrap but the star indices do, d can exceed the cycle length (k=0 gives cycles of length 1), all values may be negative so initialise with -inf, sums reach about 4e17 so 64-bit is required. Stress-tested against brute force.",
+ "code_path": "solutions/kattis_rowsofstars.cpp",
+ "samples_passed": true
+}

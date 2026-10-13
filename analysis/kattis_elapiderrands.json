@@ -1,0 +1,14 @@
+{
+ "id": "kattis:elapiderrands",
+ "rating": 3000,
+ "topics": [
+  "constructive",
+  "shortest-paths",
+  "bfs-dfs",
+  "geometry"
+ ],
+ "key_idea": "A simple curve never disconnects the plane, so every later target stays reachable in principle; the whole difficulty is grid thickness, i.e. routing each leg so that corridors next to the old path keep enough free tracks for all future passes while the total length stays under 2e6.",
+ "sketch": "UNSOLVED: my heuristic router only finishes about 40% of random N=20 instances (validated with my own checker: no revisits, order respected, length under 2e6 when it finishes) and takes 2-30 s, so it would not be accepted. Approach: compress to a coarse grid of 9x9 blocks (targets are >= 20 apart so each block holds at most one target), route each leg with Dijkstra on the coarse grid, then expand a coarse step into 9 fine steps through block centres with a small local BFS inside target blocks. The leg router uses two phases, first walking along the existing path on track k+1 contiguously from the head and then leaving it while being repelled by all walls, and tries k = 0,1,2,3,5,8,12, accepting the first candidate after which every later target is still reachable through a corridor of clearance about (remaining targets)/2. Earlier variants (plain halo penalties that centre the path in lanes, a wall or a steep cost cone at the origin to stop detours around the tail) failed more often because repeated passes halve the remaining lane width. Remaining failures are lane exhaustion at coarse resolution when targets alternate between the inside and outside of a pocket whose only access is a long lane; a correct solution probably needs finer resolution (work on the real grid with a bucket-queue or A* search) or an explicit track assignment that lets several strands share a coarse cell. Pitfalls found: future targets must be blocked for earlier legs, the bounding box needs a wide margin for outer detours, and the sample violates the distance guarantee so a block size 1 fallback is needed.",
+ "code_path": "solutions/kattis_elapiderrands.cpp",
+ "samples_passed": false
+}

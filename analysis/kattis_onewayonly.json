@@ -1,0 +1,14 @@
+{
+ "id": "kattis:onewayonly",
+ "rating": 1800,
+ "topics": [
+  "greedy",
+  "constructive",
+  "graphs",
+  "flows"
+ ],
+ "key_idea": "Above the path every D step creates an escape cell and every R step an entry cell; by Menger the minimum cut equals the max number of disjoint detours, which is the bracket-matching count with D as '(' and R as ')' (and symmetrically R/D for the region below).",
+ "sketch": "Any alternative route makes a detour that stays entirely above-right or entirely below-left of the path, so the two sides are independent min vertex cuts. In the upper side a detour leaves right of a D step and re-enters above a later R step, so the number of vertex-disjoint detours is at most the maximum matching of D's with later R's; nested L-shaped hooks (go right, then down) realise the greedy bracket matching disjointly, so the bound is tight. The answer is matched(D open, R close) + matched(R open, D close), computed with two counters in O(r+c). Pitfall: just counting corners is wrong (DDRR on 3x3 needs 2). Verified against exhaustive subset search on all grids up to 4x4.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_onewayonly.cpp"
+}

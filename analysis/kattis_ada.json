@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ada",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Build the finite-difference table until a row is constant; the degree is the number of difference rows and the next value is the sum of the last entries of all rows.",
+ "sketch": "Repeatedly replace the sequence by its differences, accumulating the last element of each row, until all remaining elements are equal. Output the number of differencing steps and the accumulated sum. O(n^2) with n<=10; use 64-bit since differences can grow by a factor of 2 per level.",
+ "code_path": "solutions/kattis_ada.cpp",
+ "samples_passed": true
+}

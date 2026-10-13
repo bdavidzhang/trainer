@@ -1,0 +1,14 @@
+{
+ "id": "kattis:condorcet",
+ "rating": 2400,
+ "topics": [
+  "math",
+  "binary-search",
+  "brute-force",
+  "graphs"
+ ],
+ "key_idea": "Fix for every candidate a who beats him (a function g); only the cycles of this functional graph constrain the added ballots, since one ballot can satisfy all edges of a cycle except at least one, giving a closed-form feasibility test for a given number of voters.",
+ "sketch": "Compute pairwise margins d. Enumerate all (n-1)^n functions g. For t added voters, edge g(a)->a must be satisfied by r_a = ceil((t+1-d[g(a)][a])/2) ballots (clamped at 0); need r_a <= t, and for each cycle sum(t-r_a) >= t (each ballot must miss at least one cycle edge; tree edges and different components are independent). Feasibility is monotone only within a parity class (add a ballot and its reverse), so binary search t separately over even and odd values and take the minimum. Pitfalls: ties do not count as a loss, answer can be 0, non-monotonicity across parity. Stress-tested against exhaustive multiset search for n=3,4 with small tallies.",
+ "code_path": "solutions/kattis_condorcet.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:basketballoneonone",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The record is a complete valid game, so the player who scored last is the winner.",
+ "sketch": "Print the second-to-last character of the string. O(n). No need to simulate the win-by-two rule at all, because the game ends exactly when someone wins.",
+ "code_path": "solutions/kattis_basketballoneonone.cpp",
+ "samples_passed": true
+}

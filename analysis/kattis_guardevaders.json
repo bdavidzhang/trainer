@@ -1,0 +1,13 @@
+{
+ "id": "kattis:guardevaders",
+ "rating": 1400,
+ "topics": [
+  "search-backtracking",
+  "dp-bitmask",
+  "games"
+ ],
+ "key_idea": "Only 3^10 guard configurations exist and the move graph is acyclic, so the longest sequence of passes can be found by memoised DFS over states.",
+ "sketch": "State is the string of guard directions; a move through gap i is legal when guard i is not R and guard i+1 is not L, and it sets them to R and L. The graph is a DAG (guard 1 can only ever become R, so gap 1 is used at most once, and inductively each gap finitely often), so longest path = 1 + max over legal moves, memoised in a map; answer 1 iff longest >= p. At most 59049 states times 9 moves. Pitfall: a gap can reopen after both neighbouring gaps are used (FFFF allows 4 passes, not 3), so a greedy 'each gap once' count is wrong.",
+ "code_path": "solutions/kattis_guardevaders.cpp",
+ "samples_passed": true
+}

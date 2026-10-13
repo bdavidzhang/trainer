@@ -1,0 +1,14 @@
+{
+ "id": "kattis:failingfactory",
+ "rating": 1700,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "probability",
+  "math"
+ ],
+ "key_idea": "A step survives iff everything reachable from it survives, so its survival probability is the product of (1-p) over its reachable set; the best step always lies in a sink strongly connected component, whose reachable set is just itself.",
+ "sketch": "Compute SCCs (iterative Tarjan, n,m<=1e5), mark components with no edge leaving them, and for each sink component sum log10(1-p) over its vertices; the answer is the largest such sum, since any other vertex's reachable set strictly contains some sink component. The product can be as small as 1e-300000, so work in logarithms and print mantissa and exponent manually (mantissa = 10^frac, exponent = floor); print 0 if every sink component contains a p=1 step or the exponent is below about -250 (allowed by the 1e-200 absolute tolerance). Parse probabilities as integer thousandths to avoid log of an inexact 1-p. Avoid recursion depth 1e5. O(n+m); stress-tested against a transitive-closure brute force.",
+ "code_path": "solutions/kattis_failingfactory.cpp",
+ "samples_passed": true
+}

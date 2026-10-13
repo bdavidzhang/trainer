@@ -1,0 +1,12 @@
+{
+ "id": "kattis:metronome",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Four ticks per revolution, so the answer is n/4.",
+ "sketch": "Read n and print n/4 with two decimals. O(1). Only pitfall is using floating division rather than integer division.",
+ "code_path": "solutions/kattis_metronome.cpp",
+ "samples_passed": true
+}

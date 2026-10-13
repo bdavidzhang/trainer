@@ -1,0 +1,12 @@
+{
+ "id": "kattis:aptupgrade",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "The m finished packages plus up to k in-progress ones that are all at ~100% can be the m+k largest packages.",
+ "sketch": "Sort sizes descending, sum the largest min(n, m+k) and divide by the total, times 100. O(n log n). Pitfalls: cap m+k at n, use 64-bit sums (up to 1e14), print with enough decimals for 1e-4 absolute error.",
+ "code_path": "solutions/kattis_aptupgrade.cpp",
+ "samples_passed": true
+}

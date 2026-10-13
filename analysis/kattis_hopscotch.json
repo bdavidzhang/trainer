@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hopscotch",
+ "rating": 1700,
+ "topics": [
+  "combinatorics",
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "The x and y coordinates are independent once the number of hops k is fixed: the count is the number of compositions of N into k parts each >= X times the same for Y.",
+ "sketch": "Compositions of N into k parts each at least X number C(N - kX + k - 1, k - 1) by stars and bars after subtracting X from each part. Sum C(N-kX+k-1,k-1) * C(N-kY+k-1,k-1) over all k >= 1 with kX <= N and kY <= N, modulo 1e9+7. Precompute factorials and inverse factorials up to about 2N with one modular exponentiation, giving O(N) total. Pitfalls: the binomial top index can reach nearly 2N when X = 1, so size the tables accordingly, and treat binomials with negative arguments as 0.",
+ "code_path": "solutions/kattis_hopscotch.cpp",
+ "samples_passed": true
+}

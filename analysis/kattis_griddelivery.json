@@ -1,0 +1,13 @@
+{
+ "id": "kattis:griddelivery",
+ "rating": 1800,
+ "topics": [
+  "dp",
+  "greedy",
+  "graphs"
+ ],
+ "key_idea": "By Dilworth's theorem the minimum number of monotone (down/right) paths covering all customers equals the longest antichain: a sequence of customers going strictly down and strictly left.",
+ "sketch": "Two cells can share a driver unless one is strictly lower and strictly to the left of the other, and comparability is a partial order, so the minimum path cover equals the maximum antichain. Compute the longest chain with rows strictly increasing and columns strictly decreasing: process rows top to bottom, keep best[c] = longest such chain ending in column c, take a suffix maximum over columns of the values from previous rows, and set best[c] = max(best[c], suf[c+1]+1) for every C in the row. O(h*w) time, O(w) memory. Pitfalls: use the suffix maxima from before the current row so two cells in one row are never chained, and an empty grid gives 0.",
+ "code_path": "solutions/kattis_griddelivery.cpp",
+ "samples_passed": true
+}

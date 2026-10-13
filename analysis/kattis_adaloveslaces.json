@@ -1,0 +1,13 @@
+{
+ "id": "kattis:adaloveslaces",
+ "rating": 1700,
+ "topics": [
+  "search-backtracking",
+  "brute-force",
+  "geometry"
+ ],
+ "key_idea": "By symmetry the lacing is determined by the half path from eyelet 0: a sequence of distinct rows from row 0 to row N-1, each step either a diagonal cross to any unused row or a vertical move to an adjacent row.",
+ "sketch": "A half path using an eyelet makes its mirror use the mirror eyelet, so each row is visited at most once and a horizontal move within a row is impossible except the mandatory 0-1 link; rows may be skipped. DFS over ordered subsets of rows ending at N-1, with a same-side step (length d, only when rows differ by 1) or a cross step (sqrt(s^2+(dr*d)^2)); used length = s + 2*half + t*(2*eyelets in half). For N=9 this is at most a few million patterns; store all lengths, sort, and for each L count lengths in [L-2fmax, L-2fmin] with binary search. Doubles suffice because the statement guarantees a micron of slack. Pitfall: realising that not every eyelet has to be used (the sample answer 5 for N=3 needs the pattern that skips the middle row).",
+ "code_path": "solutions/kattis_adaloveslaces.cpp",
+ "samples_passed": true
+}

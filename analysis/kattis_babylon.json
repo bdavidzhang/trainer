@@ -1,0 +1,13 @@
+{
+ "id": "kattis:babylon",
+ "rating": 1500,
+ "topics": [
+  "combinatorics",
+  "sorting",
+  "dp"
+ ],
+ "key_idea": "A valid tower is a chain under 'fits inside with rotation', so the order is forced except among identical blocks; only the orientation of each block needs a 2-state DP.",
+ "sketch": "Normalize each block to (min,max) and sort descending. Identical blocks can be permuted freely, contributing a product of group-size factorials. Run a DP over the sorted list with state = orientation of the current block (squares have a single orientation since both give the same footprint); a transition to the next block in orientation (w,h) inside (W,H) is allowed iff w<=W and h<=H and contributes (W-w+1)(H-h+1) lattice positions. The first block sits at (0,0) with 1 or 2 orientations. If the blocks do not form a chain the DP naturally becomes 0. O(n log n); reduce the 1e9-sized factors mod p before multiplying. Stress-tested against a permutation brute force.",
+ "code_path": "solutions/kattis_babylon.cpp",
+ "samples_passed": true
+}

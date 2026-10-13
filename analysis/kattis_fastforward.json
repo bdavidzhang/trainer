@@ -1,0 +1,14 @@
+{
+ "id": "kattis:fastforward",
+ "rating": 1900,
+ "topics": [
+  "trees",
+  "two-pointers",
+  "binary-search",
+  "data-structures"
+ ],
+ "key_idea": "The greedy 'next advertisement' pointer nxt[i] (first position where the running sum from i reaches c) forms a forest on the doubled array; the answer for start i is the number of ancestors of i with index at most i+n-1.",
+ "sketch": "Double the array and compute nxt[i] with two pointers (songs are positive so it is monotone); nxt[i]=2n if the sum never reaches c. An ad after the last of the n songs is not counted, so we count jumps landing at positions <= i+n-1. Since nxt[i] > i the pointers form a tree rooted at 2n: do an iterative DFS keeping the root-to-node path, whose indices decrease with depth, and binary search it for the number of ancestors <= i+n-1. O(n log n) time, O(n) memory, avoiding a 20x2e6 binary-lifting table. Pitfalls: recursion depth up to 2e6 (must be iterative), the off-by-one for the uncounted final ad, and c up to 1e9 against total sums of 2e9 (use 64-bit). Stress-tested against an O(n^2) simulation.",
+ "code_path": "solutions/kattis_fastforward.cpp",
+ "samples_passed": true
+}

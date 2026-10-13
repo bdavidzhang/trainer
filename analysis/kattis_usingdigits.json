@@ -1,0 +1,12 @@
+{
+ "id": "kattis:usingdigits",
+ "rating": 1300,
+ "topics": [
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "Digits must be used in order, so the state is (x, y, number of digits used) with steps and hops as transitions.",
+ "sketch": "dp[y][x][j] = minimum sum reaching (x,y) having used j key digits; transitions: step +1 in x or y keeping j, or hop d_j+1 squares in x or y using digit j (hopped-over squares are not counted, the landing square is). Answer is the min over j at the destination. O(X*Y*50). Pitfalls: the grid is given top row first with the start at bottom-left, a hop over d squares moves d+1, and not all digits need to be used.",
+ "code_path": "solutions/kattis_usingdigits.cpp",
+ "samples_passed": true
+}

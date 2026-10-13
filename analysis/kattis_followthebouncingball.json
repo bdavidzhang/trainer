@@ -1,0 +1,13 @@
+{
+ "id": "kattis:followthebouncingball",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "implementation",
+  "heap"
+ ],
+ "key_idea": "Event-driven simulation: every ball flies along the same deterministic path until an object dies, so keep a global time-ordered queue of each ball's next object hit and lazily recompute a ball's event only when its target object has already been removed.",
+ "sketch": "Each state after a bounce is a node (point, unit direction, path time); a ball's event time is its launch second plus the node's path time, which makes simultaneous hits compare equal. From a node, ray-cast against the three walls (only those the ball moves towards) and all edges of live objects, reflect with v' = 2(v.e)e - v, and memoise the transition per node for the current alive-mask (the mask only shrinks, so one cache slot per node suffices) plus a memoised 'skip the wall bounces' pointer so the queue only holds object hits and exits. Pop all events within 1e-7 of the earliest, group by object: if the group exhausts the counter the object dies and every ball in the group passes straight through (stays on its node and is re-cast under the new mask), otherwise all bounce. Removing an object can only postpone other balls' first hits, so stale events are simply re-cast when popped. Cost is about (distinct nodes x masks visited) x 200 edges plus O(hits log n) with at most ~20000 object hits. Pitfalls: balls hitting the same object at the same instant must be judged together, start on a side wall (l = 0 or w) or exact corner hits need t = 0 wall bounces, use long double and a small positive t threshold to avoid re-hitting the edge just left. Samples pass; a variant without the wall-skip cache agreed on 299 random scenes (the 300th was an invalid horizontal-trap input).",
+ "code_path": "solutions/kattis_followthebouncingball.cpp",
+ "samples_passed": true
+}

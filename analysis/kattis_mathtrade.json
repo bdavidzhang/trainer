@@ -1,0 +1,12 @@
+{
+ "id": "kattis:mathtrade",
+ "rating": 1000,
+ "topics": [
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Each item has at most one owner and one wanter, so linking each person to the owner of the item they want gives a graph with in/out degree at most 1; the answer is the longest cycle.",
+ "sketch": "Build next[i] = the person who has what i wants (via a map from item to owner). From every person follow next pointers up to n steps and record the cycle length if we return to the start; print the maximum length that is at least 2, otherwise 'No trades possible'. O(n^2) with n <= 100. Pitfalls: chains that are not closed do not count, and a trade needs at least two distinct people.",
+ "code_path": "solutions/kattis_mathtrade.cpp",
+ "samples_passed": true
+}

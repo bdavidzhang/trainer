@@ -1,0 +1,13 @@
+{
+ "id": "kattis:politics",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "probability",
+  "prefix-sums"
+ ],
+ "key_idea": "Let f(t) be the best expected number of hearings when you become free at time t; it only depends on later times, and the average of f over the end-time interval is a range sum obtainable from a suffix-sum array.",
+ "sketch": "Process times t from 1e6 down to 1. f(t) = max(f(t+1), max over hearings starting at t of 1 + (sum of f(u) for u in [t+a, t+b]) / (b-a+1)). Keep S(t) = sum of f(u) for u >= t, so each hearing is evaluated in O(1) as (S(t+a) - S(t+b+1)) / (b-a+1); all those indices are greater than t and already final. Answer is f(1). Complexity O(T + n) with T = 2e6 doubles of memory. Pitfalls: end times reach 2e6, so the array must cover that; several hearings can share a start time; the suffix sums reach about 2e10, well within double precision for the 1e-3 tolerance.",
+ "code_path": "solutions/kattis_politics.cpp",
+ "samples_passed": true
+}

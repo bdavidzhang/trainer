@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tourists",
+ "rating": 1600,
+ "topics": [
+  "lca",
+  "trees",
+  "number-theory"
+ ],
+ "key_idea": "The number of (x, multiple of x) pairs is a harmonic sum, about n ln n = 2.4e6, so just answer each pair with an LCA distance query.",
+ "sketch": "Root the tree at 1 with a BFS (avoid recursion: depth can be 2e5), build binary lifting tables, and for every x and every multiple y=2x,3x,... add depth[x]+depth[y]-2*depth[lca]+1. Complexity O(n log n * log n) which runs in about 0.2s. Pitfalls: path length counts nodes, not edges, and the total needs 64 bits.",
+ "code_path": "solutions/kattis_tourists.cpp",
+ "samples_passed": true
+}

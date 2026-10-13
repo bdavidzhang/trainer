@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triangularlogs",
+ "rating": 2000,
+ "topics": [
+  "data-structures",
+  "geometry",
+  "math"
+ ],
+ "key_idea": "A set of lengths in [1, 1e9] with no triangle grows at least like Fibonacci, so any 45 logs contain a triangle; a query therefore only needs to report up to 44 points of the rectangle.",
+ "sketch": "Build a k-d tree over the trees (split the longer side at the median, leaves of 8 points, bounding box per node). For a query, collect heights of points inside the rectangle and stop as soon as 45 are found or a fully contained subtree would push the count to 45: answer 1 immediately. Otherwise sort the at most 44 heights and check adjacent triples a+b>c, which is sufficient for a sorted list. Each query costs O(sqrt(n) + 45), far within the 12 s limit (0.1 s locally on 1e5/1e5). Pitfalls: a+b overflows 32-bit, the triangle must be non-degenerate (strict inequality), and equal heights are allowed. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_triangularlogs.cpp",
+ "samples_passed": true
+}

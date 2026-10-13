@@ -1,0 +1,11 @@
+{
+ "id": "kattis:espresso",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate the tank: each order needs digit + (1 if latte); refill when the remaining water is less than the next order.",
+ "sketch": "Keep remaining = s. For each order compute need = shots plus one if the string has the L suffix. If remaining < need, count a refill and reset remaining to s, then subtract. O(n). Only pitfall is parsing the optional L and refilling only when strictly insufficient.",
+ "code_path": "solutions/kattis_espresso.cpp",
+ "samples_passed": true
+}

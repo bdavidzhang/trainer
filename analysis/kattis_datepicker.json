@@ -1,0 +1,13 @@
+{
+ "id": "kattis:datepicker",
+ "rating": 1200,
+ "topics": [
+  "brute-force",
+  "sorting",
+  "greedy"
+ ],
+ "key_idea": "Enumerate the subset of days (2^7); for a fixed day set the best hours are simply the h columns with the most free cells.",
+ "sketch": "Picking more than the minimum never helps on the inner choice: the average of the top-k column counts is non-increasing in k, so take exactly h hours. For the outer choice just enumerate all 127 day subsets with at least d days. For each, count free cells per hour over the chosen days, sort descending, sum the top h and divide by |days|*h. Complexity 2^7 * 7 * 24. Pitfall: do not greedily take the d best days first; the day/hour choices interact, hence the enumeration.",
+ "code_path": "solutions/kattis_datepicker.cpp",
+ "samples_passed": true
+}

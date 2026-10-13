@@ -1,0 +1,14 @@
+{
+ "id": "kattis:circleoffriends",
+ "rating": 2300,
+ "topics": [
+  "dp",
+  "bitmasks",
+  "two-pointers",
+  "prefix-sums"
+ ],
+ "key_idea": "Fix the group containing friend 0: as its left end moves left the AND takes at most 60 distinct values, and for each value the allowed right ends form a prefix [0,R], so one multi-source linear DP per distinct mask counts all completions.",
+ "sketch": "If the AND of everything is nonzero every split is valid and the answer is 2^n - n (nonempty cut sets, with the n single-cut sets all being the one whole-circle group). Otherwise precompute lo[c], the leftmost start of a nonzero-AND segment ending at c-1, by two pointers with per-bit counters. Walk the left end l of friend 0's group leftwards, grouping consecutive l with the same mask M = AND(a[l..0]); binary search R = max r with M & prefAND[r] != 0. For that class run g[c] = [c<=R+1] + sum_{j=max(lo[c],1)}^{c-1} g[j] with prefix sums (g[c] = ways to pick the right end r<=R and split r+1..c-1 into valid groups), and add the sum of g over the cut positions of the class. At most 60 classes, so O(60 n) time. Pitfalls: single group counted once, modular subtraction, a values need unsigned 64-bit. Stress-tested against a cut-subset brute force for n<=9.",
+ "code_path": "solutions/kattis_circleoffriends.cpp",
+ "samples_passed": true
+}

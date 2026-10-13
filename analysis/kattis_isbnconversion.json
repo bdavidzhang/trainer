@@ -1,0 +1,12 @@
+{
+ "id": "kattis:isbnconversion",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Pure validation and reformatting: check hyphen rules, exactly ten symbols with X only as the last one, the mod-11 checksum, then recompute the mod-10 check digit with the 978 prefix.",
+ "sketch": "Reject if: a hyphen is first, last or doubled; more than 3 hyphens; with exactly 3 hyphens the second to last character is not a hyphen; non-hyphen count is not 10; X anywhere but the final position; sum (10-i)*d_i not divisible by 11 (X=10). Otherwise the ISBN-13 weights are 9*1+7*3+8*1=38 for the prefix and alternate 3,1,3,... over the nine kept digits; check digit is (10-S mod 10) mod 10. Output 978- followed by the original string with its last character replaced, keeping hyphens. Pitfalls are only the hyphen corner cases.",
+ "code_path": "solutions/kattis_isbnconversion.cpp",
+ "samples_passed": true
+}

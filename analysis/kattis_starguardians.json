@@ -1,0 +1,12 @@
+{
+ "id": "kattis:starguardians",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "For a fixed team size the bonus is fixed, so take the strongest members; try every size.",
+ "sketch": "Sort s descending, and for each size i compute (prefix_i + a_i)/i, taking the maximum. n<=10 so anything works (even 2^n brute force). Team must be non-empty; print as floating point.",
+ "code_path": "solutions/kattis_starguardians.cpp",
+ "samples_passed": true
+}

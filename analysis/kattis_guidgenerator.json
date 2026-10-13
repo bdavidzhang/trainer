@@ -1,0 +1,14 @@
+{
+ "id": "kattis:guidgenerator",
+ "rating": 1700,
+ "topics": [
+  "strings",
+  "trees",
+  "trie-aho-corasick",
+  "bfs-dfs"
+ ],
+ "key_idea": "With n<=2000 there are only n^2 = 4M directed paths; the paths starting at s form a trie (the tree rooted at s), so insert all n rooted trees into one shared trie and count its nodes.",
+ "sketch": "For every start node run a DFS over the tree carrying the current trie node; stepping to a tree node with character ch moves to (creating if absent) child ch of the trie node. Distinct GUIDs = number of trie nodes created. O(n^2) time; the trie has at most n^2 nodes with 16 children each (256MB as ints, allocated with calloc so untouched pages cost nothing; the limit is 2GB). Use an explicit stack to avoid recursion depth issues on a path. Hashing every path and sorting 4M 64-bit hashes is a lower-memory alternative. Pitfalls: s->t and t->s are different strings, single nodes count. Stress-tested against a set-of-strings brute force; worst case runs in well under a second.",
+ "code_path": "solutions/kattis_guidgenerator.cpp",
+ "samples_passed": true
+}

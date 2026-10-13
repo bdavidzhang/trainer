@@ -1,0 +1,13 @@
+{
+ "id": "kattis:estheticfences",
+ "rating": 2100,
+ "topics": [
+  "dp",
+  "dp-knapsack",
+  "combinatorics"
+ ],
+ "key_idea": "An alternating cycle cut into three sides means each side has |#red-#blue|<=1 and the total counts are equal; any such count pattern can be arranged, so only (three side lengths, three count differences) matter.",
+ "sketch": "DP over parts, each going to side 1, 2, 3 or unused, with state (l1,l2,l3,d1,d2,d3) where d_i = red minus blue count on side i. Process the minority colour first (at most 10 parts) so d stays in [0,10], then the other colour while pruning d<-1, giving 12^3 difference states times at most C(33,3) length triples; updates are done in place by iterating lengths in decreasing lexicographic order. At the end take states with all lengths positive, each |d_i|<=1, sum d = 0 (so (0,0,0) or a permutation of (1,-1,0)), strict triangle inequality, and maximise the product. Realizability: R..R, B..B, RB..RB sides can always be ordered around the cycle. Verified against an exhaustive 4^n brute force on 150 random small cases. Roughly 5e8 simple operations worst case, well within limits.",
+ "code_path": "solutions/kattis_estheticfences.cpp",
+ "samples_passed": true
+}

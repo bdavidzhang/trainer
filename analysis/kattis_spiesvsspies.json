@@ -1,0 +1,13 @@
+{
+ "id": "kattis:spiesvsspies",
+ "rating": 1600,
+ "topics": [
+  "data-structures",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "Each spy is eliminated at most once, so keep alive spies in doubly linked lists per row and per column and walk the list in the looking direction, unlinking as you go.",
+ "sketch": "Sort spies by (y,x) to link east/west neighbours inside each row and by (x,y) to link north/south neighbours inside each column. For a query from an alive spy, follow the neighbour pointer in that direction; every spy visited is eliminated, appended to the output in visiting order (which is nearest first), and unlinked from both its row list and its column list in O(1). A query from a dead spy prints ignore. Total O(N log N + N + M). Pitfalls: output can be large so buffer it, and a spy must be removed from both lists or later looks in the perpendicular direction will see ghosts. Stress-tested against an O(NM) brute force on 500 random small grids.",
+ "code_path": "solutions/kattis_spiesvsspies.cpp",
+ "samples_passed": true
+}

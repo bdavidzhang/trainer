@@ -1,0 +1,12 @@
+{
+ "id": "kattis:cornhusker",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Follow the formula literally with integer division: (sum(A*L)/5)*N/KWF.",
+ "sketch": "Sum the five products A*L, integer-divide by 5, multiply by N, integer-divide by KWF. The only pitfall is the order of the truncating divisions (average first, then multiply, then divide). O(1).",
+ "code_path": "solutions/kattis_cornhusker.cpp",
+ "samples_passed": true
+}

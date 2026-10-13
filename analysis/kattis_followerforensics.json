@@ -1,0 +1,14 @@
+{
+ "id": "kattis:followerforensics",
+ "rating": 2500,
+ "topics": [
+  "constructive",
+  "graphs",
+  "greedy",
+  "dsu"
+ ],
+ "key_idea": "Realise the (out,in) degree pairs with the Kleitman-Wang greedy, then merge weak components by swapping arc heads between two components, always spending a non-bridge (cycle) arc; this works iff m>=n-1 and nobody has total degree 0.",
+ "sketch": "Necessary: sum a = sum b, a_i,b_i<=n-1, and for n>1 every a_i+b_i>0 and m>=n-1. Kleitman-Wang: process vertices one by one, sending all a_v out-arcs to the vertices (not v) with the largest remaining in-degree, ties to larger remaining out-degree; a std::set keyed (in,out,id) gives O(m log n). If it gets stuck or in-degree is left over, impossible. Then DSU over the arcs marks tree vs non-tree arcs per component. For arcs u1->v1 and u2->v2 in different components, replacing them by u1->v2 and u2->v1 keeps degrees and simplicity and joins the components provided one of the removed arcs was a non-tree arc; merge all cyclic components first (each merge returns one spare arc), then absorb tree components, each consuming one spare; the count m-n+k>=k-1 guarantees enough spares. Pitfalls: n=1, isolated vertices, output up to 1e6 lines (buffer it). Output is not unique: validated by exhaustive comparison with brute force over all digraphs for n<=5 (existence and validity) and by a validator on n=1e5, m=1e6 cases (0.5 s).",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_followerforensics.cpp"
+}

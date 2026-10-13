@@ -1,0 +1,12 @@
+{
+ "id": "kattis:thendaysofchristmas2",
+ "rating": 1100,
+ "topics": [
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "Total gifts is sum of triangular numbers = C(n+2,3) = n(n+1)(n+2)/6; do the division exactly before reducing mod p.",
+ "sketch": "Day d gives d(d+1)/2 gifts, and the hockey-stick identity sums these to n(n+1)(n+2)/6. With n up to 1e18 the product overflows, so divide 2 out of whichever of n, n+1 is even and 3 out of whichever of the three factors is divisible by 3 (after halving, divisibility by 3 is unchanged), then reduce each factor mod 998244353 and multiply. O(1). Alternative is multiplying by the modular inverse of 6. Pitfalls: overflow of n(n+1) in 64-bit, and n+2 up to 1e18+2 still fits in unsigned 64-bit.",
+ "code_path": "solutions/kattis_thendaysofchristmas2.cpp",
+ "samples_passed": true
+}

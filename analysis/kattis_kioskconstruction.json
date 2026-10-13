@@ -1,0 +1,14 @@
+{
+ "id": "kattis:kioskconstruction",
+ "rating": 1600,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "For a fixed destination the guest's move from each cell is deterministic, giving a functional graph; reverse BFS from the destination yields the walking distance from every possible kiosk at once.",
+ "sketch": "For each destination d (up to 1600) compute next(c) for every other cell: the neighbour minimising |a - d|, ties broken by |a - a_c| (a second tie is impossible because the numbers are distinct). Build reverse adjacency and BFS from d; cells not reached loop forever. For every kiosk cell keep the maximum distance over destinations, marking it invalid if any destination is unreachable. Answer the kiosk with minimum maximum, or impossible. O((hw)^2 * 4) ~ 1e7. Pitfalls: the guest always moves even if the neighbour is worse than the current plot; output the plot number, not coordinates. Several kiosks may tie; smallest plot number is printed and that matched the samples.",
+ "code_path": "solutions/kattis_kioskconstruction.cpp",
+ "samples_passed": true
+}

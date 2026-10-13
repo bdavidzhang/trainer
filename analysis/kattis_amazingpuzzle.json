@@ -1,0 +1,14 @@
+{
+ "id": "kattis:amazingpuzzle",
+ "rating": 2000,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Turns are free and applied to both robots, so the heading difference is a constant; the state is just the pair of cells (plus an OUT sentinel) and each Forward command picks one of 4 headings for robot 1.",
+ "sketch": "State = (pos1,pos2) with 2501^2 = 6.25M states, 4 transitions each costing exactly one Forward plus 0-2 bumps. Since every edge costs one Forward, do a level-by-level BFS and keep the minimum bump count among predecessors from the previous level (a lexicographic shortest path without a heap). Precompute next cell and bump flag per (cell,dir); a robot that is OUT ignores commands and never bumps; reject states where both robots are in the same cell inside the maze. Pitfalls: coordinates are (column,row) with row 1 at the south, the exit is the south side of (e,1), outer walls count as bumps, and robot 2 uses heading (d + d2 - d1) mod 4. About 0.3 s on a 50x50 maze. I allowed robots to swap through each other since the statement only forbids sharing a cell.",
+ "code_path": "solutions/kattis_amazingpuzzle.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:spaceprobe",
+ "rating": 1700,
+ "topics": [
+  "sorting",
+  "sweep-line",
+  "math"
+ ],
+ "key_idea": "Measurement i hits forbidden interval j exactly when the start time lies in [b_j - m_i, e_j - m_i], so the bad set is a union of at most n*k <= 1e7 intervals whose measure inside [t1,t2] is found by sort and sweep.",
+ "sketch": "For each measurement i, binary search the first forbidden interval with e_j >= t1+m_i and walk while b_j <= t2+m_i, pushing the interval clipped to [t1,t2]. Sort all intervals by left end and sweep to accumulate the union length in exact 64-bit integers. Answer = (t2-t1-bad)/(t2-t1). Complexity O(nk log(nk)), about 0.6s on a 1e7-interval worst case, memory 160MB. Pitfalls: values reach 1e16 so doubles cannot hold the endpoints exactly - keep everything in long long and compute the good length as an integer before the single division, which also keeps relative error small when the survival probability is tiny; closed vs open ends do not matter (measure zero). Stress-tested against an exact Fraction brute force.",
+ "code_path": "solutions/kattis_spaceprobe.cpp",
+ "samples_passed": true
+}

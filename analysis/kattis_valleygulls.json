@@ -1,0 +1,13 @@
+{
+ "id": "kattis:valleygulls",
+ "rating": 1900,
+ "topics": [
+  "implementation",
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Split the terrain at interior local maxima into basins with constant inflow rates; run an event simulation where a basin that reaches its lower rim either spills into the neighbour or merges with it if the neighbour is already full to the same rim.",
+ "sketch": "Each basin between consecutive peaks collects r*width of rain; volume as a function of level is a sum of trapezoid/triangle pieces per segment. Repeatedly compute per-basin rates (own catchment plus chained overflow from full basins), find the earliest basin to reach min(left rim, right rim) (cliffs are infinite), answer every nest whose level is reached within that interval, then either mark the basin full (redirecting its inflow across the rim) or merge with a neighbour that is full and spilling back toward it. A nest inside a full basin but above its spill level is only resolved after a merge. O(p^2 * (p+m)) with doubles. Pitfall: only answer a nest if its time falls inside the current event interval (my first version missed that). Checked on the sample and three hand-computed cases.",
+ "code_path": "solutions/kattis_valleygulls.cpp",
+ "samples_passed": true
+}

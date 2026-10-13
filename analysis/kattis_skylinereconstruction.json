@@ -1,0 +1,14 @@
+{
+ "id": "kattis:skylinereconstruction",
+ "rating": 2400,
+ "topics": [
+  "interactive",
+  "constructive",
+  "math",
+  "brute-force"
+ ],
+ "key_idea": "C(l,r) = sum s_i (i-l+1)(r-i+1), so with a known prefix p a query [p+1-M, p+k] yields a subset sum of the weights (M+j)(k+1-j) over the next k bits; choose (k,M) so that the subset sum pins down as many leading bits as possible, averaging well over 5 bits per query.",
+ "sketch": "Subtract the contribution of already-known bits from the reply; what is left is a subset sum over the k unknown bits with weights (M+j)(k+1-j), j=1..k. Injective windows only exist up to k=5 (M>=6), which costs 407 queries, two too many, so ambiguity is tolerated: for every k<=10 and M<=160 precompute, over all 2^k masks, the length of the common low-bit prefix of each collision class, and score the pair by expected bits per query with one extra query charged per stall. Each step picks the best-scoring (k,M) with M<=p and k<=n-p, finds all masks matching the reply, and commits the bits on which they all agree; if they disagree on the very first bit the next query is forced to an injective window so progress is guaranteed. Precompute is about 2e7 operations, decoding is 2^k per query. On 1000 simulated random strings (plus all-zeros and all-ones) the worst case was 372 queries, average 338, against the limit of 405. Not judgeable by the sample checker: validated with an in-process simulation and with a separate Python interactor driving the real binary over pipes (30 random strings, all recovered, worst 359 queries). Pitfalls: flush after every line, exit on -1, and the query count is probabilistic rather than a hard guarantee.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_skylinereconstruction.cpp"
+}

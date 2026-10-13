@@ -1,0 +1,13 @@
+{
+ "id": "kattis:whiteboard",
+ "rating": 1900,
+ "topics": [
+  "dsu",
+  "implementation",
+  "data-structures"
+ ],
+ "key_idea": "A cell ends up marked iff its LAST visit time is <= T, so only the last visit time of every cell matters; compute it by replaying commands backwards and painting only still-unpainted cells with a DSU skip pointer.",
+ "sketch": "The start cell is visited at time 1 and each unit move adds one; total time is 1+sum of distances (up to 1e12, use int64). Process commands in reverse; for each segment jump through unpainted cells using two next-unpainted DSUs (one along rows, one along columns), both updated when a cell is painted, so every cell is painted once: O((hw+n) alpha). Then lo = max last-visit over '#' cells (fail if a '#' cell is never visited), hi = min(total, min last-visit over visited '.' cells - 1); answer -1 -1 if lo>hi. Pitfalls: w*h<=1e6 but either dimension can be 1e6, so index the two DSUs as r*(w+1)+c and c*(h+1)+r with sentinels. Stress-tested against simulation of every T.",
+ "code_path": "solutions/kattis_whiteboard.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:excruciatingelevators",
+ "rating": 2600,
+ "topics": [
+  "brute-force",
+  "math",
+  "greedy",
+  "ad-hoc"
+ ],
+ "key_idea": "Model each elevator as a phase on a circle of length 2e6; by an exchange argument an optimal setup has one elevator at phase 0 and every other elevator anchored by a zero-wait boarding right after an arrival of another elevator, so phase differences come from the small set {t_j, t_j +- 2 f_j} and the phases form a rooted tree of such offsets.",
+ "sketch": "An elevator with phase a passes floor f at times a+f (going up) and a-f (going down) mod L = 2e6. For fixed phases the trip is simulated greedily: for each move take the elevator with the earliest arrival, where boarding at the up-pass costs wait + (f' - f or L - f - f') and at the down-pass wait + (f - f' or f + f'); switching mid-ride never helps. If a group of elevators has no zero-wait boarding following an arrival by an elevator outside the group (or at time 0), shifting the whole group earlier never increases any time, so some optimum has an anchor tree rooted at an elevator with phase 0. Enumerate the 4 rooted tree shapes on 4 elevators with every edge offset taken from the <= 102 values t_j, t_j +- 2 f_j (mod L): about 2.8e6 phase sets, each simulated in 35*4 steps with a lower-bound cut-off, roughly 1 s locally. Track time mod L in 32 bits and the total in 64 bits (t up to 1e9). Stress-tested with a scaled-down building against an exhaustive search over all integer phases with a fully general time-step simulation (2100 random cases, 1 to 4 elevators). Pitfalls: boarding in the wrong direction and riding around the end can be optimal, and an elevator's first use is not necessarily its zero-wait one.",
+ "code_path": "solutions/kattis_excruciatingelevators.cpp",
+ "samples_passed": true
+}

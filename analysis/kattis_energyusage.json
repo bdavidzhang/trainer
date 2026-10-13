@@ -1,0 +1,11 @@
+{
+ "id": "kattis:energyusage",
+ "rating": 1500,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "DP over hours with the battery charge (0..B) as state; a transition picks the next charge and at most one buyback plan, and the purchase needed is forced.",
+ "sketch": "Let f[b] be the minimum cost so far with b MWh stored. In hour i, choosing next charge b' and plan j (or no plan, d=0, c=0) requires buying x = max(0, r_i + b' + d_j - s_i - b) at price p_i, giving cost p_i*x - c_j; any surplus is simply wasted. Answer is the minimum of f over all charges after hour N. Complexity O(N * B^2 * M), about 5M operations. Pitfalls: selling plans are exact amounts and can be fed by purchased energy (arbitrage is allowed, so the answer may be negative), and the no-plan option must be included.",
+ "code_path": "solutions/kattis_energyusage.cpp",
+ "samples_passed": true
+}

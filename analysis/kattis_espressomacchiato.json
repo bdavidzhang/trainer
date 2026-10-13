@@ -1,0 +1,11 @@
+{
+ "id": "kattis:espressomacchiato",
+ "rating": 900,
+ "topics": [
+  "constructive"
+ ],
+ "key_idea": "Every right/down path crosses each anti-diagonal exactly once, so fill one full anti-diagonal that avoids both corners.",
+ "sketch": "Put a C on every cell with i+j = n-1 (0-indexed), the main anti-diagonal, which never contains the home (sum 0) or the workplace (sum 2n-2) for n>=2. Any monotone path increases i+j by one per step, hence visits exactly one cell of that diagonal. O(n^2) output. Multiple answers are accepted, so the sample checker reports a mismatch for n=7 (the sample uses a different diagonal); I validated all n in 2..50 with my own checker that computes the min and max number of shops over all monotone paths by DP and confirms both equal 1 with empty corners.",
+ "code_path": "solutions/kattis_espressomacchiato.cpp",
+ "samples_passed": true
+}

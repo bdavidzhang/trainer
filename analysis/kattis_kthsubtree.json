@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kthsubtree",
+ "rating": 1900,
+ "topics": [
+  "dp-tree",
+  "dp-knapsack",
+  "combinatorics"
+ ],
+ "key_idea": "Count connected subgraphs by size with the classic rooted tree knapsack (dp[v][s] = connected sets of size s whose top node is v), saturating counts above 1e18, then walk sizes in increasing order.",
+ "sketch": "Root the tree, process vertices in reverse DFS order, merging each child's size array into the parent's with the small-to-large bounded convolution, which is O(n^2) total. Every connected subgraph is counted exactly once at its topmost vertex, so tot[s] = sum over v of dp[v][s]. Counts are astronomically large, so clamp additions and products (via unsigned __int128) at 2e18. Then subtract tot[1], tot[2], ... from K until it fits; print -1 if K exceeds the total. Use an iterative DFS (chain of 5000) and free child arrays to keep memory linear. Stress-timed on n=5000 trees.",
+ "code_path": "solutions/kattis_kthsubtree.cpp",
+ "samples_passed": true
+}

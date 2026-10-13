@@ -1,0 +1,13 @@
+{
+ "id": "kattis:stararrangements",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Try every first-row size x with second row x or x-1; the flag works iff S is a multiple of the pair sum or leaves remainder x.",
+ "sketch": "Loop x from 2 to S-1. For (x,x-1): valid when S mod (2x-1) is 0 (even number of rows) or x (odd number of rows). For (x,x): valid when x divides S. Iterating x ascending and emitting x-1 before x gives the required order. O(S). Pitfall: exclude the trivial 1-row and 1-column layouts, which the x range 2..S-1 does automatically.",
+ "code_path": "solutions/kattis_stararrangements.cpp",
+ "samples_passed": true
+}

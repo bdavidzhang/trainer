@@ -1,0 +1,13 @@
+{
+ "id": "kattis:marypartitions",
+ "rating": 1100,
+ "topics": [
+  "dp-knapsack",
+  "dp",
+  "combinatorics"
+ ],
+ "key_idea": "Counting partitions into powers of m is unbounded coin change with coins 1, m, m^2, ... (at most ~9 coins for n <= 10000).",
+ "sketch": "For each test build dp[0]=1 and for every power p of m not exceeding n do dp[i]+=dp[i-p] for i from p to n. That is O(n log_m n) per data set, about 1e8 simple operations in the worst case over 1000 sets, fine. The answer fits in unsigned 32 bits, so use unsigned (or 64-bit) arithmetic, not signed int. Print the data set number before the answer.",
+ "code_path": "solutions/kattis_marypartitions.cpp",
+ "samples_passed": true
+}

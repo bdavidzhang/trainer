@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gatheringsearchresults",
+ "rating": 1300,
+ "topics": [
+  "math",
+  "sorting",
+  "greedy"
+ ],
+ "key_idea": "Expanding the square, the sum of i^2 over a permutation is constant, so only -2*sum(i_r*S_r) matters; by the rearrangement inequality sort results by their sum of positions.",
+ "sketch": "Cost = sum_r (k*i_r^2 - 2*i_r*S_r + const) where S_r is the sum of r's positions over all engines. Since the i_r form a permutation of 1..n the quadratic term is fixed, so maximise sum i_r*S_r, i.e. give larger positions to larger S_r: sort ascending by S_r. Ties can be broken arbitrarily (any order is optimal); stable sort by id used. O(nk + n log n) with 5e5 input integers, so use fast input. Multiple answers are accepted; all three samples matched exactly and optimality follows from the rearrangement inequality.",
+ "code_path": "solutions/kattis_gatheringsearchresults.cpp",
+ "samples_passed": true
+}

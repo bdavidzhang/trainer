@@ -1,0 +1,13 @@
+{
+ "id": "kattis:photoencoding",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "An n x n grid has min(d+1, 2n-1-d) cells on anti-diagonal d, so n works iff every distance's multiplicity fits its diagonal capacity.",
+ "sketch": "Count occurrences of each distance (0..200). Try n=1,2,... and accept the first n where cnt[d] <= cap(d) with cap(d)=d+1 for d<=n-1, 2n-1-d for n<=d<=2n-2 and 0 beyond. Capacities are monotone in n so the first feasible n is the answer; n never exceeds ~201. O(n*200).",
+ "code_path": "solutions/kattis_photoencoding.cpp",
+ "samples_passed": true
+}

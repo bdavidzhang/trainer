@@ -1,0 +1,13 @@
+{
+ "id": "kattis:matrixfraud",
+ "rating": 2100,
+ "topics": [
+  "dp",
+  "prefix-sums",
+  "brute-force"
+ ],
+ "key_idea": "The banded property is symmetric under transposition, so assume c<=r, hence c<=447; then a DP over rows with the full state (s_i,t_i) is r*c^2 <= 2e5*447 states, each resolved in O(1) with prefix minima.",
+ "sketch": "A matrix is banded iff s and t are non-decreasing, s_1=1, t_r=c, s_i<=t_i and s_{i+1}<=t_i+1 (no column is skipped). Row cost splits as A_i(s)+B_i(t) with A_i(s)=sum_{j<s}(+1 for a one, -1 for a zero) and B_i(t)=zeros[<=t]+ones[>t]. dp_i[s][t]=A_i(s)+B_i(t)+min over s'<=s, s-1<=t'<=t of dp_{i-1}[s'][t']: first take prefix minima over s' for each t' (P[s][t']), then a running minimum over t' starting from t'=s-1 for each s. Answer is min_s dp_r[s][c]; total ~9e7 simple operations with two rolling c x c tables. Pitfalls: forgetting to transpose when c>r, the coverage constraint s_{i+1}<=t_i+1 (diagonal touching is enough), and the first row being forced to s=1. Verified against exhaustive enumeration on matrices up to 5x5.",
+ "code_path": "solutions/kattis_matrixfraud.cpp",
+ "samples_passed": true
+}

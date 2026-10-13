@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hypersmawkbros",
+ "rating": 2700,
+ "topics": [
+  "games",
+  "math",
+  "dp",
+  "ad-hoc"
+ ],
+ "key_idea": "Each health value n is 'always lose', 'win with a unique move u' or 'win with >=2 moves'; a unique-move position p only influences the single position p+u, so losing positions are spaced m+1 or m+2 apart and the choice depends on O(log)-deep lazy membership queries rather than the whole window.",
+ "sketch": "Move x is good at n iff g(n-x) is losing or its unique winning move is x. For m even the losing positions are exactly multiples of m+1. For m odd, let L_k be the losing positions and U_k the offsets y in block k whose only winning move is y (to L_k); y is in U_k unless it is hit by y/2 in U_k (y even), by z=(y+gap_{k-1})/2 in U_{k-1} (z<=m), or by the special position L_{k-1}+m+1 (unique move h=(m+1)/2, hitting y=h-1) when the previous gap was m+2; U_0={m}. The gap after L_k is m+2 iff h is in U_k, otherwise m+1. Evaluate membership recursively with a hash-map memo, group the tests by m, generate losing positions up to the largest n for that m and binary search. About n/m blocks per distinct m with a few memo entries each, so the worst case (10^4 distinct odd m, n=10^6) is ~2.5e7 memo entries, 1.5 s locally. Verified against an O(nm) brute force for many m; the gap pattern is genuinely aperiodic-looking (e.g. m=23), so no closed form was used.",
+ "code_path": "solutions/kattis_hypersmawkbros.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:enteringenemyencampment",
+ "rating": 2200,
+ "topics": [
+  "games",
+  "dp-bitmask",
+  "math"
+ ],
+ "key_idea": "Write each edge's contribution to the score difference as (s_later - s_earlier)/2, so claiming v yields 2*|claimed neighbours| - deg(v) for the mover regardless of who owns the neighbours; the state collapses from 3^n to 2^n.",
+ "sketch": "Naively the state is an owner assignment (3^20, too large). With s_v = +1/-1 for the owner, an edge between different owners gives the later claimer one point, which equals (s_later - s_earlier)/2 and is zero for same owners. Summing per vertex, the mover's doubled gain when claiming v on claimed set S is 2*popcount(adj[v] & S) - deg(v), independent of ownership. Then a plain negamax over subsets (turn is implied by popcount) decides the sign of the result in O(2^n * n), about 2e7 operations and 2 MB with a short array. Verified against a 3^n ownership brute force on random graphs with n <= 7. Pitfall: seeing the ownership-free reformulation is the whole problem; values fit in 16 bits.",
+ "code_path": "solutions/kattis_enteringenemyencampment.cpp",
+ "samples_passed": true
+}

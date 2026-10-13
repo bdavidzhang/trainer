@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bestrational",
+ "rating": 1800,
+ "topics": [
+  "number-theory",
+  "math",
+  "binary-search"
+ ],
+ "key_idea": "The best approximation with denominator <= M is one of the two Farey neighbours of x in F_M, found by a Stern-Brocot descent with exact integer arithmetic.",
+ "sketch": "Read x as the exact fraction A/10^18 (parse the digits as a string, never as a double). Keep lo=a/b <= x <= hi=c/d starting from 0/1 and 1/1; while b+d <= M compare x with the mediant and move the matching side, jumping k steps at once with k = floor((x-lo)/(hi-x)) scaled (or the mirror), capped by the denominator limit, so it runs in O(log M) like the Euclidean algorithm. Stop early if x equals an endpoint. Finally compare |x-lo| and |x-hi| by cross multiplication; products reach about 1e30 so __int128 is required. Farey neighbours are automatically in lowest terms. Verified against a brute force over all denominators with exact fractions on 400 random cases.",
+ "code_path": "solutions/kattis_bestrational.cpp",
+ "samples_passed": true
+}

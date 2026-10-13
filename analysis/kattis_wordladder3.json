@@ -1,0 +1,11 @@
+{
+ "id": "kattis:wordladder3",
+ "rating": 1700,
+ "topics": [
+  "constructive"
+ ],
+ "key_idea": "The ladder must be an induced path in the Hamming graph; a product of two induced paths is a grid graph, and a boustrophedon snake that uses only every other row (with a single connector cell in between) is an induced path in that grid.",
+ "sketch": "Base: the 51-word staircase aa, ab, bb, bc, ..., zz is an induced path on 2 letters. Concatenating a word of path A with a word of path B gives Hamming distance d_A + d_B, so the product is exactly the grid graph on A x B. Snake along A in the even rows of B, alternating direction, joining consecutive used rows through one cell of the odd row at the turning end; no two non-consecutive cells are adjacent. Applying this twice (2 letters -> 4 letters with 1351 words -> 6 letters with over 35000 words) and printing the first n words gives the answer, since a prefix of an induced path is induced. O(n) output. The checker cannot judge this problem (any valid answer accepted); I validated with my own O(n^2) script for n in {3,4,5,51..53,1351..1353,2702..2704,4999,5000} that words are distinct, consecutive ones differ in one letter and no non-consecutive pair differs in at most one letter, which is why samples_passed is true.",
+ "code_path": "solutions/kattis_wordladder3.cpp",
+ "samples_passed": true
+}

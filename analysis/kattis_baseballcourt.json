@@ -1,0 +1,13 @@
+{
+ "id": "kattis:baseballcourt",
+ "rating": 2400,
+ "topics": [
+  "dp",
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "A Young diagram whose outer corners all lie on one anti-diagonal x+y=D is exactly a composition g_1..g_r of D (r>=2) with area e_2(g) = sum_{i<j} g_i g_j, so count compositions with e_2 = N, D-g_r <= a and D-g_1 <= b by a DP over (sum, e_2) for the middle parts.",
+ "sketch": "Cutting the diagonal at the corner projections gives gaps g_i; each step of the staircase is forced to be square-compatible, and the area is sum_j g_j * (g_{j+1}+...+g_r). Peel off the first part x and last part z: N = xz + (x+z)M + E where the middle is a composition of M with e_2 = E, and the box constraints are x+M <= a, z+M <= b. Let f[M][E] count compositions of M with e_2 = E (f[M][0]=1 for the single part); appending a part g to a composition of sum p moves (p,E) to (p+g, E+pg), and since pg <= N the forward DP costs about N^2 ln N / 2 simple vectorisable additions with only M <= (N-1)/2 and E <= N-2M-1 stored. Then sum f[M][N - xz - (x+z)M] over all (M,x,z), about N^2 pi^2/12 lookups, plus the divisor pairs for the two-part case M=0. Answer mod 1e9+7; runs in under 0.1 s for N = 1e4. Verified against a brute force over partitions for N <= 28.",
+ "code_path": "solutions/kattis_baseballcourt.cpp",
+ "samples_passed": true
+}

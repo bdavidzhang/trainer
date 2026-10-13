@@ -1,0 +1,13 @@
+{
+ "id": "kattis:digittranslation",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "strings",
+  "combinatorics"
+ ],
+ "key_idea": "Digits are not letters, so the final string corresponds to a set of disjoint word occurrences in the original, and different sets give different strings; a prefix DP on (min length, number of ways) suffices.",
+ "sketch": "dp[i] holds the shortest length for the first i characters and the count of optimal choices mod 9302023. Transition from dp[i-1]+1 (keep the letter) and from dp[i-L]+1 for each of the ten digit words of length L ending at i; merge with min and add counts on ties. Distinctness holds because expanding each digit back to its word recovers the chosen occurrences uniquely, and no digit word is a suffix of another so at most one word ends at each position with a given start. O(10*5*n) for n = 1e6. Pitfalls: the unusual modulus and reading a 1e6-character line quickly.",
+ "code_path": "solutions/kattis_digittranslation.cpp",
+ "samples_passed": true
+}

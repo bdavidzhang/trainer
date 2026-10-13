@@ -1,0 +1,14 @@
+{
+ "id": "kattis:neverjumpdown",
+ "rating": 2100,
+ "topics": [
+  "segment-tree",
+  "dp-tree",
+  "trees",
+  "data-structures"
+ ],
+ "key_idea": "It is LIS-with-counting along root paths: do a DFS keeping a max/count segment tree indexed by label that holds only the current ancestors, and undo each point update when leaving the vertex.",
+ "sketch": "dp[v] = (1 + best length, sum of counts) over ancestors with label <= u_v, obtained by a prefix query [0,u_v] on a segment tree storing (max length, number of ways). On entry, save the leaf at u_v and overwrite it with dp[v] (it strictly dominates the old leaf since the query included that label); on exit restore the saved value. L is the max dp length, M the sum of counts over vertices achieving it, mod 11092019. O(N log U) with N, U = 1e6: needs an iterative bottom-up segment tree, an explicit DFS stack (depth can be 1e6) and fast input; runs in about 0.4 s locally. Stress-tested against an O(n*depth) brute force.",
+ "code_path": "solutions/kattis_neverjumpdown.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:heirsdilemma",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "The range has under a million numbers, so just test each one directly.",
+ "sketch": "Loop v from L to H; peel off digits, rejecting on a zero digit, a repeated digit (bitmask of seen digits), or a digit that does not divide v. Count survivors. O((H-L)*6). No pitfalls beyond remembering that zero digits are disallowed and must be checked before the modulo.",
+ "code_path": "solutions/kattis_heirsdilemma.cpp",
+ "samples_passed": true
+}

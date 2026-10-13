@@ -1,0 +1,14 @@
+{
+ "id": "kattis:randommanhattan",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "probability",
+  "calculus-numerical",
+  "sweep-line"
+ ],
+ "key_idea": "By linearity the answer is E|x-x'| + E|y-y'|, and for one coordinate E|X-X'| = 2*integral F(x)(1-F(x)) dx where the marginal density is the polygon's width function, which is piecewise linear between consecutive vertex abscissae.",
+ "sketch": "For each axis: split edges into the upper chain (dx>0) and lower chain (dx<0), sort the distinct vertex x-values, and sweep slabs with two pointers to get the width at both ends of each slab. Within a slab the width is linear so the CDF F is quadratic and F(1-F) is a quartic; integrate it exactly with 3-point Gauss-Legendre, carrying the accumulated mass F0. Repeat with x and y swapped and add. O(n log n). Pitfalls: coordinates up to 1e9 give areas ~4e18, so use long double and normalise by the area summed from the same slabs; compute 1-F from the remaining mass rather than by subtraction; skip vertical edges. Verified against the closed form for a disc (1.1528R) and translation invariance at 1e9 offsets.",
+ "code_path": "solutions/kattis_randommanhattan.cpp",
+ "samples_passed": true
+}

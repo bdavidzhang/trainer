@@ -1,0 +1,13 @@
+{
+ "id": "kattis:overthehill2",
+ "rating": 1800,
+ "topics": [
+  "linear-algebra",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Each block gives C = K*P mod 37, so every row of K satisfies the same linear system with the plaintext blocks as coefficient rows; one Gauss-Jordan elimination mod 37 with n right-hand sides decides all three outcomes.",
+ "sketch": "Map A-Z to 0..25, digits to 26..35 and space to 36, arithmetic mod the prime 37. Build a matrix with one row per block: n plaintext values followed by n ciphertext values, and reduce it over GF(37). If any all-zero coefficient row has a nonzero right-hand side print No solution (this takes precedence); else if rank<n print Too many solutions; else row j of the reduced matrix gives column j of K, i.e. K[r][j]=rhs_r of pivot row j. O(len * n) elimination, negligible. Pitfalls: read with getline because lines contain and end with spaces; I pad both strings with spaces to a common multiple of n in case trailing blanks were stripped; K is the transpose of what naive reading of the reduced matrix suggests.",
+ "code_path": "solutions/kattis_overthehill2.cpp",
+ "samples_passed": true
+}

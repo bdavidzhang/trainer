@@ -1,0 +1,12 @@
+{
+ "id": "kattis:xentopia",
+ "rating": 1700,
+ "topics": [
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Dijkstra on the layered state (junction, red used, blue used); because k1*k2 <= 800 there are at most ~1602 layers.",
+ "sketch": "State count is N*(k1+1)*(k2+1) <= 450*1602 ~ 7.2*10^5 and each edge is relaxed once per layer in each direction (~3.5*10^6 relaxations), so heap Dijkstra is fast. White edges stay in the layer, red/blue edges move to (r+1,b)/(r,b+1) and are dropped beyond k1/k2. Answer is dist[T][k1][k2] or -1. Pitfalls: use 64-bit distances (up to 1e9 per edge over many edges), zero-weight edges are fine for Dijkstra, edges may be reused, and S may equal T with k1=k2=0 giving 0.",
+ "code_path": "solutions/kattis_xentopia.cpp",
+ "samples_passed": true
+}

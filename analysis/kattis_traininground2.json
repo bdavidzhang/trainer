@@ -1,0 +1,13 @@
+{
+ "id": "kattis:traininground2",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "bitset",
+  "bitmasks"
+ ],
+ "key_idea": "Only the pair (a,b) of implementation/thinking upgrades matters, and a+b <= number of problems seen; keep reachability of (a,b) as bitset rows and each problem turns into a rectangle query that pushes cells to (a+1,b) and (a,b+1).",
+ "sketch": "State reach[a][b] = can have made a impl and b thinking upgrades after the processed prefix. Problem j is solvable exactly on the rectangle a in [ilow-i, ihigh-i], b in [tlow-t, thigh-t], clipped to a+b<=j. For each row a in the range (descending, so a row is not re-used within the same problem) take the masked words, OR them into row a+1 and OR them shifted by one into row a, processing words from high to low so the shift carry is not re-read. Work is about n^3/(6*64) ~ 3.3e8 word ops (1s locally for n=5000). Answer is the max a+b reachable. Pitfalls: skills up to 2e9 need 64-bit before clipping; do not let a cell created by this problem fire again on the same problem. Stress-tested against a set-based brute force.",
+ "code_path": "solutions/kattis_traininground2.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:nothanks",
+ "rating": 800,
+ "topics": [
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "After sorting, a card counts only if its predecessor value is not exactly one less.",
+ "sketch": "Sort the values and add a[i] whenever i=0 or a[i] != a[i-1]+1. O(n log n) (or a presence array). The sum can reach about 4e9, so use 64-bit.",
+ "code_path": "solutions/kattis_nothanks.cpp",
+ "samples_passed": true
+}

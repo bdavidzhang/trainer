@@ -1,0 +1,13 @@
+{
+ "id": "kattis:makiconveyorbelt",
+ "rating": 1700,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "A plate reaches Alice at (pA-s) mod N and Bob at (pB-s) mod N, so at deadline T each plate is A-only, B-only, both or neither; feasibility per type is a three-inequality Hall check and the cheapest purchase is a capped greedy by price.",
+ "sketch": "Feasibility at time T per maki type: A_only+both >= a, B_only+both >= b, total >= a+b; it is monotone in T, so binary search over the sorted set {0} plus all 2K arrival times (answer never exceeds N-1; if infeasible when every plate is seen by both, print impossible). For the minimum cost at that T, per type sort plates by unit price and greedily take pieces, with the pieces taken from A-only plates capped at a, from B-only plates capped at b, and the overall total capped at a+b (a laminar matroid, so greedy is optimal). O((K+M) log K). Pitfalls: a plate can be split between both diners in any proportion regardless of who sees it first, time 0 counts (grab before the first rotation), all-zero demands give '0 0', and totals need 64-bit (up to ~2e17). Stress-tested against an exhaustive allocation brute force.",
+ "code_path": "solutions/kattis_makiconveyorbelt.cpp",
+ "samples_passed": true
+}

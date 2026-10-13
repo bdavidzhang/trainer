@@ -1,0 +1,13 @@
+{
+ "id": "kattis:travelog",
+ "rating": 1800,
+ "topics": [
+  "shortest-paths",
+  "dp",
+  "graphs"
+ ],
+ "key_idea": "On the shortest-path DAG distances strictly increase along a path, so a path is consistent iff it never jumps over a logged time: an edge u->v is usable iff no log value lies strictly between dist[u] and dist[v].",
+ "sketch": "Dijkstra from city 1, keep edges with dist[u]+h == dist[v]. Sort the log; if any value exceeds dist[n] answer 0. Process vertices in Dijkstra order counting paths from 1 (capped at 2) using only edges that do not skip a log value (upper_bound on the sorted log), storing a predecessor for reconstruction. Output 0/1 or the unique path. O((n+m) log n). Pitfalls: log values up to 1e18 need 64-bit, cap the path count to avoid overflow, and identical parallel roads are deduplicated since they give the same city sequence (stress-tested against a brute force on small graphs).",
+ "code_path": "solutions/kattis_travelog.cpp",
+ "samples_passed": true
+}

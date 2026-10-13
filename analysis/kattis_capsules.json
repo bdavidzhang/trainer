@@ -1,0 +1,12 @@
+{
+ "id": "kattis:capsules",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "implementation"
+ ],
+ "key_idea": "Small grid (7x7), so plain backtracking with the most-constrained-cell heuristic and the two constraints (distinct within region, no equal 8-neighbours) solves it instantly.",
+ "sketch": "Parse the grid and the region lists of '(r,c)' tokens, storing each cell's region id and each region's size; keep a bitmask of digits used per region. Recursively pick the empty cell with the fewest legal values, where a value v is legal if v <= region size, unused in the region, and not present in any of the 8 neighbours; try each and backtrack. A cell with zero candidates prunes immediately. The solution is unique so the checker compares directly. Pitfalls: input is 1-indexed, tokens contain parentheses and commas, and the given clues must be marked as used in their regions before searching.",
+ "code_path": "solutions/kattis_capsules.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:cutthenegativity",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Just list every matrix entry that is not -1 in row-major order.",
+ "sketch": "Read the n x n table, collect (i, j, cost) for all entries different from -1 while scanning rows then columns, which is already the required sort order. Print the count followed by the triples with 1-based indices. O(n^2).",
+ "code_path": "solutions/kattis_cutthenegativity.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:archeryaccuracy",
+ "rating": 2100,
+ "topics": [
+  "dp-bitmask",
+  "probability",
+  "math"
+ ],
+ "key_idea": "After each round the score is +threshold or -threshold, so the whole state is one probability; since finishing positive is monotone in the current sign, maximizing P(positive) per used-set of archers is optimal and gambler's ruin gives the transition in closed form.",
+ "sketch": "For round r and archer j compute A = P(reach +s_r before -s_r from +s_{r-1}) and B = same from -s_{r-1} by the gambler's ruin formula (1-rho^(x+s))/(1-rho^(2s)), rho = q/p. dp[mask] = max over j in mask of dp[mask^j]*A + (1-dp[mask^j])*B with r = popcount(mask)-1. O(2^n * n). Pitfalls: rho^200 overflows when p is small, so for q > p rewrite in terms of p/q; handle p = 0.5 with the linear formula; round 1 starts from 0. Stress-tested against brute force over all permutations with a linear-system solve for the absorption probabilities.",
+ "code_path": "solutions/kattis_archeryaccuracy.cpp",
+ "samples_passed": true
+}

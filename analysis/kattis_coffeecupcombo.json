@@ -1,0 +1,12 @@
+{
+ "id": "kattis:coffeecupcombo",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Simulate: at a machine she drinks and leaves with two full cups; otherwise she drinks a carried cup if she has one.",
+ "sketch": "Keep the number of carried cups. On '1' count the lecture and set cups=2; on '0', if cups>0 decrement and count the lecture. O(n). No pitfalls beyond resetting (not adding) to 2 at a machine.",
+ "code_path": "solutions/kattis_coffeecupcombo.cpp",
+ "samples_passed": true
+}

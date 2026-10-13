@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dasblinkenlights",
+ "rating": 800,
+ "topics": [
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "Both lights blink together exactly at multiples of lcm(p,q).",
+ "sketch": "Compute lcm(p,q) = p*q/gcd(p,q) and print yes iff it is at most s. O(log). Alternatively just loop t from 1 to s. No pitfalls.",
+ "code_path": "solutions/kattis_dasblinkenlights.cpp",
+ "samples_passed": true
+}

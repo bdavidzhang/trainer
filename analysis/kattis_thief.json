@@ -1,0 +1,14 @@
+{
+ "id": "kattis:thief",
+ "rating": 2400,
+ "topics": [
+  "dp-optimization",
+  "dp-knapsack",
+  "divide-and-conquer",
+  "sorting"
+ ],
+ "key_idea": "Only 300 distinct sizes: for one size take the most valuable items first, so the gain is a concave prefix-sum function, and the transition within each residue class mod s has monotone optimal split points (divide and conquer optimisation).",
+ "sketch": "Group jewels by size and sort each group descending with prefix sums pre (keep only k/s items). For size s and residue r, new[r+j*s] = max_i old[r+i*s] + pre[j-i]; since pre is concave the argmax is monotone in j, so solve each residue chain with divide-and-conquer DP. Total O(300 * k log k) plus sorting, about 0.5s on max input. Pitfalls: limit j-i to the number of items of that size, values up to 1e9*1e5 need int64, and print 0 for capacities nothing fits. Stress-tested against plain 0/1 knapsack.",
+ "code_path": "solutions/kattis_thief.cpp",
+ "samples_passed": true
+}

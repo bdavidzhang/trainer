@@ -1,0 +1,13 @@
+{
+ "id": "kattis:palindromicpath",
+ "rating": 1400,
+ "topics": [
+  "search-backtracking",
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "It is a plain word search for a self-avoiding 8-neighbour path; the palindrome property is a red herring, and a 'can the suffix be matched from here ignoring reuse' DP prunes the DFS.",
+ "sketch": "Read the grid with getline because cells may be spaces, and compare characters exactly (case, punctuation, spaces). For each query compute can[i][cell] = suffix i..n-1 can be spelled starting at cell if cells may be reused (backward DP, O(n*R*C*8)). Then DFS from every cell with can[0], only stepping to unvisited neighbours with can[i+1] set. Adjacency is 8-directional: with 4 directions the sample fails, with 8 it passes. Worst case is exponential in theory (a step budget guards it), but on sentence-like data the pruned search is tiny. Output needs exactly four spaces between the verdict and the echoed sentence.",
+ "code_path": "solutions/kattis_palindromicpath.cpp",
+ "samples_passed": true
+}

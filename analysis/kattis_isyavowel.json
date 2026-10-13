@@ -1,0 +1,12 @@
+{
+ "id": "kattis:isyavowel",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Count aeiou, and separately count y.",
+ "sketch": "Read the word, count letters in aeiou and the number of y. Print the vowel count and the vowel count plus the y count. O(n), no pitfalls.",
+ "code_path": "solutions/kattis_isyavowel.cpp",
+ "samples_passed": true
+}

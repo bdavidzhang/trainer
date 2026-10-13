@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pascalmultiple",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "combinatorics",
+  "implementation"
+ ],
+ "key_idea": "N is only 1000, so build Pascal's triangle row by row modulo K and count zeros.",
+ "sketch": "Keep one rolling row of C(i,j) mod K, updating in place from right to left with the recurrence, and count entries equal to 0 after each row. O(N^2) = 5e5 operations. Pitfalls: K=1 makes every entry (including C(0,0)) divisible, so initialise with 1 % K; the count needs no big numbers because only residues are stored.",
+ "code_path": "solutions/kattis_pascalmultiple.cpp",
+ "samples_passed": true
+}

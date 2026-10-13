@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jamboree",
+ "rating": 1000,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Pad to 2M items with zeros, sort, and pair the i-th smallest with the i-th largest; the answer is the largest pair sum.",
+ "sketch": "With at most two items per scout and N<=2M, add zero-size dummy items until there are exactly 2M, sort, and pair a[i] with a[2M-1-i]. The classic exchange argument shows this minimises the maximum pair sum. O(N log N). Sums reach 2e7 so int suffices.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_jamboree.cpp"
+}

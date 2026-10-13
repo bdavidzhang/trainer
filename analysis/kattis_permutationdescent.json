@@ -1,0 +1,12 @@
+{
+ "id": "kattis:permutationdescent",
+ "rating": 1300,
+ "topics": [
+  "combinatorics",
+  "dp"
+ ],
+ "key_idea": "PDC(N,v) is the Eulerian number: inserting N into a permutation of N-1 either keeps the descent count (v+1 positions) or raises it by one (N-v positions).",
+ "sketch": "Recurrence A(n,k) = (k+1)*A(n-1,k) + (n-k)*A(n-1,k-1) with A(1,0)=1, all modulo 1001113. Precompute the 100x100 table once and answer each query in O(1). Derivation: inserting n into one of the k descent gaps or at the end keeps the count (k+1 ways); inserting into any of the other n-k positions of a permutation with k-1 descents creates a new descent. Only pitfall is using 64-bit for the products before reduction.",
+ "code_path": "solutions/kattis_permutationdescent.cpp",
+ "samples_passed": true
+}

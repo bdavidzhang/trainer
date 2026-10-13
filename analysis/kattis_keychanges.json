@@ -1,0 +1,13 @@
+{
+ "id": "kattis:keychanges",
+ "rating": 1500,
+ "topics": [
+  "implementation",
+  "combinatorics",
+  "bitmasks"
+ ],
+ "key_idea": "The keys compatible with the chords heard since the last change are the k-subsets containing the union U of their notes, so the key is unique exactly when |U|=k (or m=k) and impossible when |U|>k; the answer is then the lexicographic rank of that subset.",
+ "sketch": "Simulate the stated heuristic with bitmasks. While a key is determined, a chord inside it gets that key; otherwise start a new segment. In an undetermined segment OR the chord into U: if popcount(U)>k give up on the pending chords (they stay '?') and restart the segment at this chord; if popcount(U)==k or m==k the key is fixed and every chord of the segment is assigned its rank. Rank a k-subset lexicographically by summing C(m-1-y, remaining-1) over skipped elements y; values fit in 64 bits (C(25,12)). Chords left pending at the end print '?'. Pitfalls: m==k means a single key 0 from the first chord, and parsing the bracketed lines.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_keychanges.cpp"
+}

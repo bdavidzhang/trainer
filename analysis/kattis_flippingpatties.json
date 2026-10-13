@@ -1,0 +1,12 @@
+{
+ "id": "kattis:flippingpatties",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Every order forces exactly three hand actions at fixed times t-2d, t-d and t; the busiest second needs ceil(actions/2) cooks.",
+ "sketch": "Since cook time and serve time are exact, the place, flip and remove moments of each patty are fully determined: t-2d, t-d, t. Count how many actions fall on each second using a map. Cooks are interchangeable and each performs up to two actions per second, so the answer is ceil(max count / 2). O(n log n). Pitfall: forgetting that the placement and the removal also cost a hand, not only the flip.",
+ "code_path": "solutions/kattis_flippingpatties.cpp",
+ "samples_passed": true
+}

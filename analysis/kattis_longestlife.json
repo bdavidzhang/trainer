@@ -1,0 +1,13 @@
+{
+ "id": "kattis:longestlife",
+ "rating": 2100,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "data-structures"
+ ],
+ "key_idea": "It only pays to switch to a pill with a strictly better rate and then as early as possible, so every switch happens exactly at a release time; f_i = c + min_j (f_j + r_j*(t_i - t_j)) is a minimum of lines evaluated at t_i, i.e. a Li Chao tree / convex hull trick.",
+ "sketch": "Let f_i be the least body age right after switching to pill i at time t_i, with the no-pill state as line slope 1, intercept 0. Sort pills by time, query the minimum of all inserted lines r_j*x + (f_j - r_j*t_j) at x = t_i, add c, and insert the pill's line only if f_i < n (otherwise the switch kills you). The answer is the maximum of n and t_i + (n - f_i)/r_i over valid i. A Li Chao tree over the p query abscissae gives O(p log p). Pitfalls: O(p^2) is too slow for p = 1e5, times go to 1e12 and the answer to about 3e13 so use long double, a state must be discarded as soon as age reaches n, and the switch penalty is an instantaneous jump in age, not elapsed time. Verified against exact-fraction enumeration of all pill subsets on small cases.",
+ "code_path": "solutions/kattis_longestlife.cpp",
+ "samples_passed": true
+}

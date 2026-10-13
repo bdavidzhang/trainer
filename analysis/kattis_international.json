@@ -1,0 +1,13 @@
+{
+ "id": "kattis:international",
+ "rating": 2500,
+ "topics": [
+  "geometry",
+  "ternary-search",
+  "calculus-numerical"
+ ],
+ "key_idea": "Pin i fits hole j iff the moved centre lies within slack d = R_j - r_i of the hole centre; for a fixed rotation angle the translation must lie in three discs, so define g(theta) = min_t max_i(|t-c_i(theta)|-d_i) (a tiny closed-form Apollonius-type problem) and minimise it over theta.",
+ "sketch": "Try both assignments of the two phase pins; reject an assignment with a negative slack. For a fixed theta the centres c_i = H_i - R(theta)P_i; g is the minimum over candidate points (the three centres, the balanced point on each pair's segment, and the up-to-two points where all three constraints are active from a 2x2 linear solve plus a quadratic in r) of F(t)=max(|t-c_i|-d_i); every candidate is an upper bound and the optimum is among them. Sample theta at 40000 points, keep sampled local minima within the Lipschitz drop bound, and refine each by ternary search in long double; answer YES iff min g <= 1.5e-6 (the statement guarantees a 1e-6/2e-6 gap) and print R(theta)P_i + t. Pitfalls: exact-fit cases give a feasible set that is a single angle (V-shaped minimum, hence the refinement), no reflections allowed, centre the plug to limit cancellation. Multiple answers are accepted, so the checker's sample pass was confirmed with my own validator (distances, orientation, containment) on 600 random feasible cases and cross-checked YES/NO against an independent nested-ternary brute on 250 near-tight cases. Risk: sampling could miss a local minimum narrower than the sampling step.",
+ "code_path": "solutions/kattis_international.cpp",
+ "samples_passed": true
+}

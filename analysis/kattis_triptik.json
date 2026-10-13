@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triptik",
+ "rating": 2100,
+ "topics": [
+  "bfs-dfs",
+  "sparse-table",
+  "shortest-paths"
+ ],
+ "key_idea": "Only about 30 zoom levels matter (half-width from 0.5 up to past the full coordinate span), so BFS on states (center point, zoom level) with the top-k visible points obtained by a range top-k query.",
+ "sketch": "Double the coordinates so half-width 0.5 is an integer; add the origin as a pseudo-point with weight 0 that is never a target. Sort points and build a sparse table whose cells hold the top-k weights of a block; a query merges two overlapping blocks with deduplication. BFS over 30*(n+1) states: zoom in/out edges plus up to k recenter edges at the same level; answer for a point is the first BFS distance at which it is centered and itself among the top-k of its viewport. O(30 n (log n + k)), about 0.5s. Pitfalls: being centered on a point is not enough, it must be visible (zooming in to 0.5 always makes it visible); dedupe when merging overlapping sparse blocks.",
+ "code_path": "solutions/kattis_triptik.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:canalcrossing",
+ "rating": 1500,
+ "topics": [
+  "trees",
+  "graphs",
+  "euler-tour-paths"
+ ],
+ "key_idea": "A closed tour needs even degree everywhere, and in a tree the set of edges fixing a given parity pattern is unique: a street is used iff the number of bridge endpoints in the subtree below it is odd. So there is nothing to minimise.",
+ "sketch": "Count bridge endpoints per vertex modulo 2, root the tree, and push parities up in reverse BFS order; add the weight of each parent edge whose subtree parity is odd. Existence (connectivity of the tour) is guaranteed by the statement, so the forced edge set is the answer. O(n+m), answer up to 1e11 so use 64-bit; avoid recursion for depth 1e5.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_canalcrossing.cpp"
+}

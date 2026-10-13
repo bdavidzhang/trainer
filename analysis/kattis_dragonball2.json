@@ -1,0 +1,14 @@
+{
+ "id": "kattis:dragonball2",
+ "rating": 2400,
+ "topics": [
+  "randomized",
+  "shortest-paths",
+  "dp-bitmask",
+  "graphs"
+ ],
+ "key_idea": "Color coding: randomly map serial numbers onto 7 colors, then the task becomes a 2^7-mask shortest-walk DP; repeat until the optimal 7 serials get distinct colors with overwhelming probability.",
+ "sketch": "Dijkstra from city 1, drop unreachable balls, answer -1 if fewer than 7 distinct reachable serials. Each trial shuffles the serials and assigns colors round-robin (balanced partition, success probability >= 7!/7^7 = 0.6%, and 1 when exactly 7 serials). dp[mask][v] = min cost to stand at v holding the colors in mask: initialise from dp[mask^c][v] at cities holding color c, then run a multi-source Dijkstra for the mask (127 Dijkstras per trial, O(2^7 m log n)). States with cost >= current best are pruned, which makes later trials very cheap; trials repeat on a wall-clock budget (7.5 s of the 16 s limit, thousands of trials locally). It is a walk from city 1, not a Steiner tree, so no submask merging is needed. Stress-tested against an exact 2^S brute on 300 small cases; the result is Monte Carlo so there is a tiny failure probability.",
+ "code_path": "solutions/kattis_dragonball2.cpp",
+ "samples_passed": true
+}

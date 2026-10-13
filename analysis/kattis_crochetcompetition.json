@@ -1,0 +1,11 @@
+{
+ "id": "kattis:crochetcompetition",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Convert both times to minutes within the week, take the difference modulo 10080 with 0 mapped to a full week, and format.",
+ "sketch": "Split the difference into days, hours, minutes, drop zero components, pluralise when the value exceeds 1, and join one/two/three parts as 'a', 'a and b', 'a, b, c'. Pitfalls: identical times give '7 days', end before start wraps around the week, and the two-part form uses 'and' with no comma.",
+ "code_path": "solutions/kattis_crochetcompetition.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cribbageonsteroids",
+ "rating": 1400,
+ "topics": [
+  "dp-knapsack",
+  "combinatorics",
+  "implementation"
+ ],
+ "key_idea": "Fifteens are a 0/1 subset-sum count to 15; pairs are C(c,2) per rank; runs are maximal blocks of consecutive present ranks scoring length times the product of counts.",
+ "sketch": "Run a 0/1 knapsack counting subsets with value sum 15 (face cards worth 10, ace 1) and add twice that count. Add c*(c-1) for each rank count c (2 points per pair). For runs, split the 13 ranks into maximal blocks of consecutive ranks with nonzero count; each block of length L>=3 scores L times the product of its counts (ace is low only, T-J-Q-K are distinct ranks for runs even though all are worth 10). O(15n). Pitfall: counts are large (up to about C(100,15) ~ 2.5e17) so 64-bit is required, and runs use rank while fifteens use value.",
+ "code_path": "solutions/kattis_cribbageonsteroids.cpp",
+ "samples_passed": true
+}

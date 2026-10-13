@@ -1,0 +1,12 @@
+{
+ "id": "kattis:drawingcircles",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "sorting"
+ ],
+ "key_idea": "A circle's visible length is its circumference minus the union of arcs lying inside any later-drawn circle; each later circle contributes one angular interval.",
+ "sketch": "For each circle i, loop over later circles j. If i lies inside or on j (d + ri <= rj, tested in exact integers on squared distance) it is fully erased, which also handles identical circles being overwritten. If disjoint or j is inside i, nothing happens. Otherwise the erased arc is centred at atan2 of the centre direction with half-angle acos((d^2+ri^2-rj^2)/(2 d ri)); split intervals that wrap past +-pi, sort and take the union length. Answer adds (2pi - covered)*ri. O(N^2 log N) for N=2000. Pitfalls: do containment/tangency tests in integers, clamp the acos argument, handle wraparound. Stress-tested against a point-sampling brute force.",
+ "code_path": "solutions/kattis_drawingcircles.cpp",
+ "samples_passed": true
+}

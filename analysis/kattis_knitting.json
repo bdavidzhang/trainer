@@ -1,0 +1,14 @@
+{
+ "id": "kattis:knitting",
+ "rating": 2000,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "heap",
+  "constructive"
+ ],
+ "key_idea": "Binary search the maximum allowed frequency c; for a fixed c fill the remaining stripes greedily, always using the colour with the most remaining capacity among colours not used in the previous p-1 stripes.",
+ "sketch": "First check the given prefix: if any colour repeats within p positions the answer is impossible. For a cap c, each colour has remaining capacity c minus its prefix count; keep a max-heap of currently allowed colours keyed by remaining capacity, pop the top for each new stripe, and re-insert the colour used at position i-p when reaching position i (it leaves the forbidden window then). If the heap runs dry the cap is infeasible. Feasibility is monotone in c, so binary search c between the prefix maximum and n; if even c=n fails print impossible (e.g. k<p with n large). O(n log k log n). Pitfalls: the initial forbidden window comes from the last p-1 prefix stripes, and n<p with enough colours is feasible. Output is not unique, so the sample checker shows a mismatch on sample 1; I verified with my own validator plus an exhaustive brute force (prefix kept, spacing respected, max frequency equal to the true optimum, impossibility agreeing) on 6000 random small cases.",
+ "code_path": "solutions/kattis_knitting.cpp",
+ "samples_passed": true
+}

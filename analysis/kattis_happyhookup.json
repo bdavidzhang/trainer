@@ -1,0 +1,12 @@
+{
+ "id": "kattis:happyhookup",
+ "rating": 900,
+ "topics": [
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "A station is suitable iff it is reachable from both starts in the directed graph, so run two BFS and intersect.",
+ "sketch": "Build the directed adjacency list, BFS from a and from b, and print any vertex visited by both, else 'no'. O(n+m). Edges are one-way, so do not treat the graph as undirected; the start stations themselves count as reachable. Any common vertex is accepted; samples pass and a random comparison against a brute-force reachability closure agreed on 500 small graphs.",
+ "code_path": "solutions/kattis_happyhookup.cpp",
+ "samples_passed": true
+}

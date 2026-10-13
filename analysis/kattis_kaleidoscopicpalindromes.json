@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kaleidoscopicpalindromes",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "implementation",
+  "palindromes"
+ ],
+ "key_idea": "Just test every number against bases 2..k with early exit: almost every number already fails in base 2 or 3, and any base larger than the number gives a single digit.",
+ "sketch": "For each x in [a,b], loop j from 2 to min(k,x), extract digits and check the palindrome, breaking on the first failure. The early exit makes the average number of bases checked a small constant, so 2*10^6 numbers run in milliseconds even with k=10^5. Pitfalls: 0 counts as a palindrome in every base, and capping j at x avoids the k=10^5 loop for the rare survivors.",
+ "code_path": "solutions/kattis_kaleidoscopicpalindromes.cpp",
+ "samples_passed": true
+}

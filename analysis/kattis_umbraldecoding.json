@@ -1,0 +1,13 @@
+{
+ "id": "kattis:umbraldecoding",
+ "rating": 1600,
+ "topics": [
+  "implementation",
+  "math",
+  "sorting"
+ ],
+ "key_idea": "Since b <= n <= 1e8, each umbra has radius at most cbrt(1e8) = 464, so it covers at most 929 columns, each as one contiguous interval; count the union of these intervals per column and subtract from (n+1)^2.",
+ "sketch": "For each safe point and each dx with |dx|^3 <= b, compute the largest h with h^3 <= b - |dx|^3 by integer loop (no floating cbrt) and store interval [y-h, y+h] clipped to [0,n] under key x+dx, skipping columns outside [0,n]. For every column that has intervals, sort and merge to count covered lattice points. Answer (n+1)^2 minus the covered total. At most 100*929 intervals, so the work is trivial. Pitfalls: the answer reaches 1e16 so use 64-bit; clip to the square; b = 0 still removes the safe point itself; overlapping umbrae must be unioned, not summed. Stress-tested against an O(n^2 k) brute force.",
+ "code_path": "solutions/kattis_umbraldecoding.cpp",
+ "samples_passed": true
+}

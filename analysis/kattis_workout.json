@@ -1,0 +1,11 @@
+{
+ "id": "kattis:workout",
+ "rating": 1500,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate Jim's 30 machine visits, keeping for each machine the next start time of its resident user; jump the periodic schedule forward with a division and push the resident's start back when Jim is occupying the machine.",
+ "sketch": "For each machine store s = the resident's next start time (initially t). When Jim arrives at time T: if T < s he starts immediately and the resident's pending start stays s; otherwise skip k = (T-s)/(u+r) full cycles to the cycle containing T, Jim starts at cs+u if T < cs+u (resident is using it, ties go to the resident since T == cs counts as in use) else at T, and the resident's next scheduled start is cs+u+r. Jim finishes at start+ju, and the resident's next start becomes max(scheduled, Jim's finish), which shifts the whole later schedule. Jim then recovers jr and moves on; output the finish time of the 30th usage without the final recovery. O(30) with 64-bit arithmetic. Pitfalls: negative start times, the tie rule, and the fact that delays permanently shift the other person's cycle.",
+ "code_path": "solutions/kattis_workout.cpp",
+ "samples_passed": true
+}

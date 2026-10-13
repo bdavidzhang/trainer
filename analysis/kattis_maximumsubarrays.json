@@ -1,0 +1,11 @@
+{
+ "id": "kattis:maximumsubarrays",
+ "rating": 1700,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "Classic two-state DP: f[j] = best with j subarrays where the j-th ends exactly at the current element, g[j] = best with j subarrays anywhere in the prefix.",
+ "sketch": "Transition for element a[i]: f[j] = max(f[j], g[j-1]) + a[i] (extend the current subarray or start a new one after the best j-1 solution), then g[j] = max(g[j], f[j]). Iterating j downward lets one rolling array be used, giving O(nk) time (25M steps) and O(k) memory. Subarrays must be non-empty, so negative elements may be forced in when k is large; use a -infinity sentinel that is not added to, and 64-bit sums (up to 5e12). Verified against an exponential brute force on small random arrays.",
+ "code_path": "solutions/kattis_maximumsubarrays.cpp",
+ "samples_passed": true
+}

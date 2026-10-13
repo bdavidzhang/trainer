@@ -1,0 +1,13 @@
+{
+ "id": "kattis:crossesandcircles",
+ "rating": 1100,
+ "topics": [
+  "interactive",
+  "games",
+  "constructive"
+ ],
+ "key_idea": "Three-in-a-row on a large board is won on move 3: make an open pair in a direction whose two extension cells and far cell are untouched by the opponent's single stone, then take whichever end is not blocked.",
+ "sketch": "Play the centre (30,21). After the opponent's reply pick one of the 8 directions d such that centre-d, centre+d and centre+2d are all free of the opponent's stone, and play centre+d. This creates two winning cells (centre-d and centre+2d); the opponent has only one stone so cannot threaten anything and can block only one end, and we win with the other. Constant time. Pitfalls: flush after each line, handle '0 0', and choose the direction after seeing the reply (a direction always exists since one stone blocks at most a few of 8). Interactive, so the sample checker cannot judge it; samples_passed is true because my own local interactor (win/illegal/loss detection, all opponent first replies within 3 cells of the centre times blocking strategies, plus random ones) always reported a win on move 3.",
+ "code_path": "solutions/kattis_crossesandcircles.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:museumvisit",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "monotonic-stack-queue",
+  "greedy"
+ ],
+ "key_idea": "Interval stabbing with weighted points: dp[i] = cost when day i is the last visited day, and the previous visited day j must be at least the largest start among exhibitions that end before i, which is a monotone sliding window minimum.",
+ "sketch": "Let L(i) = max start over intervals with end < i (0 if none), nondecreasing in i. dp[0]=0, dp[i] = c[i] + min(dp[j] for L(i) <= j < i); the answer is the same transition evaluated at a virtual day n+1 with cost 0. Because L is monotone the window only moves right, so a monotonic deque gives O(n+m). Correctness: intervals ending before j are handled by dp[j], intervals with start <= j and end >= j contain j, so only intervals with start > j and end < i could be missed. Use 64-bit sums (up to 2e14). Stress-tested against a bitmask brute force.",
+ "code_path": "solutions/kattis_museumvisit.cpp",
+ "samples_passed": true
+}

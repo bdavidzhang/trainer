@@ -1,0 +1,11 @@
+{
+ "id": "kattis:heroesofvelmar",
+ "rating": 1000,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation with the card table from the attached heroes.json: sum powers per side per location with three abilities applied.",
+ "sketch": "Hard-code the 12 card powers. Per location and player sum base power, add +6 for a Thunderheart when the player has exactly 4 cards there (only the base power is doubled), +5 for Zenith at the centre location, and +(cards-1) for each Seraphina (buffs every other friendly card, including other Seraphinas). Compare location wins, then total power as tiebreaker, else Tie. The card data is only in the statement attachment/images, not in the scraped text.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_heroesofvelmar.cpp"
+}

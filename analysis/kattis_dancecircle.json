@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dancecircle",
+ "rating": 1900,
+ "topics": [
+  "dsu",
+  "math",
+  "graphs"
+ ],
+ "key_idea": "With prefix XORs every cyclic window becomes an XOR relation between two prefix values, possibly also involving the total parity T; fixing T in {0,1} turns everything into a parity-DSU consistency check.",
+ "sketch": "Let p_0=0..p_n be prefix XORs. A non-wrapping window [a,b] gives p_a xor p_{b+1} = x; a wrapping one gives p_a xor p_{b+1} = x xor T where T=p_n. For T=0 and T=1 separately, add the edge (0,n,T) and all n window edges to a weighted (parity) DSU on n+1 nodes; if consistent the number of solutions is 2^(components-1) since p_0 is fixed. Sum both cases mod 1e9+7. O(n alpha(n)). Pitfalls: a full-circle window yields a self-edge that just forces T=x, and negative modulo for i-l. Verified against 2^n brute force.",
+ "code_path": "solutions/kattis_dancecircle.cpp",
+ "samples_passed": true
+}

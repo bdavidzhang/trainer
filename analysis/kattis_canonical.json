@@ -1,0 +1,13 @@
+{
+ "id": "kattis:canonical",
+ "rating": 1500,
+ "topics": [
+  "dp-knapsack",
+  "greedy",
+  "brute-force"
+ ],
+ "key_idea": "The statement hands you the Kozen-Zaks bound: a smallest counterexample, if any, is below the sum of the two largest coins, so just compare greedy and optimal coin counts for every amount up to that bound.",
+ "sketch": "Let L = c[n-1]+c[n] <= 2e6. Compute opt[x] = 1 + min over coins c<=x of opt[x-c] (unbounded knapsack) and greedy g[x] = g[x - largest coin <= x] + 1 with a moving pointer to the largest usable coin. If opt[x] < g[x] for any x, print non-canonical, otherwise canonical. Complexity O(n*L) = 2e8 simple operations, about 0.1-0.2s; exit early on the first counterexample. Pitfalls: restrict the inner loop to coins <= x, and the bound uses the two largest denominations, not 2*max.",
+ "code_path": "solutions/kattis_canonical.cpp",
+ "samples_passed": true
+}

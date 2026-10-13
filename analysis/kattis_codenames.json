@@ -1,0 +1,12 @@
+{
+ "id": "kattis:codenames",
+ "rating": 1700,
+ "topics": [
+  "matching",
+  "graphs"
+ ],
+ "key_idea": "A single swap flips permutation parity, so the swap graph is bipartite; the largest swap-free set is a maximum independent set = N - maximum matching (Konig).",
+ "sketch": "Build edges between words differing in exactly two positions (anagrams with distinct letters, so two mismatches is exactly one swap), O(N^2 * len). 2-colour the graph by BFS (or by permutation parity), run Kuhn's augmenting-path matching from one side, answer N - matching. With N=500 Kuhn is far within limits. Pitfall: treating it as a general-graph independent set, or not noticing bipartiteness.",
+ "code_path": "solutions/kattis_codenames.cpp",
+ "samples_passed": true
+}

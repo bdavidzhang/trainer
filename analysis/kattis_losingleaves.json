@@ -1,0 +1,13 @@
+{
+ "id": "kattis:losingleaves",
+ "rating": 1800,
+ "topics": [
+  "trees",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "A kept subtree with L leaves is a union of L root paths, and the largest such union is the sum of the L longest chains of the long-path decomposition; any smaller size is reachable by peeling leaves, which never increases the leaf count.",
+ "sketch": "Keep m = n-k nodes forming a connected subtree containing the root. Compute heights bottom-up (parents have smaller indices, so a reverse loop, no recursion), pick for each node its deepest child as the heavy child; each chain top (root or non-heavy child) contributes a chain of length height(top). Sort chain lengths descending (counting sort) and answer the smallest L whose prefix sum is >= m. O(n). Pitfalls: n up to 1e6 so no recursion and fast input; leaves are counted in the remaining tree (nodes whose children were all sold become customers); root alone counts as one leaf. Stress-tested against subset brute force for n<=11.",
+ "code_path": "solutions/kattis_losingleaves.cpp",
+ "samples_passed": true
+}

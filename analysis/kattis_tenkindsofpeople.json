@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tenkindsofpeople",
+ "rating": 1500,
+ "topics": [
+  "binary-search",
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "The value of a digit string is non-decreasing in the base, so enumerate base a for A and binary search base b for B.",
+ "sketch": "Convert characters to digit values (0-9, a-z=10..35, A-Z=36..61); the smallest legal base is max(2, maxdigit+1). For each a up to 7500 compute A_a and lower_bound over b in [minb,7500] for B_b >= A_a, then test equality. O(N * 7500 * log 7500 * 5). Digits are at most 61, so values stay below about 62*7500^4 = 2e17 and fit in int64. Multiple answers are accepted, so the checker cannot judge in general: samples matched exactly because iterating a upward reproduces the reference output, and I additionally validated 300 random cases with my own validator (bases in range, digits below base, both values equal, and CANNOT only when an exhaustive search finds nothing). Printed 'CANNOT MAKE EQUAL' without a period, following the sample output rather than the statement text.",
+ "code_path": "solutions/kattis_tenkindsofpeople.cpp",
+ "samples_passed": true
+}

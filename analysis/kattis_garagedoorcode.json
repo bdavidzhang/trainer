@@ -1,0 +1,13 @@
+{
+ "id": "kattis:garagedoorcode",
+ "rating": 1000,
+ "topics": [
+  "brute-force",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "The code is a length-K subsequence of every observation, so enumerate the at most C(12,6)=924 subsequences of the first string and test each against the others.",
+ "sketch": "Enumerate all bitmasks of the first observation with exactly K bits, build the candidate, and check it is a subsequence of every other string with a two-pointer scan. Collect candidates in a std::set to dedupe and get lexicographic order. Complexity is about 4096*20*12 operations. Pitfalls: duplicates from different index choices, leading zeros (keep codes as strings).",
+ "code_path": "solutions/kattis_garagedoorcode.cpp",
+ "samples_passed": true
+}

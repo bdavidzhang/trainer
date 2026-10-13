@@ -1,0 +1,13 @@
+{
+ "id": "kattis:candycontribution",
+ "rating": 1400,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "greedy"
+ ],
+ "key_idea": "The after-tax amount x - ceil(x*p/100) is monotone non-decreasing in x, so a max-first Dijkstra on candy counts is valid.",
+ "sketch": "Run Dijkstra with a max-heap keyed on the number of candies held at each country, relaxing an edge with f(x) = x - ceil(x*p/100). Because f is monotone and f(x) <= x, the greedy extraction order is correct. O(m log n). Pitfalls: ceiling must be computed in integers ((x*p+99)/100), use 64-bit (1e9*100), and do not try to multiply percentages as floats since rounding happens at every border.",
+ "code_path": "solutions/kattis_candycontribution.cpp",
+ "samples_passed": true
+}

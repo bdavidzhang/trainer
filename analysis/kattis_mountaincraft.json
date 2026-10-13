@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mountaincraft",
+ "rating": 1700,
+ "topics": [
+  "segment-tree",
+  "offline-queries",
+  "geometry"
+ ],
+ "key_idea": "The visible skyline has slope +-1 everywhere it is above ground, so its length is sqrt(2) times the length of the union of the bases [x-y, x+y] clipped to [0, w].",
+ "sketch": "This reduces to maintaining the length of a union of intervals under insertions and deletions. Read all queries offline, clip each interval to [0, w], compress endpoints, and use the classic cover-count segment tree (as in rectangle union area): each node stores how many intervals cover it fully and the covered length, with no push-down needed because every removal matches an earlier insertion. Toggle state is kept in a set keyed by the original peak (x, y), not the clipped interval. O(q log q). Pitfalls: 64-bit coordinates, clipping, and keying the toggle on the unclipped peak. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_mountaincraft.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:fairfruitcake",
+ "rating": 2600,
+ "topics": [
+  "geometry",
+  "sweep-line",
+  "sorting",
+  "case-analysis"
+ ],
+ "key_idea": "Any equal-area cut must pass through the centre of symmetry (otherwise the strip between the line and its mirror image would have zero area), and every line through the centre halves the area, so the question is only whether some ray from the centre meets the interior in a single interval. Count boundary crossings per angular interval with a difference array and treat rays through vertices separately.",
+ "sketch": "Work in doubled coordinates around C = P0 + P[n/2]; the centre is strictly interior. Sort vertices by exact angle (cross products) into direction groups; each non-radial edge covers an open angular range, added to a cyclic difference array over 2G slots (directions and gaps), storing both a count and the sum of edge ids. If some gap has count 1, the ray along the sum of the two bounding directions works. Otherwise a ray through vertices can still work (tips touching from both sides, edges lying on the ray): this needs at most one proper crossing p<=1 (the id-sum gives that edge), and then the vertices on the ray are walked in distance order, using the crossings of an infinitesimally rotated ray to decide whether each gap between consecutive features is inside; every gap after the first must be outside or be a radial polygon edge. O(n log n), all integer arithmetic (values up to ~1e13). Output centre and centre+direction as halves. Multiple answers are valid, so the sample checker reports WRONG on samples 1-2; I validated with my own exact-fraction validator (line through centre, exactly one interior component, and brute-force existence check for 'impossible') on the 3 samples and ~4600 random symmetric polyomino/spiral polygons with shears, all passing.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_fairfruitcake.cpp"
+}

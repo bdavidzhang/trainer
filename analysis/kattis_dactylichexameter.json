@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dactylichexameter",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Parse five feet, each '-uu' or '--', then require the remainder to be exactly '-u' or '--'.",
+ "sketch": "A tiny recursion over (position, foot index) tries dactyl and spondee for the first five feet and then compares the remaining suffix with the two allowed final feet. The parse is in fact deterministic (after '-' the next symbol decides the foot), but recursion avoids thinking about it. O(2^5) worst case. Pitfalls: the sixth foot may not be a dactyl, and leftover or missing symbols must give 'no'.",
+ "code_path": "solutions/kattis_dactylichexameter.cpp",
+ "samples_passed": true
+}

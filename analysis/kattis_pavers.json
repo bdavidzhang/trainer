@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pavers",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "dp-bitmask",
+  "combinatorics"
+ ],
+ "key_idea": "Column profile DP on a 2-wide strip where each state carries the number of tilings and the total count of each piece type over all those tilings.",
+ "sketch": "State is the mask of cells in the current column already covered by pieces sticking out of the previous column (4 states). Precompute transitions by DFS that always fills the lowest empty cell of the column with a square, vertical domino, horizontal domino, or one of the L-tromino placements inside the 2x2 block with the next column, recording the new mask and how many pieces of each type were used. DP value is (ways, sum1, sum2, sum3); applying a transition with counts c adds ways and sum_k + ways*c_k. Answer is the state with empty mask after n columns, O(n) time. Canonical lowest-empty-cell ordering avoids double counting; values are promised to fit in unsigned 32 bits, I use 64-bit unsigned. n=2 gives 11 16 8 4 as in the statement.",
+ "code_path": "solutions/kattis_pavers.cpp",
+ "samples_passed": true
+}

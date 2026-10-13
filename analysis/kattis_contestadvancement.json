@@ -1,0 +1,12 @@
+{
+ "id": "kattis:contestadvancement",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Two passes in rank order: first take teams whose school is under the cap, then fill leftover slots with the best untaken teams.",
+ "sketch": "Pass 1 walks the ranking and marks a team if its school has fewer than c marked teams, stopping at k. Pass 2 walks the ranking again and marks unmarked teams until k are chosen. Finally print marked teams in rank order (not in selection order). O(n) with a per-school counter array. Pitfall: output must be merged back into rank order, and pass 1 must stop once k teams are taken.",
+ "code_path": "solutions/kattis_contestadvancement.cpp",
+ "samples_passed": true
+}

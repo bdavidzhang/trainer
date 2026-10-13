@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kitfinding",
+ "rating": 1600,
+ "topics": [
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "An I can only be the middle of KIT; an I on the border but not in a corner lies on exactly one line, and an I whose three lower neighbours are all I can only be used horizontally.",
+ "sketch": "Write the grid in row-major order as KIT, then the remaining k-1 K's, then t-1 T's, then i-1 I's. The I at (1,2) is on the top edge so its only line is the horizontal K-I-T, giving one occurrence. Every other I is in a row-major suffix of I's, so everything below it is I (no vertical/diagonal use) and its right neighbour is I or the wall (no horizontal use). O(hw). Any valid grid is accepted so the token checker cannot judge it; validated with my own occurrence counter over all (h,w,k,i,t) with h,w in 3..5 and random large cases: always exactly one KIT with correct letter counts.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_kitfinding.cpp"
+}

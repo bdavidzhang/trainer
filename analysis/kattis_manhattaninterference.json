@@ -1,0 +1,14 @@
+{
+ "id": "kattis:manhattaninterference",
+ "rating": 2500,
+ "topics": [
+  "geometry",
+  "divide-and-conquer",
+  "fenwick",
+  "case-analysis"
+ ],
+ "key_idea": "An L1 bisector with dx>dy is a curve x=clamp(+-y+c, lo, hi) (dx<dy: the same with axes swapped; dx=dy contains quadrants and meets everything), so only same-orientation pairs can miss each other, and that reduces to interval-disjointness plus a 3D dominance count.",
+ "sketch": "Work in doubled coordinates. Curves of different orientation always cross, and a dx=dy bisector contains a curve of each orientation, so count non-intersecting pairs only among x=f(y) curves and among y=g(x) curves. Two such curves are disjoint iff their value ranges [lo,hi] are disjoint, or they have the same strict monotonicity and c1<c2, lo1<lo2, hi1<hi2 (opposite monotonicity or a straight line needs disjoint ranges). So non-intersecting = #range-disjoint pairs (sort + binary search) + per monotone class [#(c1<c2,lo1<lo2,hi1<hi2) - #(c1<c2,hi1<lo2)], the first by CDQ divide and conquer with a Fenwick tree and the second by a sorted sweep; the answer is C(n,2) minus that. O(n log^2 n), 0.2 s for n=1.5e5. Pitfalls: strict inequalities with ties (sort equal c by lo descending so CDQ never counts them), the area-shaped dx=dy bisectors, dx=0 or dy=0 lines, and a 64-bit answer. Stress-tested on 1500 random small cases against a quarter-lattice brute force.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_manhattaninterference.cpp"
+}

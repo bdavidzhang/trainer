@@ -1,0 +1,12 @@
+{
+ "id": "kattis:amalgram",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "For each letter the answer needs max(count in a, count in b) copies; any order works.",
+ "sketch": "Count the 26 letters in both words and print each letter max(ca, cb) times. O(|a|+|b|). Use fast I/O for 1e6-length lines. Any arrangement is accepted, so the token checker reports mismatches on samples 2 and 3; I validated the outputs myself by comparing letter multisets against the per-letter maxima.",
+ "code_path": "solutions/kattis_amalgram.cpp",
+ "samples_passed": true
+}

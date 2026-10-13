@@ -1,0 +1,13 @@
+{
+ "id": "kattis:commemorativerace",
+ "rating": 1900,
+ "topics": [
+  "graphs",
+  "dp",
+  "topological-sort"
+ ],
+ "key_idea": "Blocking a road only matters if it lies on every longest path, which happens exactly when it is the unique 'critical' edge (in[u]+1+out[v]=L) at its level in[u]; then all racers re-route at u.",
+ "sketch": "Topologically sort, compute in[v] (longest path ending at v) and out[v] (longest path starting at v), L = max. An edge (u,v) is on some longest path iff in[u]+1+out[v]=L, and every longest path uses exactly one such edge per level in[u]=0..L-1, so an edge is on all longest paths iff its level has a single critical edge. For each such edge the result is in[u] + max(0, max over other out-neighbours w of 1+out[w]); the answer is the minimum of these and L. O(n+m) with CSR adjacency and fast input for m=1e6. Pitfall is the statement: sample 1 shows racers cover all maximum paths (other racers still finish with L unless the edge is on every longest path), and the re-route starts at u, not earlier.",
+ "code_path": "solutions/kattis_commemorativerace.cpp",
+ "samples_passed": true
+}

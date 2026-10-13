@@ -1,0 +1,13 @@
+{
+ "id": "kattis:redundantbinarynotation",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "math",
+  "bitmasks"
+ ],
+ "key_idea": "Pick the lowest digit d (same parity as N, d<=t) and recurse on (N-d)/2; only values floor(N/2^k)-c with small c are ever reached.",
+ "sketch": "Memoized recursion f(n)=sum over d in [0,t], d==n mod 2, d<=n of f((n-d)/2), f(0)=1, modulo 998244353. Reachable arguments at depth k lie within about t of N/2^k, so there are O(t log N) states with O(t) transitions each, roughly 54*100*50 operations. A hash map keyed by the 64-bit value is enough. Leading zeros are automatically excluded because the recursion stops at 0; N=0 is answered as 1 (the single representation 0).",
+ "code_path": "solutions/kattis_redundantbinarynotation.cpp",
+ "samples_passed": true
+}

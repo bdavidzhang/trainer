@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dihedralgroup",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "ad-hoc"
+ ],
+ "key_idea": "The dihedral group only produces rotations of the cyclic sequence and of its reversal, so the test sequence must be a contiguous cyclic run of d read forwards or backwards.",
+ "sketch": "Since labels are a permutation, find the unique position of t[0] in d and compare t against d walking clockwise and walking counter-clockwise with wraparound; answer 1 if either matches. O(n). Pitfalls: wraparound modulo n, and m = 1 is always 1.",
+ "code_path": "solutions/kattis_dihedralgroup.cpp",
+ "samples_passed": true
+}

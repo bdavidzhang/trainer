@@ -1,0 +1,14 @@
+{
+ "id": "kattis:prefixfreecode",
+ "rating": 1800,
+ "topics": [
+  "trie-aho-corasick",
+  "fenwick",
+  "combinatorics",
+  "strings"
+ ],
+ "key_idea": "Prefix-freeness means the composite string decomposes uniquely and comparing composites equals comparing sequences of word ranks, so the task is ranking a k-permutation of n: sum over positions of (unused smaller words) * (n-i-1)!/(n-k)!.",
+ "sketch": "Insert all words in a trie, assign lexicographic ranks with an iterative DFS, then walk the test string through the trie to get the rank sequence r_0..r_{k-1}. For position i the number of unused words smaller than r_i comes from a Fenwick tree, and each such choice leaves P(n-i-1, k-i-1) = (n-i-1)!/(n-k)! completions. Answer is 1 + sum, mod 1e9+7. O(total length * 26 + k log n) time, about 100 MB for a 1e6-node array trie (limit 1 GB). Pitfalls: iterative DFS because the trie can be 1e6 deep, modular inverse of (n-k)!, position is 1-based.",
+ "code_path": "solutions/kattis_prefixfreecode.cpp",
+ "samples_passed": true
+}

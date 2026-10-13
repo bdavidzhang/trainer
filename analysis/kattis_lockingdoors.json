@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lockingdoors",
+ "rating": 1900,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "Reverse time: starting from exits you may open any door whose locking-side room you can reach, so every room must be reachable by directed paths from an exit, and the answer is the number of source SCCs.",
+ "sketch": "Orient each door a->b (lockable from a). Running the process backwards, an unlock of a->b is possible from a and then gives access to b, so the set of exits works iff every vertex is reachable from some exit along directed edges; exits act as one node since you can walk around outside. Minimum such set has one vertex per SCC with no incoming edge in the condensation (a single SCC still needs 1). Iterative Tarjan on CSR adjacency, O(n+m). Pitfalls: m up to 1e6 needs fast input and no recursion (depth 1e5); count in-degree only across different components.",
+ "code_path": "solutions/kattis_lockingdoors.cpp",
+ "samples_passed": true
+}

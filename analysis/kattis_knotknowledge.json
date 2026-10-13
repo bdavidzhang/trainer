@@ -1,0 +1,11 @@
+{
+ "id": "kattis:knotknowledge",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The missing number is the sum of the first list minus the sum of the second.",
+ "sketch": "Read n numbers and n-1 numbers, output the difference of sums. O(n). No pitfalls.",
+ "code_path": "solutions/kattis_knotknowledge.cpp",
+ "samples_passed": true
+}

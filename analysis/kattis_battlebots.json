@@ -1,0 +1,13 @@
+{
+ "id": "kattis:battlebots",
+ "rating": 1200,
+ "topics": [
+  "math",
+  "greedy",
+  "brute-force"
+ ],
+ "key_idea": "A claw removes 1 unit at the current scale, so claws are most valuable after all sword cuts: the answer is min over k of k + ceil(n / 2^k).",
+ "sketch": "Any claw used after j of the k halvings only removes 2^-(k-j) in final units, so do all k halvings first and then ceil(n/2^k) claws (the last claw is needed to finish once size <= 1). Try every k from 0 to 62 and take the minimum; O(log n). Pitfalls: n up to 1e18 needs 64-bit, compute the ceiling with integer division rather than floating point; n=1 gives 1.",
+ "code_path": "solutions/kattis_battlebots.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:friendmeetup",
+ "rating": 1800,
+ "topics": [
+  "binary-search",
+  "math",
+  "geometry"
+ ],
+ "key_idea": "Two friends meet after d_manhattan/(v_i+v_j); maximising a ratio over pairs is done by parametric search where the test max(d_ij - t(v_i+v_j)) >= 0 separates per point after rotating to u=x+y and u=x-y.",
+ "sketch": "The meeting time of a pair is Manhattan distance over the sum of speeds, since both can walk towards each other along a shortest grid path. For a guess t, d_ij - t(v_i+v_j) >= 0 for some pair iff for one of the two diagonal directions max_i(u_i - t v_i) + max_j(-u_j - t v_j) >= 0, an O(N) scan. I use Dinkelbach iteration instead of bisection: take the argmax pair for the current t, set t to that pair's exact ratio (kept as an integer fraction, compared with __int128), and stop when it no longer improves; it converges in a handful of rounds. Pitfalls: if the two argmaxes are the same point skip that direction (the value is negative for t>0 anyway), all points coincident gives 0, and printing needs enough digits for relative 1e-6. Stress-tested against the O(N^2) exact brute force.",
+ "code_path": "solutions/kattis_friendmeetup.cpp",
+ "samples_passed": true
+}

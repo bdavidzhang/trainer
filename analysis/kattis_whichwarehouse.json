@@ -1,0 +1,13 @@
+{
+ "id": "kattis:whichwarehouse",
+ "rating": 1900,
+ "topics": [
+  "matching",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "After Floyd-Warshall on the directed road graph, cost[product][warehouse] is a plain sum, and choosing m distinct warehouses for m products is a min-cost assignment (Hungarian).",
+ "sketch": "Read the directed distance matrix (-1 = no road), run Floyd-Warshall in O(n^3). cost[p][w] = sum over warehouses j of amount[j][p]*dist(j,w), O(n^2 m). Solve the rectangular m x n assignment with the O(m n^2) Hungarian algorithm with potentials. Pitfalls: roads are directed and asymmetric (goods move from source j to target w), the input matrix line j gives distances from j, and totals reach about 1e11 so use 64-bit.",
+ "code_path": "solutions/kattis_whichwarehouse.cpp",
+ "samples_passed": true
+}

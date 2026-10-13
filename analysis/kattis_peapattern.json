@@ -1,0 +1,12 @@
+{
+ "id": "kattis:peapattern",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Just simulate the count-and-describe step on digit strings for up to 100 terms, detecting a repeat with a set.",
+ "sketch": "Next term = for each digit 0..9 present, its count followed by the digit, in increasing digit order (counts can be multi-digit, e.g. 10 zeros -> '100'). Walk positions 1..100: if the current term equals m print the position; if it was seen before the sequence has cycled and m never appears. If 100 distinct terms pass without a hit, check whether term 101 repeats, otherwise print I'm bored. Numbers are up to 100 digits so keep them as strings; the start value itself is position 1.",
+ "code_path": "solutions/kattis_peapattern.cpp",
+ "samples_passed": true
+}

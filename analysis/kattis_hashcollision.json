@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hashcollision",
+ "rating": 2000,
+ "topics": [
+  "interactive",
+  "math",
+  "graphs"
+ ],
+ "key_idea": "Pick c on a cycle of the functional graph; then r is the cycle element c steps before c, which needs only the cycle length L. L is found with baby-step/giant-step in about 2*sqrt(n) queries.",
+ "sketch": "Query x=f^n(1), which is guaranteed to lie on a cycle. Baby steps: query f^i(x) for i=1..449; if x reappears, L=i. Otherwise L>=450: giant steps query f^m(x) for m=n,n-450,n-900,... and whenever the value equals baby value f^i(x), m-i is a positive multiple of L; the minimum over all hits is exactly L because every integer in [450,n] is m-i for some probed m. Then set c=x and r=f^((-c) mod L)(c) (use L when the remainder is 0), so f^c(r)=c. About 1+449+445+1=896 queries worst case, under the 1000 limit. Pitfalls: query exponents must stay within 1..n (hence giant steps counted down from n rather than up), small n, flushing. Interactive, so the sample checker cannot judge it: validated with an in-process simulator on 800 random/permutation/rho-shaped functions (answer verified, max 895 queries); samples_passed reflects that validation.",
+ "code_path": "solutions/kattis_hashcollision.cpp",
+ "samples_passed": true
+}

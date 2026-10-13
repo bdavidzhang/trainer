@@ -1,0 +1,12 @@
+{
+ "id": "kattis:amoebas",
+ "rating": 900,
+ "topics": [
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "Each loop is exactly one 8-connected component of black pixels, so count components.",
+ "sketch": "Flood fill over '#' cells using all eight neighbours and count how many fills are started. Loops never touch each other, so nesting is irrelevant. O(mn) on a 100x100 grid; the only pitfall is using 4-connectivity, which would split diagonal loops.",
+ "code_path": "solutions/kattis_amoebas.cpp",
+ "samples_passed": true
+}

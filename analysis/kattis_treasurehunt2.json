@@ -1,0 +1,13 @@
+{
+ "id": "kattis:treasurehunt2",
+ "rating": 1400,
+ "topics": [
+  "interactive",
+  "brute-force",
+  "search-backtracking"
+ ],
+ "key_idea": "Only 16 possible placements; search for a query decision tree of depth 5 over candidate bitmasks instead of hand-crafting one.",
+ "sketch": "Represent the candidate set as a 16-bit mask and each of the 25 cells by the mask of placements covering it. A memoized recursion can(set,q) tries every cell that splits the set into two non-empty parts and requires both parts to be solvable with q-1 queries (pruning when |set|>2^q). At run time follow the tree, flushing after each query, and print the single remaining candidate. Interactive, so the sample checker cannot judge it: verified with my own simulator against all 16 placements (always correct within 5 queries).",
+ "code_path": "solutions/kattis_treasurehunt2.cpp",
+ "samples_passed": true
+}

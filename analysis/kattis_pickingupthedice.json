@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pickingupthedice",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "probability",
+  "dp-knapsack"
+ ],
+ "key_idea": "For a fixed number c of rerolled dice only the sum of the dice picked up matters, so combine a subset-sum-by-count DP over the rolled dice with the count of ways c dice sum to the required value.",
+ "sketch": "Compute ways[c][s], the number of ordered outcomes of c dice summing to s, and sub[c][p], whether some c of the given dice sum to p (0/1 knapsack with a count dimension). For each c and achievable p the success probability is ways[c][T-S+p]/6^c; compare exactly as ways*6^(K-c), which fits in unsigned 64-bit because 6^24 is about 4.7e18. Take the largest value with strict improvement so the smallest c wins ties, and c=0 wins when nothing is possible or the sum already equals T. O(K^2 * 6K). Pitfalls: floating-point ties, so use integer comparison, and overflow of signed 64-bit near 6^24.",
+ "code_path": "solutions/kattis_pickingupthedice.cpp",
+ "samples_passed": true
+}

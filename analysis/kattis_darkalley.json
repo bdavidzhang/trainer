@@ -1,0 +1,14 @@
+{
+ "id": "kattis:darkalley",
+ "rating": 1700,
+ "topics": [
+  "fenwick",
+  "math",
+  "number-theory",
+  "data-structures"
+ ],
+ "key_idea": "Split b*r^|x-pos| into a left part b*r^(-pos)*r^x and a right part b*r^(pos)*r^(-x), each a prefix/suffix sum maintainable in a Fenwick tree modulo the prime.",
+ "sketch": "Parse p exactly as an integer over 10^6 (read it as a string, not a double) and set r = (10^6 - P)/10^6 mod 1e9+7, which is nonzero so r is invertible. Precompute powers of r and of r^-1 up to n. Keep two Fenwick trees: one storing b*r^(-pos), one storing b*r^(pos); adding or removing a lamp is a point update with +b or -b. A query at x is r^x * prefix1(x) + r^(-x) * (total2 - prefix2(x)). O((n+q) log n). Pitfalls: float parsing of p, counting the lamp at x itself only once, and keeping subtractions non-negative modulo M.",
+ "code_path": "solutions/kattis_darkalley.cpp",
+ "samples_passed": true
+}

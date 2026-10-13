@@ -1,0 +1,13 @@
+{
+ "id": "kattis:walkinthewoods",
+ "rating": 1900,
+ "topics": [
+  "implementation",
+  "graphs",
+  "brute-force"
+ ],
+ "key_idea": "Simulate, but when a (vertex, heading) state repeats with no edge removed in between the walk is on a cycle: fast-forward as many whole laps as keep every edge on the cycle at count >= 1, so each lap-skip is followed by an edge removal within one more lap.",
+ "sketch": "Store for each vertex its 4 directional neighbours and edge ids. Step rule: among left/straight/right options that still exist, take the middle if 3, else the leftmost; stop if none (no U-turns). Keep a phase counter that is bumped on every edge removal and stamp visited states with (phase, index into the path of this phase). On a repeat inside a phase, count how often each edge occurs on the cycle, take t = min floor((rem_e-1)/cnt_e), subtract t*cnt_e and start a new phase; the next lap is simulated normally and must exhaust some edge. At most m removals, each phase costs O(4n) steps, so about 5000*30000 operations. Pitfalls: do not let a remaining count hit 0 inside the fast-forward (the walk changes mid-lap), use 64-bit for t*cnt, and the cycle need not start at the phase start (rho shape).",
+ "code_path": "solutions/kattis_walkinthewoods.cpp",
+ "samples_passed": true
+}

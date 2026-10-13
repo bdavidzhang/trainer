@@ -1,0 +1,12 @@
+{
+ "id": "kattis:nineknights",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "A board is valid iff it has exactly nine knights and no knight has another knight on any of its eight knight-move squares.",
+ "sketch": "Read the 5x5 grid, count the k cells, and for every knight test the eight L-shaped offsets with bounds checking. Print valid only if the count is exactly 9 and no attacking pair was found. Constant time. The usual pitfall is forgetting the exactly-nine condition (sample 3 has only 8 knights and is invalid).",
+ "code_path": "solutions/kattis_nineknights.cpp",
+ "samples_passed": true
+}

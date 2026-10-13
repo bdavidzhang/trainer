@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dontbefake",
+ "rating": 900,
+ "topics": [
+  "prefix-sums",
+  "implementation"
+ ],
+ "key_idea": "Difference array over the 86400 seconds of the day, then take the maximum and how often it occurs.",
+ "sketch": "For each interval [L,R] do d[L]++, d[R+1]--; prefix-sum over t=0..86399 to get the number of available friends per second. Track the maximum and the number of seconds attaining it. Intervals of one friend are disjoint so each friend contributes at most 1 per second. O(86400 + total intervals).",
+ "code_path": "solutions/kattis_dontbefake.cpp",
+ "samples_passed": true
+}

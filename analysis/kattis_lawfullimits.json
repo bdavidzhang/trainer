@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lawfullimits",
+ "rating": 1500,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "math"
+ ],
+ "key_idea": "Edge traversal is FIFO (leaving later never arrives earlier), so plain Dijkstra on arrival times works with a time-dependent edge cost.",
+ "sketch": "For departure time d on edge (l,v,w): if d>=t cost l/w; else if d+l/v<=t cost l/v; else arrive at t + (l - v*(t-d))/w. Run Dijkstra with doubles from node 1 at time 0. O(m log n). Pitfalls: handle the case where the speed change happens mid-edge, t=0, and print enough digits; double precision is ample for 1e-6 relative error.",
+ "code_path": "solutions/kattis_lawfullimits.cpp",
+ "samples_passed": true
+}

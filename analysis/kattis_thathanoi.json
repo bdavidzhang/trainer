@@ -1,0 +1,12 @@
+{
+ "id": "kattis:thathanoi",
+ "rating": 1400,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Walk the disks from largest to smallest tracking the current (source, destination) of the recursive subproblem: the largest disk must be on source (add 2^(k-1), subproblem becomes source->aux) or on destination (subproblem becomes aux->destination); on aux means No.",
+ "sketch": "Record the peg of each disk and check each peg's list is decreasing bottom-to-top, otherwise No. Then iterate k=n..1 with s=start, d=dest: if disk k is on s, remaining += 2^(k-1) and d becomes the auxiliary peg; if on d, s becomes the auxiliary; otherwise print No. O(n). Use 64-bit since the answer reaches 2^50-1.",
+ "code_path": "solutions/kattis_thathanoi.cpp",
+ "samples_passed": true
+}

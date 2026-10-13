@@ -1,0 +1,13 @@
+{
+ "id": "kattis:freebiesdistribution",
+ "rating": 1300,
+ "topics": [
+  "binary-search",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "Each contestant's booth is fixed (nearest column, leftmost on ties) and independent of Samuele, so for every booth just count contestants assigned to it whose arrival time R+|C-B| is at most Samuele's X+|Y-B|, and take the minimum over all booths.",
+ "sketch": "Sort the booth columns, and for each contestant binary-search the nearest booth, preferring the left one on a tie. Compare the contestant's Manhattan time with Samuele's time to that booth and increment that booth's counter if it is not larger. The answer is the minimum counter over all M booths, including booths nobody goes to (0). O((N+M) log M) with fast input since N and M are up to 1e6. Pitfalls: ties count against Samuele (<=), the leftmost tie-break, and reading 3e6 numbers quickly. Stress-tested against a direct brute force.",
+ "code_path": "solutions/kattis_freebiesdistribution.cpp",
+ "samples_passed": true
+}

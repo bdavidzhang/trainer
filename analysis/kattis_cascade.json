@@ -1,0 +1,14 @@
+{
+ "id": "kattis:cascade",
+ "rating": 2300,
+ "topics": [
+  "probability",
+  "randomized",
+  "graphs",
+  "search-backtracking"
+ ],
+ "key_idea": "The path product of 1/deg is the probability that, when every node picks one uniformly random neighbour as its parent, following parents from j leads to i along that path; so the centrality is the expected spread of the linear-threshold model, which can be estimated by Monte Carlo within the generous 0.1 tolerance.",
+ "sketch": "Exact counting over simple paths is #P-hard in general, so the solution is a hybrid. First it enumerates simple paths from x by DFS, adding the running product of 1/deg, under a budget of 6e7 steps; if the enumeration finishes the answer is exact and printed with one decimal. Otherwise it restricts to x's component and samples: each non-seed node picks a random neighbour, then an O(N) pointer-chasing pass with three states counts nodes whose chain reaches x (cycles do not). It runs about 5e6 samples until 5.5 s of wall time (limit 9 s), giving a standard error around 0.01-0.02 even if the count had std 30, and prints three decimals to avoid losing 0.05 to rounding. Pitfalls: weight-threshold pruning of the DFS is not safe on dense graphs (K17 or 6-regular graphs keep too much mass deep down); isolated or unreachable nodes contribute nothing; the fallback output is not rounded to one decimal, which relies on the stated absolute-error checker. Verified: sample via the checker, and Monte Carlo against unbounded exact DFS on random graphs (agreement within 0.05).",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_cascade.cpp"
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:chaoticcables",
+ "rating": 1900,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "constructive",
+  "bitmasks"
+ ],
+ "key_idea": "Construct the only possible labelling: root gets 0, its neighbours get distinct single bits, and every deeper vertex must be the OR of its neighbours one BFS level closer; then verify the labelling instead of proving it.",
+ "sketch": "Cheap rejects first: n must be 2^d, m = d*n/2, every degree d. BFS from vertex 1 for distances, assign 1<<i to its neighbours and for dist>=2 take the OR of labels of the previous-level neighbours in BFS order. Accept iff labels are a bijection onto [0,n) and every edge joins labels differing in exactly one bit; together with all degrees equal to d this forces the edge set to be exactly the hypercube. O(n+m). Pitfalls: disconnected graphs, labels overflowing n, and trusting the labelling without the final verification. Tested on shuffled hypercubes and degree-preserving edge swaps.",
+ "code_path": "solutions/kattis_chaoticcables.cpp",
+ "samples_passed": true
+}

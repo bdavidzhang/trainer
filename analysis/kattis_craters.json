@@ -1,0 +1,12 @@
+{
+ "id": "kattis:craters",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "convex-hull"
+ ],
+ "key_idea": "The fence is the convex hull of the circles inflated by 10: take the external tangent points of every pair, keep only those whose tangent line supports all circles, order them by a point hull, and join consecutive points by an arc if they lie on the same circle, otherwise by a segment.",
+ "sketch": "Add 10 to every radius and drop circles contained in another (exact integer test d^2 <= (R-r)^2, breaking ties between identical circles by index); if one circle remains the answer is 2*pi*R. For each remaining pair compute the two outer tangent directions phi +- acos((r1-r2)/d) and the tangent points on both circles, and keep a tangent only if every circle lies on the inner side of that line, an O(n^3) = 1.6e7 check. Without that filter, tangent points lying strictly inside the true hull can still appear on the hull of the point set and replace arcs by chords, which was the bug caught by stress testing. Run a monotone chain on the kept points, then walk the hull: same-circle neighbours contribute r times the CCW angle difference, different circles contribute the Euclidean distance. Pitfalls: an angle difference within 1e-7 of 2*pi comes from coincident duplicate points and must count as 0, and collinear equal circles produce duplicate tangent points. Verified against a hull of densely sampled circle points.",
+ "code_path": "solutions/kattis_craters.cpp",
+ "samples_passed": true
+}

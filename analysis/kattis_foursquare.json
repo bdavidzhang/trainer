@@ -1,0 +1,14 @@
+{
+ "id": "kattis:foursquare",
+ "rating": 1600,
+ "topics": [
+  "brute-force",
+  "search-backtracking",
+  "geometry",
+  "case-analysis"
+ ],
+ "key_idea": "Any dissection of a rectangle into at most four rectangles is guillotine (a non-guillotine pinwheel needs five), so recursively split the piece set in two with a straight vertical or horizontal cut.",
+ "sketch": "The total area must be a perfect square S^2. tile(set, W, H): a single piece must equal WxH up to rotation; otherwise for every proper non-empty subset, if its area is divisible by H try a vertical cut at area/H and recurse on both sides, and likewise horizontally with W. With 4 pieces this is a handful of states. Pitfalls: rotations are handled only at the leaves, sub-rectangle dimensions must be positive integers, and all layouts (2x2 grid, strips, 1+3, T-shapes) are covered by the recursion rather than by hand-enumerated cases.",
+ "code_path": "solutions/kattis_foursquare.cpp",
+ "samples_passed": true
+}

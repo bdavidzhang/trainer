@@ -1,0 +1,13 @@
+{
+ "id": "kattis:orderlyclass",
+ "rating": 1300,
+ "topics": [
+  "strings",
+  "two-pointers",
+  "implementation"
+ ],
+ "key_idea": "Any valid reversal must cover the first and last mismatching positions l and r and be centred on the same midpoint, so the candidates are exactly the segments [l-k, r+k].",
+ "sketch": "Find the first and last index where A and B differ. If reversing A[l..r] does not give B[l..r], the answer is 0. Otherwise that segment is one way, and it can be widened by k on both sides as long as A[l-k] == A[r+k] (outside [l,r] the strings agree, so the condition only involves A); the widening must be contiguous, so stop at the first failure. Answer is 1 plus the number of successful widenings, in O(n). Pitfall: a reversal not symmetric about the midpoint of [l,r] would have to fix l or r incorrectly, so no other segments need to be considered.",
+ "code_path": "solutions/kattis_orderlyclass.cpp",
+ "samples_passed": true
+}

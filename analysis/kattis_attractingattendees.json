@@ -1,0 +1,13 @@
+{
+ "id": "kattis:attractingattendees",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Validity is monotone: adding bands never reduces any band's crowd, so the unique maximal valid lineup is found by peeling, as in k-core: start with all bands and repeatedly delete any band with fewer than c watchers.",
+ "sketch": "Start with every band performing and every person attending; count watchers per band. Put bands with count<c on a stack. Removing a band decrements the have-count of each of its fans; when a person drops below half (2*have < k) they stop attending once and decrement the count of every still-performing favourite, possibly queueing more bands. Each person leaves at most once and each band is removed once, so total work is O(sum k). If anything survives it is a valid lineup, otherwise impossible. Pitfalls: 'at least half' with odd k means 2*have>=k; do not decrement counts for a person who already left; avoid queueing a band twice. Stress-tested against exhaustive subset search with a validity checker.",
+ "code_path": "solutions/kattis_attractingattendees.cpp",
+ "samples_passed": true
+}

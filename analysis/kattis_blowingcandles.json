@@ -1,0 +1,13 @@
+{
+ "id": "kattis:blowingcandles",
+ "rating": 1800,
+ "topics": [
+  "convex-hull",
+  "geometry",
+  "two-pointers"
+ ],
+ "key_idea": "The minimum-width strip of a point set is flush with an edge of its convex hull, so build the hull and use rotating calipers to find the farthest vertex from each edge.",
+ "sketch": "Monotone-chain hull with collinear points removed, O(N log N). For each hull edge advance an antipodal pointer while the cross product (twice the triangle area) keeps growing; width for that edge is cross/|edge|, and the answer is the minimum over edges. Cross products reach about 3.2e17, which still fits in signed 64-bit, so keep all comparisons in exact integers and only divide at the end in long double. Pitfalls: if all points are collinear the hull degenerates and the answer is 0; R in the input is otherwise unused. Validated against an O(N^3) brute force on random small sets.",
+ "code_path": "solutions/kattis_blowingcandles.cpp",
+ "samples_passed": true
+}

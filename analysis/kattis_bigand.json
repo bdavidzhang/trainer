@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bigand",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "heap"
+ ],
+ "key_idea": "Minimise max(n_i + D*depth_i) over binary trees: Huffman-style, repeatedly merge the two smallest arrival times into max(a,b)+D.",
+ "sketch": "Put all n_i in a min-heap; pop the two smallest a,b and push max(a,b)+D until one value remains, then add L. The exchange argument is the same as for Huffman coding with the max+c cost: the two earliest signals can always be siblings at the deepest level. O(N log N) with N=4e5. Values reach about 1e9 + 4e5*1e9 in the degenerate chain, so use 64-bit. An alternative is binary search on T with a Kraft-inequality check.",
+ "code_path": "solutions/kattis_bigand.cpp",
+ "samples_passed": true
+}

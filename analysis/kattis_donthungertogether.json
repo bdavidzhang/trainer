@@ -1,0 +1,13 @@
+{
+ "id": "kattis:donthungertogether",
+ "rating": 2000,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "dsu"
+ ],
+ "key_idea": "Binary search the per-night total T; feasibility is a greedy over foods from the last day to the first, each pouring into the latest still-unfilled nights of its window [i, f_i], with a DSU skipping filled nights.",
+ "sketch": "Earlier foods can reach night j>=i only if their expiry is >= j, so among nights of [i,f_i] the later ones are harder for earlier foods; hence processing days n..1 and filling from f_i downward is optimal (exchange argument). A DSU 'largest unfilled night <= x' makes one check O(n alpha). Answer -1 iff some night is covered by no positive food (difference array); otherwise T=1/n is feasible, so bisect geometrically from [1/n, sum/n] until the ratio is below 2 and then 34 ordinary halvings, giving about 40 checks instead of 100 (100 checks took 4.3 s locally for n=1e6, the reduced version 1.5 s). Output T/k. Pitfalls: plain contiguous-interval Hall conditions are NOT sufficient, a forward EDF heap is too slow with log factor, need fast input, and relative precision 1e-9 with answers ranging over 15 orders of magnitude. Stress-tested against a heap EDF brute force.",
+ "code_path": "solutions/kattis_donthungertogether.cpp",
+ "samples_passed": true
+}

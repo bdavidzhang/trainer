@@ -1,0 +1,12 @@
+{
+ "id": "kattis:deliveryforces",
+ "rating": 1000,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Sort descending and pair up: each team takes the two largest remaining couriers (plus a weak one), so the medians are the 2nd, 4th, 6th ... largest values.",
+ "sketch": "Sort descending; answer is the sum of a[1], a[3], ..., a[2k-1] with k=n/3. Exchange argument: the median of any team is dominated by a larger member, so the i-th best median can be at most the 2i-th largest element, and filling the third seats with the smallest n/3 elements achieves it. O(n log n); the sum reaches 3.3e11 so use 64-bit.",
+ "code_path": "solutions/kattis_deliveryforces.cpp",
+ "samples_passed": true
+}

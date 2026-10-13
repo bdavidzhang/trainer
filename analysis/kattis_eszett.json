@@ -1,0 +1,12 @@
+{
+ "id": "kattis:eszett",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "With at most three S's, at most one 'SS' pair can be replaced at a time, so the answers are the plain lowercase word plus one variant per adjacent SS position.",
+ "sketch": "Lowercase the string and print it, then for every i with s[i]=s[i+1]='S' print the lowercase string with those two characters replaced by 'B'. Because S occurs at most three times, two disjoint replacements are impossible and the two replacements inside 'SSS' give distinct strings, so no dedup is needed. O(n^2) trivially. Pitfall: 'SSS' yields two B-variants, a lone S yields none.",
+ "code_path": "solutions/kattis_eszett.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:whichbase",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Interpret the same digit string in bases 8, 10 and 16 with Horner's rule, printing 0 for octal if any digit is 8 or 9.",
+ "sketch": "Read the token as a string so leading zeros are preserved and harmless. Accumulate o = o*8+d, v = v*10+d, h = h*16+d over the digits and flag the octal value invalid if a digit exceeds 7. With at most 7 digits the hex value is below 2^28, so 32-bit suffices; O(length) per case.",
+ "code_path": "solutions/kattis_whichbase.cpp",
+ "samples_passed": true
+}

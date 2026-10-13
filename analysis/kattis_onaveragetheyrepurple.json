@@ -1,0 +1,14 @@
+{
+ "id": "kattis:onaveragetheyrepurple",
+ "rating": 1300,
+ "topics": [
+  "bfs-dfs",
+  "shortest-paths",
+  "graphs",
+  "constructive"
+ ],
+ "key_idea": "Colour each edge by the parity of the BFS layer it leaves from node 1; then every path changes colour at least dist-1 times, and the shortest path shows no colouring can do better.",
+ "sketch": "Upper bound: Bob can take a shortest path with d edges, which has at most d-1 colour changes. Lower bound: Alice colours an edge between BFS layers i and i+1 by parity of i (edges inside a layer take the colour of that layer's outgoing or incoming edges, either works); any path from layer 0 to layer d must cross each layer boundary, forcing d-1 changes. So the answer is BFS distance from 1 to N minus 1. O(N+M). Pitfall: the answer is dist-1, not dist, and a direct edge gives 0.",
+ "code_path": "solutions/kattis_onaveragetheyrepurple.cpp",
+ "samples_passed": true
+}

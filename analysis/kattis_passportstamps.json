@@ -1,0 +1,12 @@
+{
+ "id": "kattis:passportstamps",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "math"
+ ],
+ "key_idea": "After j trips the officers have cut the passport into at most j+1 blank gaps, so trip j can be blocked exactly when the remaining p - S_j blank pages fit into j+1 gaps of size at most c_j - 1.",
+ "sketch": "Scan trips in order keeping the prefix sum S of earlier trips; the first j (0-indexed) with p - S <= (j+1)*(c_j - 1) is the answer, otherwise n. Sufficiency: the adversary can lay the earlier stamps out in any order to realise the layout with j+1 equal-ish gaps, since all earlier trips are guaranteed to fit. O(n). Pitfall: (j+1)*(c-1) reaches 1e23, so use __int128 (or cap the product), and S may exceed p which the same inequality handles.",
+ "code_path": "solutions/kattis_passportstamps.cpp",
+ "samples_passed": true
+}

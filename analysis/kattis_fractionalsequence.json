@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fractionalsequence",
+ "rating": 900,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Block i occupies positions i(i-1)/2+1 .. i(i+1)/2, so find i by inverting the triangular number and reduce the offset over i.",
+ "sketch": "Estimate i from the square root of 8n-7 and fix it up with integer while-loops so that i(i-1)/2 < n <= i(i+1)/2. The offset k = n - i(i-1)/2 - 1; print i alone when k = 0, otherwise i and k/i divided by gcd. O(1) plus the gcd. Use 64-bit (n up to 4e9 overflows int) and do not trust floating sqrt without the integer correction.",
+ "code_path": "solutions/kattis_fractionalsequence.cpp",
+ "samples_passed": true
+}

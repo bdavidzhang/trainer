@@ -1,0 +1,12 @@
+{
+ "id": "kattis:justajoystick",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Each position is independent: cyclic distance on a 26-letter ring.",
+ "sketch": "For every index compute d=|a_i-b_i| and add min(d,26-d). O(n). Total is at most 13*1e5 so fits in int, 64-bit used anyway. No pitfalls beyond the wrap-around.",
+ "code_path": "solutions/kattis_justajoystick.cpp",
+ "samples_passed": true
+}

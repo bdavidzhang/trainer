@@ -1,0 +1,12 @@
+{
+ "id": "kattis:removalgame",
+ "rating": 1700,
+ "topics": [
+  "dp-interval",
+  "number-theory"
+ ],
+ "key_idea": "Fix the two numbers that survive to the end; the circle then splits into two independent arcs, each solved by 'last element removed' interval DP.",
+ "sketch": "Double the array. dp[i][j] = min cost to delete everything strictly between i and j while i and j stay: choose k as the last deleted element, dp[i][j]=min_k dp[i][k]+dp[k][j]+gcd(a_i,a_j). Answer = min over pairs i<j of dp[i][j]+dp[j][i+n]+gcd(a_i,a_j). O(n^3) per test with small constant, about 0.15s for 100 tests of n=100. Pitfalls: n=2 is just the gcd; multiple test cases terminated by 0. Cross-checked against a brute force on 100 random small cases.",
+ "code_path": "solutions/kattis_removalgame.cpp",
+ "samples_passed": true
+}

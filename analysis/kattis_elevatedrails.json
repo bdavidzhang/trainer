@@ -1,0 +1,13 @@
+{
+ "id": "kattis:elevatedrails",
+ "rating": 1600,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "The best layout always threads the third island between the two query islands, so the answer is ecc(a) + ecc(b) + diameter(third island), all counted in vertices.",
+ "sketch": "With two new edges the three trees form a chain or a star-like tree; the a-b path either goes directly between their islands or passes through the third one, and the latter adds at least one vertex, so it dominates. In it, the path is the longest path from a inside its island, the diameter of the third island (enter at one end, leave at the other), and the longest path ending at b. Compute for every component its diameter by double BFS and every vertex's eccentricity as max distance to the two diameter endpoints. Each query is O(1), total O(n+q). Pitfalls: count stations (vertices), not edges, so add 1 per segment; islands can be a single vertex; use iterative BFS for depth 1e5. Verified against an exhaustive brute force over all connection choices on small trees.",
+ "code_path": "solutions/kattis_elevatedrails.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:basicbasis",
+ "rating": 1900,
+ "topics": [
+  "linear-algebra",
+  "bitmasks",
+  "bitset"
+ ],
+ "key_idea": "Build the XOR basis incrementally and stamp each basis vector with the index at which it was inserted; reducing a query uses a uniquely determined set of basis vectors, and the answer is the largest stamp used.",
+ "sketch": "Use 160-bit bitsets and standard Gaussian insertion keyed by leading bit, storing insertion time per pivot. Because pivots are distinct, any x in span(b_1..b_i) reduces using only vectors inserted by time i, so max stamp among used vectors is f(x); if reduction gets stuck the answer is -1. Pitfall: x=0 needs a NON-empty subset, so its answer is the first index whose vector was linearly dependent on earlier ones (or -1). O((n+m)*160*160/64).",
+ "code_path": "solutions/kattis_basicbasis.cpp",
+ "samples_passed": true
+}

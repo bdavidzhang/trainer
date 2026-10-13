@@ -1,0 +1,14 @@
+{
+ "id": "kattis:easyascab2",
+ "rating": 1600,
+ "topics": [
+  "topological-sort",
+  "strings",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Each adjacent pair of words yields one 'x before y' edge from the first differing character; the order is unique iff Kahn's algorithm always has exactly one zero-indegree vertex.",
+ "sketch": "Split each line into UTF-8 characters by the lead byte and map them to ids; the alphabet is the set of characters that occur. For every adjacent pair find the first differing position and add an edge; if the later word is a proper prefix of the earlier one output IMPOSSIBLE. Run Kahn's algorithm: a leftover cycle means IMPOSSIBLE (checked before ambiguity), a queue with more than one candidate at any moment means AMBIGUOUS, otherwise print the order. Adjacent pairs suffice since non-adjacent constraints follow by transitivity. O(total bytes). Pitfalls: characters are multi-byte so byte-wise comparison is wrong, IMPOSSIBLE takes priority over AMBIGUOUS, and lines are read with getline in case a string contains spaces.",
+ "code_path": "solutions/kattis_easyascab2.cpp",
+ "samples_passed": true
+}

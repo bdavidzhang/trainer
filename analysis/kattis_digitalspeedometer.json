@@ -1,0 +1,12 @@
+{
+ "id": "kattis:digitalspeedometer",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "Hysteresis rounding: outside the band round down/up by the thresholds; inside the band, look back to the most recent reading outside this band and round toward the side it came from.",
+ "sketch": "Convert everything to integer thousandths to avoid floating comparisons (thresholds end in 5 hundredths, speeds are tenths, so no ties). For speed s with integer part i: 0 displays 0, 0<s<1 displays 1, fraction below tf gives i, above tr gives i+1. Otherwise scan backwards for the latest previous reading outside [i+tf, i+tr]; if it was below the band show i, if above show i+1. O(n^2) worst case with n <= 1000. Pitfalls: the band is specific to the current integer i, so the reference reading can be far away in value, and the sub-1 rule overrides everything.",
+ "code_path": "solutions/kattis_digitalspeedometer.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:surveillance2",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "math",
+  "case-analysis"
+ ],
+ "key_idea": "A 4-gon is fully visible; a 6-gon is an L. For a camera in one arm only the bottom-wall and far-wall mirrors help see the other arm, and the condition collapses algebraically to b^2 <= h^2 - (H-h)*h*(a-w)/w, a region under a parabola-like sqrt curve with a closed-form integral.",
+ "sketch": "Normalise the L to [0,W]x[0,h] U [0,w]x[0,H] with reflex corner (w,h); the kernel w*h always works. For a camera (a,b) in the right arm, go through the six walls: top, right and both inner walls cannot reveal anything hidden in the upper arm; the bottom mirror (image (a,-b)) reveals everything left of the line image-reflex corner; the left mirror (image (-a,b)) reveals q iff the line image-q meets x=0 below the highest directly visible point of the left wall. The worst uncovered point is where the bottom-image line hits the top wall, and simplifying gives w*(h^2-b^2) >= (H-h)*h*(a-w). Area in the arm is the integral of sqrt(h^2-c*u) for u up to min(W-w, h*w/(H-h)), c=(H-h)h/w, i.e. 2/(3c)*(h^3-rem^1.5); add the symmetric arm with roles swapped. O(1). Pitfalls: detecting which bbox corner is missing for the four orientations, clamping the sqrt argument, and resisting numeric integration (kinks hurt the 1e-6 bound). Checked against the sample and a numeric grid integration of the un-simplified conditions.",
+ "code_path": "solutions/kattis_surveillance2.cpp",
+ "samples_passed": true
+}

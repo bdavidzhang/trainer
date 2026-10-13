@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ketekcounting",
+ "rating": 2400,
+ "topics": [
+  "dp",
+  "strings",
+  "combinatorics"
+ ],
+ "key_idea": "Peel matched word pairs from the outside: g(j) = ways to split prefix [0,j) and suffix [n-j,n) into mirrored equal words; for a fixed l+j the compared character pairs have a fixed offset, so the match product can be grown incrementally from the centre.",
+ "sketch": "g(0)=1 and g(j) = sum over l<j of g(l)*match(l,j), where match is the product over p in [l,j) of the weight of pair (s[p], s[p+n-l-j]): 26 if both are '?', 1 if one is '?' or they are equal, 0 otherwise. Iterate c=l+j ascending; for fixed c the range [l,c-l) grows by one position on each side as l decreases, so each match costs O(1), and g(l) is already final because it only depends on sums c' < 2l < c. Answer = sum of g(j) times 26^(number of '?' in the middle [j,n-j)), or 1 when the middle is empty. O(n^2/8) ~ 1.1e8 modmuls and O(n) memory (the 64 MB limit rules out an n^2 table); break early when the product hits zero. Stress-tested against brute force with and without '?'.",
+ "code_path": "solutions/kattis_ketekcounting.cpp",
+ "samples_passed": true
+}

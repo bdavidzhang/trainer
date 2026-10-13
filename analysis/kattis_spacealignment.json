@@ -1,0 +1,13 @@
+{
+ "id": "kattis:spacealignment",
+ "rating": 1500,
+ "topics": [
+  "brute-force",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Each line at depth d>0 with s spaces and t tabs gives the linear condition s + t*T = d*I for a common integer I; any non-degenerate pair of lines pins T below about 1e5, so simply try every tab width.",
+ "sketch": "Compute the nesting depth of every line ('{' is at the current depth then increases it; '}' decreases first). Depth-0 lines must have no whitespace at all, otherwise -1; if there are no deeper lines the answer is 1. Then for T = 1..2e5 check that (s+t*T) is positive, divisible by d and gives the same quotient I on all lines, printing the first T that works. Since s<=1000 and d<=50, a T determined by two lines is at most s*d ~ 5e4, and if no pair determines T then T=1 already works, so the bound is safe; cost about 2e5*100. Pitfalls: closing braces sit at the depth of their opener, and the indent unit must be a positive integer.",
+ "code_path": "solutions/kattis_spacealignment.cpp",
+ "samples_passed": true
+}

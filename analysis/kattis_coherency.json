@@ -1,0 +1,13 @@
+{
+ "id": "kattis:coherency",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "dsu",
+  "implementation"
+ ],
+ "key_idea": "Bases do not overlap and have diameter >= 25 while the link range is at most 50.8+160 mm, so each model has a bounded number of neighbours: bucket the centres in a uniform grid and test only the 3x3 neighbouring cells exactly in integers.",
+ "sketch": "Two models are linked iff centre distance <= 50.8 + (d1+d2)/2, i.e. 100*(dx^2+dy^2) <= (508+5(d1+d2))^2, which is exact in 64-bit integers (the 1e-5 mm guarantee means no tolerance issues). Use cell size 211 mm, sort points by cell key and for each point binary-search the three cell rows around it, scanning the contiguous range of three cells in each. Union linked pairs in a DSU and count degrees; answer yes iff one component and (n < 7 or every degree >= 2). Packing bounds a cell to about 80 centres so the worst case is ~1e8 cheap pair tests (0.3 s on a dense hex packing of 2e5 discs). Pitfalls: the degree rule only applies when n >= 7; do not use floating point for the 50.8.",
+ "code_path": "solutions/kattis_coherency.cpp",
+ "samples_passed": true
+}

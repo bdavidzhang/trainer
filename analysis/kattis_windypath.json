@@ -1,0 +1,13 @@
+{
+ "id": "kattis:windypath",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "geometry",
+  "greedy"
+ ],
+ "key_idea": "Start at an extreme point and, for a required turn L, move to the remaining point that has all other remaining points on its left (R symmetrically); the next turn is then forced to be correct and the path can never cross itself.",
+ "sketch": "Take the lexicographically smallest point as the start (it is on the hull). For step i with turn letter s[i], pick among unused points the one that is extreme in angular order around the current point: most clockwise for L, most counter-clockwise for R, using cross products; the last point is whatever remains. All remaining points lie in a half-plane/wedge that the already drawn path does not enter, so no crossings occur. O(N^2) with integer arithmetic only. The sample checker reports WRONG on both samples because any valid permutation is accepted and mine differs from the sample; I verified with my own random validator (300 cases: permutation, turn directions, no proper segment intersections) that outputs are valid.",
+ "code_path": "solutions/kattis_windypath.cpp",
+ "samples_passed": false
+}

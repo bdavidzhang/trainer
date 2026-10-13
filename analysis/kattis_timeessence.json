@@ -1,0 +1,12 @@
+{
+ "id": "kattis:timeessence",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Line 1 rounds m to the nearest whole name_1; line 2 rounds m to the nearest whole name_2 and then splits that integer by c_1, so carries are handled automatically.",
+ "sketch": "Let P1 = product of all c_i and P2 = product of c_2..c_{n-1}. Rounding half up in integers is (2m+P)/(2P). Print round(m/P1) name_1, then t=round(m/P2) and t/c_1 name_1, t%c_1 name_2. Pitfalls: products can overflow, so cap them at 1e11 (any P > 2m gives 0 anyway) using 128-bit multiplication; for n=2 P2=1 and the second line is exact; unit names are always printed as given (plural). The low solve count on Kattis reflects obscurity, not difficulty.",
+ "code_path": "solutions/kattis_timeessence.cpp",
+ "samples_passed": true
+}

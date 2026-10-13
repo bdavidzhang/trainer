@@ -1,0 +1,12 @@
+{
+ "id": "kattis:altoadaptation",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "greedy"
+ ],
+ "key_idea": "Each note admits an integer interval of octave shifts, a block is singable iff those intervals intersect, and merging equal neighbouring blocks only helps, so it is a plain partition DP maximising the minimum block length.",
+ "sketch": "For note a the valid shifts k satisfy ceil((l-a)/12) <= k <= floor((h-a)/12), non-empty because h-l>=11. dp[i] = max over j of min(dp[j-1], i-j+1) over blocks j..i whose running max-of-lows <= min-of-highs, extending j leftwards and breaking when the intersection empties. O(n^2) with n=1000. Adjacent blocks need not differ in shift because merging them never lowers the minimum. Pitfall: floor/ceil division on negative numbers. Stress-tested against an exponential brute force over all partitions.",
+ "code_path": "solutions/kattis_altoadaptation.cpp",
+ "samples_passed": true
+}

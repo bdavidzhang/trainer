@@ -1,0 +1,13 @@
+{
+ "id": "kattis:zoninghouses",
+ "rating": 1700,
+ "topics": [
+  "sparse-table",
+  "data-structures",
+  "brute-force"
+ ],
+ "key_idea": "The only houses worth ignoring are the four extremes of the range (min/max x, min/max y); for each candidate, recompute the bounding box of the range minus that index with two range queries on either side.",
+ "sketch": "Build four sparse tables returning the index of min x, max x, min y, max y. For a query [a,b] take the four extreme indices; for each one, query [a,i-1] and [i+1,b] for all four extremes and take side = max(dx, dy); answer the minimum over the four candidates. O(n log n) preprocessing and O(32) table lookups per query. Pitfalls: a<b is guaranteed so the remaining set is nonempty, a two-house range gives 0, coordinates up to 1e9 so differences need 64-bit.",
+ "code_path": "solutions/kattis_zoninghouses.cpp",
+ "samples_passed": true
+}

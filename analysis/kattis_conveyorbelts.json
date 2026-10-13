@@ -1,0 +1,12 @@
+{
+ "id": "kattis:conveyorbelts",
+ "rating": 2000,
+ "topics": [
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "Everything is periodic with period K, so expand the graph by time modulo K: a belt used at time t mod K is a unit-capacity edge (a,t)->(b,t+1), and the answer is a max flow.",
+ "sketch": "Build N*K nodes (junction, time mod K); each belt becomes K unit-capacity edges (a,t)->(b,(t+1) mod K); source feeds (j, j mod K) with capacity 1 for each producer j, and every (N,t) drains to the sink with infinite capacity. A unit of flow is a fixed walk for one producer and capacity 1 on an expanded edge is exactly the 'one product on a belt at a time' rule, including a route that would collide with itself. The flow is at most K<=300 on 9e4 nodes and 3e5 edges, so plain BFS augmenting paths (300 BFS runs) suffice; I avoided recursive Dinic because augmenting paths can be ~N*K long. Pitfalls: self-loops and multi-edges are legal and useful for shifting phase, a producer at junction N delivers directly, and belts leaving N are irrelevant. Checked on samples only (no brute force).",
+ "code_path": "solutions/kattis_conveyorbelts.cpp",
+ "samples_passed": true
+}

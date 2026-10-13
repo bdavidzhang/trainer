@@ -1,0 +1,13 @@
+{
+ "id": "kattis:retribution",
+ "rating": 1200,
+ "topics": [
+  "sorting",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Just simulate the described greedy: sort all n*m (distance, judge, repository) triples and sweep, taking a pair whenever both endpoints are still free.",
+ "sketch": "For tar and feathers separately, generate all up to 1e6 judge-site pairs, keyed by integer squared distance, then judge index, then site index (packed into one 64-bit key so ties break exactly as the statement demands). Sort and scan, matching a pair when neither side is used, adding sqrt of the squared distance, stopping after n matches. O(nm log(nm)) per phase, about 2e6 keys total. Pitfalls: compare squared integer distances rather than doubles so tie-breaking is exact, and the tie order is judge first then repository.",
+ "code_path": "solutions/kattis_retribution.cpp",
+ "samples_passed": true
+}

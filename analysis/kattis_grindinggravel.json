@@ -1,0 +1,14 @@
+{
+ "id": "kattis:grindinggravel",
+ "rating": 2200,
+ "topics": [
+  "dp",
+  "math",
+  "greedy",
+  "number-theory"
+ ],
+ "key_idea": "Splits needed = (number of cells) - (maximum number of groups the stones can be partitioned into with each group's weight divisible by k), so only residues mod k matter; pairing r with k-r is always safe, leaving at most 3 residue classes (plus one stone of k/2) for a small DP.",
+ "sketch": "View stones and cells as a bipartite graph with pieces as edges: a connected component with s stones and c cells needs at least s+c-1 pieces and that is achievable by greedy filling, so total splits = cells - components, and a component is exactly a stone group with sum divisible by k. Residue-0 stones are their own groups. An exchange argument shows a stone of residue r and one of residue k-r can always be made a group of two, so match them greedily (and k/2 with itself). The remaining stones use at most one residue from each complementary pair, so the count vector has <= 3 large coordinates; DP over count vectors where dp[state] = max over the last stone added of dp[state - e_i] + [sum(state) mod k == 0] counts the maximum number of zero-sum prefixes, i.e. groups. State space <= ~35^3*2, trivial. Pitfall: without the pairing reduction the state space is ~2e8. Partition DP stress-tested against a subset-bitmask brute force.",
+ "code_path": "solutions/kattis_grindinggravel.cpp",
+ "samples_passed": true
+}

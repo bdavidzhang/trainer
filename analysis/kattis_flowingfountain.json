@@ -1,0 +1,13 @@
+{
+ "id": "kattis:flowingfountain",
+ "rating": 1600,
+ "topics": [
+  "dsu",
+  "monotonic-stack-queue",
+  "data-structures"
+ ],
+ "key_idea": "Overflow from a bowl always goes to its next strictly larger bowl below (a fixed parent pointer), and a bowl becomes full only once, so a DSU that skips full bowls gives amortised near-constant pouring.",
+ "sketch": "Compute next-greater-below for every level with a monotonic stack; a sentinel node n stands for the ground. Keep fill[v] and a DSU where a full bowl is merged into its next-greater bowl, so find(l) returns the first non-full bowl on the overflow chain. To pour x at l: repeatedly take v = find(l), put min(x, room) into it, and if it fills up, link it to its parent and continue. Each iteration either ends the query or fills a bowl permanently, so the total is O((n + q) alpha). Queries just print fill[l]. Pitfalls: 64-bit amounts, iterative find to avoid deep recursion, and champagne reaching the ground sentinel is simply discarded.",
+ "code_path": "solutions/kattis_flowingfountain.cpp",
+ "samples_passed": true
+}

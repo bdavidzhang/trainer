@@ -1,0 +1,11 @@
+{
+ "id": "kattis:boatcommuterline",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate: remember for each card the pier of its open trip, and close the trip on the next tap of the same card.",
+ "sketch": "Keep open[c] = pier of the pending tap-in or 0. On a tap, if no trip is open start one, otherwise charge |i-j| (or 100 when the piers are equal) and clear it. After all events charge 100 for every card with a trip still open. O(m+k); a tap after a completed trip starts a new trip, and totals can reach 1.5e7 so int suffices but 64-bit is harmless.",
+ "code_path": "solutions/kattis_boatcommuterline.cpp",
+ "samples_passed": true
+}

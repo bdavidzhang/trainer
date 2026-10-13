@@ -1,0 +1,12 @@
+{
+ "id": "kattis:unreadmessages",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Keep a running total: each message adds one unread to the other n-1 people and clears the sender's unread count, which equals the number of messages since the sender's last one.",
+ "sketch": "Store the index of each person's last message in a map (n up to 1e9, but only m<=1000 senders appear). On message i by s, total += (n-1) - (i-1-last[s]) with last[s]=0 if s never sent; then last[s]=i. O(m log m). Use 64-bit: total can reach about 1e12.",
+ "code_path": "solutions/kattis_unreadmessages.cpp",
+ "samples_passed": true
+}

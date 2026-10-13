@@ -1,0 +1,13 @@
+{
+ "id": "kattis:flappy",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "monotonic-stack-queue",
+  "two-pointers"
+ ],
+ "key_idea": "Shortest path through a sequence of vertical gates is the funnel (taut-string) algorithm: keep an apex plus a convex upper chain and concave lower chain in one deque, and advance the apex when a new gate endpoint crosses the opposite chain.",
+ "sketch": "Process gates left to right keeping a deque: lower chain reversed, apex, upper chain. Adding an upper endpoint pops the upper chain while the turn is not strictly left; if it empties to the apex, walk the apex along the lower chain while the new point lies strictly below the apex's first lower edge, emitting each new apex. Symmetric for lower endpoints; finally add t as an upper point and output s, the apex moves, then the remaining upper chain. O(n) amortized with exact integer cross products: coordinate differences reach 2e9 so the cross product is up to 8e18, which just fits in int64. All bends are at integer interval endpoints, so integer output is automatic; collinear points may be dropped. Needs fast input for 3e6 numbers. Multiple answers are accepted, so the samples (which matched exactly) were supplemented by my own validator: 3000 random cases checking gate feasibility and length against an O(n^3) visibility-graph brute force.",
+ "code_path": "solutions/kattis_flappy.cpp",
+ "samples_passed": true
+}

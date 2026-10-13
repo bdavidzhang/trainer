@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lost",
+ "rating": 1400,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "greedy"
+ ],
+ "key_idea": "Minimising each language's hop distance fixes BFS layers; then each language independently picks its cheapest edge to any node in the previous layer.",
+ "sketch": "Map names to ids with English as 0, BFS for hop distances, and if any target is unreachable print Impossible. Otherwise the answer is the sum over targets of the minimum cost edge going to a neighbour with distance exactly one less; these choices are independent and form a shortest-path tree. O(n+m). Pitfall: it is not a plain MST or a cost-Dijkstra, the hop count is the primary key.",
+ "code_path": "solutions/kattis_lost.cpp",
+ "samples_passed": true
+}

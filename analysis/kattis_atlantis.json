@@ -1,0 +1,13 @@
+{
+ "id": "kattis:atlantis",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "heap",
+  "sorting"
+ ],
+ "key_idea": "Classic deadline scheduling: process stores by increasing deadline h, keep adding, and whenever total time exceeds the current deadline drop the longest job taken so far.",
+ "sketch": "Sort by h. Maintain a max-heap of chosen round-trip times and their sum; push each store, and if the sum exceeds its h, pop the largest t. The heap size at the end is the answer. O(n log n). The exchange argument: dropping the longest job keeps the count and minimizes the elapsed time for every prefix. Pitfalls: sums reach 2e14 so use 64-bit, and finishing exactly at time h is allowed (sum <= h), which the samples confirm.",
+ "code_path": "solutions/kattis_atlantis.cpp",
+ "samples_passed": true
+}

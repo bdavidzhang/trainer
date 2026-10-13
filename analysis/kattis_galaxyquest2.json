@@ -1,0 +1,13 @@
+{
+ "id": "kattis:galaxyquest2",
+ "rating": 1900,
+ "topics": [
+  "shortest-paths",
+  "math",
+  "calculus-numerical"
+ ],
+ "key_idea": "For a path with edge lengths d_i and total time T the optimal fuel is T - sqrt(T^2 - 4 S^2) with S = sum sqrt(d_i), so it only depends on S: run Dijkstra with weights sqrt(length).",
+ "sketch": "On one edge with time t, accelerate a seconds, coast, decelerate a seconds: a*t - a^2 = d, fuel 2a = t - sqrt(t^2-4d), minimum time 2 sqrt(d). Splitting T over the edges by Lagrange multipliers (substitute t_i = 2 sqrt(d_i) cosh u, all u equal) gives fuel = T - sqrt(T^2 - 4S^2), increasing in S, and feasibility 2S <= T. So one Dijkstra from planet 1 with edge weight sqrt(euclidean distance) answers every query in O(1); total O((n+m) log n + q). Pitfall: T - sqrt(T^2-4S^2) cancels catastrophically for small S, print 4S^2/(T+sqrt(T^2-4S^2)) instead; unreachable targets are impossible.",
+ "code_path": "solutions/kattis_galaxyquest2.cpp",
+ "samples_passed": true
+}

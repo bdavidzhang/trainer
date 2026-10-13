@@ -1,0 +1,13 @@
+{
+ "id": "kattis:burglary",
+ "rating": 2200,
+ "topics": [
+  "dp",
+  "prefix-sums",
+  "case-analysis"
+ ],
+ "key_idea": "With at most 10 ladders per level, the state is the pair (ladder used going down, ladder used coming up) between two shelves, giving 100x100 transitions per shelf; the trap is that empty slots may be re-entered, so each pass may also step out to the nearest jar beyond an empty endpoint and come back.",
+ "sketch": "A pass on a shelf from ladder p to ladder q must take every jar in [p,q]; additionally, if the slot at an end of that interval is empty he can walk outward to the first jar on that side, grab it and return, since only jar slots are single-entry. For a transition (a,b) above and (c,d) below the down pass is a->c and the up pass is d->b: it is legal iff the two intervals share no jar (prefix count of jars), and the gain is both interval sums plus each optional side jar that is not inside the other interval, de-duplicated when both passes want the same jar. The turnaround on a shelf is a single pass a->b with both side extensions, and reaching the floor or stopping at the top are also candidates. Complexity O(N*L^4) = 1e7 transitions with O(1) work via prefix sums and nearest-jar arrays. Pitfalls: using the same ladder both ways is allowed only when its endpoint slots are empty (falls out of the intersection test), and the top shelf is free to walk. Verified against an exhaustive state search (position, phase, jar bitmask) on random small walls.",
+ "code_path": "solutions/kattis_burglary.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:icpcteamgeneration",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Because a and b are monotone, a triple is valid iff its smallest and largest members accept each other, so teams can be made consecutive and a left-to-right greedy is optimal.",
+ "sketch": "For i<j<k, mutual acceptance of i and k (k <= b_i and a_k <= i) implies every other pair by monotonicity. Hence if rank i can be in any team it can be in {i,i+1,i+2}, and an exchange argument shows taking that triple never hurts. Scan i from 1: if i+2 <= b_i and a_{i+2} <= i, count a team and jump by 3, otherwise skip i. O(n). Verified against an exhaustive bitmask search on 400 random monotone instances with n <= 11. Pitfall is believing a DP or matching is required; the structure collapses to a greedy.",
+ "code_path": "solutions/kattis_icpcteamgeneration.cpp",
+ "samples_passed": true
+}

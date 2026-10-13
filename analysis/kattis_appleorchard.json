@@ -1,0 +1,13 @@
+{
+ "id": "kattis:appleorchard",
+ "rating": 2700,
+ "topics": [
+  "geometry",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Precompute the exposed boundary arcs of the union of discs once (O(n^2 log n), only O(n) arcs survive), then each query is Green's theorem over the boundary of union-intersect-rectangle: clipped exposed arcs plus the rectangle-edge parts covered by discs.",
+ "sketch": "Dedupe discs and drop those contained in another (integer tests). For each disc collect the angular intervals covered by every intersecting disc and take the complement to get its exposed arcs. Per query, shift the origin to the rectangle's lower-left corner; then the bottom and left edges contribute zero and the right/top edges contribute w*coveredLength and h*coveredLength, found by sorting the per-disc intervals on those two lines. For each disc crossing the rectangle, sort its at most 8 crossing angles, keep the angular pieces whose midpoint is inside, intersect with the exposed arcs, and add cross(P1,P2) + r^2*(theta - sin theta) per piece. If the rectangle's farthest corner is inside some disc the answer is 100. Total O(n^2 log n + q*n log n). Precision is the real difficulty: a 1x1 rectangle against radius-1e6 discs kills the naive r^2*theta formula, so use local coordinates, chord-plus-circular-segment with a series for theta - sin theta at small theta, and compute the circle-circle half-chord from the exact 128-bit integer 4*d^2*r^2 - N^2. Verified against a 400000-scanline brute force, including tiny rectangles on huge circles (max difference 2e-7).",
+ "code_path": "solutions/kattis_appleorchard.cpp",
+ "samples_passed": true
+}

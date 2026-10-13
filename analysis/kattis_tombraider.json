@@ -1,0 +1,14 @@
+{
+ "id": "kattis:tombraider",
+ "rating": 2200,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "scc-2sat",
+  "implementation"
+ ],
+ "key_idea": "Light paths are reversible, so every constraint 'gargoyle g in orientation o needs g' in orientation o'' is actually an equivalence; the 2-SAT collapses into parity (XOR) components where only two assignments exist, and you take the cheaper feasible one per component.",
+ "sketch": "For each gargoyle and each of its two orientations trace both beams through mirrors (walls reverse the beam, re-applying a mirror in the border cell). A beam ending at an obstacle forbids that orientation; ending at gargoyle g' travelling vertically/horizontally requires g' to be V/H, giving an XOR edge between g and g' (a self hit with the wrong orientation makes the instance infeasible). BFS 2-colour each component, check parity consistency, and for both global flips of the component check forbidden values and count gargoyles differing from the initial orientation; sum the minima, or print -1. Tracing is O(nm) total because the (cell, direction) dynamics are a bijection, so each state is visited O(1) times. Pitfalls: mirror direction tables, the wall bounce inside a mirror cell, and beams returning to their own gargoyle. Stress-tested against exhaustive orientation search on small grids.",
+ "code_path": "solutions/kattis_tombraider.cpp",
+ "samples_passed": true
+}

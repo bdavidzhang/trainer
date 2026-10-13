@@ -1,0 +1,14 @@
+{
+ "id": "kattis:whowatchesthewatchmen",
+ "rating": 2700,
+ "topics": [
+  "geometry-3d",
+  "matching",
+  "case-analysis",
+  "geometry"
+ ],
+ "key_idea": "If the points are not all collinear no move is ever needed and it is a 0/1-cost assignment on the visibility graph; if they are collinear only adjacent swaps work, so odd n needs exactly one sentry moved off the line, forming a cycle P -> a -> ... -> b -> P with adjacent pairs outside.",
+ "sketch": "Non-collinear: for each sentry group the others by gcd-normalised direction and keep the nearest; edge cost 0 if it is the current facing, else 1; Hungarian O(n^3). Collinear even n: pair (1,2),(3,4),... and count wrong facings. Collinear odd n (n=1 is -1): answer 1000 + min over moved sentry m and segment [l,r] of the remaining list (even counts on both sides) and walking direction, using prefix sums for pair costs and along-line facing costs, O(n^3/8). The moved sentry keeps its direction for free if it is not parallel to the line (place it on the backward ray from a); b also keeps its direction iff a-b lies strictly inside the cone of v_m and v_b (coplanarity determinant plus two sign tests), otherwise the pair costs 1, or the number of line-parallel directions among the two. Pitfalls: triple products reach 1e19 so use __int128; removing m changes the pairing. Stress-tested against a permutation brute force, including a grid search over relocation points for collinear cases.",
+ "code_path": "solutions/kattis_whowatchesthewatchmen.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:antiques",
+ "rating": 2300,
+ "topics": [
+  "meet-in-the-middle",
+  "dp-bitmask",
+  "graphs",
+  "bitmasks"
+ ],
+ "key_idea": "Think of the complement: unvisited shops form an independent set in the shop graph, and the extra cost over sum of min(p,q) is additive per unvisited shop, so it becomes minimum-weight independent set of exact size m-k on 40 vertices.",
+ "sketch": "Each antique is an edge (a,b); base cost is sum min(p,q). Skipping shop v forces every incident antique whose cheaper copy is at v to pay the difference, giving a nonnegative weight w(v); because the skipped set is independent, every edge has at most one skipped endpoint and weights add. Shops with a self-loop antique can never be skipped. Meet in the middle: for the second half compute g[j][mask] = min weight independent subset of mask with exactly j vertices by removing the lowest bit (2^20*21 states); enumerate independent subsets of the first half with their weight and forbidden neighbour mask, and combine. Since weights are nonnegative, exact size m-k is optimal; if m-k<=0 the answer is the base. Output -1 if no independent set of that size exists. Stress-tested against brute force over shop subsets.",
+ "code_path": "solutions/kattis_antiques.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rocketpoweredhovercraft",
+ "rating": 2100,
+ "topics": [
+  "geometry",
+  "ternary-search",
+  "math"
+ ],
+ "key_idea": "Rotation and motion each form one interval, so the only useful plan is: rotate in place by phi, then drive while still turning (circle of radius v/w), then drive straight along the tangent to the target; minimise over phi.",
+ "sketch": "Mirror y to fix the turn direction (try both). For a given phi rotate the target by -phi; if it lies outside or on the turning circle centred (0,R), the arc angle and tangent length follow from atan2/acos, time = (phi+theta)/w + b/v. The feasible phi set is bounded by angles where the target lies exactly on the circle (ending on the arc), which can be the optimum, so those two angles alpha-asin(d/2R) and alpha-pi+asin(d/2R) are evaluated explicitly. Elsewhere a 400k-point grid on phi plus a local ternary refinement is used. Pitfalls: the same rotation direction applies to the in-place and arc phases, targets inside the circle are infeasible for that phi, and theta needs careful mod 2pi. Checked numerically that an initial straight segment never helps.",
+ "code_path": "solutions/kattis_rocketpoweredhovercraft.cpp",
+ "samples_passed": true
+}

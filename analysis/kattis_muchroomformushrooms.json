@@ -1,0 +1,13 @@
+{
+ "id": "kattis:muchroomformushrooms",
+ "rating": 1400,
+ "topics": [
+  "case-analysis",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Two adjacent columns can never both contain stems (their caps would collide), and a stemless column receives at most two tiles, the side caps of its two neighbours, so only r<=2 or c=1 is possible.",
+ "sketch": "c=1: a single stem column gives 1 for any r. r=1: a mushroom whose cap row is the target row covers 3 consecutive cells, so ceil(c/3). r=2: every stemless column needs both neighbours with cap heights k and k+1, so columns alternate stem/empty with alternating heights; starting with a stem gives floor(c/2)+1 mushrooms. r>=3 and c>=2: -1. O(1). Pitfall: forgetting c=1 before the r>=3 rejection, and that r=2,c=2 needs 2.",
+ "code_path": "solutions/kattis_muchroomformushrooms.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bubblytroubly",
+ "rating": 2100,
+ "topics": [
+  "geometry",
+  "implementation",
+  "graphs"
+ ],
+ "key_idea": "Overflow leaves a full glass uniformly along its rim, so the share going to each lower glass is the fraction of the rim circle lying strictly inside that glass's disc and not shadowed by a higher glass in between; after that it is an event simulation with piecewise-constant flow rates on a DAG ordered by z.",
+ "sketch": "For each glass i collect the angles where its rim circle properly crosses the rim of any lower glass (exact integer test (R-r)^2 < d^2 < (R+r)^2), sort them, and for each arc take the midpoint and assign the arc to the highest glass with z < z_i whose open disc contains it; this gives fractions f[i][j]. Then simulate: process glasses in decreasing z, a full glass passes its whole inflow on via f, find the earliest time any unfilled glass with positive inflow fills, advance, repeat (at most n events). If unfilled glasses remain but none has positive inflow, print Invalid. O(n^3) overall. Pitfalls: coincident rims (same x,y,r) receive nothing but do not block lower glasses, tangent contacts give zero-length arcs, glasses at the same z as i are not below it, rates change after every fill so times cannot be computed in one pass, and several glasses can fill simultaneously (epsilon when marking full).",
+ "code_path": "solutions/kattis_bubblytroubly.cpp",
+ "samples_passed": true
+}

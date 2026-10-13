@@ -1,0 +1,11 @@
+{
+ "id": "kattis:cuckoocuckoo",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate the clock minute by minute, adding the hour count at :00 and 1 at :15/:30/:45, and stop as soon as the running total reaches N.",
+ "sketch": "Start at the given time and include any sound at the start minute. At minute 0 add the hour (1-12), at 15/30/45 add 1; stop when the count is >= N (a count reached in the middle of an hour strike reports that hour's :00). Advance one minute, wrapping 12 -> 1. N <= 200 so at most a few thousand steps. Pitfalls: 12-hour wraparound (12 is followed by 1), zero-padded output, and using >= rather than ==.",
+ "code_path": "solutions/kattis_cuckoocuckoo.cpp",
+ "samples_passed": true
+}

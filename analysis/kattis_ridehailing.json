@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ridehailing",
+ "rating": 1800,
+ "topics": [
+  "matching",
+  "graphs",
+  "shortest-paths"
+ ],
+ "key_idea": "Trips form a DAG (i before j if a driver can finish i and reach j's start in time), and the minimum number of drivers is a minimum path cover = k - maximum bipartite matching.",
+ "sketch": "Floyd-Warshall on the 100-node directed graph gives all travel times. Add edge i->j when t_i + d(u_i,v_i) + d(v_i,u_j) <= t_j; since every trip takes positive time the relation is acyclic and transitive, so minimum vertex-disjoint path cover equals minimum chain cover. Run Hopcroft-Karp on the split graph with up to 10^6 edges and print k - matching. Complexity O(n^3 + k^2 sqrt k). Pitfalls: roads are one-directional, trips ending after minute 480 are fine, and equal times allow chaining (<=).",
+ "code_path": "solutions/kattis_ridehailing.cpp",
+ "samples_passed": true
+}

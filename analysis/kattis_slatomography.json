@@ -1,0 +1,13 @@
+{
+ "id": "kattis:slatomography",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Read rows top to bottom as a growing set of columns: adding a column in a hole lowers the trapped count by exactly 1, adding one outside raises it by any gap; width = bottom trapped count + number of columns.",
+ "sketch": "The occupied columns of each row form nested sets growing downward, and trapped = span - size. Skip leading zero rows (empty rows); the first nonzero row needs at least 2 columns. Going down one row, an increase of the trapped count costs at least one new outer column (and one suffices with a suitable gap), while a decrease by d costs exactly d hole-filling columns; equal costs nothing. Sum these forced lower bounds, all simultaneously achievable, and add the bottom row's trapped count to get the minimum width. 'impossible' never actually occurs given the guarantee of a nonzero row. O(N), 64-bit sums (up to ~1e14). Verified against exhaustive enumeration of small designs.",
+ "code_path": "solutions/kattis_slatomography.cpp",
+ "samples_passed": true
+}

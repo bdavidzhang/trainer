@@ -1,0 +1,12 @@
+{
+ "id": "kattis:hoppers",
+ "rating": 1500,
+ "topics": [
+  "graphs",
+  "bfs-dfs"
+ ],
+ "key_idea": "A hopper reaches exactly the vertices at even walk distance, so one start infects a whole connected component iff it contains an odd cycle (is non-bipartite).",
+ "sketch": "2-colour every component with an iterative DFS, counting components c and noting whether any is non-bipartite. Joining the components costs c-1 edges, and the merged graph is non-bipartite iff some component was; otherwise one more edge is needed to create an odd cycle (always possible since N>=3). Answer is c-1 plus 1 if all components are bipartite. O(N+M); use an explicit stack because N is 5e5, and remember isolated vertices count as components.",
+ "code_path": "solutions/kattis_hoppers.cpp",
+ "samples_passed": true
+}

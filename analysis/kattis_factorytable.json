@@ -1,0 +1,13 @@
+{
+ "id": "kattis:factorytable",
+ "rating": 1500,
+ "topics": [
+  "brute-force",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Either the subarray lies in one row (an arithmetic progression with difference i dividing a_1, giving k = max(i, a_n/i)), or it crosses a row end at some j, where a_{j+1} = i+1 and a_j = i*k pin down both the row and k.",
+ "sketch": "Try the no-break candidate: all differences equal d>0 with d | a_1, k = max(d, a_n/d). Then for each j treat it as a row boundary: i = a_{j+1}-1, k = a_j/i must be an integer with k >= i+1, the start index (i-1)k+(k-1)-j must be non-negative and the window must fit in k*k cells; verify all n cells in O(n). Answer is the minimum valid k; O(n^2) per test. Later breaks need no special handling since the verification simulates the flat index. Checked against a brute force over small tables.",
+ "code_path": "solutions/kattis_factorytable.cpp",
+ "samples_passed": true
+}

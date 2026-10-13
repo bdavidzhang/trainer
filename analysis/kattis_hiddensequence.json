@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hiddensequence",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "greedy",
+  "two-pointers"
+ ],
+ "key_idea": "Player x won the next game exactly when x is at the head of both lists that record x; at most one x can satisfy this, so merge greedily with three pointers.",
+ "sketch": "Keep a pointer into each of the three strings. The next winner x must be the current head of the two lists not owned by x; two different candidates would need conflicting heads of the list they share, so the choice is forced. Append x, advance those two pointers, repeat until no candidate exists. O(total length). Pitfall: treat an exhausted list as having no head.",
+ "code_path": "solutions/kattis_hiddensequence.cpp",
+ "samples_passed": true
+}

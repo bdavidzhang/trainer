@@ -1,0 +1,13 @@
+{
+ "id": "kattis:redistribution",
+ "rating": 1200,
+ "topics": [
+  "greedy",
+  "sorting",
+  "constructive"
+ ],
+ "key_idea": "Visit the largest room first: the pile then always holds exactly s_max exams on entering every later room, and the plan is safe iff the other rooms together have at least s_max students, which is also necessary for any order.",
+ "sketch": "The first room's exams must all be handed out before returning, so sum of the others >= s_first; choosing the largest first makes the never-run-out condition automatic because the pile size stays s_first. Output impossible if 2*max > sum, otherwise indices sorted by size descending. O(n log n). The answer is not unique: the sample checker reported WRONG on sample 1 for a different valid order, so samples_passed comes from my own validator, a pile simulation compared with brute force over all permutations on 800 random cases.",
+ "code_path": "solutions/kattis_redistribution.cpp",
+ "samples_passed": true
+}

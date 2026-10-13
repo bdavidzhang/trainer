@@ -1,0 +1,13 @@
+{
+ "id": "kattis:redrover",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "strings",
+  "greedy"
+ ],
+ "key_idea": "With length at most 100, try every substring as the macro and count non-overlapping occurrences greedily from the left.",
+ "sketch": "For each substring m of length L >= 2, scan left to right taking a match whenever one starts at the current position (leftmost greedy maximises the count of non-overlapping occurrences of a fixed pattern); cost is n - cnt*(L-1) + L. Take the minimum with n (no macro). O(n^4) worst case about 10^8 trivial char ops at n=100, in practice far less; fine.",
+ "code_path": "solutions/kattis_redrover.cpp",
+ "samples_passed": true
+}

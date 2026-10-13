@@ -1,0 +1,13 @@
+{
+ "id": "kattis:transparency",
+ "rating": 2200,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "strings"
+ ],
+ "key_idea": "Run Dijkstra on pairs of DFA states that have read the same uppercase projection, with a small mode flag that records in a canonical way whether the two strings have already diverged, so that a string is never paired with itself.",
+ "sketch": "Since the automaton is deterministic, strings correspond to paths. Mode 0 (one state u): both strings identical so far; both read the same letter at cost 2. Divergence must happen inside a lowercase block: either the two strings read different lowercase letters x != y (go to mode 1 at (d(u,x), d(u,y)), cost 2), or string a reads a lowercase letter while b's block is already over (go to mode 2 at (d(u,x), u), cost 1). Mode 1 (u,v): either side reads a lowercase letter at cost 1, or both read the same uppercase letter at cost 2. Mode 2 (u,v): only a may read lowercase (stays in mode 2), and a common uppercase letter moves to mode 1. The answer is the smallest distance of a mode 1 or 2 state with both stations packaging, or -1. About 2*s^2 + s = 5050 states and 52-ish transitions each, so it is instant. Pitfall: without the modes the same string interleaved two ways would be counted as a pair. Stress-tested against enumeration of all short accepted strings.",
+ "code_path": "solutions/kattis_transparency.cpp",
+ "samples_passed": true
+}

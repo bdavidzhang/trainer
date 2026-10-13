@@ -1,0 +1,13 @@
+{
+ "id": "kattis:amazing",
+ "rating": 1500,
+ "topics": [
+  "interactive",
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "Run a DFS on relative coordinates that only ever tries a direction whose target cell is unvisited; then each forward probe and each backtracking step happens at most once, so no move is repeated.",
+ "sketch": "Track the position on a virtual grid centred far from the borders (the maze is at most 100x100 but the start is unknown). At a cell, for each of the four directions skip it if the neighbour is already visited, otherwise send it: 'wall' stays, 'ok' pushes the neighbour, 'solved' or 'wrong' ends the program. When a cell is exhausted step back with the reverse of the entering move, which the child never tried because its parent was visited. If the stack empties, print 'no way out' and read the reply. Use an explicit stack (depth up to 10000) and flush after every line. No samples exist for the checker; I validated with my own interactor on 150 random mazes (sizes up to 100x100, with and without exits), checking for repeated moves and wrong 'no way out' claims, and all passed.",
+ "code_path": "solutions/kattis_amazing.cpp",
+ "samples_passed": true
+}

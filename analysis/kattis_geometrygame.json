@@ -1,0 +1,13 @@
+{
+ "id": "kattis:geometrygame",
+ "rating": 1300,
+ "topics": [
+  "geometry",
+  "case-analysis",
+  "implementation"
+ ],
+ "key_idea": "Everything is decidable exactly with integer cross products (parallel), dot products (right angle) and squared side lengths, tested in the given priority order.",
+ "sketch": "Compute the four edge vectors in order. Parallelogram = both opposite pairs have zero cross product; rectangle = parallelogram plus one zero dot product; rhombus = four equal squared lengths; square = both; trapezium = at least one parallel pair; kite = two pairs of equal adjacent sides around either diagonal. O(1). Pitfalls: coordinates up to 1e9 give squared lengths and cross products up to 2e18, which just fit in signed 64-bit; do not use floating point; check the kite only after the trapezium since priority is fixed.",
+ "code_path": "solutions/kattis_geometrygame.cpp",
+ "samples_passed": true
+}

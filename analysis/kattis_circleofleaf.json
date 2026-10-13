@@ -1,0 +1,13 @@
+{
+ "id": "kattis:circleofleaf",
+ "rating": 1900,
+ "topics": [
+  "dp-tree",
+  "combinatorics",
+  "trees"
+ ],
+ "key_idea": "Treat a leaf edge as 'this component hangs off the root'; a spanning tree means every non-root component of chosen tree edges has exactly one connection to the root, which is a 2-state tree DP.",
+ "sketch": "For a non-root v let f0/f1 be the number of ways to pick edges in v's subtree (tree edges plus leaf edges) so that all closed-off components have exactly one leaf edge and v's component has 0/1 leaf edges. Leaves have f0=f1=1. Merging child c: with s=f0[c]+f1[c], g1 = g0*f1[c] + g1*s and g0 = g0*s (take the edge and add counts, or drop the edge and require the child component to have its one leaf edge). At the root each child contributes f0+f1 (use the tree edge with a leaf-edge-free component, or drop it with one leaf edge), and the answer is the product. O(N) with an iterative BFS order to avoid deep recursion. Verified against the matrix-tree theorem on random small trees.",
+ "code_path": "solutions/kattis_circleofleaf.cpp",
+ "samples_passed": true
+}

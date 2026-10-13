@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gridsearch",
+ "rating": 1900,
+ "topics": [
+  "hashing",
+  "strings",
+  "prefix-sums"
+ ],
+ "key_idea": "2D pattern matching by hashing: roll a hash over every width-c_k window in each haystack row, then roll a second hash vertically over r_k of those row hashes; mark matched rectangles with a 2D difference array.",
+ "sketch": "Compute for every haystack row the rolling hash (mod 2^61-1, random base) of each window of width c_k. Then for each column offset roll a second hash (different base) down the rows over r_k consecutive row-hashes and compare with the key's combined hash. Each match adds +1/-1 at the four corners of a 2D difference array; a 2D prefix sum then tells which cells are covered, and those print the original character, others '.'. O(r_h*c_h) time and memory (about 4M cells). Pitfalls: overlapping matches (hence the difference array rather than painting each rectangle, which would be O(n^4)), mixed-case letters, and using a strong modulus with random bases. Stress-tested against a naive matcher on small grids.",
+ "code_path": "solutions/kattis_gridsearch.cpp",
+ "samples_passed": true
+}

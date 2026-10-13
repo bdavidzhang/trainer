@@ -1,0 +1,13 @@
+{
+ "id": "kattis:memoriesofpassportstamps",
+ "rating": 1300,
+ "topics": [
+  "binary-search",
+  "math",
+  "greedy"
+ ],
+ "key_idea": "A section of p pages needs ceil(p/s) officers, and extra officers can stamp zero pages, so binary search the smallest s with sum ceil(p_i/s) <= k.",
+ "sketch": "Feasibility is monotone in s: each section must be covered by stamps of size at most s lying fully inside it, needing ceil(p_i/s) trips, and leftover trips stamp nothing. Binary search s in [1, max p] (s = max p needs n <= k trips, always feasible). O(n log 1e18). Pitfalls: everything is up to 1e18, so use 64-bit and compute the midpoint and ceiling without overflow (x+m-1 stays below 2e18; the count is accumulated in __int128 for safety). Verified against a linear-scan brute force.",
+ "code_path": "solutions/kattis_memoriesofpassportstamps.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:hydrationstation",
+ "rating": 2400,
+ "topics": [
+  "math",
+  "sorting",
+  "number-theory",
+  "brute-force"
+ ],
+ "key_idea": "With y = x-1 the waste plus sum(b) is F(y) = (y+1)*sum ceil(b_i/y), which is increasing between breakpoints y = b_i/j, and sum ceil(b_i/y) = n + (number of breakpoints strictly larger than y); the bound F >= B(1+1/y) against any trial value cuts the candidates to O(sqrt(B*n)) ~ 6e7 breakpoints, which are swept in sorted order.",
+ "sketch": "Work in u = 1/y = j/v over distinct bottle sizes v with multiplicity cnt[v]. Compute an upper bound U on the optimum by evaluating F at a few dozen integer y (around sqrt(B/n) and a geometric grid); since F(y) >= B(1+u), only u <= (U-B)/B matters, i.e. j <= floor(v(U-B)/B). Enumerate these fractions chunk by chunk over u-intervals [c/D,(c+1)/D) with exact integer bounds on j, bucket-sort each chunk by the double key j/v (distinct fractions differ by >= 1e-10 relatively and equal fractions give identical doubles, so the order is exact), and sweep with a running weight W of breakpoints seen: at each distinct u the value is (v+j)(n+W)/j, compared exactly with __int128 cross-multiplication. Output (v+j)/j reduced. Roughly 3e7-6e7 elements, 0.4 s locally. Pitfalls: evaluate at the breakpoint before adding its own weight (ceil is exact there), x must exceed 1, and floating evaluation of F is not precise enough to compare candidates. Verified against an exact-fraction brute force on 1500 random small cases.",
+ "code_path": "solutions/kattis_hydrationstation.cpp",
+ "samples_passed": true
+}

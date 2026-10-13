@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fourdierolls",
+ "rating": 800,
+ "topics": [
+  "combinatorics",
+  "implementation"
+ ],
+ "key_idea": "If the rolled prefix already repeats a value Ashley cannot win; otherwise the remaining rolls must be a falling factorial (6-n)(6-n-1)... of unused values.",
+ "sketch": "Read the n rolls; total completions are 6^(4-n). If the prefix has a duplicate, Ashley has 0 ways. Otherwise Ashley has prod_{i=n}^{3} (6-i) ways and Brandon gets the rest. O(1); could also just brute-force all at most 216 completions.",
+ "code_path": "solutions/kattis_fourdierolls.cpp",
+ "samples_passed": true
+}

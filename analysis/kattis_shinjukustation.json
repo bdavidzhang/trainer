@@ -1,0 +1,12 @@
+{
+ "id": "kattis:shinjukustation",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Convert times to seconds and take the minimum departure-arrival difference that is at least s.",
+ "sketch": "Parse HH:MM:SS to seconds, loop over all n*m pairs, keep the smallest difference >= s, print -1 if none. No wrap across midnight. O(nm).",
+ "code_path": "solutions/kattis_shinjukustation.cpp",
+ "samples_passed": true
+}

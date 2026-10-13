@@ -1,0 +1,12 @@
+{
+ "id": "kattis:stardustcurry",
+ "rating": 1000,
+ "topics": [
+  "math",
+  "greedy"
+ ],
+ "key_idea": "By Cauchy-Schwarz (or Lagrange multipliers) the optimum puts x_i proportional to t_i, giving p^2 / sum(t_i).",
+ "sketch": "Minimising sum x_i^2/t_i subject to sum x_i = p: equal marginal cost 2x_i/t_i means x_i = p*t_i/T, total stress p^2/T where T = sum t_i. Read input, sum the t_i in 64-bit (up to 1e14), print p*p/T in long double with 10 decimals. O(n). Pitfalls: p*p up to 1e18 so compute in floating point or 64-bit carefully; print enough digits for 1e-6 relative error.",
+ "code_path": "solutions/kattis_stardustcurry.cpp",
+ "samples_passed": true
+}

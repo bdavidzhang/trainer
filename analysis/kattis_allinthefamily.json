@@ -1,0 +1,13 @@
+{
+ "id": "kattis:allinthefamily",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "trees",
+  "lca"
+ ],
+ "key_idea": "Store parent pointers, walk up from both people to find the lowest common ancestor and the two distances m and n, then format by the three rules.",
+ "sketch": "Record depth of every ancestor of A in a map, climb from B until hitting one; that gives m and n. If m=0, B is the descendant ('B is the ... of A'); if n=0, A is the descendant; equal distances give siblings or (m-1)th cousins; otherwise (min-1)th cousins, |m-n| time(s) removed. Descendant wording: child for 1, grandchild for 2, then one 'great' per extra generation. Ordinals: 11,12,13 take 'th', otherwise 1/2/3 endings give st/nd/rd; 0th is valid. With at most 100 nodes complexity is irrelevant. Pitfalls are all in formatting: 'time' vs 'times', name order when the second person is the ancestor.",
+ "code_path": "solutions/kattis_allinthefamily.cpp",
+ "samples_passed": true
+}

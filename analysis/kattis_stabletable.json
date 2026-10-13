@@ -1,0 +1,13 @@
+{
+ "id": "kattis:stabletable",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "shortest-paths"
+ ],
+ "key_idea": "Build a directed 'rests on' graph between pieces plus a floor node; with at most two top pieces the cheapest stable set is two shortest paths that merge at some piece and continue together to the floor.",
+ "sketch": "Add an edge A->B whenever a cell of A is directly above a cell of a different piece B, and A->floor for pieces in the bottom row. BFS from each top piece on the graph and from the floor on the reversed graph; the answer is min over meeting nodes v (including the floor itself, which covers disjoint paths, and v equal to a top piece) of d1[v]+d2[v]+dFloor[v], where edge counts equal piece counts once the floor is excluded. If the top row has a single piece both sources coincide and the formula degenerates to its distance to the floor. O(h*w). Pitfalls: only vertical adjacency gives support (side contact and corner contact do not), and a piece may be supported through a piece nested in its hole.",
+ "code_path": "solutions/kattis_stabletable.cpp",
+ "samples_passed": true
+}

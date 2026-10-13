@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bohemianbookshelf",
+ "rating": 1700,
+ "topics": [
+  "dp-knapsack",
+  "sorting",
+  "brute-force"
+ ],
+ "key_idea": "Fix the tallest book of the stack (it sets the stack width); all taller books must stand upright, and among the shorter ones a subset-sum over thickness (capacity H) decides who joins the stack.",
+ "sketch": "Sort books by height. For each candidate widest stacked book i: every book later in sorted order must have h<=H (upright), every earlier book with h>H is forced into the stack, the other earlier books are optional. Run a boolean knapsack on thickness with capacity H-t_i and take the largest reachable stacked thickness s that still leaves at least one upright book (stacked thickness < total, since thicknesses are positive); feasible iff total-s+h_i<=W. Reconstruct through the dp table and print the stack in non-increasing height. O(N^2*H) = 3.5M. Pitfalls: all N books must be placed, both groups non-empty, books taller than H cannot stand. Multiple answers are accepted; samples matched and a Python brute force plus validator confirmed 700 random small cases.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_bohemianbookshelf.cpp"
+}

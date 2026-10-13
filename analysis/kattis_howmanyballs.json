@@ -1,0 +1,13 @@
+{
+ "id": "kattis:howmanyballs",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "brute-force",
+  "number-theory"
+ ],
+ "key_idea": "Fix r and solve the quadratic in n=r+g: p n^2 - (p+2qr) n + 2qr^2 = 0; a solution exists iff the discriminant is a perfect square and the root is an integer with n >= 2r.",
+ "sketch": "Loop r from 1 to 1e6, compute D=(p+2qr)^2-8pqr^2 (fits in int64, about 4e18 max), take an exact integer sqrt (sqrtl then adjust), and test both roots for divisibility by 2p and n>=2r. Print the first r that works, else impossible. O(1e6). Pitfalls: overflow bounds, floating sqrt correction, the g>=r condition. Cross-checked against a Fraction brute force for small r,g.",
+ "code_path": "solutions/kattis_howmanyballs.cpp",
+ "samples_passed": true
+}

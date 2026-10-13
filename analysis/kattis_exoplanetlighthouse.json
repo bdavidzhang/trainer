@@ -1,0 +1,12 @@
+{
+ "id": "kattis:exoplanetlighthouse",
+ "rating": 1000,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "The sight line is tangent to the sphere, so each endpoint contributes a central angle acos(R/(R+h)); the surface distance is R times the sum of the two angles.",
+ "sketch": "Convert heights from metres to kilometres, then D = R*(acos(R/(R+h1)) + acos(R/(R+h2))). To avoid cancellation with R/(R+h) extremely close to 1, compute each angle as atan2(sqrt(h(2R+h)), R) in long double. O(1) per test. Pitfalls: unit mismatch (R in km, h in m) and the required 1 m accuracy, which the naive acos in double still meets but with little margin.",
+ "code_path": "solutions/kattis_exoplanetlighthouse.cpp",
+ "samples_passed": true
+}

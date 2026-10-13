@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sequenceguessing",
+ "rating": 1500,
+ "topics": [
+  "interactive",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Split 0..99999 into 33333 blocks of three: 3i is always in the sequence and exactly one of 3i+1, 3i+2 is, decided lazily so that the first one guessed is declared absent.",
+ "sketch": "Announce k=66668: 3i sits at index 2i+1, the surviving member of {3i+1,3i+2} at index 2i+2, then 99999 and 100000 close the sequence (100000=3*33333+1). On a guess of a multiple of 3 or 100000 answer its fixed index; on the first guess in a block's pair answer -1 and remember it, on the second answer 2i+2. Every block costs the adversary one miss before its middle element can be found, so 33333 misses are forced; on -1 print the sequence choosing either option for untouched blocks. O(1) per query, flush after every line. The checker cannot judge an interactive problem: samples_passed is based on my own interactor (random, ascending, descending, residue-first orders and an early give-up) which verified step sizes, endpoints, and consistency with every reply.",
+ "code_path": "solutions/kattis_sequenceguessing.cpp",
+ "samples_passed": true
+}

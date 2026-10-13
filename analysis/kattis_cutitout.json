@@ -1,0 +1,12 @@
+{
+ "id": "kattis:cutitout",
+ "rating": 2400,
+ "topics": [
+  "dp-interval",
+  "geometry"
+ ],
+ "key_idea": "Along the line of edge k the intersection points with the lines of later edges move monotonically away from the edge (until the turn reaches 180 degrees), so the length of a cut depends only on the nearest already-cut edge on each side cyclically; this gives an interval DP over the cyclic order of B's edges.",
+ "sketch": "Parameterise the line of each edge k of B and precompute the parameter where it meets every edge-line of A and every other edge-line of B; because A and the current piece are convex, the cut is clipped by the nearest crossing with parameter >= 1 and the nearest with parameter <= 0. dp[l][d] = min cost to cut all edges strictly between l and l+d (cyclic) given both ends are already cut: choose the first edge k cut inside, pay its length clipped by A and by lines l and r, and recurse on (l,k) and (k,r). The answer is min over the first edge i of its full chord through A plus dp[i][n] (the interval wrapping around from i to i). O(b^3 + ab) with b = 200, long double arithmetic. Pitfalls: the wrap-around state where l == r, parallel lines (skip), and proving that only the two neighbours matter. Stress-tested against brute force over all cut orders for b <= 7.",
+ "code_path": "solutions/kattis_cutitout.cpp",
+ "samples_passed": true
+}

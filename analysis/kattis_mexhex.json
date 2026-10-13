@@ -1,0 +1,12 @@
+{
+ "id": "kattis:mexhex",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "The answer is the smallest value m whose occurrences can all be blocked, and for a fixed value the grouping of its positions into shield activations is forced by the gaps, so each value is checked greedily in time linear in its occurrences.",
+ "sketch": "Activations are length-d windows whose starts differ by at least 2d and start at >=1. For the sorted positions of a value: two consecutive positions with gap <d must share a window, gap ==d is impossible (too far for one window, too close for two), gap >d means different windows. So split into maximal runs with gaps <d, then place windows left to right at the earliest start s=max(last-d+1, prev+2d, 1) and require s<=first position of the run (this also covers runs spanning more than d). The first value (including absent values) that passes is the answer. Total O(n). Pitfall: the shield cannot start before spell 1 (sample 4), and a window may hang past n. Stress-tested against exhaustive search.",
+ "code_path": "solutions/kattis_mexhex.cpp",
+ "samples_passed": true
+}

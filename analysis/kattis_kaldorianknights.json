@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kaldorianknights",
+ "rating": 1900,
+ "topics": [
+  "combinatorics",
+  "dp",
+  "math"
+ ],
+ "key_idea": "Classify bad rankings by the first prefix of houses that exactly fills the bottom places: dp[l] = s_l! - sum_{j<l} dp[j]*(s_l-s_j)!.",
+ "sketch": "Let s_l be the prefix sums of house sizes. dp[l] counts arrangements of the bottom s_l places by the knights of the first l houses such that no earlier prefix j<l already forms a revolt; subtract, for each first-bad j, dp[j] times the free arrangements (s_l-s_j)! of the rest. Answer = n! - sum_l dp[l]*(n-s_l)!. O(h^2)=1.25e7 modular multiplications plus O(n) factorials. Pitfalls: knights are distinguishable, unaffiliated knights exist (sum k <= n), keep subtraction non-negative mod 1e9+7.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_kaldorianknights.cpp"
+}

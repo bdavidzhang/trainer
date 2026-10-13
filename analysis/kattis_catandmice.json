@@ -1,0 +1,13 @@
+{
+ "id": "kattis:catandmice",
+ "rating": 1800,
+ "topics": [
+  "binary-search",
+  "dp-bitmask",
+  "geometry"
+ ],
+ "key_idea": "Feasibility is monotone in the initial speed, so binary search it and check with a TSP-style bitmask DP of earliest arrival time, where speed depends only on the number of mice eaten (popcount of the mask).",
+ "sketch": "For a fixed v, dp[mask][i] = minimum time to have eaten exactly mask ending at mouse i; transition to j not in mask adds dist(i,j)/(v*m^popcount(mask)) and is allowed only if the arrival time is <= s_j. Feasible if any dp[full][i] is finite. Binary search v on [0,1e8] for 60 iterations. Complexity O(iters * 2^n * n^2), about 4.4e8 simple operations for n=15, around 1.2s locally against a 10s limit. Pitfalls: arriving exactly at the deadline is allowed; earliest arrival is the right DP value since arriving earlier never hurts; only 1e-3 precision is required so no epsilon tricks are needed.",
+ "code_path": "solutions/kattis_catandmice.cpp",
+ "samples_passed": true
+}

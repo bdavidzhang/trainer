@@ -1,0 +1,13 @@
+{
+ "id": "kattis:magicwordsquare",
+ "rating": 1700,
+ "topics": [
+  "brute-force",
+  "bitmasks",
+  "search-backtracking"
+ ],
+ "key_idea": "Fix the first two rows (n^2 pairs); the third row is then pinned by bitmasks of letters that complete each column and both diagonals.",
+ "sketch": "Deduplicate the words and precompute pre[a][b] = mask of letters c with abc a word, and mid[a][c] = mask of b with abc a word. For each ordered pair of rows with six distinct letters, the bottom-left letter must lie in pre[col0] & pre[anti-diagonal], the bottom-right in pre[col2] & pre[main diagonal], and the bottom-middle in pre[col1] & mid[x][z]; exclude used letters and add the popcount. Worst case is about n^2 * 26^2 but masks are nearly always empty, so it runs in milliseconds. Pitfalls: both diagonals are read top to bottom (the anti-diagonal goes top-right to bottom-left), all nine letters must differ, and duplicate input words must not double count. Verified against an O(n^3) brute force on random small-alphabet inputs.",
+ "code_path": "solutions/kattis_magicwordsquare.cpp",
+ "samples_passed": true
+}

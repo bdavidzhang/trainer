@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rainbownumbers",
+ "rating": 1600,
+ "topics": [
+  "dp-digit",
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "A rainbow number of length k has 9 choices for every digit (first: nonzero, later: anything but the previous), so count(X) is a simple tight-prefix walk with powers of 9, and the answer is count(U) - count(L) + [L is rainbow].",
+ "sketch": "count(X) = sum of 9^k for k < len(X), plus for each position i while the prefix of X is still rainbow: (number of digits below X[i] that differ from X[i-1], excluding 0 at position 0) * 9^(len-1-i); stop as soon as X[i]==X[i-1]; add 1 if X itself is rainbow. Everything mod 998244353 with a precomputed power table, O(len). Avoid subtracting 1 from a 1e5-digit string by adding back whether L is rainbow, and normalise the negative difference. Stress-tested against brute force for values up to 5000.",
+ "code_path": "solutions/kattis_rainbownumbers.cpp",
+ "samples_passed": true
+}

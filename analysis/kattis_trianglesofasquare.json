@@ -1,0 +1,13 @@
+{
+ "id": "kattis:trianglesofasquare",
+ "rating": 1000,
+ "topics": [
+  "case-analysis",
+  "geometry",
+  "ad-hoc"
+ ],
+ "key_idea": "The answer is simply the number of endpoints of the given segment that are not corners of the square.",
+ "sketch": "Corner to opposite corner already gives two triangles (0). Corner to an interior point of a far side gives a triangle plus a quadrilateral, which needs one diagonal (1). Two non-corner endpoints give either two quadrilaterals (opposite sides) or a triangle plus a pentagon (adjacent sides); both need two extra segments, and no single segment can fix both quadrilaterals because their diagonals are never collinear. The input guarantee excludes segments lying along a side. O(1).",
+ "code_path": "solutions/kattis_trianglesofasquare.cpp",
+ "samples_passed": true
+}

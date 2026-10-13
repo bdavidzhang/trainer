@@ -1,0 +1,14 @@
+{
+ "id": "kattis:adjustingdrones",
+ "rating": 1900,
+ "topics": [
+  "ad-hoc",
+  "data-structures",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Only value counts matter: every value with c>1 emits a 'packet' of c-1 surplus drones that moves right at speed 1 and drops one drone into each still-empty value it reaches first; packets never merge, so empty cells are matched to packets like brackets with a stack.",
+ "sketch": "Per step c'[v] = [c[v]>0] + max(c[v-1]-1,0), so the surplus of each value travels right one cell per operation and loses one unit on every empty cell not already filled by a packet further right (which always arrives earlier). Sweep values left to right up to 3n+3 with a stack of (origin, remaining): an empty cell decrements the top packet, popping at 0. A cell holding a live packet has count 1+remaining, so the process ends when every packet is down to k-1; when a packet's remaining hits k-1 at cell w, it needed w-origin operations, and the answer is the max of these (0 if none). O(n) per test. Pitfalls: packets with size already <= k-1 contribute nothing, and the value range must be extended beyond 2n. Stress-tested against a direct simulation.",
+ "code_path": "solutions/kattis_adjustingdrones.cpp",
+ "samples_passed": true
+}

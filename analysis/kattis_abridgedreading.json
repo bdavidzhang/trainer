@@ -1,0 +1,13 @@
+{
+ "id": "kattis:abridgedreading",
+ "rating": 1400,
+ "topics": [
+  "trees",
+  "lca",
+  "brute-force"
+ ],
+ "key_idea": "The dependency graph is a forest; reading two leaves costs depthSum(a)+depthSum(b)-depthSum(lca), so with n<=1000 just try all pairs of leaves.",
+ "sketch": "Since a<b on every edge, parents have smaller indices, so root-path page sums are computed in one increasing pass. Leaves are chapters that are nobody's prerequisite (isolated chapters count). For each pair of leaves find the LCA by repeatedly lifting the larger index to its parent (index 0 acts as a virtual root with sum 0 for different trees) and minimise d[a]+d[b]-d[lca]. Worst case O(L^2 * depth), tiny for n=1000. Pitfall: the two leaves may be in different trees, and shared prerequisites must be counted once.",
+ "code_path": "solutions/kattis_abridgedreading.cpp",
+ "samples_passed": true
+}

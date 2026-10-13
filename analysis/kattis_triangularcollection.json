@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triangularcollection",
+ "rating": 1500,
+ "topics": [
+  "sorting",
+  "combinatorics",
+  "brute-force"
+ ],
+ "key_idea": "A set is triangular iff its two smallest elements sum to more than its largest, so fix the two smallest and any subset of the larger elements below their sum may be added.",
+ "sketch": "Sort the values. For each pair i<j taken as the two smallest, count c = number of k>j with x[k] < x[i]+x[j] (they form a contiguous block after j); add 2^c - 1 (non-empty choice of the extra elements). O(n^3) trivially, n<=50. Answer fits in 64 bits (below 2^50), sums of values up to 2e9 need long long.",
+ "code_path": "solutions/kattis_triangularcollection.cpp",
+ "samples_passed": true
+}

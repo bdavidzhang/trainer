@@ -1,0 +1,13 @@
+{
+ "id": "kattis:skysthelimit",
+ "rating": 2200,
+ "topics": [
+  "math",
+  "convex-hull",
+  "geometry"
+ ],
+ "key_idea": "Subtract the particular solution p_i = k*i*(N+1-i) (which satisfies p_i = avg of neighbours + k with zero boundaries); then the limit is the least concave majorant of h - p with endpoints pinned at 0, i.e. an upper convex hull.",
+ "sketch": "The final heights g are the smallest g >= h with g_i >= (g_{i-1}+g_{i+1})/2 + k. Setting f = g - p turns the condition into concavity, so f is the upper hull of points (0,0),(i,h_i-p_i),(N+1,0), built with a monotone stack in O(N). Then g_i = hull(i) + p_i and the answer is the max over all i (not only hull vertices, since p is added back). Values reach ~1e30, so use long double and parse scientific notation with strtold; relative error is fine because the answer is at least max(h, p). Hull vertices keep g = h exactly. Stress-tested against direct Gauss-Seidel simulation for small N.",
+ "code_path": "solutions/kattis_skysthelimit.cpp",
+ "samples_passed": true
+}

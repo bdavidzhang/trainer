@@ -1,0 +1,14 @@
+{
+ "id": "kattis:snake",
+ "rating": 1700,
+ "topics": [
+  "bfs-dfs",
+  "hashing",
+  "bitmasks",
+  "implementation"
+ ],
+ "key_idea": "The whole snake is the state: encode it as head cell (7 bits) plus up to 15 two-bit directions (37 bits) and search the state graph with a hash set.",
+ "sketch": "State = head position + direction chain of the body, packed into a 64-bit integer; visited states go in an open-addressing hash set. From a state the head tries 4 moves: must stay in grid, must not hit segments 0..L-2 (the tail cell is being vacated so it is allowed), and must not step onto segment 1 (covers the L=2 'backwards into the tail' case). Reaching the apple cell prints 1; exhausting the search prints 0. I use DFS with moves ordered by Manhattan distance to the apple so positive cases end fast; doomed cases are ones where the snake is confined, so their state space is small. Upper bound on states is (self-avoiding walks of length 15) x 100 cells, which the 2 GB limit is meant for; random stress on up to 10x10 with length 16 ran under 0.1 s. Cross-checked against a Python BFS on 1500 small random grids.",
+ "code_path": "solutions/kattis_snake.cpp",
+ "samples_passed": true
+}

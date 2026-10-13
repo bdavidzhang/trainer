@@ -1,0 +1,14 @@
+{
+ "id": "kattis:internationalirregularities",
+ "rating": 2300,
+ "topics": [
+  "shortest-paths",
+  "sparse-table",
+  "greedy",
+  "data-structures"
+ ],
+ "key_idea": "Since r is sorted, a free hop from i reaches exactly a suffix of indices, and an optimal route never needs more than one quarantine (any earlier part can be replaced by a hop up to the top country). So the answer is the min of a free greedy chain, or one direct quarantine into some k followed by a free chain k -> y, answered with binary lifting on the 'furthest index that can reach me freely' tree.",
+ "sketch": "If r_x <= r_y+m the answer is 1. Otherwise let par(i) be the lowest index reachable freely from i and nxt(i) the largest index that reaches i freely; h free hops from k reach the suffix starting at par^h(k), so chain(k,y) is the smallest h with k <= nxt^h(y). Candidates: the pure free chain x -> y (infinite if a gap larger than m lies between), 1+t_y, 2+min t over k<y (quarantine below y then one free hop up), and for y<k<par(x): 1+t_k+chain(k,y). For the last one, blocks (nxt^{j-1}(y), nxt^j(y)] have chain value j, so give each node v the weight min t over (v,nxt(v)] minus its depth and take a path minimum up the nxt-tree with binary lifting, stopping before par(x), plus a sparse-table RMQ for the final partial block. O((n+q) log n). Pitfalls: ties in r, gap roots where nxt(v)=v (must not treat the partial block beyond a gap as reachable), 64-bit answers. Verified against all-pairs Dijkstra on 1500 random small cases.",
+ "code_path": "solutions/kattis_internationalirregularities.cpp",
+ "samples_passed": true
+}

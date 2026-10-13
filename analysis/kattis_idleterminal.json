@@ -1,0 +1,13 @@
+{
+ "id": "kattis:idleterminal",
+ "rating": 1100,
+ "topics": [
+  "implementation",
+  "heap",
+  "sorting"
+ ],
+ "key_idea": "Simulate FCFS scheduling with a min-heap of core free times, collect all completion times, sort them and take the largest gap (including the gap from time 0 to the first completion).",
+ "sketch": "Each job starts at 0 if a core is free, otherwise at the smallest finishing time popped from the heap; push start+d. Sort the n completion times and take the max difference of consecutive ones, starting from 0. O(n log n). Pitfalls: k > n, equal completion times (gap 0), and counting the initial wait from time 0.",
+ "code_path": "solutions/kattis_idleterminal.cpp",
+ "samples_passed": true
+}

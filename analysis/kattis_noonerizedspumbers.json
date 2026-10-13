@@ -1,0 +1,13 @@
+{
+ "id": "kattis:noonerizedspumbers",
+ "rating": 1000,
+ "topics": [
+  "brute-force",
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Numbers have at most 10 digits, so try every pair of numbers and every pair of proper prefix lengths, swap, and test the equation.",
+ "sketch": "Read the three tokens as strings; for each of the 3 pairs and each proper prefix length of both, build the swapped strings, convert to 64-bit integers, require each to be below 2^31, and check x+y=z or x*y=z. At most 3*9*9 candidates. Pitfalls: the product needs 64-bit, swapped strings can be 10+ digits so guard the length before converting, and the prefixes swapped may have different lengths.",
+ "code_path": "solutions/kattis_noonerizedspumbers.cpp",
+ "samples_passed": true
+}

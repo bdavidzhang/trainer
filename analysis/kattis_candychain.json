@@ -1,0 +1,13 @@
+{
+ "id": "kattis:candychain",
+ "rating": 2400,
+ "topics": [
+  "dp-interval",
+  "trie-aho-corasick",
+  "strings"
+ ],
+ "key_idea": "Interval DP full[i][j] = best money for deleting s[i..j] entirely, where the piece containing s[i] is matched as a pattern prefix tracked by a trie node while the gaps between its letters are themselves fully deleted intervals.",
+ "sketch": "Insert every pattern and its reverse into a trie (max price at terminals, patterns longer than the chain dropped). For fixed i (processed right to left) let A[j][v] be the best value when s[i..j] has been reduced to exactly trie prefix v with its last letter at position j, and B[j][v] the same allowing a fully deleted tail: A[j][v] = B[j-1][parent(v)] if s[j] matches (root only at j=i-1), B[j][v] = max(A[j][v], max over m of A[m][v] + full[m+1][j]); then full[i][j] = max over terminal v of B[j][v]+price(v). A final linear DP ans[j] = max(ans[j-1], ans[i-1]+full[i][j]) allows unsold candies. Only nodes of depth <= j-i+1 matter, so the cost is about n^3/6 times the trie size (<= 2e4), 4e8 in the worst case and milliseconds in practice. Pitfalls: zero-price patterns still matter because they free up neighbours, duplicate patterns keep the best price, and unreachable states need a real -infinity rather than 0. Verified against memoised brute force over all removal orders on short strings.",
+ "code_path": "solutions/kattis_candychain.cpp",
+ "samples_passed": true
+}

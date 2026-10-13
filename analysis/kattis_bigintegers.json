@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bigintegers",
+ "rating": 1000,
+ "topics": [
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "Lexicographic order here is ASCII order (digits < uppercase < lowercase), while numeric order is by length first and then by base-62 digit value at the first difference.",
+ "sketch": "For each pair compute lexLess = (a < b) with ordinary string comparison, and numLess = shorter length, or for equal lengths compare the digit values (0-9, a-z=10..35, A-Z=36..61) at the first differing position. Print YES iff they agree. The first sample (icpc vs ICPC -> NO) confirms the lexicographic comparison is ASCII, not digit-value order. O(total length); use fast input for 2e6 characters. No leading zeros and distinct strings mean no further corner cases.",
+ "code_path": "solutions/kattis_bigintegers.cpp",
+ "samples_passed": true
+}

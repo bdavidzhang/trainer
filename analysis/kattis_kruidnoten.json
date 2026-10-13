@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kruidnoten",
+ "rating": 1500,
+ "topics": [
+  "shortest-paths",
+  "probability",
+  "sorting"
+ ],
+ "key_idea": "The cost of using store v is d(1,v)+d(v,n); she uses the cheapest stocked store, so sort stores by that cost and sum cost * p * product of (1-p) of all cheaper stores.",
+ "sketch": "Run Dijkstra from 1 and from n, giving each store a detour cost c_v. Sort stores by c_v; the probability that store i is the one used is p_i times the product of (1 - p_j) over cheaper stores, so the expectation is one linear pass. It is impossible exactly when no store has p = 1 (otherwise all stores can be empty with positive probability); once a store with p = 1 is reached the remaining probability is zero. O((n + m) log n + k log k). Pitfalls: detect p = 1 exactly by parsing to an integer number of 1e-4 units, use long double for the product, and distances up to 2e11 need 64-bit.",
+ "code_path": "solutions/kattis_kruidnoten.cpp",
+ "samples_passed": true
+}

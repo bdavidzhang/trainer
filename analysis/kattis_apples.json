@@ -1,0 +1,11 @@
+{
+ "id": "kattis:apples",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Process each column bottom-up keeping the lowest free row, resetting it just above every obstacle.",
+ "sketch": "For each column scan from the bottom row upward with a pointer to the next free cell; an obstacle sets the pointer to the row above it, an apple is moved to the pointer and the pointer decreases. O(R*C). The only pitfall is that step-by-step simulation is O(R^2*C) and too slow.",
+ "code_path": "solutions/kattis_apples.cpp",
+ "samples_passed": true
+}

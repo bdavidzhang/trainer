@@ -1,0 +1,14 @@
+{
+ "id": "kattis:groupsofstrangers",
+ "rating": 2400,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "brute-force",
+  "bitmasks"
+ ],
+ "key_idea": "At most 8 HR managers dominate everyone but the CEO; once they are coloured every other vertex (the CEO too, as it sees all of them) has at most two colours left, which is 2-SAT.",
+ "sketch": "Find a vertex v of degree <= 15 and a smallest subset S of its neighbours (|S| <= 8) whose closed neighbourhoods cover V minus v, by subset DP over bitsets (2^15 masks). Enumerate colourings of S up to colour symmetry (restricted growth strings, at most (3^7+1)/2 = 1094), unit-propagate forced colours, then solve 2-SAT on the vertices with two remaining colours with Tarjan SCC. Roughly 1094 * O(N+M) worst case, far inside 9 s. Pitfalls: the real CEO/HR identities are unknown but any dominating set of that shape works, duplicate edges, and vertices whose colour set becomes empty. Any valid colouring is accepted so the sample token compare fails on sample 1: samples_passed reflects my own checker (proper colouring verified, Impossible compared against 3^N brute force on 1500 small structured graphs).",
+ "code_path": "solutions/kattis_groupsofstrangers.cpp",
+ "samples_passed": true
+}

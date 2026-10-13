@@ -1,0 +1,12 @@
+{
+ "id": "kattis:isolationintrusion",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Try each of the three hermits: after adding n to their count they must still be strictly below both others.",
+ "sketch": "For each hermit i check m_i+n < m_j for both other j; print m_i+n for the one that works (at most one can), else impossible. O(1). Only pitfall is the strict inequality, so ties make it impossible.",
+ "code_path": "solutions/kattis_isolationintrusion.cpp",
+ "samples_passed": true
+}

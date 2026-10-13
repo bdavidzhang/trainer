@@ -1,0 +1,14 @@
+{
+ "id": "kattis:acornquarrels",
+ "rating": 2500,
+ "topics": [
+  "constructive",
+  "trees",
+  "graphs",
+  "topological-sort"
+ ],
+ "key_idea": "Make stealing symmetric: pick an edge cover F that is a star forest and force every squirrel to steal exactly from its F-neighbours, so each vertex gains and loses deg_F. The conditions (F-neighbours tied for max and strictly above the other neighbours at that vertex's turn) are difference constraints solved by longest path.",
+ "sketch": "Build F bottom-up on the rooted tree: a vertex with still-uncovered children becomes a star centre with those children as leaves; an uncovered root joins one child's star. The value of w seen at time u is d_w + [w<u]*|F(w)| - #{x in F(w), x<u}, a known offset, so 'all F-neighbours of u are tied' gives equalities (merged with a weighted DSU) and 'they beat each non-F neighbour' gives inequalities d_x >= d_w + c on the DSU classes. These constraints form a DAG (every constraint crosses a non-F edge between two stars and switches centre/leaf role, so no cycle can close in the tree of stars); Kahn longest path gives values, shifted so the minimum is N. O(N log N). Pitfall: the offsets depend on label order, so do not reason with unperturbed values. The answer is not unique, so the sample checker reports a mismatch on sample 2; I validated with my own simulator of the stealing process: all labelled trees with N<=7 exhaustively, about 20k random trees (paths, caterpillars, spiders, k-ary, shuffled labels) and N=1e5 cases, all correct. The bound max <= 2N-1 held in every test (worst observed spread N-2, on paths) but I did not prove it for this choice of F.",
+ "code_path": "solutions/kattis_acornquarrels.cpp",
+ "samples_passed": true
+}

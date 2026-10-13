@@ -1,0 +1,13 @@
+{
+ "id": "kattis:doubledeck",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "binary-search",
+  "data-structures"
+ ],
+ "key_idea": "The score is the LCS of the two decks, and since every value occurs at most K times there are only N*K^2 matching pairs, so LCS reduces to a longest increasing subsequence over the match positions (Hunt-Szymanski).",
+ "sketch": "Store for each value its positions in the second deck. Walk the first deck and for each card feed the positions of that value in the second deck in decreasing order into a patience-sorting LIS array (lower_bound replace); decreasing order prevents using two matches of the same first-deck card. The LIS length is the answer. Complexity O(N K^2 log(NK)) which is about 2.25M binary searches. Pitfall: the plain O((NK)^2) LCS table of 150000^2 is far too large.",
+ "code_path": "solutions/kattis_doubledeck.cpp",
+ "samples_passed": true
+}

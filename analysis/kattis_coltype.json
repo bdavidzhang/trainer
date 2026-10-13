@@ -1,0 +1,13 @@
+{
+ "id": "kattis:coltype",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "brute-force",
+  "number-theory"
+ ],
+ "key_idea": "Run the sequence backwards: the last odd term must be (4^j-1)/3, and from there every earlier term is forced (E: double, O: (y-1)/3), with n monotone in the starting term, so try j in increasing order.",
+ "sketch": "Validate first: only E/O, ends with O, no OO. The final O is an odd m>1 with 3m+1 a power of two, i.e. m=(2^j-1)/3 for even j>=4. Walking the string right to left, E gives x=2y and O gives x=(y-1)/3 which must be an integer odd value >1; both maps are increasing, so the smallest valid j gives the smallest n. Since n<=2^47 and the string has <=50 letters, m<2^61, so trying even j up to 76 with unsigned __int128 arithmetic (values up to m*2^50) is enough. Pitfall: 64-bit overflow of intermediates, and the powers-of-two exclusion is automatic because doubling a non-power never yields a power.",
+ "code_path": "solutions/kattis_coltype.cpp",
+ "samples_passed": true
+}

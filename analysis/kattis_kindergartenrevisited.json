@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kindergartenrevisited",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "divide-and-conquer",
+  "brute-force"
+ ],
+ "key_idea": "Every useful cut increases the number of pieces holding rectangles by one, so the answer is N-1 or impossible; and any valid cut is safe to take greedily because a separable set stays separable in every subset.",
+ "sketch": "Recursively, for the current set of m rectangles look for a line that leaves every rectangle in one closed half-plane with both sides non-empty; a separating line can always be slid and rotated until it passes through two rectangle corners, so try all pairs among the 4m corners. Test a rectangle against a line with only the two corners extreme in the normal direction. Split and recurse; if some set of two or more has no such line, print impossible. Worst case about O(N^4) cheap operations with early exits, far less in practice. Pitfalls: touching edges and corners is allowed (closed half-planes), cross products reach 8e18 and only just fit in signed 64-bit, and corner pairs of the same rectangle (its edges) are legitimate candidate lines.",
+ "code_path": "solutions/kattis_kindergartenrevisited.cpp",
+ "samples_passed": true
+}

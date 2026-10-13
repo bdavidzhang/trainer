@@ -1,0 +1,13 @@
+{
+ "id": "kattis:colorfultrees",
+ "rating": 1900,
+ "topics": [
+  "trees",
+  "data-structures",
+  "dsu"
+ ],
+ "key_idea": "For the edge above v the answer is sum over colours of cnt_sub(c)*(tot(c)-cnt_sub(c)); maintain this sum incrementally while merging subtree colour maps small-to-large.",
+ "sketch": "Root the tree, compute tot[c]. Each vertex keeps a hash map colour->count for its subtree and the value S = sum cnt*(tot-cnt); changing one colour's count by k updates S by the difference of the two products. Process vertices in reverse preorder (iterative, since the tree can be a path), merging the smaller map into the larger; S of the finished subtree is the answer for its parent edge. O(n log n) expected map operations. Pitfalls: answers reach ~2.5e9 so use 64-bit; recursion depth; when swapping maps swap S too. Stress-tested against an O(n^3) brute force on 300 random small trees.",
+ "code_path": "solutions/kattis_colorfultrees.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,11 @@
+{
+ "id": "kattis:cyclicalperiods",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "A letter's period is the gap between its first two occurrences, so one pass recording first position and period per letter suffices.",
+ "sketch": "Scan the lines in order; for each letter store its first position, and at its second occurrence set period = position - first. Keep the best by larger period, then smaller first position, and on a full tie keep the one discovered first, which is the letter earlier in the string at the moment of discovery (the second occurrence). Processing characters left to right with a strict comparison gives that tie-break automatically (sample 2 depends on it: answer z from the string 'zp'). O(total characters). Pitfall: the last tie-break uses the order in the string at the second occurrence, not the first.",
+ "code_path": "solutions/kattis_cyclicalperiods.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:around",
+ "rating": 1600,
+ "topics": [
+  "implementation",
+  "strings",
+  "two-pointers"
+ ],
+ "key_idea": "Merge the two voices' syllables of each line by start time and assign columns greedily: a column is the max of (previous event column + time gap) and (end of the previous syllable in each voice singing now + 1).",
+ "sketch": "Compute absolute start times of every syllable; voice 2 is the same list shifted by D, and for line i only voice-2 syllables starting in [start_i, end_i) are shown. Sweep the distinct start times in order; the transitive time constraint only needs the previous event's column, and syllables starting together share the column, so the per-voice 'previous end + 1' bounds are combined with max. Pad with underscores up to the column, no trailing underscores, print '/' if voice 2 has nothing. O(total syllables). Pitfalls: syllables may contain any punctuation so tokenize by whitespace per line; voice 2 never wraps or repeats; the second voice may start mid-line so it gets leading underscores.",
+ "code_path": "solutions/kattis_around.cpp",
+ "samples_passed": true
+}

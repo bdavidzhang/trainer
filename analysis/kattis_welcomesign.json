@@ -1,0 +1,12 @@
+{
+ "id": "kattis:welcomesign",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Center each word; keep a counter of rows with odd blank count and alternate which side gets the extra blank.",
+ "sketch": "For each word compute blanks b=c-len. If b is even, pad b/2 on each side. Otherwise increment a counter of unbalanced rows: on odd-numbered such rows left=b/2 (l<r), on even-numbered ones left=b/2+1. O(r*c). Pitfall: the alternation counts only the rows that cannot be centered, not all rows.",
+ "code_path": "solutions/kattis_welcomesign.cpp",
+ "samples_passed": true
+}

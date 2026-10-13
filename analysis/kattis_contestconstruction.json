@@ -1,0 +1,13 @@
+{
+ "id": "kattis:contestconstruction",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "sorting",
+  "combinatorics"
+ ],
+ "key_idea": "After sorting, niceness only depends on the last two chosen problems, so count subsets with dp over (size, second-last index, last index).",
+ "sketch": "Sort difficulties. dp[i][j] = number of sets of the current size whose two largest chosen indices are i<j; extend with l>j when a[l] <= a[i]+a[j]. Start with all pairs (size 2) and iterate up to size k, summing all states at the end. O(k n^3) = 18*50^3. Equal difficulties are distinct problems and tie order does not change the condition; counts reach C(50,18) ~ 1.8e13 so use 64-bit.",
+ "code_path": "solutions/kattis_contestconstruction.cpp",
+ "samples_passed": true
+}

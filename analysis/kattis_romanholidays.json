@@ -1,0 +1,14 @@
+{
+ "id": "kattis:romanholidays",
+ "rating": 1700,
+ "topics": [
+  "strings",
+  "sorting",
+  "math",
+  "case-analysis"
+ ],
+ "key_idea": "Every numeral is M^k followed by the numeral R of x mod 1000; the 999 residue numerals split into those sorting before 'M' (start with C, D, I, L) and those after (V, X), which gives a closed form for the rank from the front or from the back.",
+ "sketch": "Generate the numerals of 1..999, split into the 'small' set A (lexicographically less than M) and 'large' set B, and sort each. For x = 1000k + r: if r = 0 the position is k(|A|+1); if R is small it is k(|A|+1) + rank of R in A, since everything before it is M^j followed by a small-or-empty numeral with j < k, or with j = k and a smaller numeral. If R is large the position is counted from the end: -(k|B| + number of large numerals greater than R + 1), because only numerals with fewer or equal M's and a large tail come after. O(1000 log 1000 + n log 1000). Pitfall: a prefix sorts first, so M^k itself precedes M^k R; verified against explicitly sorting all numerals below 8000.",
+ "code_path": "solutions/kattis_romanholidays.cpp",
+ "samples_passed": true
+}

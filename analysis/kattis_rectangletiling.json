@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rectangletiling",
+ "rating": 2000,
+ "topics": [
+  "greedy",
+  "math",
+  "constructive"
+ ],
+ "key_idea": "Power-of-two squares can be assumed aligned to their own grid, so at most floor(W/2^k)*floor(H/2^k) level-k cells exist; greedily use as many of the largest squares as possible, top down.",
+ "sketch": "Process sizes from largest to smallest keeping cov = number of level-k cells already covered by squares of size >= 2^k. Moving down a level multiplies cov by 4; the free aligned cells are cap_k - 4*cov with cap_k = floor(W/2^k)*floor(H/2^k), and we take c_k = min(a_k, free). Taking a bigger square always replaces at least four smaller ones, so the greedy both minimises the count and minimises the area left for smaller sizes. At the end the tiling exists iff cov equals W*H exactly, otherwise print -1. O(N). Pitfalls: W*H is up to 2^100 so use __int128 for cap and cov, and sizes larger than the rectangle simply get cap 0. Verified against an exhaustive tiling search on small rectangles.",
+ "code_path": "solutions/kattis_rectangletiling.cpp",
+ "samples_passed": true
+}

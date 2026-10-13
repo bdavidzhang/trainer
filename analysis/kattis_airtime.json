@@ -1,0 +1,11 @@
+{
+ "id": "kattis:airtime",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "With unit time steps the slope is just the difference, so count indices where a[i+1]-a[i] > a[i+2]-a[i+1].",
+ "sketch": "Read the n altitudes and count strictly decreasing consecutive differences (strictly concave triples). O(n). Use 64-bit to be safe although differences fit in 32-bit signed; the comparison must be strict.",
+ "code_path": "solutions/kattis_airtime.cpp",
+ "samples_passed": true
+}

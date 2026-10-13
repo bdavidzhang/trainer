@@ -1,0 +1,13 @@
+{
+ "id": "kattis:spinningup",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "dp-digit",
+  "math"
+ ],
+ "key_idea": "Order of spins is irrelevant: the result is N plus sum c_i*10^i mod 10^k with each c_i in 0..9, so minimise the digit sum of the addend with a carry-aware DP over mirrored digit pairs.",
+ "sketch": "Process pairs (i, k-1-i) from the outside in. State is (carry entering the low position, carry the high position must emit to its left neighbour, free for the top wheel since overflow is discarded). For each pair enumerate c_i, c_j and a guessed carry g entering the high position; require equal resulting digits and the high carry-out to match the state; move to (low carry-out, g). At the centre, for even k the low carry-out must equal the guessed g; for odd k the middle digit just has to produce the demanded carry. Roughly 20*6*200 operations. Pitfalls: leading zeros count as digits, carry out of the leftmost wheel vanishes, and greedy per-pair choices fail because of carry chains (e.g. 29998 -> 5). Stress-tested against BFS on up to 5 digits.",
+ "code_path": "solutions/kattis_spinningup.cpp",
+ "samples_passed": true
+}

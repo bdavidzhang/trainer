@@ -1,0 +1,13 @@
+{
+ "id": "kattis:shortestmissingsubsequences",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "strings",
+  "binary-search"
+ ],
+ "key_idea": "Greedily cut s into blocks each containing every alphabet letter; with k complete blocks the shortest missing subsequence has length exactly k+1, so a query is a yes iff its length is k+1 and it is not a subsequence of s.",
+ "sketch": "One pass over s counts complete blocks k (reset the seen-set whenever all |v| letters have appeared). For each query, reject immediately unless |q| = k+1; otherwise test subsequence membership by per-letter sorted position lists and lower_bound, O(|q| log |s|). Total O(|s| + sum|q| log|s|). Pitfalls: fast IO for 1e6 lines, and a query longer than k+1 that is missing is still not shortest.",
+ "code_path": "solutions/kattis_shortestmissingsubsequences.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:congklak",
+ "rating": 2000,
+ "topics": [
+  "math",
+  "ad-hoc",
+  "fenwick",
+  "implementation"
+ ],
+ "key_idea": "Once hole i has been emptied it just toggles 0/1: every two games add one stone to hole i+1 and start one fresh game at hole i+2, so t games on the suffix at i become t/2 games on the suffix at i+2.",
+ "sketch": "A game is exactly 'a sow ends at hole 1'. If hole i is non-empty, simulate that single game directly: pick up, range-add +1 over the sown holes, and keep chaining pickups while the last stone lands in a non-empty hole (ends strictly increase, so at most n/2 steps). After that hole i is 0 and no earlier hole ever passes over it, so the remaining t games pair up: odd leftover leaves a 1 in hole i, hole i+1 gains floor(t/2), and recurse on (i+2, floor(t/2)). Depth is at most log2(t)~40, each level one direct game, with a Fenwick tree for range add / point query: O(n log n log t). Pitfalls: the first pickup holds a_i+1 stones but later pickups hold exactly the hole content after the drop, hands up to ~2e12 need 64-bit and must be clipped at n, and hole i+1 is never an end so its bulk increment commutes. Samples pass; verified against a direct simulation on 1500 random small cases.",
+ "code_path": "solutions/kattis_congklak.cpp",
+ "samples_passed": true
+}

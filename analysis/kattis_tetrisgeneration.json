@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tetrisgeneration",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "The only freedom is where the 7-bag boundaries fall relative to the string, so try all 7 offsets and check every bag-aligned chunk has no repeated piece.",
+ "sketch": "For each offset 0..6, scan the string resetting a bitmask of seen pieces whenever i mod 7 equals the offset, and fail if a piece repeats within a chunk; partial chunks at both ends only need distinctness. Answer 1 if any offset works. O(7*|s|) per test, total 7e5. Pitfall: partial first and last chunks are fine as long as they contain no duplicates.",
+ "code_path": "solutions/kattis_tetrisgeneration.cpp",
+ "samples_passed": true
+}

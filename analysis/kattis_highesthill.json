@@ -1,0 +1,13 @@
+{
+ "id": "kattis:highesthill",
+ "rating": 1200,
+ "topics": [
+  "implementation",
+  "two-pointers",
+  "greedy"
+ ],
+ "key_idea": "For a fixed top j the best i and k are the far ends of the maximal non-decreasing run ending at j and the maximal non-increasing run starting at j.",
+ "sketch": "Compute L[j] = height at the start of the maximal non-decreasing run ending at j and R[j] = height at the end of the maximal non-increasing run starting at j with two linear passes. For every interior j with h[j-1] <= h[j] >= h[j+1], candidate = min(h[j]-L[j], h[j]-R[j]); output the maximum. O(n). Pitfalls: heights up to 3.18e11 need 64-bit, i<j<k must be strict in index so j cannot be an endpoint, and plateaus count (answer can be 0).",
+ "code_path": "solutions/kattis_highesthill.cpp",
+ "samples_passed": true
+}

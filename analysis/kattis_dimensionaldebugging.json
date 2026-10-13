@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dimensionaldebugging",
+ "rating": 1200,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "A verified algorithm i can verify j exactly when L_j <= H_i in every coordinate (the test point L_j itself is the best choice); the origin verifies those with L = 0. Then it is plain reachability.",
+ "sketch": "Seed a queue with every algorithm whose L is all zeros. Pop a verified algorithm u and scan all unverified j, marking j when L_j[d] <= H_u[d] for all d. Count the marked ones. O(n^2 k) = 1e7. Pitfalls: an algorithm cannot verify itself, and the origin only helps algorithms whose lower bounds are exactly zero, so the answer can be 0 (sample 4).",
+ "code_path": "solutions/kattis_dimensionaldebugging.cpp",
+ "samples_passed": true
+}

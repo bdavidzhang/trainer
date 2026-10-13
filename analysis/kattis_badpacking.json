@@ -1,0 +1,13 @@
+{
+ "id": "kattis:badpacking",
+ "rating": 1800,
+ "topics": [
+  "dp-knapsack",
+  "sorting",
+  "bitset"
+ ],
+ "key_idea": "Sort by weight and enumerate the smallest object left out: everything lighter must be packed, and the free space must be smaller than that object, so only a subset-sum over the heavier suffix is needed.",
+ "sketch": "Sort ascending, keep prefix sums and a bitset of subset sums of the suffix after i, built from the heaviest down. For each i as the lightest unpacked item, find the smallest suffix sum s with c-w_i < pre_i+s <= c; that window has width w_i so a direct scan is cheap. Also handle the case where everything fits (answer = total). O(n*c/64). Ties among equal weights are handled by the sorted order. Stress-tested against a subset brute force.",
+ "code_path": "solutions/kattis_badpacking.cpp",
+ "samples_passed": true
+}

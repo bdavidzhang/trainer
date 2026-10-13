@@ -1,0 +1,13 @@
+{
+ "id": "kattis:piecesofparentheses",
+ "rating": 2000,
+ "topics": [
+  "greedy",
+  "sorting",
+  "dp-knapsack"
+ ],
+ "key_idea": "Any chosen subset has a canonical valid order (non-negative-net pieces by increasing prefix deficit, then negative-net pieces by decreasing suffix requirement), so sort once and run a 0/1 knapsack over the current balance.",
+ "sketch": "For each piece compute net balance d and the minimum prefix balance; need = -min. Pieces with d>=0 go first sorted by need ascending; pieces with d<0 go after, sorted by (need + d) descending, which is the mirror-image rule. Then dp[balance] = max total length, and a piece may be appended only if balance >= need. Process in place: iterate balance downward for d>=0 and upward for d<0 so each piece is used at most once. Balance is at most 90000, so the work is 300*90000 = 2.7e7. Answer dp[0]. Pitfall: sorting the negative pieces with the wrong key; verified against a permutation brute force.",
+ "code_path": "solutions/kattis_piecesofparentheses.cpp",
+ "samples_passed": true
+}

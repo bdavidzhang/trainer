@@ -1,0 +1,12 @@
+{
+ "id": "kattis:unusualdarts",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "brute-force"
+ ],
+ "key_idea": "Only 7 points: fix dart 1 first and try all 720 orderings in lexicographic order, testing simplicity and comparing (area/4)^3 with p.",
+ "sketch": "Scale coordinates by 1000 to integers so all orientation tests are exact. For each permutation with element 1 fixed (next_permutation yields lexicographic order) check that the polygon is simple: every pair of non-adjacent edges must not intersect or touch, and adjacent edges must not be collinear and folded back onto each other. Then area by the shoelace formula, probability (area/4)^3, accept the first with |q-p|<=1e-5. About 1000*720*14 segment tests. Pitfalls: touching/collinear degeneracies, and remembering that the board area is 4 and three darts are thrown.",
+ "code_path": "solutions/kattis_unusualdarts.cpp",
+ "samples_passed": true
+}

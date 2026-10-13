@@ -1,0 +1,13 @@
+{
+ "id": "kattis:exponentexchange",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "dp-knapsack",
+  "math"
+ ],
+ "key_idea": "Process digits from least significant with a carry: at each digit either Alice sends (digit+carry) coins clearing it, or Bob sends b-(digit+carry) coins creating a carry; then minimise the max of the two totals with dp[carry][Alice total] = min Bob total.",
+ "sketch": "For effective digit e = x_i + carry: e=0 costs nothing (carry 0), e=b costs nothing (carry 1), otherwise Alice pays e (carry 0) or Bob pays b-e (carry 1); mixing both at one digit is never useful. Keep two arrays indexed by Alice's count (capped at the digit sum, since Alice doing everything is always feasible) storing the minimum Bob count, and roll over the p digits. A final carry of 0 means Alice ends with nothing and a carry of 1 means she holds b^p, both acceptable. Answer is min over states of max(a, dp[c][a]). Complexity O(p * p*b) ~ 1e8 trivial operations in the worst case, 0.08 s. Verified against exhaustive search for small b and p.",
+ "code_path": "solutions/kattis_exponentexchange.cpp",
+ "samples_passed": true
+}

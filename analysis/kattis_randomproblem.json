@@ -1,0 +1,12 @@
+{
+ "id": "kattis:randomproblem",
+ "rating": 1600,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "For a fixed (n, m) slide a window over all positions and count triples and the three pair projections; a(n)b(m)c is a correlation iff the triple count equals all three pair counts and reaches the threshold.",
+ "sketch": "Only windows i with i+n+m < p matter, which is exactly what the 'unless near the end/beginning' exceptions say, so with counts c3[a][b][c], ab[a][b], bc[b][c], ac[a][c] over those windows the three implications become ab == bc == ac == c3 for the triple, plus c3 >= ceil(p/40) + 1. Loop over all (n, m) with n + m < p in increasing order, count in O(p - n - m), then scan positions from the left for the first valid triple, keeping the candidate with strictly smaller start index (so ties fall to smaller n, then smaller m). Total about p^3/6 = 1.7e8 window visits plus cheap memsets, 0.5 s. Pitfalls: the tie-break is by earliest first occurrence, not by digit values, and the threshold uses a ceiling.",
+ "code_path": "solutions/kattis_randomproblem.cpp",
+ "samples_passed": true
+}

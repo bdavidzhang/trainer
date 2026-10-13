@@ -1,0 +1,14 @@
+{
+ "id": "kattis:arcade2",
+ "rating": 1700,
+ "topics": [
+  "math",
+  "bitmasks",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Guests always take the free ends first and then bisect gaps, and a gap bisects cleanly down to spacing 2 only if its length is a power of two; so n-1 must be a power of two or a sum of two powers of two.",
+ "sketch": "If Julia sits at a, the two ends are eventually occupied at distances a-1 and n-a, and every later guest sits at the midpoint of a largest gap; an odd gap longer than 1 ever appearing ruins the alternating pattern, so both distances must be powers of two (or zero). Hence with m = n-1: if m = 0 or popcount(m) = 1 answer 1; if popcount(m) = 2 answer 1 + lowbit(m); otherwise impossible. O(1) with 64-bit integers. Multiple answers are accepted; the solution was verified against an exhaustive simulation over all tie-breaks for every odd n up to 35.",
+ "code_path": "solutions/kattis_arcade2.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:humanpyramid",
+ "rating": 800,
+ "topics": [
+  "math",
+  "binary-search"
+ ],
+ "key_idea": "Largest h with h(h+1)/2 <= n.",
+ "sketch": "Compute h from the quadratic formula with long double sqrt and fix up by +-1 with integer checks (or binary search). O(1). Pitfall: n up to 1e12 needs 64-bit and floating sqrt needs an integer correction step.",
+ "code_path": "solutions/kattis_humanpyramid.cpp",
+ "samples_passed": true
+}

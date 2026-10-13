@@ -1,0 +1,13 @@
+{
+ "id": "kattis:findingpolly",
+ "rating": 2100,
+ "topics": [
+  "geometry",
+  "search-backtracking",
+  "brute-force"
+ ],
+ "key_idea": "A polygon is a cyclic order of the lines; with n<=12 backtrack over orders fixing line 0, pruning as soon as a newly completed segment touches an earlier one. Replace all geometry by integer ranks of intersection points along each line.",
+ "sketch": "For each line sort its intersection points with the other lines by an exact rational parameter (cross products, fits in 64-bit) and store rank rk[i][j]; equal points get equal ranks. In the DFS, appending line c after line `last` fixes the segment on `last` as the rank interval between its two neighbours; it must be non-degenerate and must not meet any earlier completed non-adjacent segment, where segments on lines a,b meet iff the lines are non-parallel and rk[a][b], rk[b][a] lie in the respective closed intervals. Closing the cycle completes the segments of the last and first line, which are checked the same way; the count is halved for direction. Closed-interval tests on non-adjacent segments also imply all n vertices are distinct for n>=4, and the zero-length test covers n=3. Worst case bounded by 11! but pruning gives well under a second on random and regular 12-line inputs. Stress-tested against an exact Fraction brute force over permutations for n<=7.",
+ "code_path": "solutions/kattis_findingpolly.cpp",
+ "samples_passed": true
+}

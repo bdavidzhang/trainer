@@ -1,0 +1,13 @@
+{
+ "id": "kattis:magiccube",
+ "rating": 1700,
+ "topics": [
+  "implementation",
+  "geometry-3d",
+  "brute-force"
+ ],
+ "key_idea": "Never store the n^3 cube: for each query trace the queried position backwards through all earlier rotations in O(m), undoing a rotation only if the position lies in the rotated slab.",
+ "sketch": "Keep the list of rotations (axis, quarter turns, k). For a query, walk the list in reverse; if the coordinate along the rotation axis is > k, apply the inverse (4-t quarter turns) to the other two coordinates about the cube centre, which keeps the point in the same slab. The final coordinates are the original cell, with label x+(y-1)n+(z-1)n^2 (needs 64-bit not really, n^3=1e9 fits but use long long). Total O(m^2)=4e6. The main pitfall is orientation: the axes form a left-handed system, and the samples fix a forward 90-degree turn as (x,y)->(y,n+1-x) about z and (x,z)->(n+1-z,x) about y; the x-axis direction is not pinned by any sample (only 180/360 appear), so it was taken by cyclic symmetry as (y,z)->(z,n+1-y).",
+ "code_path": "solutions/kattis_magiccube.cpp",
+ "samples_passed": true
+}

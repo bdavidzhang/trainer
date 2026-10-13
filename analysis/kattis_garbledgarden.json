@@ -1,0 +1,13 @@
+{
+ "id": "kattis:garbledgarden",
+ "rating": 2000,
+ "topics": [
+  "graphs",
+  "euler-tour-paths",
+  "constructive"
+ ],
+ "key_idea": "View each misplaced position as a directed edge (value that belongs there -> value sitting there); one operation sorts the array iff this graph is connected (an Euler circuit is the cycle), and otherwise two always suffice by first rotating one edge from each component to link them.",
+ "sketch": "The graph on values is balanced (in-degree equals out-degree), so each weak component has an Euler circuit, and a single position-cycle that sorts is exactly an Euler circuit over all misplaced edges (correctly placed positions are self-loops and cannot join components). Answer 0 if sorted, 1 if one component (Hierholzer; the popped edge order is already the required p order since flower p_i moves to p_{i-1}), else 2: apply the cycle through one edge of each component, which makes the mismatch graph connected (each component minus one circuit edge stays connected and the rotated edges chain the components), then solve again as the 1-case. O(n). Pitfalls: direction convention of the operation, iterative Hierholzer. Multiple answers are accepted so the checker mismatches sample 3 on the order of the two operations; samples_passed is true because my validator simulated the operations and compared the count with an exhaustive single-operation search for n<=6 (1500 cases) plus n=5000 simulations.",
+ "code_path": "solutions/kattis_garbledgarden.cpp",
+ "samples_passed": true
+}

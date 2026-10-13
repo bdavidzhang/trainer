@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lonerook",
+ "rating": 2200,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Everything is monotone and reversible: capturing a knight only removes attacks and blockers and the rook can always move back, so compute a closure of 'reached' squares where a square is reached once it is on a clear row/column ray from a reached square and its attack count is 0.",
+ "sketch": "Keep attack counts per square, a visible flag per axis (horizontal/vertical), and a BFS queue of reached squares. Popping a square: if it holds a knight, remove it and decrement the 8 attack counts (any visible square dropping to 0 becomes reached); then extend rays in each axis, marking squares visible, stopping at a knight (inclusive, since it may be captured) or at an already-visible square. Each square is marked visible at most once per axis because knight-free segments are all-or-nothing visible, giving O(rc) total instead of O(rc(r+c)). Pitfalls: a captured knight must rescan all four directions even if it was already visible from one side (my first version skipped this), a knight square can itself be attacked by another knight, and the rook may pass through attacked squares but not stop there. Stress-tested against a brute-force search over (position, remaining knights) states on small boards.",
+ "code_path": "solutions/kattis_lonerook.cpp",
+ "samples_passed": true
+}

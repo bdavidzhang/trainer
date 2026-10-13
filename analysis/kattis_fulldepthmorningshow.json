@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fulldepthmorningshow",
+ "rating": 1600,
+ "topics": [
+  "dp-tree",
+  "trees"
+ ],
+ "key_idea": "Split the cost: sum_v (t_u+t_v)d(u,v) = t_u*sum_v d(u,v) + sum_v t_v*d(u,v); both are sum-of-distances quantities computed for all roots by rerooting.",
+ "sketch": "Root at 1, compute subtree sizes, subtree tax sums, and the two sums for the root bottom-up. Reroot: moving across edge (p,u,w) changes sum d by w*(n-2*cnt[u]) and the weighted sum by w*(totalT-2*subT[u]). O(n) with an iterative BFS order (depth up to 1e5, avoid recursion). Values reach about 2e16 so 64-bit is required. Stress-tested against Floyd-Warshall brute force on small trees.",
+ "code_path": "solutions/kattis_fulldepthmorningshow.cpp",
+ "samples_passed": true
+}

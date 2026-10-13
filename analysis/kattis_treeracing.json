@@ -1,0 +1,14 @@
+{
+ "id": "kattis:treeracing",
+ "rating": 1700,
+ "topics": [
+  "trees",
+  "sorting",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "Root the tree at the finish; a racer is only ever judged at special ancestors, and at most k racers leave each special checkpoint, so every racer can be evaluated at its nearest special ancestor and only the k survivors forwarded to the next one.",
+ "sketch": "BFS from e to get parent, depth and top[v] = nearest special ancestor-or-self. Put each racer into the candidate list of top[spawn]. Process nodes deepest first; at a special node v rank candidates by (arrival time (dep[spawn]-dep[v])*t, then t) and keep the best k with nth_element, marking the rest eliminated, then append the survivors to the list of top[parent[v]]. Survivors finish in dep[spawn]*t. Each racer is examined once as a fresh candidate plus at most k forwarded racers per special node, so O(n + m + c*k) expected. Pitfalls: the ranking key depends on the checkpoint so no global order exists, ties go to the faster (smaller t) racer, a racer spawning on a special node arrives at time 0 and counts, and times need 64-bit (2e14). Stress-tested against an event simulation.",
+ "code_path": "solutions/kattis_treeracing.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:autumnaudio",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "two-pointers",
+  "brute-force",
+  "sorting"
+ ],
+ "key_idea": "The earliest crunch must be a front-wheel crunch, so the wheelbase is t_j - t_1 for some j: only O(n) candidates, each checkable greedily in O(n).",
+ "sketch": "For each distinct positive d = t_j - t_1, scan the sorted times keeping a FIFO queue of expected back-wheel times: if the current time equals the queue head, match it as a back crunch; if the head is smaller, fail; otherwise treat it as a front crunch and push t+d. The queue stays sorted because fronts are processed in increasing order, so it is a plain array queue. Accept if the queue is empty at the end. O(n^2) = 1e8 simple steps. Pitfalls: d must be >= 1 (duplicates of t_1 give d=0), deduplicate candidates, and abort early when more backs are pending than elements remain. Verified against a multiset-matching brute force.",
+ "code_path": "solutions/kattis_autumnaudio.cpp",
+ "samples_passed": true
+}

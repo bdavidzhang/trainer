@@ -1,0 +1,14 @@
+{
+ "id": "kattis:connectingcomputers",
+ "rating": 2100,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "dp-bitmask",
+  "bitmasks"
+ ],
+ "key_idea": "In a cactus a spanning subgraph is connected iff every bridge is kept and every cycle loses at most one edge, which turns the question into counting independent sets of a 24-vertex conflict graph over removed cable types.",
+ "sketch": "Iterative DFS; each back edge identifies one cycle, walk the parent chain to collect its edge types (total work = sum of cycle lengths <= m) and mark those edges as covered. Think of the set R of removed types: a type on any bridge (uncovered edge) or appearing >=2 times in one cycle is forbidden; types appearing exactly once in the same cycle are pairwise conflicting (at most one may be removed). R is valid iff it avoids forbidden types and is independent in the conflict graph. Enumerate all 2^k masks with ok[mask]=ok[mask minus lowbit] && lowbit not forbidden && no conflict with the rest: 1.6e7 steps, 16 MB. Answer 1 = k - max |R|, answer 2 = number of valid R. Pitfalls: recursion depth 2e5 (use an explicit stack), n=1 with no edges gives 0 and 2^k. Verified against brute force on random cacti.",
+ "code_path": "solutions/kattis_connectingcomputers.cpp",
+ "samples_passed": true
+}

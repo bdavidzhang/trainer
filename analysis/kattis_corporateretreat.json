@@ -1,0 +1,13 @@
+{
+ "id": "kattis:corporateretreat",
+ "rating": 2000,
+ "topics": [
+  "scc-2sat",
+  "brute-force",
+  "graphs"
+ ],
+ "key_idea": "Brute-force the colours of the at most 7 executives; every other employee is adjacent to an executive, so it has at most two colours left and the rest is 2-SAT.",
+ "sketch": "Fix executive 1 to colour 1 by symmetry and enumerate 3^(K-1) <= 729 colourings of the others, rejecting ones with a monochromatic executive edge. For each non-executive collect the colours not used by its executive neighbours: none means fail, one is duplicated into both literals, two give a boolean variable. For each edge between non-executives and each pair of literals yielding the same colour add the clause 'not both'; solve with Tarjan SCC and read the colouring off the component order. About 729 * (2N + 8M) operations, 0.1 s on a planted worst case. Any valid colouring is accepted, so the checker's token compare reports a mismatch on sample 1; samples_passed is true because my own validator confirmed validity and possible/impossible agreement with a 3^n brute force on 600 random small graphs (the sample 1 output '1 2 3 1 3' is a valid colouring).",
+ "code_path": "solutions/kattis_corporateretreat.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:buildingroads",
+ "rating": 2300,
+ "topics": [
+  "graphs",
+  "geometry",
+  "shortest-paths",
+  "math"
+ ],
+ "key_idea": "The minimum-diameter spanning tree of a graph equals twice the radius of its absolute 1-centre (a point allowed anywhere on an edge); in the complete Euclidean graph shortest paths are the straight distances, so just find the absolute centre.",
+ "sketch": "For a centre at distance t from a on edge (a,b) of length L, vertex v is at min(t+d(a,v), L-t+d(b,v)), a tent function; the radius is the upper envelope's minimum. For each pair (a,b) sort vertices by d(a,.) descending (ties by d(b,.) descending), sweep keeping the vertex p with largest d(b,.) so far, and whenever a vertex v has larger d(b,v) the candidate radius is (d(a,v)+d(b,p)+L)/2; also consider vertex centres max_v d(a,v). The answer is twice the best radius, realised by the shortest path tree (a star or double star) from that centre. O(N^3 log N) = ~3e7 for N=200. Pitfalls: minimising only 2*max distance or r_a+L+r_b over naive partitions is wrong, and ties must be ordered so that only non-dominated tents create candidates (compare with exact integer squared distances). Verified against brute force over all labelled trees for N <= 6.",
+ "code_path": "solutions/kattis_buildingroads.cpp",
+ "samples_passed": true
+}

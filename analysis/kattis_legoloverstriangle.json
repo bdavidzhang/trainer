@@ -1,0 +1,13 @@
+{
+ "id": "kattis:legoloverstriangle",
+ "rating": 1500,
+ "topics": [
+  "geometry",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "In layer k a brick is whole iff its top-right corner lies on or under the hypotenuse, so each layer contributes floor of the usable width over 2, with the offset layers losing one half-length; try both orientations and both layer parities.",
+ "sketch": "Model the wall as a right triangle with legs W half-lengths and H thicknesses; bricks are 2 wide and 1 tall. In layer k the usable width is W*(H-k-1)/H (line evaluated at the brick's top), giving floor(W(H-k-1)/(2H)) whole bricks in an aligned layer and floor((W(H-k-1)-H)/(2H)) in a layer that starts with a half brick. Sum over layers for each of the 4 constructions (which dimension is vertical, and which parity of layers starts with a half brick) and take the max; O(H) with exact integer arithmetic. Pitfalls: a corner exactly on the hypotenuse counts as whole (needed to get 5 on the sample), and floats should be avoided for that boundary. The figure is missing from the scraped statement, so the geometry is inferred from the text and confirmed only by the single sample.",
+ "code_path": "solutions/kattis_legoloverstriangle.cpp",
+ "samples_passed": true
+}

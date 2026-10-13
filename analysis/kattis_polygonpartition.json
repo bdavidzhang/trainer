@@ -1,0 +1,14 @@
+{
+ "id": "kattis:polygonpartition",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "math",
+  "constructive",
+  "ad-hoc"
+ ],
+ "key_idea": "Walk the boundary through unit cells (i,j): crossing a grid line changes one cell coordinate by +-1 and the point's value is the other coordinate, i.e. exactly +-delta(i*j). Since the walk is closed these signed values sum to 0, so the crossings made in the increasing direction form one half; the answer is never -1.",
+ "sketch": "For every edge, enumerate the integer vertical lines it crosses and, if the edge goes in +x direction, output floor(y) at the crossing; the same with the roles of x and y swapped. Parse coordinates exactly as integers in 1e-6 units and compute floor(y) with exact integer floor division (numerators up to ~1.5e18 fit in int64). Up to about 10^6 crossings, linear time. Pitfalls: floor of negative values, parsing '-0.95', never using floating point near grid lines. Multiple answers are accepted so the token checker reports a mismatch on sample 1; my output there (-1,0,-1 summing to -2) is valid, and a debug mode confirmed 2*chosen == total on 300 random polygons.",
+ "code_path": "solutions/kattis_polygonpartition.cpp",
+ "samples_passed": true
+}

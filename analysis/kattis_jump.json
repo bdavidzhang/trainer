@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jump",
+ "rating": 2100,
+ "topics": [
+  "number-theory",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Only look at moments he is on a beat: from energy e the next on-beat landing is after the smallest k with k*e - k(k-1)/2 = 0 (mod N), which depends only on e mod N; k=1 or 2 means an infinite loop, otherwise energy drops by k-2, so the chain strictly decreases.",
+ "sketch": "The condition in k is periodic with period 2N, so precompute kk[r] for every residue r by iterating k=1..2N and solving the linear congruence k*r = k(k-1)/2 (mod N) with extended gcd; it has gcd(k,N) solutions, total work about N*d(N). Simulate from e=E: if kk is undefined or k>e he never hits a beat again and falls after e(e+1)/2 more ms; if k<=2 print infinity (k=1 means e=0 mod N which leads to the cycle e->e+1->e, k=2 is a fixed point); else add k*e-k(k-1)/2 and set e=e-k+2. Few residues have small k (at most k solutions each), so the number of steps is far below E; worst cases run in under 0.1 s. Answer is about E^2/2 up to 1.5e18, kept in __int128. Compared with a direct simulation on 500 random small cases.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_jump.cpp"
+}

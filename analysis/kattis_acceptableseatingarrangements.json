@@ -1,0 +1,13 @@
+{
+ "id": "kattis:acceptableseatingarrangements",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Only the row of each height matters; two students a<b in different rows may be swapped iff no student of either row has height strictly between them, so think of a label string row[1..rc] in which positions with different labels X,Y can be swapped when no X or Y lies between.",
+ "sketch": "Fix heights p=1..rc in increasing order. If row[p]=X but should be Y, take the nearest Y to the right at q (no Y in between), and walk left from q to p: every position holding X (including p itself) is swapped with the current position of the travelling Y; consecutive such positions have no X or Y between them, so each swap is legal. This costs at most c swaps per height, <= r*c*c = 8000 <= 10^4 total (observed max ~4100). Track each height's (row, col) cell: a legal swap puts each student exactly into the other's cell. Multiple answers are accepted so the checker's token diff fails on the sample; samples_passed is based on my own validator, which replays the swaps on 300 random cases (including 20x20) checking every intermediate arrangement is sorted, the final one equals the target and k<=10^4.",
+ "code_path": "solutions/kattis_acceptableseatingarrangements.cpp",
+ "samples_passed": true
+}

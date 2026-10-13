@@ -1,0 +1,13 @@
+{
+ "id": "kattis:scholarslawn",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Turn the walkways into a planar graph whose nodes are all pairwise walkway intersections plus the student and the walkway/Fellow-path crossings, run Dijkstra from the student, then take the earliest Fellow arrival time among crossings the student can reach no later than the Fellow.",
+ "sketch": "Scale all coordinates by 1e4 to integers so intersection existence and the student's point-on-walkway test are exact cross-product sign tests (products up to ~8e16 fit in 64 bits). For each walkway collect (parameter, node) for every crossing with other walkways, the student point and the Fellow's path, sort by parameter and link consecutive nodes with Euclidean length; concurrent crossings just become zero-length edges, so no deduplication is needed. Dijkstra from the student over up to ~125k nodes, O(n^2 log n). A crossing with Fellow distance d is feasible if dist/vs <= d/vf (small relative epsilon); the answer is the minimum d/vf over feasible crossings since the student may wait, else Impossible. Pitfalls: collinear segments never intersect by statement (skip parallel pairs), endpoint touching counts, the end of the Fellow's path is inclusive, degenerate zero-length segments.",
+ "code_path": "solutions/kattis_scholarslawn.cpp",
+ "samples_passed": true
+}

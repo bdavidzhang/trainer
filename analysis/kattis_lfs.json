@@ -1,0 +1,14 @@
+{
+ "id": "kattis:lfs",
+ "rating": 2200,
+ "topics": [
+  "strings",
+  "hashing",
+  "sparse-table",
+  "data-structures"
+ ],
+ "key_idea": "The maximum frequency is just the largest count of a single character, and a substring with that frequency must start at every occurrence of such a character c. So the answer for c is min(r - last occurrence + 1, min LCP of consecutive occurrences of c inside [l,r]).",
+ "sketch": "Precompute D[i] = LCP(i, next occurrence of s[i]) with a 61-bit polynomial hash and binary search (O(n log n)); the LCP of a whole set of suffixes equals the minimum over position-consecutive pairs. Build one sparse table per character over its occurrence list (total O(n log n) ints) and 26 prefix counts. Per query: get counts of all 26 letters, take f = max, and for each letter with count f evaluate min(r - p_last + 1, RMQ of D over its occurrences except the last); answer is the max. O(26) per query. Pitfalls: overlapping occurrences are allowed, only the last occurrence is limited by r, and f=1 gives r - p + 1. Verified against a brute force on all substrings of 300 random strings; 0.3 s on n=q=5e5.",
+ "code_path": "solutions/kattis_lfs.cpp",
+ "samples_passed": true
+}

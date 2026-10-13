@@ -1,0 +1,12 @@
+{
+ "id": "kattis:marooned",
+ "rating": 2300,
+ "topics": [
+  "geometry-3d",
+  "geometry"
+ ],
+ "key_idea": "The nearest point of all coastlines decides everything: the geodesic to it crosses no coast, so the side of the point is read off locally at that nearest edge or vertex, and the distance is the answer if that side is water.",
+ "sketch": "Normalise all points to unit vectors. For each edge A->B with unit normal n=A x B, the foot of the perpendicular lies on the arc iff (A x P).n>=0 and (P x B).n>=0 (valid because arcs are shorter than pi); then the angular distance is atan2(|P.n|, sqrt(1-(P.n)^2)) and P is on land iff P.n>0 (land on the left). Otherwise use the endpoints: distance atan2(|P x V|, P.V), and at a vertex the side is 'left of both adjacent edges' if the corner is convex (n_prev . next >= 0) and 'left of either' if reflex. Keep the global minimum over all polygons; since landmasses are disjoint and not nested, the nearest coast point belongs to the containing polygon if there is one. Output 0 if inside else angle*6371. O(total corners). Pitfalls: avoid acos/asin for small angles, long double, polygons may exceed a hemisphere so planar projections are unsafe. Stress-tested against an independent gnomonic-projection reference (1500 random cases).",
+ "code_path": "solutions/kattis_marooned.cpp",
+ "samples_passed": true
+}

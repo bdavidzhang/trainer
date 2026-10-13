@@ -1,0 +1,13 @@
+{
+ "id": "kattis:minitetris3023",
+ "rating": 1400,
+ "topics": [
+  "case-analysis",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Track the right profile of a partial 2-row filling: it is either flat or jagged by one cell; squares keep flat, S-tiles keep jagged, and a corner toggles between them.",
+ "sketch": "Because every tile must fit in two rows, the frontier is flat or offset by exactly one cell. A square maps flat to flat, an S-tile maps jagged to jagged, and a corner switches state, so corners are used in pairs and S-tiles are only usable between a pair of corners (any number in one chain). Answer: 2a if c<2, else 2a + 2b + 3*floor(c/2) (each corner pair adds 3 columns, each S adds 2). O(1). Verified against an exhaustive tiling search for a,b<=2, c<=4. Pitfall: with c<2 the S-tiles are completely useless, and an odd corner is left over.",
+ "code_path": "solutions/kattis_minitetris3023.cpp",
+ "samples_passed": true
+}

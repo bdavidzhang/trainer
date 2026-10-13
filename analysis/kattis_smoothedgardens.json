@@ -1,0 +1,13 @@
+{
+ "id": "kattis:smoothedgardens",
+ "rating": 2300,
+ "topics": [
+  "geometry",
+  "math",
+  "calculus-numerical"
+ ],
+ "key_idea": "The boundary is six elliptic arcs: across an edge the pencil sees foci at that edge's endpoints, and in the vertical-angle cone behind a vertex the rope skips that vertex so the foci are the other two vertices. Breakpoints lie on the extended side lines and everything integrates in closed form.",
+ "sketch": "The region is the set of P whose convex hull with the triangle has perimeter at most L. Extending each side beyond each vertex gives six rays that split the outside into three edge regions and three vertex cones; on a ray from V away from X the breakpoint distance is t=(K^2-|VY|^2)/(2(K-u.(Y-V))) with K=L-|VX|-|XY|. In the edge region of AB the curve is the ellipse with foci A,B and string L-|BC|-|CA|; in the cone at B it is the ellipse with foci A,C and string L-|AC|. Area is the Green's theorem sum of 1/2 integral of cross(P,dP) over the six arcs, and for an arc parametrised as M+a cos(t) e1+b sin(t) e2 this equals 1/2(cross(M,T-S)+ab(t2-t1)) with the angle difference normalised to [0,2pi). O(1) per test with long doubles. Pitfalls: orientation (vertices are counter-clockwise), taking the counter-clockwise arc, and the mistaken idea that the perimeter is just the max of the six expressions. Checked against a brute-force polar integration with bisection on the hull perimeter over 25 random cases including thin triangles and L near the perimeter; relative difference below 1e-7.",
+ "code_path": "solutions/kattis_smoothedgardens.cpp",
+ "samples_passed": true
+}

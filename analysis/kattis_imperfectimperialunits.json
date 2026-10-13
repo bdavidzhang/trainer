@@ -1,0 +1,13 @@
+{
+ "id": "kattis:imperfectimperialunits",
+ "rating": 1300,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "The conversions form a forest; a DFS per component gives every unit a potential (log of its size relative to the root), and a query is a ratio of potentials.",
+ "sketch": "Build an undirected weighted graph with edge weight log(v) and its negation, DFS each component to assign lg[u]. A query in different components is impossible; otherwise the answer is exp(log(value)+lg[a]-lg[b]). Working in logs avoids overflow/underflow on chains of 100 factors of 1000 (magnitudes up to 1e300) while keeping relative error far below 1e-6. Print in scientific notation with enough digits; parse the fixed '1 a = v b' and 'v a to b' formats token by token.",
+ "code_path": "solutions/kattis_imperfectimperialunits.cpp",
+ "samples_passed": true
+}

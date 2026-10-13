@@ -1,0 +1,12 @@
+{
+ "id": "kattis:knowingtheclock",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The hour hand moves 1 degree every 2 minutes, so the minute hand must be at 12*h mod 360.",
+ "sketch": "An hour-hand angle of h degrees means 2h minutes past twelve, and the minute hand turns 6 degrees per minute, giving angle 12h mod 360. Print yes iff m equals that value. O(1); pure integer arithmetic so no precision issues.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_knowingtheclock.cpp"
+}

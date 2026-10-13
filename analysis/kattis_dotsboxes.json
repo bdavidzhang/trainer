@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dotsboxes",
+ "rating": 2000,
+ "topics": [
+  "matching",
+  "graphs"
+ ],
+ "key_idea": "Maximise undrawn-safe moves = keep a minimum set of missing segments such that every box still misses one; that is a minimum edge cover on the box adjacency graph, i.e. boxes minus maximum bipartite matching.",
+ "sketch": "Every box must retain at least one undrawn side; an undrawn interior segment serves two adjacent boxes, a border segment only one. So the minimum number of segments left undrawn is B - M, where B=(N-1)^2 and M is the maximum matching in the grid graph whose edges are currently undrawn interior segments (checkerboard bipartition); unmatched boxes each keep one arbitrary missing side, which exists since no box is complete. Answer = (#undrawn segments) - (B - M) + 1, the +1 being the move that is forced to score. Kuhn's algorithm on up to 6241 vertices of degree <=4 runs instantly. Stress-tested against a subset brute force for N<=3. Pitfall: parsing the (2N-1)x(2N-1) grid parity correctly and not forgetting the final +1.",
+ "code_path": "solutions/kattis_dotsboxes.cpp",
+ "samples_passed": true
+}

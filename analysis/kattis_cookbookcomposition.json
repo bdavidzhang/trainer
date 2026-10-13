@@ -1,0 +1,14 @@
+{
+ "id": "kattis:cookbookcomposition",
+ "rating": 1100,
+ "topics": [
+  "graphs",
+  "dp",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "Beginner time is the sum of step durations and expert time is the longest (critical) path in the dependency DAG; sort recipes by the ratio.",
+ "sketch": "Steps arrive in topological order, so finish[step] = duration + max finish of its dependencies can be computed on the fly with a name->time map; expert time is the max finish, beginner time the sum. Sort recipes by sum/expert, comparing fractions by cross-multiplication in 64-bit (values up to 5e7, products 2.5e15) to avoid float ties. O(total dependencies * log). Multiple answers are accepted on ties: samples 1 and 2 match exactly, sample 3 is an exact tie (both ratios 1) where my order differs from the printed one but is equally valid, confirmed by hand.",
+ "code_path": "solutions/kattis_cookbookcomposition.cpp",
+ "samples_passed": true
+}

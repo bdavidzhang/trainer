@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dominatingduos",
+ "rating": 1400,
+ "topics": [
+  "monotonic-stack-queue",
+  "data-structures"
+ ],
+ "key_idea": "Maintain a decreasing stack: each element popped by the new element forms a pair with it, and the element left on top (the first taller one to the left) forms one more.",
+ "sketch": "Scan left to right keeping a stack of heights in decreasing order. For the new height d, pop every smaller element counting one pair each, then if the stack is non-empty count one more pair with the top, then push d. Heights are distinct so no equal-height handling is needed. O(n) with n up to 1e6; the answer is below 2n but use long long anyway and fast input.",
+ "code_path": "solutions/kattis_dominatingduos.cpp",
+ "samples_passed": true
+}

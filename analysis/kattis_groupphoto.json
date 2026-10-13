@@ -1,0 +1,13 @@
+{
+ "id": "kattis:groupphoto",
+ "rating": 2300,
+ "topics": [
+  "dp",
+  "fenwick",
+  "sorting"
+ ],
+ "key_idea": "A mountain permutation is a choice, for each value in increasing order, of going to the left or right slope; a value v stays put iff the number of smaller left-values hits one of two specific numbers, so maximising fixed points is a longest chain of special edges on a monotone lattice path.",
+ "sketch": "Process values 1..n; let c = number of smaller values sent left. v sent left lands at position c+1, v sent right lands at n-(v-1-c). So v at position p is fixed by an up-step from c=p-1 or a flat step from c=v+p-n-1 (n itself: c=p-1). In coordinates (x=c, y=v-1-c) each value gives at most two unit edges and the answer is n minus the longest chain where each edge starts at a point dominating the previous edge's end. Sweep x increasing, starts sorted by y, Fenwick prefix-max over y; flat edges insert their end (y+1) immediately, up edges are deferred to x+1. O(n log n). Pitfalls: discard starts with c outside [0,v-1], and get the insertion order within one x right. Stress-tested against enumeration of all 2^(n-1) mountains for n<=9.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_groupphoto.cpp"
+}

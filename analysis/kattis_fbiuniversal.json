@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fbiuniversal",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Pure simulation: normalise confusable letters, map each character to its base-27 digit, verify the weighted checksum and convert the first eight digits to decimal.",
+ "sketch": "Apply the substitution table (B->8, G->C, I->1, O->0, Q->0, S->5, U->V, Y->V, Z->2) to all nine characters including the check digit, then look each one up in the alphabet 0123456789ACDEFHJKLMNPRTVWX. Compute (2,4,5,7,8,10,11,13)-weighted sum of the first eight digits mod 27 and compare with the ninth digit. Print Invalid on mismatch, else the base-27 value of the first eight digits, which is up to 27^8 ~ 2.8e11 and needs 64-bit.",
+ "code_path": "solutions/kattis_fbiuniversal.cpp",
+ "samples_passed": true
+}

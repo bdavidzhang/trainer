@@ -1,0 +1,13 @@
+{
+ "id": "kattis:illiteracy",
+ "rating": 1500,
+ "topics": [
+  "bfs-dfs",
+  "implementation",
+  "graphs"
+ ],
+ "key_idea": "There are only 6^8 = 1,679,616 states with 8 moves each, so a plain BFS from the start state suffices.",
+ "sketch": "Encode the sequence as a base-6 integer and BFS, generating the 8 successor states by simulating the click rule of the icon at each position. Stop when the target is dequeued. About 13M transitions, well within the limit. All the difficulty is in implementing the six rules exactly: B copies the left neighbour's type onto the right neighbour (not a rotation), D rotates the side toward the nearer end (positions 1..x-1 for x<=4, x+1..8 for x>=5), E uses y = min(x-1, 8-x), F maps odd x to (x+9)/2 and even x to x/2. Moves are not reversible, so bidirectional search would need inverse moves; one-directional BFS is simpler.",
+ "code_path": "solutions/kattis_illiteracy.cpp",
+ "samples_passed": true
+}

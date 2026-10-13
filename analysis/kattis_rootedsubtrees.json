@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rootedsubtrees",
+ "rating": 1700,
+ "topics": [
+  "trees",
+  "lca",
+  "combinatorics"
+ ],
+ "key_idea": "The answer depends only on d, the number of vertices on the r-p path: n + d*(d-1)/2.",
+ "sketch": "Off-path subtrees and the path-vertex cuts give n sets that coincide for both rootings, and choosing u and v on the path yields the 'middle segment' sets, one extra for each of the C(d,2) pairs. So compute the distance with binary-lifting LCA (BFS order to avoid recursion depth 2e5) and print n + d(d-1)/2 in 64-bit. O((n+q) log n). Verified against a brute force that enumerates all intersections on trees with n<=7. Pitfalls: r=p gives d=1 and answer n; the result needs long long.",
+ "code_path": "solutions/kattis_rootedsubtrees.cpp",
+ "samples_passed": true
+}

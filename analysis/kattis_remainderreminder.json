@@ -1,0 +1,13 @@
+{
+ "id": "kattis:remainderreminder",
+ "rating": 1300,
+ "topics": [
+  "brute-force",
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "Enumerate cut sizes x to get volumes (a-2x)(b-2x)x, take the three largest, then walk N = c (mod V1) through [f,g] checking the other two remainders - no CRT needed since V1 >= 25 gives at most 4e7 steps.",
+ "sketch": "For x = 1..(a-1)/2 compute the box volume, sort descending and take the top three as moduli V1,V2,V3. Start at the first N >= f with N mod V1 = c and step by V1 up to g, testing N mod V2 = d and N mod V3 = e. Worst case (7x7, V1=25, range 1e9) is 4e7 iterations. Pitfall: volumes can tie between different cut sizes (e.g. 7x14 gives 60,60,24, and a=7 has only three boxes at all), so the solution uses the three largest boxes as a multiset and only falls back to three largest distinct volumes if that yields no answer. Moduli are not coprime so textbook CRT would need the generalised form; brute stepping avoids it.",
+ "code_path": "solutions/kattis_remainderreminder.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:levellinglocks",
+ "rating": 2300,
+ "topics": [
+  "greedy",
+  "two-pointers",
+  "prefix-sums",
+  "constructive"
+ ],
+ "key_idea": "With P = prefix sums of n*a_i - S, an interval (i,j] is safe iff P[j] <= P[i]; a solution exists iff some global max index M lies before a global min index m, and (0,n) can be shrunk greedily to (M,m). The inside is then free: start at chamber m and walk left to M+1.",
+ "sketch": "State is a pair of prefix indices i<j with P[j]<=P[i], ending at (0,n). If every global max is after every global min (and they differ) it is impossible. Otherwise take M = first max, m = last min: starting in chamber m and extending left to M+1 is always valid because P[m] is the global minimum. For the outer part go backwards from (0,n): advance i rightwards to its next prefix record (P[k]>=P[i]) whenever all intermediate values stay >= P[j], symmetric for j going left to a new minimum; committing to a better state is never harmful, so if neither pointer can commit the answer is impossible. Scan pointers are resumable (the thresholds only relax) so it is O(n). Output m..M+1 then the removed chambers in reverse. Pitfalls: scale by n to avoid fractions (values up to 4e18, fits int64), ties between maxima/minima. Multiple answers are valid so the token checker shows WRONG on sample 1; samples_passed is from my own validator plus an exhaustive BFS feasibility brute on 3000 random small cases.",
+ "code_path": "solutions/kattis_levellinglocks.cpp",
+ "samples_passed": true
+}

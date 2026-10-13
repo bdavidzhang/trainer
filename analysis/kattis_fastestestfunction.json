@@ -1,0 +1,11 @@
+{
+ "id": "kattis:fastestestfunction",
+ "rating": 900,
+ "topics": [
+  "math"
+ ],
+ "key_idea": "The rest of the program is unchanged, so normalise by it: foo's time relative to the rest is x/(100-x) before and y/(100-y) after.",
+ "sketch": "Answer = [x/(100-x)] / [y/(100-y)] = x(100-y) / (y(100-x)). O(1), printed as a double. The only trap is computing the naive x/y, which ignores that the total running time also shrank.",
+ "code_path": "solutions/kattis_fastestestfunction.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:programmingteam",
+ "rating": 2000,
+ "topics": [
+  "binary-search",
+  "dp-tree",
+  "dp-knapsack",
+  "trees"
+ ],
+ "key_idea": "Fractional programming: binary search the ratio L and maximise sum(p - L*s) over connected-from-root subsets of exactly k nodes with an O(nk) preorder knapsack.",
+ "sketch": "Binary search L; a team with value >= L exists iff max sum(p_i - L*s_i) >= 0. Lay candidates out in DFS preorder; f[i][j] = best value choosing j nodes from positions i.. where node i is available: either skip its whole subtree (f[i+size][j]) or take it (v_i + f[i+1][j-1]). That is O(nk) = 6.25M per iteration, about 50 iterations. The CEO is not counted, so start directly from the preorder of the CEO's children forest. Print with 3 decimals; doubles are precise enough. Stress-tested against subset enumeration.",
+ "code_path": "solutions/kattis_programmingteam.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:disgruntleddiner",
+ "rating": 2100,
+ "topics": [
+  "matching",
+  "graphs",
+  "ad-hoc",
+  "case-analysis"
+ ],
+ "key_idea": "If some assignment of tickets to orders has no violating ticket (bipartite matching avoiding orders 'table t, item != m'), then from that world any single ticket that could be a violator can be switched to a free violating order without touching the others, so every such ticket must be flipped and those alone suffice.",
+ "sketch": "Call an order bad if it is for table t with an item other than m. Run Kuhn matching of the k tickets to the non-bad orders compatible with their visible side; if not all tickets can be matched every consistent world contains a violator, so print 'false'. Otherwise the answer set is: every letter-side ticket whose letter L != m has a bad order (L,t), plus every digit-side ticket showing t when any bad order exists; if this set is empty print 'true'. Necessity: in a violation-free world all bad orders are unused, so changing only that one ticket gives a false world indistinguishable without flipping it; sufficiency: these are the only tickets that can ever violate. O(k*n*k) worst case with n<=500. The index order is arbitrary so the sample checker reports a mismatch on sample 1 (it prints '2 3' instead of '3 2'); I verified the output against an exhaustive world-enumeration brute force (1500 random cases, minimum flip set always unique and equal), hence samples_passed true.",
+ "code_path": "solutions/kattis_disgruntleddiner.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lostmap",
+ "rating": 1300,
+ "topics": [
+  "mst",
+  "graphs",
+  "trees"
+ ],
+ "key_idea": "With positive edge lengths, the tree's edges are exactly the minimum spanning tree of the complete graph given by the distance matrix.",
+ "sketch": "Run dense Prim in O(n^2) on the n x n matrix (n<=2500, 6.25M integers so use fast input). Any non-tree pair has distance equal to the sum of the path edges, strictly larger than each of them, so the MST is the original tree and it is unique as an edge set. Output the n-1 edges; any order is accepted, the solution prints them sorted with u<v which matches the samples token-for-token. Pitfall: an O(n^2 log n) Kruskal with slow I/O may be tight; memory for the matrix is 25 MB as int.",
+ "code_path": "solutions/kattis_lostmap.cpp",
+ "samples_passed": true
+}

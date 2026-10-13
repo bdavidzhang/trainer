@@ -1,0 +1,13 @@
+{
+ "id": "kattis:itemselection",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "Pages are independent: each page costs min(#mismatches, 1+#wanted via Deselect All, 1+#unwanted via Select All), and navigation is a sweep covering the span of pages needing work.",
+ "sketch": "For each page compute d = mismatched items, w = wanted items, sz = page size; cost is min(d, 1+w, 1+sz-w). Let L,R be the first and last page with non-zero cost; you must walk from s to cover [L,R], costing (R-L)+min(|s-L|,|s-R|), which also covers s outside the interval. Sum everything; if no page needs work the answer is 0. O(n). Pitfalls: the last page may be shorter than m, and pages already correct must not force navigation. Verified against BFS over (page, selection mask) states for n<=9.",
+ "code_path": "solutions/kattis_itemselection.cpp",
+ "samples_passed": true
+}

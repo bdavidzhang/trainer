@@ -1,0 +1,13 @@
+{
+ "id": "kattis:aperiodicappointments",
+ "rating": 1900,
+ "topics": [
+  "math",
+  "ad-hoc",
+  "divide-and-conquer"
+ ],
+ "key_idea": "The string is self-similar: A_0 = 0^K 1, A_j = (A_{j-1})^K 1, and after A_{K-1} (which ends in K ones) everything is 1.",
+ "sketch": "Found by brute forcing small K and reading off the structure. Lengths satisfy len_j = K*len_{j-1}+1 and ones_j = K*ones_{j-1}+1, so only about log_K N levels are needed. Count ones in a prefix recursively: full copies of A_{j-1} contribute q*ones_{j-1}, recurse on the remainder; the trailing extra 1 is only counted when the whole block is taken. If N exceeds len_{K-1} add the surplus as ones. Pitfalls: stop building levels at K-1 or once len >= N (avoids overflow), and large K simply gives floor(N/(K+1))-style counts. Verified against an O(N^2 K) brute force for K=2..7.",
+ "code_path": "solutions/kattis_aperiodicappointments.cpp",
+ "samples_passed": true
+}

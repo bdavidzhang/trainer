@@ -1,0 +1,14 @@
+{
+ "id": "kattis:newsalaries",
+ "rating": 2100,
+ "topics": [
+  "probability",
+  "math",
+  "sweep-line",
+  "calculus-numerical"
+ ],
+ "key_idea": "E|X-Y| = integral of F_X(1-F_Y) + F_Y(1-F_X) dt, so the sum over all pairs equals the integral of S(t)(N-S(t)) minus sum_i integral F_i(1-F_i), where S = sum of CDFs is piecewise linear.",
+ "sketch": "Each uniform CDF is piecewise linear, so S(t) is piecewise linear with breakpoints at all L_i and R_i. Sweep the sorted breakpoints maintaining S and its slope; on each segment S(N-S) is a quadratic, integrated exactly with Simpson's rule. Subtract the diagonal terms: integral of F_i(1-F_i) is (R_i-L_i)/6. Divide by N^2. O(N log N). Pitfalls: degenerate intervals L=R are point masses (a jump of 1 in S, no slope and no diagonal term), slopes can be as large as 1e6 so use long double and reset the slope to 0 when no interval is active, and note that the monotonicity of L and R given in the statement is not even needed. Verified against direct pairwise integration on small random cases.",
+ "code_path": "solutions/kattis_newsalaries.cpp",
+ "samples_passed": true
+}

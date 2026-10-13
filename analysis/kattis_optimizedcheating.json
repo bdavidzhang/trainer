@@ -1,0 +1,13 @@
+{
+ "id": "kattis:optimizedcheating",
+ "rating": 1500,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "hashing"
+ ],
+ "key_idea": "BFS on currency values, but only values that collide with another slot ever need expanding, so at most n states with m transitions each.",
+ "sketch": "Let bad be the set of values in the other n-1 slots. If the start value is not bad, answer 0. Otherwise BFS from it: applying an operation to a bad value u (<= 1e9) gives w; skip w<0; if w is not bad it is a goal and the first one found in BFS order is optimal; if it is bad and unseen, enqueue it. Only bad values are stored, so there are at most 1e4 states and 1e7 transitions with hash lookups; parents and the operation index reconstruct the sequence. Pitfalls: u*v reaches 1e18 so use 64-bit (never larger because only values <= 1e9 are expanded); 0 is allowed and is always unique; division is integer division. Multiple answers are accepted: the sample matched and my own validator (replays the operations, checks non-negativity, uniqueness and optimal length against an independent BFS) confirmed 400 random cases.",
+ "code_path": "solutions/kattis_optimizedcheating.cpp",
+ "samples_passed": true
+}

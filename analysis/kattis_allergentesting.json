@@ -1,0 +1,12 @@
+{
+ "id": "kattis:allergentesting",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "Each site ends up in one of d+1 states (reacted on day 1..d, or never), so s sites distinguish at most (d+1)^s compounds and this bound is achievable; the answer is the smallest s with (d+1)^s >= n.",
+ "sketch": "This is the classic 'poor pigs' puzzle: assign each compound a distinct s-digit number in base d+1 and on day j apply it to the sites whose digit equals j, which shows the counting bound is tight. Multiply by d+1 until reaching n; at most 60 iterations per test. Pitfalls: n=1 needs 0 sites, and with n,d up to 1e18 the product overflows 64 bits, so use __int128 or a capped multiplication.",
+ "code_path": "solutions/kattis_allergentesting.cpp",
+ "samples_passed": true
+}

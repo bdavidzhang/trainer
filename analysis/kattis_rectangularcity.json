@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rectangularcity",
+ "rating": 2000,
+ "topics": [
+  "combinatorics",
+  "math",
+  "prefix-sums"
+ ],
+ "key_idea": "The intersection of rectangles is a rectangle and rows/columns are independent, so count N-tuples of intervals by intersection length in each dimension and combine the pairs with h*w >= K.",
+ "sketch": "For one dimension of size R let G(h) = sum over length-h windows [l,l+h-1] of (l*(R-l-h+2))^N, the number of (tuple, contained window) pairs; a tuple with intersection length L is counted L-h+1 times, so F(h)=G(h)-G(h+1) is the number of tuples with intersection length >= h and F(h)-F(h+1) is the exact count. Precompute i^N for i<=5000 so each G(h) is an O(R) sum of products, O(R^2 + C^2) total (about 25M modmults). The answer is the sum over h of exactR(h) * F_C(ceil(K/h)), skipping h with ceil(K/h) > C. Pitfalls: K up to 2.5e7 needs 64-bit in the ceiling, keep differences non-negative mod p. Verified against a brute force on tiny grids.",
+ "code_path": "solutions/kattis_rectangularcity.cpp",
+ "samples_passed": true
+}

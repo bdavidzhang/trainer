@@ -1,0 +1,14 @@
+{
+ "id": "kattis:squarebounce",
+ "rating": 1700,
+ "topics": [
+  "math",
+  "geometry",
+  "number-theory",
+  "implementation"
+ ],
+ "key_idea": "Unfold the reflections: the ray is a straight line y=a(x+1)/b crossing the grid lines x=-1+2k and y=2m+1, and the (n+1)-th crossing folded back with period 4 gives the answer exactly in integers.",
+ "sketch": "In the unfolded plane with u=x+1, vertical walls are at u=2k (k>=1) and horizontal walls at u=(2m+1)b/a (m>=0). Merge the two event sequences with integer comparison 2ka vs (2m+1)b for n+1 steps (n<=1e6, no ties since corners are never hit). If the last event is vertical, x is +1 for odd k else -1 and the unfolded y=2ka/b is folded: r=(2ka+b) mod 4b, y=(r-b)/b if r<=2b else (3b-r)/b. The horizontal case is symmetric with denominator a. Reduce by gcd and print 0 as '0 1'. All values fit in 64 bits (about 2e12); pitfalls are the off-by-one (n bounces means the (n+1)-th hit) and the fold direction. Verified against an exact Fraction simulation.",
+ "code_path": "solutions/kattis_squarebounce.cpp",
+ "samples_passed": true
+}

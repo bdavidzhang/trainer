@@ -1,0 +1,12 @@
+{
+ "id": "kattis:training",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Always solving an applicable problem is optimal: a higher skill can never be overtaken by a lower one, since they move by at most 1 per step.",
+ "sketch": "Scan the list once; if l <= s <= r then s++. Exchange/dominance argument: if two trajectories have s' >= s, after any problem s' >= s still holds (if only the lower one increments they were at least 1 apart). O(n). Pitfall: values up to 2e9 need 64-bit.",
+ "code_path": "solutions/kattis_training.cpp",
+ "samples_passed": true
+}

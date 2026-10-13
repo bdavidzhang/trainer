@@ -1,0 +1,12 @@
+{
+ "id": "kattis:snakeystring",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Every column holds exactly one letter, so read the letter of each column from left to right.",
+ "sketch": "Read the grid, for each column scan the rows and append the non-period character. O(rc). The snake condition is irrelevant.",
+ "code_path": "solutions/kattis_snakeystring.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:circularcaramelcookie",
+ "rating": 1300,
+ "topics": [
+  "binary-search",
+  "math",
+  "geometry"
+ ],
+ "key_idea": "A unit square is inside the circle iff its farthest corner (x,y), x,y>=1, satisfies x^2+y^2 <= r^2, so the count depends only on the integer R=r^2 and is monotone in R.",
+ "sketch": "count(R) = 4 * sum_{x>=1, x^2<R} floor(sqrt(R-x^2)). Binary search the smallest integer R with count(R) > s and print sqrt(R); the minimal R is automatically a sum of two squares since the count only jumps there. R is about s/pi <= 3.2e8, so each evaluation is ~1.8e4 integer square roots and 31 iterations suffice. Pitfalls: use exact integer sqrt (correct the floating estimate), and note the bound is strict (> s). Verified against a linear scan for all s < 300.",
+ "code_path": "solutions/kattis_circularcaramelcookie.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:failingflagship",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Each extra leading letter moves the direction of the remaining suffix halfway toward that letter's axis, i.e. by 90/2^(k-1) degrees, so the angle is 45-degree quadrant centre plus a signed geometric series.",
+ "sketch": "Take the last two letters as the quadrant centre (45/135/225/315), then walk the remaining letters from right to left with step 22.5, 11.25, ...: subtract the step if the letter is the quadrant's lower-angle axis, add it otherwise (N counts as 360 in the NW quadrant). One-letter strings are handled directly. Answer is |a-b| folded to at most 180. O(|X|+|Y|). Although strings have 1000 letters, steps below 1e-13 are irrelevant for the 1e-6 tolerance, so plain doubles suffice and the loop can stop early; the main pitfall is the N wrap-around in the NW quadrant.",
+ "code_path": "solutions/kattis_failingflagship.cpp",
+ "samples_passed": true
+}

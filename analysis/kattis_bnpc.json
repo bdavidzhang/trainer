@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bnpc",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "After paying the forced cost to reach each attribute's maximum threshold, marginal gains are concave: the first extra point on an attribute gains maxT*(events at maxT)+count, every later point gains count.",
+ "sketch": "For each attribute used by events compute c (number of events), maxT and e (events with threshold maxT). Raise every score to maxT; if k runs out the answer is 0. The base score is s*(c-e) for attributes sitting exactly at maxT and s*c for those already above. One more point on an attribute at maxT gains maxT*e+c, any further point gains c, so the gain sequences are concave and a greedy over marginal gains is optimal: take first-step gains in decreasing order while they exceed cmax=max c, then spend all remaining points at cmax each (the attribute with cmax has its first step >= cmax, so it is already unlocked or tied). O((n+l) log n). Pitfalls: k up to 1e9 so never simulate point by point; 64-bit totals (~2e14); attributes with no events are ignored; threshold 0 with score 0 yields 0 points. Stress-tested against exhaustive distribution of points.",
+ "code_path": "solutions/kattis_bnpc.cpp",
+ "samples_passed": true
+}

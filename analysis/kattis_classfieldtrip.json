@@ -1,0 +1,13 @@
+{
+ "id": "kattis:classfieldtrip",
+ "rating": 800,
+ "topics": [
+  "sorting",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "Merging two sorted strings is the same as sorting their concatenation.",
+ "sketch": "Read both strings, concatenate and sort (or do a two-pointer merge). Length at most 200 so anything works. No corner cases beyond reading exactly two tokens.",
+ "code_path": "solutions/kattis_classfieldtrip.cpp",
+ "samples_passed": true
+}

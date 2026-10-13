@@ -1,0 +1,13 @@
+{
+ "id": "kattis:butiwanttowin",
+ "rating": 1000,
+ "topics": [
+  "greedy",
+  "implementation",
+  "sorting"
+ ],
+ "key_idea": "Best case for the runner-up is that every eliminated candidate's ballots all transfer to him, so just simulate eliminations from the smallest upward.",
+ "sketch": "Sort the counts; if the leader already has a strict majority (2F > T) answer IMPOSSIBLE. Otherwise eliminate the remaining candidates in increasing order, adding each one's votes to the runner-up, and print the first round count where 2S > T; if all others are gone and it is still not a strict majority (exact tie with the leader) it is IMPOSSIBLE. O(c log c), 64-bit sums. Caveat: this is the simple reading that matches all four samples; a literal reading where transfers are split to engineer ties among low candidates (eliminating several in one round) could give fewer rounds, e.g. 1 5 6 100 99, and that is not modelled here.",
+ "code_path": "solutions/kattis_butiwanttowin.cpp",
+ "samples_passed": true
+}

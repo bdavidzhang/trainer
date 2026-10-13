@@ -1,0 +1,13 @@
+{
+ "id": "kattis:splittingpairs",
+ "rating": 2000,
+ "topics": [
+  "games",
+  "math",
+  "ad-hoc"
+ ],
+ "key_idea": "Only 2-adic valuations matter: for even n the position is losing iff every pile is odd; for odd n it is losing iff all piles have the same power of two dividing them.",
+ "sketch": "Brute-forced small n (3,4,5) to find the losing sets, then answer in O(n log s) per game. Even n: Alice wins iff some pile is even (from any position with an even pile you can remove/split so that all piles are odd, since ceil(e/2) <= n/2; from all-odd every split creates an even pile). Odd n: losing iff v2(s_i) are all equal (all-ones is the terminal case), verified by exhaustive search for n=3 up to 12 and n=5 up to 8. Pitfall: s up to 1e12 needs 64-bit; the n even and n odd rules differ because at most floor(n/2) piles can be removed.",
+ "code_path": "solutions/kattis_splittingpairs.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:magnesiumsupplementation",
+ "rating": 1000,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "A dose d works iff d divides n, d <= k and n/d <= p, so enumerate divisors by trial division up to sqrt(n).",
+ "sketch": "Loop d from 1 while d*d <= n (about 3.2e5 iterations for n = 1e11); for each divisor test both d and n/d against d <= k and n/d <= p, avoiding the double count when d*d == n. Sort and print the count then the values. O(sqrt n). Pitfalls: 64-bit integers everywhere, and the perfect-square duplicate.",
+ "code_path": "solutions/kattis_magnesiumsupplementation.cpp",
+ "samples_passed": true
+}

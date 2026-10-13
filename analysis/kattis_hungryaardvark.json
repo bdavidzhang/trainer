@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hungryaardvark",
+ "rating": 1600,
+ "topics": [
+  "dp-tree",
+  "dp-knapsack",
+  "trees"
+ ],
+ "key_idea": "The recorded paths form a rooted tree (segments identified by their far-end node); choosing k probes means choosing k root-to-leaf paths maximising the ant total of the union of their segments, which is a tree knapsack.",
+ "sketch": "Build a trie from the paths, keying each segment by its end-node label and storing its ant count; mark the last node of every path as a terminal. DP f[v][j] = best total in v's subtree using exactly j chosen terminals (j>=1 adds v's ants once), merging children by knapsack convolution and allowing v itself as a terminal; the answer is the max of the root's f[j] over j<=k. Complexity O(nodes * k^2) which is tiny (at most 26 labels, k<=20). Pitfalls: shared prefixes must be counted once (sample 2: 27, not the sum of the two richest paths), k may exceed the number of paths, and the tongue length 30 is a red herring since the ant counts given are already the reachable ones. Greedy by marginal gain would also work on a tree.",
+ "code_path": "solutions/kattis_hungryaardvark.cpp",
+ "samples_passed": true
+}

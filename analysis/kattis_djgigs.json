@@ -1,0 +1,14 @@
+{
+ "id": "kattis:djgigs",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "shortest-paths",
+  "binary-search",
+  "sorting"
+ ],
+ "key_idea": "Weighted interval scheduling with travel: dp[i] = M_i + best dp over gigs j with E_j + dist(V_j,V_i) <= S_i; with only K<=100 venues, keep per venue a prefix maximum over gigs sorted by end time and binary search it for each of the K source venues.",
+ "sketch": "Compute all-pairs shortest paths with Floyd-Warshall (K=100). Sweep events by time, end events before start events at equal times: an end event appends (E_j, running max of dp) to its venue's list, which is therefore sorted by end time; a start event for gig i queries every venue u with upper_bound on S_i - dist(u,V_i) and also allows starting from home if dist(1,V_i) <= S_i. Gigs that are unreachable keep dp=-1 and are never appended. Complexity O(K^3 + G*K*log G), about 0.7 s at the limits. Pitfalls: answer up to 2e11 needs 64-bit, disconnected venues (R may be 0), intervals are half-open so E_j == S_i is allowed, and the answer is 0 when no gig is reachable. Stress-tested against an O(G^2) dp.",
+ "code_path": "solutions/kattis_djgigs.cpp",
+ "samples_passed": true
+}

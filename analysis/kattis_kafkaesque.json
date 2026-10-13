@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kafkaesque",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Each pass collects a maximal increasing run of desk numbers, so the answer is 1 plus the number of descents in the list.",
+ "sketch": "Read the desk numbers in form order. Within one pass you can keep collecting signatures as long as the next required desk is further along the aisle, i.e. has a larger number. Whenever the next desk number is smaller than the previous one, a new pass is required. Answer = 1 + count of i with a[i] < a[i-1]. O(K). No pitfalls; desks are distinct.",
+ "code_path": "solutions/kattis_kafkaesque.cpp",
+ "samples_passed": true
+}

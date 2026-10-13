@@ -1,0 +1,11 @@
+{
+ "id": "kattis:huntthewumpus",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation: generate the four distinct wumpus cells with the given recurrence, then process guesses, removing hits and printing the nearest remaining Manhattan distance.",
+ "sketch": "Iterate s = s + s/13 + 15 and take s mod 100, keeping the first four distinct values (duplicates are skipped but still advance the generator). For each guess, if it equals a live wumpus print the hit line and remove it; then, if any wumpus remains, print the minimum |dx|+|dy| over remaining ones. After the last hit print the move count. Pitfalls: guesses have leading zeros (read as string or int both work), no distance line after the final hit, and s can grow so use 64-bit.",
+ "code_path": "solutions/kattis_huntthewumpus.cpp",
+ "samples_passed": true
+}

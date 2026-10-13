@@ -1,0 +1,12 @@
+{
+ "id": "kattis:heistofthecentury",
+ "rating": 1900,
+ "topics": [
+  "interactive",
+  "constructive"
+ ],
+ "key_idea": "Put all other dials near the middle so they contribute at most N, and the probed dial at an extreme: any reading above N is caused by the probed dial alone and reveals it exactly.",
+ "sketch": "Query A: dial i at 1, others at N; if the answer r>N then h_i=r+1, else h_i<=N+1. Query B: dial i at 2N, others at N+1; if r>N then h_i=2N-r, else h_i>=N. After at most 2N queries every dial is known exactly or lies in {N,N+1}. For each ambiguous dial, set known dials to their values, other ambiguous ones to N (resistance <=1) and this one to N+2: answer 2 means N, 1 means N+1. Total at most 3N+1 <= 4N queries. Pitfalls: stop on 0 at any time (a probe can accidentally open the safe, which also covers N=1) and on -1. Interactive: verified with my own local judge simulator on random and adversarial secrets (max 1501 queries at N=500), not by the sample checker.",
+ "code_path": "solutions/kattis_heistofthecentury.cpp",
+ "samples_passed": true
+}

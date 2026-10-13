@@ -1,0 +1,12 @@
+{
+ "id": "kattis:apivotalquestion",
+ "rating": 1000,
+ "topics": [
+  "prefix-sums",
+  "implementation"
+ ],
+ "key_idea": "A value can be the pivot iff it is larger than everything before it and smaller than everything after it: prefix maximum and suffix minimum.",
+ "sketch": "Compute suffix minima, sweep left to right keeping the prefix maximum; a[i] is a pivot when prefmax<a[i]<sufmin (values are distinct). Count all of them but print only the first 100 in input order. O(n) with fast input for n=1e6; note the count m printed is the full count, not capped at 100.",
+ "code_path": "solutions/kattis_apivotalquestion.cpp",
+ "samples_passed": true
+}

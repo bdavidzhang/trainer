@@ -1,0 +1,13 @@
+{
+ "id": "kattis:easyascab",
+ "rating": 1500,
+ "topics": [
+  "topological-sort",
+  "graphs",
+  "strings"
+ ],
+ "key_idea": "Each adjacent pair of words gives one edge (first differing letters); the alphabet is unique iff the topological order is forced at every step.",
+ "sketch": "Compare only adjacent words: at the first differing position add edge a->b; if the later word is a proper prefix of the earlier one the list is IMPOSSIBLE. Run Kahn's algorithm over all letters a..L (including letters that never appear). If not all letters are output there is a cycle -> IMPOSSIBLE; otherwise if the queue ever held more than one candidate -> AMBIGUOUS; else print the order. O(N*len + 26^2). Pitfalls: IMPOSSIBLE takes priority over AMBIGUOUS, deduplicate edges before counting indegrees, and unused letters make the answer ambiguous.",
+ "code_path": "solutions/kattis_easyascab.cpp",
+ "samples_passed": true
+}

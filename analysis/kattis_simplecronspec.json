@@ -1,0 +1,12 @@
+{
+ "id": "kattis:simplecronspec",
+ "rating": 1000,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "A day has only 86400 seconds, so expand each spec into explicit hour/minute/second lists and mark a boolean array.",
+ "sketch": "Parse each token: '*' expands to the full range, otherwise split on commas and expand a-b ranges. Total job starts is the sum of |H|*|M|*|S| over specs; distinct seconds is the count of marked entries in an 86400-sized array after marking h*3600+m*60+s for every combination. Worst case 100*86400 marks, trivial. Only pitfall is the parsing (single value vs range vs star).",
+ "code_path": "solutions/kattis_simplecronspec.cpp",
+ "samples_passed": true
+}

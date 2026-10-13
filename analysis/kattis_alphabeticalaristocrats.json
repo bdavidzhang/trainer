@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alphabeticalaristocrats",
+ "rating": 800,
+ "topics": [
+  "sorting",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "Sort the names by the suffix that starts at the first capital letter, using plain ASCII comparison.",
+ "sketch": "Read each full line (names contain spaces and apostrophes), find the first character in A-Z and take the suffix from there as the sort key. Sort pairs (key, original) with ordinary byte-wise string comparison and print the originals. O(n log n * |s|). Pitfalls: must use getline rather than token input, strip a possible trailing carriage return, and compare by raw ASCII (space and apostrophe sort before letters, capitals before lowercase) rather than case-insensitively.",
+ "code_path": "solutions/kattis_alphabeticalaristocrats.cpp",
+ "samples_passed": true
+}

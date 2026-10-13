@@ -1,0 +1,14 @@
+{
+ "id": "kattis:housenumbering",
+ "rating": 1700,
+ "topics": [
+  "graphs",
+  "constructive",
+  "bfs-dfs",
+  "trees"
+ ],
+ "key_idea": "Each street puts a '1' at exactly one endpoint and no intersection may see two 1s, so with n streets and n intersections every intersection owns exactly one street: tree edges are forced toward the leaves and the single cycle has only two orientations to try.",
+ "sketch": "The graph is connected with n edges, i.e. unicyclic. Peel degree-1 vertices: a peeled vertex must be the start of its remaining edge. The leftover cycle can be oriented clockwise or counter-clockwise; build both assignments. For each candidate, verify at every vertex that the h values of the incident edges it does not own are pairwise distinct (sort per vertex), since h >= 2 never collides with 1. Output the owning vertex per edge or 'impossible'. O(n log n). Multiple answers are possible; besides passing the samples the output was validated against an exhaustive 2^n brute force with a validity checker on 1500 random small unicyclic graphs.",
+ "code_path": "solutions/kattis_housenumbering.cpp",
+ "samples_passed": true
+}

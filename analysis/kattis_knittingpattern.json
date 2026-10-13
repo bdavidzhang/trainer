@@ -1,0 +1,12 @@
+{
+ "id": "kattis:knittingpattern",
+ "rating": 900,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "After the centred pattern, each side holds floor(((N-P)/2)/P) further copies; the leftover N-P-2kP is the gap unless it equals exactly P, in which case one last centred copy closes the back.",
+ "sketch": "Compute k = ((N-P)/2) / P and left = N - P - 2kP. If left == P a final pattern fits symmetrically at the back and the answer is 0, otherwise the answer is left (a leftover larger than P cannot take one copy without splitting the empty part in two). O(1) with 64-bit integers since N goes up to 1e18. Pitfall: forgetting the left == P special case shown in sample 2.",
+ "code_path": "solutions/kattis_knittingpattern.cpp",
+ "samples_passed": true
+}

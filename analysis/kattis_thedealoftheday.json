@@ -1,0 +1,13 @@
+{
+ "id": "kattis:thedealoftheday",
+ "rating": 1300,
+ "topics": [
+  "combinatorics",
+  "dp",
+  "big-integer"
+ ],
+ "key_idea": "A strictly ascending deal picks K distinct values and one card of each, so the answer is the K-th elementary symmetric polynomial of the ten counts.",
+ "sketch": "Compute e_k(n_1..n_10) with the standard knapsack-style recurrence e[j] += e[j-1]*n_i iterating j downward, O(10*K). The order of the deal is forced by the ascending condition, so no extra factorial is needed. Pitfall: the result can reach 100^10 = 1e20, which overflows unsigned 64-bit (1.8e19), so use unsigned __int128 (or big integers) and print it digit by digit; also handle the zero answer when printing manually.",
+ "code_path": "solutions/kattis_thedealoftheday.cpp",
+ "samples_passed": true
+}

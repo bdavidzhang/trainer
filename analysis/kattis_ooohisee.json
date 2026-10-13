@@ -1,0 +1,11 @@
+{
+ "id": "kattis:ooohisee",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Count interior cells that are '0' with all eight neighbours equal to 'O'.",
+ "sketch": "Loop over cells not on the border, check the 8 neighbours, count matches and remember the last one. Print the 1-based position if exactly one, 'Oh no!' if none, 'Oh no! N locations' if several. O(rc). Pitfall: digit zero versus letter O, and border cells can never qualify.",
+ "code_path": "solutions/kattis_ooohisee.cpp",
+ "samples_passed": true
+}

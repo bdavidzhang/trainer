@@ -1,0 +1,11 @@
+{
+ "id": "kattis:ingestion",
+ "rating": 1500,
+ "topics": [
+  "dp"
+ ],
+ "key_idea": "DP over (hour, index of the current capacity level): eating moves to the next level, skipping one hour then eating reuses the previous level, skipping two hours resets to level 0.",
+ "sketch": "Precompute cap[k] = floor(cap[k-1]*2/3) with cap[0]=m. Let f(i,k) be the best total from hour i when eating now would be at level k. Transitions: eat now, min(c_i,cap[k]) + f(i+1,k+1); skip hour i and eat at i+1 at level max(k-1,0), giving min(c_{i+1},cap[k']) + f(i+2,k'+1); or skip two hours, f(i+2,0). O(n^2) states with O(1) transitions. Pitfalls: the truncation is applied iteratively (266 then 177), a single skip steps the level back by exactly one rather than resetting, and two consecutive skips always give a full reset.",
+ "code_path": "solutions/kattis_ingestion.cpp",
+ "samples_passed": true
+}

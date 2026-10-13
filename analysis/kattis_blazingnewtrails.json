@@ -1,0 +1,13 @@
+{
+ "id": "kattis:blazingnewtrails",
+ "rating": 2300,
+ "topics": [
+  "mst",
+  "binary-search",
+  "dsu"
+ ],
+ "key_idea": "Lagrangian relaxation (aliens trick): add a penalty lambda to every special-regular edge, run Kruskal, and binary search lambda so the MST contains w such edges; the answer is cost - lambda*w.",
+ "sketch": "An edge is 'special' when exactly one endpoint is a special place. Pre-sort special and other edges separately; Kruskal for a given lambda is then a linear merge (special cost c+lambda, ties prefer special) plus DSU, so each evaluation is O(m alpha). First check connectivity and that w lies between the minimum (lambda=+2e5) and maximum (lambda=-2e5) achievable special counts, otherwise -1; every count in between is achievable by matroid exchange. Binary search the largest integer lambda whose tie-preferring-special MST has count >= w; because the optimal cost is convex in the count, the answer is total(lambda) - lambda*w even if the tree found has more than w special edges. Integer lambdas suffice since costs are integers. About 20 Kruskal runs on 5e5 edges, 0.5 s. Use 64-bit totals. Verified against spanning-tree enumeration on small graphs.",
+ "code_path": "solutions/kattis_blazingnewtrails.cpp",
+ "samples_passed": true
+}

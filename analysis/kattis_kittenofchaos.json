@@ -1,0 +1,13 @@
+{
+ "id": "kattis:kittenofchaos",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "strings",
+  "ad-hoc"
+ ],
+ "key_idea": "The three transformations form the Klein four-group, so only the parity of 'vertical flips' and 'horizontal flips' matters (r toggles both).",
+ "sketch": "Deduce the letter maps from the samples: h reverses the string and swaps b<->d, p<->q; v keeps the order and swaps b<->p, d<->q; r is the composition of both. Count the parity of each generator over t (r toggles both), then apply at most one in-place letter swap and one reverse-with-swap to s. O(|s|+|t|). Pitfall: the naming is counter-intuitive (h is the flip that reverses the string), so check against the samples rather than trusting the words.",
+ "code_path": "solutions/kattis_kittenofchaos.cpp",
+ "samples_passed": true
+}

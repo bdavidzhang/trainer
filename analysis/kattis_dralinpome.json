@@ -1,0 +1,12 @@
+{
+ "id": "kattis:dralinpome",
+ "rating": 800,
+ "topics": [
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "A multiset of letters can be rearranged into a palindrome iff at most one letter has an odd count.",
+ "sketch": "Count occurrences of each of the 26 letters and count how many are odd. Answer yes iff that number is at most 1 (zero for even length, one for odd length - both covered by the same test). O(|s|) time, no pitfalls beyond reading a 1e5-length string.",
+ "code_path": "solutions/kattis_dralinpome.cpp",
+ "samples_passed": true
+}

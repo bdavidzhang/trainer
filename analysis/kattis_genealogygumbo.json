@@ -1,0 +1,13 @@
+{
+ "id": "kattis:genealogygumbo",
+ "rating": 1500,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "scc-2sat"
+ ],
+ "key_idea": "Names can be split into as many people as needed, so only one thing matters: is there a single name from which every name is reachable along father->son edges (a mother vertex of the name graph).",
+ "sketch": "Every line creates its own child person; a father mention must be identified with some child person of that name or with the unique root. So a line can be hung into the tree iff its father's name is the root name or the name of an already attached child, i.e. reachable from the root name in the directed name graph; cycles are harmless because the copies are different people (samples 3, 4). Find the mother-vertex candidate as the last DFS root in a full DFS sweep, then verify it reaches all vertices; O(n) with hashing of names and an iterative DFS. Pitfalls: strip the comma after the first name, do not reject cycles or self-loops, and avoid recursion depth 1e5. Samples pass; also matched a brute force trying every root on 600 random small inputs.",
+ "code_path": "solutions/kattis_genealogygumbo.cpp",
+ "samples_passed": true
+}

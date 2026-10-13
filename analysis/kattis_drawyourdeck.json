@@ -1,0 +1,13 @@
+{
+ "id": "kattis:drawyourdeck",
+ "rating": 2200,
+ "topics": [
+  "combinatorics",
+  "probability",
+  "math"
+ ],
+ "key_idea": "There is no real choice: you win iff every proper prefix of the shuffled deck has sum of (value-1) >= 0. Steps are >= -1, so the first passage to -1 is counted by the cycle lemma.",
+ "sketch": "Hand size after drawing the first m cards and playing them all is 1+sum(v_i-1), independent of play order, so the game is won iff all prefix sums of (v_i-1) over lengths 1..N-1 are nonnegative. Let D = a2+2*a3-a0 be the total. If D <= -2 the answer is 0; if D = -1 the walk must first hit -1 exactly at the end, which by the cycle lemma happens for exactly one of the N rotations, so the answer is 1/N (zeros included). If D >= 0 drop the zero cards (they do not affect the walk) and compute 1 - P(bad), where a bad sequence is split at its first visit to -1: a prefix with i minus-ones, j plus-ones, k plus-twos, i=j+2k+1, counted by multinomial(i+j+k)/(i+j+k) (cycle lemma), times an arbitrary arrangement of the rest. That is an O(a2*a3) sum of nonnegative terms, evaluated with long double log-factorials, so no cancellation issue beyond the final 1-x. Pitfall: the D=-1 case and N=1 need separate handling. Verified against a brute force that simulates the real game over all permutations for N<=8.",
+ "code_path": "solutions/kattis_drawyourdeck.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:diabolicdoofenshmirtz",
+ "rating": 1300,
+ "topics": [
+  "interactive",
+  "math",
+  "binary-search"
+ ],
+ "key_idea": "Query powers of two: the first t whose answer differs from t satisfies L <= t < 2L, so exactly one lap has been completed and L = t - answer.",
+ "sketch": "Ask t = 1, 2, 4, ..., 2^40 in increasing order. While the reply equals t the lap is longer than t. At the first reply x != t the previous query proved L > t/2, so t is in [L, 2L) and L = t - x. Since 2^40 > 10^12 the loop always ends, using at most 41 questions plus the answer = 42, exactly the limit (an off-by-one in the starting power breaks it). Remember to flush. No samples are checkable by the tool; validated with my own interactor simulating t mod L for edge values (1, 10^12, around 2^39) and random L, checking correctness, increasing t and the 42-query cap.",
+ "code_path": "solutions/kattis_diabolicdoofenshmirtz.cpp",
+ "samples_passed": true
+}

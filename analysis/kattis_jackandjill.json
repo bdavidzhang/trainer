@@ -1,0 +1,12 @@
+{
+ "id": "kattis:jackandjill",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Convert everything to integer tenths and enumerate the number of log rolls; the number of frontal rolls is then the floor of what remains.",
+ "sketch": "Read the three reals, multiply by 10 and round to integers L, A, B. For every x with x*A <= L take y = (L - x*A) / B and keep the pair with the largest covered distance x*A + y*B, using >= while x increases so ties go to the most log rolls. At most 2001 iterations. Pitfalls: floating point (0.9 is not exact, so never work in doubles), L = 0 gives 0 0, and the statement's second sample text says 10 where the output says 100.",
+ "code_path": "solutions/kattis_jackandjill.cpp",
+ "samples_passed": true
+}

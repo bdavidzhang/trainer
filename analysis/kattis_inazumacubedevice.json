@@ -1,0 +1,13 @@
+{
+ "id": "kattis:inazumacubedevice",
+ "rating": 1100,
+ "topics": [
+  "math",
+  "greedy",
+  "graphs"
+ ],
+ "key_idea": "Edges only go from lower to higher index, so the system is triangular mod k: processing cubes 1..n, the strike count of cube i is forced by the already-fixed strikes of its in-neighbours.",
+ "sketch": "Let x_i in [0,k) be the number of strikes on cube i (striking k times is a no-op, so the minimum uses residues). Cube i ends at init_i + x_i + sum of x_a over in-neighbours a<i, which must be congruent to k mod k. Going in index order, x_i = (-(init_i + sum x_a)) mod k is uniquely determined, so the answer is the sum of x_i and -1 never occurs. O(n+m). Pitfalls: only direct edges propagate (no transitivity), keep sums reduced mod k and the total in 64-bit (up to 2e14). Checked against an exhaustive brute force on small cases.",
+ "code_path": "solutions/kattis_inazumacubedevice.cpp",
+ "samples_passed": true
+}

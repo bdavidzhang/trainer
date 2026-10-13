@@ -1,0 +1,12 @@
+{
+ "id": "kattis:quickestimate",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "The number of digits is just the length of the number read as a string.",
+ "sketch": "Read N, then each estimate as a string and print its length. Values go up to 10^100, so they do not fit any integer type and must not be parsed numerically. Zero has one digit, which the string length already gives. O(total length).",
+ "code_path": "solutions/kattis_quickestimate.cpp",
+ "samples_passed": true
+}

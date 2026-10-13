@@ -1,0 +1,12 @@
+{
+ "id": "kattis:chocolatechipfabrication",
+ "rating": 1200,
+ "topics": [
+  "bfs-dfs",
+  "graphs"
+ ],
+ "key_idea": "Reverse the process: each exposure peels one layer, so the answer is the maximum 4-neighbour BFS distance from a cookie cell to the nearest non-cookie cell or pan border.",
+ "sketch": "Cells that have a non-cookie neighbour or lie on the pan boundary get layer 1 and seed a multi-source BFS; every other cookie cell gets 1 + min of its neighbours. The maximum layer is the answer: layer d cells cannot be chipified before round d (lower bound), and placing dough on all cells of layer >= d' progressively achieves it. O(nm). Pitfall: the pan border counts as exposed, and the shape can be disconnected.",
+ "code_path": "solutions/kattis_chocolatechipfabrication.cpp",
+ "samples_passed": true
+}

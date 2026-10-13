@@ -1,0 +1,13 @@
+{
+ "id": "kattis:antipalindrome",
+ "rating": 800,
+ "topics": [
+  "strings",
+  "palindromes",
+  "implementation"
+ ],
+ "key_idea": "Any palindrome of length >= 2 contains a palindrome of length 2 or 3 at its center, so only check s[i]==s[i+1] or s[i]==s[i+2].",
+ "sketch": "Read the whole line, keep only letters and lowercase them. If any adjacent pair is equal or any pair at distance two is equal, print Palindrome, otherwise Anti-palindrome. O(length). Pitfalls: read with getline because of spaces, ignore all non-alphabetic characters before testing adjacency, and compare case-insensitively.",
+ "code_path": "solutions/kattis_antipalindrome.cpp",
+ "samples_passed": true
+}

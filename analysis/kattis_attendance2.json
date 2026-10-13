@@ -1,0 +1,12 @@
+{
+ "id": "kattis:attendance2",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "A name is absent exactly when the next line is not the literal 'Present!'.",
+ "sketch": "Read all N lines; for each line that is not 'Present!' check whether the following line is 'Present!'; if not (or it is the last line) print the name. Print 'No Absences' if nothing was printed. Pitfall: a student may be named 'Present' (no exclamation mark), so compare against the exact token 'Present!'. O(N).",
+ "code_path": "solutions/kattis_attendance2.cpp",
+ "samples_passed": true
+}

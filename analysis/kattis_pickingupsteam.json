@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pickingupsteam",
+ "rating": 2500,
+ "topics": [
+  "geometry",
+  "binary-search",
+  "ternary-search"
+ ],
+ "key_idea": "The region visible from the camera is everything above a piecewise-linear envelope h(x) = max(terrain, shadow ray of the steepest vertex so far); above each linear piece the region is a convex strip, so the distance from the moving centre to it is convex in time.",
+ "sketch": "Build h(x) to the right of the camera: on each terrain segment h is the max of the terrain line and the ray through the maximum-slope vertex seen so far, splitting at their crossing; the left side is handled by mirroring x. For each piece the visible set is the convex vertical strip above a segment, and the cloud shows nonzero area there iff the centre is strictly closer than r to it. The centre-to-strip distance is convex along the trajectory, so ternary search the minimum (path length up to 3e8, since shadow rays can reach height about 5e7), reject if it is not below r by 1e-7, then binary search the entry point on the decreasing part; answer is min path length / v, or -1. O(n * 500) distance evaluations. Pitfalls: the camera may be in the interior of a segment, grazing/tangent contact does not count, the x-range limit is automatic because strips only cover [x0,xn], and required accuracy is only 1e-3. The checker reported WRONG on the sample only because it compares at 1e-6 against the 3-decimal expected 8.899 (I print 8.899495, exact is 7*sqrt2-1 = 8.89949); samples_passed is from my own check at the problem's 1e-3 tolerance plus 120 random cases against a grid-sampling brute force.",
+ "code_path": "solutions/kattis_pickingupsteam.cpp",
+ "samples_passed": true
+}

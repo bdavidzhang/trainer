@@ -1,0 +1,13 @@
+{
+ "id": "kattis:glaciertravel",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "two-pointers",
+  "math"
+ ],
+ "key_idea": "Between consecutive moments when either walker passes a vertex, both move at unit speed along fixed directions, so their difference vector is linear in time and the minimum of its length on the interval has a closed form.",
+ "sketch": "Place the back walker at the start and the front walker at arc length s, then sweep with two pointers: each step advances both by min(remaining length on back segment, remaining on front segment). In a step D(t)=D0+(u_front-u_back)t, so minimise |D(t)| at the clamped parameter t*=-D0.w/|w|^2 and at both ends. Stop when the front walker reaches the last vertex. O(n) with at most 2n steps. Precision: keep offsets local to the current segment instead of global arc lengths (the path can be 2.8e12 long, which would eat the 1e-4 tolerance in doubles), use long double, and treat near-simultaneous vertex arrivals with a relative epsilon; parallel directions (w=0) give constant distance. Stress-tested against dense sampling on random small paths.",
+ "code_path": "solutions/kattis_glaciertravel.cpp",
+ "samples_passed": true
+}

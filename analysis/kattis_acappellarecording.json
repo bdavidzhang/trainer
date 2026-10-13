@@ -1,0 +1,12 @@
+{
+ "id": "kattis:acappellarecording",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Order is irrelevant: sort pitches and greedily start a new recording at the smallest uncovered pitch, covering everything within d of it.",
+ "sketch": "Sort, then repeatedly take the smallest remaining pitch x and skip all pitches <= x+d, counting groups. O(n log n). Pitfalls: d=0 groups equal pitches together, and x+d can reach 2e9 so use 64-bit.",
+ "code_path": "solutions/kattis_acappellarecording.cpp",
+ "samples_passed": true
+}

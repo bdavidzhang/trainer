@@ -1,0 +1,4 @@
+{"id":"kattis:paint","rating":1500,"topics":["dp","sorting","binary-search"],
+"key_idea":"It is weighted interval scheduling with weight = interval length: maximise total length of pairwise disjoint intervals, and the answer is n minus that maximum.",
+"sketch":"Sort intervals by right endpoint. dp[i] = best painted length using the first i intervals = max(dp[i-1], dp[j] + (b_i - a_i + 1)) where j is the number of intervals whose right endpoint is strictly less than a_i, found by binary search on the sorted ends. O(k log k). Pitfalls: intervals sharing a single slat do overlap (need end < start strictly), coordinates go up to 1e18 so everything must be 64-bit (the sum of disjoint lengths never exceeds n, so no overflow), and no coordinate compression over n is possible.",
+"code_path":"solutions/kattis_paint.cpp","samples_passed":true}

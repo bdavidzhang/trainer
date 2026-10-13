@@ -1,0 +1,11 @@
+{
+ "id": "kattis:foosball",
+ "rating": 1300,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Pure simulation with a queue, keeping for each team the arrival order of its two players so names print in the right order.",
+ "sketch": "Keep offense/defense for each side, a queue of waiting players, and for each team (first-arrived, second-arrived). On a point the winners swap roles; the loser's defender goes to the back of the line, the loser's offense becomes defense and the front of the line becomes offense, so the surviving loser is now the earlier arrival. Track maximal runs of equal letters; a run belongs to the team as it stood when the run started, and runs tied for the maximum are printed in order. O(len). Pitfalls: arrival order rather than position order, initial teams are players 1,3 and 2,4, and the same team may be printed more than once.",
+ "code_path": "solutions/kattis_foosball.cpp",
+ "samples_passed": true
+}

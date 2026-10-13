@@ -1,0 +1,12 @@
+{
+ "id": "kattis:recycling",
+ "rating": 1500,
+ "topics": [
+  "monotonic-stack-queue",
+  "data-structures"
+ ],
+ "key_idea": "This is exactly largest rectangle in a histogram: the best bin has capacity equal to the minimum of a maximal interval.",
+ "sketch": "For every week compute with a monotonic stack the maximal interval [L,R] on which it is the minimum (strict on both sides so equal bars share the same full interval), candidate value a[i]*(R-L+1), keep the maximum with ties broken by smallest start, then smallest end. O(n), 64-bit for the product. Pitfalls: output is 1-indexed start, end, amount; input numbers span several lines. The statement does not say how to break ties between intervals with the same start and same total (e.g. 4 4 2 2) or what to print when all values are 0; this solution prints the shortest such interval, which is a guess.",
+ "code_path": "solutions/kattis_recycling.cpp",
+ "samples_passed": true
+}

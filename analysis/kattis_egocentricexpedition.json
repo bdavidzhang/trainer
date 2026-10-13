@@ -1,0 +1,13 @@
+{
+ "id": "kattis:egocentricexpedition",
+ "rating": 1600,
+ "topics": [
+  "interactive",
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Query two directions 45 degrees apart, (1,0) and (1,1): with b the angle to the nearest face normal, d1=h/cos b and d2=h/cos(45-b), so the ratio gives tan b = sqrt2*d1/d2 - 1 with no ambiguity.",
+ "sketch": "The centred square with half-side h returns h/max(|cos|,|sin|) of the angle relative to its axes. By the square's symmetries the two readings depend only on b in [0,45 deg], and d1/d2=(1+tan b)/sqrt2, so tan b is recovered directly and area = 4h^2 = 4*d1^2/(1+tan^2 b), rounded to the nearest integer. O(1) per test, non-adaptive. Area is at most 5000 (half diagonal <= 50) so the 1e-7 input error leaves ample margin for rounding. Pitfall: queries 90 degrees apart give identical answers and no information; remember to flush. Interactive, so the sample checker does not apply: samples_passed is true because my own interactor (12000 random squares incl. b=0 and b=45 extremes, with injected 1e-7 noise) accepted every answer.",
+ "code_path": "solutions/kattis_egocentricexpedition.cpp",
+ "samples_passed": true
+}

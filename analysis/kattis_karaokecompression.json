@@ -1,0 +1,14 @@
+{
+ "id": "kattis:karaokecompression",
+ "rating": 1900,
+ "topics": [
+  "strings",
+  "suffix-structures",
+  "greedy",
+  "brute-force"
+ ],
+ "key_idea": "For every length L, group all start positions by their length-L substring (runs in the suffix array with LCP >= L) and count the greedy leftmost non-overlapping occurrences per group in one left-to-right pass.",
+ "sketch": "Cost of choosing t with k maximal non-overlapping occurrences is |t| + n - k(|t|-1); leftmost-greedy gives the max k. Build suffix array (doubling) and Kasai LCP; for each L assign group ids by scanning SA and splitting where lcp<L, then scan positions 0..n-L keeping last-taken end and count per group. O(n^2) total for n=5000, with early exit once no substring of length L repeats without overlap. Pitfalls: occurrences must be non-overlapping, exactly one substring must be chosen so the answer is at most n+1 (a single letter never helps). Stress-tested against a brute force using str.count.",
+ "code_path": "solutions/kattis_karaokecompression.cpp",
+ "samples_passed": true
+}

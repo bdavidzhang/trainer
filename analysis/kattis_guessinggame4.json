@@ -1,0 +1,13 @@
+{
+ "id": "kattis:guessinggame4",
+ "rating": 1900,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "case-analysis"
+ ],
+ "key_idea": "Alan can score at most 2, so either he scores 2 and every friend scores at most 1 (an at-most-one constraint over 7 literals = 21 two-literal clauses, i.e. 2-SAT), or he scores 1 and every friend scores 0 (all friend literals forced false).",
+ "sketch": "One boolean variable per examination (Greenville wins or not), at most 1e5 variables. Case A: force both of Alan's literals true and for each friend add (not x or not y) for all 21 pairs of their literals; solve 2-SAT with an iterative Tarjan SCC (about 2e5 nodes, 2.1M edges). Case B: every friend literal must be false; just assign values and check for conflicts, then see whether either of Alan's literals can still be true. Answer possible if either case works; scoring 0 can never be strictly more. Pitfalls: recursion depth (use iterative SCC), strictness of 'more than', and remembering the 1-vs-0 case. Stress-tested against an exhaustive brute force on small inputs; worst case runs in ~0.2s.",
+ "code_path": "solutions/kattis_guessinggame4.cpp",
+ "samples_passed": true
+}

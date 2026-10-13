@@ -1,0 +1,12 @@
+{
+ "id": "kattis:abstractart",
+ "rating": 2200,
+ "topics": [
+  "geometry",
+  "sweep-line"
+ ],
+ "key_idea": "Area of a union of polygons by Green's theorem: orient every polygon CCW and sum the cross product over only those parts of each edge that are not inside any other polygon.",
+ "sketch": "Paint used is the sum of absolute shoelace areas. For the union, orient polygons CCW; for each edge AB and each other polygon, collect the parameters t where AB crosses that polygon's edges, sort them, and test the midpoint of each sub-interval with ray casting to obtain the intervals of AB covered by that polygon. Merge the covered intervals over all other polygons and add cross(A,B)/2 times the uncovered fraction. Complexity is about (total edges) x n x 20^2, roughly 10^8 simple operations worst case and 0.05 s in practice. The guarantee that no point is touched by more than two border segments rules out shared vertices and collinear overlapping edges, so no tie-breaking for coincident boundaries is needed. Pitfalls: polygons are concave so a per-polygon interval test is required rather than half-plane clipping, and input orientation is arbitrary. Stress-tested against an independent vertical-slab integrator.",
+ "code_path": "solutions/kattis_abstractart.cpp",
+ "samples_passed": true
+}

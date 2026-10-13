@@ -1,0 +1,13 @@
+{
+ "id": "kattis:shreddedbowling",
+ "rating": 1500,
+ "topics": [
+  "brute-force",
+  "dp-bitmask",
+  "implementation"
+ ],
+ "key_idea": "Build the game backwards from the tenth frame: a frame's score depends only on the next two rolls, so DFS over (used mask, next two rolls, score) with memoisation enumerates all reachable totals.",
+ "sketch": "Try each frame as the tenth (an open frame only if the third roll is 0); its score is its two rolls plus the third. Then prepend frames one at a time: a strike adds 10+next two rolls and becomes a single roll, a spare adds 10+next roll, an open frame adds its pins; frames of the form '10 x' with x>0 can only be the tenth. Memoise on (mask, n1, n2, score) as a bitset, at most 1024*121*320 states. Output 'S Yes' or S followed by the nearest lower and higher reachable totals when they exist. The no-match output format is not shown in any sample, so the space-separated form is a guess; only the Yes path was confirmed by samples.",
+ "code_path": "solutions/kattis_shreddedbowling.cpp",
+ "samples_passed": true
+}

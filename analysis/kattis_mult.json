@@ -1,0 +1,11 @@
+{
+ "id": "kattis:mult",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Keep the first number of the current round; the first later number divisible by it ends the round.",
+ "sketch": "Scan the sequence with a variable holding the round's first number (0 = no round open). If no round is open, the current number opens one; otherwise if it is a multiple, print it and close the round. O(n). Pitfall: the number that ends a round is not the start of the next one, and a trailing incomplete round prints nothing.",
+ "code_path": "solutions/kattis_mult.cpp",
+ "samples_passed": true
+}

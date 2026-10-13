@@ -1,0 +1,13 @@
+{
+ "id": "kattis:arcade",
+ "rating": 1900,
+ "topics": [
+  "probability",
+  "linear-algebra",
+  "math"
+ ],
+ "key_idea": "Expected payout satisfies E[i] = p4*v_i + sum p_k E[neighbor_k]; solve this linear system of up to 528 unknowns by Gaussian elimination.",
+ "sketch": "Build the triangular grid neighbours (top-left (r-1,c-1), top-right (r-1,c), bottom-left (r+1,c), bottom-right (r+1,c+1)). BFS from hole 1 over positive-probability moves and keep only reachable holes, since unreachable ones may form non-absorbing cycles that make the matrix singular while the statement's guarantee only covers the ball's actual trajectory. Solve (I-Q)E = p4*v with partial pivoting in long double, O(H^3) ~ 1.5e8 operations. Output E[1]. Simulation or naive value iteration is too slow/inexact because absorption can take ~1e3*H steps.",
+ "code_path": "solutions/kattis_arcade.cpp",
+ "samples_passed": true
+}

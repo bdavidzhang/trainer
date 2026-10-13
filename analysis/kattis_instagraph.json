@@ -1,0 +1,13 @@
+{
+ "id": "kattis:instagraph",
+ "rating": 1200,
+ "topics": [
+  "graphs",
+  "sorting",
+  "hashing"
+ ],
+ "key_idea": "The best group for v is everyone who follows v and is not followed back, so CC(v) is the number of in-edges u->v without the reverse edge v->u.",
+ "sketch": "Encode each edge as u*(n+1)+v, sort, and for each edge binary-search its reverse; count the unreciprocated in-edges per vertex and take the smallest vertex with the maximum. O(M log M) with M up to 1e6, needs fast input and 64-bit keys.",
+ "code_path": "solutions/kattis_instagraph.cpp",
+ "samples_passed": true
+}

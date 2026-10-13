@@ -1,0 +1,13 @@
+{
+ "id": "kattis:artwork",
+ "rating": 1600,
+ "topics": [
+  "dsu",
+  "offline-queries",
+  "implementation"
+ ],
+ "key_idea": "Process the strokes in reverse: removing a stroke only turns cells white, so components can be maintained with a union-find instead of handling splits.",
+ "sketch": "Keep a per-cell cover count over all strokes (each stroke touches at most 1000 cells, 1e7 in total). Build the DSU for the final picture and count components. Going backwards, record the answer, then decrement the counts of the stroke; a cell whose count reaches 0 becomes white: components++ and union with its white neighbours, components-- per successful union. O((nm + q*max(n,m)) alpha). Pitfall: overlapping strokes, hence a count rather than a boolean. Stress-tested against flood fill.",
+ "code_path": "solutions/kattis_artwork.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:sumsquareddigits",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Repeatedly take n mod b, square it and divide by b.",
+ "sketch": "Standard base conversion loop accumulating squared digits. O(log n) per case. Only pitfall: n is a 32-bit unsigned value, so read it into an unsigned or 64-bit type.",
+ "code_path": "solutions/kattis_sumsquareddigits.cpp",
+ "samples_passed": true
+}

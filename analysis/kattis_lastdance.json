@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lastdance",
+ "rating": 1300,
+ "topics": [
+  "implementation",
+  "hashing",
+  "data-structures"
+ ],
+ "key_idea": "Keep last genre per person and a counter per genre; each dance moves one unit between two counters, so total work is the sum of a.",
+ "sketch": "Maintain a hash map person -> last genre and genre -> count. On P s: for each listed person, decrement the count of their old genre (if any and different) and increment s. On Q s: print count[s]. Ids go up to 1e9 so arrays are impossible; I use open-addressing tables of size 2^22 with a touched-slot list so that clearing between up to 1e5 test cases costs only the slots used. O(sum a + sum q) expected, with fast buffered input (about 2e6 tokens). Pitfalls: resetting state per test case without O(table) cost, unordered_map being slow/hackable, and never-danced people counting for no genre. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_lastdance.cpp",
+ "samples_passed": true
+}

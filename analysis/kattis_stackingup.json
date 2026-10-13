@@ -1,0 +1,12 @@
+{
+ "id": "kattis:stackingup",
+ "rating": 1700,
+ "topics": [
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Build the entries bottom to top, each with binary double-and-add (d+ doubles, 1+ increments) which never has more than one temporary above the entry; compensate for future decrements by processing targets from top to bottom and inflating each by the number of '+' executed after it.",
+ "sketch": "Building a value v from a fresh 1 costs floor(log2 v) doublings plus popcount(v)-1 increments, each one '+'; these only decrement entries below, never the entry being built. Going from the top entry down, let P be the number of '+' used by all entries above; the entry must be built to x_i + P, and then its own cost is added to P. Emit programs bottom to top. Inflated values stay below 2^20 (1e6 + ~38000), so each entry costs at most ~77 characters and the total stays under about 62k for n=1000, within the 100000 limit. O(n log x). Pitfall: the cost of an entry depends on its inflated value, so the pass must go top-down. Multiple answers are valid, so the sample checker reports a mismatch on sample 2; samples_passed is set true because my own simulator of the machine confirmed the produced programs yield exactly the target stack (both samples plus 300 random and max-size tests, length <= 100000).",
+ "code_path": "solutions/kattis_stackingup.cpp",
+ "samples_passed": true
+}

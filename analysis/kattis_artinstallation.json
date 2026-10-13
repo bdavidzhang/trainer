@@ -1,0 +1,13 @@
+{
+ "id": "kattis:artinstallation",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Red shortfall can only be covered by RG LEDs and blue shortfall only by GB LEDs; green takes whatever remains of both.",
+ "sketch": "Compute the shortfalls nr, ng, nb as max(0, need - owned). If nr exceeds the RG stock, nb exceeds the GB stock, or ng exceeds the leftovers (rg-nr)+(gb-nb), print -1; otherwise the answer is nr+ng+nb since every missing LED needs exactly one purchase. O(1). Pitfall: surplus of one colour cannot be used for another.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_artinstallation.cpp"
+}

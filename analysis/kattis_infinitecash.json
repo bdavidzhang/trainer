@@ -1,0 +1,13 @@
+{
+ "id": "kattis:infinitecash",
+ "rating": 1700,
+ "topics": [
+  "big-integer",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Money halves every day, so it only survives a pay period if it has at least d bits at the start of it; simulate period by period with x -> (x >> d) + s, which needs only about 1000/d big-number steps.",
+ "sketch": "Work on bit vectors. At the start of a period with x money the first empty day is offset bitlen(x), so if bitlen(x) <= d-1 the answer is base + bitlen(x). Otherwise he reaches payday; if bitlen(s) >= d then every later period starts with at least s and never dies, so print Infinite money!. Else set x = (x >> d) + s, base += d and repeat; x drops to s within about 1001/d + 2 periods so the loop is short. If d has more than about 20 bits it is treated as infinity, since then bitlen(m) <= 1001 < d and the first check answers immediately. Pitfalls: d itself is a 1000-bit number, the day counter is zero indexed, output in binary. Stress-tested against a Python simulation.",
+ "code_path": "solutions/kattis_infinitecash.cpp",
+ "samples_passed": true
+}

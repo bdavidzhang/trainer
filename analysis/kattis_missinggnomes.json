@@ -1,0 +1,12 @@
+{
+ "id": "kattis:missinggnomes",
+ "rating": 900,
+ "topics": [
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Merge the missing numbers in increasing order into the given sequence, emitting every missing number smaller than the next given gnome before it.",
+ "sketch": "Mark the present gnomes, keep a pointer over 1..n, and before each given gnome g print all unmarked numbers below g; print the rest at the end. O(n). Build the output in a buffer for speed.",
+ "code_path": "solutions/kattis_missinggnomes.cpp",
+ "samples_passed": true
+}

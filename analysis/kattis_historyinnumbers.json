@@ -1,0 +1,13 @@
+{
+ "id": "kattis:historyinnumbers",
+ "rating": 2200,
+ "topics": [
+  "segment-tree",
+  "data-structures",
+  "implementation"
+ ],
+ "key_idea": "Make the 'local minima strictly increasing' predicate mergeable: per segment keep end values, first/last non-zero direction, and first/last/ok of the interior valleys; a merge can create at most one new valley at the junction.",
+ "sketch": "Lazy range-add segment tree. Node stores lv, rv, fs (first non-zero step sign), ls (last one), and for valleys that have a strict descent before and ascent after inside the segment: has, first value, last value, ok flag. Merging A,B with d=sign(B.lv-A.rv): a junction valley appears iff A ends descending and (d>0 or d==0 with B starting ascending), value A.rv, or B starts ascending and d<0, value B.lv; concatenate A's valleys, the junction, B's valleys and check strictness at the seams. For a query add the boundary minima: left end if fs==+1, right end if ls==-1 (a constant range is a single minimum, YES). Range add just shifts the four stored values. O((n+m) log n); values reach 3e13 so use 64-bit. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_historyinnumbers.cpp",
+ "samples_passed": true
+}

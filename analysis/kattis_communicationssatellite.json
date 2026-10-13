@@ -1,0 +1,13 @@
+{
+ "id": "kattis:communicationssatellite",
+ "rating": 1500,
+ "topics": [
+  "mst",
+  "geometry",
+  "graphs"
+ ],
+ "key_idea": "The cheapest beam between two dishes lies on the line of centres and has length max(0, dist - r1 - r2); the minimum spanning tree over these weights is the answer, and its edges never cross or occlude a dish.",
+ "sketch": "Build the complete graph on the N<=2000 circles with weight max(0, |c1-c2| - r1 - r2) (touching circles cost 0) and run dense Prim in O(N^2) without storing the edges (4e6 distance evaluations). Sum the tree edges and print with 8 decimals. The non-crossing / non-occluding constraints are not binding: if an MST gap segment passed through a third dish or crossed another beam, a standard exchange argument gives a strictly cheaper connection, so plain MST is valid. Pitfalls: clamp to 0 because of floating error on tangent circles, and use O(N^2) Prim rather than sorting all 2e6 edges.",
+ "code_path": "solutions/kattis_communicationssatellite.cpp",
+ "samples_passed": true
+}

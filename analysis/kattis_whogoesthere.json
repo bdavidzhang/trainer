@@ -1,0 +1,11 @@
+{
+ "id": "kattis:whogoesthere",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate the waves directly; the final partial wave hands leftover spots to schools that still have a team for that wave, in input order.",
+ "sketch": "For wave w=1,2,... count schools with at least w teams. If capacity covers them all, accept and subtract; otherwise give the remaining spots one by one, in registration order, to schools that have a w-th team and stop. O(100*m). Pitfall: the leftover spots only go to schools that still have unaccepted teams, not to the first schools in the list regardless.",
+ "code_path": "solutions/kattis_whogoesthere.cpp",
+ "samples_passed": true
+}

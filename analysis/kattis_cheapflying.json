@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cheapflying",
+ "rating": 1400,
+ "topics": [
+  "interactive",
+  "math",
+  "greedy"
+ ],
+ "key_idea": "Ski rental: postpone buying until the airline money already spent is comparable to the purchase price, so that both 'stop now' and 'continue forever' stay within factor 2 of the offline optimum min(m*a, b+m*c).",
+ "sketch": "If a<=c never buy (airline is always optimal). Otherwise fly the airline k times and buy on flight k+1, with k = max(0, ceil((b+c)/a)-2), the smallest k with (k+2)a >= b+c. Then k*a < b+c-a < b, which gives cost <= 2*m*a and cost <= 2*(b+m*c) for every prefix length m, so an adaptive interactor cannot break it. O(1) per round; flush after each answer. Pitfalls: a=0, buying at most once, the bound must hold after every single flight and not only at the end. The checker cannot judge interactive problems: samples_passed is from my own simulator, which drove the binary on 400 random/edge (a,b,c) and verified cost <= 2*OPT after every prefix up to 10^4 flights.",
+ "code_path": "solutions/kattis_cheapflying.cpp",
+ "samples_passed": true
+}

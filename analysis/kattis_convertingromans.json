@@ -1,0 +1,12 @@
+{
+ "id": "kattis:convertingromans",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "A digit is subtracted iff some strictly larger digit appears anywhere to its right, so scan right-to-left keeping the running maximum.",
+ "sketch": "Scan each numeral from the right, tracking the largest digit value seen so far; add the digit if it is >= that maximum (and update the maximum), otherwise subtract it. O(total length). Pitfalls: results can be negative and reach about 3e8, read lines of up to 3e5 characters, equal digits are added not subtracted.",
+ "code_path": "solutions/kattis_convertingromans.cpp",
+ "samples_passed": true
+}

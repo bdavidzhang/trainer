@@ -1,0 +1,14 @@
+{
+ "id": "kattis:islandurbanism",
+ "rating": 2400,
+ "topics": [
+  "dp-bitmask",
+  "shortest-paths",
+  "graphs",
+  "case-analysis"
+ ],
+ "key_idea": "Villages touch the ring only through their first and last junction, so run Dreyfus-Wagner Steiner DP inside each village on its <=7 terminals plus the exit portal, then combine per-village costs along the ring, where the tree breaks the cycle in exactly one place (one skipped gap between terminal villages, or one village split into an entry part and an exit part).",
+ "sketch": "Per village compute dp[mask][v] over terminals plus the last junction l (<=8 bits, subset merge + Dijkstra per mask). From it: full = tree with all terminals, f and l; Cf / Cl = terminals plus only f / only l; split = min over subsets S of dp[S][f]+dp[T\\S][l]; none = terminals only. Globally: (a) all ring edges used, every village full except one terminal village using split; (b) for each gap between cyclically consecutive terminal villages a,b: leave that gap unused, a uses Cf, b uses Cl, everything else full plus ring edges; (c) if only one village has terminals, also its plain Steiner tree. Complexity sum over villages of 3^8*u + 2^8*Dijkstra, about 0.35 s worst case. Pitfalls: a village with one junction (f=l), terminals that are portals, empty villages cost dist(f,l) when passed through, going around the whole ring can beat staying inside one village, 64-bit sums. Stress-tested against a global Steiner DP on small random instances.",
+ "code_path": "solutions/kattis_islandurbanism.cpp",
+ "samples_passed": true
+}

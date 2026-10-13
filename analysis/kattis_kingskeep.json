@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kingskeep",
+ "rating": 800,
+ "topics": [
+  "brute-force",
+  "geometry"
+ ],
+ "key_idea": "k is only 1000, so try every keep as the residence and sum the distances.",
+ "sketch": "For each candidate keep compute the sum of Euclidean distances to all other keeps with hypot, take the minimum sum and divide by k-1. O(k^2)=1e6 sqrt calls. Print with 9 decimals; double precision is ample. The only trap is dividing by k-1 rather than k.",
+ "code_path": "solutions/kattis_kingskeep.cpp",
+ "samples_passed": true
+}

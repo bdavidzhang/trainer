@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alwaysknowwhereyourtowelis",
+ "rating": 2100,
+ "topics": [
+  "meet-in-the-middle",
+  "binary-search",
+  "two-pointers"
+ ],
+ "key_idea": "Pigeonhole holds on any value range holding more subsets than values, so binary search on the sum: keep the half-range whose subset count exceeds its length, counting subsets with sum <= x by meet-in-the-middle with two pointers.",
+ "sketch": "Split into halves of at most 21 numbers and build each half's 2^21 subset sums already sorted by repeated merging (list and list+a). count(x) = number of pairs A[i]+B[j] <= x by a two-pointer scan in O(2^21). Start with [0, total]: 2^N subsets over at most 2^N-1 values. At each step count the left half; if count > length keep it, else the right half must satisfy the invariant. Ends at a single value with at least two subsets; 0 is never chosen since only the empty set sums to 0. About 42 counts of 4M steps, O(N * 2^(N/2)). Counts reach 2^42 so use 64-bit. Any valid answer is accepted, so the judge samples differ; verified with my own brute-force validator on 300 random small cases (answer has >= 2 subsets and lies in range) and timed at N=42.",
+ "code_path": "solutions/kattis_alwaysknowwhereyourtowelis.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:aroundthetable",
+ "rating": 1500,
+ "topics": [
+  "math",
+  "ad-hoc"
+ ],
+ "key_idea": "Write the players as one cyclic sequence (left queue front-to-back then right queue front-to-back): each hit just shifts a window, so the pairings seen are exactly the pairs at cyclic distance l and l-1 among n=l+r positions.",
+ "sketch": "With cyclic order c, the state is left=c[i..i+l-1], right=the rest; a left hit pairs c[i] with c[i+l], the following right hit pairs c[i+1] with c[i+l], and i advances by one every two hits. So the unordered pairs are those with cyclic difference l or l-1. A difference d gives n pairs, or n/2 if 2d=n. The two classes coincide exactly when l+(l-1)=n, i.e. r=l-1, then count only once. O(1), use 64-bit. Verified against simulation for all l,r<=8.",
+ "code_path": "solutions/kattis_aroundthetable.cpp",
+ "samples_passed": true
+}

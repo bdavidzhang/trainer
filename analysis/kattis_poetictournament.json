@@ -1,0 +1,13 @@
+{
+ "id": "kattis:poetictournament",
+ "rating": 1700,
+ "topics": [
+  "interactive",
+  "data-structures",
+  "sorting"
+ ],
+ "key_idea": "Build a knockout tournament tree (N-1 matches), then repeatedly remove the champion and replay only its root path, about log2 N matches per extra extraction.",
+ "sketch": "Store the tournament in a segment-tree array where each internal node holds the winner of its two children; an empty child means a bye with no query. The root is the maximum; to get the next one, clear the champion's leaf and recompute the nodes on its path to the root, one query per level at most. Total queries are at most N-1 + (K-1)*ceil(log2 N), roughly N + 406, far under 12N+1000. Every reported applicant is the proven maximum of all applicants still in the tree, so the top-K set is uniquely determined by the queries. The sample checker cannot judge this problem: verified with my own interactor on 300 random small cases (answer set, query limit, and that every chosen applicant provably beats every non-chosen one by transitive closure of the queries) plus N=15000,K=30 (15373 queries).",
+ "code_path": "solutions/kattis_poetictournament.cpp",
+ "samples_passed": true
+}

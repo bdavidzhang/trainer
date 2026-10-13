@@ -1,0 +1,13 @@
+{
+ "id": "kattis:antitetris",
+ "rating": 1500,
+ "topics": [
+  "constructive",
+  "implementation",
+  "ad-hoc"
+ ],
+ "key_idea": "Every grid row must be completed by the block, so the grid is forced to be the complement of the rotated block in its bounding box; it works iff the block can fall straight in, i.e. in every column its cells form a run starting from the top row.",
+ "sketch": "Try the 4 rotations of the block; for each check that no column has a filled cell below an empty one. If a rotation passes, print the complement of the bounding box plus one extra fully filled padding column (so no output row is empty of '#' or already full; rows are never full because each bounding-box row contains a block cell). Otherwise impossible. O(4*h*w). Pitfalls: only rotations, no reflections; rotated dimensions swap; a full rectangle block. Multiple answers are accepted so the token checker reports WRONG on samples 1 and 3; samples_passed is from my own validator that drops the block in all rotations/shifts into the printed grid and checks all rows become full (800 random blocks, also cross-checking the impossible verdicts).",
+ "code_path": "solutions/kattis_antitetris.cpp",
+ "samples_passed": true
+}

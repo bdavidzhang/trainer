@@ -1,0 +1,13 @@
+{
+ "id": "kattis:greedyincreasingsubsequences",
+ "rating": 1500,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "data-structures"
+ ],
+ "key_idea": "Each element joins the first round whose current tail is strictly smaller than it, and the tails stay non-increasing by round index, so the round can be found by binary search.",
+ "sketch": "Process the array left to right, keeping the last value of each round. Round j takes an element exactly when it exceeds round j's tail and no earlier round took it, so the element goes to the first round with tail < a_i, or opens a new round. Invariant: tails are non-increasing in round index (the new tail x is <= the previous round's tail and > the old tail), which makes the predicate monotone for binary search. O(n log n); this is the patience-sorting style decomposition. Pitfall: comparison is strict, equal values go to later rounds.",
+ "code_path": "solutions/kattis_greedyincreasingsubsequences.cpp",
+ "samples_passed": true
+}

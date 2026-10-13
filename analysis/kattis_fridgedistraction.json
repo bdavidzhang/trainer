@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fridgedistraction",
+ "rating": 1200,
+ "topics": [
+  "constructive",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "The fridge is a move-to-front list, so at every step any cost from 1 to n is available regardless of history; the minimum count is ceil(t/n).",
+ "sketch": "Each request costs the current position of the item (1..n), and since every position is always occupied, any sequence of k costs in [1,n] is realisable. So k = ceil(t/n); split t into k near-equal parts (each within [1,n]). Simulate the move-to-front list to translate positions into letters. O(k*n). Multiple answers are accepted so the sample checker reports a mismatch; samples_passed is based on my own validator, which simulated the fridge for all n in 1..26 and many t (1..79 plus 9999, 10000, random) and confirmed total time t and count ceil(t/n). Pitfall: cost includes the item itself, and the list order changes after each request.",
+ "code_path": "solutions/kattis_fridgedistraction.cpp",
+ "samples_passed": true
+}

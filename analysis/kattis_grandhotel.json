@@ -1,0 +1,13 @@
+{
+ "id": "kattis:grandhotel",
+ "rating": 2500,
+ "topics": [
+  "constructive",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "In 4D, one-dimensional paths cannot wall anything off, so grow the tree greedily: connect each new room by a path through cells touching no existing tree cell, ending at a cell that touches exactly one non-room tree cell, then delete chords so the path is induced.",
+ "sketch": "Reserve an L1-ball of radius 3 around every unconnected room so earlier paths never come near it. Join the first two rooms by a weighted A* (f=g+3h, Manhattan h) path; then repeatedly take the unconnected room nearest to the connected ones and run weighted A* towards the nearest non-room tree cell, where a candidate cell is rejected if it is in the tree, in a foreign reserved ball, adjacent to a room, or adjacent to >=2 tree cells, and the search stops at the first cell adjacent to exactly one tree cell. Because the search is not exactly shortest, post-process the path by jumping from each kept cell to the furthest path cell adjacent to it, which makes it chordless; all interior cells still touch no old tree cell, so the union stays an induced tree and every room keeps degree 1. Tree cells live in an open-addressing hash on the packed 35-bit coordinate. Total size is about the Steiner-ish sum of distances (<= 100*1600, typically ~15k), runtime ~0.03s. Multiple answers are accepted, so the sample checker cannot judge it: samples_passed is from my own validator (distinct, in bounds, k-1 edges, connected, leaf set == R) on the sample and ~140 random/dense/corner/low-dimensional tests. Pitfall: no formal proof that the search never gets stuck, and the first pair needs a special 'attach to a room' mode.",
+ "code_path": "solutions/kattis_grandhotel.cpp",
+ "samples_passed": true
+}

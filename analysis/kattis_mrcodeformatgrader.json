@@ -1,0 +1,11 @@
+{
+ "id": "kattis:mrcodeformatgrader",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Mark the error lines, split 1..C into the two lists, and compress each into maximal consecutive runs with the required separators.",
+ "sketch": "Build a boolean array of bad lines, collect error and correct line numbers, then group each sorted list into maximal runs printed as 'a' or 'a-b'. Join items with ', ' except that the last item is joined with ' and ' (no comma). O(C). Pitfalls: a single-item list has no separator, a two-item list uses only ' and ', and runs of length one must not print a hyphen.",
+ "code_path": "solutions/kattis_mrcodeformatgrader.cpp",
+ "samples_passed": true
+}

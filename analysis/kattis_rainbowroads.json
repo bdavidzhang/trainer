@@ -1,0 +1,13 @@
+{
+ "id": "kattis:rainbowroads",
+ "rating": 1900,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "prefix-sums"
+ ],
+ "key_idea": "A node is bad iff some node u has two same-coloured incident edges to x and y and the node lies in the component behind x or behind y; each such component is a subtree or a subtree complement, i.e. Euler tour ranges.",
+ "sketch": "Root the tree and compute tin/tout with an iterative DFS. For every node sort incident edges by colour; for each colour group of size at least 2, mark for every neighbour x in the group the side of edge (u,x) away from u: the range [tin x, tout x] if x is a child, or everything outside u's subtree if x is the parent. Use a difference array over Euler positions and output nodes with zero coverage. O(n log n). Pitfalls: u itself and its other branches stay good for that pair, recursion depth up to 50000, and n=1 prints the single node. Stress-tested against a per-root brute force.",
+ "code_path": "solutions/kattis_rainbowroads.cpp",
+ "samples_passed": true
+}

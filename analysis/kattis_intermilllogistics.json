@@ -1,0 +1,14 @@
+{
+ "id": "kattis:intermilllogistics",
+ "rating": 1400,
+ "topics": [
+  "sorting",
+  "greedy",
+  "math",
+  "prefix-sums"
+ ],
+ "key_idea": "By time T mill i can return p_i*max(0, T-2t_i) wheat; the answer is the root of this convex piecewise-linear function, which equals the minimum over prefixes (sorted by t) of (w + 2*sum p t)/sum p.",
+ "sketch": "Sort mills by travel time. If exactly the first k mills are used, capacity is sum p_i (T-2t_i) = w, so T_k = (w + 2*sum p_i t_i)/sum p_i. Since the true capacity function dominates the linear function of any subset, the answer is min over k of T_k, computed with prefix sums in O(n log n). Binary search on T also works. Pitfall: sum p*t reaches 1e23, so use long double (or __int128) rather than 64-bit integers, and print enough digits. Stress-tested against a binary search.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_intermilllogistics.cpp"
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:newmaths",
+ "rating": 1900,
+ "topics": [
+  "number-theory",
+  "math",
+  "constructive"
+ ],
+ "key_idea": "Carryless squaring is polynomial squaring over Z/10; by CRT solve it mod 2 (where a(x)^2 = sum a_i x^(2i), so a_i = c_2i mod 2) and mod 5 (a field: polynomial square root is unique up to sign), then combine digitwise.",
+ "sketch": "N must have odd length 2m+1 (top digit a_m^2 mod 10 is nonzero), else -1. Mod 2 the digits' parities are forced. Mod 5: find the lowest nonzero coefficient c_2j (must be at an even index and a quadratic residue 1 or 4), pick either root for q_j, then each further q_{j+k} is forced by solving 2*q_j*q_{j+k} + known = c_{2j+k}. That yields at most 2 candidates; combine each with the parity vector by CRT, verify by re-squaring in full (this handles the odd-index and high-half constraints), output the smaller. O(len^2). A naive digit DFS blows up when the leading/trailing digit is 5 or 0 because 2*5*x is always 0 mod 10. Stress-tested against a brute force over all a < 1e5.",
+ "code_path": "solutions/kattis_newmaths.cpp",
+ "samples_passed": true
+}

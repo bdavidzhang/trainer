@@ -1,0 +1,13 @@
+{
+ "id": "kattis:meetingfreefridays",
+ "rating": 1600,
+ "topics": [
+  "dp",
+  "sorting",
+  "binary-search"
+ ],
+ "key_idea": "Weighted interval scheduling with the roles swapped: dp over (prefix of meetings sorted by end, number attended) storing the minimum total busy time, then take the largest count whose minimum is <= t-k.",
+ "sketch": "Sort meetings by end time. dp[i][j] = minimum total length of j pairwise disjoint meetings among the first i; dp[i][j] = min(dp[i-1][j], dp[p_i][j-1] + len_i), where p_i is the number of meetings with end <= start_i (binary search; touching endpoints are allowed). The answer is the largest j with dp[n][j] <= t-k. O(n^2) time and memory with n=5000 (25M ints, ~100MB, fine under 1GB; rows are stored only up to their reachable count). Pitfalls: a greedy by earliest end is wrong because the constraint is on total length, and the INF sentinel plus a length must not overflow int. Stress-tested against subset brute force.",
+ "code_path": "solutions/kattis_meetingfreefridays.cpp",
+ "samples_passed": true
+}

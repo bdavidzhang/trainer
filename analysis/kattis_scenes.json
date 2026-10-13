@@ -1,0 +1,13 @@
+{
+ "id": "kattis:scenes",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "prefix-sums",
+  "combinatorics"
+ ],
+ "key_idea": "Count all height sequences in [0,h]^w with total at most n by a bounded knapsack DP, then subtract the flat scenes.",
+ "sketch": "Cap n at w*h. dp[j] = number of ways for the columns so far to use exactly j inches; each new column adds 0..h, done with prefix sums in O(n) per column, O(w*n) = 1e6 total. Sum dp[0..n] and subtract the number of plains, min(h, n/w)+1 (every equal height including zero). Pitfalls: the all-zero scene is a plain too, and take the result modulo 1e9+7 without going negative.",
+ "code_path": "solutions/kattis_scenes.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:yinyangstones",
+ "rating": 900,
+ "topics": [
+  "ad-hoc",
+  "math"
+ ],
+ "key_idea": "Each operation preserves (#black - #white), and the target has difference 0, so the answer is simply whether the counts are equal.",
+ "sketch": "Replacing a segment with one more black than white by a single black stone removes equally many of each colour, so the difference B-W is invariant; the final state B=W=1 needs B==W. Conversely with equal counts on a circle you can always find an adjacent BW pair with a neighbour to shrink (e.g. BWB -> B) until two stones remain. Count the letters and print 1 or 0, O(n).",
+ "code_path": "solutions/kattis_yinyangstones.cpp",
+ "samples_passed": true
+}

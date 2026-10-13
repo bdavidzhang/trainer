@@ -1,0 +1,14 @@
+{
+ "id": "kattis:rankedchoicespoiling",
+ "rating": 2200,
+ "topics": [
+  "brute-force",
+  "case-analysis",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Only whether Z is ranked first matters: any ballot with Z in the middle is dominated by putting Z first, and stealing an A-first ballot is dominated by stealing an X-then-A ballot, so for each choice of the first eliminated candidate X the state reduces to three counters that can be enumerated.",
+ "sketch": "Either Z is eliminated first (then the original election decides) or some X in {B,C} is; let Y be the other. Enumerate t = number of Z-first ballots taken from X>A voters and, only once those are exhausted, from A-first voters; b = taken from X>Y voters; c = taken from Y-first voters (the two Y types are interchangeable). Round tallies are closed formulas: check X is eliminated in round 1 with the exact tie rule (lexicographically last among the minima goes), then eliminate Y or Z in round 2; if Y goes, A needs n-Z >= Z, if Z goes A needs to win the original A-vs-Y pairwise count. Running to the last survivor is equivalent to the majority rule. k=2 is handled by treating C as a zero-vote candidate. At most about 6.4e7 O(1) iterations, 50 ms in practice. Pitfall is the tie-breaking in every round (A wins all ties, Z loses all). Verified against exhaustive placement of Z on 1500 random elections with n<=7.",
+ "code_path": "solutions/kattis_rankedchoicespoiling.cpp",
+ "samples_passed": true
+}

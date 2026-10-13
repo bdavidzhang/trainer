@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gearsandaxles",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Gears only mesh within the same tooth size, and each size class contributes independently: pair largest with smallest counts, summing log ratios.",
+ "sketch": "Group gears by tooth size s. Within a group sort tooth counts; each meshed pair (driver big, driven small) multiplies speed by big/small, and pairs from different groups chain through shared axles, so the total is the product of all pair ratios. Maximising the product means the top floor(k/2) counts go in numerators and the bottom floor(k/2) in denominators (the middle one is unused when k is odd). Sum log(big)-log(small). O(n log n). Pitfalls: n=0 gives 0; accumulate logs rather than the product.",
+ "code_path": "solutions/kattis_gearsandaxles.cpp",
+ "samples_passed": true
+}

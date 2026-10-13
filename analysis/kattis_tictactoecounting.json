@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tictactoecounting",
+ "rating": 1300,
+ "topics": [
+  "search-backtracking",
+  "dp",
+  "implementation"
+ ],
+ "key_idea": "There are only 3^9 boards; one DFS from the empty board that stops at wins marks exactly the reachable positions and memoizes (X-wins, O-wins) counts for each.",
+ "sketch": "Encode the board in base 3. DFS from the empty board with X to move; at a board with a winner store (1,0) or (0,1) and do not expand; otherwise sum the children's counts over all empty cells (a full board without winner gives 0 0). Memoize by code, so the whole table costs under 20k states. Each query is a table lookup: unvisited code means unreachable -> -1 -1. Pitfalls: reachability must come from the real game tree (move counts, no play after a win), not from ad-hoc checks; the turn is implied by the board so memoizing by board alone is safe.",
+ "code_path": "solutions/kattis_tictactoecounting.cpp",
+ "samples_passed": true
+}

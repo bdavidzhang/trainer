@@ -1,0 +1,14 @@
+{
+ "id": "kattis:idontmisspennies",
+ "rating": 1600,
+ "topics": [
+  "math",
+  "greedy",
+  "dp",
+  "case-analysis"
+ ],
+ "key_idea": "Only residues mod 5 matter; a group saves the centered residue of its sum (0,1,2,-2,-1). Items with residue 1 or 2 are never worse bought alone, residue 0 is free, so only the 3s and 4s need grouping.",
+ "sketch": "Show f(g+1)<=f(g)+1 and f(g+2)<=f(g)+2, so residue-1/2 items are singletons contributing 1 and 2. For a threes and b fours the good groups are (3,4)->+2, (4,4,4)->+2, (3,3)->+1; peel (3,4) pairs until min(a,b)<=8, then (3,3) pairs or (4,4,4) triples until both counts are <=16, and finish with an exact DP over all group shapes on the 17x17 table. O(n + const). Pitfall: the answer can be negative (two 4s cost 2 either way), and pure greedy on the leftovers is wrong, hence the small DP. Stress-tested against set-partition brute force and a 45x45 full DP.",
+ "code_path": "solutions/kattis_idontmisspennies.cpp",
+ "samples_passed": true
+}

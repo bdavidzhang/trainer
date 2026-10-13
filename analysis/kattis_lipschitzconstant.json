@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lipschitzconstant",
+ "rating": 1200,
+ "topics": [
+  "sorting",
+  "math",
+  "greedy"
+ ],
+ "key_idea": "The maximum slope over all pairs is always attained by two points adjacent in x-order, since a chord's slope is a weighted average of the adjacent slopes it spans.",
+ "sketch": "Sort the points by x and take the maximum of |z[i+1]-z[i]| / (x[i+1]-x[i]) over adjacent pairs; O(n log n). x differences reach 2e9 so keep them in 64-bit, and use long double for the division; print with enough digits for the 1e-4 absolute tolerance. Stress test not needed beyond samples; all three samples pass.",
+ "code_path": "solutions/kattis_lipschitzconstant.cpp",
+ "samples_passed": true
+}

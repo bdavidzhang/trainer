@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triptych",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "combinatorics",
+  "palindromes"
+ ],
+ "key_idea": "Count all valid strings with a DP over (count of A, count of B, last letter and B-run), then subtract valid palindromes counted by running the same DP on the first half and fixing the middle.",
+ "sketch": "DP state is (a, b, last in {none, A, C, B once, B twice}); c is implied by the length, and the balance test is applied at the end. A palindrome of even length needs its two middle letters equal, so they must be BB and the half must end in exactly one B, with all counts doubled. For odd length try each middle letter: A or C must differ from the half's last letter, B requires the half not to end in B (else BBB). Complexity is O(w^3) states. Counts overflow 64-bit in intermediate sums for w = 52, so use __int128 and print it by hand. Verified against brute force for all w <= 11, d <= 3.",
+ "code_path": "solutions/kattis_triptych.cpp",
+ "samples_passed": true
+}

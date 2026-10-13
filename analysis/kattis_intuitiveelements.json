@@ -1,0 +1,12 @@
+{
+ "id": "kattis:intuitiveelements",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Check that every character of the abbreviation occurs somewhere in the name; multiplicity and order do not matter.",
+ "sketch": "For each test case test set membership of each letter of b in a and print YES or NO. O(|a|*|b|) per case, trivially fast.",
+ "code_path": "solutions/kattis_intuitiveelements.cpp",
+ "samples_passed": true
+}

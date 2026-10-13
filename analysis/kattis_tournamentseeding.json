@@ -1,0 +1,13 @@
+{
+ "id": "kattis:tournamentseeding",
+ "rating": 1500,
+ "topics": [
+  "greedy",
+  "sorting",
+  "matching"
+ ],
+ "key_idea": "The constraint forces players ranked 2^(j-1)+1..2^j to each lose to a distinct top-2^(j-1) player, so each round is an independent bipartite matching with a threshold structure solvable greedily.",
+ "sketch": "Sort ratings descending. In the round with 2^j players, the top half A must each beat exactly one player from the next block B of the same size, and any choice of perfect matchings per round is realisable as a bracket, so rounds are independent. A pair is close iff a-b<=k, and every b is below every a, so the set of acceptable b grows as a shrinks. Greedy: scan A from largest (most restrictive) with a pointer at the largest unused b; if close, count it and advance the pointer, else that a gets no close game. Sum over all rounds, O(N log N) for N=2^18. Verified against a permutation brute force for n<=3.",
+ "code_path": "solutions/kattis_tournamentseeding.cpp",
+ "samples_passed": true
+}

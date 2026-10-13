@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cram",
+ "rating": 1900,
+ "topics": [
+  "strings",
+  "suffix-structures",
+  "dp"
+ ],
+ "key_idea": "dp over prefixes is monotone, so for each end position only the longest suffix that already occurs starting earlier matters, and that length falls out of the suffix automaton extension loop for free.",
+ "sketch": "dp[i] = min(dp[i-1]+1, dp[i-M[i]]+3), where M[i] is the length of the longest suffix of s[0..i) that occurs as a substring of s[0..i-1) (overlap with itself is allowed, the source just has to start earlier). Because dp is non-decreasing, using the longest back-reference ending at i is optimal. While extending the suffix automaton with s[i-1], the walk up suffix links from the last state stops at the first state p having a transition on that character, and M[i] = len[p]+1 (0 if the walk falls off the root). O(n * 53) memory for transitions with alphabet upper+lower+space, O(n) time. Pitfalls: read the whole line with spaces, and a back-reference only pays off when it covers at least 4 characters, which the dp handles automatically. Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_cram.cpp",
+ "samples_passed": true
+}

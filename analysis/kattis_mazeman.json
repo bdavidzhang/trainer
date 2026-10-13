@@ -1,0 +1,13 @@
+{
+ "id": "kattis:mazeman",
+ "rating": 1200,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Every entrance on the border touches at most one interior cell, hence one connected region, so the answer is the number of regions containing a dot that touch an entrance, and unreachable dots are those in regions touching none.",
+ "sketch": "Read the grid with getline because rows contain spaces (pad short rows in case trailing spaces were stripped). Flood fill the interior non-X cells (space or dot) into components, counting dots per component and marking a component as enterable if any of its cells is adjacent to a border letter A-W. Players = enterable components with at least one dot; unreachable = total dots in non-enterable components. Never walk through border cells, which enforces that adjacent doors do not connect, and X on the border is a wall, not an entrance. O(nm).",
+ "code_path": "solutions/kattis_mazeman.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cordonbleu",
+ "rating": 2100,
+ "topics": [
+  "matching",
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "Each courier's first bottle costs dist(courier,bottle)+dist(bottle,restaurant) and every later bottle costs 2*dist(bottle,restaurant), so it is an assignment problem after adding N-1 dummy couriers standing at the restaurant.",
+ "sketch": "Rows are the N bottles, columns are the M real couriers followed by N-1 dummy columns with cost 2*d(bottle,R); a real courier column can be used at most once (its first pickup), and having only N-1 dummies forces at least one bottle to be fetched by a real courier, which is required because somebody has to start. Solve min-cost perfect matching of rows with the Hungarian algorithm with potentials, O(N^2*(N+M)), worst case about 2e9 trivial steps in theory but 0.6 s on adversarial-looking tests. Pitfalls: forgetting the 'at least one real courier' constraint (using N dummies gives a too-small answer when all couriers are far), and duplicate coordinates are fine. Checked against exhaustive assignment on small cases.",
+ "code_path": "solutions/kattis_cordonbleu.cpp",
+ "samples_passed": true
+}

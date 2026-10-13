@@ -1,0 +1,14 @@
+{
+ "id": "kattis:compressingcommands",
+ "rating": 1600,
+ "topics": [
+  "trees",
+  "strings",
+  "trie-aho-corasick",
+  "dp-tree"
+ ],
+ "key_idea": "Build a trie of the paths and reroot: moving the working directory into child directory c changes the cost by n - 2*cnt(c), where cnt(c) is the number of paths below c.",
+ "sketch": "Cost at the root is the total number of components. Insert the raw strings into a character trie with '/' as a 27th symbol; a node reached via '/' represents a directory and its pass-through count is cnt for that directory, which automatically excludes file nodes as working directories. Since children have larger indices than parents, one index-order pass propagates val[child dir] = val[parent dir] + n - 2*cnt and the minimum is the answer. O(total length) time, about 110 MB for 1e6 nodes with 27-way arrays. Pitfalls: only directories (not files) are allowed, duplicate paths count separately, use 64-bit for the cost.",
+ "code_path": "solutions/kattis_compressingcommands.cpp",
+ "samples_passed": true
+}

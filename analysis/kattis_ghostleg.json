@@ -1,0 +1,11 @@
+{
+ "id": "kattis:ghostleg",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Each rung between lines a and a+1 swaps the elements currently travelling on those two lines.",
+ "sketch": "Keep an array pos[i] = element currently on vertical line i, initially the identity, and for each rung from top to bottom swap pos[a] and pos[a+1]. Print the array at the end, which lists the element ending in each position. O(n+m). The only pitfall is the output direction: print which element lands in each slot, not where each element goes.",
+ "code_path": "solutions/kattis_ghostleg.cpp",
+ "samples_passed": true
+}

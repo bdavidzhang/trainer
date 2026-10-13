@@ -1,0 +1,13 @@
+{
+ "id": "kattis:landequality",
+ "rating": 1600,
+ "topics": [
+  "case-analysis",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Only the count of zeros matters: with >=2 zeros the answer is 0, with one zero the nonzero piece should be a single cell (1 if any 1 exists, else 2), with no zeros split the twos as evenly as possible; a snake path through a 2D grid makes every split of the twos achievable.",
+ "sketch": "If r==1 or c==1 the land is a line, so just try all n-1 prefix cuts and compare products (0 or 2^k, kept as unsigned 64-bit; a side has at most 63 cells). Otherwise the grid is 2-connected: two zeros can always be separated by a straight cut (answer 0); with one zero, cut off any single 1-cell (answer 1) or, if none, a single 2-cell (answer 2); with no zeros, a boustrophedon Hamiltonian path gives prefixes with any number of twos, so the answer is 2^ceil(T/2) - 2^floor(T/2). O(rc). Pitfalls: the 1D case really is different (sample 3: 2 0 2 gives 2), and products reach 2^63 so use unsigned 64-bit. Stress-tested against subset enumeration on grids up to 4x4.",
+ "code_path": "solutions/kattis_landequality.cpp",
+ "samples_passed": true
+}

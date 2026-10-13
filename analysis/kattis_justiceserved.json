@@ -1,0 +1,14 @@
+{
+ "id": "kattis:justiceserved",
+ "rating": 1700,
+ "topics": [
+  "sorting",
+  "fenwick",
+  "data-structures",
+  "dp"
+ ],
+ "key_idea": "Sort by start ascending and, on ties, by end descending; then every interval containing the current one has already been processed, and it only needs max convincingness among processed intervals with end >= its end.",
+ "sketch": "Compress end points (a+t) and keep a Fenwick tree for prefix maximum over reversed end coordinates (i.e. suffix max over ends), initialised to -1. Process in sorted order: ans = 1 + query(end >= my end), then update at my end. O(n log n). Pitfalls: tie-breaking on equal starts (longer first) and equal ends with earlier start (naturally handled by start order); ends reach 2e9 so use 64-bit; output in input order. Stress-tested against a memoised brute force.",
+ "code_path": "solutions/kattis_justiceserved.cpp",
+ "samples_passed": true
+}

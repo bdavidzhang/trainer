@@ -1,0 +1,12 @@
+{
+ "id": "kattis:neutralground",
+ "rating": 1800,
+ "topics": [
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "It is a minimum vertex cut between the A cells and the B cells, solved by splitting every cell into in/out nodes with capacity equal to its digit.",
+ "sketch": "Split each cell into in->out with capacity equal to the digit (infinite for A and B cells), add infinite edges from out of a cell to in of each 4-neighbour, connect source to every A and every B to sink with infinite capacity, and run Dinic. The max flow is the answer; at most 3200 nodes and about 16k edges, flow value at most 9*1600. Pitfalls: a 0 cell has capacity 0 (already impassable), input gives width before height, and the cut must be on vertices rather than edges.",
+ "code_path": "solutions/kattis_neutralground.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:islands3",
+ "rating": 900,
+ "topics": [
+  "bfs-dfs",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Treat every cloud as land when it helps: flood fill from each unvisited L through both L and C cells and count the fills.",
+ "sketch": "Turning a cloud into land never increases the number of islands as long as it is only used to connect real land, so the minimum equals the number of connected components of the L+C graph that contain at least one L. Start a DFS only from L cells, marking L and C visited. O(rc) with a 50x50 grid. Pitfall: all-cloud components count zero.",
+ "code_path": "solutions/kattis_islands3.cpp",
+ "samples_passed": true
+}

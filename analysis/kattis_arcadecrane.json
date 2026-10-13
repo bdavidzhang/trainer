@@ -1,0 +1,13 @@
+{
+ "id": "kattis:arcadecrane",
+ "rating": 2000,
+ "topics": [
+  "constructive",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "Moving a triple that starts at the wanted element straight to its target fixes one element per move (two if it sits in the last two slots), and the short unsorted tail is finished by BFS over permutations of the last 8 positions.",
+ "sketch": "For target index t=0..n-9: if value t+1 is at p<=n-3 grab (p,p+1,p+2) and insert at t; otherwise grab the triple ending at p, drop it at t, then move the triple starting at t+2 to t. That is at most 2 moves per element (<2000 total). The last min(n,8) elements are solved by BFS over at most 8!=40320 states with 36 moves each, operating only inside the tail window; all states are reachable since a triple shift by one position is an odd permutation. O(n^2) simulation plus the BFS. Pitfalls: indices are 1-based and j is the position after re-insertion (erase then insert at j). Output is not unique, so I validated with my own simulator: all permutations for n=5,6 and random n up to 1000, max 1328 moves.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_arcadecrane.cpp"
+}

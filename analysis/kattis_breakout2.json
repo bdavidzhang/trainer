@@ -1,0 +1,12 @@
+{
+ "id": "kattis:breakout2",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "On a cycle there are only two routes from room 1 to room x; count the crates on each.",
+ "sketch": "A crate at r lies on the clockwise route 1->x iff r<x, otherwise on the counterclockwise route. Count both (duplicates count separately) and print the minimum. If x=1 the clockwise count is 0. O(m).",
+ "code_path": "solutions/kattis_breakout2.cpp",
+ "samples_passed": true
+}

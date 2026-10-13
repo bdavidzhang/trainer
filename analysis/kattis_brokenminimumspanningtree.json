@@ -1,0 +1,14 @@
+{
+ "id": "kattis:brokenminimumspanningtree",
+ "rating": 1900,
+ "topics": [
+  "mst",
+  "graphs",
+  "greedy",
+  "constructive"
+ ],
+ "key_idea": "Run Kruskal breaking weight ties in favour of Ethan's edges: that yields the MST sharing the most edges with his tree, and the number of MST edges outside his tree is the minimum swap count; each such edge can be swapped in against a non-MST edge on the cycle it closes.",
+ "sketch": "Stable-sort edges by weight (input order puts the first n-1 tree edges first among equals) and run Kruskal with DSU to get target MST M maximising |M ∩ T| (matroid tie-breaking argument). The answer is |M \\ T|, a lower bound since each swap adds one edge. For each edge e in M \\ T, DFS in the current tree from one endpoint to the other, pick any path edge not in M (one must exist because M is acyclic), remove it and add e; the tree stays spanning after every swap. O(m log m + k*n) with k<n<=2000. Multiple valid outputs: verified with my own validator (swap legality, spanning tree after each step, final weight minimal) plus a brute force over all spanning trees for the minimal count on random small multigraphs.",
+ "code_path": "solutions/kattis_brokenminimumspanningtree.cpp",
+ "samples_passed": true
+}

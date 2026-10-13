@@ -1,0 +1,13 @@
+{
+ "id": "kattis:crazedboar",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "sorting",
+  "sweep-line"
+ ],
+ "key_idea": "Inflate each tree by the boar radius so the boar is a point moving along a segment of length d; each tree then blocks one angular interval, and the answer is the uncovered fraction of the circle.",
+ "sketch": "With R=r+b and D the centre distance: the tree is irrelevant if d+R <= D (checked in exact integers). If d reaches the tangent point (d^2 >= D^2-R^2) the half-width is asin(R/D); otherwise the limiting ray ends on the inflated circle and the half-width is acos((d^2+D^2-R^2)/(2dD)) by the law of cosines. Centre the interval on atan2(y,x), split intervals crossing +-pi, sort and take the union length; answer 1 - union/(2pi). O(n log n) with long double. Pitfalls: d=0, the two regimes of the half-angle, wrap-around, clamping acos/asin arguments. Checked against an angular sampling brute.",
+ "code_path": "solutions/kattis_crazedboar.cpp",
+ "samples_passed": true
+}

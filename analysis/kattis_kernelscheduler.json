@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kernelscheduler",
+ "rating": 1300,
+ "topics": [
+  "constructive",
+  "graphs"
+ ],
+ "key_idea": "Split the edges into those with a<b and those with a>b: each class is acyclic by itself, and the larger one has at least m/2 edges, so the answer is always YES.",
+ "sketch": "Edges going from a smaller to a larger label respect the identity order, so they can never form a cycle; the same holds for the decreasing edges with the reversed order. Output the larger class with its 1-based indices. O(m). Multiple answers are valid; the output is acyclic by construction and of size >= ceil(m/2), and it happened to match all three sample outputs exactly. Pitfall: NO never occurs, and duplicate edges are simply kept.",
+ "code_path": "solutions/kattis_kernelscheduler.cpp",
+ "samples_passed": true
+}

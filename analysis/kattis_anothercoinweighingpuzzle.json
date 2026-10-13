@@ -1,0 +1,13 @@
+{
+ "id": "kattis:anothercoinweighingpuzzle",
+ "rating": 2100,
+ "topics": [
+  "number-theory",
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "Each bag is described by a vector in [-k,k]^m (net coins left minus right per weighing); the scale reveals that vector only up to an unknown positive factor, so bags must have pairwise non-proportional vectors: count primitive vectors (gcd 1) plus the zero vector.",
+ "sketch": "Since the weight difference is unknown, two bags are distinguishable iff their vectors are not positive multiples of each other, so the maximum is 1 + #{v in [-k,k]^m, v != 0, gcd(v)=1}; the balance requirement is met because v and -v are both primitive. By Mobius inversion the answer is 1 + sum_{d=1..k} mu(d) * ((2*floor(k/d)+1)^m - 1). Linear sieve for mu and a modpow per d gives O(k log m). Pitfalls: remember the zero vector (the bag never weighed), and keep the subtraction non-negative mod p.",
+ "code_path": "solutions/kattis_anothercoinweighingpuzzle.cpp",
+ "samples_passed": true
+}

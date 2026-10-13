@@ -1,0 +1,13 @@
+{
+ "id": "kattis:treehopping",
+ "rating": 1200,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "lca"
+ ],
+ "key_idea": "Distance <= 3 can be checked by naively climbing the deeper endpoint toward the LCA for at most 3 steps using parent and depth arrays.",
+ "sketch": "BFS from node 1 to get parent and depth (iterative, a path tree would overflow recursion). For each adjacent pair in the permutation, repeatedly move the deeper node to its parent, counting steps, stopping after more than 3 steps or when the nodes meet; the pair is valid iff they meet within 3 moves. O(n) per test, sum n <= 1e5. Pitfall: many test cases, so allocate per test proportional to n.",
+ "code_path": "solutions/kattis_treehopping.cpp",
+ "samples_passed": true
+}

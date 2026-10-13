@@ -1,0 +1,14 @@
+{
+ "id": "kattis:investmentinvestigation",
+ "rating": 1700,
+ "topics": [
+  "data-structures",
+  "heap",
+  "fenwick",
+  "implementation"
+ ],
+ "key_idea": "Simulate the book with two priority queues keyed by (price, age), and answer the fill-or-kill feasibility test with a Fenwick tree of outstanding volume over compressed prices.",
+ "sketch": "Compress prices; keep one BIT of resting sell volume and one of resting buy volume. A FoK buy is accepted iff sell volume at price <= p is at least a (prefix sum); a FoK sell iff buy volume at price >= p is at least a (total minus prefix). Accepted orders are pushed into the book and the generic loop matches lowest sell against highest buy while they cross, each trade finishing at least one order, so there are at most about n trades. O(n log n). Pitfalls: volumes sum to 1e14 so use 64-bit, ties go to the older order, and BIT updates must follow every partial fill. Verified against a naive simulator on random small cases.",
+ "code_path": "solutions/kattis_investmentinvestigation.cpp",
+ "samples_passed": true
+}

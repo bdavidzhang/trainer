@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bustlingbusride",
+ "rating": 2000,
+ "topics": [
+  "binary-search",
+  "greedy",
+  "fenwick"
+ ],
+ "key_idea": "Binary search the finishing time; for a fixed limit each bus greedily takes the longest prefix of the queue that still finishes in time (cost is monotone under adding people), and the cost of a group can be maintained incrementally with Fenwick trees over stops.",
+ "sketch": "Bus j leaves at j*r and its cost is w*(size + sum over distinct destination stops x of (#riders with dest>=x + #riders with dest>x)) + dist(max dest). Adding a rider with destination t: if t is already a stop it adds 2*(#distinct stops<=t); otherwise it adds 2*(#distinct stops<t)+2 for himself plus 2 for every rider already on board going beyond t. Keep one BIT of distinct stops and one of rider counts, undo the group after each bus. If a bus cannot take even one rider the limit is infeasible. O(n log b log(answer)), about 0.4 s. Upper bound (n-1)*r+2w+sum d fits in 64 bits; break as soon as the limit is exceeded to avoid overflow. Stress-tested against brute force over all partitions with direct simulation.",
+ "code_path": "solutions/kattis_bustlingbusride.cpp",
+ "samples_passed": true
+}

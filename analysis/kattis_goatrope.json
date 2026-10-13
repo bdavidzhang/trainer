@@ -1,0 +1,12 @@
+{
+ "id": "kattis:goatrope",
+ "rating": 800,
+ "topics": [
+  "geometry",
+  "math"
+ ],
+ "key_idea": "Distance from a point to an axis-aligned rectangle is the norm of the per-axis clamped offsets.",
+ "sketch": "Compute dx = max(x1-x, 0, x-x2) and dy = max(y1-y, 0, y-y2), then print sqrt(dx^2+dy^2). This covers both the side case (one offset zero) and the corner case in one formula. O(1); print with enough decimals.",
+ "code_path": "solutions/kattis_goatrope.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:fairshare",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Person i can pay iff sum(b) - (sum(a) - a_i) <= b_i; just test everyone.",
+ "sketch": "Compute the totals A and B once, then scan for any i with B-A+a_i<=b_i and print it, else impossible. O(n). Any valid index is accepted; printing the first one matched all samples.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_fairshare.cpp"
+}

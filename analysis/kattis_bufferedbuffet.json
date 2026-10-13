@@ -1,0 +1,13 @@
+{
+ "id": "kattis:bufferedbuffet",
+ "rating": 1300,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Neighbours i,j need distance max(d_i,d_j); seating people in sorted order makes every value pay once and the maximum twice, which matches the lower bound.",
+ "sketch": "The circumference is the sum over the n adjacent pairs of max(d_i,d_j). The k largest people touch at least k+1 edges, giving the lower bound sum(d) - min(d) + max(d), achieved by seating in sorted order around the circle. So answer = (sum of all but the smallest) + largest. O(n log n). Pitfalls: 64-bit sum (1e5 * 1e9), and n=2 where both arcs must be at least the larger value, which the formula already handles.",
+ "code_path": "solutions/kattis_bufferedbuffet.cpp",
+ "samples_passed": true
+}

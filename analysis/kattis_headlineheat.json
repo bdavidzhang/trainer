@@ -1,0 +1,14 @@
+{
+ "id": "kattis:headlineheat",
+ "rating": 1900,
+ "topics": [
+  "trie-aho-corasick",
+  "hashing",
+  "strings",
+  "randomized"
+ ],
+ "key_idea": "An article is fine iff cnt[u]==cnt[v] for every rivalry. Give each edge a random 64-bit value r_e, add +r_e to u's name and -r_e to v's name, and the Aho-Corasick weighted occurrence sum of an article is zero iff all rival counts match (w.h.p.).",
+ "sketch": "Build an Aho-Corasick automaton over 27 symbols (letters plus space) from all names. Each name's weight is the signed sum of the random values of its incident edges (mod 2^64); push weights down the failure links in BFS order so val[state] is the total weight of all names ending at that state. For an article, walk the automaton and add val[state] at every position; the sum equals sum_e r_e*(cnt_u - cnt_v), so print yes iff it is 0. Total O(27*sum|names| + sum|articles|). Pitfalls: names contain spaces so read with getline, duplicate names share a node (fine), and counting occurrences explicitly per article would be too slow because names nest. Stress-tested against a brute force.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_headlineheat.cpp"
+}

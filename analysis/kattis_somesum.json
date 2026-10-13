@@ -1,0 +1,12 @@
+{
+ "id": "kattis:somesum",
+ "rating": 800,
+ "topics": [
+  "math",
+  "case-analysis"
+ ],
+ "key_idea": "The parity of the sum is the parity of the number of odd terms: odd N gives either, N = 2 mod 4 always has an odd count of odds, N = 0 mod 4 always an even count.",
+ "sketch": "N consecutive integers contain N/2 odd numbers when N is even, regardless of the start, so the sum is odd iff N/2 is odd. When N is odd the number of odd terms depends on the parity of the start, and both starts are available in 1..100 for N <= 10, so the answer is Either. So: N odd -> Either, N mod 4 == 2 -> Odd, N mod 4 == 0 -> Even. O(1).",
+ "code_path": "solutions/kattis_somesum.cpp",
+ "samples_passed": true
+}

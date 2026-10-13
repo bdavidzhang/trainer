@@ -1,0 +1,13 @@
+{
+ "id": "kattis:triplejump",
+ "rating": 1000,
+ "topics": [
+  "brute-force",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "The smallest observation is 3a and the largest is 3c, leaving only the middle distance to brute force.",
+ "sketch": "Set a=d_min/3 and c=d_max/3, then try every b strictly between them, build the set of the 10 multiset sums and compare with the input list. At most ~330 candidates of constant work each. (b is also directly d_2-2a, but the set comparison is safer.) Pitfall: sums may coincide, which is why n can be as low as 7.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_triplejump.cpp"
+}

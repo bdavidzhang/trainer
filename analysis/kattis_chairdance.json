@@ -1,0 +1,14 @@
+{
+ "id": "kattis:chairdance",
+ "rating": 2100,
+ "topics": [
+  "number-theory",
+  "math",
+  "implementation",
+  "data-structures"
+ ],
+ "key_idea": "Occupied chairs always lie in a coset B + d*Z_n with d | n; a multiplication by x is a bijection on that coset when gcd(x, n/d)=1 (handle lazily with an affine map and a modular inverse), otherwise the coset shrinks by a factor gcd>=2 and an explicit O(n/d) rebuild is affordable because sizes at least halve.",
+ "sketch": "Store an array P of size m=n/d (slot -> player) and the lazy map chair(s) = B + d*((a*s) mod m) mod n together with a^-1 mod m. '+ x' adds to B. '* x' with g=gcd(x,m)=1: B*=x mod n, a*=x mod m, ainv*=x^-1 mod m (extended Euclid). With g>1: enumerate all slots, compute old chair c and new chair x*c, new slot k'=(x/g)*k mod (m/g), keep per new slot the player with the smallest clockwise distance (new-old) mod n, then set d*=g, m/=g, a=1. Query: t=(y-B) mod n must be divisible by d, slot = ainv*(t/d) mod m. Total rebuild cost n + n/2 + ... = O(n), each op O(log n). Pitfalls: a multiplier not coprime to n can still be a bijection on the current coset (e.g. *4 on multiples of 4 mod 12), so test gcd against m not n; chair n is residue 0; 64-bit products; m=1 edge case for inverses. Verified against a brute-force simulation on thousands of random small cases.",
+ "code_path": "solutions/kattis_chairdance.cpp",
+ "samples_passed": true
+}

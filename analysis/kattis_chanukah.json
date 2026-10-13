@@ -1,0 +1,12 @@
+{
+ "id": "kattis:chanukah",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Candles for N days are 1+2+...+N plus one shammas per night.",
+ "sketch": "Output K and N(N+1)/2 + N for each data set. O(1) per case; values fit easily in 64-bit (about 5e7 at N = 10000).",
+ "code_path": "solutions/kattis_chanukah.cpp",
+ "samples_passed": true
+}

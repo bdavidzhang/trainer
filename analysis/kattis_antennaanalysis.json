@@ -1,0 +1,12 @@
+{
+ "id": "kattis:antennaanalysis",
+ "rating": 1300,
+ "topics": [
+  "prefix-sums",
+  "math"
+ ],
+ "key_idea": "Open the absolute value: the answer is max of (x_i - c*i) + max_j(c*j - x_j) and (-x_i - c*i) + max_j(c*j + x_j) over j <= i, i.e. two running prefix maxima.",
+ "sketch": "|a| = max(a,-a), and since j <= i the term c*|i-j| is just c*i - c*j, so the expression separates into a part depending on i and a part depending on j. Maintain A = max(c*j - x_j) and B = max(c*j + x_j) including j = i (which gives 0), and print max(x_i - c*i + A, -x_i - c*i + B). O(n). Use 64-bit: c*i reaches 4e11. Verified against an O(n^2) brute force on random small inputs.",
+ "code_path": "solutions/kattis_antennaanalysis.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:composedrhythms",
+ "rating": 800,
+ "topics": [
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Use floor(N/2) groups: all 2s, with one of them replaced by a 3 when N is odd.",
+ "sketch": "Print K=N/2 and then K numbers, the first being 3 if N is odd and the rest 2. O(N) output, build it in one string. Any decomposition is accepted, so the sample token compare fails; I checked with my own validator (sum equals N, all parts 2 or 3) for N=2..59 and N near 1e6.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_composedrhythms.cpp"
+}

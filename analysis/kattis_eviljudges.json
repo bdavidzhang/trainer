@@ -1,0 +1,12 @@
+{
+ "id": "kattis:eviljudges",
+ "rating": 1000,
+ "topics": [
+  "greedy",
+  "math"
+ ],
+ "key_idea": "C and K are interchangeable, so the count is the number of (A before non-A) inversions; one adjacent swap lowers it by at most 1 and by exactly 1 whenever it is positive.",
+ "sketch": "Count pairs (A, later C/K) in one pass with a running count of A's. An adjacent swap changes the inversion count by at most one, and while the count is positive some adjacent 'A then C/K' exists and swapping it removes exactly one. Answer max(0, inv - M). O(n). Pitfall: inv is up to 1e10, so use 64-bit.",
+ "code_path": "solutions/kattis_eviljudges.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cascadecentrality",
+ "rating": 1100,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "math"
+ ],
+ "key_idea": "In a tree each pair has a single path, so a DFS from every start node carrying the running product of 1/degree gives the centrality directly.",
+ "sketch": "For each node i run a DFS; moving into neighbour w multiplies the carried value by 1/deg(w) and adds it to the sum. The centrality is 1 plus that sum and the answer is the average over all nodes. O(N^2) with N <= 100, doubles suffice. Corner case N=1 gives 1.",
+ "code_path": "solutions/kattis_cascadecentrality.cpp",
+ "samples_passed": true
+}

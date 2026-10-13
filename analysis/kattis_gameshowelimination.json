@@ -1,0 +1,14 @@
+{
+ "id": "kattis:gameshowelimination",
+ "rating": 2600,
+ "topics": [
+  "probability",
+  "dp-bitmask",
+  "calculus-numerical",
+  "dp"
+ ],
+ "key_idea": "Only players within k of the second-highest surviving index can place second, and all holes lie in that window, so the state is (second-highest index, bitmask of the k-1 players below it, capped gap to the top player); second-place probabilities depend only on (mask, gap).",
+ "sketch": "Invariant: every eliminated index is > m2-k where m2 is the current second-highest survivor, so the state (m2, mask of m2-1..m2-k+1, d=min(k, top-m2)) is complete; if d=k the top always wins and is never eliminated, so its identity is not needed. Precompute for each of the k*2^(k-1) configurations the probability that each of the <=k+1 candidates is second: integral of density_j * sum_w (1-F_w) prod F_others, a piecewise polynomial of degree <=10, integrated exactly with 6-point Gauss-Legendre on each unit interval using prefix/suffix products. Forward DP over m2 descending and mask descending, adding prob*(remaining-1) to the eliminated player's expected rank (everyone starts at 1). About n*2^(k-1)*k states with k+1 transitions, 0.15s. Pitfalls: indices below 1 must be absent bits, refilling the window when m2 or the top leaves, and remaining count = 2+popcount+max(0,m2-k). Checked against Monte Carlo simulation.",
+ "code_path": "solutions/kattis_gameshowelimination.cpp",
+ "samples_passed": true
+}

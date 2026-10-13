@@ -1,0 +1,12 @@
+{
+ "id": "kattis:waif",
+ "rating": 1500,
+ "topics": [
+  "flows",
+  "matching"
+ ],
+ "key_idea": "Bipartite matching with a capacity on groups of toys: model as max flow source->child->toy->category(cap r)->sink.",
+ "sketch": "Edges: source->child cap 1, child->liked toy cap 1, toy->its category cap 1, category->sink cap r, and uncategorised toy->sink cap 1. Run Dinic; the graph has about 300 nodes and 10^4 edges so anything works. Pitfalls: p may be 0, and toys in no category are unrestricted; the category line lists l toys followed by r.",
+ "code_path": "solutions/kattis_waif.cpp",
+ "samples_passed": true
+}

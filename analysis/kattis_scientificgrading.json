@@ -1,0 +1,14 @@
+{
+ "id": "kattis:scientificgrading",
+ "rating": 2200,
+ "topics": [
+  "math",
+  "big-integer",
+  "implementation",
+  "case-analysis"
+ ],
+ "key_idea": "Clear denominators so every test becomes the sign of a sum of a few terms c*10^e with small integer c and huge e; evaluate that sign exactly by processing exponents from high to low and stopping as soon as the gap to the next exponent exceeds the possible size of the remaining terms.",
+ "sketch": "Write every number as a 10-digit integer times a power of ten. The true value is N/D with N a sum of at most two terms (x+y, x-y, xy, or x*10^(a-b) over D=y's mantissa). If N is zero only an exact 0 is accepted. Otherwise E = z*D - N and the answer is correct iff |E| < 1e-9*|N| (relative) and |E| < 1e-9*|D| (absolute), both strict; each is a sign query on at most five terms with coefficients below 1e20. The sign routine sorts by exponent, keeps a signed decimal big integer accumulator, shifts by the exponent gap, and returns the accumulator's sign when it is non-zero and the gap exceeds 40 digits, so exponents up to 1e9 never get expanded. Pitfalls: exponents sum to +-2e9 (use 64-bit), catastrophic cancellation in x+y, strict inequalities, and z=0 for a non-zero answer has relative error 1. Stress-tested against Python Fractions.",
+ "code_path": "solutions/kattis_scientificgrading.cpp",
+ "samples_passed": true
+}

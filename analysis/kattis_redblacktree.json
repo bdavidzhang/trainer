@@ -1,0 +1,13 @@
+{
+ "id": "kattis:redblacktree",
+ "rating": 2000,
+ "topics": [
+  "dp-tree",
+  "dp-knapsack",
+  "combinatorics"
+ ],
+ "key_idea": "Tree knapsack on the number of red nodes: the polynomial for a subtree is the product of the children's polynomials plus one monomial for taking the node itself; since polynomial size is bounded by the red count in the subtree, total merge work is O(n*... + m^2).",
+ "sketch": "dp[v][k] = number of antichains inside v's subtree with k red nodes. dp[v] = prod(dp[child]) + x^{red[v]} (taking v alone); the empty set is counted in the product. Process nodes in reverse BFS order (parents are not guaranteed to have smaller indices, and depth can be 2e5 so no recursion), freeing child vectors after merging. A child with no red nodes is a scalar multiply, and a real convolution costs (a+1)(b+1) which sums to O(m^2) by the usual small-subtree argument; overall O(n*m) worst case scalar work (2e8 mulmods at most, far less in practice) plus O(m^2). Pitfalls: resize the root polynomial to m+1 for output, skip multiplying by 1, mod 1e9+7.",
+ "code_path": "solutions/kattis_redblacktree.cpp",
+ "samples_passed": true
+}

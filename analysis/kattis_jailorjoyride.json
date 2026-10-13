@@ -1,0 +1,14 @@
+{
+ "id": "kattis:jailorjoyride",
+ "rating": 2300,
+ "topics": [
+  "graphs",
+  "shortest-paths",
+  "bridges-bcc",
+  "dp"
+ ],
+ "key_idea": "The road the police arrives on only matters if it is a bridge, and then it is forced by which side the police is on, so the game is deterministic in the state (police position, teen position) and the police just drives shortest paths.",
+ "sketch": "Compute all-pairs shortest paths (Floyd, n=300) and all bridges. In state (p,t) the police pays d(p,t); if deg(t)=1 the teens are caught. Otherwise the teens' reachable set is the whole graph unless a bridge at t separates p from t, in which case it is t's side of that bridge (one BFS per bridge endpoint); they jump to any farthest vertex of that set by ordinary distance from t, and the police is then at t. So f(p,t)=d(p,t)+max over tied farthest t' of f(t,t'), evaluated by memoised DFS over the n^2 states; reaching a state that is still on the DFS stack means a cycle and the answer is impossible. About n^3 work overall. Pitfalls: the worst case over ties (max), answers up to ~1e16 so 64-bit, distances are measured in the full graph even when a bridge is blocked, and the furthest vertex is never t itself when deg(t)>=2. Cross-checked against a brute force that tries every arrival road with t-avoiding distances on 3000 small random graphs.",
+ "code_path": "solutions/kattis_jailorjoyride.cpp",
+ "samples_passed": true
+}

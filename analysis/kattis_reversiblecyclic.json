@@ -1,0 +1,12 @@
+{
+ "id": "kattis:reversiblecyclic",
+ "rating": 1200,
+ "topics": [
+  "strings",
+  "brute-force"
+ ],
+ "key_idea": "Every proper substring lies inside one of the two substrings of length n-1, so only those two need checking against s+s.",
+ "sketch": "If reverse(t) is a cyclic substring then so is the reverse of any substring of t, hence it suffices to test the two maximal proper substrings s[0..n-2] and s[1..n-1]. Reverse each and search for it in s+s (any window of length n-1 of the doubled string lies inside one rotation). With n<=1000 a plain find is O(n^2) worst case, which is trivial. Corner case n=1: only the empty proper substring, answer 1. Stress-tested against a full brute force over all substrings on small strings.",
+ "code_path": "solutions/kattis_reversiblecyclic.cpp",
+ "samples_passed": true
+}

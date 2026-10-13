@@ -1,0 +1,13 @@
+{
+ "id": "kattis:summertrip",
+ "rating": 1400,
+ "topics": [
+  "strings",
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Fix the left end i: the right end j must lie before the next occurrence of s[i] and be the first occurrence of its letter after i, so the count is the number of distinct letters strictly between i and next[i].",
+ "sketch": "Scan right to left keeping nxt[c] = nearest index of letter c to the right of the current position. For position i with letter c, every other letter k with nxt[k] < nxt[c] contributes exactly one good itinerary (ending at nxt[k]: it is unique in the window because it is the first k after i, and s[i] is unique because the window stops before nxt[c]). Sum over i, then set nxt[c]=i. O(26 n) time. Answer fits easily but use 64-bit anyway (up to 25 n). Stress-tested against an O(n^3) brute force.",
+ "code_path": "solutions/kattis_summertrip.cpp",
+ "samples_passed": true
+}

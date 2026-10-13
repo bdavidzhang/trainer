@@ -1,0 +1,13 @@
+{
+ "id": "kattis:ziplinecourse",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "Two lines conflict iff their ground projections properly cross and the interpolated heights at the crossing differ by less than 6; the answer is a maximum independent set over at most 20 lines by subset enumeration.",
+ "sketch": "For each pair compute the segment intersection parameters t,u, interpolate both heights and flag the pair if |h1-h2| < 6-1e-9. Lines sharing exactly one support head in different directions and are safe; lines on the same pair of supports overlap, so compare the minimum vertical gap along the span (0 if they cross in height). Print conflicts in input order (i<j), then the largest conflict-free subset via a 2^l DP over masks. Pitfalls: the 1e-9 tolerance around exactly 6, shared endpoints, reversed duplicates. Only the single sample was available; the shared-support and duplicate-pair interpretation is inferred from the statement.",
+ "code_path": "solutions/kattis_ziplinecourse.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:inconsistent",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "math"
+ ],
+ "key_idea": "Use N-1 categories where X is 1/1 and Y is (d-1)/d, and one category where X has almost all of its attempts with a rate just above Y's 1/q: X = (floor(B/q)+1)/B vs Y = 1/q with B = M-N+1. Pick q (about sqrt(B)) to maximise Y's surplus.",
+ "sketch": "Since both totals of attempts equal M, the paradox needs sum(c) > sum(a). In a category with d>b the best is a=b, c=d-1 (gain d-b-1); in a category with d<=b the best is c=1, a=floor(b/d)+1 (loss floor(b/d)). An exchange argument shows one 'loss' category holding all spare X attempts and N-1 'gain' categories with b=1 is optimal, giving total gain M-2N+2-q-floor((M-N+1)/q), maximised by scanning q in [2, M-2N+2]. Output N-2 rows '1 1 1 2', one row '1 1 d-1 d' taking the remaining Y attempts, and the row for the big category. O(M) time. Any valid answer is accepted, so the sample checker reports a mismatch; I validated the output with my own checker (all constraints, strict inequalities in exact integer arithmetic) for every N<40 with M in [4N,4N+30), 300 random cases and the extreme limits, all passing.",
+ "code_path": "solutions/kattis_inconsistent.cpp",
+ "samples_passed": true
+}

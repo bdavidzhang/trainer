@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pullingtheirweight",
+ "rating": 1100,
+ "topics": [
+  "prefix-sums",
+  "brute-force",
+  "sorting"
+ ],
+ "key_idea": "Bucket weights by value and scan t upward, comparing the total weight strictly below t with the total strictly above t; animals equal to t never affect the balance.",
+ "sketch": "Animals with weight exactly t are split evenly (dropping one if odd), so they contribute equally to both sides and can be ignored. Accumulate sum[w] = total weight of animals of weight w, then for t = 1..20001 keep a running prefix lo = sum of weights < t and compare with total - lo - sum[t]. Output the first t that balances. O(m + maxW). Pitfalls: t need not be one of the given weights (sample 1 gives 4), the smallest t is required, and sums reach 2e9 so use 64-bit.",
+ "code_path": "solutions/kattis_pullingtheirweight.cpp",
+ "samples_passed": true
+}

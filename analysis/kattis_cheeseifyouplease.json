@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cheeseifyouplease",
+ "rating": 2000,
+ "topics": [
+  "math",
+  "linear-algebra",
+  "implementation"
+ ],
+ "key_idea": "It is a plain linear program: maximise sum t_j x_j subject to sum_j (p_ij/100) x_j <= w_i, x >= 0; since the right-hand sides are non-negative the slack basis is feasible and a one-phase simplex suffices.",
+ "sketch": "Variables are pounds of each blend, one constraint per cheese type. Build the dense tableau with n slack columns (initial basis feasible because w_i >= 0, so no phase one) and pivot with Bland's rule to avoid cycling on degenerate rows (w_i = 0 is allowed). Each pivot is O(n(n+m)), with n,m <= 50 it runs instantly. Long double with eps 1e-12; print the objective to 2 decimals. Pitfalls: recognising there is no greedy/flow shortcut, degeneracy, and rounding to the penny. Both samples pass; no extra stress test beyond samples.",
+ "code_path": "solutions/kattis_cheeseifyouplease.cpp",
+ "samples_passed": true
+}

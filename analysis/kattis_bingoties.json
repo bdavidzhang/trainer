@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bingoties",
+ "rating": 1400,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "A tie between cards a and b needs a row of each sharing a number x that is called last; calling exactly the other at most 8 numbers of the two rows first is the weakest possible prefix, so the tie is possible iff that set completes no row on any card.",
+ "sketch": "Index for every number the (card,row) cells containing it. For each number x and each pair of occurrences on different cards, mark S = (row1 union row2) minus x with a timestamp array and scan all 5n rows; if none is fully inside S the pair can tie. Keep the lexicographically smallest pair and skip candidates that cannot improve it. Each number occurs at most once per card so there are at most about 1.2e5 candidate triples, each checked in 2500 operations, about 3e8 simple steps worst case. Pitfalls: a third card finishing early also invalidates the sequence (the game would already be over), the two rows may share several numbers and each choice of last number must be tried, and only rows count in this variant.",
+ "code_path": "solutions/kattis_bingoties.cpp",
+ "samples_passed": true
+}

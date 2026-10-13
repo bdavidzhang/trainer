@@ -1,0 +1,13 @@
+{
+ "id": "kattis:idf",
+ "rating": 2800,
+ "topics": [
+  "combinatorics",
+  "dp",
+  "strings"
+ ],
+ "key_idea": "Standard n-th-lexicographic walk, but counting completions of a prefix needs (a) a sign-free 'insert one letter class at a time, track adjacent-equal pairs' DP so values can be capped at 2e18, and (b) a sum over which final multiplicity each already-seen letter gets, done as a DP over multiplicities 1..k with letters grouped by their current count.",
+ "sketch": "A prefix fixes per-letter counts c and the last letter; a completion picks distinct totals t>=c for seen letters, hands the remaining totals to unseen letters (a falling-factorial factor), and arranges the remainders with no equal neighbours and not starting with the last letter. Arrangement count uses the gap DP: inserting r copies as j blocks into a string of length L with b bad pairs, x of them into bad gaps, gives C(r-1,j-1)*C(b,x)*C(L+1-b,j-x) ways and b-x+r-j bad pairs; a flag tracks whether the string currently starts with the 'last' letter. Totals are assigned in increasing value, state = how many letters of each equal-c group are used (times group-size factorials at the end), with Hall-type pruning so forced old letters do not branch. All arithmetic saturates at 2e18 and is exact below that. For speed, the lexicographically first string is ababa..cdc..e (pairs of the two largest remaining totals); binary search the longest prefix of it that still has >= n completions and start the letter-by-letter walk there, so only the short tail does 26 counts per position (worst about 0.07 s locally; without the jump k=26 took 1.7 s). Verified against full enumeration with alphabet sizes 3-6 and k<=4, and jump vs no-jump for all k<=26.",
+ "code_path": "solutions/kattis_idf.cpp",
+ "samples_passed": true
+}

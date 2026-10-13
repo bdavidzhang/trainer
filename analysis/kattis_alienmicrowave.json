@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alienmicrowave",
+ "rating": 1900,
+ "topics": [
+  "dp",
+  "combinatorics",
+  "case-analysis"
+ ],
+ "key_idea": "Count the complement: after padding to 2n digits, deleting position p shifts the prefix right by one, so all deletions stay valid iff for every pair i the three two-digit numbers (d[2i],d[2i+1]), (d[2i-1],d[2i]) and (d[2i-1],d[2i+1]) are all below t_i; that is a digit DP with the previous digit as state.",
+ "sketch": "Pad the canonical string with leading zeros to length 2n; deleting a leading zero changes nothing, so leading zeros need no special handling and the empty/zero time is never error-prone. Deleting position p leaves pairs after p unchanged, turns earlier pairs into the shifted pairing (d[2i-1],d[2i]) and the pair containing p into either the shifted pair or the skip pair (d[2i-1],d[2i+1]); taking all p gives exactly the three constraints per pair. DP over pairs with state = last digit (10 states, 100 transitions each), with d[-1]=0, counts the safe strings; answer = prod t_i minus that count. Values reach 1e18 so use 64-bit unsigned. Verified against a brute force enumerating all times for n<=3.",
+ "code_path": "solutions/kattis_alienmicrowave.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:alphabet",
+ "rating": 1000,
+ "topics": [
+  "dp",
+  "strings"
+ ],
+ "key_idea": "The letters that can be kept form a strictly increasing subsequence, so the answer is 26 minus the length of the longest strictly increasing subsequence.",
+ "sketch": "Any strictly increasing subsequence of s can be completed to a..z by inserting the missing letters, and conversely the kept letters must be increasing, so answer = 26 - LIS. O(n^2) DP with n<=50. Pitfall: strict increase (repeated letters cannot both be used).",
+ "code_path": "solutions/kattis_alphabet.cpp",
+ "samples_passed": true
+}

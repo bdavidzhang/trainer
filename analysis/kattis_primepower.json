@@ -1,0 +1,12 @@
+{
+ "id": "kattis:primepower",
+ "rating": 900,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Sieve primes up to R, multiply those in [L,R] mod p, then raise the product to the E-th power.",
+ "sketch": "Sieve of Eratosthenes up to 1e6, accumulate the product of primes in [L,R] modulo 1e9+7, and apply fast exponentiation once with exponent E. Empty range of primes (e.g. L=R=1) yields 1. O(R log log R). Use 64-bit for products.",
+ "code_path": "solutions/kattis_primepower.cpp",
+ "samples_passed": true
+}

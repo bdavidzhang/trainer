@@ -1,0 +1,13 @@
+{
+ "id": "kattis:wordpuzzle",
+ "rating": 1600,
+ "topics": [
+  "dp",
+  "strings",
+  "combinatorics"
+ ],
+ "key_idea": "The letters at the blanks, read left to right, must form a cyclic rotation of s; so the answer is the sum over DISTINCT rotations of s of the number of subsequence occurrences in p.",
+ "sketch": "Starting at blank k and wrapping means typed string = t[k..] + t[..k-1] where t is the blank letters in position order, i.e. t is a rotation of s. Different target strings give disjoint families of position sets, and the same string from two rotation offsets must be counted once, so deduplicate rotations with a set. For each distinct rotation run the standard count-subsequences DP dp[j+1]+=dp[j] over p, iterating j in decreasing order and only over positions where t[j] equals the current letter. Complexity O(|p|*|s|^2) = 2.5e8 worst case, 0.13s measured. Pitfalls: periodic s (e.g. 'aaa' or 'abab') double counts without dedup; take everything mod 1e9+7. Stress-tested against enumeration of all position subsets.",
+ "code_path": "solutions/kattis_wordpuzzle.cpp",
+ "samples_passed": true
+}

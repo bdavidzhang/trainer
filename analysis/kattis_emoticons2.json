@@ -1,0 +1,13 @@
+{
+ "id": "kattis:emoticons2",
+ "rating": 1300,
+ "topics": [
+  "brute-force",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "The text is only 100 characters, so try every (replaced char, replacement char) pair and simulate the leftmost-first conversion directly.",
+ "sketch": "For each distinct character a in the text and each of the 95 printable characters b (ASCII 32..126, space included), replace all a by b and count the resulting length with a left-to-right scan: if an emoticon starts at position i consume it as one character, otherwise consume one character. No two emoticons share a start position as prefixes of one another, so the greedy scan is exactly the leftmost-first rule. Track min and max, including the unchanged text. About 100*95*100*10 steps. Pitfalls: read the whole line with getline (spaces), the replacement may be a space or the same character, and a replacement can both create and destroy emoticons.",
+ "code_path": "solutions/kattis_emoticons2.cpp",
+ "samples_passed": true
+}

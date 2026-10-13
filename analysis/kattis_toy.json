@@ -1,0 +1,13 @@
+{
+ "id": "kattis:toy",
+ "rating": 1900,
+ "topics": [
+  "search-backtracking",
+  "geometry",
+  "brute-force"
+ ],
+ "key_idea": "Only the chain of triangles leading to the farthest vertex matters, and each triangle in it sits on one of the two new edges of the previous one, so with n<=9 there are at most 4 triangles and everything can be enumerated.",
+ "sketch": "DFS over the current edge (two points) and the used mask: pick an ordered pair of unused segments (one per endpoint), require a strict triangle, place the apex on either side of the edge via the circle-intersection formula, reject it if x < 0 (through the wall), update the best x, then recurse on each of the two new edges. Start from every segment as the base lying on the wall. About 5e7 leaves worst case, 0.1 s measured. Pitfalls: triangles may fold back over earlier ones (crossing is allowed), both sides and both endpoint assignments must be tried, and the degenerate triangle must be excluded; the 1e-4 guarantee makes the wall test numerically safe.",
+ "code_path": "solutions/kattis_toy.cpp",
+ "samples_passed": true
+}

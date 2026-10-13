@@ -1,0 +1,12 @@
+{
+ "id": "kattis:linesperhour",
+ "rating": 800,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "The budget is 5*lph lines; take the shortest problems first.",
+ "sketch": "Sort the line counts ascending and keep adding while the running sum stays <= 5*lph; the count taken is the answer. O(n log n). Only pitfall is remembering the contest is five hours long, so the capacity is 5*lph rather than lph.",
+ "code_path": "solutions/kattis_linesperhour.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:itsakindofmagic",
+ "rating": 2100,
+ "topics": [
+  "number-theory",
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "The product is m^3 for the centre m, and per prime the exponents form an additive magic square with two free parameters (a,b) satisfying |a|+|b|<=e. So the count for centre m is multiplicative, minus the non-distinct cases which are 8 lines through the origin.",
+ "sketch": "Additive 3x3 magic squares are c plus offsets (-b,a+b,-a / b-a,0,a-b / a,-a-b,b); nonnegativity gives |a|+|b|<=e, i.e. 2e^2+2e+1 choices per prime with exponent e. Entries are distinct iff the exponent vectors satisfy a!=0, b!=0, a!=+-b, a!=+-2b, b!=+-2a; those 8 'lines' pairwise meet only at the origin, so bad = 2*prod(2e+1) + 2*prod(2*floor(e/2)+1) + 4*prod(2*floor(e/3)+1) - 7. Sieve smallest prime factors up to 10^6, compute f(m) = prod(2e^2+2e+1) - bad, prefix-sum, and answer each query with pre[floor(cbrt(n))]. O(N log N + t). Pitfalls: exact integer cube root for 10^18 (fix up floating cbrt), rotations/reflections count as different squares. Cross-checked against a brute-force enumeration for all centres up to 40.",
+ "code_path": "solutions/kattis_itsakindofmagic.cpp",
+ "samples_passed": true
+}

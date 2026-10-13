@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dunedash",
+ "rating": 1600,
+ "topics": [
+  "geometry",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "The condition makes distances from the first checkpoint strictly increasing along the route, and the farthest point from any checkpoint is always one of the two route endpoints.",
+ "sketch": "For i<j<k, dist(q_i,q_k) exceeds both dist(q_i,q_j) and dist(q_j,q_k), so from any q_j distances grow monotonically towards both ends and its farthest point is q_1 or q_N. Take the farthest point from input point 0 as an endpoint s, sort all points by squared distance to s, and sum consecutive Euclidean distances (the route reversed has the same length). O(N log N). Pitfalls: squared distances reach 8e18, which still fits in signed 64-bit; compare exactly in integers and only take square roots (long double) for the final sum.",
+ "code_path": "solutions/kattis_dunedash.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:journey",
+ "rating": 2000,
+ "topics": [
+  "dp",
+  "sorting",
+  "binary-search",
+  "graphs"
+ ],
+ "key_idea": "Because flights go strictly forward in time, 'earliest arrival at destination if I take flight i' is a DP over flights in decreasing departure time; per airport keep prefix best and second-best (by flight index) so one cancelled flight can be excluded in O(1).",
+ "sketch": "Counting-sort flights by departure descending. best[i] = arr_i if it lands at the destination, else the minimum best over flights leaving t_i at time >= arr_i. Each airport keeps its processed flights in a CSR slice (departures descending) with prefix minimum, its flight index, and the second minimum; a query binary-searches the prefix with dep >= T. For each itinerary flight f_k query (s, dep, excluding f_k): the cancelled flight can never be reused later since time strictly advances. Answer max(0, result - planned arrival); 'stranded' if any query is infinite. O(n log n) with fread parsing and hashing of airport names for n=1e6; being at the destination airport already counts as arrived. Stress-tested against a brute-force earliest-arrival simulation.",
+ "code_path": "solutions/kattis_journey.cpp",
+ "samples_passed": true
+}

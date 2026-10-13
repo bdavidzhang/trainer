@@ -1,0 +1,13 @@
+{
+ "id": "kattis:periodicstrings",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "strings",
+  "implementation"
+ ],
+ "key_idea": "Try every divisor k of the length in increasing order and check directly that each block is the previous one rotated right by one.",
+ "sketch": "For each k dividing n, verify s[b+j] == s[b-k+(j-1 mod k)] for every block start b>=k and offset j. First k that passes is the answer; k=n always works. O(n * d(n)) with n<=100. Pitfall: rotation direction (last character moves to the front).",
+ "code_path": "solutions/kattis_periodicstrings.cpp",
+ "samples_passed": true
+}

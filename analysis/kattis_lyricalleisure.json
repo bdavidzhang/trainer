@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lyricalleisure",
+ "rating": 1000,
+ "topics": [
+  "constructive",
+  "strings",
+  "palindromes"
+ ],
+ "key_idea": "Put the palindrome a^k first, then continue with the period-3 pattern bcdbcd..., which contains no palindrome longer than 1 and cannot extend one that starts in the a-block.",
+ "sketch": "Output k copies of 'a' followed by 'bcd' repeated until the length is n. Inside the bcd part any palindrome of length 2 or 3 would need s[i]=s[i+1] or s[i]=s[i+2], impossible with three distinct letters at period 3. A substring covering both parts starts with 'a' and ends with b/c/d, so it is not a palindrome. Hence the longest palindrome is exactly a^k. O(n). Multiple answers are accepted, so the token checker reports mismatches on 3 of 4 samples; samples_passed is true because my own validator (brute-force longest palindromic substring) confirmed all n<=40, 1<=k<=n.",
+ "code_path": "solutions/kattis_lyricalleisure.cpp",
+ "samples_passed": true
+}

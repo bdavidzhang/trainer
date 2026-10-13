@@ -1,0 +1,14 @@
+{
+ "id": "kattis:pascalmeetsboole",
+ "rating": 1700,
+ "topics": [
+  "case-analysis",
+  "math",
+  "ad-hoc",
+  "bitmasks"
+ ],
+ "key_idea": "Only 16 functions exist and each produces a simple pattern: b11=1 keeps everything 1, XOR is Pascal mod 2 (Lucas), and the remaining six have periodic row structure.",
+ "sketch": "Because row 2 is 11, any f with f(1,1)=1 gives an all-ones triangle. For b11=0: 0000 has only the edges; 0110 has bit ((i-1)&(r-1))==(i-1) and row count 2^popcount(r-1); NOT x and (not x and y) give interior bit = i odd; NOT y and (x and not y) give interior bit = (r-i) even; NOR has edges only on even rows and ones at 1, r and 3..r-2 on odd rows; NAND has all ones on even rows and edges only on odd rows. Count queries use per-function prefix sums of row counts built lazily up to 1e6 (a naive per-query loop with string handling was too slow). Patterns were confirmed against a direct simulation for all 16 functions; answers reach 5e11 so use 64-bit.",
+ "code_path": "solutions/kattis_pascalmeetsboole.cpp",
+ "samples_passed": true
+}

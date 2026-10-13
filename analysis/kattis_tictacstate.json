@@ -1,0 +1,12 @@
+{
+ "id": "kattis:tictacstate",
+ "rating": 900,
+ "topics": [
+  "implementation",
+  "bitmasks"
+ ],
+ "key_idea": "Parse the octal number, split it into the played mask and the X mask, and test the 8 winning line masks for each player.",
+ "sketch": "Read each token with base 8, played = bits 0-8, X = played & bits 9-17, O = played & ~bits 9-17. Check the 8 line masks against X and O; a legal state has at most one winner. If nobody wins and all 9 cells are played it is Cat's, otherwise In progress. O(1) per state. Pitfalls: the leading 0 octal convention (do not read as decimal), masking the X bits by the played bits, and checking wins before the full-board draw.",
+ "code_path": "solutions/kattis_tictacstate.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:grocerygreed",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "math",
+  "brute-force",
+  "case-analysis"
+ ],
+ "key_idea": "Only the price modulo 5 cents matters: a cash group whose sum is 1 or 2 mod 5 saves 1 or 2 cents, so items with residue 1 and 2 are paid alone and residues 3 and 4 are combined as 3+4 (saves 2), 3+3 (saves 1) and 4+4+4 (saves 2).",
+ "sketch": "Read prices as integer cents (parse the digits, no floating point) and count residues mod 5. The saving is c1 + 2*c2 + max over x in [0, min(c3,c4)] of 2x + floor((c3-x)/2) + 2*floor((c4-x)/3), where x is the number of 3+4 pairs; iterating all x is O(n) and avoids arguing about which leftovers are best. Anything not saved is paid by card at exact price. I confirmed this formula against an exhaustive partition DP for all residue counts up to 8 each. Output total minus saving with exactly two decimals; totals fit easily in 64-bit.",
+ "code_path": "solutions/kattis_grocerygreed.cpp",
+ "samples_passed": true
+}

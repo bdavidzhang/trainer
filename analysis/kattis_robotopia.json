@@ -1,0 +1,12 @@
+{
+ "id": "kattis:robotopia",
+ "rating": 1100,
+ "topics": [
+  "brute-force",
+  "math"
+ ],
+ "key_idea": "Totals are at most 10000, so just enumerate the count of the first robot type and derive the second from the legs equation.",
+ "sketch": "For x from 1 while x*l1<lt and x*a1<at, check that (lt-x*l1) is divisible by l2 giving y>=1 and that x*a1+y*a2==at. Count solutions; print the pair only if exactly one exists, otherwise '?'. O(10^4) per test. Pitfalls: the degenerate (proportional) system can still have exactly one positive solution, so Cramer's rule alone is wrong; both counts must be at least 1.",
+ "code_path": "solutions/kattis_robotopia.cpp",
+ "samples_passed": true
+}

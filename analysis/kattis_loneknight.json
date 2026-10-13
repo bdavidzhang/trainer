@@ -1,0 +1,13 @@
+{
+ "id": "kattis:loneknight",
+ "rating": 2400,
+ "topics": [
+  "bfs-dfs",
+  "implementation",
+  "ad-hoc"
+ ],
+ "key_idea": "Rook rows/columns cut the plane into at most 1001x1001 rectangles; knight connectivity inside a long gap is periodic with period 4, so every gap wider than 7 can be shrunk to a width in 4..7 with the same residue mod 4, leaving a grid of about 8000x8000 that can be flood-filled.",
+ "sketch": "Sort the distinct blocked x and y values; per axis, each gap of width w>7 is replaced by w-4k in [4,7], and a coordinate at offset d in such a gap maps to offset d mod 4 (small gaps are kept verbatim; the two infinite outer gaps are treated as width 2^40). Build the compressed board (uint16 labels, blocked lines and a 2-cell border pre-marked) and flood-fill with knight moves only from the query endpoints, so labels fit in 16 bits and memory is ~130 MB. Answer 1 iff the labels match; the one exception is when start and target collapse to the same compressed cell, which is connected unless the start has no legal move at all (a width-1 strip between double walls), checked on the real coordinates. Complexity O((7n)^2 * 8) ~ 5e8 simple ops worst case, ~1 s. Pitfalls: the knight can hop over a single blocked line but not two adjacent ones, 2-wide strips really do split into four classes mod 4 (shrinking to width <=5 is wrong), and frontier BFS is needed instead of a recursion/full stack. The period-4 claim was not proven formally but was stress-tested on 3500 random boards against an uncompressed brute force (thresholds 4 and 5 fail, 7 passes).",
+ "code_path": "solutions/kattis_loneknight.cpp",
+ "samples_passed": true
+}

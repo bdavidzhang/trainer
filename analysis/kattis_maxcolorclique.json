@@ -1,0 +1,14 @@
+{
+ "id": "kattis:maxcolorclique",
+ "rating": 2500,
+ "topics": [
+  "graphs",
+  "combinatorics",
+  "constructive",
+  "math"
+ ],
+ "key_idea": "A complete edge-coloured graph with no properly coloured cycle always has a vertex whose edges to all remaining vertices share one colour; peeling such vertices gives an order v1..vn with colour c_i from v_i to everything later. Then f(S) = 1 + (max multiplicity of a colour among the non-last vertices of S).",
+ "sketch": "Repeatedly find and remove a vertex whose edges to all still-alive vertices are monochromatic (O(n^3) total), recording its colour. A monochromatic clique inside S is some colour-c vertices plus one final vertex later in the order, so with u the last vertex of S, f(S) = 1 + max_c cnt_c(S minus u). For each prefix length p, sum over subsets of the first p vertices of the max colour count via sum over t of (2^p - prod_c sum_{j<=t} C(a_c, j)), using prefix sums of binomials. Total work about n^3/12 multiplications. Pitfalls: the last vertex in the order has no colour (acts as a wildcard), and everything is mod 1e9+7. Verified against a brute force over all valid colourings of up to 6 vertices.",
+ "code_path": "solutions/kattis_maxcolorclique.cpp",
+ "samples_passed": true
+}

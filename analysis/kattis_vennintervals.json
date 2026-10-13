@@ -1,0 +1,14 @@
+{
+ "id": "kattis:vennintervals",
+ "rating": 2400,
+ "topics": [
+  "constructive",
+  "greedy",
+  "hashing",
+  "implementation"
+ ],
+ "key_idea": "Non-degeneracy forces all left endpoints and all right endpoints to be distinct and identically ordered, so the sets form a FIFO queue and the regions are windows [a,b] of that order on a monotone staircase where each step increments a, b, or both; since each window can only be reached at one moment, the next region is always forced.",
+ "sketch": "Every region appears exactly once, so we need a Hamiltonian ordering of regions where consecutive ones differ by dropping the oldest set, adding a new set, or both. From the current window W: if W minus its front is an unused region it must come next (it can never be reached later), else a region W + {new y}, else W - front + {new y}; any leftover region at the end means IMPOSSIBLE, and the walk must end on a singleton. The only real choice is where to start a new chain after a singleton (or at the very start): pick an unused singleton {y} whose set y occurs in at most one size-2 region, since an interior singleton [b,b] of a chain has both [b-1,b] and [b,b+1] present; chains are name-disjoint and reversible so any endpoint works. Regions are identified by additive 64-bit random hashes; the added element is recovered by looking up H(region) - H(W) in a map of per-set random values while scanning unused regions of the right size, giving O(n^2 + input) time. Output uses region index as coordinate (set = [first region index, last + 1)). Pitfalls: up to 8e6 names so fast input is needed (names packed into 60-bit keys), E and F touching without overlapping is a legal singleton-to-singleton swap, and holes are never needed. Multiple answers are valid so the checker's sample 1 diff is expected: I validated with my own validator, comparing IMPOSSIBLE/possible against exhaustive enumeration of all interval layouts for up to 4 sets and recomputing regions on random valid instances up to 40 sets plus a 33 MB maximal case (0.2 s).",
+ "code_path": "solutions/kattis_vennintervals.cpp",
+ "samples_passed": true
+}

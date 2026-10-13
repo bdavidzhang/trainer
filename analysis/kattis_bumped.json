@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bumped",
+ "rating": 1400,
+ "topics": [
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Run Dijkstra from s and from t on the undirected road graph; a path using flight (u,v) costs ds[u] + dt[v], so take the minimum over all flights and the no-flight distance.",
+ "sketch": "Roads are undirected, so one Dijkstra from s and one from t give all needed distances. Answer = min(ds[t], min over flights u->v of ds[u] + dt[v]). O((n+m) log n + f). Pitfalls: flights are directed, so only ds[u]+dt[v] and not the reverse; use 64-bit distances (up to about 2.5e9) with a large but non-overflowing infinity since unreachable endpoints get added together; m can be 0.",
+ "code_path": "solutions/kattis_bumped.cpp",
+ "samples_passed": true
+}

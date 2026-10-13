@@ -1,0 +1,12 @@
+{
+ "id": "kattis:intervals0",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "Only 24 hour slots exist, so count for each hour h how many intervals satisfy a<=h<b.",
+ "sketch": "Keep an array of 24 counters; for every interval [a,b) increment hours a..b-1. Answer is the number of hours whose counter is at least k. O(24n). The only pitfall is treating the interval as half-open: hour b itself is not covered (3 to 14 is 11 hours).",
+ "code_path": "solutions/kattis_intervals0.cpp",
+ "samples_passed": true
+}

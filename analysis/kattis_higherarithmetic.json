@@ -1,0 +1,13 @@
+{
+ "id": "kattis:higherarithmetic",
+ "rating": 1800,
+ "topics": [
+  "greedy",
+  "math",
+  "constructive"
+ ],
+ "key_idea": "Numbers >=2 are always multiplied; each takes at most one extra 1 (and it is the k smallest that do), while the remaining ones are grouped into (1+1+1) and (1+1) factors like the classic max-product partition. Just try every k.",
+ "sketch": "Sort the non-ones. For k = 0..min(#ones, #non-ones) the value is prod_{i<k}(b_i+1) * prod_{i>=k} b_i * f(ones-k), with f(r) = 3^(r/3), 4*3^((r-4)/3) or 2*3^((r-2)/3) by r mod 3 (f(1)=1). Compare candidates through prefix sums of log((b+1)/b) plus log f in long double and print the best as a flat product of parenthesised groups. Justification: a+b<=ab for a,b>=2 so sums never contain two non-ones, and a group a+j with j>=2 ones is no better than (a+j-2)*(1+1). Pitfalls: naive 'attach ones to the 2s first' is wrong for small leftovers (e.g. 1 1 2 -> (1+1)*2=4 beats (2+1)*1), n=1, output length (fine: <= 8e5 chars). Any optimal expression is accepted, so the sample checker reports WRONG on formatting; verified instead by evaluating the output and comparing with a subset-DP brute force on 1500 random small cases (and the three samples give the same values 36, 518, 4).",
+ "code_path": "solutions/kattis_higherarithmetic.cpp",
+ "samples_passed": true
+}

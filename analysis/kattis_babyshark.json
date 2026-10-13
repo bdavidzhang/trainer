@@ -1,0 +1,12 @@
+{
+ "id": "kattis:babyshark",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Scan runs of equal consecutive words and keep the first longest run.",
+ "sketch": "Read whitespace-separated words, lowercase them, group consecutive equal words, and output the word of the first run with strictly maximal length. O(length). Tie-break is first occurrence, so use a strict comparison.",
+ "code_path": "solutions/kattis_babyshark.cpp",
+ "samples_passed": true
+}

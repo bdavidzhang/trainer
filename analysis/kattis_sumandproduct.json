@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sumandproduct",
+ "rating": 1800,
+ "topics": [
+  "math",
+  "brute-force",
+  "prefix-sums"
+ ],
+ "key_idea": "The sum of any range is at most 2e14, so a valid range contains at most about 47 elements greater than 1; for a fixed left end jump between non-one elements and treat each run of ones in O(1).",
+ "sketch": "Precompute prefix sums and next non-one index. For each l extend r through non-one positions while the product stays <= the remaining suffix sum (guard the multiplication with a division to avoid overflow). At a non-one stop r>l count it if product == sum; for the following run of c ones the product is fixed while the sum takes each value S+1..S+c, so it contributes one iff S+1 <= P <= S+c. Complexity O(n log(maxSum)). Pitfalls: ranges must have length >= 2, left ends that are themselves 1, and 64-bit overflow of the product. Verified against O(n^2) brute.",
+ "code_path": "solutions/kattis_sumandproduct.cpp",
+ "samples_passed": true
+}

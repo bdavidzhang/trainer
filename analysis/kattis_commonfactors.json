@@ -1,0 +1,12 @@
+{
+ "id": "kattis:commonfactors",
+ "rating": 1300,
+ "topics": [
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "g(k) = 1 - phi(k)/k = 1 - prod(1 - 1/p) over distinct primes of k, so the best k is the largest primorial not exceeding n.",
+ "sketch": "phi(k)/k depends only on the set of prime divisors and shrinks with each extra prime, and smaller primes shrink it more, so the optimum is the product of the first few primes. Multiply consecutive primes while the product stays <= n (at most 15 primes for 1e18), tracking q = product of p and phi = product of (p-1). Answer is (q - phi)/q reduced by gcd. O(1). Pitfall: the overflow test q*p <= n must be done in 128-bit (or by division), since the product can exceed 64 bits. Verified against a brute force for n < 2500.",
+ "code_path": "solutions/kattis_commonfactors.cpp",
+ "samples_passed": true
+}

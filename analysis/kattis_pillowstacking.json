@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pillowstacking",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "bitset",
+  "dp-knapsack"
+ ],
+ "key_idea": "Every pillow contributes at least 1, and from position 61 on every pillow contributes exactly 1, so only the first ~61 positions need a reachability DP over sums up to C.",
+ "sketch": "Keep a bitset of sums reachable with exactly p pillows; for position p compute the distinct values ceil(a_i/2^p) that are <= C and OR together shifted copies of the bitset. Answer YES if C is reachable after any position p<=60; after index 60 (2^60 >= 1e18) every further pillow adds exactly 1, so any surviving sum <= C can be topped up to C. Cost is 61 positions * up to 1000 distinct values * 10^4/64 words, about 10^7 word operations. Pitfalls: a_i up to 1e18 needs unsigned 64-bit and a careful ceiling by shift plus remainder test, the stack may stop at any length (check C at every layer), and exact-length layering matters because the divisor depends on position. Stress-tested against a memoised brute force.",
+ "code_path": "solutions/kattis_pillowstacking.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:sleepingonthetrain",
+ "rating": 1700,
+ "topics": [
+  "dp",
+  "greedy",
+  "case-analysis",
+  "implementation"
+ ],
+ "key_idea": "Only the direction at each wake-up matters: a two-state DP (heading up / heading down) over the observations with transition costs 0, 1 or 2 turnarounds.",
+ "sketch": "State after wake i is (segment s_i, direction). Same direction to the next segment costs 0 if the segment lies ahead (or is the same) and 2 otherwise; switching direction always costs exactly 1 since after one turn the train sweeps the whole line. Boarding at stop a is treated as heading up at 'segment a' (can reach s >= a free) or heading down at 'segment a-1' (can reach s <= a-1 free); the impossible boarding directions at a=1 or a=n are automatically dominated. Finishing: heading up from segment s reaches b for free iff b >= s+1, heading down iff b <= s, otherwise one turn. O(t) time, n up to 1e9 never matters beyond comparisons. Pitfalls: repeated equal segments cost 0 in the same direction; arriving at b=1 or b=n does not count the turnaround there. Verified against a 0-1 BFS simulation of the actual train on 3000 random small cases.",
+ "code_path": "solutions/kattis_sleepingonthetrain.cpp",
+ "samples_passed": true
+}

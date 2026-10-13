@@ -1,0 +1,12 @@
+{
+ "id": "kattis:lotsofliquid",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Volumes add: the answer is the cube root of the sum of cubes.",
+ "sketch": "Read n side lengths, sum c^3 and print cbrt of the sum. O(n). Cubes reach 1e27 and the sum 1e32, far beyond 64-bit integers, so accumulate in (long) double; relative precision is ample for 1e-6. Inputs are floating point, not integers.",
+ "code_path": "solutions/kattis_lotsofliquid.cpp",
+ "samples_passed": true
+}

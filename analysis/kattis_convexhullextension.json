@@ -1,0 +1,14 @@
+{
+ "id": "kattis:convexhullextension",
+ "rating": 2400,
+ "topics": [
+  "geometry",
+  "math",
+  "number-theory",
+  "convex-hull"
+ ],
+ "key_idea": "An extension point must see exactly one edge and lie strictly inside the half-planes of the two neighbouring edges, so the answer is the sum over edges of lattice points strictly inside the triangle formed by the edge and the extensions of its neighbours; that region is unbounded (infinite) when the neighbours diverge, and the triangle can be about 1e10 long, so it is counted with floor sums.",
+ "sketch": "For edge i let d1, d2 be the directions of the previous and next edge. cross(d1,d2) < 0: the open region is an unbounded wedge -> infinitely many. cross = 0: it is a half-strip between parallel lattice lines, infinite iff a lattice line fits strictly between (|cross(primitive d1, edge)| >= 2), otherwise it contributes 0. cross > 0: a bounded open triangle with a rational apex. Turn the three strict inequalities into integer ones a x + b y + c >= 1, intersect the shifted lines exactly (return 0 if the shifted triangle is empty), split the integer x-range at the middle vertex, and on each piece sum floor(upper)-ceil(lower)+1 using the Euclid-like floor_sum in __int128. O(n log C). Pitfalls: strictness on all three lines (points collinear with a neighbouring edge are not allowed), any triangle hull is always infinite, apex coordinates reach ~1.6e10 so intermediate products need 128 bits, and choosing which of two lower/upper lines is active must be done per piece. Stress-tested against two brute forces.",
+ "code_path": "solutions/kattis_convexhullextension.cpp",
+ "samples_passed": true
+}

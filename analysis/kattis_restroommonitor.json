@@ -1,0 +1,12 @@
+{
+ "id": "kattis:restroommonitor",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "Paper users need distinct time slots; pushing them as late as possible (latest free slot <= deadline, processed by decreasing deadline) minimizes their use of every prefix, after which the rest is a Hall prefix-count check.",
+ "sketch": "Slot t (1-based) holds at most s people and at most one paper user; a person with deadline d must be in a slot <= d. Sort paper users by decreasing deadline and give each slot min(d, previous-1); if a slot drops below 1 the answer is No. This choice simultaneously minimizes the number of paper users in every prefix [1,d]. Then for each distinct non-paper deadline d check (non-paper with deadline<=d) + (paper slots<=d) <= s*d. O(n log n). Use 64-bit for s*d (up to 5e13). Stress-tested against a bipartite-matching brute force on small cases.",
+ "code_path": "solutions/kattis_restroommonitor.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lastguess",
+ "rating": 1900,
+ "topics": [
+  "flows",
+  "implementation",
+  "greedy"
+ ],
+ "key_idea": "Each guess gives, per letter, a lower bound on its count (greens+yellows) and an exact count if any occurrence is black; greens fix positions and every yellow/black forbids that letter at that position. Filling the free positions is then a bipartite assignment with lower/upper bounds on letter usage, solved by flow.",
+ "sketch": "Aggregate over all guesses: lo[c] = max (G+Y) count, exact[c] if a black c appeared, fixed green positions, and banned[pos][c] for every non-green mark. Build source->letter with capacity lo[c] minus greens already placed, letter->free position if not banned, position->sink 1, and run Dinic; the guarantee means all lower bounds saturate. Then raise the source capacity to infinity for letters without an exact count and continue augmenting: augmenting paths never reduce flow on source edges, so lower bounds stay satisfied while the remaining positions get filled. Read the word off saturated letter->position edges. Graph has at most 26*500 edges so it is instant. Pitfalls: a black mark still bans the letter at that position and makes the count exact, not zero; subtract fixed greens from the bounds. Multiple answers are accepted, so the sample checker reports a mismatch on sample 2; samples_passed is based on my own validator, which re-scores the output against every guess with the Wordle rules (both samples plus 4500 random games passed).",
+ "code_path": "solutions/kattis_lastguess.cpp",
+ "samples_passed": true
+}

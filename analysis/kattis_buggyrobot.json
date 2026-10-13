@@ -1,0 +1,13 @@
+{
+ "id": "kattis:buggyrobot",
+ "rating": 1600,
+ "topics": [
+  "shortest-paths",
+  "bfs-dfs",
+  "dp"
+ ],
+ "key_idea": "Shortest path over states (cell, number of original commands consumed) with 0/1 edge weights: executing the next command is free, deleting it or inserting any move costs 1.",
+ "sketch": "State (r, c, i). Transitions: execute s[i] (cost 0, move or stay if blocked) to (r', c', i+1); delete s[i] (cost 1) to (r, c, i+1); insert any of 4 commands (cost 1) to (r', c', i). Run 0-1 BFS with a deque and stop the first time a goal cell is popped, for any i, since the robot halts at the goal. About 50*50*51 states with 6 edges each. Pitfalls: ignored commands still consume an index, and inserts must remain possible after the string is exhausted (i = len).",
+ "code_path": "solutions/kattis_buggyrobot.cpp",
+ "samples_passed": true
+}

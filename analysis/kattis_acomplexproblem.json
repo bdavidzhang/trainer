@@ -1,0 +1,14 @@
+{
+ "id": "kattis:acomplexproblem",
+ "rating": 1700,
+ "topics": [
+  "scc-2sat",
+  "graphs",
+  "dp",
+  "topological-sort"
+ ],
+ "key_idea": "Classes in one SCC of the subset graph are forced equal, so max = number of SCCs; min = 1 + the longest path in the condensation DAG counted in strict edges.",
+ "sketch": "Map names to ids, build a directed graph with weight 0 for subset and 1 for proper subset edges, and run (iterative) Tarjan. The maximum is the SCC count since a DAG of inclusions can always be realised with all nodes distinct. For the minimum, assign each component the maximum number of strict edges on a path leaving it; components with equal level can be identified as the same set, giving a chain of levels, and a path with k strict edges forces k+1 distinct classes. Tarjan numbers components in reverse topological order so the DP is a single pass. O(V+E) with up to 4e5 names; use an iterative DFS to avoid stack overflow.",
+ "code_path": "solutions/kattis_acomplexproblem.cpp",
+ "samples_passed": true
+}

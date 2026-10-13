@@ -1,0 +1,13 @@
+{
+ "id": "kattis:alienintegers",
+ "rating": 1600,
+ "topics": [
+  "greedy",
+  "case-analysis",
+  "math"
+ ],
+ "key_idea": "An alien number of the same length must differ from N in its leading digit, so the nearest candidates are fully determined by the leading digit and filling the rest with the smallest or largest allowed digit.",
+ "sketch": "Let the allowed digits be those absent from N; if none, print Impossible. Generate candidates of length L-1, L and L+1: every nonzero allowed leading digit followed by all-minimum or all-maximum allowed digits, plus 0 if digit 0 is allowed. The closest number above N is leading digit just above N's (rest minimal) or the shortest longer number; the closest below is symmetric with maximal fill or the all-max number one digit shorter, and all of these are in the candidate set. Pick the minimum distance and print one or both ties in ascending order. O(digits). Pitfalls: 0 is a valid answer (e.g. N=123456789 gives 0), no leading zeros, candidates up to 17 digits need 64-bit, and the answer can have a different length than N. Verified against an outward-search brute force for N up to 3000 and random N up to 30000.",
+ "code_path": "solutions/kattis_alienintegers.cpp",
+ "samples_passed": true
+}

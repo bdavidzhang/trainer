@@ -1,0 +1,14 @@
+{
+ "id": "kattis:kebabpizza",
+ "rating": 2200,
+ "topics": [
+  "graphs",
+  "case-analysis",
+  "dsu",
+  "ad-hoc"
+ ],
+ "key_idea": "Toppings are vertices and slices are edges: after removing duplicates, an edge to a neighbour that has any other slice must sit at one of the two ends of a topping's arc, so the 'core' (vertices with a loop or >=2 distinct neighbours) must have max degree 2, and a core cycle must be the only component.",
+ "sketch": "Deduplicate slices (identical slices can sit next to each other) and separate loops. Call a topping core if it has a loop or at least two distinct neighbours; pure leaves can be placed inside their neighbour's arc. If some core vertex has more than 2 core neighbours it is impossible. Otherwise each component's core is a path or a cycle (caterpillar-like structure): paths can be laid out linearly and concatenated around the circle, while a cycle needs the whole circle, so it is possible only if that component is the only one (count components over used toppings with DSU, cycle iff core edges >= core vertices). O(n log n). Pitfalls: loops make a leaf count as core, multi-edges must not create fake 2-cycles, unused toppings are not components. Stress-tested against a permutation brute force on 1500 random small cases.",
+ "code_path": "solutions/kattis_kebabpizza.cpp",
+ "samples_passed": true
+}

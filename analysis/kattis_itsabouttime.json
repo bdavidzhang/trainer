@@ -1,0 +1,13 @@
+{
+ "id": "kattis:itsabouttime",
+ "rating": 1500,
+ "topics": [
+  "brute-force",
+  "math",
+  "number-theory"
+ ],
+ "key_idea": "The leap fraction is 1/n1 - 1/n2 + 1/n3; the number of divisor chains n1|n2|n3<=1000 is tiny, so enumerate them all and take the closest to the fractional part of the year.",
+ "sketch": "Year length T = 2*pi*r/(s*h) days; d = floor(T+0.5) and the target is |T-d| (the sign only decides whether leap days are added or removed, the triple is found the same way). Enumerate n1>=2, n2 a proper multiple of n1, n3 a proper multiple of n2 up to 1000 (a few tens of thousands of triples) and minimize |1/n1-1/n2+1/n3 - target| in long double. Any optimal triple is accepted; my output coincided with both sample answers exactly so the token checker passed, no separate validator was needed. Pitfalls: strict inequalities n1<n2<n3, n1>1, and using enough precision for pi since r is up to 1e9.",
+ "code_path": "solutions/kattis_itsabouttime.cpp",
+ "samples_passed": true
+}

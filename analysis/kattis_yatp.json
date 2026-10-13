@@ -1,0 +1,14 @@
+{
+ "id": "kattis:yatp",
+ "rating": 2300,
+ "topics": [
+  "centroid-decomposition",
+  "dp-optimization",
+  "trees",
+  "sorting"
+ ],
+ "key_idea": "Centroid decomposition turns dist(u,v) into d_u+d_v through the centroid, so each node needs min over v of p_v*x+d_v at x=p_u: a lower-envelope (convex hull trick) query.",
+ "sketch": "For each centroid c compute d_v for all nodes of its component, add lines y=p_v*x+d_v, and for every u relax ans[u] with d_u+min line value at p_u. Pairs in the same child subtree only overestimate the true distance, so no exclusion is needed; the true pair is handled at their own separating centroid. Sort the component once by penalty: it gives both the slope order for a monotone hull and the query order for a pointer walk, total O(n log^2 n). Use iterative BFS instead of recursion (path trees of 2e5 nodes). Answers reach 2e17 and hull cross products about 2e17, both fit in int64. Stress-tested against Floyd brute force.",
+ "code_path": "solutions/kattis_yatp.cpp",
+ "samples_passed": true
+}

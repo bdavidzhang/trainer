@@ -1,0 +1,13 @@
+{
+ "id": "kattis:dragonball1",
+ "rating": 1600,
+ "topics": [
+  "shortest-paths",
+  "brute-force",
+  "graphs"
+ ],
+ "key_idea": "Only 8 cities matter: run Dijkstra from city 1 and from each distinct ball city, then try all orders of visiting the balls (at most 7! = 5040).",
+ "sketch": "Deduplicate the ball cities, run up to 8 Dijkstras on the 2e5-edge graph to build a pairwise distance table, then enumerate permutations starting from city 1 and take the cheapest total. O(8 m log n + 7!*7). Pitfalls: several balls may share a city or lie in city 1, zero-weight edges are allowed, output -1 if any ball city is unreachable, and use 64-bit distances for safety.",
+ "code_path": "solutions/kattis_dragonball1.cpp",
+ "samples_passed": true
+}

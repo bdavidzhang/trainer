@@ -1,0 +1,13 @@
+{
+ "id": "kattis:heavyhauling",
+ "rating": 2200,
+ "topics": [
+  "greedy",
+  "data-structures",
+  "math"
+ ],
+ "key_idea": "Order is preserved, so target positions p_1<p_2<...<p_n; substituting y_i = p_i - i makes y non-decreasing and the problem becomes L2 isotonic regression of a_i = x_i - i, solved by pool-adjacent-violators with integer block values.",
+ "sketch": "Maintain a stack of blocks (sum, count, value) where value is the integer nearest to the block mean; push each a_i as its own block and merge with the previous block while the previous value exceeds the current one, recomputing the rounded mean. Finally sum (value - a_i)^2 over all elements. O(n) amortised, fine for n = 1e6. Pitfalls: rounding the mean needs floor division that is correct for negative sums; the answer reaches about n^3/12 = 8.3e16 so 64-bit is required; use fast input. Stress-tested against an O(n * range) DP on 400 small random cases.",
+ "code_path": "solutions/kattis_heavyhauling.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:polyominotiling",
+ "rating": 2300,
+ "topics": [
+  "strings",
+  "bitset",
+  "palindromes",
+  "brute-force"
+ ],
+ "key_idea": "A factor at cut points (p,q) matches its antipodal bar-image iff q-p <= L[(p+q-1) mod k], a Manacher-like radius around each centre, so validity is O(1); then count triples of cuts with bitset AND + popcount.",
+ "sketch": "With n=k/2, X at [p,q) is admissible iff s[x+n]=comp(s[p+q-1-x]) for all x in the window, which is a symmetric condition around centre p+q-1, so compute a maximal length L per centre by O(k*n) expansion. Two-factor forms: count (s,a) with both halves valid. Three-factor forms: for each start s in [0,n) build bitset E_s of cuts e with (e,s+n) valid, and for each i with (s,i) valid add popcount(F_i & E_s), where F_i is the precomputed bitset of valid ends for start i; multiply everything by 2 for the antipodal rotations. Worst case about k*n*(n/64)/2 word operations, 0.45s on k=10000 extremes; memory 12.5MB. Odd k gives 0. Verified against a direct O(k*n^2*k) brute force on 600 random strings (445 with nonzero answers).",
+ "code_path": "solutions/kattis_polyominotiling.cpp",
+ "samples_passed": true
+}

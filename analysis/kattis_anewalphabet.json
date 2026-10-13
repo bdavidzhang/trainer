@@ -1,0 +1,12 @@
+{
+ "id": "kattis:anewalphabet",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Direct table lookup: replace each letter, case-insensitively, by its fixed multi-character glyph and copy everything else.",
+ "sketch": "Read the whole line with getline, since it contains spaces and tabs. For each character, if it is a letter append the table entry for its lowercase form, otherwise append the character unchanged. Pitfalls are purely in typing the table: backslashes must be escaped in the source (m is []\\/[], n is []\\[], v is \\/, w is \\/\\/), t includes its quotes, and y starts with a backtick. O(length).",
+ "code_path": "solutions/kattis_anewalphabet.cpp",
+ "samples_passed": true
+}

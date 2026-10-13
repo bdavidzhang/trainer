@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bottleofnewport",
+ "rating": 800,
+ "topics": [
+  "math",
+  "implementation"
+ ],
+ "key_idea": "Clamp each remaining volume at zero independently and output 100*a/(a+o).",
+ "sketch": "Remaining alcohol is max(0, a-d*da), remaining other liquid max(0, o-d*do); the answer is 100*ra/(ra+ro). d*delta reaches 1e18, which still fits in signed 64-bit, so compute in long long before converting to double. The guarantee ensures the denominator is positive. O(1).",
+ "code_path": "solutions/kattis_bottleofnewport.cpp",
+ "samples_passed": true
+}

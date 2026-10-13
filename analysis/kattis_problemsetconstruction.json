@@ -1,0 +1,14 @@
+{
+ "id": "kattis:problemsetconstruction",
+ "rating": 2000,
+ "topics": [
+  "dp-knapsack",
+  "probability",
+  "combinatorics",
+  "sorting"
+ ],
+ "key_idea": "The team's tie-break rule is just greedy shortest-first, so problem i is solved iff it is solvable and the total time of chosen-and-solvable faster problems plus s_i fits in t; slower problems only matter through how many are chosen.",
+ "sketch": "Sort by time. Maintain dp[c][w] = weighted count of ways to choose c problems among the faster ones (not chosen: weight 1; chosen unsolvable: 1-p; chosen solvable: p and adds its time to w). For the problem of rank r, answer = p_i * sum_{c, w<=t-s_i} dp[c][w] * C(n-1-r, k-1-c) / C(n-1, k-1), then fold problem i into the dp. O(n*k*t) ~ 6e6. Binomials up to C(49,24) fit in doubles. Pitfalls: condition on i being in the set (k-1 others from n-1), and drop sums above t. Stress-tested against an exhaustive enumeration of sets and solvable masks.",
+ "code_path": "solutions/kattis_problemsetconstruction.cpp",
+ "samples_passed": true
+}

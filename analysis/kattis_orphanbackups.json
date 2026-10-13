@@ -1,0 +1,14 @@
+{
+ "id": "kattis:orphanbackups",
+ "rating": 1300,
+ "topics": [
+  "strings",
+  "hashing",
+  "sorting",
+  "implementation"
+ ],
+ "key_idea": "Image names may themselves contain underscores, so recover the image name by cutting the file name at the second-to-last underscore.",
+ "sketch": "Read image names until the blank line into an ordered set. For each file name, strip the last two underscore-separated fields (timestamp and type) to get the image name; if it is in the index mark that image used, otherwise collect the file as an orphan. Print sorted orphan files with F, then unused images with I in sorted order, or No mismatches. O((n+m) log) with strings of length <= 50. Pitfalls: underscores inside image names, trailing carriage returns/spaces, output order F before I, and fast I/O for 400k lines.",
+ "code_path": "solutions/kattis_orphanbackups.cpp",
+ "samples_passed": true
+}

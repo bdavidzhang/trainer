@@ -1,0 +1,12 @@
+{
+ "id": "kattis:kinversions",
+ "rating": 1900,
+ "topics": [
+  "fft-ntt",
+  "math"
+ ],
+ "key_idea": "The number of (B at i, A at i+k) pairs for every k is a cross-correlation of the two indicator arrays, i.e. one convolution after reversing one of them.",
+ "sketch": "Let A[i]=1 where s[i]='A' and R[n-1-i]=1 where s[i]='B'; then the product coefficient at n-1+k equals the number of k-inversions. Multiply with an NTT of size 2^21 modulo 998244353; counts are at most 1e6 so there is no wraparound. O(n log n), about 0.2s. Pitfalls: get the reversal offset right and use fast output for up to 1e6 lines.",
+ "code_path": "solutions/kattis_kinversions.cpp",
+ "samples_passed": true
+}

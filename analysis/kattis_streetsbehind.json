@@ -1,0 +1,13 @@
+{
+ "id": "kattis:streetsbehind",
+ "rating": 1600,
+ "topics": [
+  "math",
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Each run should use all n serious runners and convert g=floor(n(b-a)/a) casual ones; simulate, but batch all consecutive runs that share the same gain g.",
+ "sketch": "Condition x/(x+y)>=a/b gives y<=x(b-a)/a, so greedy with every serious runner is optimal and the gain is g=floor(n(b-a)/a); g=0 (in particular a=b) means -1. Naive simulation can take 1e9 steps (gain 1), so jump: gain stays g until n reaches ceil((g+1)a/(b-a)), take min(ceil((thr-n)/g), ceil(k/g)) steps at once. The number of phases is O(sqrt(k)) worst case (about 1e5), easily within limits for 100 tests. Use 64-bit: n*(b-a) reaches ~2e18. Stress-tested against plain simulation.",
+ "code_path": "solutions/kattis_streetsbehind.cpp",
+ "samples_passed": true
+}

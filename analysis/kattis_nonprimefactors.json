@@ -1,0 +1,13 @@
+{
+ "id": "kattis:nonprimefactors",
+ "rating": 1300,
+ "topics": [
+  "number-theory",
+  "math",
+  "implementation"
+ ],
+ "key_idea": "NPF(i) = d(i) - omega(i): number of divisors minus number of distinct primes, both precomputable with a linear sieve.",
+ "sketch": "Run a linear sieve up to 2e6 tracking the smallest prime factor, its exponent, the divisor count d and distinct-prime count omega (multiplicative updates: same smallest prime bumps the exponent, a new prime doubles d and increments omega). Each query is then one table lookup. Total O(MAX + Q). The only real difficulty is I/O with 3e6 queries: read the whole input with fread and build the output in one buffer.",
+ "code_path": "solutions/kattis_nonprimefactors.cpp",
+ "samples_passed": true
+}

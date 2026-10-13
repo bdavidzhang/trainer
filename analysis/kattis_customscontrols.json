@@ -1,0 +1,13 @@
+{
+ "id": "kattis:customscontrols",
+ "rating": 1900,
+ "topics": [
+  "constructive",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Sort vertices by shortest distance from 1 and give the first k the letter N: along any shortest path distances strictly increase, so its colours look like N..NS..S, and any path with at least 3 vertices has two equal neighbours.",
+ "sketch": "Run Dijkstra from vertex 1 with vertex weights. If 1 and n are not adjacent, every shortest path has at least 3 vertices, so colouring the k closest vertices N and the rest S makes every shortest path a block of N followed by a block of S, which always contains a monochromatic edge; this works for every k. If the edge 1-n exists it is the unique shortest path (weights are positive), so 1 and n must share a colour: impossible only for n = 2, k = 1; otherwise give both N if k >= 2 else both S and distribute the rest arbitrarily. O((n+m) log n). Pitfalls: ties in distance are harmless because a path never contains two vertices of equal distance; do not forget the k = 0, k = n and n = 2 cases. Any valid string is accepted, so sample 3 differs textually; I validated with my own checker on 3000 random small graphs (no all-bichromatic shortest path exists, exact N count, and 'impossible' confirmed by exhaustive search).",
+ "code_path": "solutions/kattis_customscontrols.cpp",
+ "samples_passed": true
+}

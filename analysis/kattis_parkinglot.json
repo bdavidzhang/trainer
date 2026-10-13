@@ -1,0 +1,13 @@
+{
+ "id": "kattis:parkinglot",
+ "rating": 2000,
+ "topics": [
+  "geometry",
+  "shortest-paths",
+  "graphs"
+ ],
+ "key_idea": "Shortest paths among obstacles bend only at obstacle corners, which are lattice points, so run Dijkstra on the (r+1)(c+1) lattice points with an edge between two points whenever the open segment misses the interior of every car cell.",
+ "sketch": "For a non-axis-aligned segment walk over the unit column strips it crosses; in strip i the segment spans a y-interval computed exactly in integers scaled by dx, and the cells whose open interior it meets are rows floor(lo/dx) .. ceil(hi/dx)-1, each of which must be empty. Axis-aligned segments run along cell boundaries and are always allowed (hence 4.0 for a full 2x2 lot). Dense O(V^2) Dijkstra with V<=2601 and visibility tested lazily only when an edge would improve a distance, about 6.7M tests of cost O(dx). Pitfalls: touching a car only at a corner or along an edge is legal, so the interior test must be strict and done in exact integer arithmetic; print with enough decimals.",
+ "code_path": "solutions/kattis_parkinglot.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:travelingmerchant",
+ "rating": 2000,
+ "topics": [
+  "segment-tree",
+  "data-structures"
+ ],
+ "key_idea": "The weekday on which town i is visited depends only on the direction and on s mod 7, so there are only 14 fixed price arrays; on each, the query is the classic max of a[j]-a[i] with i before j over a range, answered by a segment tree storing (min, max, best).",
+ "sketch": "For each start residue c in 0..6 and each direction build an array: eastward price of town i on day (i-c) mod 7, westward on day (c-i) mod 7, with multipliers 0,1,2,3,2,1,0 for d_i. Build 14 segment trees whose nodes hold min, max and best profit; merging takes best = max(L.best, R.best, R.max-L.min) for eastward and L.max-R.min for westward (buy at the larger index). A query (s,t) picks the tree for s mod 7 and its direction and combines the nodes covering [min(s,t), max(s,t)] in left-to-right order. O(14 n) build and O(log n) per query, about 45 MB. Pitfalls: order of merging in the iterative query (non-commutative), negative d_i, and answering 0 when no profit. Stress-tested against a brute force over all (s,t) pairs on random small inputs.",
+ "code_path": "solutions/kattis_travelingmerchant.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:connectedness",
+ "rating": 1100,
+ "topics": [
+  "dsu",
+  "graphs"
+ ],
+ "key_idea": "Process edges in order with a union-find and report the index of the edge that brings the component count down to 1.",
+ "sketch": "Initialise DSU with N components; for each edge in input order union its endpoints and decrement the component count when they were in different sets; print the 1-based edge index the moment the count hits 1. Special case N=1: already connected with 0 edges. If the count never reaches 1 print -1. O((N+M) alpha) with path halving; use fast input for 1e6 edges.",
+ "code_path": "solutions/kattis_connectedness.cpp",
+ "samples_passed": true
+}

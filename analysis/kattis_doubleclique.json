@@ -1,0 +1,14 @@
+{
+ "id": "kattis:doubleclique",
+ "rating": 2100,
+ "topics": [
+  "sorting",
+  "combinatorics",
+  "graphs",
+  "math"
+ ],
+ "key_idea": "For any vertex set K of size k, sum of degrees in K <= k(k-1) + sum of degrees outside, with equality exactly when K is a clique and the rest is independent; so valid K of size k are exactly the size-k sets whose degree sum equals that of the top-k degrees.",
+ "sketch": "Sort degrees descending and keep a prefix sum. For each k from 0 to n test pre_k == k(k-1) + (2m - pre_k); if it holds, every set with the same degree multiset as the top k is valid, and they differ only in which vertices of the tie block containing position k are chosen, contributing C(c, j) where c is the number of vertices with degree d_k and j is how many of them are among the top k. Sum these binomials mod 1e9+7 (k = 0 counts only when there are no edges). O(n log n + m). Pitfalls: 64-bit for k(k-1), ties in the degree sequence, and do not try to build cliques explicitly. Stress-tested against subset enumeration for n <= 7.",
+ "code_path": "solutions/kattis_doubleclique.cpp",
+ "samples_passed": true
+}

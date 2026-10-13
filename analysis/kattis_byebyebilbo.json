@@ -1,0 +1,13 @@
+{
+ "id": "kattis:byebyebilbo",
+ "rating": 1400,
+ "topics": [
+  "greedy",
+  "trees",
+  "dp-tree"
+ ],
+ "key_idea": "A firework only covers downwards, so the deepest uncovered node forces a firework on its ancestor path and the highest allowed ancestor (k-1 up, or the root) dominates every other choice.",
+ "sketch": "Process nodes in decreasing index (valid bottom-up order since p_i<i), maintaining need[v] = largest distance from v to a still-uncovered node in its subtree. When need[v]==k-1, or v is the root with something uncovered, place a firework at v and reset need to -1; otherwise push need[v]+1 to the parent. O(n). Exchange argument gives optimality. Pitfalls: k=1 means every node needs its own firework; the root must always be handled; depth can be 1e5 so avoid recursion. Any optimal set is accepted, so sample 1 differs textually (I print {1,2} instead of {1,5}); samples_passed is true because my own validator plus an exhaustive subset brute force confirmed validity and minimality on 1500 random trees with n<=9.",
+ "code_path": "solutions/kattis_byebyebilbo.cpp",
+ "samples_passed": true
+}

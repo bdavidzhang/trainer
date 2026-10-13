@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pixelated",
+ "rating": 1700,
+ "topics": [
+  "sorting",
+  "binary-search",
+  "math"
+ ],
+ "key_idea": "A horizontal pulse (t,m) on row a occupies pixel (b,a) during (t+b-1, t+b-1+m) and a vertical one (t',m') on column b during (t'+a-1, t'+a-1+m'); subtracting a+b-1 turns this into overlap of the intervals [t-a, t-a+m) and [t'-b, t'-b+m').",
+ "sketch": "Map each horizontal pulse to the interval [t-a, t-a+m) and each vertical pulse to [t-wire, t-wire+m). A pixel lights iff the two open intervals overlap, and since each wire has at most one pulse every overlapping (h,v) pair is a distinct pixel. Count pairs as |V| minus those disjoint on the left (v.end <= h.start) minus those disjoint on the right (v.start >= h.end), using two sorted arrays and binary search; the two disjoint cases are exclusive. O(n log n). Pitfalls: touching endpoints do not activate (strict inequalities), the answer reaches ~1e10 so use 64-bit, and the grid size is unbounded so no clipping is needed. Stress-tested against an O(n^2) brute.",
+ "code_path": "solutions/kattis_pixelated.cpp",
+ "samples_passed": true
+}

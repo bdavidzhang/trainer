@@ -1,0 +1,13 @@
+{
+ "id": "kattis:agamemnonsodyssey",
+ "rating": 1300,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "greedy"
+ ],
+ "key_idea": "If k >= 2 a DFS walk traverses every edge exactly twice, so everything is collectable; if k = 1 the walk is a simple path, so the answer is the weighted diameter.",
+ "sketch": "Read the tree and sum all edge weights. For k >= 2 print the sum. For k = 1 run two BFS/DFS passes (farthest node from any node, then farthest from that) to get the weighted diameter. O(N). Pitfalls: use 64-bit sums (up to 2e14), iterative traversal to avoid stack overflow on a path of 2e5 nodes, and N = 1 gives 0.",
+ "code_path": "solutions/kattis_agamemnonsodyssey.cpp",
+ "samples_passed": true
+}

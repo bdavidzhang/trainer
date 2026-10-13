@@ -1,0 +1,13 @@
+{
+ "id": "kattis:addormultiply",
+ "rating": 1900,
+ "topics": [
+  "segment-tree",
+  "data-structures",
+  "math"
+ ],
+ "key_idea": "A segment tree node summarises an expression as (first product term, sum of middle terms, last product term) and nodes merge by the operator at the split; keep a second copy for the all-flipped expression so the global flip is O(1).",
+ "sketch": "Each node stores, for both the current and the fully flipped operator set, whether the segment is one single product, and otherwise its prefix product, sum of complete inner terms and suffix product. Merging with '*' glues the left suffix to the right prefix (which becomes a complete middle term if both sides are non-single); merging with '+' closes both. A swap is two leaf updates, an operator flip recomputes the path to the node whose split sits at that operator, and 'a' just toggles which copy is read at the root. O((N+M) log N), 0.13 s on max input. Pitfalls: the four full/non-full cases in the merge, swap with i=j, and modular reduction. Stress-tested against direct evaluation.",
+ "code_path": "solutions/kattis_addormultiply.cpp",
+ "samples_passed": true
+}

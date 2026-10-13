@@ -1,0 +1,13 @@
+{
+ "id": "kattis:folds",
+ "rating": 1900,
+ "topics": [
+  "math",
+  "big-integer",
+  "divide-and-conquer"
+ ],
+ "key_idea": "The dragon curve satisfies D(2^m) = (1+i)^m and the second half is the first half rotated about its endpoint and reversed, giving D(n) = (1+i)^m - i*D(2^m - n) for 2^(m-1) < n <= 2^m.",
+ "sketch": "Convert n (up to 1e100, ~333 bits) to binary. Repeat: let m = ceil(log2 n), add unit*(1+i)^m to the answer, multiply unit by -i, replace n by 2^m - n (which is < 2^(m-1), so at most ~333 rounds). Since (1+i)^2 = 2i, every term is +-2^(m/2) times 1, i, or (1+-i), so the answer is accumulated as signed coefficients of powers of two for x and y separately, then normalised (carry propagation, negate if the final carry is negative) and converted to decimal. O(bits^2). Pitfalls: orientation/sign of the rotation must be fixed from the samples (8 -> (-2,2)); coordinates reach 2^167 so no native type works; handle n=0 and exact powers of two. Verified against direct turn-sequence simulation for n<3000.",
+ "code_path": "solutions/kattis_folds.cpp",
+ "samples_passed": true
+}

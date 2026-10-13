@@ -1,0 +1,12 @@
+{
+ "id": "kattis:herbmixing",
+ "rating": 800,
+ "topics": [
+  "greedy",
+  "math"
+ ],
+ "key_idea": "A green+red pair gives 10 per green, far better than any green-only recipe, so pair as many as possible and then pack leftover greens in threes.",
+ "sketch": "Use p=min(g,r) pairs for 10p. With the remaining greens take g/3 triples for 10 each, and the remainder gives 3 if it is 2 or 1 if it is 1. Leftover reds are worthless. O(1).",
+ "code_path": "solutions/kattis_herbmixing.cpp",
+ "samples_passed": true
+}

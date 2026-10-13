@@ -1,0 +1,12 @@
+{
+ "id": "kattis:familyvisits",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "greedy"
+ ],
+ "key_idea": "For a fixed number of cleaning afternoons, less remaining mess is always better, so dp[day][cleanings used] = minimum possible mess is a complete state.",
+ "sketch": "dp[i][j] = min mess after day i with j cleaning days: either skip (dp[i-1][j]+m_i) or clean (max(0, dp[i-1][j-1]+m_i-c_i)). On a visit day any state with positive mess becomes infeasible. Answer is the smallest j with a finite dp[n][j], or -1. O(n^2) = 1e6. Pitfalls: cleaning clamps at zero (no banking of spare capacity), the mess is made in the morning before the same day's cleaning, and days after the last visit are irrelevant but harmless.",
+ "code_path": "solutions/kattis_familyvisits.cpp",
+ "samples_passed": true
+}

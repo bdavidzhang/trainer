@@ -1,0 +1,13 @@
+{
+ "id": "kattis:juniorjoining",
+ "rating": 1700,
+ "topics": [
+  "greedy",
+  "sorting",
+  "math"
+ ],
+ "key_idea": "Only the number of shields per city matters: with s shields in a city of size m the bonus is c*min(s,m-s) and the best shields are the top s by d-a, so each city gives a concave function of s and the global choice is just the n largest marginal gains.",
+ "sketch": "Baseline everyone as spear (sum of a). Per city sort d-a descending; the marginal gain of the (s+1)-th shield is diff[s] + c*(min(s+1,m-s-1)-min(s,m-s)), which is non-increasing in s because both the sorted prefix sums and c*min(s,m-s) are concave. Collect all 2n marginals, add the n largest to the baseline. Leftover unmatched recruits can always be paired across cities since shield and spear totals are both n. O(n log n). Pitfalls: use 64-bit (answer up to ~4e11), marginals can be negative but exactly n must still be taken. Verified against a full brute force over role assignments and pairings.",
+ "code_path": "solutions/kattis_juniorjoining.cpp",
+ "samples_passed": true
+}

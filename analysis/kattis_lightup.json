@@ -1,0 +1,11 @@
+{
+ "id": "kattis:lightup",
+ "rating": 900,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Simulate: cast rays from every bulb in four directions until a blocked cell, then check the three rules directly.",
+ "sketch": "For each bulb walk in the 4 directions over open/bulb cells, marking them lit; meeting another bulb is a violation. For each digit cell count orthogonally adjacent bulbs and compare. Finally every '.' must be lit. O(n^3) worst case with n<=30. Pitfalls: bulbs light themselves, X cells have no constraint, a grid with no open cells is valid.",
+ "code_path": "solutions/kattis_lightup.cpp",
+ "samples_passed": true
+}

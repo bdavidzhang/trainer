@@ -1,0 +1,14 @@
+{
+ "id": "kattis:tokengame",
+ "rating": 2700,
+ "topics": [
+  "games",
+  "bitset",
+  "dp",
+  "bitmasks"
+ ],
+ "key_idea": "Fixing three of the four coordinates, the line along the fourth contains at most one P-position (two when the tokens share that row/column, one on each side of the blocker), so only ~2*300^3 P-positions exist and they can be found with running OR-bitsets per line.",
+ "sketch": "Loop x1, y1, x2 and keep three 300-bit bitsets over y2 marking positions already beaten by a P-position reachable along the x1-line, y1-line and x2-line (running ORs indexed by the other two fixed coordinates). The first zero bit of their OR is the unique P value of y2; when x1==x2 take one below y1 and one above y1 because the token cannot jump. Blocking on the other lines is handled by clearing bit y1 in the three bitsets at the moment x1==x2 (the moving coordinate passes the blocker). Store F[x1][y1][x2] (108 MB of shorts); by token-swap and transpose symmetry the same table answers all four move directions, and a query counts the stored P values below the current coordinate that are not behind the blocker. Precompute is about 2.7e7 * 5 words, 0.3 s; queries O(1). Verified against a full minimax brute force on all states of a 7x7 board.",
+ "code_path": "solutions/kattis_tokengame.cpp",
+ "samples_passed": true
+}

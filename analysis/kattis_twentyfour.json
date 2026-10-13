@@ -1,0 +1,13 @@
+{
+ "id": "kattis:twentyfour",
+ "rating": 1700,
+ "topics": [
+  "brute-force",
+  "search-backtracking",
+  "implementation"
+ ],
+ "key_idea": "The search space is tiny: 24 orderings x 64 operator choices x all laminar sets of parenthesis pairs over the 4 operands; evaluate each with normal precedence and take the minimum of 2*inversions + number of pairs.",
+ "sketch": "Enumerate index permutations (cost 2 per inversion, which equals the minimum number of adjacent swaps), the 4^3 operator assignments, and every subset of the five possible parenthesised ranges [0,1],[1,2],[2,3],[0,2],[1,3] that is laminar (pairwise nested or disjoint). Build the token string and evaluate it with a small recursive-descent parser honouring precedence and left-to-right evaluation; a division is rejected unless the divisor is non-zero and divides exactly. Redundant parentheses only cost more so the minimum handles them automatically. About 24*64*14 evaluations. Pitfalls: permute indices rather than values so duplicates get the cheapest arrangement, crossing ranges such as [0,2] with [1,3] are invalid, and intermediate values may be negative or zero.",
+ "code_path": "solutions/kattis_twentyfour.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:trianglecontainment",
+ "rating": 1800,
+ "topics": [
+  "geometry",
+  "sorting",
+  "fenwick"
+ ],
+ "key_idea": "Q is inside triangle (0,0),(x,0),P exactly when Q's angle seen from (0,0) is smaller than P's and Q's angle seen from (x,0) is smaller than P's, so it is a 2D dominance sum.",
+ "sketch": "Sort points by polar angle around the origin (measured from the +x direction) and separately by angle around (x,0) (measured from the -x direction), both with exact cross products. Sweep in origin-angle order and use a Fenwick tree over the rank in the second order: the answer for P is the sum of values already inserted with smaller second rank. O(n log n). The no-point-on-boundary guarantee means there are no angular ties. Pitfalls: cross products reach about 4e18 (coordinates shifted by x are up to 2e9), which still fits in signed 64-bit; value sums reach 1e14.",
+ "code_path": "solutions/kattis_trianglecontainment.cpp",
+ "samples_passed": true
+}

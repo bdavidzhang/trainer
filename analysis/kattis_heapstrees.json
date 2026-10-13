@@ -1,0 +1,14 @@
+{
+ "id": "kattis:heapstrees",
+ "rating": 2000,
+ "topics": [
+  "trees",
+  "data-structures",
+  "greedy",
+  "sorting"
+ ],
+ "key_idea": "It is LIS on a tree: keep for each subtree the multiset of 'tails' from the patience-sorting LIS algorithm, merge children small-to-large, then insert the node's value by replacing its lower_bound.",
+ "sketch": "Every root-to-leaf chain of chosen nodes must be strictly decreasing going down, i.e. strictly increasing going up. For a node, union the children's multisets (independent branches simply add), then find the first element >= v: erase it if it exists, and insert v; the multiset size is the best answer for that subtree. Using lower_bound (not upper_bound) is what enforces strictness, e.g. the all-equal chain gives 1. Small-to-large merging gives O(n log^2 n); since parents have smaller indices, process nodes from n down to 1 with no recursion. Answer is the size of the root's multiset. Verified against subset brute force for n<=11.",
+ "code_path": "solutions/kattis_heapstrees.cpp",
+ "samples_passed": true
+}

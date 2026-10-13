@@ -1,0 +1,12 @@
+{
+ "id": "kattis:costofliving",
+ "rating": 2000,
+ "topics": [
+  "linear-algebra",
+  "math"
+ ],
+ "key_idea": "Take logs: log price(A,x) = P_A + (x-1)*M_A + I_x is linear in the unknowns, so a query is determined iff its coefficient vector lies in the row space of the known equations.",
+ "sketch": "Unknowns are P_A, M_A per commodity and prefix log-inflations I_2..I_y (at most 209). Each known price gives one equation and each known inflation gives I_{x+1}-I_x = log r. Gauss-Jordan to reduced row echelon form with long doubles and partial pivoting (coefficients are small integers, eps 1e-9), then reduce each query vector by the pivot rows: if a non-pivot coordinate remains it is undetermined (-1.0), else print exp of the combined right-hand side. About 1000 x 209 x 209 operations. Pitfall: a query can be determined even when neither modifier nor inflation is individually known. Verified against exact rational rank computations.",
+ "code_path": "solutions/kattis_costofliving.cpp",
+ "samples_passed": true
+}

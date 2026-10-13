@@ -1,0 +1,14 @@
+{
+ "id": "kattis:countingsatellites",
+ "rating": 2100,
+ "topics": [
+  "constructive",
+  "greedy",
+  "math",
+  "combinatorics"
+ ],
+ "key_idea": "An 'S' can only be the first letter, so inserting an S adds exactly the number of 'ATELLITE' subsequences in the suffix after it and never disturbs other counts; pick a fixed skeleton whose suffix counts form a dense coin system from 1 up to about 1e17 and pay k greedily.",
+ "sketch": "Counts can only grow polynomially (degree 9) in the length, so use block strings: skeleton Z = concatenation for p = 128,64,...,1 of A^p T^p E^p L^(2p) I^p T^p E^p (length 2040). Compute by a right-to-left DP the number f(i) of 'ATELLITE' subsequences in each suffix; f changes only at A's, ends at 1 and the ratio between consecutive coin values is small (about 256/p when entering block p, (i+1)/i inside). Scan left to right and before each A insert floor(rem / f) copies of S, reducing rem; since the last coin is 1 the remainder reaches 0. Total length stayed <= 2819 over my tests. Checker cannot judge (any string is accepted), so samples_passed comes from my own validator: a subsequence-count DP confirmed exactly k and length <= 5000 for k = 1..399, 1e18, and ~750 random values across all magnitudes. Pitfalls: use 128-bit for suffix counts, and only S (not E, T or L, which occur twice in the word) is a side-effect-free coin.",
+ "code_path": "solutions/kattis_countingsatellites.cpp",
+ "samples_passed": true
+}

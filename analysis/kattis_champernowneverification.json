@@ -1,0 +1,12 @@
+{
+ "id": "kattis:champernowneverification",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "strings"
+ ],
+ "key_idea": "Just build the Champernowne words 1, 12, 123, ... as strings and compare; only a dozen are below 1e9.",
+ "sketch": "Read n as a string, concatenate k=1,2,... and compare after each step, printing k on equality and -1 otherwise. O(1). Pitfall: after 123456789 the next word is 12345678910 which already exceeds 1e9, so 1000000000 is not a word.",
+ "code_path": "solutions/kattis_champernowneverification.cpp",
+ "samples_passed": true
+}

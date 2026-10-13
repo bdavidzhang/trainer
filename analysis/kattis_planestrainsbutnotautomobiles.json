@@ -1,0 +1,14 @@
+{
+ "id": "kattis:planestrainsbutnotautomobiles",
+ "rating": 2300,
+ "topics": [
+  "matching",
+  "graphs",
+  "bfs-dfs",
+  "flows"
+ ],
+ "key_idea": "Minimum flights = (minimum vertex-disjoint path cover of the DAG) - 1 = n - maxmatching - 1, and a city's airport is reachable iff it can be a path endpoint in some minimum cover, i.e. its out-copy or in-copy is unmatched in some maximum matching.",
+ "sketch": "Build the bipartite graph out(u) - in(v) per train edge and run Hopcroft-Karp. Paths can be ordered arbitrarily, so any vertex that is a path end can be placed non-last and any path start non-first; hence with at least 2 paths the airport set is exactly the vertices that are a start or end in some min cover. A left vertex can be left unmatched in some maximum matching iff it is reachable from a free left vertex by an alternating path (unmatched edge to the right, matched edge back); do one BFS from free left vertices and a symmetric one from free right vertices on the reversed graph. Output the union sorted. O(m sqrt n). Pitfalls: when the cover is a single path the answer is 0 and a blank line, even though the path has endpoints. Stress-tested against permutation brute force for n <= 7.",
+ "code_path": "solutions/kattis_planestrainsbutnotautomobiles.cpp",
+ "samples_passed": true
+}

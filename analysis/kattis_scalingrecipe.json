@@ -1,0 +1,12 @@
+{
+ "id": "kattis:scalingrecipe",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Each amount scales by y/x; multiply first, then divide.",
+ "sketch": "Read n, x, y and print a*y/x for every ingredient. The statement guarantees divisibility, so multiply before dividing to stay exact. Values reach 1.6e9, so use 64-bit integers. O(n).",
+ "code_path": "solutions/kattis_scalingrecipe.cpp",
+ "samples_passed": true
+}

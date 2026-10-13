@@ -1,0 +1,14 @@
+{
+ "id": "kattis:illuminatedstalls",
+ "rating": 3000,
+ "topics": [
+  "geometry",
+  "sweep-line",
+  "monotonic-stack-queue",
+  "combinatorics"
+ ],
+ "key_idea": "Three sides must be whole existing tubes (a U of side s); if s is at most the 4th-longest tube length L4 the answer is yes, otherwise the U is exactly the three longest tubes. Excluding those three, any 4-cycle in the crossing graph already yields a small U, so a pigeonhole count on pairs caps the crossings that ever need enumerating.",
+ "sketch": "Same-orientation tubes never touch, so each fully covered side is one tube and the moved tube helps one side only. Pass with horizontal bases (then transpose and repeat): sweep by y with a set of active verticals keyed by x, list the verticals crossing each horizontal with their up and down extents, and with a monotonic stack check each vertical against its nearest neighbour of extent >= its own on both sides (this finds the minimum U on that base); success if distance <= extent and <= L4. While sweeping, add C(deg,2) over non-top-3 horizontals; if it exceeds C(V,2) two horizontals share two verticals, which forces a U of side min(a,b) <= L4, so answer yes early; otherwise crossings are O(n*sqrt n). Finally handle the single U formed by the three longest tubes: collect tubes on the fourth side's line overlapping it (4 or more means fail), try each of them and the longest uninvolved tube as the mover, and require the uncovered part to be one interval no longer than the mover. Pitfalls: touching counts as crossing, extents of 0, a partially covering tube may itself be the best mover, 64-bit pair counts. Stress-tested on 7500 small random cases against an independent brute force over all squares and movers.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_illuminatedstalls.cpp"
+}

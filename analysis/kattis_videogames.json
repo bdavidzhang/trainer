@@ -1,0 +1,11 @@
+{
+ "id": "kattis:videogames",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Keep a map from game to current owner and update it on each request.",
+ "sketch": "Read each line as five tokens, look up the owner of the game; print 'already has' if it is the requester, otherwise print the borrow line and reassign ownership. O(N). No pitfalls beyond exact output wording.",
+ "samples_passed": true,
+ "code_path": "solutions/kattis_videogames.cpp"
+}

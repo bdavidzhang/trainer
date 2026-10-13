@@ -1,0 +1,12 @@
+{
+ "id": "kattis:illumination",
+ "rating": 1800,
+ "topics": [
+  "scc-2sat",
+  "graphs"
+ ],
+ "key_idea": "Each lamp is a boolean (row or column); two lamps in the same row within 2r columns cannot both be horizontal and two in the same column within 2r rows cannot both be vertical, which is exactly 2-SAT.",
+ "sketch": "Build the implication graph over 2k nodes: for same-row lamps with |dj|<=2r add (not both row), for same-column lamps with |di|<=2r add (not both column). Run Kosaraju SCC and answer 1 iff no variable shares a component with its negation. Pair enumeration is O(k^2)=1e6, SCC linear in the edges. Pitfalls: the overlap threshold is 2r, not r (the beams of both lamps meet); the grid border is irrelevant; recursion depth is at most 2000.",
+ "code_path": "solutions/kattis_illumination.cpp",
+ "samples_passed": true
+}

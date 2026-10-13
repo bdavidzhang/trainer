@@ -1,0 +1,12 @@
+{
+ "id": "kattis:ragingriver",
+ "rating": 1700,
+ "topics": [
+  "flows",
+  "graphs"
+ ],
+ "key_idea": "Each person is one unit of flow from the left bank to the right bank over unit-capacity planks, so the answer is a min-cost flow of P units with cost 1 per plank.",
+ "sketch": "Model each undirected plank as two opposite arcs of capacity 1 and cost 1 (using both directions never helps since costs are positive). Run successive shortest paths with SPFA from left bank to right bank, at most P<=10 augmentations on ~1000 nodes / 4000 arcs. If an augmentation fails after f<P units, print '(P-f) people left behind'; otherwise print the accumulated cost. Pitfalls: mapping -2/-1 to node ids, a greedy shortest path per person without residual arcs is wrong, and L or R may be 0.",
+ "code_path": "solutions/kattis_ragingriver.cpp",
+ "samples_passed": true
+}

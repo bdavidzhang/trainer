@@ -1,0 +1,14 @@
+{
+ "id": "kattis:exponentiation",
+ "rating": 2200,
+ "topics": [
+  "math",
+  "sorting",
+  "implementation",
+  "data-structures"
+ ],
+ "key_idea": "Write x_i = 2023^(2023^(L_i)); an operation adds the term 2023^(L_j) to L_i. Since at most 1000 terms are ever added (<2023) there are no carries, so comparing two L's is a lexicographic comparison of their exponent multisets sorted descending, where exponents are themselves earlier L-values that can be replaced by their rank.",
+ "sketch": "Keep a list of distinct L-versions in sorted order with rank[id]; each version is a vector of term ids sorted by rank descending (relative order of existing ids never changes, so vectors stay sorted). On '! i j' copy L_i's vector, insert id(L_j) at the right place, binary search the sorted version list with the lexicographic comparator (shorter prefix is smaller); reuse the id if an equal version exists, otherwise insert and recompute ranks. Queries just compare ranks of the current versions. Cost O(m * (m + m log m)) ~ 1e7. Pitfalls: the initial value 2023 corresponds to the empty multiset (L=0); equality must be detected structurally (sample 1 has (a^b)^c = (a^c)^b); the exponent uses L_j at the time of the operation, hence immutable versions. Verified on samples plus a Python big-integer brute force for shallow random cases.",
+ "code_path": "solutions/kattis_exponentiation.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:glitchbot",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Only 50 instructions and 2 alternatives each, so try every single substitution in line order and simulate.",
+ "sketch": "For each line i from 1 to n and each of the two other instruction words, replace it, simulate the walk from (0,0) facing north (direction index with Left = -1, Right = +1 mod 4), and print the first substitution that lands on the target. O(n^2) with n<=50. Pitfalls: iterate lines in increasing order so the earliest fix is reported, and skip the substitution equal to the original instruction.",
+ "code_path": "solutions/kattis_glitchbot.cpp",
+ "samples_passed": true
+}

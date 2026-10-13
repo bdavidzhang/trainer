@@ -1,0 +1,11 @@
+{
+ "id": "kattis:aaawwworaaayyy",
+ "rating": 1100,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "The unknown tie-break rules do not matter: the number of extra 'y's tells exactly how many places the revealed team climbs, so just simulate the reveal order on a rank list.",
+ "sketch": "Keep the teams as an ordered list. Repeatedly find the lowest-ranked team that still has a 'P', take its leftmost pending cell, read the next chant; on 'Aaawww' mark it rejected, on 'Aaayyy' mark it accepted and bubble the team up by (number of y minus 3) positions. Finally print the position of the team that started at rank r. O((n*m)*(n+m)) at worst, trivial for n,m<=100. Pitfalls: the reveal target must be recomputed after every reveal because the ranking changed, and the favourite team moves both when it climbs and when others pass it.",
+ "code_path": "solutions/kattis_aaawwworaaayyy.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:pizzaparty",
+ "rating": 1400,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "All preferences are Horn clauses, so the unique minimal satisfying set is the forward-chaining closure of the absolute toppings.",
+ "sketch": "Map topping names to ids. An absolute preference turns a topping on; an 'and' clause gets a counter equal to its number of premises and an 'or' clause a counter of 1 (a single-premise clause is either). Run a worklist: when a topping turns on, decrement the counter of every clause occurrence it appears in, and when a counter hits 0 turn on the conclusion. The answer is the number of toppings turned on. Linear in the input size (up to 5e5 words). Pitfalls: toppings that only appear inside implications are not forced, 'or' clauses must fire only once, and line-based parsing with up to 500 premises per line.",
+ "code_path": "solutions/kattis_pizzaparty.cpp",
+ "samples_passed": true
+}

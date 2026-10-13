@@ -1,0 +1,13 @@
+{
+ "id": "kattis:avoidingairports",
+ "rating": 2100,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "sorting"
+ ],
+ "key_idea": "dp[flight] = min over earlier arrivals g at the departure airport of dp[g] + (s - e_g)^2; expanding the square gives lines of slope -2e_g queried at s, so keep one convex hull trick structure per airport.",
+ "sketch": "Create departure and arrival events and sort by time. On a departure of flight i, query the hull of airport a_i at x=s_i and add s_i^2; on an arrival, insert the line (-2e, dp+e^2) into the hull of b_i. Per airport, slopes are inserted in decreasing order and queries arrive in increasing x, so a monotone pointer hull gives O(m log m) overall from the sort. Airport 1 starts with the line (0,0) for time 0. Answer is the min dp over flights landing at n (0 if n=1). Pitfalls: unreachable flights must not be inserted, a flight with s=e must process its departure first, clamp the pointer after pops, and use __int128 in the hull intersection test (values reach about 4e18). Stress-tested against an O(m^2) DP.",
+ "code_path": "solutions/kattis_avoidingairports.cpp",
+ "samples_passed": true
+}

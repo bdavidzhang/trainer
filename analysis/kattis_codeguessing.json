@@ -1,0 +1,12 @@
+{
+ "id": "kattis:codeguessing",
+ "rating": 900,
+ "topics": [
+  "brute-force",
+  "implementation"
+ ],
+ "key_idea": "Enumerate all 21 possible pairs for Bob among the remaining seven digits, keep those whose sorted layout matches the given A/B pattern, and answer only if exactly one pair survives.",
+ "sketch": "For every a<b in 1..9 distinct from p and q, sort the four cards with their owner labels and compare the label string with the input. Count matches and remember the last one; print it if the count is 1, otherwise -1. Constant time. No real pitfalls beyond printing the smaller digit first.",
+ "code_path": "solutions/kattis_codeguessing.cpp",
+ "samples_passed": true
+}

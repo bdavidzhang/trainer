@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fairplay",
+ "rating": 1200,
+ "topics": [
+  "sorting",
+  "greedy",
+  "two-pointers"
+ ],
+ "key_idea": "If all pairs have the same sum vector, the lexicographically smallest player must be paired with the lexicographically largest, and so on inward.",
+ "sketch": "If n is odd the answer is impossible. Sort the players by (b,p) and check that v[i]+v[n-1-i] equals v[0]+v[n-1] in both coordinates for all i. Correctness: the partner of the smallest element is target minus it, which is the largest element of the multiset; remove both and repeat. O(n log n). Pitfalls: odd n, and duplicates (handled naturally by sorting).",
+ "code_path": "solutions/kattis_fairplay.cpp",
+ "samples_passed": true
+}

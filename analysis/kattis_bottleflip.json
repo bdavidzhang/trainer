@@ -1,0 +1,12 @@
+{
+ "id": "kattis:bottleflip",
+ "rating": 1200,
+ "topics": [
+  "math",
+  "calculus-numerical"
+ ],
+ "key_idea": "The centre of mass is lowest exactly when it coincides with the water surface, which gives a quadratic in the fill height.",
+ "sketch": "With fill height x the centre of mass is c(x) = (dw*x^2/2 + da*(h^2-x^2)/2) / (dw*x + da*(h-x)); the radius cancels. Setting c'(x)=0 is equivalent to c(x)=x, i.e. (dw-da)/2*x^2 + da*h*x - da*h^2/2 = 0, whose positive root is x = h*(sqrt(da*dw)-da)/(dw-da). O(1); a ternary search on the unimodal c(x) works equally well. Pitfall: forgetting the air has mass (da>0), and r is a red herring.",
+ "code_path": "solutions/kattis_bottleflip.cpp",
+ "samples_passed": true
+}

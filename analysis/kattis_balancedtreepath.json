@@ -1,0 +1,13 @@
+{
+ "id": "kattis:balancedtreepath",
+ "rating": 1500,
+ "topics": [
+  "trees",
+  "bfs-dfs",
+  "brute-force"
+ ],
+ "key_idea": "n<=5000 allows an O(n^2) scan: DFS from every opening-bracket node keeping the bracket stack, prune as soon as a closing bracket mismatches, and count each node reached with an empty stack.",
+ "sketch": "Paths are directed (the reverse of a balanced string is not balanced), so root a DFS at every node whose character is an opening bracket. Moving to a child pushes an opener, or pops if it is the matching closer (otherwise that branch is dead); undo the stack change on return. Every visited node with an empty stack is one balanced path. Total O(n^2) = 25M steps with an explicit array stack and undo; recursion depth up to 5000 is fine. Answer needs 64-bit only in principle (<= n^2). Verified against a brute force on random small trees.",
+ "code_path": "solutions/kattis_balancedtreepath.cpp",
+ "samples_passed": true
+}

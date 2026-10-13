@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jellyfusion",
+ "rating": 2300,
+ "topics": [
+  "dp",
+  "dp-optimization",
+  "data-structures"
+ ],
+ "key_idea": "In an optimal partition every segment can be trimmed to run from its max-height element to its max-width element, so a segment's value is h_l*w_r or w_l*h_r of its endpoints, which is a line-container DP. The same trimming shows the global max-height jelly is an endpoint of its segment, so the cycle can be cut just before or just after it.",
+ "sketch": "Relaxed recurrence dp[i] = max_j (dp[j-1] + h_j*w_i, dp[j-1] + w_j*h_i) for j<=i; it never overestimates because h_j*w_i <= maxh*maxw of the segment, and the trimming argument shows it reaches the optimum. Maintain two max Li Chao trees over [1,1e6] (slopes h_j queried at w_i, slopes w_j queried at h_i). Run the linear DP on the two rotations starting at p and at p+1, where p is an index of maximum height, and take the larger. O(n log C). Pitfalls: values reach 3e17 so use 64-bit, N=1, and insert line j before querying position j so singletons are included. Stress-tested against an O(n^3) all-rotations brute force.",
+ "code_path": "solutions/kattis_jellyfusion.cpp",
+ "samples_passed": true
+}

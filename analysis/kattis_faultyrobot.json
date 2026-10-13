@@ -1,0 +1,13 @@
+{
+ "id": "kattis:faultyrobot",
+ "rating": 1300,
+ "topics": [
+  "graphs",
+  "bfs-dfs",
+  "implementation"
+ ],
+ "key_idea": "Forced moves form a functional graph, so the bug-free walk from node 1 is a single path; the one bug can only happen at a node on that path, after which the robot again follows forced moves deterministically.",
+ "sketch": "Walk forced edges from node 1 until reaching a node with no forced move (a rest node) or revisiting a node (cycle); collect the visited nodes. For each visited node u and each outgoing edge u->v (forced or not), walk forced edges from v the same way and mark the node where it stops, if it stops. Also mark the stop of the bug-free walk. The answer is the number of marked nodes. Worst case about m * n = 1e7 steps. Pitfalls: a node without a forced move is a rest node even if it has ordinary outgoing edges; walks may loop forever, so cycle detection is needed; the bug may also occur at the bug-free stopping node itself.",
+ "code_path": "solutions/kattis_faultyrobot.cpp",
+ "samples_passed": true
+}

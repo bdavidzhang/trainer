@@ -1,0 +1,13 @@
+{
+ "id": "kattis:littletoys",
+ "rating": 2100,
+ "topics": [
+  "combinatorics",
+  "number-theory",
+  "math"
+ ],
+ "key_idea": "Burnside over Z_n x Z_m acting on subsets of the n*m possible strings: a pair of rotations of orders d and e has n*m/lcm(d,e) edge cycles, so the answer is (1/nm) * sum over d|n, e|m of phi(d) phi(e) 2^{(n/d)(m/e) gcd(d,e)}.",
+ "sketch": "Group rotations by their orders: there are phi(d) rotations of order d on the red disc and phi(e) on the blue one; an edge orbit under the pair has length lcm(d,e), giving (n/d)(m/e)gcd(d,e) orbits. Factor n and m by trial division and enumerate divisors together with their phi values (at most 448 divisors each below 1e7, about 200k pairs per test). Exponents reach 1e14, so reduce them mod 1e9+6 and use a two-level precomputed table of powers of two (2^j and 2^(j*32768)) to get each power with one multiplication; with 100 worst-case tests this runs in about 0.25 s whereas naive fast exponentiation would be borderline. Divide by n*m with a modular inverse (both are below the prime). All nine sample answers match, including the large one.",
+ "code_path": "solutions/kattis_littletoys.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,12 @@
+{
+ "id": "kattis:racingalphabet",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "Map characters to 28 positions on a circle; each move costs min(d,28-d) arcs of length 60*pi/28 feet at 15 ft/s, plus one second per pickup.",
+ "sketch": "Read each line with getline (aphorisms contain spaces and apostrophes), map A-Z to 0..25, space to 26 and the quote to 27. Sum min(|a-b|, 28-|a-b|) over consecutive characters, multiply by (60*pi/28)/15 and add the string length for pickups. O(length). Pitfalls: diameter is 60 so circumference is 60*pi, consume the newline after N, and strip trailing carriage returns.",
+ "code_path": "solutions/kattis_racingalphabet.cpp",
+ "samples_passed": true
+}

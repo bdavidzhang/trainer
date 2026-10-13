@@ -1,0 +1,12 @@
+{
+ "id": "kattis:growingsomeoobleck",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "implementation"
+ ],
+ "key_idea": "Pure event simulation: the next touch time of two circles is (dist - r1 - r2)/(s1+s2); after merging, repeatedly absorb every circle that overlaps the new one before continuing.",
+ "sketch": "Repeat until one circle remains: find the pair with the smallest touch time, grow all radii to that time, replace the pair by a circle at the midpoint with radius sqrt(r1^2+r2^2) and max speed. Then cascade: collect all circles intersecting the new one (dist <= R+r+eps), merge them simultaneously (centre = average of the current centres including the merged circle, as sample 2 confirms, not the average of all original centres), and repeat until nothing intersects. O(n^3) overall for n<=100. Use long double since coordinates reach 1e9 with 1e-6 required, and a small epsilon for the overlap test. Output the centre and radius at the moment the last circle is formed.",
+ "code_path": "solutions/kattis_growingsomeoobleck.cpp",
+ "samples_passed": true
+}

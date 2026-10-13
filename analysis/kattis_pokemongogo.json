@@ -1,0 +1,12 @@
+{
+ "id": "kattis:pokemongogo",
+ "rating": 1500,
+ "topics": [
+  "dp-bitmask",
+  "shortest-paths"
+ ],
+ "key_idea": "At most 15 distinct Pokemon, so do a TSP-style DP over the set of caught species with the last visited stop as state.",
+ "sketch": "dp[mask][i] = shortest Manhattan route from the origin that has caught species set mask and ends at stop i. Transition to any stop j whose species is not in mask. Answer is min over i of dp[full][i] plus the distance back to the origin. Complexity O(2^15 * n^2) with n <= 20, about 13M operations. Pitfalls: map names to species ids, several stops can share a location (distance 0) and a stop catches only its own listed Pokemon, and the return trip to the start must be added.",
+ "code_path": "solutions/kattis_pokemongogo.cpp",
+ "samples_passed": true
+}

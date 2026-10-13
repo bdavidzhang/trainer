@@ -1,0 +1,13 @@
+{
+ "id": "kattis:sevenup",
+ "rating": 1900,
+ "topics": [
+  "probability",
+  "combinatorics",
+  "bitmasks"
+ ],
+ "key_idea": "The set of face-up positions after drawing some cards depends only on the SET of valued faces drawn (closure under 'position v flipped reveals hidden card h[v]'), not on order, so the game is finished after k turns iff the closure of the faces seen in the first k cards is everything.",
+ "sketch": "E = sum_{k=0..44} P(not finished after k turns). For each subset T of faces {A..7}, P(first k cards only use faces in T or valueless cards) = C(m_T,k)/C(45,k), where m_T counts such cards among the 45 remaining; a Mobius (subset inclusion-exclusion) transform turns this into P(exactly the faces T were seen). Sum that over the T whose closure (iterate: if v is up and the dealt card at position v has value u, u is up) is not all 7 positions. Total work 45*128*7. Pitfalls: remaining counts are 4 minus the dealt copies, valueless cards 24 minus dealt valueless ones; faces with zero remaining copies are handled automatically by the inclusion-exclusion; the game always ends within 45 turns. The 13 s limit hints that the intended solution is a much heavier state DP.",
+ "code_path": "solutions/kattis_sevenup.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:hackyordering",
+ "rating": 1400,
+ "topics": [
+  "topological-sort",
+  "strings",
+  "graphs"
+ ],
+ "key_idea": "Each adjacent pair of strings yields one constraint from its first differing character; the list is sortable iff the constraint graph on 26 letters is acyclic and no string is preceded by a longer string having it as prefix.",
+ "sketch": "Compare consecutive strings: if the later one is a proper prefix of the earlier one, impossible; otherwise add edge a[k]->b[k] at the first mismatch. Run Kahn's algorithm on the 26 letters and print the topological order (all 26 letters, including unconstrained ones), or impossible on a cycle. O(total length + 26^2). Pitfalls: equal strings give no constraint, duplicate edges must not double-count indegree. Any valid order is accepted, so the token checker shows WRONG on samples 1 and 3; samples_passed is from my own validator (checks the permutation sorts the list, and compares possible/impossible with a brute force over permutations on 600 random cases).",
+ "code_path": "solutions/kattis_hackyordering.cpp",
+ "samples_passed": true
+}

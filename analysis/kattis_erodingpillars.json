@@ -1,0 +1,14 @@
+{
+ "id": "kattis:erodingpillars",
+ "rating": 2000,
+ "topics": [
+  "graphs",
+  "bridges-bcc",
+  "binary-search",
+  "geometry"
+ ],
+ "key_idea": "Reaching pillar p and returning without reusing a pillar means two internally disjoint origin-p paths (or a direct hop), which holds for all p iff the threshold graph is connected and has no articulation point other than the origin.",
+ "sketch": "Build all O(n^2) squared distances among the origin and pillars, sort the distinct values, and binary search the smallest threshold for which the graph with edges d^2 <= T is connected and Tarjan's low-link DFS rooted at the origin finds no non-root articulation point (the root is solid rock and may be revisited, so it is exempt). Adding edges never creates articulation points, so the predicate is monotone. Each check is O(n^2) on the implicit dense graph, about 20 checks, total ~2e7. Pitfalls: squared distances reach 8e18, which just fits in signed 64-bit; take the square root in long double only at the end; a pillar adjacent to the origin needs no cycle, which the articulation formulation already covers. Stress-tested against an exhaustive path search for n <= 6.",
+ "code_path": "solutions/kattis_erodingpillars.cpp",
+ "samples_passed": true
+}

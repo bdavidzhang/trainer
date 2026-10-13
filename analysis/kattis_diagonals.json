@@ -1,0 +1,13 @@
+{
+ "id": "kattis:diagonals",
+ "rating": 1700,
+ "topics": [
+  "search-backtracking",
+  "dsu",
+  "implementation"
+ ],
+ "key_idea": "Fill cells in row-major order with backtracking; prune by vertex clue bounds (count so far <= clue <= count + undecided neighbours) and reject any diagonal that joins two already-connected lattice points.",
+ "sketch": "Each diagonal is an edge between two of the (n+1)^2 lattice points, so 'no loop' means the edge set is a forest: keep a DSU without path compression (union by size) so unions can be undone on backtrack, and skip a diagonal whose endpoints share a root. After placing cell (i,j) check its four corners: placed count must not exceed the clue and count plus still-undecided adjacent cells must reach it; this makes the top-left corner exact as soon as it is finalized. With n<=8 (64 cells) the pruning keeps the search tiny (max 0.25s on random 8x8 instances with sparse clues, limit 10s). Pitfalls: escaping the backslash on output, border vertices having fewer than four adjacent cells. Validated on random instances with an independent checker (clues + acyclicity).",
+ "code_path": "solutions/kattis_diagonals.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:fairandsquare",
+ "rating": 1700,
+ "topics": [
+  "number-theory",
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "The side length must divide every maximal horizontal and vertical run of '#', so only divisors of that gcd (at most ~40 values) need testing, and for a fixed side the tiling is forced: the first uncovered cell in row-major order must be a top-left corner.",
+ "sketch": "Compute g = gcd of all maximal row runs and column runs. For each divisor k of g in decreasing order run the forced greedy: scan row-major, at an uncovered '#' stamp the k x k square, failing if it leaves the grid, hits '.', or hits an already stamped cell. Each test is O(hw) since every cell is stamped at most once; total O(d(g)*hw), about 0.5 s at 2500x2500. Use a stamp array keyed by k to avoid clearing. The overlap check is necessary because an earlier square from an upper row to the right can intrude into the new square. Stress-tested against trying every k.",
+ "code_path": "solutions/kattis_fairandsquare.cpp",
+ "samples_passed": true
+}

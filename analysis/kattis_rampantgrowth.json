@@ -1,0 +1,12 @@
+{
+ "id": "kattis:rampantgrowth",
+ "rating": 800,
+ "topics": [
+  "combinatorics",
+  "math"
+ ],
+ "key_idea": "First column has r choices, every later column has r-1 (anything but its left neighbour's row).",
+ "sketch": "Answer is r*(r-1)^(c-1) mod 998244353, computed with a simple loop in O(c). Pitfall: r=1 with c>1 gives 0, and r=1,c=1 gives 1; the formula handles both naturally.",
+ "code_path": "solutions/kattis_rampantgrowth.cpp",
+ "samples_passed": true
+}

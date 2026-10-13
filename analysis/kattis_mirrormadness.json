@@ -1,0 +1,14 @@
+{
+ "id": "kattis:mirrormadness",
+ "rating": 2100,
+ "topics": [
+  "sorting",
+  "geometry",
+  "implementation",
+  "sweep-line"
+ ],
+ "key_idea": "Every bounce is one of the at most 5e5 boundary lattice points with odd x+y; a 45-degree ray leaving a boundary point into the interior hits exactly the neighbouring boundary point on its diagonal, so sort the points along both diagonal families and step in O(1).",
+ "sketch": "Because vertices are even and the start has odd coordinate sum, the beam only ever touches boundary lattice points with x+y odd; the perimeter bound gives at most 5e5 such points. Enumerate them per edge, remembering whether the edge is horizontal or vertical. Sort once by (x-y, x) and once by (x+y, x); moving in direction (1,1)/(-1,-1) goes to the next/previous point in the first order, (1,-1)/(-1,1) to the next/previous in the second, since the first boundary crossing along the diagonal is the adjacent sorted point. Reflect by flipping dy on a horizontal edge and dx on a vertical one, and simulate m steps. O(P log P + m) with P = perimeter/2. Pitfalls: output volume (buffer it), and realising no real ray casting or segment structure is needed.",
+ "code_path": "solutions/kattis_mirrormadness.cpp",
+ "samples_passed": true
+}

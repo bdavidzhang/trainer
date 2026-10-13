@@ -1,0 +1,13 @@
+{
+ "id": "kattis:findingproteins",
+ "rating": 1400,
+ "topics": [
+  "implementation",
+  "greedy",
+  "brute-force"
+ ],
+ "key_idea": "Farthest-point sampling: keep for every protein its minimum distance to the chosen set and update it with one O(n*l) pass after each pick, instead of recomputing all distances to all chosen proteins.",
+ "sketch": "Read embeddings as bytes. p1 is the first index maximising the distance to protein 0. Maintain mind[i] = min distance from i to any chosen protein; after choosing p, do one pass computing D(p,i), lowering mind[i] and simultaneously taking the first unchosen index with maximum mind as the next pick. Total O(k*n*l) = 2.6e8 byte operations, well within the limit (0.1 s locally). Pitfalls: ties must go to the earliest protein in the list; with duplicates (e.g. l=1) all minima become 0, and I assume already-chosen proteins are excluded (k<=n suggests the k picks are distinct) while protein 0 itself is eligible as p1. That exclusion rule is an interpretation of an underspecified statement.",
+ "code_path": "solutions/kattis_findingproteins.cpp",
+ "samples_passed": true
+}

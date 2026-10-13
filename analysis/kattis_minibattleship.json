@@ -1,0 +1,13 @@
+{
+ "id": "kattis:minibattleship",
+ "rating": 1500,
+ "topics": [
+  "search-backtracking",
+  "bitmasks",
+  "brute-force"
+ ],
+ "key_idea": "The board is at most 25 cells, so enumerate ship placements as bitmasks with backtracking; a size-1 ship has one orientation only.",
+ "sketch": "Precompute for every ship the list of placement masks (horizontal and, if length > 1, vertical) that avoid every X cell. Recurse over ships in order, choosing a placement disjoint from the occupied mask; at the leaf count it iff all O cells are covered. Ships are distinct so no symmetry division is needed. Worst case (five size-2 ships on an empty 5x5) is about 2e7 leaves, well within limits. Pitfalls: double counting length-1 ships in two orientations, and forgetting that every O must be covered while '.' cells are free.",
+ "code_path": "solutions/kattis_minibattleship.cpp",
+ "samples_passed": true
+}

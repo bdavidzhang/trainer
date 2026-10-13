@@ -1,0 +1,13 @@
+{
+ "id": "kattis:jabbernetwork",
+ "rating": 2000,
+ "topics": [
+  "trees",
+  "dp-tree",
+  "graphs"
+ ],
+ "key_idea": "After cutting an edge, the stress of reconnecting with (u,v) splits into an S-part depending only on u and a T-part depending only on v: sum of W(s)*d(s,u) where W(x) is the total demand of x across the cut. So each side independently picks its weighted distance-sum minimiser by rerooting.",
+ "sketch": "For each old cable in order: delete it, label the two components by BFS, and compute W[x] = sum of demands c over pairs (x,y) lying on opposite sides (O(d)). Cross pairs cost c*(d_S(s,u)+1+d_T(v,t)), intra-component pairs are unaffected, so minimise F_S(u)=sum W(s)d(s,u) over u in S with degree<3 and likewise in T. F is computed for all vertices of a component with the standard rerooting formula F(child)=F(parent)+total-2*sub(child). Because the objective is separable, the lexicographically smallest optimal pair is obtained by taking the smallest-index optimum on each side and sorting the two. Then add the new edge. Total O(n*(n+d)) = 2.4e7. Values reach about 2e16, so 64-bit is needed. Stress-tested against an all-pairs brute force on small trees.",
+ "code_path": "solutions/kattis_jabbernetwork.cpp",
+ "samples_passed": true
+}

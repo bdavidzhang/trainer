@@ -1,0 +1,12 @@
+{
+ "id": "kattis:speeding",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "By the mean value theorem the provable speed is the maximum average speed between consecutive photos.",
+ "sketch": "Read the photos in order and take the max of floor((d_i - d_{i-1}) / (t_i - t_{i-1})) with integer division. O(n). Only consecutive pairs matter since any longer interval's average is at most the max of its parts.",
+ "code_path": "solutions/kattis_speeding.cpp",
+ "samples_passed": true
+}

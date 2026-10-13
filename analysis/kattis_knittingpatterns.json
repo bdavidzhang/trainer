@@ -1,0 +1,12 @@
+{
+ "id": "kattis:knittingpatterns",
+ "rating": 1100,
+ "topics": [
+  "greedy",
+  "implementation"
+ ],
+ "key_idea": "Colours are independent, and for each gap between consecutive uses of a colour you independently choose the cheaper of stranding through it (a * gap) or stopping and restarting (2c).",
+ "sketch": "Scan the pattern once keeping the last position of each letter: the first occurrence costs 2c (one start plus the final stop), each later occurrence adds min(a*(gap length), 2c), and every occurrence adds b. Print the totals in the order of w; a colour of w that never appears costs 0. O(|p|). Totals reach about 1e9 or more, so use 64-bit.",
+ "code_path": "solutions/kattis_knittingpatterns.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:recovery",
+ "rating": 1600,
+ "topics": [
+  "constructive",
+  "greedy",
+  "math"
+ ],
+ "key_idea": "Start from the all-ones matrix; rows/columns whose parity is wrong each need an odd number of zeros, so the minimum number of zeros is max(r,c) and feasibility is r == c (mod 2). For the smallest binary value pad the shorter list with index 0 and match sorted wrong rows to sorted wrong columns.",
+ "sketch": "Row i is wrong if R[i] != m mod 2, column j wrong if C[j] != n mod 2. If the counts have different parity print -1. Otherwise pad the shorter list with copies of row 0 (or column 0); the padding count is even so that line's parity is unchanged. Sort both lists and zero cell (rows[i], cols[i]): this pushes zeros to the most significant positions, since row 0 takes the leftmost wrong columns, or the earliest wrong rows take column 0. O(nm). Verified against an exhaustive brute force over all matrices up to 4x4.",
+ "code_path": "solutions/kattis_recovery.cpp",
+ "samples_passed": true
+}

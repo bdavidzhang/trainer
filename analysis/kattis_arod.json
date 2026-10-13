@@ -1,0 +1,14 @@
+{
+ "id": "kattis:arod",
+ "rating": 2300,
+ "topics": [
+  "math",
+  "combinatorics",
+  "prefix-sums",
+  "geometry"
+ ],
+ "key_idea": "Count angles instead of triangles: ordered triples (P,u,R) with P,P+u in grid and (R-P).u<0 give twice (obtuse+degenerate), and with =0 give twice the right triangles; for fixed u=(a,b) this is a sum over dx of count_x(dx) times a prefix sum over dy.",
+ "sketch": "For each u=(a,b) with a,b>=0 (other signs by reflection, weight 2 per nonzero coordinate) the number of (P,R) with a*dx+b*dy<0 factorises: cx_a(dx) = number of (px,rx) pairs with that difference, and a prefix table PY_b[k] = sum of cy_b(dy) for dy<=k, so each u costs O(min(mx,my)). The zero-dot count uses cy_b(-a*dx/b) when divisible, minus the R=P term. Degenerate triples come from the standard (gcd-1)*(mx+1-dx)*(my+1-dy) sum; acute = C(N,3) - rest. Total about 90000*600 = 5.4e7 steps, 0.12s for 300x300. Pitfalls: floor division for negatives, b=0 case, int64 everywhere. Verified against an O(N^3) brute force on several grids.",
+ "code_path": "solutions/kattis_arod.cpp",
+ "samples_passed": true
+}

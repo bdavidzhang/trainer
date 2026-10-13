@@ -1,0 +1,13 @@
+{
+ "id": "kattis:lostisclosetolose",
+ "rating": 1400,
+ "topics": [
+  "strings",
+  "implementation",
+  "brute-force"
+ ],
+ "key_idea": "There are at most a few thousand distinct word cores, so just test every pair for Damerau-Levenshtein distance exactly one with a linear scan.",
+ "sketch": "Read lines until the line equal to ***, split on whitespace, keep only letters lower-cased, and drop tokens with no letters; store cores in a set. For each pair with length difference at most 1: equal lengths are similar if the first and last mismatch positions coincide (replace) or are adjacent with swapped characters (transpose); lengths differing by one are similar if after the common prefix the rest of the shorter equals the longer shifted by one. Print sorted adjacency lists, or *** if none. Roughly O(W^2 * L) with W<=4000 and early length pruning. Pitfalls: carriage returns, a word like o'clock becomes oclock, numeric-only tokens are not words, and insert/delete are symmetric.",
+ "code_path": "solutions/kattis_lostisclosetolose.cpp",
+ "samples_passed": true
+}

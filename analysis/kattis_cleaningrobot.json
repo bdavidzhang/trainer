@@ -1,0 +1,13 @@
+{
+ "id": "kattis:cleaningrobot",
+ "rating": 1900,
+ "topics": [
+  "binary-search",
+  "bfs-dfs",
+  "prefix-sums"
+ ],
+ "key_idea": "Feasibility is monotone in the robot size, so binary search it; for a fixed size, BFS over top-left positions whose s x s square is obstacle-free and check that the swept squares cover every free cell.",
+ "sketch": "Build a 2D prefix sum of obstacles to test a placement in O(1). For size s, BFS from any valid placement over the 4-neighbour placement graph, adding each visited square to a 2D difference array; after a prefix pass count cells with positive coverage and compare with nm-k. Binary search s in [1, min(n,m)], output -1 if even s=1 fails (free cells disconnected). O(nm log min(n,m)) with flat arrays for 5e6 cells. Pitfalls: coverage must come from one connected component of placements, not all valid placements; use flat int arrays, not vector<vector>. Stress-tested against a brute force.",
+ "code_path": "solutions/kattis_cleaningrobot.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:solarfarm",
+ "rating": 2000,
+ "topics": [
+  "math",
+  "brute-force",
+  "geometry"
+ ],
+ "key_idea": "An a x b array fits iff (aw)^2 + (bh)^2 <= (2r)^2. The continuous optimum is the square (aw = bh = sqrt(2) r) and the area is flat around it, so only O(sqrt(b0)) values of the smaller count around b0 = sqrt(2) r / h can beat the rounded optimum.",
+ "sketch": "Swap so that h >= w (b is the smaller count). With angle deviation d from 45 degrees the area drops by a factor cos(2d), while rounding the continuous optimum costs at most a0+b0 panels, so candidates need 2d^2 <= ~2/b0, i.e. |b - b0| <= about sqrt(b0). Enumerate b in [b0 - 2 sqrt(b0) - 100, b0 + 2 sqrt(b0) + 100] clipped to [1, 2r/h], take a = floor(isqrt(4r^2 - b^2 h^2) / w) and maximise a*b. About 1.5e5 candidates per test at worst, 0.4 s for 1000 tests. Pitfalls: 4r^2 up to 4e18 needs unsigned 64-bit and an exact integer sqrt (fix up the long double result); the answer reaches 2e18. Verified against full enumeration on 3000 random cases and against a 30x wider window on large ones.",
+ "code_path": "solutions/kattis_solarfarm.cpp",
+ "samples_passed": true
+}

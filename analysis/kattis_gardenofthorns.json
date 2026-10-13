@@ -1,0 +1,13 @@
+{
+ "id": "kattis:gardenofthorns",
+ "rating": 1700,
+ "topics": [
+  "geometry",
+  "probability",
+  "calculus-numerical"
+ ],
+ "key_idea": "By linearity of expectation the answer is sum of v_i * area(disc of radius r around plant i intersected with the garden) / (w*h); the circle-rectangle intersection area has a closed form.",
+ "sketch": "For each plant, shift so it is the origin and integrate over x in [max(-r,-x), min(r,w-x)] the vertical extent min(h-y,s(t)) + min(y,s(t)) with s(t)=sqrt(r^2-t^2). Each term is piecewise: constant c where |t| < sqrt(r^2-c^2), and s(t) outside, whose antiderivative is (t*s + r^2*asin(t/r))/2. Sum the pieces exactly in long double, O(n) total. Pitfalls: 1e-9 tolerance rules out sampling or coarse numeric integration, clamp the asin argument and the sqrt radicand, and handle c >= r (no clipping) separately. Checked against fine midpoint integration on random cases.",
+ "code_path": "solutions/kattis_gardenofthorns.cpp",
+ "samples_passed": true
+}

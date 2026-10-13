@@ -1,0 +1,11 @@
+{
+ "id": "kattis:fyi",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Check whether the first three digits are 555, i.e. n / 10000 == 555.",
+ "sketch": "Read the 7-digit integer, integer-divide by 10000 and compare with 555. O(1). The only trap is checking the wrong digits (5055555 must give 0).",
+ "code_path": "solutions/kattis_fyi.cpp",
+ "samples_passed": true
+}

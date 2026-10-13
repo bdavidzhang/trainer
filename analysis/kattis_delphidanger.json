@@ -1,0 +1,14 @@
+{
+ "id": "kattis:delphidanger",
+ "rating": 1900,
+ "topics": [
+  "dsu",
+  "graphs",
+  "bfs-dfs",
+  "greedy"
+ ],
+ "key_idea": "Bits are independent: at position T+1 every edge with t>T forces equality and every edge with t=T forces difference, so each level is a 2-colouring of the T-edges on the DSU of heavier edges, and the cheaper colour class gets the 1.",
+ "sketch": "Sort prophecies by t descending and process groups of equal t. For a group, map endpoints to DSU roots (components of all edges with larger t); an edge inside one root is a contradiction; otherwise 2-colour the graph on roots by DFS (odd cycle means impossible) and for each connected piece add min(total caravans on side 0, side 1) using DSU sizes; then union the group. Positions not equal to some t+1 are all cliffside for free. O(m log m). Pitfalls: answer needs 64-bit, weights are component sizes not root counts, clear the per-level adjacency only for touched roots, and merge only after the whole level is coloured. Stress-tested against brute force over all bit strings for n<=5.",
+ "code_path": "solutions/kattis_delphidanger.cpp",
+ "samples_passed": true
+}

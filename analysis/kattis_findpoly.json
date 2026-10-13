@@ -1,0 +1,13 @@
+{
+ "id": "kattis:findpoly",
+ "rating": 1300,
+ "topics": [
+  "dsu",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "A figure is just a connected component of the endpoint graph, and it is a polygon exactly when every endpoint in the component has degree 2 (a connected 2-regular graph is a single simple cycle).",
+ "sketch": "Parse the whole input by extracting every integer and grouping them in fours, ignoring the punctuation and whitespace. Encode a point as 100x+y, union the two endpoints of each segment and count degrees. Count components that contain at least one point, and those whose points all have degree 2. O(S alpha). Pitfalls: the messy input format with arbitrary whitespace and leading blank lines; geometric crossings that are not at endpoints do not connect anything.",
+ "code_path": "solutions/kattis_findpoly.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:table",
+ "rating": 2300,
+ "topics": [
+  "monotonic-stack-queue",
+  "prefix-sums",
+  "data-structures"
+ ],
+ "key_idea": "For a fixed bottom row and height h, the columns whose free-height is >= h form maximal runs that are exactly the Cartesian-tree nodes of the histogram; a run of length L contributes L-w+1 placements for every w<=L, so count runs per (h,L) and finish with two suffix sums.",
+ "sketch": "Paint ornaments with a 2D difference array (they do not overlap, N up to 1e6) to get blocked cells. Sweep rows keeping the histogram of consecutive free cells; a monotonic stack pops each run of width L with heights in (lo,hi], where lo is the max of the new height and the next stack element, and records +1 at cnt[lo+1][L], -1 at cnt[hi+1][L]. After prefix-summing over h, c_h[L] is the number of (bottom row, run) pairs, and ans[h][w] = sum over L>=w of c_h[L]*(L-w+1), obtained by a double suffix sum over L. Everything is O(XY + N + D) with one 2003x2003 int table, queries are O(1) lookups. Pitfalls: handling equal heights on the stack so no run is counted twice, the x/y versus width/length orientation, and fast input for 1e6 rectangles. Verified against brute force on all dish sizes of random small tables.",
+ "code_path": "solutions/kattis_table.cpp",
+ "samples_passed": true
+}

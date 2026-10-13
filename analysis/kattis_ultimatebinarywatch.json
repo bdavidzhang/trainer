@@ -1,0 +1,11 @@
+{
+ "id": "kattis:ultimatebinarywatch",
+ "rating": 800,
+ "topics": [
+  "implementation"
+ ],
+ "key_idea": "Print bits 3..0 of each of the four digits as rows, placing them in columns 1, 3, 7 and 9 of a 9-character line.",
+ "sketch": "For bit b from 3 down to 0 build a 9-space string and set positions 0, 2, 6, 8 to '*' if the corresponding digit has bit b set, else '.'. O(1). Pitfalls: the gap between hours and minutes is three spaces, top row is the highest bit, and no trailing whitespace.",
+ "code_path": "solutions/kattis_ultimatebinarywatch.cpp",
+ "samples_passed": true
+}

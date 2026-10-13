@@ -1,0 +1,13 @@
+{
+ "id": "kattis:grazedgrains",
+ "rating": 1100,
+ "topics": [
+  "geometry",
+  "brute-force",
+  "calculus-numerical"
+ ],
+ "key_idea": "A 10% tolerance and tiny coordinates mean the union area can be estimated by counting grid sample points instead of doing exact circle-union geometry.",
+ "sketch": "Everything lies in [-10,20]^2, so sample cell centres on a 0.02 grid (1500x1500 points) and count those inside any of the up to 10 circles; area = count*h^2. About 2e7 point-in-circle tests. Error is well under 1% even for the smallest case (single radius-1 circle gave 0.08%). The project checker compares with 1e-6 so it reports WRONG on the samples; I verified by hand that both sample outputs are within 0.1% of expected (3.144 vs 3.14159, 26.0008 vs 25.9911), far inside the 10% the judge allows, so samples_passed is set true on that basis.",
+ "code_path": "solutions/kattis_grazedgrains.cpp",
+ "samples_passed": true
+}

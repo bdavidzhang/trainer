@@ -1,0 +1,13 @@
+{
+ "id": "kattis:safesttaxi",
+ "rating": 2100,
+ "topics": [
+  "shortest-paths",
+  "graphs",
+  "implementation"
+ ],
+ "key_idea": "Dijkstra over states (directed road segment, lane, left turns used, lane changes used), with the intersection lane-mapping rules precomputed as transitions.",
+ "sketch": "There are at most 840 directed segments, 3 lanes and 5x5 counters, so about 63k states per query and 50 queries. For each segment and each turn type list the lanes that allow it in left-to-right order: the i-th such lane maps to the i-th target lane from the left (from the right for right turns), and the last such lane may also enter any lane further out. Lane changes are zero-cost edges to a neighbouring lane that consume one unit of Y; left turns consume one unit of X. Entering a segment prepays its full time T; start with T_s/2 in the rightmost lane of the start segment and answer min over counters of dist(dest, rightmost lane) - T_d/2, or -1. Pitfalls: getting left/right orientation correct with rows growing southward, numbering right-turn lanes from the right, and the start equal to destination case (answer 0 falls out of the model).",
+ "code_path": "solutions/kattis_safesttaxi.cpp",
+ "samples_passed": true
+}

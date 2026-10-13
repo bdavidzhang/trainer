@@ -1,0 +1,12 @@
+{
+ "id": "kattis:smoothiestand",
+ "rating": 800,
+ "topics": [
+  "implementation",
+  "math"
+ ],
+ "key_idea": "For each recipe the number of smoothies is the minimum of have/need over ingredients with need > 0; maximise count times price.",
+ "sketch": "Read the k stock values, then for each recipe take the floor-division minimum over the ingredients it actually uses, skipping zeros to avoid division by zero, and multiply by the price. O(kr) <= 1e5. The statement guarantees each recipe uses at least one ingredient; values stay under 1e8 but 64-bit is used anyway.",
+ "code_path": "solutions/kattis_smoothiestand.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,13 @@
+{
+ "id": "kattis:largesttriangle",
+ "rating": 1900,
+ "topics": [
+  "geometry",
+  "convex-hull",
+  "two-pointers"
+ ],
+ "key_idea": "The maximum-area triangle has its vertices on the convex hull, and for a fixed hull vertex i the best third vertex moves monotonically as the second vertex j advances.",
+ "sketch": "Deduplicate points, build a strict convex hull with Andrew's monotone chain, and if it has fewer than 3 vertices print 0. For every i, sweep j forward while a pointer c advances as long as the area of (i,j,c) does not decrease; this is O(h^2) <= 25M cross products. Cross products reach about 3.2e15, so use 64-bit integers and print the doubled area divided by two exactly as .00000 or .50000 instead of going through floating point. Pitfalls: duplicate and collinear inputs, advancing through plateaus of equal area (use >=), and never letting c wrap onto i. Stress-tested against O(n^3) brute force.",
+ "code_path": "solutions/kattis_largesttriangle.cpp",
+ "samples_passed": true
+}

@@ -1,0 +1,14 @@
+{
+ "id": "kattis:dnddice",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "probability",
+  "big-integer",
+  "sorting"
+ ],
+ "key_idea": "Count the outcomes per sum by convolving the dice one at a time, then sort sums by count; counts reach about 2^155 so they need exact big integers rather than doubles.",
+ "sketch": "DP over dice: f[s] = number of ways to reach sum s, adding one die at a time (at most 50 dice, max sum 500), about 50*500*20 additions. The total number of outcomes is up to 4^10*6^10*8^10*12^10*20^10, roughly 2^155, so use a fixed 192-bit unsigned integer (three 64-bit limbs with add and compare); floating point could misorder close but unequal counts. Print sums from (number of dice) to (max sum) sorted by non-increasing count. Ties may be printed in any order, so the sample checker reports mismatches; verified with an independent Python bigint validator (output is a permutation of all reachable sums and counts are non-increasing) on the samples, extremes like 10 10 10 10 10, and 40 random inputs.",
+ "code_path": "solutions/kattis_dnddice.cpp",
+ "samples_passed": true
+}

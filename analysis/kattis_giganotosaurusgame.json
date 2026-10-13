@@ -1,0 +1,12 @@
+{
+ "id": "kattis:giganotosaurusgame",
+ "rating": 1500,
+ "topics": [
+  "dp",
+  "combinatorics"
+ ],
+ "key_idea": "The k-th jump moves k+1 cells, so at most about sqrt(2n) ~ 446 jumps fit in the world; DP over (jumps made, position) is n*sqrt(n).",
+ "sketch": "dp[j][p] = ways to stand on cell p having made j jumps; transitions are a step to p+1 (same layer) and a jump to p+j+2 (next layer). Keep only two layers of size n, and start each layer at its minimum reachable position j(j+3)/2 to stop when it exceeds n. Any move landing at index >= n is a win, and a step and a jump that both leave the world count as two different ways. About 4.5e7 transitions, O(n sqrt n) time and O(n) memory. Verified against an exponential brute force on random small strings.",
+ "code_path": "solutions/kattis_giganotosaurusgame.cpp",
+ "samples_passed": true
+}
